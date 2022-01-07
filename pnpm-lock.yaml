@@ -9,6 +9,7 @@ specifiers:
   '@testing-library/react': ^12.1.2
   '@testing-library/user-event': ^13.5.0
   autoprefixer: ^10.0.2
+  babel-plugin-styled-components: ^2.0.2
   postcss: ^8.4.5
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -27,6 +28,7 @@ dependencies:
   '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
   '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.1
   autoprefixer: 10.4.2_postcss@8.4.5
+  babel-plugin-styled-components: 2.0.2_styled-components@5.3.3
   postcss: 8.4.5
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
