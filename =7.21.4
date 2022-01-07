@@ -1,0 +1,48 @@
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 403, reused 396, downloaded 0, added 0
+Packages: +6 -5
+++++++-----
+Progress: resolved 1141, reused 1140, downloaded 0, added 6, done
+
+dependencies:
++ @babel/plugin-syntax-flow 7.16.7
++ @testing-library/dom 8.11.1
+- @testing-library/user-event 13.5.0
++ @testing-library/user-event 13.5.0
++ react-is 17.0.2
+- react-scripts 5.0.0
++ react-scripts 5.0.0
+- styled-components 5.3.3
++ styled-components 5.3.3
+
+ WARN  Issues with peer dependencies found
+.
+├─┬ @babel/plugin-syntax-flow
+│ └── ✕ missing peer @babel/core@^7.0.0-0
+└─┬ react-scripts
+  ├── ✕ missing peer typescript@"^3.2.1 || ^4"
+  ├─┬ eslint-config-react-app
+  │ ├─┬ @typescript-eslint/eslint-plugin
+  │ │ ├── ✕ missing peer typescript@"*"
+  │ │ ├─┬ @typescript-eslint/experimental-utils
+  │ │ │ └─┬ @typescript-eslint/typescript-estree
+  │ │ │   ├── ✕ missing peer typescript@"*"
+  │ │ │   └─┬ tsutils
+  │ │ │     └── ✕ missing peer typescript@">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta"
+  │ │ └─┬ @typescript-eslint/type-utils
+  │ │   └── ✕ missing peer typescript@"*"
+  │ ├─┬ @typescript-eslint/parser
+  │ │ └── ✕ missing peer typescript@"*"
+  │ └─┬ eslint-plugin-flowtype
+  │   └── ✕ missing peer @babel/plugin-transform-react-jsx@^7.14.9
+  ├─┬ react-dev-utils
+  │ └─┬ fork-ts-checker-webpack-plugin
+  │   └── ✕ missing peer typescript@">= 2.7"
+  └─┬ tailwindcss
+    └── ✕ missing peer autoprefixer@^10.0.2
+Peer dependencies that should be installed:
+  @babel/core@^7.0.0-0
+  @babel/plugin-transform-react-jsx@^7.14.9
+  autoprefixer@^10.0.2
+  typescript@">=3.2.1 <4.0.0 || >=4.0.0 <5.0.0"
+
