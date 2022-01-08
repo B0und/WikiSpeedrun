@@ -12,6 +12,7 @@ function Sidebar() {
 const NavWrapper = styled.nav`
   display: flex;
   flex-direction: column;
+  flex-basis: 250px;
 `;
 
 export default Sidebar;

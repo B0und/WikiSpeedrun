@@ -14,6 +14,7 @@ function App() {
 const Main = styled.main`
   display: flex;
   flex-direction: row;
+  margin: 36px;
 `;
 
 export default App;

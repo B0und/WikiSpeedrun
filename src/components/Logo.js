@@ -18,4 +18,5 @@ const Link = styled.a`
 `;
 
 const Image = styled.img``;
+
 export default Logo;
