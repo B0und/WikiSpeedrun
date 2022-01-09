@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import ContentWrapper from "./ContentWrapper";
+import ContentWrapper from "./MainContent";
 import Sidebar from "./Sidebar";
 
 function App() {
@@ -14,7 +14,8 @@ function App() {
 const Main = styled.main`
   display: flex;
   flex-direction: row;
-  margin: 36px;
+  padding: 36px;
+  height: 100%;
 `;
 
 export default App;

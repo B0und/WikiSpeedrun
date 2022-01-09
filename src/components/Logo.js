@@ -17,6 +17,8 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  min-width: 120px;
+`;
 
 export default Logo;

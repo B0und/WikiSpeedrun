@@ -16,6 +16,11 @@ function Header() {
           </li>
         ))}
       </Pages>
+      <MiscNav>
+        <a href="">
+          <img src="./github.png" alt="Link to source code" />
+        </a>
+      </MiscNav>
     </HeaderNav>
   );
 }
@@ -23,7 +28,13 @@ function Header() {
 const HeaderNav = styled.nav`
   display: flex;
   flex-direction: row;
-  gap: 32px;
+  /* gap: 32px; */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: var(--border-gap);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--primary-blue);
 `;
 
 const Pages = styled.ul`
@@ -31,15 +42,16 @@ const Pages = styled.ul`
   flex-direction: row;
   list-style-type: none;
   gap: 32px;
+  padding-left: 0;
+  text-align: baseline;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const Settings = styled.ul`
+const MiscNav = styled.ul`
   list-style-type: none;
-
   display: flex;
   flex-direction: row;
   gap: 32px;

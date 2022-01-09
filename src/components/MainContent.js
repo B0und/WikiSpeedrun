@@ -5,7 +5,7 @@ import WikiRenderer from "./WikiRenderer";
 import About from "./About";
 import styled from "styled-components/macro";
 
-function ContentWrapper() {
+function MainContent() {
   return (
     <BrowserRouter>
       <Wrapper>
@@ -23,5 +23,8 @@ function ContentWrapper() {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+  gap: var(--border-gap);
 `;
-export default ContentWrapper;
+export default MainContent;

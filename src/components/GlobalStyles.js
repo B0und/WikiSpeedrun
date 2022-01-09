@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
-  html, body {
+  html, body, #root {
     height: 100%;
   }
 
@@ -48,6 +48,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
+    --primary-blue: #A7D7F9;
+
+    --border-gap: 36px;
     /*
       Silence the warning about missing Reach Dialog styles
     */
