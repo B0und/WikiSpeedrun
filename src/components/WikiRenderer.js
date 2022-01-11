@@ -1,9 +1,7 @@
+
+
 function WikiRenderer() {
-    return (
-        <div>
-            Wiki
-        </div>
-    )
+  return <></>;
 }
 
-export default WikiRenderer
+export default WikiRenderer;

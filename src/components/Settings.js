@@ -1,19 +1,23 @@
 import styled from "styled-components/macro";
+import ComboBoxSearch from "./ComboBoxSearch";
 
 function Settings() {
+  const startId = "starting-article";
+  const endId = "ending-article"
+
   return (
     <Wrapper>
       <Title>Settings</Title>
       <SettingField>
-        <p>Starting Article</p>
-        <input type="text" placeholder="Search..."></input>
+        <label htmlFor={startId}>Starting Article</label>
+        <ComboBoxSearch inputId={startId} />
         <button>
           <img src="./dice.svg" />
         </button>
       </SettingField>
       <SettingField>
-        <p>Ending Article</p>
-        <input type="text" placeholder="Search..."></input>
+       <label htmlFor={endId}>Ending Article</label>
+        <ComboBoxSearch inputId={endId} />
         <button>
           <img src="./dice.svg" />
         </button>
