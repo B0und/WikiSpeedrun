@@ -1,6 +1,10 @@
 import styled from "styled-components/macro";
 import ComboBoxSearch from "./ComboBoxSearch";
-import { addToHistory } from "./settingsSlice";
+import {
+  addToHistory,
+  setStartingArticle,
+  setEndingArticle,
+} from "./settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const selectHistory = (state) => state.settings.article.history;
@@ -17,27 +21,30 @@ function Settings() {
       <Title>Settings</Title>
       <SettingField>
         <label htmlFor={startId}>Starting Article</label>
-        <ComboBoxSearch inputId={startId} />
+        <ComboBoxSearch
+          inputId={startId}
+          selectHandler={(item) => {
+            dispatch(setStartingArticle(item));
+          }}
+        />
         <button>
           <img src="./dice.svg" />
         </button>
       </SettingField>
       <SettingField>
         <label htmlFor={endId}>Ending Article</label>
-        <ComboBoxSearch inputId={endId} />
+        <ComboBoxSearch
+          inputId={endId}
+          selectHandler={(item) => {
+            dispatch(setEndingArticle(item));
+          }}
+        />
         <button>
           <img src="./dice.svg" />
         </button>
       </SettingField>
       <StartButton>Start</StartButton>
-      <div>{history?.join(" ")}</div>
-      <input
-        type="text"
-        onChange={(event) => {
-          console.log(event.target.value);
-          dispatch(addToHistory(event.target.value));
-        }}
-      ></input>
+    
     </Wrapper>
   );
 }

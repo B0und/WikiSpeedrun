@@ -12,7 +12,7 @@ import axios from "axios";
 
 import useDebounce from "../hooks/useDebounce";
 
-const ComboBoxSearch = ({ inputId }) => {
+const ComboBoxSearch = ({ inputId, selectHandler }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedTerm = useDebounce(searchTerm, 600);
 
@@ -44,7 +44,10 @@ const ComboBoxSearch = ({ inputId }) => {
   };
 
   return (
-    <Combobox aria-label="Article Search">
+    <Combobox
+      onSelect={(item) => selectHandler(item)}
+      aria-label="Article Search"
+    >
       <ComboboxInput
         onChange={handleSearchTermChange}
         placeholder="Search..."
@@ -73,6 +76,7 @@ const ComboBoxSearch = ({ inputId }) => {
 
 ComboBoxSearch.propTypes = {
   inputId: PropTypes.string.isRequired,
+  selectHandler: PropTypes.func.isRequired,
 };
 
 export default ComboBoxSearch;
