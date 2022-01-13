@@ -45,7 +45,12 @@ const ComboBoxSearch = ({ inputId, selectHandler }) => {
 
   return (
     <Combobox
-      onSelect={(item) => selectHandler(item)}
+      onSelect={(item) =>
+        selectHandler({
+          title: item,
+          pageid: articles.find((article) => article.title === item)?.pageid,
+        })
+      }
       aria-label="Article Search"
     >
       <ComboboxInput

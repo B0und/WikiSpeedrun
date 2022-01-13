@@ -4,13 +4,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const article = createSlice({
   name: "article",
-  initialState: { starting: "", ending: "", history: [] },
+  initialState: {
+    startingArticle: { title: "", pageid: -1 },
+    endingArticle: { title: "", pageid: -1 },
+    history: [],
+  },
   reducers: {
     setStartingArticle: (state, action) => {
-      state.starting = action.payload;
+      state.startingArticle.title = action.payload.title;
+      state.startingArticle.pageid = action.payload.pageid;
     },
     setEndingArticle: (state, action) => {
-      state.ending = action.payload;
+      state.endingArticle.title = action.payload.title;
+      state.endingArticle.pageid = action.payload.pageid;
     },
     addToHistory: (state, action) => {
       state.history.push(action.payload);

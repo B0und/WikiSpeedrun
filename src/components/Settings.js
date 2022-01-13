@@ -25,6 +25,7 @@ function Settings() {
           inputId={startId}
           selectHandler={(item) => {
             dispatch(setStartingArticle(item));
+            
           }}
         />
         <button>
