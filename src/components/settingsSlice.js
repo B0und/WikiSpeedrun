@@ -27,6 +27,14 @@ const article = createSlice({
   },
 });
 
+export const selectHistory = (state) => state.settings.article.history;
+
+export const selectStartingArticle = (state) =>
+  state.settings.article.startingArticle;
+  
+export const selectEndingArticle = (state) =>
+  state.settings.article.endingArticle;
+
 export const {
   setStartingArticle,
   setEndingArticle,

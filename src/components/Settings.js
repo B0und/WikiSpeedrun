@@ -4,17 +4,20 @@ import {
   addToHistory,
   setStartingArticle,
   setEndingArticle,
+  selectStartingArticle,
+  selectHistory,
+  selectEndingArticle,
 } from "./settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-const selectHistory = (state) => state.settings.article.history;
-
 function Settings() {
   const dispatch = useDispatch();
-  const history = useSelector(selectHistory);
 
   const startId = "starting-article";
   const endId = "ending-article";
+
+  const startingTitle = useSelector(selectStartingArticle).title
+  const endingTitle = useSelector(selectEndingArticle).title
 
   return (
     <Wrapper>
@@ -23,9 +26,9 @@ function Settings() {
         <label htmlFor={startId}>Starting Article</label>
         <ComboBoxSearch
           inputId={startId}
+          initialTerm={startingTitle}
           selectHandler={(item) => {
             dispatch(setStartingArticle(item));
-            
           }}
         />
         <button>
@@ -35,6 +38,7 @@ function Settings() {
       <SettingField>
         <label htmlFor={endId}>Ending Article</label>
         <ComboBoxSearch
+          initialTerm={endingTitle}
           inputId={endId}
           selectHandler={(item) => {
             dispatch(setEndingArticle(item));
@@ -45,7 +49,6 @@ function Settings() {
         </button>
       </SettingField>
       <StartButton>Start</StartButton>
-    
     </Wrapper>
   );
 }

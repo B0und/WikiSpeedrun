@@ -6,17 +6,16 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-
 import useDebounce from "../hooks/useDebounce";
 
-const ComboBoxSearch = ({ inputId, selectHandler }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+const ComboBoxSearch = ({ inputId, selectHandler, initialTerm }) => {
+  let [searchTerm, setSearchTerm] = useState("");
   const debouncedTerm = useDebounce(searchTerm, 600);
-
   const [articles, setArticles] = useState([]);
+  const inputElement = useRef(null);
 
   const search = async () => {
     const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
@@ -39,24 +38,31 @@ const ComboBoxSearch = ({ inputId, selectHandler }) => {
     }
   }, [debouncedTerm]);
 
+  // set input to previous state value, so the value is retained
+  // on screen after changing tabs
+  useEffect(() => {
+    inputElement.current.value = initialTerm;
+  }, []);
+
   const handleSearchTermChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   return (
     <Combobox
-      onSelect={(item) =>
+      onSelect={(item) => {
         selectHandler({
           title: item,
           pageid: articles.find((article) => article.title === item)?.pageid,
-        })
-      }
+        });
+      }}
       aria-label="Article Search"
     >
       <ComboboxInput
-        onChange={handleSearchTermChange}
-        placeholder="Search..."
+        ref={inputElement}
         id={inputId}
+        placeholder="Search..."
+        onChange={handleSearchTermChange}
       />
       {articles && (
         <ComboboxPopover className="shadow-popup">
