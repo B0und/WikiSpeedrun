@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import ComboBoxSearch from "./ComboBoxSearch";
+import { Link } from "react-router-dom";
 import {
   addToHistory,
   setStartingArticle,
@@ -16,8 +17,8 @@ function Settings() {
   const startId = "starting-article";
   const endId = "ending-article";
 
-  const startingTitle = useSelector(selectStartingArticle).title
-  const endingTitle = useSelector(selectEndingArticle).title
+  const startingTitle = useSelector(selectStartingArticle).title;
+  const endingTitle = useSelector(selectEndingArticle).title;
 
   return (
     <Wrapper>
@@ -48,7 +49,7 @@ function Settings() {
           <img src="./dice.svg" />
         </button>
       </SettingField>
-      <StartButton>Start</StartButton>
+      <StartButton to="/wiki">Start</StartButton>
     </Wrapper>
   );
 }
@@ -80,8 +81,11 @@ const SettingField = styled.div`
   }
 `;
 
-const StartButton = styled.button`
-  border: none;
+const StartButton = styled(Link)`
+  text-decoration: none;
+  background-color: #e9e9ed;
+  color: black;
+  text-align: center;
   padding: 10px 20px;
   width: 120px;
 `;
