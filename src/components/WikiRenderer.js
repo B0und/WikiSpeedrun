@@ -10,7 +10,6 @@ import {
 import axios from "axios";
 
 import "./wiki-common.css";
-// import "./wiki-vec1.css"; 
 import "./wiki-vec2.css";
 
 function WikiRenderer() {
