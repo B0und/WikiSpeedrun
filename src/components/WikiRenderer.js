@@ -50,6 +50,7 @@ function WikiRenderer() {
 
 const WikiWrapper = styled.div`
   margin-left: var(--border-gap);
+  font-family: sans-serif;
 `;
 
 const WikiHeader = styled.h2`
