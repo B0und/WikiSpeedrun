@@ -14,7 +14,7 @@ function App() {
           <Route index path="/settings" element={<Settings />} />
           <Route path="/about" element={<About />} />
           <Route path="/wiki" element={<WikiRenderer />}>
-            <Route path=":wikiTitle" element={<WikiRenderer />} />
+            <Route path=":wikiTitle/*" element={<WikiRenderer />} />
           </Route>
           <Route path="*" element={<NoMatch />} />
         </Route>

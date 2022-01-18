@@ -13,16 +13,17 @@ import "./wiki-vec2.css";
 function WikiRenderer() {
   let params = useParams();
 
-  const endingId = useSelector(selectEndingArticle).pageid;
-  const startingId = useSelector(selectStartingArticle).pageid;
+  const [isLoading, setIsLoading] = useState(false);
+
+  const startTitle = useSelector(selectStartingArticle).title;
+  const endTitle = useSelector(selectEndingArticle).title;
 
   const [wikiData, setWikiData] = useState("");
 
-
-  const search = async (startingId = undefined, searchString = undefined) => {
+  const search = async (searchString) => {
+    setIsLoading(true);
     const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
       params: {
-        pageid: startingId,
         page: searchString,
         origin: "*",
         action: "parse",
@@ -34,11 +35,18 @@ function WikiRenderer() {
     const title = resp.data.parse.title;
     const pageid = resp.data.parse.pageid;
     setWikiData({ html, title, pageid });
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    search(startingId);
-  }, []);
+    search(startTitle);
+  }, [startTitle]);
+
+  useEffect(() => {
+    if (params.wikiTitle) {
+      search(params.wikiTitle);
+    }
+  }, [params.wikiTitle]);
 
   function createMarkup() {
     return { __html: wikiData.html };
@@ -46,9 +54,17 @@ function WikiRenderer() {
 
   return (
     <WikiWrapper>
-      <p>{params.wikiTitle}</p>
-      <WikiHeader>{wikiData.title}</WikiHeader>
-      <div className="wiki-insert" dangerouslySetInnerHTML={createMarkup()} />
+      {isLoading ? (
+        <p>Loading ...</p>
+      ) : (
+        <>
+          <WikiHeader>{wikiData.title}</WikiHeader>
+          <div
+            className="wiki-insert"
+            dangerouslySetInnerHTML={createMarkup()}
+          />
+        </>
+      )}
     </WikiWrapper>
   );
 }
@@ -64,5 +80,6 @@ const WikiHeader = styled.h2`
   font-family: "Linux Libertine", "Georgia", "Times", "serif";
   margin-bottom: 0.25em;
   border-bottom: 1px solid #a2a9b1;
+  padding-top: var(--border-gap);
 `;
 export default WikiRenderer;
