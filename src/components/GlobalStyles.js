@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
   *,
   *:before,
   *:after {
-    font-family: 'Raleway', sans-serif;
+    font-family: sans-serif;
   }
 
   html {

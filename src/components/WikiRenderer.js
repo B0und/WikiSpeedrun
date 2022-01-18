@@ -9,16 +9,16 @@ import { useParams } from "react-router-dom";
 
 import "./wiki-common.css";
 import "./wiki-vec2.css";
+import Result from "./Result";
 
 function WikiRenderer() {
   let params = useParams();
-
   const [isLoading, setIsLoading] = useState(false);
+  const [showResults, setshowResults] = useState(false);
+  const [wikiData, setWikiData] = useState("");
 
   const startTitle = useSelector(selectStartingArticle).title;
   const endTitle = useSelector(selectEndingArticle).title;
-
-  const [wikiData, setWikiData] = useState("");
 
   const search = async (searchString) => {
     setIsLoading(true);
@@ -54,6 +54,8 @@ function WikiRenderer() {
 
   return (
     <WikiWrapper>
+      <button onClick={() => setshowResults(true)}>Win</button>
+      <Result isOpen={showResults} onDismiss={() => setshowResults(false)} />
       {isLoading ? (
         <p>Loading ...</p>
       ) : (
