@@ -18,7 +18,10 @@ function Header() {
       </Pages>
       <MiscNav>
         <a href="">
-          <img src="./github.png" alt="Link to source code" />
+          <img
+            src={window.location.origin + "/github.png"}
+            alt="Link to source code"
+          />
         </a>
       </MiscNav>
     </HeaderNav>

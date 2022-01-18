@@ -4,7 +4,7 @@ function Logo() {
   return (
     <Heading>
       <Link href="/">
-        <Image src={"./wiki-speed-logo.jpg"} alt="Wikipedia Speedrun" />
+        <Image src={window.location.origin + "/wiki-speed-logo.jpg"} alt="Wikipedia Speedrun" />
       </Link>
     </Heading>
   );

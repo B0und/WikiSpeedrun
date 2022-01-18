@@ -33,7 +33,10 @@ function Settings() {
           }}
         />
         <button>
-          <img src="./dice.svg" />
+          <img
+            src={window.location.origin + "/dice.svg"}
+            alt="Select random article"
+          />
         </button>
       </SettingField>
       <SettingField>
@@ -46,7 +49,10 @@ function Settings() {
           }}
         />
         <button>
-          <img src="./dice.svg" />
+          <img
+            src={window.location.origin + "/dice.svg"}
+            alt="Select random article"
+          />
         </button>
       </SettingField>
       <StartButton to="/wiki">Start</StartButton>
