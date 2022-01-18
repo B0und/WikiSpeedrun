@@ -1,21 +1,26 @@
-import styled from "styled-components/macro";
-import ContentWrapper from "./MainContent";
-import Sidebar from "./Sidebar";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import Layout from "./Layout";
+import NoMatch from "./NoMatch";
+import Settings from "./Settings";
+import About from "./About";
+import WikiRenderer from "./WikiRenderer";
 
 function App() {
   return (
-    <Main>
-      <Sidebar />
-      <ContentWrapper />
-    </Main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Settings />} />
+          <Route index path="/settings" element={<Settings />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/wiki" element={<WikiRenderer />}>
+            <Route path=":wikiTitle" element={<WikiRenderer />} />
+          </Route>
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-const Main = styled.main`
-  display: flex;
-  flex-direction: row;
-  padding: 36px;
-  height: 100%;
-`;
 
 export default App;

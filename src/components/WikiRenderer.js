@@ -5,15 +5,19 @@ import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { selectEndingArticle, selectStartingArticle } from "./settingsSlice";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import "./wiki-common.css";
 import "./wiki-vec2.css";
 
 function WikiRenderer() {
+  let params = useParams();
+
   const endingId = useSelector(selectEndingArticle).pageid;
   const startingId = useSelector(selectStartingArticle).pageid;
 
   const [wikiData, setWikiData] = useState("");
+
 
   const search = async (startingId = undefined, searchString = undefined) => {
     const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
@@ -42,6 +46,7 @@ function WikiRenderer() {
 
   return (
     <WikiWrapper>
+      <p>{params.wikiTitle}</p>
       <WikiHeader>{wikiData.title}</WikiHeader>
       <div className="wiki-insert" dangerouslySetInnerHTML={createMarkup()} />
     </WikiWrapper>

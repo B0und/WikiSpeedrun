@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 
 const links = [
-  { name: "Setup", path: "/" },
+  { name: "Setup", path: "/settings" },
   { name: "About", path: "/about" },
 ];
 
