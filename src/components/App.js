@@ -5,7 +5,7 @@ import NoMatch from "./NoMatch";
 import Settings from "./Settings";
 import About from "./About";
 
-const WikiRenderer = React.lazy(() => import("./WikiRenderer"));
+const Wiki = React.lazy(() => import("./Wiki"));
 
 function App() {
   return (
@@ -19,11 +19,11 @@ function App() {
             path="/wiki"
             element={
               <React.Suspense fallback={<>...</>}>
-                <WikiRenderer />
+                <Wiki />
               </React.Suspense>
             }
           >
-            <Route path=":wikiTitle/*" element={<WikiRenderer />} />
+            <Route path=":wikiTitle/*" element={<Wiki />} />
           </Route>
           <Route path="*" element={<NoMatch />} />
         </Route>
