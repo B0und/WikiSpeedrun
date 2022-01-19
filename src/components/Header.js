@@ -1,5 +1,7 @@
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
+import VisuallyHidden from "@reach/visually-hidden";
+import Icon from "./Icon";
 
 const links = [
   { name: "Setup", path: "/settings" },
@@ -17,12 +19,13 @@ function Header() {
         ))}
       </Pages>
       <MiscNav>
-        <a href="">
-          <img
-            src={window.location.origin + "/github.png"}
-            alt="Link to source code"
-          />
-        </a>
+        <GithubLink
+          href="https://github.com/B0und/WikiSpeedrun"
+          target="_blank"
+        >
+          <Icon id="github" />
+          <VisuallyHidden>Source code on github</VisuallyHidden>
+        </GithubLink>
       </MiscNav>
     </HeaderNav>
   );
@@ -51,6 +54,7 @@ const Pages = styled.ul`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  padding: 16px;
 `;
 
 const MiscNav = styled.ul`
@@ -59,4 +63,10 @@ const MiscNav = styled.ul`
   flex-direction: row;
   gap: 32px;
 `;
+
+const GithubLink = styled.a`
+  padding: 16px;
+  text-decoration: none;
+`;
+
 export default Header;
