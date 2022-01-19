@@ -1,18 +1,22 @@
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 function Logo() {
   return (
     <Heading>
-      <Link href="/">
-        <Image src={window.location.origin + "/wiki-speed-logo.jpg"} alt="Wikipedia Speedrun" />
-      </Link>
+      <StyledLink to="/">
+        <Image
+          src={window.location.origin + "/wiki-speed-logo.jpg"}
+          alt="Wikipedia Speedrun"
+        />
+      </StyledLink>
     </Heading>
   );
 }
 
 const Heading = styled.h1``;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
 `;
