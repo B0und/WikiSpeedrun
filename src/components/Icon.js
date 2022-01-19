@@ -1,17 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
-import {
-  Search,
-  Menu,
-  X,
-  GitHub,
-} from "react-feather";
+import { Search, Menu, X, GitHub } from "react-feather";
 
 const icons = {
   search: Search,
   menu: Menu,
-  "shopping-bag": ShoppingBag,
-  "chevron-down": ChevronDown,
   close: X,
   github: GitHub,
 };
