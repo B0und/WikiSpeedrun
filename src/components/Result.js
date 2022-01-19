@@ -32,15 +32,6 @@ const fadeIn = keyframes`
   }
 `;
 
-const slideIn = keyframes`
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-`;
-
 const Wrapper = styled(DialogOverlay)`
   position: fixed;
   top: 0;
@@ -48,8 +39,10 @@ const Wrapper = styled(DialogOverlay)`
   right: 0;
   bottom: 0;
   background: transparent;
+
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 `;
 
 const InnerWrapper = styled.div`
@@ -57,6 +50,9 @@ const InnerWrapper = styled.div`
   flex-direction: column;
   animation: ${fadeIn} 600ms both;
   animation-delay: 400ms;
+
+  text-align: center;
+  vertical-align: middle;
 `;
 
 const Backdrop = styled.div`
@@ -70,26 +66,21 @@ const Backdrop = styled.div`
 `;
 
 const Content = styled(DialogContent)`
-  --overfill: 16px;
   position: relative;
   background: white;
   width: 50%;
   height: 25%;
   padding: 24px 32px;
 
-  @media (prefers-reduced-motion: no-preference) {
-    animation: ${slideIn} 500ms both cubic-bezier(0, 0.6, 0.32, 1.06);
-    animation-delay: 200ms;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const CloseButton = styled(UnstyledButton)`
   position: absolute;
   top: 10px;
-  right: var(--overfill);
+  right: 0px;
   padding: 16px;
-`;
-
-const Filler = styled.div`
-  flex: 1;
 `;
