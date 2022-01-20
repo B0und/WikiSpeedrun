@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Logo() {
   return (
     <Heading>
-      <StyledLink to="/">
+      <StyledLink to="/settings">
         <Image
           src={window.location.origin + "/wiki-speed-logo.jpg"}
           alt="Wikipedia Speedrun"
