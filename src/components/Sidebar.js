@@ -1,10 +1,16 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
+
 import Logo from "./Logo";
+import { getTimerValue, isTimerRunning } from "./settingsSlice";
+import Stopwatch from "./Stopwatch";
 
 function Sidebar() {
+
   return (
     <NavWrapper>
       <Logo />
+      <Stopwatch />
     </NavWrapper>
   );
 }
