@@ -5,13 +5,16 @@ import GlobalStyles from "./components/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import { StopwatchProvider } from "./components/StopwatchContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-    <GlobalStyles />
+    <StopwatchProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+      <GlobalStyles />
+    </StopwatchProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
