@@ -26,5 +26,7 @@ const NavWrapper = styled.nav`
   padding-right: var(--border-gap);
 `;
 
-const StyledStopwatch = styled.div``;
+const StyledStopwatch = styled.div`
+  text-align: right;
+`;
 export default Sidebar;

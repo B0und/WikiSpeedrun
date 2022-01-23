@@ -3,8 +3,17 @@ import { DialogOverlay, DialogContent } from "@reach/dialog";
 import UnstyledButton from "./UnstyledButton";
 import VisuallyHidden from "@reach/visually-hidden";
 import Icon from "./Icon";
+import { useContext, useEffect } from "react";
+import { StopwatchContext } from "./StopwatchContext";
 
 const Result = ({ isOpen, onDismiss }) => {
+  const stopwatch = useContext(StopwatchContext);
+
+  useEffect(() => {
+    if (isOpen) {
+      stopwatch.pauseTimer();
+    }
+  }, [isOpen]);
   return (
     <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
       <Backdrop />
@@ -15,6 +24,7 @@ const Result = ({ isOpen, onDismiss }) => {
             <VisuallyHidden>Dismiss results</VisuallyHidden>
           </CloseButton>
           <h1>You win!</h1>
+          <div>Your time is: {stopwatch.time}</div>
         </InnerWrapper>
       </Content>
     </Wrapper>

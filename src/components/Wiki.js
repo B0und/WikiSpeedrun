@@ -46,13 +46,13 @@ function WikiRenderer() {
   };
 
   useEffect(() => {
-    stopwatch.toggleTimer();
+    isLoading ? stopwatch.pauseTimer() : stopwatch.startTimer();
   }, [isLoading]);
 
   // render initial wiki article
   useEffect(() => {
     search(startTitle);
-    stopwatch.toggleTimer();
+    stopwatch.startTimer();
   }, [startTitle]);
 
   // render article from route parameters
@@ -66,6 +66,8 @@ function WikiRenderer() {
   useEffect(() => {
     if (endTitle === wikiData.title) {
       setshowResults(true);
+      stopwatch.disableTimer(true);
+      stopwatch.pauseTimer();
     }
   }, [endTitle, wikiData]);
 
@@ -115,6 +117,7 @@ function WikiRenderer() {
 const WikiWrapper = styled.div`
   overflow: auto;
   margin-left: var(--border-gap);
+  margin-top: 16px;
   padding-right: var(--border-gap);
   font-family: sans-serif;
 `;
@@ -126,6 +129,5 @@ const WikiHeader = styled.h2`
   margin-bottom: 0.25em;
   border-bottom: 1px solid #a2a9b1;
   padding-top: 16px;
-  
 `;
 export default WikiRenderer;
