@@ -1,6 +1,6 @@
 // https://www.npmjs.com/package/html-react-parser
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { selectEndingArticle, selectStartingArticle } from "./settingsSlice";
@@ -11,10 +11,13 @@ import "./wiki-common.css";
 import "./wiki-vec2.css";
 import { useNavigate } from "react-router-dom";
 import Result from "./Result";
+import { StopwatchContext } from "./StopwatchContext";
 
 function WikiRenderer() {
   let params = useParams();
   let navigate = useNavigate();
+
+  const stopwatch = useContext(StopwatchContext);
 
   const [wikiData, setWikiData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -42,9 +45,14 @@ function WikiRenderer() {
     setIsLoading(false);
   };
 
+  useEffect(() => {
+    stopwatch.toggleTimer();
+  }, [isLoading]);
+
   // render initial wiki article
   useEffect(() => {
     search(startTitle);
+    stopwatch.toggleTimer();
   }, [startTitle]);
 
   // render article from route parameters
@@ -67,16 +75,26 @@ function WikiRenderer() {
 
   const validateHref = (hrefText) => {
     if (hrefText === undefined) return null;
-    if (hrefText.startsWith("/wiki/") && !hrefText.includes(".")) {
+    if (hrefText.startsWith("/wiki/")) {
       return hrefText;
     } else {
       return null;
     }
   };
 
+  const handleWikiArticleClick = (e) => {
+    e.preventDefault();
+    const href = validateHref(
+      e?.nativeEvent?.explicitOriginalTarget?.attributes[0]?.value
+    );
+    if (href) {
+      navigate(href);
+    }
+  };
+
   return (
     <WikiWrapper>
-      <button onClick={() => setshowResults(true)}>Win</button>
+      {/* <button onClick={() => setshowResults(true)}>Win</button> */}
       <Result isOpen={showResults} onDismiss={() => setshowResults(false)} />
       {isLoading ? (
         <p>Loading ...</p>
@@ -84,15 +102,7 @@ function WikiRenderer() {
         <>
           <WikiHeader>{wikiData.title}</WikiHeader>
           <div
-            onClick={(e) => {
-              e.preventDefault();
-              const href = validateHref(
-                e?.nativeEvent?.explicitOriginalTarget?.attributes[0]?.value
-              );
-              if (href) {
-                navigate(href);
-              }
-            }}
+            onClick={handleWikiArticleClick}
             className="wiki-insert"
             dangerouslySetInnerHTML={createMarkup()}
           />
@@ -103,7 +113,9 @@ function WikiRenderer() {
 }
 
 const WikiWrapper = styled.div`
+  overflow: auto;
   margin-left: var(--border-gap);
+  padding-right: var(--border-gap);
   font-family: sans-serif;
 `;
 
@@ -113,6 +125,7 @@ const WikiHeader = styled.h2`
   font-family: "Linux Libertine", "Georgia", "Times", "serif";
   margin-bottom: 0.25em;
   border-bottom: 1px solid #a2a9b1;
-  padding-top: var(--border-gap);
+  padding-top: 16px;
+  
 `;
 export default WikiRenderer;
