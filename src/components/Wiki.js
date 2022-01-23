@@ -45,6 +45,7 @@ function WikiRenderer() {
     setIsLoading(false);
   };
 
+  // pause timer while article is loading
   useEffect(() => {
     isLoading ? stopwatch.pauseTimer() : stopwatch.startTimer();
   }, [isLoading]);
@@ -52,6 +53,7 @@ function WikiRenderer() {
   // render initial wiki article
   useEffect(() => {
     search(startTitle);
+    stopwatch.resetTimer();
     stopwatch.startTimer();
   }, [startTitle]);
 
