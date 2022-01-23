@@ -38,7 +38,7 @@ const HeaderNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-left: var(--border-gap);
+  padding-left: calc(var(--border-gap) - 14px);
   padding-bottom: 6px;
   border-bottom: 1px solid var(--primary-blue);
 `;

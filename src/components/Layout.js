@@ -18,7 +18,9 @@ const Layout = () => {
 const Main = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 36px;
+  padding: 0px 36px;
+  padding-top: 16px;
+  padding-bottom: 0px;
   height: 100%;
 `;
 
