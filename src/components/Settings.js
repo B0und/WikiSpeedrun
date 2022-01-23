@@ -10,15 +10,23 @@ import {
   selectEndingArticle,
 } from "./settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
+import { StopwatchContext } from "./StopwatchContext";
 
 function Settings() {
   const dispatch = useDispatch();
+  const stopwatch = useContext(StopwatchContext);
 
   const startId = "starting-article";
   const endId = "ending-article";
 
   const startingTitle = useSelector(selectStartingArticle).title;
   const endingTitle = useSelector(selectEndingArticle).title;
+
+  const startHandler = () => {
+    stopwatch.resetTimer();
+    stopwatch.disableTimer(false);
+  };
 
   return (
     <Wrapper>
@@ -55,7 +63,9 @@ function Settings() {
           />
         </button>
       </SettingField>
-      <StartButton to="/wiki">Start</StartButton>
+      <StartButton onClick={startHandler} to="/wiki">
+        Start
+      </StartButton>
     </Wrapper>
   );
 }
