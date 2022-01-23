@@ -37,8 +37,12 @@ const useFrameNow = (isActive) => {
 const useStopwatch = () => {
   // Previous accumulated lapse
   const [pastLapse, setPastLapse] = useState(0);
+
   // When we started the last one (or null)
   const [startTime, setStartTime] = useState(null);
+
+  // Prevent starting the timer
+  const [isDisabled, setIsDisabled] = useState(false);
 
   // Calculate the number to show
   const isRunning = startTime !== null;
@@ -46,19 +50,23 @@ const useStopwatch = () => {
   const currentLapse = isRunning ? Math.max(0, frameNow - startTime) : 0;
   const totalLapse = pastLapse + currentLapse;
 
-  function handleRunClick() {
+  const pause = () => {
     if (isRunning) {
       setPastLapse((l) => l + performance.now() - startTime);
       setStartTime(null);
-    } else {
+    }
+  };
+
+  const start = () => {
+    if (!isRunning && !isDisabled) {
       setStartTime(performance.now());
     }
-  }
+  };
 
-  function handleClearClick() {
+  const reset = () => {
     setPastLapse(0);
     setStartTime(null);
-  }
+  };
 
   const getFormattedTime = (time) => {
     const pad = (time, length) => {
@@ -76,7 +84,7 @@ const useStopwatch = () => {
     return `${m} : ${s} . ${ms}`;
   };
 
-  return [getFormattedTime(totalLapse), handleRunClick, handleClearClick];
+  return [getFormattedTime(totalLapse), pause, start, reset, setIsDisabled];
 };
 
 export default useStopwatch;

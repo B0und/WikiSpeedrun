@@ -5,14 +5,17 @@ export const StopwatchContext = createContext();
 
 // This context provider is passed to any component requiring the context
 export const StopwatchProvider = ({ children }) => {
-  const [time, toggleTimer, resetTimer] = useStopwatch();
+  const [time, pauseTimer, startTimer, resetTimer, disableTimer] =
+    useStopwatch();
 
   return (
     <StopwatchContext.Provider
       value={{
         time,
-        toggleTimer,
+        pauseTimer,
+        startTimer,
         resetTimer,
+        disableTimer,
       }}
     >
       {children}
