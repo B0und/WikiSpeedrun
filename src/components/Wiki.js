@@ -55,9 +55,10 @@ function WikiRenderer() {
 
   // track user history
   useDidMountEffect(() => {
-    console.log(history);
     if (wikiData.title) {
       let time = stopwatch.getCurrentTime();
+
+      // workaround for the first entry being logged slightly later than 0
       if (history.length === 0) {
         time.ms = "000";
       }
