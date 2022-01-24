@@ -8,8 +8,8 @@ function About() {
       <AboutHeader>Wiki Speedrun Game</AboutHeader>
 
       <div>
-        The goal is simple: using links, navigate from one article to another
-        one, as fast as you can!
+        The goal is simple: using links, navigate from one wiki article to
+        another one, as fast as you can!
       </div>
       <LinkButton text="Play" to={"/settings"} />
     </Wrapper>
