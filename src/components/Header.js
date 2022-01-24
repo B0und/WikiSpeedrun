@@ -4,7 +4,7 @@ import VisuallyHidden from "@reach/visually-hidden";
 import Icon from "./Icon";
 
 const links = [
-  { name: "Setup", path: "/settings" },
+  { name: "Play", path: "/settings" },
   { name: "About", path: "/about" },
 ];
 
@@ -55,6 +55,14 @@ const Pages = styled.ul`
 const StyledLink = styled(Link)`
   text-decoration: none;
   padding: 16px;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: blue;
+  }
 `;
 
 const MiscNav = styled.ul`
