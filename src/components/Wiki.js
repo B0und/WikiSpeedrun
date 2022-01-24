@@ -124,7 +124,12 @@ function WikiRenderer() {
         <p>Loading ...</p>
       ) : (
         <>
-          <WikiHeader>{wikiData.title}</WikiHeader>
+          <HeaderWrapper>
+            <WikiHeader>{wikiData.title}</WikiHeader>
+            <HeaderGoal>
+              {startTitle} → {endTitle}
+            </HeaderGoal>
+          </HeaderWrapper>
           <div
             onClick={handleWikiArticleClick}
             className="wiki-insert"
@@ -144,12 +149,24 @@ const WikiWrapper = styled.div`
   font-family: sans-serif;
 `;
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #a2a9b1;
+  margin-bottom: 0.25em;
+  padding-top: 16px;
+`;
+
+const HeaderGoal = styled.span`
+  text-align: baseline;
+  font-size: ${18/16}rem;
+  font-weight: 600;
+`;
 const WikiHeader = styled.h2`
   font-size: 1.8rem;
   font-weight: 400;
   font-family: "Linux Libertine", "Georgia", "Times", "serif";
-  margin-bottom: 0.25em;
-  border-bottom: 1px solid #a2a9b1;
-  padding-top: 16px;
 `;
 export default WikiRenderer;
