@@ -161,12 +161,12 @@ const HeaderWrapper = styled.div`
 
 const HeaderGoal = styled.span`
   text-align: baseline;
-  font-size: ${18/16}rem;
+  font-size: ${18 / 16}rem;
   font-weight: 600;
 `;
-const WikiHeader = styled.h2`
+export const WikiHeader = styled.h2`
   font-size: 1.8rem;
   font-weight: 400;
-  font-family: "Linux Libertine", "Georgia", "Times", "serif";
+  font-family: "serif";
 `;
 export default WikiRenderer;

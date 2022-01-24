@@ -10,6 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { useContext } from "react";
 import { StopwatchContext } from "./StopwatchContext";
+import LinkButton from "./LinkButton";
 
 function Settings() {
   const dispatch = useDispatch();
@@ -61,9 +62,7 @@ function Settings() {
           />
         </button>
       </SettingField>
-      <StartButton onClick={startHandler} to="/wiki">
-        Start
-      </StartButton>
+      <LinkButton text="Start" onClick={startHandler} to="/wiki" />
     </Wrapper>
   );
 }
@@ -96,12 +95,4 @@ const SettingField = styled.div`
   }
 `;
 
-const StartButton = styled(Link)`
-  text-decoration: none;
-  background-color: #e9e9ed;
-  color: black;
-  text-align: center;
-  padding: 10px 20px;
-  width: 120px;
-`;
 export default Settings;
