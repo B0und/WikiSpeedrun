@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import styled from "styled-components/macro";
+import History from "./History.js";
 import Logo from "./Logo";
 import Stopwatch from "./Stopwatch";
 import { StopwatchContext } from "./StopwatchContext";
@@ -10,6 +11,7 @@ function Sidebar() {
   return (
     <SidebarWrapper>
       <Logo />
+      <History />
       <Stopwatch time={stopwatch.time} />
     </SidebarWrapper>
   );
