@@ -1,7 +1,7 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
-export default styled.button`
-  display: ${(props) => props.display || 'block'};
+const UnstyledButton = styled.button`
+  display: ${(props) => props.display || "block"};
   margin: 0;
   padding: 0;
   border: none;
@@ -19,3 +19,4 @@ export default styled.button`
     outline: none;
   }
 `;
+export default UnstyledButton;
