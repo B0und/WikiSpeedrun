@@ -63,6 +63,7 @@ const ComboBoxSearch = ({ inputId, selectHandler, initialTerm }) => {
         id={inputId}
         placeholder="Search..."
         onChange={handleSearchTermChange}
+        required={true}
       />
       {articles && (
         <ComboboxPopover className="shadow-popup">
