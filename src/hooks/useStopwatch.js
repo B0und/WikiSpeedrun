@@ -81,7 +81,7 @@ const useStopwatch = () => {
     let s = pad(time.getSeconds().toString(), 2);
     let ms = pad(time.getMilliseconds().toString(), 3);
 
-    return `${m} : ${s} . ${ms}`;
+    return { m, s, ms };
   };
 
   return [getFormattedTime(totalLapse), pause, start, reset, setIsDisabled];
