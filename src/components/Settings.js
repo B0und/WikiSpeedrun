@@ -26,6 +26,10 @@ function Settings() {
   const startHandler = () => {
     stopwatch.resetTimer();
     stopwatch.disableTimer(false);
+
+    dispatch(
+      addToHistory({ article: startingTitle, time: { m: 0, s: 0, ms: 0 } })
+    );
   };
 
   return (

@@ -1,9 +1,13 @@
 // https://www.npmjs.com/package/html-react-parser
 
 import { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
-import { selectEndingArticle, selectStartingArticle } from "./settingsSlice";
+import {
+  addToHistory,
+  selectEndingArticle,
+  selectStartingArticle,
+} from "./settingsSlice";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -16,6 +20,7 @@ import { StopwatchContext } from "./StopwatchContext";
 function WikiRenderer() {
   let params = useParams();
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const stopwatch = useContext(StopwatchContext);
 
@@ -61,15 +66,17 @@ function WikiRenderer() {
   useEffect(() => {
     if (params.wikiTitle) {
       search(params.wikiTitle);
+      const time = stopwatch.getCurrentTime();
+      dispatch(addToHistory({ article: params.wikiTitle, time }));
     }
   }, [params.wikiTitle]);
 
   // track winning condition
   useEffect(() => {
     if (endTitle === wikiData.title) {
-      setshowResults(true);
-      stopwatch.disableTimer(true);
       stopwatch.pauseTimer();
+      stopwatch.disableTimer(true);
+      setshowResults(true);
     }
   }, [endTitle, wikiData]);
 
