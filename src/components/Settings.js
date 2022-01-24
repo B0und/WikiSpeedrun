@@ -2,11 +2,9 @@ import styled from "styled-components/macro";
 import ComboBoxSearch from "./ComboBoxSearch";
 import { Link } from "react-router-dom";
 import {
-  addToHistory,
   setStartingArticle,
   setEndingArticle,
   selectStartingArticle,
-  selectHistory,
   selectEndingArticle,
 } from "./settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,10 +24,6 @@ function Settings() {
   const startHandler = () => {
     stopwatch.resetTimer();
     stopwatch.disableTimer(false);
-
-    dispatch(
-      addToHistory({ article: startingTitle, time: { m: 0, s: 0, ms: 0 } })
-    );
   };
 
   return (

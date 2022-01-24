@@ -12,8 +12,7 @@ const Stopwatch = ({ time }) => {
 };
 
 const StyledStopwatch = styled.div`
-  /* color: linear */
-  font-size: ${24 / 16}rem;
+  font-size: ${36 / 16}rem;
   text-align: right;
 `;
 

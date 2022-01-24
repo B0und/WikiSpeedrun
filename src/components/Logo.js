@@ -14,7 +14,9 @@ function Logo() {
   );
 }
 
-const Heading = styled.h1``;
+const Heading = styled.h1`
+  align-self: center;
+`;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
