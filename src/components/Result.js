@@ -24,7 +24,10 @@ const Result = ({ isOpen, onDismiss }) => {
             <VisuallyHidden>Dismiss results</VisuallyHidden>
           </CloseButton>
           <h1>You win!</h1>
-          <div>Your time is: {stopwatch.time}</div>
+          <div>
+            Your time is: {stopwatch.time.m}:{stopwatch.time.s}.
+            {stopwatch.time.ms}
+          </div>
         </InnerWrapper>
       </Content>
     </Wrapper>
