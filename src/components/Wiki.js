@@ -6,6 +6,7 @@ import styled from "styled-components/macro";
 import {
   addToHistory,
   selectEndingArticle,
+  selectHistory,
   selectStartingArticle,
 } from "./settingsSlice";
 import axios from "axios";
@@ -16,6 +17,7 @@ import "./wiki-vec2.css";
 import { useNavigate } from "react-router-dom";
 import Result from "./Result";
 import { StopwatchContext } from "./StopwatchContext";
+import useDidMountEffect from "../hooks/useDidMountEffect";
 
 function WikiRenderer() {
   let params = useParams();
@@ -30,6 +32,7 @@ function WikiRenderer() {
 
   const startTitle = useSelector(selectStartingArticle).title;
   const endTitle = useSelector(selectEndingArticle).title;
+  const history = useSelector(selectHistory);
 
   const search = async (searchString) => {
     setIsLoading(true);
@@ -50,8 +53,20 @@ function WikiRenderer() {
     setIsLoading(false);
   };
 
+  // track user history
+  useDidMountEffect(() => {
+    console.log(history);
+    if (wikiData.title) {
+      let time = stopwatch.getCurrentTime();
+      if (history.length === 0) {
+        time.ms = "000";
+      }
+      dispatch(addToHistory({ title: wikiData.title, time }));
+    }
+  }, [wikiData.title]);
+
   // pause timer while article is loading
-  useEffect(() => {
+  useDidMountEffect(() => {
     isLoading ? stopwatch.pauseTimer() : stopwatch.startTimer();
   }, [isLoading]);
 
@@ -66,8 +81,6 @@ function WikiRenderer() {
   useEffect(() => {
     if (params.wikiTitle) {
       search(params.wikiTitle);
-      const time = stopwatch.getCurrentTime();
-      dispatch(addToHistory({ article: params.wikiTitle, time }));
     }
   }, [params.wikiTitle]);
 
