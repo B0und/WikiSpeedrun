@@ -23,7 +23,7 @@ function Header() {
           href="https://github.com/B0und/WikiSpeedrun"
           target="_blank"
         >
-          <Icon id="github" />
+          <GithubIcon id="github" />
           <VisuallyHidden>Source code on github</VisuallyHidden>
         </GithubLink>
       </MiscNav>
@@ -75,6 +75,11 @@ const MiscNav = styled.ul`
 const GithubLink = styled.a`
   padding: 16px;
   text-decoration: none;
+`;
+
+const GithubIcon = styled(Icon)`
+  width: 24px;
+  height: 24px;
 `;
 
 export default Header;
