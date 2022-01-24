@@ -75,6 +75,13 @@ const MiscNav = styled.ul`
 const GithubLink = styled.a`
   padding: 16px;
   text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: blue;
+  }
 `;
 
 const GithubIcon = styled(Icon)`
