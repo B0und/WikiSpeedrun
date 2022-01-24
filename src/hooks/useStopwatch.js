@@ -68,6 +68,11 @@ const useStopwatch = () => {
     setStartTime(null);
   };
 
+  const getCurrentTime = () => {
+    const time = getFormattedTime(totalLapse);
+    return { ...time };
+  };
+
   const getFormattedTime = (time) => {
     const pad = (time, length) => {
       while (time.length < length) {
@@ -84,7 +89,14 @@ const useStopwatch = () => {
     return { m, s, ms };
   };
 
-  return [getFormattedTime(totalLapse), pause, start, reset, setIsDisabled];
+  return [
+    getFormattedTime(totalLapse),
+    getCurrentTime,
+    pause,
+    start,
+    reset,
+    setIsDisabled,
+  ];
 };
 
 export default useStopwatch;
