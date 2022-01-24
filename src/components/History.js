@@ -39,7 +39,6 @@ const HistoryWrapper = styled.div`
   width: 300px;
   flex: 1;
   overflow-y: auto;
-  /* padding-right: 32px; */
   margin-bottom: 16px;
   margin-top: 16px;
 `;
@@ -66,8 +65,6 @@ const StyledTh = styled.th`
 
 const TableHead = styled.thead`
   margin-bottom: 8px;
-
-  /* padding: var(--main-padding) */
 `;
 
 const TableRow = styled.tr`
