@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
   *,
   *:before,
   *:after {
-    font-family: sans-serif;
+    font-family: 'Noto Sans', sans-serif;
   }
 
   html {
