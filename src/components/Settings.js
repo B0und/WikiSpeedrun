@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 import ComboBoxSearch from "./ComboBoxSearch";
 import { Link, Prompt, useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   setStartingArticle,
   setEndingArticle,
@@ -9,9 +10,10 @@ import {
   resetHistory,
 } from "./settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { StopwatchContext } from "./StopwatchContext";
 import UnstyledButton from "./UnstyledButton";
+import SettingsAutocomplete from "./SettingsAutocomplete";
 
 function Settings() {
   const dispatch = useDispatch();
@@ -21,56 +23,95 @@ function Settings() {
   const startId = "starting-article";
   const endId = "ending-article";
 
-  const startingTitle = useSelector(selectStartingArticle).title;
-  const endingTitle = useSelector(selectEndingArticle).title;
+  let startingTitle = useSelector(selectStartingArticle).title;
+  let endingTitle = useSelector(selectEndingArticle).title;
+
+  const getRandomWikiArticle = async () => {
+    const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
+      params: {
+        origin: "*",
+        action: "query",
+        format: "json",
+        list: "random",
+        rnnamespace: "0",
+        rnlimit: "1",
+      },
+    });
+    const title = resp.data.query.random[0].title;
+    // const pageid = resp.data.query.random[0].id;
+    return { title };
+  };
+
+  const randomHandler = async (fn) => {
+    const article = await getRandomWikiArticle();
+    dispatch(fn(article));
+  };
 
   const startHandler = (e) => {
     e.preventDefault();
+    if (!startingTitle || !endingTitle) {
+      alert("Please select a value from the dropdown");
+      return;
+    }
     dispatch(resetHistory());
     stopwatch.resetTimer();
     stopwatch.disableTimer(false);
+
     navigate("/wiki");
   };
 
   return (
     <Wrapper onSubmit={startHandler}>
       <Title>Settings</Title>
+
       <SettingDescription>
         Please type and then select values from the dropdown list or press the
         random button.
       </SettingDescription>
+
       <SettingField>
-        <SettingLabel htmlFor={startId}>Starting Article</SettingLabel>
-        <ComboBoxSearch
-          inputId={startId}
-          initialTerm={startingTitle}
+        <SettingsAutocomplete
+          key={"inp1"}
           selectHandler={(item) => {
+            console.log(item);
             dispatch(setStartingArticle(item));
           }}
+          initialTerm={startingTitle}
+          label="Select starting article"
         />
-        <RandomButton type="button">
+
+        <RandomButton
+          onClick={() => randomHandler(setStartingArticle)}
+          type="button"
+        >
           <img
             src={window.location.origin + "/dice.svg"}
             alt="Select random article"
           />
         </RandomButton>
       </SettingField>
+
       <SettingField>
-        <SettingLabel htmlFor={endId}>Ending Article</SettingLabel>
-        <ComboBoxSearch
-          initialTerm={endingTitle}
-          inputId={endId}
+        <SettingsAutocomplete
+          key={"inp2"}
           selectHandler={(item) => {
+            console.log(item);
             dispatch(setEndingArticle(item));
           }}
+          initialTerm={endingTitle}
+          label="Select ending article"
         />
-        <RandomButton type="button">
+        <RandomButton
+          onClick={() => randomHandler(setEndingArticle)}
+          type="button"
+        >
           <img
             src={window.location.origin + "/dice.svg"}
             alt="Select random article"
           />
         </RandomButton>
       </SettingField>
+
       <StartButton type="submit">Start</StartButton>
     </Wrapper>
   );
@@ -83,11 +124,12 @@ const Wrapper = styled.form`
   padding-top: var(--border-gap);
   /* gap: 32px; */
 
-  width: min-content;
+  width: fit-content;
 `;
 
 const SettingDescription = styled.p`
   margin: 8px 0px;
+  margin-bottom: 16px;
 `;
 const Title = styled.h2`
   font-size: ${24 / 16}rem;
@@ -97,19 +139,14 @@ const Title = styled.h2`
 const SettingField = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
-  gap: 32px;
+  gap: 16px;
 
   /* direct children */
   & > :first-child {
     flex: 1;
   }
-`;
-
-const SettingLabel = styled.label`
-  white-space: nowrap;
-  text-align: left;
 `;
 
 const StartButton = styled.button`
@@ -120,10 +157,12 @@ const StartButton = styled.button`
   text-align: center;
   padding: 10px 20px;
   width: 120px;
+  margin-top: 8px;
 `;
 
 const RandomButton = styled(UnstyledButton)`
   padding: 16px;
+  margin-bottom: 5px;
 
   img {
     min-width: 24px;
