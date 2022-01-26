@@ -20,6 +20,7 @@ const GradientText = styled.span`
   background-image: linear-gradient(180deg, #4acd79, #1cad4a);
   background-size: 100%;
   background-clip: text;
+  -webkit-background-clip: text;
   -moz-text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
 `;
