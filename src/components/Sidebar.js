@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import History from "./History.js";

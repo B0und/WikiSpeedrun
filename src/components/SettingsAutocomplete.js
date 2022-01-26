@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Autocomplete } from "@mantine/core";
 import useDebounce from "../hooks/useDebounce";
 import axios from "axios";
@@ -8,29 +8,28 @@ const SettingsAutocomplete = ({ selectHandler, initialTerm, label }) => {
   let [searchTerm, setSearchTerm] = useState(initialTerm);
   const debouncedTerm = useDebounce(searchTerm, 600);
   const [articles, setArticles] = useState([]);
-  const inputElement = useRef(null);
 
   useEffect(() => {
     setSearchTerm(initialTerm);
   }, [initialTerm]);
 
-  const search = async () => {
-    const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
-      params: {
-        action: "query",
-        list: "search",
-        origin: "*",
-        format: "json",
-        srsearch: debouncedTerm,
-      },
-    });
-    if (data.query) {
-      let articles = data.query.search;
-      setArticles(articles.map((obj) => ({ ...obj, value: obj.title })));
-    }
-  };
-
   useEffect(() => {
+    const search = async () => {
+      const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
+        params: {
+          action: "query",
+          list: "search",
+          origin: "*",
+          format: "json",
+          srsearch: debouncedTerm,
+        },
+      });
+      if (data.query) {
+        let articles = data.query.search;
+        setArticles(articles.map((obj) => ({ ...obj, value: obj.title })));
+      }
+    };
+
     if (debouncedTerm !== "") {
       search();
     }

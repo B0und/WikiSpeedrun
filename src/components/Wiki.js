@@ -76,6 +76,7 @@ function WikiRenderer() {
     search(startTitle);
     stopwatch.resetTimer();
     stopwatch.startTimer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startTitle]);
 
   // render article from route parameters
@@ -92,6 +93,7 @@ function WikiRenderer() {
       stopwatch.disableTimer(true);
       setshowResults(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endTitle, wikiData]);
 
   function createMarkup() {

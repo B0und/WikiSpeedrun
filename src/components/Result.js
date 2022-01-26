@@ -13,6 +13,7 @@ const Result = ({ isOpen, onDismiss }) => {
     if (isOpen) {
       stopwatch.pauseTimer();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
   return (
     <Wrapper isOpen={isOpen} onDismiss={onDismiss}>

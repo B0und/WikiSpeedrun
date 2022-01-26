@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
-import ComboBoxSearch from "./ComboBoxSearch";
-import { Link, Prompt, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   setStartingArticle,
@@ -10,7 +10,7 @@ import {
   resetHistory,
 } from "./settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { StopwatchContext } from "./StopwatchContext";
 import UnstyledButton from "./UnstyledButton";
 import SettingsAutocomplete from "./SettingsAutocomplete";
@@ -19,9 +19,6 @@ function Settings() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const stopwatch = useContext(StopwatchContext);
-
-  const startId = "starting-article";
-  const endId = "ending-article";
 
   let startingTitle = useSelector(selectStartingArticle).title;
   let endingTitle = useSelector(selectEndingArticle).title;
