@@ -111,9 +111,7 @@ function WikiRenderer() {
 
   const handleWikiArticleClick = (e) => {
     e.preventDefault();
-    const href = validateHref(
-      e?.nativeEvent?.explicitOriginalTarget?.attributes[0]?.value
-    );
+    const href = validateHref(e?.target?.attributes[0]?.value);
     if (href) {
       navigate(href);
     }
