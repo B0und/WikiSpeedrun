@@ -48,5 +48,6 @@ const BottomWrapper = styled.div`
 
 const Clicks = styled.p`
   font-size: ${18 / 16}rem;
+  font-weight: 600;
 `;
 export default Sidebar;
