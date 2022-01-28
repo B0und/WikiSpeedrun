@@ -6,6 +6,7 @@ specifiers:
   '@babel/plugin-transform-react-jsx': ^7.16.7
   '@mantine/core': ^3.6.3
   '@mantine/hooks': ^3.6.3
+  '@mantine/modals': ^3.6.3
   '@reach/combobox': ^0.16.5
   '@reach/dialog': ^0.16.2
   '@reach/visually-hidden': ^0.16.0
@@ -38,6 +39,7 @@ dependencies:
   '@babel/plugin-transform-react-jsx': 7.16.7_@babel+core@7.16.7
   '@mantine/core': 3.6.3_b491474c623cd1d71078f8689daebe62
   '@mantine/hooks': 3.6.3_react@17.0.2
+  '@mantine/modals': 3.6.3_e295e211a3bd8eee015f6cecbca913e7
   '@reach/combobox': 0.16.5_react-dom@17.0.2+react@17.0.2
   '@reach/dialog': 0.16.2_react-dom@17.0.2+react@17.0.2
   '@reach/visually-hidden': 0.16.0_react-dom@17.0.2+react@17.0.2
@@ -1790,6 +1792,20 @@ packages:
       react: '>=16.8.0'
     dependencies:
       react: 17.0.2
+    dev: false
+
+  /@mantine/modals/3.6.3_e295e211a3bd8eee015f6cecbca913e7:
+    resolution: {integrity: sha512-2QoG3p5bD7cli73db3tjIdSsI2nF0z2UBmWdPEvgBEdhh/7wvk1gtqyNjNDGfvxAEBqd3IeTKw4fD9q5tMKDRw==}
+    peerDependencies:
+      '@mantine/core': 3.6.3
+      '@mantine/hooks': 3.6.3
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@mantine/core': 3.6.3_b491474c623cd1d71078f8689daebe62
+      '@mantine/hooks': 3.6.3_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /@mantine/styles/3.6.3_dfc0b93d99fba272c9564d3139a2581a:

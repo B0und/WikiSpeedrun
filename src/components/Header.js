@@ -2,6 +2,9 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import VisuallyHidden from "@reach/visually-hidden";
 import Icon from "./Icon";
+import { selectGameIsRunning } from "./settingsSlice";
+import { useSelector } from "react-redux";
+import GiveUpButton from "./GiveUpButton";
 
 const links = [
   { name: "Play", path: "/settings" },
@@ -9,14 +12,20 @@ const links = [
 ];
 
 function Header() {
+  const gameIsRunning = useSelector(selectGameIsRunning);
+
   return (
     <HeaderNav>
       <Pages>
-        {links.map((link) => (
-          <li key={link.name}>
-            <StyledLink to={link.path}>{link.name}</StyledLink>
-          </li>
-        ))}
+        {gameIsRunning ? (
+          <GiveUpButton />
+        ) : (
+          links.map((link) => (
+            <li key={link.name}>
+              <StyledLink to={link.path}>{link.name}</StyledLink>
+            </li>
+          ))
+        )}
       </Pages>
       <MiscNav>
         <GithubLink

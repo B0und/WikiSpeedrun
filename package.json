@@ -8,6 +8,7 @@
     "@babel/plugin-transform-react-jsx": "^7.16.7",
     "@mantine/core": "^3.6.3",
     "@mantine/hooks": "^3.6.3",
+    "@mantine/modals": "^3.6.3",
     "@reach/combobox": "^0.16.5",
     "@reach/dialog": "^0.16.2",
     "@reach/visually-hidden": "^0.16.0",

@@ -1,10 +1,14 @@
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectGameIsRunning } from "./settingsSlice";
 
 function Logo() {
+  const gameIsRunning = useSelector(selectGameIsRunning);
+
   return (
     <Heading>
-      <StyledLink to="/settings">
+      <StyledLink to={gameIsRunning ? "#" : "/settings"}>
         <Image
           src={window.location.origin + "/wiki-speed-logo.jpg"}
           alt="Wikipedia Speedrun"
