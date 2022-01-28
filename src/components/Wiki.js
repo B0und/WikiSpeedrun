@@ -118,27 +118,29 @@ function WikiRenderer() {
   };
 
   return (
-    <WikiWrapper>
-      {/* <button onClick={() => setshowResults(true)}>Win</button> */}
-      <Result isOpen={showResults} onDismiss={() => setshowResults(false)} />
-      {isLoading ? (
-        <p>Loading ...</p>
-      ) : (
-        <>
-          <HeaderWrapper>
-            <WikiHeader>{wikiData.title}</WikiHeader>
-            <HeaderGoal>
-              {startTitle} → {endTitle}
-            </HeaderGoal>
-          </HeaderWrapper>
-          <div
-            onClick={handleWikiArticleClick}
-            className="wiki-insert"
-            dangerouslySetInnerHTML={createMarkup()}
-          />
-        </>
-      )}
-    </WikiWrapper>
+    <>
+      <HeaderGoal>
+        {startTitle} → {endTitle}
+      </HeaderGoal>
+      <WikiWrapper>
+        {/* <button onClick={() => setshowResults(true)}>Win</button> */}
+        <Result isOpen={showResults} onDismiss={() => setshowResults(false)} />
+        {isLoading ? (
+          <p>Loading ...</p>
+        ) : (
+          <>
+            <HeaderWrapper>
+              <WikiHeader>{wikiData.title}</WikiHeader>
+            </HeaderWrapper>
+            <div
+              onClick={handleWikiArticleClick}
+              className="wiki-insert"
+              dangerouslySetInnerHTML={createMarkup()}
+            />
+          </>
+        )}
+      </WikiWrapper>
+    </>
   );
 }
 
@@ -161,9 +163,11 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderGoal = styled.span`
-  text-align: baseline;
+  /* text-align: baseline; */
   font-size: ${18 / 16}rem;
-  font-weight: 600;
+  font-weight: 400;
+  margin-left: var(--border-gap);
+  margin-top: 8px;
 `;
 export const WikiHeader = styled.h2`
   font-size: 1.8rem;
