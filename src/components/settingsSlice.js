@@ -49,14 +49,17 @@ const game = createSlice({
     isRunning: false,
   },
   reducers: {
-    setIsGameRunning: (state, action) => {
-      state.isRunning = action.payload;
+    startGame: (state, action) => {
+      state.isRunning = true;
+    },
+    endGame: (state) => {
+      state.isRunning = false;
     },
   },
 });
 
 export const selectGameIsRunning = (state) => state.settings.game.isRunning;
-export const { setIsGameRunning } = game.actions;
+export const { startGame, endGame } = game.actions;
 
 const settingsReducer = combineReducers({
   article: article.reducer,
