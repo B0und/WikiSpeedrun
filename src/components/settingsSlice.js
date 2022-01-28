@@ -43,8 +43,24 @@ export const {
   resetHistory,
 } = article.actions;
 
+const game = createSlice({
+  name: "game",
+  initialState: {
+    isRunning: false,
+  },
+  reducers: {
+    setIsGameRunning: (state, action) => {
+      state.isRunning = action.payload;
+    },
+  },
+});
+
+export const selectGameIsRunning = (state) => state.settings.game.isRunning;
+export const { setIsGameRunning } = game.actions;
+
 const settingsReducer = combineReducers({
   article: article.reducer,
+  game: game.reducer,
 });
 
 export default settingsReducer;
