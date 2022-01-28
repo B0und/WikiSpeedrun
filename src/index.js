@@ -7,14 +7,21 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import { StopwatchProvider } from "./components/StopwatchContext";
 
+import { MantineProvider } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
+
 ReactDOM.render(
   <React.StrictMode>
-    <StopwatchProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-      <GlobalStyles />
-    </StopwatchProvider>
+    <MantineProvider>
+      <ModalsProvider>
+        <StopwatchProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+          <GlobalStyles />
+        </StopwatchProvider>
+      </ModalsProvider>
+    </MantineProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
