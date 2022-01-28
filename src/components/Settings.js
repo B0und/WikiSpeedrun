@@ -8,6 +8,7 @@ import {
   selectStartingArticle,
   selectEndingArticle,
   resetHistory,
+  startGame,
 } from "./settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useContext } from "react";
@@ -53,8 +54,8 @@ function Settings() {
     dispatch(resetHistory());
     stopwatch.resetTimer();
     stopwatch.disableTimer(false);
-
     navigate("/wiki");
+    dispatch(startGame());
   };
 
   return (

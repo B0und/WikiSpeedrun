@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import {
   addToHistory,
+  endGame,
   selectEndingArticle,
   selectHistory,
   selectStartingArticle,
@@ -91,6 +92,7 @@ function WikiRenderer() {
     if (endTitle === wikiData.title) {
       stopwatch.pauseTimer();
       stopwatch.disableTimer(true);
+      dispatch(endGame());
       setshowResults(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
