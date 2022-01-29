@@ -71,7 +71,6 @@ function Settings() {
         <SettingsAutocomplete
           key={"inp1"}
           selectHandler={(item) => {
-            console.log(item);
             dispatch(setStartingArticle(item));
           }}
           initialTerm={startingTitle}
@@ -93,7 +92,6 @@ function Settings() {
         <SettingsAutocomplete
           key={"inp2"}
           selectHandler={(item) => {
-            console.log(item);
             dispatch(setEndingArticle(item));
           }}
           initialTerm={endingTitle}

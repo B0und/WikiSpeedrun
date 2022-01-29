@@ -45,7 +45,6 @@ const SettingsAutocomplete = ({ selectHandler, initialTerm, label }) => {
       data={articles}
       required={true}
       onItemSubmit={(item) => {
-        console.log(item);
         selectHandler({
           title: item.title,
           pageid: articles.find((article) => article.title === item.title)

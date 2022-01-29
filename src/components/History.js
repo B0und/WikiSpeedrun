@@ -21,7 +21,7 @@ const History = () => {
         <tbody>
           {history.map((article) => (
             <TableRow
-              key={`${article.time.m}${article.time.s}${article.time.ms}`}
+              key={`${article.title}${article.time.m}${article.time.s}${article.time.ms}`}
             >
               <TableData>{article.title}</TableData>
               <TableTime>
