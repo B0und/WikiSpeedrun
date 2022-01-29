@@ -44,7 +44,6 @@ const SettingsAutocomplete = ({ selectHandler, initialTerm, label }) => {
       dropdownPosition="flip"
       data={articles}
       required={true}
-      nothingFound="Nothing found"
       onItemSubmit={(item) => {
         console.log(item);
         selectHandler({

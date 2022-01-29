@@ -1,6 +1,6 @@
 // https://www.npmjs.com/package/html-react-parser
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import {
@@ -24,6 +24,7 @@ function WikiRenderer() {
   let params = useParams();
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  const ref = useRef();
 
   const stopwatch = useContext(StopwatchContext);
 
@@ -103,6 +104,7 @@ function WikiRenderer() {
   }
 
   const validateHref = (hrefText) => {
+    // console.log(hrefText);
     if (hrefText === undefined) return null;
     if (hrefText.startsWith("/wiki/")) {
       return hrefText;
@@ -111,12 +113,37 @@ function WikiRenderer() {
     }
   };
 
+  // const validateNavigation = (hrefText) => {
+  //   if (hrefText === undefined) return null;
+  //   if (hrefText.startsWith("#")) {
+  //     return hrefText;
+  //   } else {
+  //     return null;
+  //   }
+  // };
+
   const handleWikiArticleClick = (e) => {
     e.preventDefault();
-    const href = validateHref(e?.target?.attributes[0]?.value);
+    // console.log(e);
+
+    // if clicked on a link
+    let href = validateHref(e?.target?.attributes[0]?.value);
     if (href) {
       navigate(href);
     }
+
+    // if parent is a link
+    href = validateHref(e.target?.parentNode?.attributes[0]?.value);
+    if (href) {
+      navigate(href);
+    }
+
+    // href = validateNavigation(e.target?.parentNode?.attributes[0]?.value);
+    // if (href) {
+    //   console.log(href.current);
+    //   console.log("scrolling");
+    //   ref.current.scrollIntoView(href);
+    // }
   };
 
   return (
@@ -135,6 +162,7 @@ function WikiRenderer() {
               <WikiHeader>{wikiData.title}</WikiHeader>
             </HeaderWrapper>
             <div
+              ref={ref}
               onClick={handleWikiArticleClick}
               className="wiki-insert"
               dangerouslySetInnerHTML={createMarkup()}
