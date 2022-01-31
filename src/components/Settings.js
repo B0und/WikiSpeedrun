@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useContext } from "react";
 import { StopwatchContext } from "./StopwatchContext";
 import UnstyledButton from "./UnstyledButton";
-import SettingsAutocomplete from "./SettingsAutocomplete";
+import AutocompleteArticle from "./AutocompleteArticle";
 
 function Settings() {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ function Settings() {
       </SettingDescription>
 
       <SettingField>
-        <SettingsAutocomplete
+        <AutocompleteArticle
           key={"inp1"}
           selectHandler={(item) => {
             dispatch(setStartingArticle(item));
@@ -89,7 +89,7 @@ function Settings() {
       </SettingField>
 
       <SettingField>
-        <SettingsAutocomplete
+        <AutocompleteArticle
           key={"inp2"}
           selectHandler={(item) => {
             dispatch(setEndingArticle(item));
