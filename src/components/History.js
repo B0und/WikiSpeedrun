@@ -52,8 +52,9 @@ const HistoryTable = styled.table`
 
 const TableHeader = styled.caption`
   text-align: left;
-  font-weight: 600;
+  font-weight: 400;
   font-size: ${24 / 16}rem;
+  color: hsla(0, 0%, 0%, 0.5);
 
   padding-left: var(--main-padding);
 `;

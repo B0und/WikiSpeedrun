@@ -73,6 +73,30 @@ const useStopwatch = () => {
     return { ...time };
   };
 
+  const getTimeInMs = () => {
+    return totalLapse;
+  };
+
+  const getInputTimeDiff = (time) => {
+    // used for calculating time difference in ms,
+    // between two dates, excluding year/month/day
+    const startDate = new Date(0, 0, 0, 0, 0, 0, 0);
+    const inputHours = time.getHours();
+    const inputMinutes = time.getMinutes();
+    const inputSeconds = time.getSeconds();
+    let inputDate = new Date(
+      0,
+      0,
+      0,
+      inputHours,
+      inputMinutes,
+      inputSeconds,
+      0
+    );
+
+    return inputDate - startDate;
+  };
+
   const getFormattedTime = (time) => {
     const pad = (time, length) => {
       while (time.length < length) {
@@ -80,7 +104,6 @@ const useStopwatch = () => {
       }
       return time;
     };
-
     time = new Date(time);
     let m = pad(time.getMinutes().toString(), 2);
     let s = pad(time.getSeconds().toString(), 2);
@@ -96,6 +119,8 @@ const useStopwatch = () => {
     start,
     reset,
     setIsDisabled,
+    getInputTimeDiff,
+    getTimeInMs,
   ];
 };
 

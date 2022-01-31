@@ -22,6 +22,8 @@ const Main = styled.div`
   padding-top: 16px;
   padding-bottom: 0px;
   height: 100%;
+
+  color: #111;
 `;
 
 const Container = styled.div`

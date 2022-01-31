@@ -45,10 +45,12 @@ const GlobalStyles = createGlobalStyle`
   *:before,
   *:after {
     font-family: 'Noto Sans', sans-serif;
+  
   }
 
   html {
-    --primary-blue: #A7D7F9;
+    --primary-blue: hsl(204, 66%, 56%);
+    --secondary-blue: hsl(204, 87%, 81%);
 
     --border-gap: 36px;
     /*

@@ -47,6 +47,8 @@ const game = createSlice({
   name: "game",
   initialState: {
     isRunning: false,
+    timeLimit: 0,
+    isWin: null,
   },
   reducers: {
     startGame: (state, action) => {
@@ -55,11 +57,19 @@ const game = createSlice({
     endGame: (state) => {
       state.isRunning = false;
     },
+    setTimeLimit: (state, action) => {
+      state.timeLimit = action.payload;
+    },
+    setIsWin: (state, action) => {
+      state.isWin = action.payload;
+    },
   },
 });
 
+export const selectTimeLimit = (state) => state.settings.game.timeLimit;
 export const selectGameIsRunning = (state) => state.settings.game.isRunning;
-export const { startGame, endGame } = game.actions;
+export const selectIsWin = (state) => state.settings.game.isWin;
+export const { startGame, endGame, setTimeLimit, setIsWin } = game.actions;
 
 const settingsReducer = combineReducers({
   article: article.reducer,

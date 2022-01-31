@@ -1,13 +1,39 @@
 import { Autocomplete } from "@mantine/core";
 import { useEffect, useState } from "react";
 import styled from "styled-components/macro";
-import useArticleSearch from "./useArticleSearch";
 import useDebounce from "../../hooks/useDebounce";
+import axios from "axios";
 
 const AutocompleteArticle = ({ selectHandler, initialTerm, label }) => {
   let [searchTerm, setSearchTerm] = useState(initialTerm);
-  const debouncedTerm = useDebounce(searchTerm, 600);
-  const articles = useArticleSearch(debouncedTerm);
+  let debouncedTerm = useDebounce(searchTerm, 600);
+  // let articles = useArticleSearch(debouncedTerm);
+
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const search = async () => {
+      const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
+        params: {
+          action: "query",
+          list: "search",
+          origin: "*",
+          format: "json",
+          srsearch: debouncedTerm,
+        },
+      });
+      if (data.query) {
+        let articles = data.query.search;
+        setArticles(articles.map((obj) => ({ ...obj, value: obj.title })));
+      }
+    };
+
+    if (debouncedTerm !== "") {
+      search().catch((e) =>
+        console.error(`Couldnt fetch wiki data: ${e.message}`)
+      );
+    }
+  }, [debouncedTerm]);
 
   useEffect(() => {
     setSearchTerm(initialTerm);

@@ -10,7 +10,7 @@ function About() {
         The goal is simple: using links, navigate from one wiki article to
         another one, as fast as you can!
       </div>
-      <LinkButton text="Play" to={"/settings"} />
+      <StyledLinkButton text="Play" to={"/settings"} />
     </Wrapper>
   );
 }
@@ -28,4 +28,8 @@ const AboutHeader = styled(WikiHeader)`
   margin-bottom: 0.25em;
 `;
 
+const StyledLinkButton = styled(LinkButton)`
+  background: var(--secondary-blue);
+  color: black;
+`;
 export default About;

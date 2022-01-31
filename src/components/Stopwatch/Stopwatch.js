@@ -1,6 +1,32 @@
+import { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
 
+import {
+  endGame,
+  selectTimeLimit,
+  setIsWin,
+  setTimeLimit,
+} from "../../redux/settingsSlice";
+import { StopwatchContext } from "./StopwatchContext";
+
 const Stopwatch = ({ time }) => {
+  const stopwatch = useContext(StopwatchContext);
+  const timeLimit = useSelector(selectTimeLimit);
+  const dispatch = useDispatch();
+
+  // check for timer timeout
+  useEffect(() => {
+    if (timeLimit && stopwatch.getTimeInMs() > timeLimit) {
+      stopwatch.pauseTimer();
+      stopwatch.disableTimer(true);
+      dispatch(setIsWin(false));
+      dispatch(setTimeLimit(null));
+      dispatch(endGame());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [time.s, time.m]);
+
   return (
     <StyledStopwatch>
       <StopwatchBase>

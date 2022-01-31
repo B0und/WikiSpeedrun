@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import {
   setStartingArticle,
   setEndingArticle,
@@ -9,43 +9,35 @@ import {
   selectEndingArticle,
   resetHistory,
   startGame,
+  setTimeLimit,
+  setIsWin,
 } from "../redux/settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StopwatchContext } from "../components/Stopwatch/StopwatchContext";
-import UnstyledButton from "../components/UnstyledButton";
 import AutocompleteArticle from "../components/AutocompleteArticle";
+
+import RandomArticleButton from "../components/RandomArticleButton";
+import TimeLimit from "../components/TimeLimit";
 
 function Settings() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const stopwatch = useContext(StopwatchContext);
+  const [time, setTime] = useState(new Date(0, 0, 0, 0, 0, 0, 0));
 
   let startingTitle = useSelector(selectStartingArticle).title;
   let endingTitle = useSelector(selectEndingArticle).title;
 
-  const getRandomWikiArticle = async () => {
-    const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
-      params: {
-        origin: "*",
-        action: "query",
-        format: "json",
-        list: "random",
-        rnnamespace: "0",
-        rnlimit: "1",
-      },
-    });
-    const title = resp.data.query.random[0].title;
-    // const pageid = resp.data.query.random[0].id;
-    return { title };
-  };
-
-  const randomHandler = async (fn) => {
-    const article = await getRandomWikiArticle().catch((e) =>
-      console.error(`Couldnt fetch wiki data: ${e.message}`)
-    );
-    article && dispatch(fn(article));
-  };
+  useEffect(() => {
+    // reset previous session
+    dispatch(resetHistory());
+    dispatch(setIsWin(null));
+    stopwatch.resetTimer();
+    stopwatch.disableTimer(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const startHandler = (e) => {
     e.preventDefault();
@@ -53,10 +45,9 @@ function Settings() {
       alert("Please select a value from the dropdown");
       return;
     }
-    dispatch(resetHistory());
-    stopwatch.resetTimer();
-    stopwatch.disableTimer(false);
+
     navigate("/wiki");
+    dispatch(setTimeLimit(stopwatch.getInputTimeDiff(time)));
     dispatch(startGame());
   };
 
@@ -69,7 +60,7 @@ function Settings() {
         random button.
       </SettingDescription>
 
-      <SettingField>
+      <InputContainer>
         <AutocompleteArticle
           key={"inp1"}
           selectHandler={(item) => {
@@ -79,18 +70,10 @@ function Settings() {
           label="Select starting article"
         />
 
-        <RandomButton
-          onClick={() => randomHandler(setStartingArticle)}
-          type="button"
-        >
-          <img
-            src={window.location.origin + "/dice.svg"}
-            alt="Select random article"
-          />
-        </RandomButton>
-      </SettingField>
+        <RandomArticleButton dispatchFn={setStartingArticle} />
+      </InputContainer>
 
-      <SettingField>
+      <InputContainer>
         <AutocompleteArticle
           key={"inp2"}
           selectHandler={(item) => {
@@ -99,16 +82,10 @@ function Settings() {
           initialTerm={endingTitle}
           label="Select ending article"
         />
-        <RandomButton
-          onClick={() => randomHandler(setEndingArticle)}
-          type="button"
-        >
-          <img
-            src={window.location.origin + "/dice.svg"}
-            alt="Select random article"
-          />
-        </RandomButton>
-      </SettingField>
+        <RandomArticleButton dispatchFn={setEndingArticle} />
+      </InputContainer>
+
+      <TimeLimit time={time} setTime={setTime} />
 
       <StartButton type="submit">Start</StartButton>
     </Wrapper>
@@ -120,7 +97,6 @@ const Wrapper = styled.form`
   flex-direction: column;
   padding-left: var(--border-gap);
   padding-top: var(--border-gap);
-  /* gap: 32px; */
 
   width: fit-content;
 `;
@@ -134,37 +110,24 @@ const Title = styled.h2`
   font-weight: 600;
 `;
 
-const SettingField = styled.div`
+const InputContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-start;
   gap: 16px;
-
-  /* direct children */
-  & > :first-child {
-    flex: 1;
-  }
 `;
 
 const StartButton = styled.button`
   cursor: pointer;
   border: none;
-  background-color: #e9e9ed;
-  color: black;
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  font-weight: 500;
   text-align: center;
   padding: 10px 20px;
   width: 120px;
-  margin-top: 8px;
-`;
-
-const RandomButton = styled(UnstyledButton)`
-  padding: 16px;
-  margin-bottom: 5px;
-
-  img {
-    min-width: 24px;
-  }
+  margin-top: 32px;
 `;
 
 export default Settings;

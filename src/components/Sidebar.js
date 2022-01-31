@@ -34,7 +34,7 @@ const SidebarWrapper = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   /* flex-basis: 250px; */
-  border-right: 1px solid var(--primary-blue);
+  border-right: 1px solid var(--secondary-blue);
   padding-right: var(--border-gap);
   padding-bottom: var(--border-gap);
 `;

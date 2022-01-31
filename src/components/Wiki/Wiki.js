@@ -1,5 +1,3 @@
-// https://www.npmjs.com/package/html-react-parser
-
 import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
@@ -8,7 +6,10 @@ import {
   endGame,
   selectEndingArticle,
   selectHistory,
+  selectIsWin,
   selectStartingArticle,
+  setIsWin,
+  setTimeLimit,
 } from "../../redux/settingsSlice";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -19,10 +20,15 @@ import { StopwatchContext } from "../Stopwatch/StopwatchContext";
 import useDidMountEffect from "../../hooks/useDidMountEffect";
 import WikiLogic from "./WikiLogic";
 import { LoadingOverlay } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
+
+// FIXME
+// List of prime ministers of the United Kingdom by education
 
 function WikiRenderer() {
   let params = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const ref = useRef();
   const stopwatch = useContext(StopwatchContext);
 
@@ -33,6 +39,7 @@ function WikiRenderer() {
   const startTitle = useSelector(selectStartingArticle).title;
   const endTitle = useSelector(selectEndingArticle).title;
   const history = useSelector(selectHistory);
+  const isWin = useSelector(selectIsWin);
 
   const { handleWikiArticleClick } = WikiLogic();
 
@@ -75,9 +82,11 @@ function WikiRenderer() {
 
   // render initial wiki article
   useEffect(() => {
-    search(startTitle).catch((e) =>
-      console.error(`Couldnt fetch wiki data: ${e.message}`)
-    );
+    search(startTitle).catch((e) => {
+      console.error(`Couldnt fetch wiki data: ${e.message}`);
+      navigate("/settings");
+    });
+
     stopwatch.resetTimer();
     stopwatch.startTimer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -97,11 +106,17 @@ function WikiRenderer() {
     if (endTitle === wikiData.title) {
       stopwatch.pauseTimer();
       stopwatch.disableTimer(true);
+      dispatch(setIsWin(true));
+      dispatch(setTimeLimit(null));
       dispatch(endGame());
-      setshowResults(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endTitle, wikiData]);
+
+  // show result screen if win state changes
+  useDidMountEffect(() => {
+    setshowResults(true);
+  }, [isWin]);
 
   function createMarkup() {
     return { __html: wikiData.html };
@@ -114,7 +129,13 @@ function WikiRenderer() {
       </HeaderGoal>
       <WikiWrapper>
         {/* <button onClick={() => setshowResults(true)}>Win</button> */}
-        <Result isOpen={showResults} onDismiss={() => setshowResults(false)} />
+
+        <Result
+          isWin={isWin}
+          isOpen={showResults}
+          onDismiss={() => setshowResults(false)}
+        />
+
         <LoadingOverlay visible={isLoading} />
         <>
           <HeaderWrapper>
@@ -138,8 +159,6 @@ const WikiWrapper = styled.div`
   margin-top: 16px;
   padding-right: var(--border-gap);
   font-family: sans-serif;
-  
-  
 `;
 
 const HeaderWrapper = styled.div`

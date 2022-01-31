@@ -6,7 +6,7 @@ import Icon from "./Icon";
 import { useContext, useEffect } from "react";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 
-const Result = ({ isOpen, onDismiss }) => {
+const Result = ({ isOpen, onDismiss, isWin }) => {
   const stopwatch = useContext(StopwatchContext);
 
   useEffect(() => {
@@ -24,11 +24,13 @@ const Result = ({ isOpen, onDismiss }) => {
             <Icon id="close" />
             <VisuallyHidden>Dismiss results</VisuallyHidden>
           </CloseButton>
-          <h1>You win!</h1>
-          <div>
-            Your time is: {stopwatch.time.m}:{stopwatch.time.s}.
-            {stopwatch.time.ms}
-          </div>
+          <h1>{isWin ? "You win!" : "You lose..."}</h1>
+          {isWin && (
+            <p>
+              Your time is: {stopwatch.time.m}:{stopwatch.time.s}.
+              {stopwatch.time.ms}
+            </p>
+          )}
         </InnerWrapper>
       </Content>
     </Wrapper>

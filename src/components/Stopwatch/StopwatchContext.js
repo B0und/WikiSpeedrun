@@ -12,6 +12,8 @@ export const StopwatchProvider = ({ children }) => {
     startTimer,
     resetTimer,
     disableTimer,
+    getInputTimeDiff,
+    getTimeInMs
   ] = useStopwatch();
 
   return (
@@ -23,6 +25,8 @@ export const StopwatchProvider = ({ children }) => {
         startTimer,
         resetTimer,
         disableTimer,
+        getInputTimeDiff,
+        getTimeInMs
       }}
     >
       {children}

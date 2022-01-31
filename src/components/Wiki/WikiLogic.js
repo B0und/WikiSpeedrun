@@ -1,7 +1,25 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const WikiLogic = () => {
   let navigate = useNavigate();
+
+  const getWikiArticle = async (searchString) => {
+    const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
+      params: {
+        page: searchString,
+        origin: "*",
+        action: "parse",
+        format: "json",
+        disableeditsection: "true",
+        redirects: "true", // automatically redirects from plural form
+      },
+    });
+    const html = resp.data.parse.text["*"];
+    const title = resp.data.parse.title;
+    const pageid = resp.data.parse.pageid;
+    return { html, title, pageid };
+  };
 
   const validateHref = (hrefText) => {
     if (hrefText === undefined) return null;
@@ -49,7 +67,7 @@ const WikiLogic = () => {
     }
   };
 
-  return { handleWikiArticleClick };
+  return { handleWikiArticleClick, getWikiArticle };
 };
 
 export default WikiLogic;

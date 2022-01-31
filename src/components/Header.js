@@ -52,7 +52,7 @@ const HeaderNav = styled.nav`
   width: 100%;
   padding-left: calc(var(--border-gap) - 14px);
   padding-bottom: 6px;
-  border-bottom: 1px solid var(--primary-blue);
+  border-bottom: 1px solid var(--secondary-blue);
 `;
 
 const Pages = styled.ul`
