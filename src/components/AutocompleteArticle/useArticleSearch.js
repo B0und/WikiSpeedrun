@@ -22,7 +22,9 @@ const useArticleSearch = ({ searchTerm }) => {
     };
 
     if (searchTerm !== "") {
-      search();
+      search().catch((e) =>
+        console.error(`Couldnt fetch wiki data: ${e.message}`)
+      );
     }
   }, [searchTerm]);
 

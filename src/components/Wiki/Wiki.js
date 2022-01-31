@@ -18,6 +18,7 @@ import Result from "../Result";
 import { StopwatchContext } from "../Stopwatch/StopwatchContext";
 import useDidMountEffect from "../../hooks/useDidMountEffect";
 import WikiLogic from "./WikiLogic";
+import { LoadingOverlay } from "@mantine/core";
 
 function WikiRenderer() {
   let params = useParams();
@@ -74,7 +75,9 @@ function WikiRenderer() {
 
   // render initial wiki article
   useEffect(() => {
-    search(startTitle);
+    search(startTitle).catch((e) =>
+      console.error(`Couldnt fetch wiki data: ${e.message}`)
+    );
     stopwatch.resetTimer();
     stopwatch.startTimer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -83,7 +86,9 @@ function WikiRenderer() {
   // render article from route parameters
   useEffect(() => {
     if (params.wikiTitle) {
-      search(params.wikiTitle);
+      search(params.wikiTitle).catch((e) =>
+        console.error(`Couldnt fetch wiki data: ${e.message}`)
+      );
     }
   }, [params.wikiTitle]);
 
@@ -110,21 +115,18 @@ function WikiRenderer() {
       <WikiWrapper>
         {/* <button onClick={() => setshowResults(true)}>Win</button> */}
         <Result isOpen={showResults} onDismiss={() => setshowResults(false)} />
-        {isLoading ? (
-          <p>Loading ...</p>
-        ) : (
-          <>
-            <HeaderWrapper>
-              <WikiHeader>{wikiData.title}</WikiHeader>
-            </HeaderWrapper>
-            <div
-              ref={ref}
-              onClick={handleWikiArticleClick}
-              className="wiki-insert"
-              dangerouslySetInnerHTML={createMarkup()}
-            />
-          </>
-        )}
+        <LoadingOverlay visible={isLoading} />
+        <>
+          <HeaderWrapper>
+            <WikiHeader>{wikiData.title}</WikiHeader>
+          </HeaderWrapper>
+          <div
+            ref={ref}
+            onClick={handleWikiArticleClick}
+            className="wiki-insert"
+            dangerouslySetInnerHTML={createMarkup()}
+          />
+        </>
       </WikiWrapper>
     </>
   );
@@ -136,6 +138,8 @@ const WikiWrapper = styled.div`
   margin-top: 16px;
   padding-right: var(--border-gap);
   font-family: sans-serif;
+  
+  
 `;
 
 const HeaderWrapper = styled.div`
@@ -149,7 +153,6 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderGoal = styled.span`
-  /* text-align: baseline; */
   font-size: ${18 / 16}rem;
   font-weight: 400;
   margin-left: var(--border-gap);

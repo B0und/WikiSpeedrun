@@ -41,8 +41,10 @@ function Settings() {
   };
 
   const randomHandler = async (fn) => {
-    const article = await getRandomWikiArticle();
-    dispatch(fn(article));
+    const article = await getRandomWikiArticle().catch((e) =>
+      console.error(`Couldnt fetch wiki data: ${e.message}`)
+    );
+    article && dispatch(fn(article));
   };
 
   const startHandler = (e) => {
@@ -71,7 +73,7 @@ function Settings() {
         <AutocompleteArticle
           key={"inp1"}
           selectHandler={(item) => {
-            dispatch(setStartingArticle(item));
+            item && dispatch(setStartingArticle(item));
           }}
           initialTerm={startingTitle}
           label="Select starting article"
@@ -92,7 +94,7 @@ function Settings() {
         <AutocompleteArticle
           key={"inp2"}
           selectHandler={(item) => {
-            dispatch(setEndingArticle(item));
+            item && dispatch(setEndingArticle(item));
           }}
           initialTerm={endingTitle}
           label="Select ending article"

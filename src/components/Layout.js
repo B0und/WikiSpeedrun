@@ -27,8 +27,10 @@ const Main = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* flex: 1 0 auto; */
   width: 100%;
+
+  /* for the loading overlay */
+  position: relative;
 `;
 
 export default Layout;
