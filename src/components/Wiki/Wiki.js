@@ -12,20 +12,17 @@ import {
 } from "../../redux/settingsSlice";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 import "./wiki-common.css";
 import "./wiki-vec2.css";
-import { useNavigate } from "react-router-dom";
 import Result from "../Result";
 import { StopwatchContext } from "../Stopwatch/StopwatchContext";
 import useDidMountEffect from "../../hooks/useDidMountEffect";
+import WikiLogic from "./WikiLogic";
 
 function WikiRenderer() {
   let params = useParams();
-  let navigate = useNavigate();
   const dispatch = useDispatch();
   const ref = useRef();
-
   const stopwatch = useContext(StopwatchContext);
 
   const [wikiData, setWikiData] = useState("");
@@ -35,6 +32,8 @@ function WikiRenderer() {
   const startTitle = useSelector(selectStartingArticle).title;
   const endTitle = useSelector(selectEndingArticle).title;
   const history = useSelector(selectHistory);
+
+  const { handleWikiArticleClick } = WikiLogic();
 
   const search = async (searchString) => {
     setIsLoading(true);
@@ -102,52 +101,6 @@ function WikiRenderer() {
   function createMarkup() {
     return { __html: wikiData.html };
   }
-
-  const validateHref = (hrefText) => {
-    if (hrefText === undefined) return null;
-    if (hrefText.startsWith("/wiki/")) {
-      return hrefText;
-    } else {
-      return null;
-    }
-  };
-
-  const validateNavigation = (hrefText) => {
-    if (hrefText === undefined) return null;
-    if (hrefText.startsWith("#")) {
-      return hrefText;
-    } else {
-      return null;
-    }
-  };
-
-  const handleWikiArticleClick = (e) => {
-    e.preventDefault();
-
-    // if clicked on a link
-    let href = validateHref(e?.target?.attributes[0]?.value);
-    if (href) {
-      navigate(href);
-      return;
-    }
-
-    // if parent is a link
-    href = validateHref(e.target?.parentNode?.attributes[0]?.value);
-    if (href) {
-      navigate(href);
-      return;
-    }
-
-    // if clicked on navigation
-    let navigateId = validateNavigation(
-      e.target?.parentNode?.attributes[0]?.value
-    );
-    if (navigateId) {
-      navigateId = navigateId.replaceAll("#", "");
-      const element = document.getElementById(navigateId);
-      element?.scrollIntoView();
-    }
-  };
 
   return (
     <>
