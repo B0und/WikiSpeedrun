@@ -4,7 +4,7 @@ import UnstyledButton from "./UnstyledButton";
 import VisuallyHidden from "@reach/visually-hidden";
 import Icon from "./Icon";
 import { useContext, useEffect } from "react";
-import { StopwatchContext } from "./StopwatchContext";
+import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 
 const Result = ({ isOpen, onDismiss }) => {
   const stopwatch = useContext(StopwatchContext);

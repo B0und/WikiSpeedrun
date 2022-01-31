@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectGameIsRunning } from "./settingsSlice";
+import { selectGameIsRunning } from "../redux/settingsSlice";
 
 function Logo() {
   const gameIsRunning = useSelector(selectGameIsRunning);

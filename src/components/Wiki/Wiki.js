@@ -9,16 +9,16 @@ import {
   selectEndingArticle,
   selectHistory,
   selectStartingArticle,
-} from "./settingsSlice";
+} from "../../redux/settingsSlice";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 import "./wiki-common.css";
 import "./wiki-vec2.css";
 import { useNavigate } from "react-router-dom";
-import Result from "./Result";
-import { StopwatchContext } from "./StopwatchContext";
-import useDidMountEffect from "../hooks/useDidMountEffect";
+import Result from "../Result";
+import { StopwatchContext } from "../Stopwatch/StopwatchContext";
+import useDidMountEffect from "../../hooks/useDidMountEffect";
 
 function WikiRenderer() {
   let params = useParams();

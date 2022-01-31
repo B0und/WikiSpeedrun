@@ -9,12 +9,12 @@ import {
   selectEndingArticle,
   resetHistory,
   startGame,
-} from "./settingsSlice";
+} from "../redux/settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useContext } from "react";
-import { StopwatchContext } from "./StopwatchContext";
-import UnstyledButton from "./UnstyledButton";
-import AutocompleteArticle from "./AutocompleteArticle";
+import { StopwatchContext } from "../components/Stopwatch/StopwatchContext";
+import UnstyledButton from "../components/UnstyledButton";
+import AutocompleteArticle from "../components/AutocompleteArticle";
 
 function Settings() {
   const dispatch = useDispatch();

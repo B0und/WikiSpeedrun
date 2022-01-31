@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import VisuallyHidden from "@reach/visually-hidden";
 import Icon from "./Icon";
-import { selectGameIsRunning } from "./settingsSlice";
+import { selectGameIsRunning } from "../redux/settingsSlice";
 import { useSelector } from "react-redux";
 import GiveUpButton from "./GiveUpButton";
 

@@ -1,12 +1,11 @@
-import { WikiHeader } from "./Wiki";
+import { WikiHeader } from "../components/Wiki/Wiki";
 import styled from "styled-components/macro";
-import LinkButton from "./LinkButton";
+import LinkButton from "../components/LinkButton";
 
 function About() {
   return (
     <Wrapper>
       <AboutHeader>Wiki Speedrun Game</AboutHeader>
-
       <div>
         The goal is simple: using links, navigate from one wiki article to
         another one, as fast as you can!

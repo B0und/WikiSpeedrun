@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import Layout from "./Layout";
-import NoMatch from "./NoMatch";
+import Layout from "../components/Layout";
+import NoMatch from "../components/NoMatch";
 import Settings from "./Settings";
 import About from "./About";
 
-const Wiki = React.lazy(() => import("./Wiki"));
+const Wiki = React.lazy(() => import("../components/Wiki"));
 
 function App() {
   useEffect(() => {

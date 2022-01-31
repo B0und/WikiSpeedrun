@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
+import App from "./pages/App";
 import GlobalStyles from "./components/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
-import { store } from "./store";
+import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import { StopwatchProvider } from "./components/StopwatchContext";
+import { StopwatchProvider } from "./components/Stopwatch/StopwatchContext";
 import { ModalsProvider } from "@mantine/modals";
 
 ReactDOM.render(

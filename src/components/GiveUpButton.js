@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components/macro";
 import { useModals } from "@mantine/modals";
-import { endGame, resetHistory } from "./settingsSlice";
-import { StopwatchContext } from "./StopwatchContext";
+import { endGame, resetHistory } from "../redux/settingsSlice";
+import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 
 const GiveUpButton = () => {
   const dispatch = useDispatch();

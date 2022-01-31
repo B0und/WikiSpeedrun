@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import History from "./History.js";
 import Logo from "./Logo";
-import { selectHistory } from "./settingsSlice.js";
-import Stopwatch from "./Stopwatch";
-import { StopwatchContext } from "./StopwatchContext";
+import { selectHistory } from "../redux/settingsSlice.js";
+import Stopwatch from "./Stopwatch/Stopwatch";
+import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 
 function Sidebar() {
   const stopwatch = useContext(StopwatchContext);

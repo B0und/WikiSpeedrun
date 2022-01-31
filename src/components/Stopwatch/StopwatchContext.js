@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import useStopwatch from "../hooks/useStopwatch";
+import useStopwatch from "../../hooks/useStopwatch";
 
 export const StopwatchContext = createContext();
 

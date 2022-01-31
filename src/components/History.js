@@ -1,11 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectHistory } from "./settingsSlice";
+import { selectHistory } from "../redux/settingsSlice";
 import styled from "styled-components/macro";
 
 const History = () => {
   const history = useSelector(selectHistory);
-
   const historyExists = history.length !== 0;
 
   return (
