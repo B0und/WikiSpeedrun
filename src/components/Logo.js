@@ -12,6 +12,8 @@ function Logo() {
         <Image
           src={window.location.origin + "/wiki-speed-logo.jpg"}
           alt="Wikipedia Speedrun"
+          width={120}
+          height={146}
         />
       </StyledLink>
     </Heading>
