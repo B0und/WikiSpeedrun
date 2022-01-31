@@ -6,22 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import { StopwatchProvider } from "./components/StopwatchContext";
-
-import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MantineProvider>
-      <ModalsProvider>
-        <StopwatchProvider>
-          <Provider store={store}>
-            <App />
-          </Provider>
-          <GlobalStyles />
-        </StopwatchProvider>
-      </ModalsProvider>
-    </MantineProvider>
+    <ModalsProvider>
+      <StopwatchProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+        <GlobalStyles />
+      </StopwatchProvider>
+    </ModalsProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
