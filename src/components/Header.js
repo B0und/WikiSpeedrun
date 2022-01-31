@@ -28,13 +28,16 @@ function Header() {
         )}
       </Pages>
       <MiscNav>
-        <GithubLink
-          href="https://github.com/B0und/WikiSpeedrun"
-          target="_blank"
-        >
-          <GithubIcon id="github" />
-          <VisuallyHidden>Source code on github</VisuallyHidden>
-        </GithubLink>
+        <li>
+          <GithubLink
+            href="https://github.com/B0und/WikiSpeedrun"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GithubIcon id="github" />
+            <VisuallyHidden>Source code on github</VisuallyHidden>
+          </GithubLink>
+        </li>
       </MiscNav>
     </HeaderNav>
   );
