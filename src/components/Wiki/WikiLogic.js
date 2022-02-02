@@ -39,13 +39,14 @@ const WikiLogic = () => {
     }
   };
 
-  const handleWikiArticleClick = (e) => {
+  const handleWikiArticleClick = (e, ref) => {
     e.preventDefault();
 
     // if clicked on a link
     let href = validateHref(e?.target?.attributes[0]?.value);
     if (href) {
       navigate(href);
+      ref?.current?.scrollIntoView();
       return;
     }
 
@@ -53,6 +54,7 @@ const WikiLogic = () => {
     href = validateHref(e.target?.parentNode?.attributes[0]?.value);
     if (href) {
       navigate(href);
+      ref?.current?.scrollIntoView();
       return;
     }
 

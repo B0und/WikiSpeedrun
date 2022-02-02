@@ -29,7 +29,8 @@ function WikiRenderer() {
   let params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const ref = useRef();
+  const wikiRef = useRef();
+  const headerRef = useRef();
   const stopwatch = useContext(StopwatchContext);
 
   const [wikiData, setWikiData] = useState("");
@@ -139,11 +140,11 @@ function WikiRenderer() {
         <LoadingOverlay visible={isLoading} />
         <>
           <HeaderWrapper>
-            <WikiHeader>{wikiData.title}</WikiHeader>
+            <WikiHeader ref={headerRef}>{wikiData.title}</WikiHeader>
           </HeaderWrapper>
-          <div
-            ref={ref}
-            onClick={handleWikiArticleClick}
+          <WikiHtml
+            ref={wikiRef}
+            onClick={(e) => handleWikiArticleClick(e, headerRef)}
             className="wiki-insert"
             dangerouslySetInnerHTML={createMarkup()}
           />
@@ -159,6 +160,7 @@ const WikiWrapper = styled.div`
   margin-top: 16px;
   padding-right: var(--border-gap);
   font-family: sans-serif;
+  margin-bottom: 16px;
 `;
 
 const HeaderWrapper = styled.div`
@@ -175,11 +177,17 @@ const HeaderGoal = styled.span`
   font-size: ${18 / 16}rem;
   font-weight: 400;
   margin-left: var(--border-gap);
-  margin-top: 8px;
+  margin-top: 10px;
 `;
+
+const WikiHtml = styled.div`
+  overflow: hidden;
+`
+
 export const WikiHeader = styled.h2`
   font-size: 1.8rem;
   font-weight: 400;
   font-family: "serif";
 `;
+
 export default WikiRenderer;
