@@ -29,6 +29,8 @@ function WikiRenderer() {
   let params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+
   const wikiRef = useRef();
   const headerRef = useRef();
   const stopwatch = useContext(StopwatchContext);
@@ -182,7 +184,7 @@ const HeaderGoal = styled.span`
 
 const WikiHtml = styled.div`
   overflow: hidden;
-`
+`;
 
 export const WikiHeader = styled.h2`
   font-size: 1.8rem;

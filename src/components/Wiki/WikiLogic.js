@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useNotifications } from "@mantine/notifications";
 
 const WikiLogic = () => {
   let navigate = useNavigate();
+  const notifications = useNotifications();
 
   const getWikiArticle = async (searchString) => {
     const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
@@ -66,7 +68,25 @@ const WikiLogic = () => {
       navigateId = navigateId.replaceAll("#", "");
       const element = document.getElementById(navigateId);
       element?.scrollIntoView();
+
+      return;
     }
+
+    // show notification about error press
+    if (
+      e?.target?.className === "external text" ||
+      e?.target?.parentNode?.className === "reference-text"
+    ) {
+      notifications.showNotification({
+        title: "Wrong link",
+        message: "Try another one",
+        autoClose: 1500,
+        color: "red",
+      });
+      return;
+    }
+
+    console.log(e.target);
   };
 
   return { handleWikiArticleClick, getWikiArticle };

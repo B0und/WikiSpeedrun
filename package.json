@@ -10,6 +10,7 @@
     "@mantine/dates": "^3.6.4",
     "@mantine/hooks": "^3.6.3",
     "@mantine/modals": "^3.6.3",
+    "@mantine/notifications": "^3.6.5",
     "@reach/combobox": "^0.16.5",
     "@reach/dialog": "^0.16.2",
     "@reach/visually-hidden": "^0.16.0",

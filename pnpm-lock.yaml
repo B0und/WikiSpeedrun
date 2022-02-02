@@ -8,6 +8,7 @@ specifiers:
   '@mantine/dates': ^3.6.4
   '@mantine/hooks': ^3.6.3
   '@mantine/modals': ^3.6.3
+  '@mantine/notifications': ^3.6.5
   '@reach/combobox': ^0.16.5
   '@reach/dialog': ^0.16.2
   '@reach/visually-hidden': ^0.16.0
@@ -43,6 +44,7 @@ dependencies:
   '@mantine/dates': 3.6.4_7a778c242987d774a2830cd6ea70a16c
   '@mantine/hooks': 3.6.3_react@17.0.2
   '@mantine/modals': 3.6.3_e295e211a3bd8eee015f6cecbca913e7
+  '@mantine/notifications': 3.6.5_e295e211a3bd8eee015f6cecbca913e7
   '@reach/combobox': 0.16.5_react-dom@17.0.2+react@17.0.2
   '@reach/dialog': 0.16.2_react-dom@17.0.2+react@17.0.2
   '@reach/visually-hidden': 0.16.0_react-dom@17.0.2+react@17.0.2
@@ -1827,6 +1829,22 @@ packages:
       '@mantine/hooks': 3.6.3_react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /@mantine/notifications/3.6.5_e295e211a3bd8eee015f6cecbca913e7:
+    resolution: {integrity: sha512-KGhTeD/8r0N45FqDrgwMIpqAcVz+kLAJn4rb2RYkPz7btIsi+J7NBfyofmNin/ji7aQH2D6etVtKAYbLTQCzcA==}
+    peerDependencies:
+      '@mantine/core': 3.6.5
+      '@mantine/hooks': 3.6.5
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@mantine/core': 3.6.3_b491474c623cd1d71078f8689daebe62
+      '@mantine/hooks': 3.6.3_react@17.0.2
+      clsx: 1.1.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-transition-group: 4.4.2_react-dom@17.0.2+react@17.0.2
     dev: false
 
   /@mantine/styles/3.6.3_dfc0b93d99fba272c9564d3139a2581a:
@@ -4395,6 +4413,13 @@ packages:
     resolution: {integrity: sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==}
     dependencies:
       utila: 0.4.0
+    dev: false
+
+  /dom-helpers/5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
+    dependencies:
+      '@babel/runtime': 7.16.7
+      csstype: 3.0.10
     dev: false
 
   /dom-serializer/0.2.2:
@@ -8525,6 +8550,20 @@ packages:
       use-latest: 1.2.0_react@17.0.2
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-transition-group/4.4.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': 7.16.7
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react/17.0.2:
