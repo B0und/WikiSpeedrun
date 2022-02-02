@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectHistory } from "../redux/settingsSlice";
 import styled from "styled-components/macro";
+import { QUERIES } from "../constants";
 
 const History = () => {
   const history = useSelector(selectHistory);
@@ -36,10 +37,16 @@ const History = () => {
 
 const HistoryWrapper = styled.div`
   width: 300px;
-  flex: 1;
+  flex: 1 1 auto;
   overflow-y: auto;
   margin-bottom: 16px;
   margin-top: 16px;
+  min-width: 0;
+  min-height: 0;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    width: 100%;
+  }
 `;
 
 const HistoryTable = styled.table`

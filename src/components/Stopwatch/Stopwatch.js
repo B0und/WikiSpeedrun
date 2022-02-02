@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 import {
   endGame,
@@ -40,6 +41,10 @@ const Stopwatch = ({ time }) => {
 const StyledStopwatch = styled.div`
   font-size: ${36 / 16}rem;
   text-align: right;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: ${24 / 16}rem;
+  }
 `;
 
 const GradientText = styled.span`

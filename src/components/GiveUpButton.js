@@ -36,13 +36,10 @@ const GiveUpButton = () => {
 const StyledButton = styled.button`
   cursor: pointer;
   border: none;
-  /* background-color: #e9e9ed; */
   background: none;
   color: black;
   text-align: center;
   padding: 16px;
-  /* width: 120px; */
-  /* margin-top: 8px; */
 
   &:hover {
     color: blue;

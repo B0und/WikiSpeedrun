@@ -2,9 +2,17 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import VisuallyHidden from "@reach/visually-hidden";
 import Icon from "./Icon";
-import { selectGameIsRunning } from "../redux/settingsSlice";
+import { selectGameIsRunning, selectHistory } from "../redux/settingsSlice";
 import { useSelector } from "react-redux";
 import GiveUpButton from "./GiveUpButton";
+import { Drawer, Button, Group } from "@mantine/core";
+import { useContext, useState } from "react";
+import Sidebar, { BottomWrapper, Clicks } from "./Sidebar";
+import Logo from "./Logo";
+import History from "./History";
+import { StopwatchContext } from "./Stopwatch/StopwatchContext";
+import Stopwatch from "./Stopwatch/Stopwatch";
+import { QUERIES } from "../constants";
 
 const links = [
   { name: "Play", path: "/settings" },
@@ -12,13 +20,33 @@ const links = [
 ];
 
 function Header() {
+  const stopwatch = useContext(StopwatchContext);
+  const history = useSelector(selectHistory);
   const gameIsRunning = useSelector(selectGameIsRunning);
+  const [opened, setOpened] = useState(false);
 
   return (
     <HeaderNav>
+      <StyledDrawer
+        opened={opened}
+        onClose={() => setOpened(false)}
+        padding="xl"
+        size="85%"
+      >
+        <Wrapper>
+          <Logo />
+          <History />
+        </Wrapper>
+      </StyledDrawer>
+
       <Pages>
         {gameIsRunning ? (
-          <GiveUpButton />
+          <>
+            <ToggleHistoryDrawer onClick={() => setOpened(true)}>
+              History
+            </ToggleHistoryDrawer>
+            <GiveUpButton />
+          </>
         ) : (
           links.map((link) => (
             <li key={link.name}>
@@ -51,7 +79,6 @@ const HeaderNav = styled.nav`
   align-items: center;
   width: 100%;
   padding-left: calc(var(--border-gap) - 14px);
-  padding-bottom: 6px;
   border-bottom: 1px solid var(--secondary-blue);
 `;
 
@@ -62,6 +89,10 @@ const Pages = styled.ul`
   gap: 32px;
   padding-left: 0;
   text-align: baseline;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    gap: 8px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -100,6 +131,41 @@ const GithubLink = styled.a`
 const GithubIcon = styled(Icon)`
   width: 24px;
   height: 24px;
+`;
+
+const StyledDrawer = styled(Drawer)`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: block;
+  }
+`;
+const ToggleHistoryDrawer = styled.button`
+  display: none;
+
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: black;
+  text-align: center;
+  padding: 16px;
+
+  &:hover {
+    color: blue;
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: block;
+  }
+`;
+
+const Wrapper = styled.div`
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 32px;
 `;
 
 export default Header;

@@ -49,13 +49,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    --primary-blue: hsl(204, 66%, 56%);
-    --secondary-blue: hsl(204, 87%, 81%);
-
-    --border-gap: 36px;
-    /*
-      Silence the warning about missing Reach Dialog styles
-    */
+    --primary-blue: hsla(203, 66%, 56%);
+    --secondary-blue: hsl(204, 87%, 81%, 0.5);
+    // silence the warning
     --reach-dialog: 1;
   }
 
