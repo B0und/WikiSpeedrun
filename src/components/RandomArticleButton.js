@@ -2,6 +2,8 @@ import axios from "axios";
 import UnstyledButton from "./UnstyledButton";
 import styled from "styled-components/macro";
 import { useDispatch } from "react-redux";
+import { ReactComponent as DiceIcon } from "../media/dice.svg";
+import VisuallyHidden from "@reach/visually-hidden";
 
 const RandomArticleButton = ({ dispatchFn }) => {
   const dispatch = useDispatch();
@@ -30,12 +32,8 @@ const RandomArticleButton = ({ dispatchFn }) => {
 
   return (
     <RandomButton onClick={() => randomHandler(dispatchFn)} type="button">
-      <img
-        src={window.location.origin + "/dice.svg"}
-        alt="Select random article"
-        width={25}
-        height={26}
-      />
+      <VisuallyHidden>Select random article</VisuallyHidden>
+      <DiceIcon aria-hidden="true" />
     </RandomButton>
   );
 };
