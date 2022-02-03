@@ -86,8 +86,6 @@ const WikiLogic = () => {
       });
       return;
     }
-
-    console.log(e.target);
   };
 
   return { handleWikiArticleClick, getWikiArticle };
