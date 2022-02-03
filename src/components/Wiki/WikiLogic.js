@@ -6,6 +6,13 @@ const WikiLogic = () => {
   let navigate = useNavigate();
   const notifications = useNotifications();
 
+  const errorParams = {
+    title: "Wrong link",
+    message: "Try another one",
+    autoClose: 1500,
+    color: "red",
+  };
+
   const getWikiArticle = async (searchString) => {
     const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
       params: {
@@ -27,9 +34,9 @@ const WikiLogic = () => {
     if (hrefText === undefined) return null;
     if (hrefText.startsWith("/wiki/")) {
       return hrefText;
-    } else {
-      return null;
     }
+
+    return null;
   };
 
   const validateNavigation = (hrefText) => {
@@ -45,7 +52,15 @@ const WikiLogic = () => {
     e.preventDefault();
 
     // if clicked on a link
-    let href = validateHref(e?.target?.attributes[0]?.value);
+    const hrefText = e?.target?.attributes[0]?.value;
+    let href = validateHref(hrefText);
+
+    // if its a cite note, show error
+    if (hrefText?.includes("#cite_note-")) {
+      notifications.showNotification(errorParams);
+      return;
+    }
+
     if (href) {
       navigate(href);
       ref?.current?.scrollIntoView();
@@ -60,10 +75,12 @@ const WikiLogic = () => {
       return;
     }
 
-    // if clicked on navigation
+    // if clicked on navigation link
     let navigateId = validateNavigation(
       e.target?.parentNode?.attributes[0]?.value
     );
+
+    // try to scroll to the element
     if (navigateId) {
       navigateId = navigateId.replaceAll("#", "");
       const element = document.getElementById(navigateId);
@@ -72,18 +89,16 @@ const WikiLogic = () => {
       return;
     }
 
-    // show notification about error press
+    // show notification about non-wiki link
     if (
       e?.target?.className === "external text" ||
+      e?.target?.className === "new" ||
+      e?.target?.className === "geo-dec" ||
       e?.target?.parentNode?.className === "reference-text" ||
-      e?.target?.parentNode?.className === "external text"
+      e?.target?.parentNode?.className === "external text" ||
+      e?.target?.parentNode?.className === "new"
     ) {
-      notifications.showNotification({
-        title: "Wrong link",
-        message: "Try another one",
-        autoClose: 1500,
-        color: "red",
-      });
+      notifications.showNotification(errorParams);
       return;
     }
   };
