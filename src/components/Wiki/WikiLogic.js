@@ -75,7 +75,8 @@ const WikiLogic = () => {
     // show notification about error press
     if (
       e?.target?.className === "external text" ||
-      e?.target?.parentNode?.className === "reference-text"
+      e?.target?.parentNode?.className === "reference-text" ||
+      e?.target?.parentNode?.className === "external text"
     ) {
       notifications.showNotification({
         title: "Wrong link",
