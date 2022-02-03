@@ -2,16 +2,14 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import VisuallyHidden from "@reach/visually-hidden";
 import Icon from "./Icon";
-import { selectGameIsRunning, selectHistory } from "../redux/settingsSlice";
+import { selectGameIsRunning } from "../redux/settingsSlice";
 import { useSelector } from "react-redux";
 import GiveUpButton from "./GiveUpButton";
-import { Drawer, Button, Group } from "@mantine/core";
-import { useContext, useState } from "react";
-import Sidebar, { BottomWrapper, Clicks } from "./Sidebar";
+import { Drawer } from "@mantine/core";
+import {  useState } from "react";
+
 import Logo from "./Logo";
 import History from "./History";
-import { StopwatchContext } from "./Stopwatch/StopwatchContext";
-import Stopwatch from "./Stopwatch/Stopwatch";
 import { QUERIES } from "../constants";
 
 const links = [
@@ -20,8 +18,6 @@ const links = [
 ];
 
 function Header() {
-  const stopwatch = useContext(StopwatchContext);
-  const history = useSelector(selectHistory);
   const gameIsRunning = useSelector(selectGameIsRunning);
   const [opened, setOpened] = useState(false);
 
@@ -74,7 +70,6 @@ function Header() {
 const HeaderNav = styled.nav`
   display: flex;
   flex-direction: row;
-  /* gap: 32px; */
   justify-content: space-between;
   align-items: center;
   width: 100%;

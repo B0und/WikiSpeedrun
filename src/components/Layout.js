@@ -13,9 +13,10 @@ const Layout = () => {
         <Header />
         <Outlet />
       </Container>
-      <StatsWrapper>
+
+      <PhoneWrapper>
         <Stats />
-      </StatsWrapper>
+      </PhoneWrapper>
     </Main>
   );
 };
@@ -50,7 +51,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-const StatsWrapper = styled.div`
+const PhoneWrapper = styled.div`
   display: none;
 
   @media ${QUERIES.tabletAndSmaller} {

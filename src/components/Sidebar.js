@@ -1,19 +1,17 @@
-import { useContext } from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import History from "./History.js";
 import Logo from "./Logo";
-import { selectHistory } from "../redux/settingsSlice.js";
-import Stopwatch from "./Stopwatch/Stopwatch";
-import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 import { QUERIES } from "../constants.js";
 import Stats from "./Stats.js";
+
+import LoseTracker from "./LoseTracker.js";
 
 function Sidebar() {
   return (
     <SidebarWrapper>
       <Logo />
       <History />
+      <LoseTracker />
       <Stats />
     </SidebarWrapper>
   );

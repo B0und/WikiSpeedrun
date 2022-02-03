@@ -10,10 +10,10 @@ function Logo() {
     <Heading>
       <StyledLink to={gameIsRunning ? "#" : "/settings"}>
         <Image
-          src={window.location.origin + "/wiki-speed-logo.jpg"}
+          src={window.location.origin + "/wiki-speed-logo.png"}
           alt="Wikipedia Speedrun"
           width={120}
-          height={146}
+          height={154}
         />
       </StyledLink>
     </Heading>

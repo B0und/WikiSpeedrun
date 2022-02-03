@@ -51,7 +51,7 @@ const game = createSlice({
     isWin: null,
   },
   reducers: {
-    startGame: (state, action) => {
+    startGame: (state) => {
       state.isRunning = true;
     },
     endGame: (state) => {
