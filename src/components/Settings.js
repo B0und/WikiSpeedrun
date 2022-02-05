@@ -1,5 +1,6 @@
+import { useContext, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "@emotion/styled";
-
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -12,11 +13,8 @@ import {
   setTimeLimit,
   setIsWin,
 } from "../redux/settingsSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { useContext, useEffect, useState } from "react";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 import AutocompleteArticle from "./AutocompleteArticle";
-
 import RandomArticleButton from "./RandomArticleButton";
 import TimeLimit from "./TimeLimit";
 

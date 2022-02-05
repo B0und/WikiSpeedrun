@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
+
 import History from "./History.js";
 import Logo from "./Logo";
-import { QUERIES } from "../constants.js";
 import Stats from "./Stats.js";
-
 import LoseTracker from "./LoseTracker.js";
+import { QUERIES } from "../constants.js";
 
 function Sidebar() {
   return (

@@ -1,9 +1,10 @@
 import axios from "axios";
-import UnstyledButton from "./UnstyledButton";
 import styled from "@emotion/styled";
 import { useDispatch } from "react-redux";
-import { ReactComponent as DiceIcon } from "../media/dice.svg";
 import VisuallyHidden from "@reach/visually-hidden";
+
+import UnstyledButton from "./UnstyledButton";
+import { ReactComponent as DiceIcon } from "../media/dice.svg";
 
 const RandomArticleButton = ({ dispatchFn }) => {
   const dispatch = useDispatch();

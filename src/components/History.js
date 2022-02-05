@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { selectHistory } from "../redux/settingsSlice";
 import styled from "@emotion/styled";
+
+import { selectHistory } from "../redux/settingsSlice";
 import { QUERIES } from "../constants";
 
 const History = () => {

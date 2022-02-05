@@ -1,6 +1,10 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import { LoadingOverlay } from "@mantine/core";
 import styled from "@emotion/styled";
+import axios from "axios";
+
 import {
   addToHistory,
   endGame,
@@ -11,16 +15,13 @@ import {
   setIsWin,
   setTimeLimit,
 } from "../../redux/settingsSlice";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import "./wiki-common.css";
-import "./wiki-vec2.css";
 import Result from "../Result";
 import { StopwatchContext } from "../Stopwatch/StopwatchContext";
 import useDidMountEffect from "../../hooks/useDidMountEffect";
 import WikiLogic from "./WikiLogic";
-import { LoadingOverlay } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
+
+import "./wiki-common.css";
+import "./wiki-vec2.css";
 
 // FIXME
 // List of prime ministers of the United Kingdom by education

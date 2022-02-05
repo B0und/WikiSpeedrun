@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
+
+import Sidebar from "./Sidebar";
 import Header from "./Header";
 import { QUERIES } from "../constants";
 import Stats from "./Stats";

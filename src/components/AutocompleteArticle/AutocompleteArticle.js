@@ -1,8 +1,9 @@
-import { Autocomplete } from "@mantine/core";
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import useDebounce from "../../hooks/useDebounce";
+import { Autocomplete } from "@mantine/core";
 import axios from "axios";
+
+import useDebounce from "../../hooks/useDebounce";
 
 const AutocompleteArticle = ({ selectHandler, initialTerm, label }) => {
   let [searchTerm, setSearchTerm] = useState(initialTerm);

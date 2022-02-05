@@ -1,13 +1,13 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import VisuallyHidden from "@reach/visually-hidden";
-import Icon from "./Icon";
-import { selectGameIsRunning } from "../redux/settingsSlice";
 import { useSelector } from "react-redux";
-import GiveUpButton from "./GiveUpButton";
 import { Drawer } from "@mantine/core";
-import { useState } from "react";
+import VisuallyHidden from "@reach/visually-hidden";
 
+import { selectGameIsRunning } from "../redux/settingsSlice";
+import GiveUpButton from "./GiveUpButton";
+import Icon from "./Icon";
 import Logo from "./Logo";
 import History from "./History";
 import { QUERIES } from "../constants";

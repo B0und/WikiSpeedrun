@@ -1,5 +1,6 @@
-import { WikiHeader } from "./Wiki/Wiki";
 import styled from "@emotion/styled";
+
+import { WikiHeader } from "./Wiki/Wiki";
 import LinkButton from "./LinkButton";
 
 function About() {

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useModals } from "@mantine/modals";
+
 import { endGame, resetHistory } from "../redux/settingsSlice";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 

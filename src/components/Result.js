@@ -1,13 +1,14 @@
+import { useContext, useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "@emotion/styled/macro";
 import { keyframes } from "@emotion/react";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
-import UnstyledButton from "./UnstyledButton";
 import VisuallyHidden from "@reach/visually-hidden";
+
 import Icon from "./Icon";
-import { useContext, useEffect } from "react";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
-import { useSelector } from "react-redux";
 import Stopwatch from "./Stopwatch/Stopwatch";
+import UnstyledButton from "./UnstyledButton";
 import LinkButton from "./LinkButton";
 import {
   selectEndingArticle,
