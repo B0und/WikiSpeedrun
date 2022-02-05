@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { selectHistory } from "../redux/settingsSlice";
 import styled from "@emotion/styled";
@@ -7,6 +7,11 @@ import { QUERIES } from "../constants";
 const History = () => {
   const history = useSelector(selectHistory);
   const historyExists = history.length !== 0;
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [history.length]);
 
   return (
     <HistoryWrapper>
@@ -18,7 +23,7 @@ const History = () => {
             <StyledTh>{historyExists ? "Time" : ""}</StyledTh>
           </TableRow>
         </TableHead>
-        <tbody>
+        <tbody ref={ref}>
           {history.map((article) => (
             <TableRow
               key={`${article.title}${article.time.m}${article.time.s}${article.time.ms}`}
@@ -51,7 +56,6 @@ const HistoryWrapper = styled.div`
 
 const HistoryTable = styled.table`
   border-collapse: collapse;
-  vertical-align: middle;
   width: 100%;
 
   --main-padding: 8px;
