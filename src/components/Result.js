@@ -14,6 +14,7 @@ import {
   selectHistory,
   selectStartingArticle,
 } from "../redux/settingsSlice";
+import { QUERIES } from "../constants";
 
 const Result = ({ isOpen, onDismiss, isWin }) => {
   const stopwatch = useContext(StopwatchContext);
@@ -120,8 +121,7 @@ const Content = styled(DialogContent)`
   position: relative;
   background: white;
   width: 70%;
-  /* height: 25%; */
-  padding:  56px;
+  padding: 56px;
 
   max-height: 90%;
 
@@ -129,6 +129,10 @@ const Content = styled(DialogContent)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    padding: 56px 24px;
+  }
 `;
 
 const CloseButton = styled(UnstyledButton)`
@@ -140,6 +144,10 @@ const CloseButton = styled(UnstyledButton)`
 
 const Heading = styled.h2`
   font-size: ${36 / 16}rem;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: ${24 / 16}rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -147,10 +155,18 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 32px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    gap: 16px;
+  }
 `;
 
 const InfoText = styled.p`
   font-size: ${18 / 16}rem;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: ${16 / 16}rem;
+  }
 `;
 
 const Image = styled.img`

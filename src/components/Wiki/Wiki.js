@@ -130,7 +130,7 @@ function WikiRenderer() {
         {startTitle} → {endTitle}
       </HeaderGoal>
       <WikiWrapper>
-        <button
+        {/* <button
           onClick={() => {
             stopwatch.pauseTimer();
             stopwatch.disableTimer(true);
@@ -141,7 +141,7 @@ function WikiRenderer() {
           }}
         >
           Win
-        </button>
+        </button> */}
 
         <Result
           isWin={isWin}
