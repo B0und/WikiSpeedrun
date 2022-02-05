@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { QUERIES } from "../constants";
 import { selectHistory } from "../redux/settingsSlice";
 import Stopwatch from "./Stopwatch/Stopwatch";

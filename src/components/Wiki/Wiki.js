@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import {
   addToHistory,
   endGame,
@@ -29,7 +29,6 @@ function WikiRenderer() {
   let params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
 
   const wikiRef = useRef();
   const headerRef = useRef();
@@ -131,7 +130,18 @@ function WikiRenderer() {
         {startTitle} → {endTitle}
       </HeaderGoal>
       <WikiWrapper>
-        {/* <button onClick={() => setshowResults(true)}>Win</button> */}
+        <button
+          onClick={() => {
+            stopwatch.pauseTimer();
+            stopwatch.disableTimer(true);
+            dispatch(setIsWin(true));
+            dispatch(setTimeLimit(null));
+            dispatch(endGame());
+            setshowResults(true);
+          }}
+        >
+          Win
+        </button>
 
         <Result
           isWin={isWin}

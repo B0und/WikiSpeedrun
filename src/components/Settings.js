@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,11 +14,11 @@ import {
 } from "../redux/settingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useContext, useEffect, useState } from "react";
-import { StopwatchContext } from "../components/Stopwatch/StopwatchContext";
-import AutocompleteArticle from "../components/AutocompleteArticle";
+import { StopwatchContext } from "./Stopwatch/StopwatchContext";
+import AutocompleteArticle from "./AutocompleteArticle";
 
-import RandomArticleButton from "../components/RandomArticleButton";
-import TimeLimit from "../components/TimeLimit";
+import RandomArticleButton from "./RandomArticleButton";
+import TimeLimit from "./TimeLimit";
 
 function Settings() {
   const dispatch = useDispatch();

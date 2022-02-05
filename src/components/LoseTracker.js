@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   endGame,
@@ -12,13 +12,9 @@ const LoseTracker = () => {
   const dispatch = useDispatch();
   const stopwatch = useContext(StopwatchContext);
   const timeLimit = useSelector(selectTimeLimit);
-  const [lose, setLose] = useState(false);
 
   useEffect(() => {
-    if (lose) return;
-
     if (timeLimit && stopwatch.getTimeInMs() > timeLimit) {
-      setLose(true);
       stopwatch.pauseTimer();
       stopwatch.disableTimer(true);
       dispatch(setTimeLimit(null));
@@ -26,7 +22,7 @@ const LoseTracker = () => {
       dispatch(endGame());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stopwatch.time.s]);
+  }, [stopwatch.time.ms]);
 
   return <></>;
 };

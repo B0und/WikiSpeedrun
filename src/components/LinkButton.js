@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 const LinkButton = ({ text, ...rest }) => {
   return <ButtonLink {...rest}>{text}</ButtonLink>;

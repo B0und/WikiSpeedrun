@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import History from "./History.js";
 import Logo from "./Logo";
 import { QUERIES } from "../constants.js";

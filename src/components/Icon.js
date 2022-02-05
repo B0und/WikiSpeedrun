@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import { Search, Menu, X, GitHub } from "react-feather";
 
 const icons = {

@@ -1,6 +1,6 @@
 import { Autocomplete } from "@mantine/core";
 import { useEffect, useState } from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import useDebounce from "../../hooks/useDebounce";
 import axios from "axios";
 

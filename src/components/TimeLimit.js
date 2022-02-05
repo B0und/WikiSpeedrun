@@ -1,5 +1,5 @@
 import { TimeInput } from "@mantine/dates";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 const TimeLimit = ({ time, setTime }) => {
   return (

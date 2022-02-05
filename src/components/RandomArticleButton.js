@@ -1,6 +1,6 @@
 import axios from "axios";
 import UnstyledButton from "./UnstyledButton";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import { useDispatch } from "react-redux";
 import { ReactComponent as DiceIcon } from "../media/dice.svg";
 import VisuallyHidden from "@reach/visually-hidden";

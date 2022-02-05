@@ -1,6 +1,6 @@
-import { WikiHeader } from "../components/Wiki/Wiki";
-import styled from "styled-components/macro";
-import LinkButton from "../components/LinkButton";
+import { WikiHeader } from "./Wiki/Wiki";
+import styled from "@emotion/styled";
+import LinkButton from "./LinkButton";
 
 function About() {
   return (

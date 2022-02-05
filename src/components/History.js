@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectHistory } from "../redux/settingsSlice";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import { QUERIES } from "../constants";
 
 const History = () => {
@@ -77,15 +77,15 @@ const TableHead = styled.thead`
 const TableRow = styled.tr`
   text-align: left;
 
-  &:first-child {
+  &:first-of-type {
     margin-right: 36px;
   }
 
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     background-color: #eee;
   }
 
-  &:nth-child(odd) {
+  &:nth-of-type(odd) {
     background-color: #fff;
   }
 

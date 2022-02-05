@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./pages/App";
+import App from "./components/App";
 import GlobalStyles from "./components/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { StopwatchProvider } from "./components/Stopwatch/StopwatchContext";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
+import { Global } from "@emotion/react";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +18,7 @@ ReactDOM.render(
           <Provider store={store}>
             <App />
           </Provider>
-          <GlobalStyles />
+          <Global styles={GlobalStyles} />
         </StopwatchProvider>
       </NotificationsProvider>
     </ModalsProvider>
