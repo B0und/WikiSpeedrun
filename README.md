@@ -3,11 +3,17 @@
 </p>
 
 <p align="center">
-  <img alt="Vercel deployments" src="https://img.shields.io/github/deployments/B0und/WikiSpeedrun/production?color=%231CAD4A&label=vercel&logo=vercel&logoColor=white&style=flat-square">
+  <a href="#">
+    <img alt="Vercel deployments" src="https://img.shields.io/github/deployments/B0und/WikiSpeedrun/production?color=%231CAD4A&label=vercel&logo=vercel&logoColor=white&style=flat-square">
+  </a>
   &nbsp
-  <img alt="GitHub" src="https://img.shields.io/github/license/B0und/WikiSpeedrun?color=%231CAD4A&style=flat-square">
+  <a href="#">
+    <img alt="GitHub" src="https://img.shields.io/github/license/B0und/WikiSpeedrun?color=%231CAD4A&style=flat-square">
+  </a>
   &nbsp
-  <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/unbound_dev?label=Twitter&style=social">
+  <a href="https://twitter.com/unbound_dev" target="_blank">
+    <img alt="Twitter" src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Funbound_dev">
+  </a>
 </p>
 
 # 🏁 Wikipedia Speedrun Game
