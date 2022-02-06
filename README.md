@@ -1,3 +1,67 @@
-# Wikipedia Speedrun Game
+<p align="center">
+  <img alt="Wikipedia logo with a speedrun timer on top of it" title="Wikipedia Speedrun Game" src="assets/logo.jpg" width="200">
+</p>
 
-Currently in development
+<p align="center">
+  <img alt="Vercel deployments" src="https://img.shields.io/github/deployments/B0und/WikiSpeedrun/production?color=%231CAD4A&label=vercel&logo=vercel&logoColor=white&style=flat-square">
+  &nbsp
+  <img alt="GitHub" src="https://img.shields.io/github/license/B0und/WikiSpeedrun?color=%231CAD4A&style=flat-square">
+  &nbsp
+  <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/unbound_dev?label=Twitter&style=social">
+</p>
+
+# 🏁 Wikipedia Speedrun Game
+
+The goal is simple: using links, navigate from one wiki article to another one, as fast as you can!
+
+[Start playing now!](https://wikispeedrun.org/)
+
+## Features
+
+- ▶ No registration required
+
+- 🧭 Choose your own prompts
+
+- ⏱ High precision fair™ timer
+
+  - actually **stops** while you are loading the next article
+
+- 💣 Optional Time Limit
+
+- ✅ Keeps track of your session progress
+
+- 👀 Open source
+
+## Build it yourself
+
+This project was created with [Create React App](https://github.com/facebook/create-react-app).
+
+Clone the project:
+
+```
+git clone https://github.com/B0und/WikiSpeedrun.git
+```
+
+In the project directory you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## License
+
+MIT
