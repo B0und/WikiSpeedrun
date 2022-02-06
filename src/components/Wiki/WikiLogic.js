@@ -55,8 +55,10 @@ const WikiLogic = () => {
     const hrefText = e?.target?.attributes[0]?.value;
     let href = validateHref(hrefText);
 
-    // if its a cite note, show error
-    if (hrefText?.includes("#cite_note-")) {
+    //  Show error:
+    // if its a cite note
+    // an image
+    if (hrefText?.includes("#cite_note-") || e?.target?.nodeName === "IMG") {
       notifications.showNotification(errorParams);
       return;
     }
