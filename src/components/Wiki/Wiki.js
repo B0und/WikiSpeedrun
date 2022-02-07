@@ -188,7 +188,7 @@ const HeaderWrapper = styled.div`
 
 const HeaderGoal = styled.span`
   font-size: ${18 / 16}rem;
-  font-weight: 400;
+  font-weight: 700;
   margin-left: var(--border-gap);
   margin-top: 10px;
 `;
