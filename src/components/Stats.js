@@ -34,12 +34,12 @@ export const Wrapper = styled.div`
 
 export const Clicks = styled.p`
   font-size: ${18 / 16}rem;
-  font-weight: 600;
+  font-weight: 700;
 
   @media ${QUERIES.tabletAndSmaller} {
     color: #cccccc;
     font-size: ${14 / 16}rem;
-    font-weight: 600;
+    font-weight: 700;
   }
 `;
 

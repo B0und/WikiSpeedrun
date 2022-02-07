@@ -105,7 +105,7 @@ const SettingDescription = styled.p`
 `;
 const Title = styled.h2`
   font-size: ${24 / 16}rem;
-  font-weight: 600;
+  font-weight: 700;
 `;
 
 const InputContainer = styled.div`
