@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { LoadingOverlay } from "@mantine/core";
 import styled from "@emotion/styled";
 import axios from "axios";
 
@@ -32,7 +31,6 @@ function WikiRenderer() {
   const navigate = useNavigate();
 
   const wikiRef = useRef();
-  const headerRef = useRef();
   const stopwatch = useContext(StopwatchContext);
 
   const [wikiData, setWikiData] = useState("");
@@ -130,38 +128,29 @@ function WikiRenderer() {
       <HeaderGoal>
         {startTitle} → {endTitle}
       </HeaderGoal>
-      <WikiWrapper>
-        {/* <button
-          onClick={() => {
-            stopwatch.pauseTimer();
-            stopwatch.disableTimer(true);
-            dispatch(setIsWin(true));
-            dispatch(setTimeLimit(null));
-            dispatch(endGame());
-            setshowResults(true);
-          }}
-        >
-          Win
-        </button> */}
 
+      <WikiWrapper>
         <Result
           isWin={isWin}
           isOpen={showResults}
           onDismiss={() => setshowResults(false)}
         />
 
-        <LoadingOverlay visible={isLoading} />
-        <>
-          <HeaderWrapper>
-            <WikiHeader ref={headerRef}>{wikiData.title}</WikiHeader>
-          </HeaderWrapper>
-          <WikiHtml
-            ref={wikiRef}
-            onClick={(e) => handleWikiArticleClick(e, headerRef)}
-            className="wiki-insert"
-            dangerouslySetInnerHTML={createMarkup()}
-          />
-        </>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <HeaderWrapper>
+              <WikiHeader>{wikiData.title}</WikiHeader>
+            </HeaderWrapper>
+            <WikiHtml
+              ref={wikiRef}
+              onClick={handleWikiArticleClick}
+              className="wiki-insert"
+              dangerouslySetInnerHTML={createMarkup()}
+            />
+          </>
+        )}
       </WikiWrapper>
     </>
   );
