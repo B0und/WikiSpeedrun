@@ -13,7 +13,7 @@ const Stopwatch = ({ time }) => {
 };
 
 const StyledStopwatch = styled.div`
-  font-size: ${36 / 16}rem;
+  font-size: ${48 / 16}rem;
   text-align: right;
 
   @media ${QUERIES.tabletAndSmaller} {
