@@ -25,7 +25,7 @@ const LoseTracker = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stopwatch.time.ms]);
 
-  return <></>;
+  return null;
 };
 
 export default LoseTracker;
