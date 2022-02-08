@@ -13,8 +13,8 @@ function Logo() {
         <Image
           src={window.location.origin + "/wiki-speed-logo.png"}
           alt="Wikipedia Speedrun"
-          width={120}
-          height={154}
+          width={128}
+          height={168}
         />
       </StyledLink>
     </Heading>
@@ -31,7 +31,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Image = styled.img`
-  min-width: 120px;
+  min-width: 128px;
 `;
 
 export default Logo;
