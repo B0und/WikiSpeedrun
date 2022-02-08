@@ -9,7 +9,7 @@
       content="Using links, navigate from one wikipedia article to another one, as fast as you can!"
     />
     <!-- metadata for reddit -->
-    <meta property="og:image" content="%PUBLIC_URL%/ogimage.png" />
+    <meta property="og:image" content="https://wikispeedrun.org/og-image.png" />
     <meta
       property="og:image:alt"
       content="A wikipedia logo with speedrun timer on top of it"
@@ -23,7 +23,10 @@
       name="twitter:description"
       content="Using links, navigate from one wikipedia article to another one, as fast as you can!"
     />
-    <meta name="twitter:image" content="%PUBLIC_URL%/twitter-img.png" />
+    <meta
+      name="twitter:image"
+      content="https://wikispeedrun.org/twitter-img.png"
+    />
     <meta
       name="twitter:image:alt"
       content="A wikipedia logo with speedrun timer on top of it."
@@ -34,8 +37,8 @@
       sizes="any"
       href="<%=
        process.env.NODE_ENV === 'production'
-         ? '%PUBLIC_URL%/favicon.ico'
-         : '%PUBLIC_URL%/favicon-dev.ico'
+         ? 'favicon.ico'
+         : 'favicon-dev.ico'
      %>"
     />
     <!-- svg icon -->
@@ -44,18 +47,18 @@
       type="image/svg+xml"
       href="<%=
            process.env.NODE_ENV === 'production'
-             ? '%PUBLIC_URL%/icon.svg'
-             : '%PUBLIC_URL%/icon-dev.svg'
+             ? 'icon.svg'
+             : 'icon-dev.svg'
           %>"
     />
     <!-- apple icon -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="%PUBLIC_URL%/apple-touch-icon.png"
+      href="https://wikispeedrun.org/apple-touch-icon.png"
     />
 
-    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+    <link rel="manifest" href="https://wikispeedrun.org/site.webmanifest" />
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
