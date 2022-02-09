@@ -4,6 +4,7 @@ import styled from "@emotion/styled/macro";
 import { keyframes } from "@emotion/react";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 import VisuallyHidden from "@reach/visually-hidden";
+import ConfettiExplosion from "react-confetti-explosion";
 
 import Icon from "./Icon";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
@@ -23,6 +24,14 @@ const Result = ({ isOpen, onDismiss, isWin }) => {
   const endTitle = useSelector(selectEndingArticle).title;
   const history = useSelector(selectHistory);
 
+  const confettiParams = {
+    force: 0.6,
+    duration: 4000,
+    particleCount: 400,
+    floorHeight: 1600,
+    floorWidth: 1600,
+  };
+
   const wordInString = (s, word) =>
     new RegExp("\\b" + word + "\\b", "i").test(s);
 
@@ -36,36 +45,39 @@ const Result = ({ isOpen, onDismiss, isWin }) => {
     <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
       <Backdrop />
       <Content aria-label="Result screen">
-        <InnerWrapper>
-          <CloseButton onClick={onDismiss}>
-            <Icon id="close" />
-            <VisuallyHidden>Dismiss results</VisuallyHidden>
-          </CloseButton>
-          {isWin ? (
-            <ContentWrapper>
-              <Heading>You win!</Heading>
-              <InfoText>
-                From <b>{startTitle}</b> to <b>{endTitle} </b>
-                in {history.length - 1} clicks.
-              </InfoText>
-              <Stopwatch time={stopwatch.time} />
-              {wordInString(endTitle, "anime") ? (
-                <Image
-                  src={window.location.origin + "/wiki-waifu-sketch.png"}
-                  alt="Wikipedia Waifu by @ina_den_"
-                  width={600}
-                  height={800}
-                />
-              ) : null}
-              <LinkButton text="Play again" to={"/settings"} />
-            </ContentWrapper>
-          ) : (
-            <ContentWrapper>
-              <Heading>You lose</Heading>
-              <LinkButton text="Try again" to={"/settings"} />
-            </ContentWrapper>
-          )}
-        </InnerWrapper>
+        <ConfettiWrapper>
+          {isWin === true ? <ConfettiExplosion {...confettiParams} /> : null}
+          <InnerWrapper>
+            <CloseButton onClick={onDismiss}>
+              <Icon id="close" />
+              <VisuallyHidden>Dismiss results</VisuallyHidden>
+            </CloseButton>
+            {isWin ? (
+              <ContentWrapper>
+                <Heading>You win!</Heading>
+                <InfoText>
+                  From <b>{startTitle}</b> to <b>{endTitle} </b>
+                  in {history.length - 1} clicks.
+                </InfoText>
+                <Stopwatch time={stopwatch.time} />
+                {wordInString(endTitle, "anime") ? (
+                  <Image
+                    src={window.location.origin + "/wiki-waifu-sketch.png"}
+                    alt="Wikipedia Waifu by @ina_den_"
+                    width={600}
+                    height={800}
+                  />
+                ) : null}
+                <LinkButton text="Play again" to={"/settings"} />
+              </ContentWrapper>
+            ) : (
+              <ContentWrapper>
+                <Heading>You lose</Heading>
+                <LinkButton text="Try again" to={"/settings"} />
+              </ContentWrapper>
+            )}
+          </InnerWrapper>
+        </ConfettiWrapper>
       </Content>
     </Wrapper>
   );
@@ -178,4 +190,11 @@ const Image = styled.img`
   height: auto;
   /* max-width: 700px; */
   max-height: 600px;
+`;
+
+const ConfettiWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
