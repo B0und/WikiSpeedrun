@@ -11,12 +11,13 @@ import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 import Stopwatch from "./Stopwatch/Stopwatch";
 import UnstyledButton from "./UnstyledButton";
 import LinkButton from "./LinkButton";
+
+import { QUERIES } from "../constants";
 import {
   selectEndingArticle,
   selectHistory,
   selectStartingArticle,
-} from "../redux/settingsSlice";
-import { QUERIES } from "../constants";
+} from "../redux/settingsSelectors";
 
 const Result = ({ isOpen, onDismiss, isWin }) => {
   const stopwatch = useContext(StopwatchContext);

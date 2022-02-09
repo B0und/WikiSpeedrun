@@ -1,36 +1,36 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import styled from "@emotion/styled";
-import axios from "axios";
 
+import { StopwatchContext } from "../Stopwatch/StopwatchContext";
+import useDidMountEffect from "../../hooks/useDidMountEffect";
+
+import "./wiki-common.css";
+import "./wiki-vec2.css";
+import search from "./WikiApi";
+
+import WikiDisplay from "./WikiDisplay";
 import {
-  addToHistory,
-  endGame,
   selectEndingArticle,
   selectHistory,
   selectIsWin,
   selectStartingArticle,
+} from "../../redux/settingsSelectors";
+import {
+  addToHistory,
+  endGame,
   setIsWin,
   setTimeLimit,
 } from "../../redux/settingsSlice";
-import Result from "../Result";
-import { StopwatchContext } from "../Stopwatch/StopwatchContext";
-import useDidMountEffect from "../../hooks/useDidMountEffect";
-import WikiLogic from "./WikiLogic";
-
-import "./wiki-common.css";
-import "./wiki-vec2.css";
 
 // FIXME
 // List of prime ministers of the United Kingdom by education
 
 function WikiRenderer() {
-  let params = useParams();
+  let routeParams = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const wikiRef = useRef();
   const stopwatch = useContext(StopwatchContext);
 
   const [wikiData, setWikiData] = useState("");
@@ -42,29 +42,18 @@ function WikiRenderer() {
   const history = useSelector(selectHistory);
   const isWin = useSelector(selectIsWin);
 
-  const { handleWikiArticleClick } = WikiLogic();
 
-  const search = async (searchString) => {
+
+  const wikiSearch = useCallback(async (searchText) => {
     setIsLoading(true);
-    const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
-      params: {
-        page: searchString,
-        origin: "*",
-        action: "parse",
-        format: "json",
-        disableeditsection: "true",
-        redirects: "true", // automatically redirects from plural form
-      },
-    });
-    const html = resp.data.parse.text["*"];
-    const title = resp.data.parse.title;
-    const pageid = resp.data.parse.pageid;
-    setWikiData({ html, title, pageid });
+    const result = await search(searchText);
+    setWikiData(result);
     setIsLoading(false);
-  };
+  }, []);
 
   // track user history
   useDidMountEffect(() => {
+    console.log("EFFECT TRACK HISTORY");
     if (wikiData.title) {
       let time = stopwatch.getCurrentTime();
 
@@ -78,16 +67,17 @@ function WikiRenderer() {
 
   // pause timer while article is loading
   useDidMountEffect(() => {
+    console.log("EFFECT ARTICLE LOADING");
     isLoading ? stopwatch.pauseTimer() : stopwatch.startTimer();
   }, [isLoading]);
 
   // render initial wiki article
   useEffect(() => {
-    search(startTitle).catch((e) => {
+    console.log("EFFECT  initial wiki article");
+    wikiSearch(startTitle).catch((e) => {
       console.error(`Couldnt fetch wiki data: ${e.message}`);
       navigate("/settings");
     });
-
     stopwatch.resetTimer();
     stopwatch.startTimer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -95,15 +85,17 @@ function WikiRenderer() {
 
   // render article from route parameters
   useEffect(() => {
-    if (params.wikiTitle) {
-      search(params.wikiTitle).catch((e) =>
+    console.log("EFFECT route parameters");
+    if (routeParams.wikiTitle) {
+      wikiSearch(routeParams.wikiTitle).catch((e) =>
         console.error(`Couldnt fetch wiki data: ${e.message}`)
       );
     }
-  }, [params.wikiTitle]);
+  }, [routeParams.wikiTitle, wikiSearch]);
 
   // track winning condition
   useEffect(() => {
+    console.log("EFFECT winning condition");
     if (endTitle === wikiData.title) {
       stopwatch.pauseTimer();
       stopwatch.disableTimer(true);
@@ -116,6 +108,7 @@ function WikiRenderer() {
 
   // show result screen if win state changes
   useDidMountEffect(() => {
+    console.log("EFFECT result screen");
     setshowResults(true);
   }, [isWin]);
 
@@ -123,73 +116,19 @@ function WikiRenderer() {
     return { __html: wikiData.html };
   }
 
-  return (
-    <>
-      <HeaderGoal>
-        {startTitle} → {endTitle}
-      </HeaderGoal>
+  const displayProps = {
+    startTitle,
+    endTitle,
+    isWin,
+    showResults,
+    setshowResults,
+    wikiData,
+    createMarkup,
+    isLoading,
+    history,
+  };
 
-      <WikiWrapper>
-        <Result
-          isWin={isWin}
-          isOpen={showResults}
-          onDismiss={() => setshowResults(false)}
-        />
-
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            <HeaderWrapper>
-              <WikiHeader>{wikiData.title}</WikiHeader>
-            </HeaderWrapper>
-            <WikiHtml
-              ref={wikiRef}
-              onClick={handleWikiArticleClick}
-              className="wiki-insert"
-              dangerouslySetInnerHTML={createMarkup()}
-            />
-          </>
-        )}
-      </WikiWrapper>
-    </>
-  );
+  return <WikiDisplay {...displayProps} />;
 }
-
-const WikiWrapper = styled.div`
-  overflow: auto;
-  margin-left: var(--border-gap);
-  margin-top: 16px;
-  padding-right: var(--border-gap);
-  font-family: sans-serif;
-  margin-bottom: 16px;
-`;
-
-const HeaderWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  border-bottom: 1px solid #a2a9b1;
-  margin-bottom: 0.25em;
-  padding-top: 16px;
-`;
-
-const HeaderGoal = styled.span`
-  font-size: ${18 / 16}rem;
-  font-weight: 700;
-  margin-left: var(--border-gap);
-  margin-top: 10px;
-`;
-
-const WikiHtml = styled.div`
-  overflow: hidden;
-`;
-
-export const WikiHeader = styled.h2`
-  font-size: 1.8rem;
-  font-weight: 400;
-  font-family: "serif";
-`;
 
 export default WikiRenderer;

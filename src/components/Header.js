@@ -5,12 +5,12 @@ import { useSelector } from "react-redux";
 import { Drawer } from "@mantine/core";
 import VisuallyHidden from "@reach/visually-hidden";
 
-import { selectGameIsRunning } from "../redux/settingsSlice";
 import GiveUpButton from "./GiveUpButton";
 import Icon from "./Icon";
 import Logo from "./Logo";
 import History from "./History";
 import { QUERIES } from "../constants";
+import { selectGameIsRunning } from "../redux/settingsSelectors";
 
 const links = [
   { name: "Play", path: "/settings" },

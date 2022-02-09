@@ -3,20 +3,22 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 
-import {
-  setStartingArticle,
-  setEndingArticle,
-  selectStartingArticle,
-  selectEndingArticle,
-  resetHistory,
-  startGame,
-  setTimeLimit,
-  setIsWin,
-} from "../redux/settingsSlice";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 import AutocompleteArticle from "./AutocompleteArticle";
 import RandomArticleButton from "./RandomArticleButton";
 import TimeLimit from "./TimeLimit";
+import {
+  selectEndingArticle,
+  selectStartingArticle,
+} from "../redux/settingsSelectors";
+import {
+  resetHistory,
+  setEndingArticle,
+  setIsWin,
+  setStartingArticle,
+  setTimeLimit,
+  startGame,
+} from "../redux/settingsSlice";
 
 function Settings() {
   const dispatch = useDispatch();

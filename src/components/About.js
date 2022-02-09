@@ -1,9 +1,13 @@
 import styled from "@emotion/styled";
 
-import { WikiHeader } from "./Wiki/Wiki";
 import LinkButton from "./LinkButton";
+import { useEffect } from "react";
+import { WikiHeader } from "./Wiki/WikiDisplay";
 
 function About() {
+  useEffect(() => {
+    console.log("About rerendered");
+  });
   return (
     <Wrapper>
       <AboutHeader>Wiki Speedrun Game</AboutHeader>
@@ -52,7 +56,7 @@ const StyledLinkButton = styled(LinkButton)`
 `;
 
 const SecondaryHeading = styled.h3`
-  font-size: ${24/16}rem;
+  font-size: ${24 / 16}rem;
   font-weight: 400;
 
   border-bottom: 1px solid #a2a9b178;

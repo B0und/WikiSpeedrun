@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useNotifications } from "@mantine/notifications";
 
@@ -11,23 +10,6 @@ const WikiLogic = () => {
     message: "Try another one",
     autoClose: 1500,
     color: "red",
-  };
-
-  const getWikiArticle = async (searchString) => {
-    const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
-      params: {
-        page: searchString,
-        origin: "*",
-        action: "parse",
-        format: "json",
-        disableeditsection: "true",
-        redirects: "true", // automatically redirects from plural form
-      },
-    });
-    const html = resp.data.parse.text["*"];
-    const title = resp.data.parse.title;
-    const pageid = resp.data.parse.pageid;
-    return { html, title, pageid };
   };
 
   const validateHref = (hrefText) => {
@@ -102,7 +84,7 @@ const WikiLogic = () => {
     }
   };
 
-  return { handleWikiArticleClick, getWikiArticle };
+  return { handleWikiArticleClick };
 };
 
 export default WikiLogic;

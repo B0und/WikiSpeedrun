@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import styled from "@emotion/styled";
 
-import { selectHistory } from "../redux/settingsSlice";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 import Stopwatch from "./Stopwatch/Stopwatch";
 import { QUERIES } from "../constants";
+import { selectHistory } from "../redux/settingsSelectors";
 
 const Stats = () => {
   const stopwatch = useContext(StopwatchContext);

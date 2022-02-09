@@ -19,6 +19,7 @@ specifiers:
   '@testing-library/jest-dom': ^5.16.1
   '@testing-library/react': ^12.1.2
   '@testing-library/user-event': ^13.5.0
+  '@welldone-software/why-did-you-render': ^6.2.3
   autoprefixer: ^10.0.2
   axios: ^0.24.0
   dayjs: ^1.10.7
@@ -75,6 +76,9 @@ dependencies:
   typescript: 4.5.5
   underscore: 1.13.2
   use-context-selector: 1.3.9_82b97189b464b4d66e86f586e171fa10
+
+devDependencies:
+  '@welldone-software/why-did-you-render': 6.2.3_react@17.0.2
 
 packages:
 
@@ -3019,6 +3023,15 @@ packages:
       '@webassemblyjs/ast': 1.11.1
       '@xtuc/long': 4.2.2
     dev: false
+
+  /@welldone-software/why-did-you-render/6.2.3_react@17.0.2:
+    resolution: {integrity: sha512-FQgi90jvC9uw2aALlonJfqaWOvU5UUBBVvdAnS2iryXwCc4YJkKsPJY5Y/LzaND3OIyk8XGUn1vTRn6hcem28Q==}
+    peerDependencies:
+      react: ^16 || ^17
+    dependencies:
+      lodash: 4.17.21
+      react: 17.0.2
+    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -6872,7 +6885,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: false
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}

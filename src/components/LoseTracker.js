@@ -1,12 +1,8 @@
 import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectTimeLimit } from "../redux/settingsSelectors";
+import { endGame, setIsWin, setTimeLimit } from "../redux/settingsSlice";
 
-import {
-  endGame,
-  selectTimeLimit,
-  setIsWin,
-  setTimeLimit,
-} from "../redux/settingsSlice";
 import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 
 const LoseTracker = () => {
