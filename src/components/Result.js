@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "@emotion/styled/macro";
 import { keyframes } from "@emotion/react";
@@ -7,23 +6,24 @@ import VisuallyHidden from "@reach/visually-hidden";
 import ConfettiExplosion from "react-confetti-explosion";
 
 import Icon from "./Icon";
-import { StopwatchContext } from "./Stopwatch/StopwatchContext";
 import Stopwatch from "./Stopwatch/Stopwatch";
 import UnstyledButton from "./UnstyledButton";
 import LinkButton from "./LinkButton";
-
 import { QUERIES } from "../constants";
 import {
   selectEndingArticle,
   selectHistory,
+  selectIsWin,
   selectStartingArticle,
+  selectWinTime,
 } from "../redux/settingsSelectors";
 
-const Result = ({ isOpen, onDismiss, isWin }) => {
-  const stopwatch = useContext(StopwatchContext);
+const Result = ({ isOpen, onDismiss }) => {
   const startTitle = useSelector(selectStartingArticle).title;
   const endTitle = useSelector(selectEndingArticle).title;
   const history = useSelector(selectHistory);
+  const isWin = useSelector(selectIsWin);
+  const winTime = useSelector(selectWinTime);
 
   const confettiParams = {
     force: 0.6,
@@ -36,12 +36,6 @@ const Result = ({ isOpen, onDismiss, isWin }) => {
   const wordInString = (s, word) =>
     new RegExp("\\b" + word + "\\b", "i").test(s);
 
-  useEffect(() => {
-    if (isOpen) {
-      stopwatch.pauseTimer();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
   return (
     <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
       <Backdrop />
@@ -60,7 +54,7 @@ const Result = ({ isOpen, onDismiss, isWin }) => {
                   From <b>{startTitle}</b> to <b>{endTitle} </b>
                   in {history.length - 1} clicks.
                 </InfoText>
-                <Stopwatch time={stopwatch.time} />
+                <Stopwatch time={winTime} />
                 {wordInString(endTitle, "anime") ? (
                   <Image
                     src={window.location.origin + "/wiki-waifu-sketch.png"}

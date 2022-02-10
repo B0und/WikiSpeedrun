@@ -44,7 +44,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "patch-package"
   },
   "eslintConfig": {
     "extends": [
@@ -65,6 +66,7 @@
     ]
   },
   "devDependencies": {
-    "@welldone-software/why-did-you-render": "^6.2.3"
+    "@welldone-software/why-did-you-render": "^6.2.3",
+    "patch-package": "^6.4.7"
   }
 }

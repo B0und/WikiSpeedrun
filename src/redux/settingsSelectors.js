@@ -9,3 +9,4 @@ export const selectEndingArticle = (state) =>
 export const selectTimeLimit = (state) => state.settings.game.timeLimit;
 export const selectGameIsRunning = (state) => state.settings.game.isRunning;
 export const selectIsWin = (state) => state.settings.game.isWin;
+export const selectWinTime = (state) => state.settings.game.winTime;

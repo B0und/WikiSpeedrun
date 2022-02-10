@@ -7,15 +7,12 @@ import Result from "../Result";
 const WikiDisplay = ({
   startTitle,
   endTitle,
-  isWin,
   showResults,
   setshowResults,
   wikiData,
-  createMarkup,
   isLoading,
 }) => {
   const { handleWikiArticleClick } = WikiLogic();
-
 
   const onDismiss = useCallback(() => {
     setshowResults(false);
@@ -28,7 +25,7 @@ const WikiDisplay = ({
       </HeaderGoal>
 
       <WikiWrapper>
-        <Result isWin={isWin} isOpen={showResults} onDismiss={onDismiss} />
+        <Result  isOpen={showResults} onDismiss={onDismiss} />
 
         {isLoading ? (
           <p>Loading...</p>
@@ -40,7 +37,7 @@ const WikiDisplay = ({
             <WikiHtml
               onClick={handleWikiArticleClick}
               className="wiki-insert"
-              dangerouslySetInnerHTML={createMarkup()}
+              dangerouslySetInnerHTML={{ __html: wikiData.html }}
             />
           </>
         )}

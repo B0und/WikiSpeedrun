@@ -21,6 +21,7 @@ import {
   endGame,
   setIsWin,
   setTimeLimit,
+  setWinTime,
 } from "../../redux/settingsSlice";
 
 // FIXME
@@ -41,8 +42,6 @@ function WikiRenderer() {
   const endTitle = useSelector(selectEndingArticle).title;
   const history = useSelector(selectHistory);
   const isWin = useSelector(selectIsWin);
-
-
 
   const wikiSearch = useCallback(async (searchText) => {
     setIsLoading(true);
@@ -95,10 +94,11 @@ function WikiRenderer() {
 
   // track winning condition
   useEffect(() => {
-    console.log("EFFECT winning condition");
     if (endTitle === wikiData.title) {
+      console.log("EFFECT winning condition");
       stopwatch.pauseTimer();
       stopwatch.disableTimer(true);
+      dispatch(setWinTime(stopwatch.getCurrentTime()));
       dispatch(setIsWin(true));
       dispatch(setTimeLimit(null));
       dispatch(endGame());
@@ -112,18 +112,12 @@ function WikiRenderer() {
     setshowResults(true);
   }, [isWin]);
 
-  function createMarkup() {
-    return { __html: wikiData.html };
-  }
-
   const displayProps = {
     startTitle,
     endTitle,
-    isWin,
     showResults,
     setshowResults,
     wikiData,
-    createMarkup,
     isLoading,
     history,
   };
