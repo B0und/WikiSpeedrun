@@ -48,6 +48,7 @@ const AutocompleteArticle = ({ selectHandler, initialTerm, label }) => {
       placeholder="Start typing to see options"
       dropdownPosition="flip"
       data={articles}
+      limit={10}
       required={true}
       onItemSubmit={(item) => {
         selectHandler({
