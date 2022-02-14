@@ -1,13 +1,9 @@
 import styled from "@emotion/styled";
 
 import LinkButton from "./LinkButton";
-import { useEffect } from "react";
 import { WikiHeader } from "./Wiki/WikiDisplay";
 
 function About() {
-  useEffect(() => {
-    console.log("About rerendered");
-  });
   return (
     <Wrapper>
       <AboutHeader>Wiki Speedrun Game</AboutHeader>

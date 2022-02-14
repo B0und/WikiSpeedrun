@@ -8,10 +8,10 @@ import { selectHistory } from "../redux/settingsSelectors";
 const History = () => {
   const history = useSelector(selectHistory);
   const historyExists = history.length !== 0;
-  const ref = useRef();
+  const tableRef = useRef();
 
   useEffect(() => {
-    ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
+    tableRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [history.length]);
 
   return (
@@ -24,7 +24,7 @@ const History = () => {
             <StyledTh>{historyExists ? "Time" : ""}</StyledTh>
           </TableRow>
         </TableHead>
-        <tbody ref={ref}>
+        <tbody ref={tableRef}>
           {history.map((article) => (
             <TableRow
               key={`${article.title}${article.time.m}${article.time.s}${article.time.ms}`}

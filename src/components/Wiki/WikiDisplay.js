@@ -5,27 +5,21 @@ import WikiLogic from "./WikiLogic";
 import Result from "../Result";
 
 const WikiDisplay = ({
-  startTitle,
-  endTitle,
   showResults,
-  setshowResults,
+  setShowResults,
   wikiData,
   isLoading,
 }) => {
   const { handleWikiArticleClick } = WikiLogic();
 
   const onDismiss = useCallback(() => {
-    setshowResults(false);
-  }, [setshowResults]);
+    setShowResults(false);
+  }, [setShowResults]);
 
   return (
     <>
-      <HeaderGoal>
-        {startTitle} → {endTitle}
-      </HeaderGoal>
-
       <WikiWrapper>
-        <Result  isOpen={showResults} onDismiss={onDismiss} />
+        <Result isOpen={showResults} onDismiss={onDismiss} />
 
         {isLoading ? (
           <p>Loading...</p>
@@ -63,13 +57,6 @@ const HeaderWrapper = styled.div`
   border-bottom: 1px solid #a2a9b1;
   margin-bottom: 0.25em;
   padding-top: 16px;
-`;
-
-const HeaderGoal = styled.span`
-  font-size: ${18 / 16}rem;
-  font-weight: 700;
-  margin-left: var(--border-gap);
-  margin-top: 10px;
 `;
 
 const WikiHtml = styled.div`

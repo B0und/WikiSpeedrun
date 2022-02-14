@@ -181,9 +181,7 @@ const Image = styled.img`
   display: block;
   object-fit: contain;
   width: 100%;
-  /* height: 500px; */
   height: auto;
-  /* max-width: 700px; */
   max-height: 600px;
 `;
 

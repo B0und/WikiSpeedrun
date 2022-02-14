@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Search, Menu, X, GitHub } from "react-feather";
+import { X, GitHub } from "react-feather";
 
 const icons = {
-  search: Search,
-  menu: Menu,
   close: X,
   github: GitHub,
 };

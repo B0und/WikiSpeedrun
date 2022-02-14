@@ -61,9 +61,8 @@ const WikiLogic = () => {
     let navigateId = validateNavigation(
       e.target?.parentNode?.attributes[0]?.value
     );
-
-    // try to scroll to the element
     if (navigateId) {
+      // try to scroll to the element
       navigateId = navigateId.replaceAll("#", "");
       const element = document.getElementById(navigateId);
       element?.scrollIntoView();

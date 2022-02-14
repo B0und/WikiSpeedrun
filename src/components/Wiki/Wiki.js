@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import styled from "@emotion/styled/macro";
 
 import { StopwatchContext } from "../Stopwatch/StopwatchContext";
 import useDidMountEffect from "../../hooks/useDidMountEffect";
@@ -36,7 +37,7 @@ function WikiRenderer() {
 
   const [wikiData, setWikiData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showResults, setshowResults] = useState(false);
+  const [showResults, setShowResults] = useState(false);
 
   const startTitle = useSelector(selectStartingArticle).title;
   const endTitle = useSelector(selectEndingArticle).title;
@@ -52,7 +53,6 @@ function WikiRenderer() {
 
   // track user history
   useDidMountEffect(() => {
-    console.log("EFFECT TRACK HISTORY");
     if (wikiData.title) {
       let time = stopwatch.getCurrentTime();
 
@@ -66,13 +66,11 @@ function WikiRenderer() {
 
   // pause timer while article is loading
   useDidMountEffect(() => {
-    console.log("EFFECT ARTICLE LOADING");
     isLoading ? stopwatch.pauseTimer() : stopwatch.startTimer();
   }, [isLoading]);
 
   // render initial wiki article
   useEffect(() => {
-    console.log("EFFECT  initial wiki article");
     wikiSearch(startTitle).catch((e) => {
       console.error(`Couldnt fetch wiki data: ${e.message}`);
       navigate("/settings");
@@ -84,7 +82,6 @@ function WikiRenderer() {
 
   // render article from route parameters
   useEffect(() => {
-    console.log("EFFECT route parameters");
     if (routeParams.wikiTitle) {
       wikiSearch(routeParams.wikiTitle).catch((e) =>
         console.error(`Couldnt fetch wiki data: ${e.message}`)
@@ -95,7 +92,6 @@ function WikiRenderer() {
   // track winning condition
   useEffect(() => {
     if (endTitle === wikiData.title) {
-      console.log("EFFECT winning condition");
       stopwatch.pauseTimer();
       stopwatch.disableTimer(true);
       dispatch(setWinTime(stopwatch.getCurrentTime()));
@@ -108,21 +104,30 @@ function WikiRenderer() {
 
   // show result screen if win state changes
   useDidMountEffect(() => {
-    console.log("EFFECT result screen");
-    setshowResults(true);
+    setShowResults(true);
   }, [isWin]);
 
-  const displayProps = {
-    startTitle,
-    endTitle,
-    showResults,
-    setshowResults,
-    wikiData,
-    isLoading,
-    history,
-  };
+  return (
+    <>
+      <HeaderGoal>
+        {startTitle} → {endTitle}
+      </HeaderGoal>
 
-  return <WikiDisplay {...displayProps} />;
+      <WikiDisplay
+        showResults={showResults}
+        setShowResults={setShowResults}
+        wikiData={wikiData}
+        isLoading={isLoading}
+      />
+    </>
+  );
 }
+
+const HeaderGoal = styled.span`
+  font-size: ${18 / 16}rem;
+  font-weight: 700;
+  margin-left: var(--border-gap);
+  margin-top: 10px;
+`;
 
 export default WikiRenderer;

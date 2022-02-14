@@ -51,6 +51,10 @@ function Settings() {
     dispatch(startGame());
   };
 
+  const selectHandler = (item) => {
+    item && dispatch(setEndingArticle(item));
+  };
+
   return (
     <Wrapper onSubmit={startHandler}>
       <Title>Settings</Title>
@@ -76,9 +80,7 @@ function Settings() {
       <InputContainer>
         <AutocompleteArticle
           key={"inp2"}
-          selectHandler={(item) => {
-            item && dispatch(setEndingArticle(item));
-          }}
+          selectHandler={selectHandler}
           initialTerm={endingTitle}
           label="Select ending article"
         />

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const search = async (searchString) => {
+const search = async (searchString) => {
   const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
     params: {
       page: searchString,
@@ -16,6 +16,5 @@ export const search = async (searchString) => {
   const pageid = resp.data.parse.pageid;
   return { html, title, pageid };
 };
-
 
 export default search;

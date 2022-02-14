@@ -31,8 +31,12 @@ const RandomArticleButton = ({ dispatchFn }) => {
     article && dispatch(fn(article));
   };
 
+  const onClickHander = () => {
+    randomHandler(dispatchFn);
+  };
+
   return (
-    <RandomButton onClick={() => randomHandler(dispatchFn)} type="button">
+    <RandomButton onClick={onClickHander} type="button">
       <VisuallyHidden>Select random article</VisuallyHidden>
       <DiceIcon aria-hidden="true" />
     </RandomButton>

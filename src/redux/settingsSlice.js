@@ -1,8 +1,6 @@
 import { combineReducers } from "redux";
 import { createSlice } from "@reduxjs/toolkit";
 
-// https://jsfiddle.net/andykenward/9y1jjsuz
-
 const article = createSlice({
   name: "article",
   initialState: {
