@@ -18,7 +18,7 @@
 
 # 🏁 Wikipedia Speedrun Game
 
-The goal of the game is to navigate from starting wikipedia article to some other one, in the least amount of clicks and time.
+The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time.
 
 [Start playing now!](https://wikispeedrun.org/)
 
