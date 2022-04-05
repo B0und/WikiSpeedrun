@@ -33,8 +33,7 @@ const Result = ({ isOpen, onDismiss }) => {
     floorWidth: 1600,
   };
 
-  const wordInString = (s, word) =>
-    new RegExp("\\b" + word + "\\b", "i").test(s);
+  const wordInString = (s, word) => new RegExp("\\b" + word + "\\b", "i").test(s);
 
   return (
     <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
@@ -57,7 +56,7 @@ const Result = ({ isOpen, onDismiss }) => {
                 <Stopwatch time={winTime} />
                 {wordInString(endTitle, "anime") ? (
                   <Image
-                    src={window.location.origin + "/wiki-waifu-sketch.png"}
+                    src={window.location.origin + "/wiki-waifu.png"}
                     alt="Wikipedia Waifu by @ina_den_"
                     width={600}
                     height={800}
@@ -180,7 +179,6 @@ const InfoText = styled.p`
 const Image = styled.img`
   display: block;
   object-fit: contain;
-  width: 100%;
   height: auto;
   max-height: 600px;
 `;

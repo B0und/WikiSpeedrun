@@ -92,7 +92,7 @@ const Pages = styled.ul`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  padding: 16px;
+  /* padding: 16px; */
   color: #111;
 
   &:visited {
