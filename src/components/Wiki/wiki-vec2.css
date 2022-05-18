@@ -3556,7 +3556,7 @@ figure[typeof~="mw:Audio/Frame"] > figcaption {
   .wiki-insert a.external,
   .wiki-insert a.new,
   .wiki-insert a.stub {
-    color: inherit !important;
+    color: inherit;
     /* stylelint-disable-line declaration-no-important */
     text-decoration: inherit !important;
     /* stylelint-disable-line declaration-no-important */

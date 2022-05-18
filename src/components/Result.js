@@ -1,29 +1,29 @@
-import { useSelector } from "react-redux";
-import styled from "@emotion/styled/macro";
-import { keyframes } from "@emotion/react";
-import { DialogOverlay, DialogContent } from "@reach/dialog";
-import VisuallyHidden from "@reach/visually-hidden";
-import ConfettiExplosion from "react-confetti-explosion";
+import { useSelector } from "react-redux"
+import styled from "@emotion/styled/macro"
+import { keyframes } from "@emotion/react"
+import { DialogOverlay, DialogContent } from "@reach/dialog"
+import VisuallyHidden from "@reach/visually-hidden"
+import ConfettiExplosion from "react-confetti-explosion"
 
-import Icon from "./Icon";
-import Stopwatch from "./Stopwatch/Stopwatch";
-import UnstyledButton from "./UnstyledButton";
-import LinkButton from "./LinkButton";
-import { QUERIES } from "../constants";
+import Icon from "./Icon"
+import Stopwatch from "./Stopwatch/Stopwatch"
+import UnstyledButton from "./UnstyledButton"
+import LinkButton from "./LinkButton"
+import { QUERIES } from "../constants"
 import {
   selectEndingArticle,
   selectHistory,
   selectIsWin,
   selectStartingArticle,
   selectWinTime,
-} from "../redux/settingsSelectors";
+} from "../redux/settingsSelectors"
 
 const Result = ({ isOpen, onDismiss }) => {
-  const startTitle = useSelector(selectStartingArticle).title;
-  const endTitle = useSelector(selectEndingArticle).title;
-  const history = useSelector(selectHistory);
-  const isWin = useSelector(selectIsWin);
-  const winTime = useSelector(selectWinTime);
+  const startTitle = useSelector(selectStartingArticle).title
+  const endTitle = useSelector(selectEndingArticle).title
+  const history = useSelector(selectHistory)
+  const isWin = useSelector(selectIsWin)
+  const winTime = useSelector(selectWinTime)
 
   const confettiParams = {
     force: 0.6,
@@ -31,9 +31,9 @@ const Result = ({ isOpen, onDismiss }) => {
     particleCount: 400,
     floorHeight: 1600,
     floorWidth: 1600,
-  };
+  }
 
-  const wordInString = (s, word) => new RegExp("\\b" + word + "\\b", "i").test(s);
+  const wordInString = (s, word) => new RegExp("\\b" + word + "\\b", "i").test(s)
 
   return (
     <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
@@ -74,10 +74,10 @@ const Result = ({ isOpen, onDismiss }) => {
         </ConfettiWrapper>
       </Content>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Result;
+export default Result
 
 const fadeIn = keyframes`
   from {
@@ -86,7 +86,7 @@ const fadeIn = keyframes`
   to {
     opacity: 1;
   }
-`;
+`
 
 const Wrapper = styled(DialogOverlay)`
   position: fixed;
@@ -99,7 +99,7 @@ const Wrapper = styled(DialogOverlay)`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const InnerWrapper = styled.div`
   overflow: auto;
@@ -112,7 +112,7 @@ const InnerWrapper = styled.div`
   vertical-align: middle;
 
   width: 100%;
-`;
+`
 
 const Backdrop = styled.div`
   position: absolute;
@@ -120,9 +120,9 @@ const Backdrop = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: #2e2d2dcf;
+  background: var(--color-backdrop-bg);
   animation: ${fadeIn} 500ms;
-`;
+`
 
 const Content = styled(DialogContent)`
   position: relative;
@@ -140,14 +140,14 @@ const Content = styled(DialogContent)`
   @media ${QUERIES.tabletAndSmaller} {
     padding: 56px 24px;
   }
-`;
+`
 
 const CloseButton = styled(UnstyledButton)`
   position: absolute;
   top: 10px;
   right: 0px;
   padding: 16px;
-`;
+`
 
 const Heading = styled.h2`
   font-size: ${36 / 16}rem;
@@ -155,7 +155,7 @@ const Heading = styled.h2`
   @media ${QUERIES.tabletAndSmaller} {
     font-size: ${24 / 16}rem;
   }
-`;
+`
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -166,7 +166,7 @@ const ContentWrapper = styled.div`
   @media ${QUERIES.tabletAndSmaller} {
     gap: 16px;
   }
-`;
+`
 
 const InfoText = styled.p`
   font-size: ${18 / 16}rem;
@@ -174,18 +174,18 @@ const InfoText = styled.p`
   @media ${QUERIES.tabletAndSmaller} {
     font-size: ${16 / 16}rem;
   }
-`;
+`
 
 const Image = styled.img`
   display: block;
   object-fit: contain;
   height: auto;
   max-height: 600px;
-`;
+`
 
 const ConfettiWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+`
