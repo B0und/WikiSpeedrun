@@ -1,17 +1,15 @@
 import styled from "@emotion/styled"
 import { UnstyledButton } from "@mantine/core"
 import VisuallyHidden from "@reach/visually-hidden"
-import React, { useState } from "react"
-import { useEffect } from "react"
+import React from "react"
+import { ThemeContext } from "./App"
 import Icon from "./Icon"
-import { ThemeContext } from "./ThemeProvider"
 
 export const DarkToggle = () => {
-  const { colorMode, toggleColorScheme } = React.useContext(ThemeContext)
-  console.log(colorMode)
+  const { colorMode, switchTheme } = React.useContext(ThemeContext)
 
   return (
-    <DarkToggleButton onClick={toggleColorScheme}>
+    <DarkToggleButton onClick={switchTheme}>
       <ThemeIcon id={colorMode === "light" ? "sun" : "moon"} />
       <VisuallyHidden>Switch theme</VisuallyHidden>
     </DarkToggleButton>

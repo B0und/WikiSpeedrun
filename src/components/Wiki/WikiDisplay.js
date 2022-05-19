@@ -3,12 +3,11 @@ import styled from "@emotion/styled"
 
 import WikiLogic from "./WikiLogic"
 import Result from "../Result"
-import { ThemeContext } from "../ThemeProvider"
+import { ThemeContext } from "../App"
 
 const WikiDisplay = ({ showResults, setShowResults, wikiData, isLoading }) => {
   const { handleWikiArticleClick } = WikiLogic()
-  const { colorMode, toggleColorScheme } = React.useContext(ThemeContext)
-  console.log("Wiki color mode: ", colorMode)
+  const { colorMode } = React.useContext(ThemeContext)
 
   const onDismiss = useCallback(() => {
     setShowResults(false)
@@ -17,7 +16,7 @@ const WikiDisplay = ({ showResults, setShowResults, wikiData, isLoading }) => {
   return (
     <>
       <WikiWrapper>
-        <Result isOpen={showResults} onDismiss={onDismiss} />
+        <Result colorMode={colorMode} isOpen={showResults} onDismiss={onDismiss} />
 
         {isLoading ? (
           <p>Loading...</p>
@@ -27,17 +26,10 @@ const WikiDisplay = ({ showResults, setShowResults, wikiData, isLoading }) => {
               <WikiHeader>{wikiData.title}</WikiHeader>
             </HeaderWrapper>
             <WikiHtml
-              onClick={handleWikiArticleClick}
+              isDarkTheme={colorMode === "dark"}
               className="wiki-insert"
+              onClick={handleWikiArticleClick}
               dangerouslySetInnerHTML={{ __html: wikiData.html }}
-              style={
-                colorMode === "dark"
-                  ? {
-                      filter:
-                        "invert() hue-rotate(180deg) brightness(105%) contrast(105%) !important",
-                    }
-                  : {}
-              }
             />
           </>
         )}
@@ -53,6 +45,20 @@ const WikiWrapper = styled.div`
   padding-right: var(--border-gap);
   font-family: sans-serif;
   margin-bottom: 16px;
+
+  &::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-bg-secondary);
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-blue);
+    border-radius: 100px;
+  }
 `
 
 const HeaderWrapper = styled.div`
@@ -67,12 +73,19 @@ const HeaderWrapper = styled.div`
 
 const WikiHtml = styled.div`
   overflow: hidden;
-  /* filter: ${(p) =>
-    p.colorMode === "dark"
-      ? "invert() hue-rotate(180deg) brightness(105%) contrast(105%) important;"
-      : null}; */
-  /* filter: invert() hue-rotate(180deg) brightness(105%) contrast(105%); */
-  /* background-color: ${(p) => p.colo} */
+  filter: ${(p) => (p.isDarkTheme ? "invert(1) hue-rotate(180deg)" : null)};
+
+  & img {
+    filter: ${(p) => (p.isDarkTheme ? "invert() hue-rotate(180deg)" : null)};
+  }
+
+  color: ${(p) => (p.isDarkTheme ? "var(--color-bg-secondary)" : null)};
+
+  a:visited {
+    color: ${(p) => (p.isDarkTheme ? "#0645ad !important" : null)};
+  }
+
+
 `
 
 export const WikiHeader = styled.h2`

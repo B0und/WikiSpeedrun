@@ -9,23 +9,19 @@ import { StopwatchProvider } from "./components/Stopwatch/StopwatchContext"
 import { ModalsProvider } from "@mantine/modals"
 import { NotificationsProvider } from "@mantine/notifications"
 import { Global } from "@emotion/react"
-import { ThemeProvider } from "./components/ThemeProvider"
-
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <ModalsProvider>
-        <NotificationsProvider>
-          <StopwatchProvider>
-            <Provider store={store}>
-              <App />
-            </Provider>
-            <Global styles={GlobalStyles} />
-          </StopwatchProvider>
-        </NotificationsProvider>
-      </ModalsProvider>
-    </ThemeProvider>
+    <ModalsProvider>
+      <NotificationsProvider>
+        <StopwatchProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+          <Global styles={GlobalStyles} />
+        </StopwatchProvider>
+      </NotificationsProvider>
+    </ModalsProvider>
   </React.StrictMode>,
   document.getElementById("root")
 )

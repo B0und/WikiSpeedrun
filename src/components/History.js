@@ -40,7 +40,7 @@ const History = () => {
 }
 
 const HistoryWrapper = styled.div`
-  width: 300px;
+  width: 350px;
   flex: 1 1 auto;
   overflow-y: auto;
   margin-bottom: 16px;
@@ -85,11 +85,11 @@ const TableRow = styled.tr`
   }
 
   &:nth-of-type(even) {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-secondary);
   }
 
   &:nth-of-type(odd) {
-    background-color: var(---color-bg-secondary);
+    background-color: var(--color-bg);
   }
 
   & td:hover {

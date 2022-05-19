@@ -5,6 +5,7 @@ import { Autocomplete } from "@mantine/core"
 import useDebounce from "../../hooks/useDebounce"
 import articleSearch from "./AutocompleteArticleApi"
 import styles from "./AutocompleteArticle.module.css"
+
 const AutocompleteArticle = ({ selectHandler, initialTerm, label }) => {
   let [searchTerm, setSearchTerm] = useState(initialTerm)
   let debouncedTerm = useDebounce(searchTerm, 450)

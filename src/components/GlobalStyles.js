@@ -37,6 +37,8 @@ const GlobalStyles = css`
     max-width: 100%;
   }
 
+
+
   /* Remove built-in form typography styles */
   input,
   button,

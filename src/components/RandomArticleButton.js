@@ -20,7 +20,9 @@ const RandomArticleButton = ({ dispatchFn }) => {
         rnlimit: "1",
       },
     })
+
     const title = resp.data.query.random[0].title
+
     return { title }
   }
 

@@ -13,7 +13,7 @@ export const QUERIES = {
 export const COLORS = {
   light: {
     bg: "#fafafa",
-    bgSecondary: "#fff",
+    bgSecondary: "#e2e2e2",
     borderSecondary: "#c9c9c98f",
     textPrimary: "#111",
     textSecondary: "#2e2e2e",

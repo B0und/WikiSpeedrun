@@ -5,10 +5,13 @@ import Sidebar from "./Sidebar"
 import Header from "./Header"
 import { QUERIES } from "../constants"
 import Stats from "./Stats"
+import React from "react"
+import { ThemeContext } from "./App"
 
 const Layout = () => {
+  const { colorMode } = React.useContext(ThemeContext)
   return (
-    <Main>
+    <Main data-theme={colorMode}>
       <Sidebar />
       <Container>
         <Header />

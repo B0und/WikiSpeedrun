@@ -7,8 +7,8 @@ const LinkButton = ({ text, ...rest }) => {
 
 const ButtonLink = styled(Link)`
   text-decoration: none;
-  background-color: #f8f8f8;
-  color: var(--color-text-primary);
+  background-color: var(--primary-blue);
+  color: black;
   text-align: center;
   padding: 10px 20px;
   width: 120px;

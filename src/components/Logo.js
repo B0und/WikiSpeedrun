@@ -2,26 +2,32 @@ import styled from "@emotion/styled"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { selectGameIsRunning } from "../redux/settingsSelectors"
-import { ThemeContext } from "./ThemeProvider"
+
 import React from "react"
+import { ThemeContext } from "./App"
 
 function Logo() {
   const gameIsRunning = useSelector(selectGameIsRunning)
-  const { colorMode, toggleColorScheme } = React.useContext(ThemeContext)
+  const { colorMode } = React.useContext(ThemeContext)
 
   return (
     <Heading>
       <StyledLink to={gameIsRunning ? "#" : "/settings"}>
-        <Image
-          src={
-            window.location.origin + colorMode === "light"
-              ? "/wiki-speed-logo.png"
-              : "/wiki-speed-logo-dark.png"
-          }
-          alt="Wikipedia Speedrun"
-          width={128}
-          height={168}
-        />
+        {colorMode === "light" ? (
+          <Image
+            src={window.location.origin + "/wiki-speed-logo.png"}
+            alt="Wikipedia Speedrun"
+            width={128}
+            height={168}
+          />
+        ) : (
+          <Image
+            src={window.location.origin + "/wiki-speed-logo-dark.png"}
+            alt="Wikipedia Speedrun"
+            width={128}
+            height={168}
+          />
+        )}
       </StyledLink>
     </Heading>
   )

@@ -17,6 +17,8 @@ import {
   selectStartingArticle,
   selectWinTime,
 } from "../redux/settingsSelectors"
+import { useEffect } from "react"
+import { useRef } from "react"
 
 const Result = ({ isOpen, onDismiss }) => {
   const startTitle = useSelector(selectStartingArticle).title
@@ -24,6 +26,12 @@ const Result = ({ isOpen, onDismiss }) => {
   const history = useSelector(selectHistory)
   const isWin = useSelector(selectIsWin)
   const winTime = useSelector(selectWinTime)
+
+  let theme = useRef("light")
+
+  useEffect(() => {
+    theme.current = JSON.parse(localStorage.getItem("theme"))
+  }, [])
 
   const confettiParams = {
     force: 0.6,
@@ -36,7 +44,7 @@ const Result = ({ isOpen, onDismiss }) => {
   const wordInString = (s, word) => new RegExp("\\b" + word + "\\b", "i").test(s)
 
   return (
-    <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
+    <Wrapper data-theme={theme.current} isOpen={isOpen} onDismiss={onDismiss}>
       <Backdrop />
       <Content aria-label="Result screen">
         <ConfettiWrapper>
@@ -126,7 +134,7 @@ const Backdrop = styled.div`
 
 const Content = styled(DialogContent)`
   position: relative;
-  background: white;
+  background: var(--color-bg-secondary);
   width: 70%;
   padding: 56px;
 
@@ -150,6 +158,7 @@ const CloseButton = styled(UnstyledButton)`
 `
 
 const Heading = styled.h2`
+  color: var(--color-text-primary);
   font-size: ${36 / 16}rem;
 
   @media ${QUERIES.tabletAndSmaller} {
@@ -169,6 +178,7 @@ const ContentWrapper = styled.div`
 `
 
 const InfoText = styled.p`
+  color: var(--color-text-primary);
   font-size: ${18 / 16}rem;
 
   @media ${QUERIES.tabletAndSmaller} {

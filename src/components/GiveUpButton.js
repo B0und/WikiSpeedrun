@@ -41,6 +41,7 @@ const StyledButton = styled.button`
   color: var(--color-text-primary);
   text-align: center;
   padding: 16px;
+  padding-left: 0px;
 
   &:hover {
     color: var(--primary-blue);
