@@ -1,34 +1,30 @@
-import { useState } from "react";
-import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Drawer } from "@mantine/core";
-import VisuallyHidden from "@reach/visually-hidden";
+import { useState } from "react"
+import styled from "@emotion/styled"
+import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { Drawer } from "@mantine/core"
+import VisuallyHidden from "@reach/visually-hidden"
 
-import GiveUpButton from "./GiveUpButton";
-import Icon from "./Icon";
-import Logo from "./Logo";
-import History from "./History";
-import { QUERIES } from "../constants";
-import { selectGameIsRunning } from "../redux/settingsSelectors";
+import GiveUpButton from "./GiveUpButton"
+import Icon from "./Icon"
+import Logo from "./Logo"
+import History from "./History"
+import { QUERIES } from "../constants"
+import { selectGameIsRunning } from "../redux/settingsSelectors"
+import { DarkToggle } from "./DarkToggle"
 
 const links = [
   { name: "Play", path: "/settings" },
   { name: "About", path: "/about" },
-];
+]
 
 function Header() {
-  const gameIsRunning = useSelector(selectGameIsRunning);
-  const [opened, setOpened] = useState(false);
+  const gameIsRunning = useSelector(selectGameIsRunning)
+  const [opened, setOpened] = useState(false)
 
   return (
     <HeaderNav>
-      <StyledDrawer
-        opened={opened}
-        onClose={() => setOpened(false)}
-        padding="xl"
-        size="85%"
-      >
+      <StyledDrawer opened={opened} onClose={() => setOpened(false)} padding="xl" size="85%">
         <Wrapper>
           <Logo />
           <History />
@@ -38,9 +34,7 @@ function Header() {
       <Pages>
         {gameIsRunning ? (
           <>
-            <ToggleHistoryDrawer onClick={() => setOpened(true)}>
-              History
-            </ToggleHistoryDrawer>
+            <ToggleHistoryDrawer onClick={() => setOpened(true)}>History</ToggleHistoryDrawer>
             <GiveUpButton />
           </>
         ) : (
@@ -52,19 +46,18 @@ function Header() {
         )}
       </Pages>
       <MiscNav>
+        <li style={{ display: "grid", placeItems: "center" }}>
+          <DarkToggle />
+        </li>
         <li>
-          <GithubLink
-            href="https://github.com/B0und/WikiSpeedrun"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <GithubLink href="https://github.com/B0und/WikiSpeedrun" target="_blank" rel="noreferrer">
             <GithubIcon id="github" />
             <VisuallyHidden>Source code on github</VisuallyHidden>
           </GithubLink>
         </li>
       </MiscNav>
     </HeaderNav>
-  );
+  )
 }
 
 const HeaderNav = styled.nav`
@@ -73,9 +66,9 @@ const HeaderNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-left: calc(var(--border-gap) - 14px);
+  padding-left: var(--border-gap);
   border-bottom: 1px solid var(--secondary-blue);
-`;
+`
 
 const Pages = styled.ul`
   display: flex;
@@ -88,45 +81,47 @@ const Pages = styled.ul`
   @media ${QUERIES.tabletAndSmaller} {
     gap: 8px;
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   /* padding: 16px; */
-  color: #111;
+  color: var(--color-text-primary);
 
   &:visited {
     color: inherit;
   }
 
   &:hover {
-    color: blue;
+    color: var(--primary-blue);
   }
-`;
+`
 
 const MiscNav = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  gap: 32px;
-`;
+  gap: 16px;
+`
 
 const GithubLink = styled.a`
-  padding: 16px;
+  display: block;
+  padding: 12px;
+  margin: 2px;
   text-decoration: none;
   &:visited {
     color: inherit;
   }
 
   &:hover {
-    color: blue;
+    color: var(--primary-blue);
   }
-`;
+`
 
 const GithubIcon = styled(Icon)`
   width: 24px;
   height: 24px;
-`;
+`
 
 const StyledDrawer = styled(Drawer)`
   display: none;
@@ -134,25 +129,25 @@ const StyledDrawer = styled(Drawer)`
   @media ${QUERIES.tabletAndSmaller} {
     display: block;
   }
-`;
+`
 const ToggleHistoryDrawer = styled.button`
   display: none;
 
   cursor: pointer;
   border: none;
   background: none;
-  color: black;
+  color: var(--color-text-primary);
   text-align: center;
   padding: 16px;
 
   &:hover {
-    color: blue;
+    color: var(--primary-blue);
   }
 
   @media ${QUERIES.tabletAndSmaller} {
     display: block;
   }
-`;
+`
 
 const Wrapper = styled.div`
   align-self: flex-start;
@@ -161,6 +156,6 @@ const Wrapper = styled.div`
   align-items: center;
   height: 100%;
   padding-bottom: 32px;
-`;
+`
 
-export default Header;
+export default Header

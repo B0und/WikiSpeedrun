@@ -1,25 +1,25 @@
-import React, { useContext } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import styled from "@emotion/styled";
-import { useModals } from "@mantine/modals";
+import React, { useContext } from "react"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import styled from "@emotion/styled"
+import { useModals } from "@mantine/modals"
 
-import { endGame, resetHistory } from "../redux/settingsSlice";
-import { StopwatchContext } from "./Stopwatch/StopwatchContext";
+import { endGame, resetHistory } from "../redux/settingsSlice"
+import { StopwatchContext } from "./Stopwatch/StopwatchContext"
 
 const GiveUpButton = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const modals = useModals();
-  const stopwatch = useContext(StopwatchContext);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const modals = useModals()
+  const stopwatch = useContext(StopwatchContext)
 
   const onConfirm = () => {
-    dispatch(endGame());
-    dispatch(resetHistory());
-    stopwatch.resetTimer();
-    stopwatch.disableTimer(false);
-    navigate("/settings");
-  };
+    dispatch(endGame())
+    dispatch(resetHistory())
+    stopwatch.resetTimer()
+    stopwatch.disableTimer(false)
+    navigate("/settings")
+  }
 
   const openGiveUpModal = () =>
     modals.openConfirmModal({
@@ -29,22 +29,23 @@ const GiveUpButton = () => {
       confirmProps: { color: "red" },
       onCancel: () => {},
       onConfirm: onConfirm,
-    });
+    })
 
-  return <StyledButton onClick={openGiveUpModal}>Give up</StyledButton>;
-};
+  return <StyledButton onClick={openGiveUpModal}>Give up</StyledButton>
+}
 
 const StyledButton = styled.button`
   cursor: pointer;
   border: none;
   background: none;
-  color: black;
+  color: var(--color-text-primary);
   text-align: center;
   padding: 16px;
+  padding-left: 0px;
 
   &:hover {
-    color: blue;
+    color: var(--primary-blue);
   }
-`;
+`
 
-export default GiveUpButton;
+export default GiveUpButton
