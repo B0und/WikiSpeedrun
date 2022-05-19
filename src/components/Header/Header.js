@@ -23,7 +23,6 @@ function Header() {
   const gameIsRunning = useSelector(selectGameIsRunning)
   const [opened, setOpened] = useState(false)
   const { colorMode } = React.useContext(ThemeContext)
-  console.log(colorMode)
 
   return (
     <HeaderNav>

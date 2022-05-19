@@ -22,8 +22,9 @@ const RandomArticleButton = ({ dispatchFn }) => {
     })
 
     const title = resp.data.query.random[0].title
+    const pageid = resp.data.query.random[0].id
 
-    return { title }
+    return { title, pageid }
   }
 
   const randomHandler = async (fn) => {

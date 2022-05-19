@@ -27,6 +27,6 @@ export const COLORS = {
     textPrimary: "#e9e6e6",
     textSecondary: "#a7a6a6",
     resultsBg: "#000000cc",
-    backdropBg: "#2e2d2dcf",
+    backdropBg: "#0000008b",
   },
 }

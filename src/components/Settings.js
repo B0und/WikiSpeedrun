@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styled from "@emotion/styled"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 
 import { StopwatchContext } from "./Stopwatch/StopwatchContext"
 import AutocompleteArticle from "./AutocompleteArticle"
@@ -16,29 +16,113 @@ import {
   setTimeLimit,
   startGame,
 } from "../redux/settingsSlice"
+import { useRef } from "react"
+import { useCallback } from "react"
+import { useNotifications } from "@mantine/notifications"
 
 function Settings() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const notifications = useNotifications()
+
+  const shareNotificationParams = {
+    title: "Copied",
+    message: "URL was copied to clipboard",
+    autoClose: 1500,
+    color: "green",
+  }
+
+  let [searchParams, setSearchParams] = useSearchParams()
 
   const stopwatch = useContext(StopwatchContext)
+  const stopwatchRef = useRef(stopwatch)
   const [time, setTime] = useState(new Date(0, 0, 0, 0, 0, 0, 0))
 
-  let startingTitle = useSelector(selectStartingArticle).title
-  let endingTitle = useSelector(selectEndingArticle).title
+  let startTitle = useSelector(selectStartingArticle).title
+  let startId = useSelector(selectStartingArticle).pageid
+
+  let endTitle = useSelector(selectEndingArticle).title
+  let endId = useSelector(selectEndingArticle).pageid
+
+  const getStateFromUrl = useCallback(() => {
+    const paramValues = ["startTitle", "startId", "endTitle", "endId"]
+    const result = []
+    for (const param of paramValues) {
+      result.push(searchParams.get(param))
+    }
+    return result
+  }, [searchParams])
+
+  const selectStartingArticleHandler = useCallback(
+    (item) => {
+      // console.log(item)
+      // update redux on user choice
+      item && dispatch(setStartingArticle(item))
+    },
+    [dispatch]
+  )
+
+  const selectEndingArticleHandler = useCallback(
+    (item) => {
+      // console.log(item)
+      // update redux on user choice
+      item && dispatch(setEndingArticle(item))
+    },
+    [dispatch]
+  )
 
   useEffect(() => {
     // reset previous session
     dispatch(resetHistory())
     dispatch(setIsWin(null))
-    stopwatch.resetTimer()
-    stopwatch.disableTimer(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    stopwatchRef.current.resetTimer()
+    stopwatchRef.current.disableTimer(false)
+
+    const [startTitle, startId, endTitle, endId] = getStateFromUrl()
+    if (startTitle && startId) {
+      selectStartingArticleHandler({ title: startTitle, pageid: startId })
+    }
+
+    if (endTitle && endId) {
+      selectEndingArticleHandler({ title: endTitle, pageid: endId })
+    }
+  }, [dispatch, getStateFromUrl, selectEndingArticleHandler, selectStartingArticleHandler])
+
+  useEffect(() => {
+    const paramValues = ["startTitle", "startId", "endTitle", "endId"]
+
+    for (const param of paramValues) {
+      if (!searchParams.get(param) || searchParams.get(param) !== -1) {
+        // console.log("PARAMS")
+        // console.log(!searchParams.get(param) || searchParams.get(param) !== -1)
+        const oldParams = paramsToObject(searchParams.entries())
+        setSearchParams({
+          ...oldParams,
+          param,
+        })
+      }
+    }
+
+    setSearchParams({
+      startTitle: startTitle,
+      startId: startId,
+      endTitle: endTitle,
+      endId: endId,
+    })
+  }, [endId, endTitle, searchParams, setSearchParams, startId, startTitle])
+
+  function paramsToObject(entries) {
+    const result = {}
+    for (const [key, value] of entries) {
+      // each 'entry' is a [key, value] tupple
+      result[key] = value
+    }
+    return result
+  }
 
   const startHandler = (e) => {
     e.preventDefault()
-    if (!startingTitle || !endingTitle) {
+    if (!startTitle || !endTitle) {
       alert("Please select a value from the dropdown")
       return
     }
@@ -46,10 +130,6 @@ function Settings() {
     navigate("/wiki")
     dispatch(setTimeLimit(stopwatch.getInputTimeDiff(time)))
     dispatch(startGame())
-  }
-
-  const selectHandler = (item) => {
-    item && dispatch(setEndingArticle(item))
   }
 
   return (
@@ -63,10 +143,8 @@ function Settings() {
       <InputContainer>
         <AutocompleteArticle
           key={"inp1"}
-          selectHandler={(item) => {
-            item && dispatch(setStartingArticle(item))
-          }}
-          initialTerm={startingTitle}
+          selectHandler={selectStartingArticleHandler}
+          initialTerm={startTitle}
           label="Select starting article"
         />
 
@@ -76,8 +154,8 @@ function Settings() {
       <InputContainer>
         <AutocompleteArticle
           key={"inp2"}
-          selectHandler={selectHandler}
-          initialTerm={endingTitle}
+          selectHandler={selectEndingArticleHandler}
+          initialTerm={endTitle}
           label="Select ending article"
         />
         <RandomArticleButton dispatchFn={setEndingArticle} />
@@ -85,7 +163,17 @@ function Settings() {
 
       <TimeLimit time={time} setTime={setTime} />
 
-      <StartButton type="submit">Start</StartButton>
+      <ButtonContainer>
+        <StartButton type="submit">Start</StartButton>
+        <ShareButton
+          type="button"
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href)
+            notifications.showNotification(shareNotificationParams)
+          }}>
+          Share Settings
+        </ShareButton>
+      </ButtonContainer>
     </Wrapper>
   )
 }
@@ -101,7 +189,7 @@ const Wrapper = styled.form`
 
 const SettingDescription = styled.p`
   margin: 8px 0px;
-  margin-bottom:  32px;
+  margin-bottom: 32px;
 `
 const Title = styled.h2`
   font-size: ${24 / 16}rem;
@@ -128,4 +216,21 @@ const StartButton = styled.button`
   margin-top: 32px;
 `
 
+const ShareButton = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  text-align: center;
+  padding: 10px 0px;
+  width: fit-content;
+  margin-top: 32px;
+  /* text-decoration: underline; */
+  border-bottom: 2px solid var(--primary-blue);
+`
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 32px;
+`
 export default Settings
