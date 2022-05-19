@@ -63,12 +63,20 @@ const Result = ({ isOpen, onDismiss }) => {
                 </InfoText>
                 <Stopwatch time={winTime} />
                 {wordInString(endTitle, "anime") ? (
-                  <Image
-                    src={window.location.origin + "/wiki-waifu.png"}
-                    alt="Wikipedia Waifu by @ina_den_"
-                    width={600}
-                    height={800}
-                  />
+                  <div>
+                    <Image
+                      src={window.location.origin + "/wiki-waifu.png"}
+                      alt="Wikipedia Waifu by @ina_den_"
+                      width={600}
+                      height={800}
+                    />
+                    <SocialLink
+                      href="https://twitter.com/Ina_den_"
+                      target="_blank"
+                      rel="noreferrer">
+                      Art by Ina-den
+                    </SocialLink>
+                  </div>
                 ) : null}
                 <LinkButton text="Play again" to={"/settings"} />
               </ContentWrapper>
@@ -198,4 +206,10 @@ const ConfettiWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`
+
+const SocialLink = styled.a`
+  display: block;
+  color: var(--color-text-primary);
+  padding: 12px 24px;
 `
