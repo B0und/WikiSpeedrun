@@ -15,6 +15,8 @@ function About() {
       <SecondaryHeading>Features</SecondaryHeading>
 
       <FeatureList>
+        <li>Dark theme toggle</li>
+        <li>Share URL button to get same article settings</li>
         <li>No registration required</li>
         <li>Choose your own prompts</li>
         <li>
