@@ -1,17 +1,18 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { Drawer } from "@mantine/core"
 import VisuallyHidden from "@reach/visually-hidden"
 
-import GiveUpButton from "./GiveUpButton"
-import Icon from "./Icon"
-import Logo from "./Logo"
-import History from "./History"
-import { QUERIES } from "../constants"
-import { selectGameIsRunning } from "../redux/settingsSelectors"
-import { DarkToggle } from "./DarkToggle"
+import GiveUpButton from "../GiveUpButton"
+import Icon from "../Icon"
+import Logo from "../Logo"
+import History from "../History"
+import { QUERIES } from "../../constants"
+import { selectGameIsRunning } from "../../redux/settingsSelectors"
+import { DarkToggle } from "../DarkToggle"
+import { ThemeContext } from "../App"
 
 const links = [
   { name: "Play", path: "/settings" },
@@ -21,10 +22,22 @@ const links = [
 function Header() {
   const gameIsRunning = useSelector(selectGameIsRunning)
   const [opened, setOpened] = useState(false)
+  const { colorMode } = React.useContext(ThemeContext)
+  console.log(colorMode)
 
   return (
     <HeaderNav>
-      <StyledDrawer opened={opened} onClose={() => setOpened(false)} padding="xl" size="85%">
+      <StyledDrawer
+        data-theme={colorMode}
+        opened={opened}
+        onClose={() => setOpened(false)}
+        padding="xl"
+        styles={{
+          drawer: {
+            backgroundColor: "var(--color-bg)",
+          },
+        }}
+        size="85%">
         <Wrapper>
           <Logo />
           <History />

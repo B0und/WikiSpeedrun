@@ -79,6 +79,7 @@ const TableHead = styled.thead`
 
 const TableRow = styled.tr`
   text-align: left;
+  color: var(--color-text-primary);
 
   &:first-of-type {
     margin-right: 36px;
