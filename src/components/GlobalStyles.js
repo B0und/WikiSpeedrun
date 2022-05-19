@@ -1,4 +1,5 @@
-import { css } from "@emotion/react";
+import { css } from "@emotion/react"
+import { COLORS } from "../constants"
 
 const GlobalStyles = css`
   *,
@@ -35,6 +36,8 @@ const GlobalStyles = css`
     display: block;
     max-width: 100%;
   }
+
+
 
   /* Remove built-in form typography styles */
   input,
@@ -75,7 +78,24 @@ const GlobalStyles = css`
     --secondary-blue: hsl(204, 87%, 81%, 0.5);
     // silence the warning
     --reach-dialog: 1;
+    --color-bg: ${COLORS.light.bg};
+    --color-bg-secondary: ${COLORS.light.bgSecondary};
+    --color-border-secondary: ${COLORS.light.borderSecondary};
+    --color-text-primary: ${COLORS.light.textPrimary};
+    --color-text-secondary: ${COLORS.light.textSecondary};
+    --color-results-bg: ${COLORS.light.resultsBg};
+    --color-backdrop-bg: ${COLORS.light.backdropBg};
   }
-`;
 
-export default GlobalStyles;
+  [data-theme="dark"] {
+    --color-bg: ${COLORS.dark.bg};
+    --color-bg-secondary: ${COLORS.dark.bgSecondary};
+    --color-border-secondary: ${COLORS.dark.borderSecondary};
+    --color-text-primary: ${COLORS.dark.textPrimary};
+    --color-text-secondary: ${COLORS.dark.textSecondary};
+    --color-results-bg: ${COLORS.dark.resultsBg};
+    --color-backdrop-bg: ${COLORS.dark.backdropBg};
+  }
+`
+
+export default GlobalStyles

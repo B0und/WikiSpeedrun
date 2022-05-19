@@ -1,14 +1,17 @@
-import styled from "@emotion/styled";
-import { Outlet } from "react-router-dom";
+import styled from "@emotion/styled"
+import { Outlet } from "react-router-dom"
 
-import Sidebar from "./Sidebar";
-import Header from "./Header";
-import { QUERIES } from "../constants";
-import Stats from "./Stats";
+import Sidebar from "./Sidebar"
+import Header from "./Header"
+import { QUERIES } from "../constants"
+import Stats from "./Stats"
+import React from "react"
+import { ThemeContext } from "./App"
 
 const Layout = () => {
+  const { colorMode } = React.useContext(ThemeContext)
   return (
-    <Main>
+    <Main data-theme={colorMode}>
       <Sidebar />
       <Container>
         <Header />
@@ -19,8 +22,8 @@ const Layout = () => {
         <Stats />
       </PhoneWrapper>
     </Main>
-  );
-};
+  )
+}
 
 const Main = styled.div`
   display: flex;
@@ -29,14 +32,15 @@ const Main = styled.div`
   padding-top: 16px;
   padding-bottom: 0px;
   height: 100%;
-  color: #111;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
   --border-gap: 36px;
 
   @media ${QUERIES.tabletAndSmaller} {
     --border-gap: 16px;
     padding: 0px 16px;
   }
-`;
+`
 
 const Container = styled.div`
   display: flex;
@@ -50,7 +54,7 @@ const Container = styled.div`
 
   /* for the loading overlay */
   position: relative;
-`;
+`
 
 const PhoneWrapper = styled.div`
   display: none;
@@ -62,5 +66,5 @@ const PhoneWrapper = styled.div`
     left: 0;
     bottom: 0;
   }
-`;
-export default Layout;
+`
+export default Layout
