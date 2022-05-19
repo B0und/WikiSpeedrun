@@ -2,12 +2,14 @@ export const BREAKPOINTS = {
   phone: 600,
   tablet: 950,
   laptop: 1300,
+  wide: 1921,
 }
 
 export const QUERIES = {
   phoneAndSmaller: `(max-width: ${BREAKPOINTS.phone / 16}rem)`,
   tabletAndSmaller: `(max-width: ${BREAKPOINTS.tablet / 16}rem)`,
   laptopAndSmaller: `(max-width: ${BREAKPOINTS.laptop / 16}rem)`,
+  wideAndHigher: `(min-width: ${BREAKPOINTS.wide / 16}rem)`,
 }
 
 export const COLORS = {
@@ -21,7 +23,7 @@ export const COLORS = {
     backdropBg: "#2e2d2dcf",
   },
   dark: {
-    bg: "#161616",
+    bg: "#141517",
     bgSecondary: "#303030",
     borderSecondary: "#c9c9c98f",
     textPrimary: "#e9e6e6",

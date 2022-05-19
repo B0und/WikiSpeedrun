@@ -28,7 +28,7 @@ function Settings() {
   const shareNotificationParams = {
     title: "Copied",
     message: "URL was copied to clipboard",
-    autoClose: 1500,
+    autoClose: 2000,
     color: "green",
   }
 
@@ -55,7 +55,6 @@ function Settings() {
 
   const selectStartingArticleHandler = useCallback(
     (item) => {
-      // console.log(item)
       // update redux on user choice
       item && dispatch(setStartingArticle(item))
     },
@@ -64,7 +63,6 @@ function Settings() {
 
   const selectEndingArticleHandler = useCallback(
     (item) => {
-      // console.log(item)
       // update redux on user choice
       item && dispatch(setEndingArticle(item))
     },
@@ -93,8 +91,6 @@ function Settings() {
 
     for (const param of paramValues) {
       if (!searchParams.get(param) || searchParams.get(param) !== -1) {
-        // console.log("PARAMS")
-        // console.log(!searchParams.get(param) || searchParams.get(param) !== -1)
         const oldParams = paramsToObject(searchParams.entries())
         setSearchParams({
           ...oldParams,

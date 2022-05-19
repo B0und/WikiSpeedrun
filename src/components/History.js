@@ -44,12 +44,31 @@ const HistoryWrapper = styled.div`
   flex: 1 1 auto;
   overflow-y: auto;
   margin-bottom: 16px;
-  margin-top: 16px;
+  margin-top: 64px;
   min-width: 0;
   min-height: 0;
 
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-bg-secondary);
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-blue);
+    border-radius: 100px;
+  }
+
   @media ${QUERIES.tabletAndSmaller} {
     width: 100%;
+  }
+
+  @media ${QUERIES.wideAndHigher} {
+    width: 450px;
+    margin-top: 126px;
   }
 `
 

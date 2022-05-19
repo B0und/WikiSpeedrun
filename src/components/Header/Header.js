@@ -96,8 +96,9 @@ const Pages = styled.ul`
 `
 
 const StyledLink = styled(Link)`
+  display: block;
   text-decoration: none;
-  /* padding: 16px; */
+  padding: 12px;
   color: var(--color-text-primary);
 
   &:visited {
@@ -106,6 +107,10 @@ const StyledLink = styled(Link)`
 
   &:hover {
     color: var(--primary-blue);
+  }
+
+  &:first-of-type {
+    padding-left: 0;
   }
 `
 

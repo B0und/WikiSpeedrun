@@ -40,6 +40,10 @@ const Main = styled.div`
     --border-gap: 16px;
     padding: 0px 16px;
   }
+
+  @media ${QUERIES.wideAndHigher} {
+    --border-gap: 48px;
+  }
 `
 
 const Container = styled.div`

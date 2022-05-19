@@ -73,6 +73,7 @@ const HeaderWrapper = styled.div`
 
 const WikiHtml = styled.div`
   overflow: hidden;
+
   filter: ${(p) => (p.isDarkTheme ? "invert(1) hue-rotate(180deg)" : null)};
 
   & img {
@@ -84,8 +85,6 @@ const WikiHtml = styled.div`
   a:visited {
     color: ${(p) => (p.isDarkTheme ? "#0645ad !important" : null)};
   }
-
-
 `
 
 export const WikiHeader = styled.h2`
