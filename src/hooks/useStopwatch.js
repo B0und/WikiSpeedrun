@@ -104,10 +104,10 @@ const useStopwatch = () => {
       }
       return time;
     };
-    time = new Date(time);
-    let m = pad(time.getMinutes().toString(), 2);
-    let s = pad(time.getSeconds().toString(), 2);
-    let ms = pad(time.getMilliseconds().toString(), 3);
+    const resTime = new Date(time + new Date().getTimezoneOffset() * 60 * 1000)
+    let m = pad(resTime.getMinutes().toString(), 2)
+    let s = pad(resTime.getSeconds().toString(), 2)
+    let ms = pad(resTime.getMilliseconds().toString(), 3)
 
     return { m, s, ms };
   };
