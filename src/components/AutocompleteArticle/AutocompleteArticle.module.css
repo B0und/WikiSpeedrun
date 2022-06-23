@@ -8,3 +8,7 @@
   background-color: var(---color-bg-secondary);
   border: 1px solid var(--color-border-secondary);
 }
+
+.wrapper {
+  width: 300px;
+}

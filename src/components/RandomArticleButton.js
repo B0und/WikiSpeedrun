@@ -10,19 +10,18 @@ const RandomArticleButton = ({ dispatchFn }) => {
   const dispatch = useDispatch()
 
   const getRandomWikiArticle = async () => {
-    const resp = await axios.get(`https://en.wikipedia.org/w/api.php`, {
-      params: {
-        origin: "*",
-        action: "query",
-        format: "json",
-        list: "random",
-        rnnamespace: "0",
-        rnlimit: "1",
-      },
-    })
+    const { data } = await axios.get(
+      `https://en.wikipedia.org/w/api.php?origin=%2A&action=query&format=json&generator=random&grnnamespace=0&grnlimit=5&prop=linkshere&lhnamespace=0&lhlimit=500&lhshow=%21redirect&lhprop=pageid`
+    )
 
-    const title = resp.data.query.random[0].title
-    const pageid = resp.data.query.random[0].id
+    const highestLinksPage = Object.values(data.query.pages)
+      .filter((page) => page.hasOwnProperty("linkshere"))
+      .reduce((prev, current) =>
+        prev.linkshere?.length > current.linkshere?.length ? prev : current
+      )
+
+    const title = highestLinksPage.title
+    const pageid = highestLinksPage.pageid
 
     return { title, pageid }
   }
