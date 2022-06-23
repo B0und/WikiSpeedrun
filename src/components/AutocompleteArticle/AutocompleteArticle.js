@@ -44,6 +44,7 @@ const AutocompleteArticle = ({ selectHandler, initialTerm, label }) => {
       classNames={{
         label: styles.label,
         input: styles.customInput,
+        wrapper: styles.wrapper,
       }}
       onItemSubmit={(item) => {
         selectHandler({
@@ -57,6 +58,5 @@ const AutocompleteArticle = ({ selectHandler, initialTerm, label }) => {
 
 const StyledAutocomplete = styled(Autocomplete)`
   margin-bottom: 16px;
-  max-width: 250px;
 `
 export default AutocompleteArticle
