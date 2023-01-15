@@ -6,8 +6,8 @@ import TypesafeI18n from "./i18n/i18n-react"
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <TypesafeI18n locale="en">
+
       <App />
-    </TypesafeI18n>
+
   </React.StrictMode>
 )

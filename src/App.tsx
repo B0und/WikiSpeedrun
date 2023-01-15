@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
+
+import { detectLocale } from "./i18n/i18n-util";
+import TypesafeI18n from "./i18n/i18n-react";
+import { localStorageDetector } from "typesafe-i18n/detectors";
+import { loadLocaleAsync } from "./i18n/i18n-util.async";
+import Test from "./components/Test";
+
+// Detect locale
+// (Use as advanaced locale detection strategy as you like.
+// More info: https://github.com/ivanhofer/typesafe-i18n/tree/main/packages/detectors)
+const locale = detectLocale(localStorageDetector);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [localesLoaded, setLocalesLoaded] = useState(false);
+  useEffect(() => {
+    loadLocaleAsync(locale).then(() => setLocalesLoaded(true));
+  }, [locale]);
+
+  if (!localesLoaded) {
+    return null;
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <TypesafeI18n locale={locale}>
+      <Test />
+      <div className="App">test</div>
+    </TypesafeI18n>
+  );
 }
 
-export default App
+export default App;

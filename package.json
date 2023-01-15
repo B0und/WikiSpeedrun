@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm-run-all --parallel vite typesafe-i18n",
+    "dev": "npm-run-all --parallel start typesafe-i18n",
+    "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "typesafe-i18n": "typesafe-i18n"
