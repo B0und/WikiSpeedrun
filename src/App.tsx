@@ -25,6 +25,9 @@ function App() {
 
   return (
     <TypesafeI18n locale={locale}>
+      <h1 className="text-3xl font-bold underline text-red-600">
+        Hello world!
+      </h1>
       <Test />
       <div className="App">test</div>
     </TypesafeI18n>
