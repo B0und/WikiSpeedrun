@@ -14,8 +14,6 @@ export const useWikiConsoleLogo = () => {
 
 export const useNoCheating = () => {
   const disableSearch = (e: globalThis.KeyboardEvent) => {
-    console.log("DISABLE SEARCG");
-    console.log(e.key, e.ctrlKey);
     if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
       e.preventDefault();
       console.error("No cheating!");

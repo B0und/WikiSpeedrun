@@ -8,4 +8,34 @@
   #root {
     @apply h-full;
   }
+
+  /* For Firefox Browser */
+  .scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: hsla(203, 66%, 56%) hsl(204, 87%, 81%, 0.5);
+  }
+
+  /* For Chrome, EDGE, Opera, Others */
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    /* background: #fff; */
+    @apply bg-primary-border;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    /* background: #000; */
+    @apply bg-primary-blue;
+  }
+
+  .stopwatch {
+    background-image: linear-gradient(180deg, #4acd79, #1cad4a);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
