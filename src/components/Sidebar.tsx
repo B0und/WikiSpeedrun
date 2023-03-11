@@ -1,7 +1,5 @@
 import { Resizable } from "re-resizable";
-import React from "react";
 import HistoryTable from "./HistoryTable";
-import Test from "./Test";
 
 const Sidebar = () => {
   return (
@@ -13,7 +11,8 @@ const Sidebar = () => {
         }}
         minHeight="100%"
         minWidth={220}
-        maxWidth={500}
+        maxWidth={1000}
+        className="border-r-[1px] border-primary-border  pt-3 pr-6"
         enable={{
           top: false,
           right: true,
@@ -25,7 +24,7 @@ const Sidebar = () => {
           topLeft: false,
         }}
       >
-        <div className="w-full h-full flex flex-col items-center justify-start gap-16">
+        <div className="flex h-full w-full flex-col items-center justify-start gap-16">
           <HistoryTable />
           <div>Time</div>
         </div>

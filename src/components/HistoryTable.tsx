@@ -42,10 +42,10 @@ const HistoryTable = () => {
     { name: "asdassd fsdf sdf sdf fs 23 sdf d", time: "34:00.934" },
   ];
   return (
-    <div className="overflow-y-auto">
-      <table className="table-auto mb-auto ">
-        <caption className="text-start pb-2 text-xl">History</caption>
-        <thead className="sticky top-0 bg-white">
+    <div className="w-full overflow-y-auto">
+      <table className="mb-auto w-full table-auto">
+        <caption className="pb-2 text-start text-xl">History</caption>
+        <thead className="sticky top-0 bg-neutral-50">
           <tr>
             <th className="text-start">Article</th>
             <th className="text-start">Time</th>
@@ -55,8 +55,8 @@ const HistoryTable = () => {
           {/* todo change key to time */}
           {temp.map((d, ind) => (
             <tr key={ind}>
-              <td className="pr-4 py-2">{d.name}</td>
-              <td className="pr-4 py-2">{d.time}</td>
+              <td className="py-2 pr-4">{d.name}</td>
+              <td className="py-2 pr-4">{d.time}</td>
             </tr>
           ))}
         </tbody>
