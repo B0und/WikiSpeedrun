@@ -15,7 +15,7 @@ const Settings = () => {
     navigate('/wiki');
   };
 
-  const start = useStopwatchActions();
+  const { start } = useStopwatchActions();
   // const stopwatchRef = useRef(useContext(StopwatchContext));
 
   console.log('rerender!');

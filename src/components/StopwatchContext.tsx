@@ -34,9 +34,8 @@ export function useStopwatchActions() {
   if (context === undefined) {
     throw new Error('useCount must be used within a StopwatchContextActions');
   }
-  const { pause, reset, start } = context;
-  const startFn = useCallback(start, []);
-  return startFn;
+
+  return context;
 }
 
 export function useStopwatchValue() {
