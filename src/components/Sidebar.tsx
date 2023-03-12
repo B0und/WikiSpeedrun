@@ -13,7 +13,7 @@ const Sidebar = () => {
         minHeight="100%"
         minWidth={220}
         maxWidth={1000}
-        className="border-r-[2px] border-primary-border  pt-3 pr-6 hover:border-r-[2px] hover:border-primary-blue"
+        className="border-r-[2px] border-secondary-blue  pt-3 pr-3 hover:border-r-[2px] hover:border-primary-blue"
         enable={{
           top: false,
           right: true,

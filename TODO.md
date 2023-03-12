@@ -15,3 +15,6 @@ achievements
 show result screen after closing button
 
 dissallow disambiguation links
+predefined paths
+
+multiple articles ?

@@ -11,12 +11,14 @@ export interface AutocompleteProps<T extends AutocompleteOption> {
   options: T[];
   onSelect: (option: T) => void;
   setInputValue: (value: string) => void;
+  placeholder: string;
+  label: string;
 }
 export const Autocomplete = <T extends AutocompleteOption>(
   props: AutocompleteProps<T>
 ) => {
+  const { options, onSelect, setInputValue, placeholder, label } = props;
   const inputRef = useRef<HTMLInputElement>(null);
-  const { options, onSelect, setInputValue } = props;
   const {
     isOpen,
     getToggleButtonProps,
@@ -49,12 +51,12 @@ export const Autocomplete = <T extends AutocompleteOption>(
     <div>
       <div className="flex w-72 flex-col gap-1">
         <label className="w-fit" {...getLabelProps()}>
-          Choose your favorite book:
+          {label}
         </label>
         <div className="flex gap-0.5 bg-white shadow-sm">
           <input
-            placeholder="Best book ever"
-            className="w-full p-1.5"
+            placeholder={placeholder}
+            className="w-full rounded-sm border-[1px] border-transparent p-1.5 text-sm focus-visible:border-[1px] focus-visible:border-primary-blue focus-visible:outline-none"
             {...getInputProps({ ref: inputRef })}
           />
           {/* <button
@@ -68,7 +70,7 @@ export const Autocomplete = <T extends AutocompleteOption>(
         </div>
       </div>
       <ul
-        className={`absolute mt-1 max-h-80 w-72 overflow-scroll bg-white p-0 shadow-md ${
+        className={`dropdown-shadow absolute mt-2 max-h-80 w-72 overflow-scroll rounded-sm bg-white p-1 ${
           !(isOpen && options.length) && "hidden"
         }`}
         {...getMenuProps()}
@@ -77,14 +79,13 @@ export const Autocomplete = <T extends AutocompleteOption>(
           options.map((item, index) => (
             <li
               className={clsx(
-                highlightedIndex === index && "bg-blue-300",
-                selectedItem === item && "font-bold",
+                highlightedIndex === index && "bg-gray-200",
+                selectedItem === item && "font-normal",
                 "flex flex-col py-2 px-3 shadow-sm"
               )}
               key={item.id}
               {...getItemProps({ item, index })}
             >
-              <span>{item.text}</span>
               <span className="text-sm text-gray-700">{item.text}</span>
             </li>
           ))}

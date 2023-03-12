@@ -6,7 +6,7 @@
   html,
   body,
   #root {
-    @apply h-full;
+    @apply h-full font-sans;
   }
 
   /* For Firefox Browser */
@@ -22,7 +22,7 @@
 
   .scrollbar::-webkit-scrollbar-track {
     /* background: #fff; */
-    @apply bg-primary-border;
+    @apply bg-secondary-blue;
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
@@ -37,5 +37,11 @@
     -webkit-background-clip: text;
     -moz-text-fill-color: transparent;
     -webkit-text-fill-color: transparent;
+  }
+
+  .dropdown-shadow {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px,
+      rgba(0, 0, 0, 0.05) 0px 10px 15px -5px,
+      rgba(0, 0, 0, 0.04) 0px 7px 7px -5px;
   }
 }
