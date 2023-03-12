@@ -18,3 +18,7 @@ dissallow disambiguation links
 predefined paths
 
 multiple articles ?
+
+some dice animation
+
+save sidebar width locally

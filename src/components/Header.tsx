@@ -1,29 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { X, GitHub, Moon, Sun } from "react-feather";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { X, GitHub, Moon, Sun } from 'react-feather';
 
 const links = [
-  { name: "Play", path: "/settings" },
-  { name: "About", path: "/about" },
+  { name: 'Play', path: '/settings' },
+  { name: 'About', path: '/about' },
 ];
 
 const Header = () => {
-  const theme = "light";
+  const theme = 'light';
 
-  const imageSrc =
-    theme === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
+  const imageSrc = theme === 'light' ? '/new-wiki-logo-light' : '/new-wiki-logo-dark';
   return (
     <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3">
       <picture className="basis-[200px]">
-        <source
-          srcSet={window.location.origin + `/${imageSrc}.webp`}
-          type="image/webp"
-        />
+        <source srcSet={window.location.origin + `/${imageSrc}.webp`} type="image/webp" />
 
-        <source
-          srcSet={window.location.origin + `/${imageSrc}.png`}
-          type="image/png"
-        />
+        <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
         <img
           className="block h-full"
           src={window.location.origin + `/${imageSrc}.png`}
@@ -43,7 +36,7 @@ const Header = () => {
         <ul className="ml-auto flex h-full gap-4">
           <li className="h-full">
             <button className="flex h-full w-12 items-center justify-center hover:text-primary-blue">
-              {theme === "light" ? <Sun /> : <Moon />}
+              {theme === 'light' ? <Sun /> : <Moon />}
             </button>
           </li>
           <li className="h-full">

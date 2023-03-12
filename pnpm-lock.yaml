@@ -5,7 +5,7 @@ specifiers:
   '@emotion/styled': ^11.10.6
   '@mui/base': 5.0.0-alpha.120
   '@mui/system': ^5.11.12
-  '@tanstack/react-query': ^4.20.4
+  '@tanstack/react-query': ^4.24.4
   '@types/node': ^18.13.0
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
@@ -32,6 +32,7 @@ specifiers:
   typesafe-i18n: ^5.18.1
   typescript: ^4.9.3
   vite: ^4.0.0
+  zustand: ^4.3.6
 
 dependencies:
   '@emotion/react': 11.10.6_pmekkgnqduwlme35zpnqhenc34
@@ -48,6 +49,7 @@ dependencies:
   react-feather: 2.0.10_react@18.2.0
   react-router-dom: 6.8.1_biqbaboplfbrettd7655fr4n2y
   typesafe-i18n: 5.24.0_typescript@4.9.5
+  zustand: 4.3.6_react@18.2.0
 
 devDependencies:
   '@types/node': 18.13.0
@@ -3305,3 +3307,19 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zustand/4.3.6_react@18.2.0:
+    resolution: {integrity: sha512-6J5zDxjxLE+yukC2XZWf/IyWVKnXT9b9HUv09VJ/bwGCpKNcaTqp7Ws28Xr8jnbvnZcdRaidztAPsXFBIqufiw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false

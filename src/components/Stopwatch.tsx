@@ -1,15 +1,21 @@
+import { useContext } from 'react';
+import { useStopwatchValue } from './StopwatchContext';
+
 interface StopwatchProps {
   min?: string;
   sec?: string;
   ms?: string;
 }
-const Stopwatch = ({ min = "00", sec = "00", ms = "000" }: StopwatchProps) => {
+const Stopwatch = ({ min = '00', sec = '00', ms = '000' }: StopwatchProps) => {
+  const { time } = useStopwatchValue();
+  // const time = stopwatch.time;
+
   return (
     <div className="">
       <span className="stopwatch text-5xl">
-        {min}:{sec}
+        {time.min}:{time.sec}
       </span>
-      <span className="stopwatch text-2xl">.{ms}</span>
+      <span className="stopwatch text-2xl">.{time.ms}</span>
     </div>
   );
 };
