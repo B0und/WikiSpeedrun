@@ -25,17 +25,18 @@ interface ArticleAutocompleteProps {
   label: string;
   placeholder: string;
   required: boolean;
+  onSelect: (option: AutocompleteOption) => void;
 }
 const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
-  const { label, placeholder, required } = props;
-  const navigate = useNavigate();
+  const { label, placeholder, required, onSelect } = props;
+  // const navigate = useNavigate();
   const [inputText, setInputText] = useState('');
-  const [selectedArticle, setSelectedArticle] = useState<AutocompleteOption>();
-  const [options, setOptions] = useState<AutocompleteOption[]>([]);
+  // const [selectedArticle, setSelectedArticle] = useState<AutocompleteOption>();
+  // const [options, setOptions] = useState<AutocompleteOption[]>([]);
   const debouncedInputText = useDebounce(inputText).toLowerCase();
 
   const { data } = useQuery({
-    queryKey: ['todos', debouncedInputText],
+    queryKey: ['selectOptions', debouncedInputText],
     queryFn: () => getArticles(debouncedInputText),
     refetchOnWindowFocus: false,
     enabled: Boolean(debouncedInputText),
@@ -50,7 +51,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
 
   return (
     <Autocomplete
-      onSelect={setSelectedArticle}
+      onSelect={onSelect}
       options={data ?? []}
       setInputValue={setInputText}
       label={label}

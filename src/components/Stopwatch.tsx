@@ -1,5 +1,6 @@
-import { useContext } from 'react';
-import { useStopwatchValue } from './StopwatchContext';
+import { useContext, useEffect } from 'react';
+import { useIsGameRunning } from '../SettingsStore';
+import { useStopwatchActions, useStopwatchValue } from './StopwatchContext';
 
 interface StopwatchProps {
   min?: string;
@@ -8,7 +9,6 @@ interface StopwatchProps {
 }
 const Stopwatch = ({ min = '00', sec = '00', ms = '000' }: StopwatchProps) => {
   const { time } = useStopwatchValue();
-  // const time = stopwatch.time;
 
   return (
     <div className="">

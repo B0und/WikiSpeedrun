@@ -1,4 +1,4 @@
-import React, { createContext, useCallback } from 'react';
+import React, { createContext } from 'react';
 import { useMemo } from 'react';
 import useStopwatch from '../hooks/useStopwatch';
 
