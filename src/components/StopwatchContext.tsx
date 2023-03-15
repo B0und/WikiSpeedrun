@@ -11,15 +11,23 @@ interface StopwatchContextActions {
   pause: () => void;
   start: () => void;
   reset: () => void;
+  getFormattedTime: () => {
+    min: string;
+    sec: string;
+    ms: string;
+  };
 }
 
 const StopwatchContextValue = createContext<StopwatchContext | undefined>(undefined);
 const StopwatchContextActions = createContext<StopwatchContextActions | undefined>(undefined);
 
 export const StopwatchContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const { time, timeInMs, pause, start, reset } = useStopwatch();
+  const { time, timeInMs, pause, start, reset, getFormattedTime } = useStopwatch();
 
-  const actions = useMemo(() => ({ pause, start, reset }), [pause, reset, start]);
+  const actions = useMemo(
+    () => ({ pause, start, reset, getFormattedTime }),
+    [getFormattedTime, pause, reset, start]
+  );
   const values = useMemo(() => ({ time, timeInMs }), [time, timeInMs]);
 
   return (

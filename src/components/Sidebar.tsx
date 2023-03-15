@@ -1,8 +1,12 @@
 import { Resizable } from 're-resizable';
+import { useHistory } from '../SettingsStore';
 import HistoryTable from './HistoryTable';
 import Stopwatch from './Stopwatch';
 
 const Sidebar = () => {
+  const history = useHistory();
+
+  const clicks = history.length === 1 ? 0 : history.length - 1;
   return (
     <>
       <Resizable
@@ -28,7 +32,7 @@ const Sidebar = () => {
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
           <div className="mt-auto flex w-full items-baseline justify-between pb-6 pr-6">
-            <span>Clicks: 10</span>
+            <span>Clicks: {clicks}</span>
             <Stopwatch />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // https://twitter.com/dan_abramov/status/1102690107264520193
 // https://codesandbox.io/s/1qwlpk4o8l?file=/src/index.js:259-998
@@ -35,6 +35,7 @@ const useFrameNow = (isActive: boolean) => {
 };
 
 const useStopwatch = () => {
+  const totalLapseRef = useRef(0);
   // Previous accumulated lapse
   const [pastLapse, setPastLapse] = useState(0);
 
@@ -46,6 +47,7 @@ const useStopwatch = () => {
   const frameNow = useFrameNow(isRunning) ?? 0;
   const currentLapse = isRunning ? Math.max(0, frameNow - startTime) : 0;
   const totalLapse = pastLapse + currentLapse;
+  totalLapseRef.current = totalLapse;
 
   const pause = useCallback(() => {
     if (isRunning) {
@@ -77,9 +79,9 @@ const useStopwatch = () => {
       return time;
     };
 
-    let newMs = totalLapse;
+    let newMs = totalLapseRef.current;
     let seconds;
-    seconds = Math.floor(totalLapse / 1000);
+    seconds = Math.floor(totalLapseRef.current / 1000);
     newMs = newMs - seconds * 1000;
 
     const minutes = Math.floor(seconds / 60);
@@ -90,12 +92,12 @@ const useStopwatch = () => {
       sec: pad(String(seconds), 2),
       ms: pad(String(newMs), 3),
     };
-  }, [totalLapse]);
+  }, []);
 
   const time = getFormattedTime();
   const timeInMs = getTimeInMs();
 
-  return {time, timeInMs, pause, start, reset};
+  return { time, timeInMs, pause, start, reset, getFormattedTime };
 };
 
 export default useStopwatch;

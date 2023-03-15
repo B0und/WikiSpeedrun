@@ -52,3 +52,4 @@ export const useSettingsStoreActions = () => useSettingsStore((state) => state.a
 export const useIsGameRunning = () => useSettingsStore((state) => state.isGameRunning);
 export const useStartingArticle = () => useSettingsStore((state) => state.startingArticle);
 export const useEndingArticle = () => useSettingsStore((state) => state.endingArticle);
+export const useHistory = () => useSettingsStore((state) => state.history);

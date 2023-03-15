@@ -10,7 +10,7 @@ const Settings = () => {
   const [startInput, setStartInput] = useState('');
 
   const [options, setOptions] = useState<AutocompleteOption[]>([]);
-  const { start } = useStopwatchActions();
+  const { start, pause } = useStopwatchActions();
   const { setIsGameRunning, setStartingArticle, setEndingArticle } = useSettingsStoreActions();
 
   const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
@@ -23,7 +23,6 @@ const Settings = () => {
   return (
     <div>
       <h3 className="border-b-[1px] border-secondary-border text-2xl">Settings</h3>
-      {/* <button onClick={start}>GOOO</button> */}
       <p className="pt-4 pb-8">
         Start typing and then select values from the dropdown list or press the random button.
       </p>
