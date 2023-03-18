@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useEndingArticle, useStartingArticle } from '../../SettingsStore';
+import { useEndingArticle, useStartingArticle } from '../../GameStore';
 import { WikiApiArticle } from './Wiki.types';
 
 import './wiki-common.css';

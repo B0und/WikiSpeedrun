@@ -1,6 +1,10 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
+/*
+ This file is only for runtime data that gets erased of webpage restart 
+*/
+
 interface Actions {
   setStartingArticle: (article: string) => void;
   setEndingArticle: (article: string) => void;
@@ -12,7 +16,7 @@ interface ArticleHistory {
   title: string;
   time: string;
 }
-interface SettingsStore {
+interface GameStore {
   actions: Actions;
   history: ArticleHistory[];
   startingArticle: string;
@@ -27,7 +31,7 @@ const initialState = {
   isGameRunning: false,
 };
 
-const useSettingsStore = create<SettingsStore>()(
+const useGameStore = create<GameStore>()(
   devtools(
     (set) => ({
       ...initialState,
@@ -43,13 +47,15 @@ const useSettingsStore = create<SettingsStore>()(
       },
     }),
     {
-      name: 'settings-storage',
+      name: 'game-store',
     }
   )
 );
 
-export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);
-export const useIsGameRunning = () => useSettingsStore((state) => state.isGameRunning);
-export const useStartingArticle = () => useSettingsStore((state) => state.startingArticle);
-export const useEndingArticle = () => useSettingsStore((state) => state.endingArticle);
-export const useHistory = () => useSettingsStore((state) => state.history);
+export const useGameStoreActions = () => useGameStore((state) => state.actions);
+export const useIsGameRunning = () => useGameStore((state) => state.isGameRunning);
+export const useStartingArticle = () => useGameStore((state) => state.startingArticle);
+export const useEndingArticle = () => useGameStore((state) => state.endingArticle);
+export const useHistory = () => useGameStore((state) => state.history);
+export const useClicks = () =>
+  useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));

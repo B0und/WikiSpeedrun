@@ -1,12 +1,10 @@
 import { Resizable } from 're-resizable';
-import { useHistory } from '../SettingsStore';
+import { useClicks } from '../GameStore';
 import HistoryTable from './HistoryTable';
 import Stopwatch from './Stopwatch';
 
 const Sidebar = () => {
-  const history = useHistory();
-
-  const clicks = history.length === 1 ? 0 : history.length - 1;
+  const clicks = useClicks();
   return (
     <>
       <Resizable
@@ -15,7 +13,7 @@ const Sidebar = () => {
           height: '100%',
         }}
         minHeight="100%"
-        minWidth={220}
+        minWidth={200}
         maxWidth={1000}
         className="border-r-[2px] border-secondary-blue  pt-3 pr-3 hover:border-r-[2px] hover:border-primary-blue"
         enable={{
@@ -31,7 +29,7 @@ const Sidebar = () => {
       >
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
-          <div className="mt-auto flex w-full items-baseline justify-between pb-6 pr-6">
+          <div className="mt-auto flex w-full items-baseline justify-between pb-6 pr-6 overflow-auto flex-wrap">
             <span>Clicks: {clicks}</span>
             <Stopwatch />
           </div>

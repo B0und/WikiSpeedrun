@@ -1,9 +1,4 @@
-import {
-  useEndingArticle,
-  useHistory,
-  useIsGameRunning,
-  useStartingArticle,
-} from '../SettingsStore';
+import { useEndingArticle, useHistory, useIsGameRunning, useStartingArticle } from '../GameStore';
 
 const HistoryTable = () => {
   const isGameRunning = useIsGameRunning();

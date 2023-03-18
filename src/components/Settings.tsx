@@ -1,8 +1,9 @@
 import React, { FormEvent, FormEventHandler, useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSettingsStoreActions } from '../SettingsStore';
+import { useGameStoreActions } from '../GameStore';
 import ArticleAutocomplete from './ArticleAutocomplete/ArticleAutocomplete';
 import { Autocomplete, AutocompleteOption } from './Autocomplete';
+import RandomButton from './RandomButton';
 import { useStopwatchActions } from './StopwatchContext';
 
 const Settings = () => {
@@ -11,7 +12,7 @@ const Settings = () => {
 
   const [options, setOptions] = useState<AutocompleteOption[]>([]);
   const { start, pause } = useStopwatchActions();
-  const { setIsGameRunning, setStartingArticle, setEndingArticle } = useSettingsStoreActions();
+  const { setIsGameRunning, setStartingArticle, setEndingArticle } = useGameStoreActions();
 
   const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,18 +29,24 @@ const Settings = () => {
       </p>
 
       <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
-        <ArticleAutocomplete
-          label="Select starting article"
-          placeholder="Start typing to see options"
-          required={true}
-          onSelect={(option) => setStartingArticle(option.text)}
-        />
-        <ArticleAutocomplete
-          label="Select ending article"
-          placeholder="Start typing to see options"
-          required={true}
-          onSelect={(option) => setEndingArticle(option.text)}
-        />
+        <div className="flex items-end gap-2">
+          <ArticleAutocomplete
+            label="Select starting article"
+            placeholder="Start typing to see options"
+            required={true}
+            onSelect={(option) => setStartingArticle(option.text)}
+          />
+          <RandomButton queryKey="startingArticle" />
+        </div>
+        <div className="flex items-end gap-2">
+          <ArticleAutocomplete
+            label="Select ending article"
+            placeholder="Start typing to see options"
+            required={true}
+            onSelect={(option) => setEndingArticle(option.text)}
+          />
+          <RandomButton queryKey="endingArticle" />
+        </div>
 
         <button type="submit" className="w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
           Play

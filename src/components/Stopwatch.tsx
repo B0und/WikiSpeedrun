@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { useIsGameRunning } from '../SettingsStore';
+import { useIsGameRunning } from '../GameStore';
 import { useStopwatchActions, useStopwatchValue } from './StopwatchContext';
 
 interface StopwatchProps {

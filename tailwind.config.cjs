@@ -14,6 +14,9 @@ module.exports = {
       fontFamily: {
         sans: ["Noto Sans", ...defaultTheme.fontFamily.sans],
       },
+      animation: {
+        'spin-dice': 'spin 1s linear infinite',
+      }
     },
   },
   plugins: [],

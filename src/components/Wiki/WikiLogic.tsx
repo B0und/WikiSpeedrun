@@ -31,7 +31,7 @@ const useWikiLogic = () => {
     }
   };
 
-  const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
 
     const target = e.target as HTMLAnchorElement;

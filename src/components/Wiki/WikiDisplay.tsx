@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useHistory, useSettingsStoreActions, useStartingArticle } from '../../SettingsStore';
+import { useHistory, useGameStoreActions, useStartingArticle } from '../../GameStore';
 import { useStopwatchActions, useStopwatchValue } from '../StopwatchContext';
 import { WikiApiArticle } from './Wiki.types';
 import { usePauseWhileLoading } from './WikiDisplay.utils';
@@ -24,11 +24,10 @@ const getArticleData = async (title: string) => {
   return resp.json() as Promise<WikiApiArticle>;
 };
 
-
 const WikiDisplay = () => {
   const articleHistory = useHistory();
   const startingArticle = useStartingArticle();
-  const { addHistoryArticle } = useSettingsStoreActions();
+  const { addHistoryArticle } = useGameStoreActions();
   const routeParams = useParams();
   const { handleWikiArticleClick } = useWikiLogic();
 
