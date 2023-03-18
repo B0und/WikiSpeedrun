@@ -22,7 +22,6 @@ interface RandomSuccessProps {
 
 export const handleOnRandomSuccess = ({ setArticle, data }: RandomSuccessProps) => {
   const articleWithLinks = getHighestLinksPage(data);
-  // console.log(articleWithLinks);
   if (!articleWithLinks?.title) {
     return; // todo show error notification
   }

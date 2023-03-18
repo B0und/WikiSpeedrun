@@ -29,7 +29,7 @@ interface RandomButtonProps {
   onSuccess: (data: WikiRandom) => void;
 }
 const RandomButton = ({ queryKey, onSuccess }: RandomButtonProps) => {
-  const { data, refetch, isFetching } = useQuery({
+  const { refetch, isFetching } = useQuery({
     queryKey: ['randomButton', queryKey],
     queryFn: getRandomArticles,
     refetchOnWindowFocus: false,
@@ -37,8 +37,6 @@ const RandomButton = ({ queryKey, onSuccess }: RandomButtonProps) => {
     staleTime: 0,
     onSuccess: onSuccess,
   });
-
-  // console.log(data);
 
   return (
     <button

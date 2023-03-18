@@ -1,5 +1,6 @@
 TODO
-[] - random button selects article
+[x] - random button selects article
+[] - modify select styles
 [] - win screen
 [] - dark theme
 [] - notification system

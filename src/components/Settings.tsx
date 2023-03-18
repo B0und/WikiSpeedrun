@@ -1,17 +1,14 @@
-import React, { FormEvent, FormEventHandler, useContext, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Item, Section } from 'react-stately';
+import { FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from '../GameStore';
 import ArticleAutocomplete from './ArticleAutocomplete/ArticleAutocomplete';
-import { SearchAutocomplete } from './Autocomplete/Autocomplete';
-import { Autocomplete, AutocompleteOption } from './AutocompleteOld';
 import RandomButton from './RandomButton/RandomButton';
-import { getHighestLinksPage, handleOnRandomSuccess } from './Settings.helpers';
+import { handleOnRandomSuccess } from './Settings.helpers';
 import { useStopwatchActions } from './StopwatchContext';
 
 const Settings = () => {
   const navigate = useNavigate();
-  const { start, pause } = useStopwatchActions();
+  const { start } = useStopwatchActions();
   const { setIsGameRunning, setStartingArticle, setEndingArticle } = useGameStoreActions();
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
@@ -33,7 +30,6 @@ const Settings = () => {
       <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
         <div className="flex items-end gap-2">
           <ArticleAutocomplete
-    
             label="Select starting article"
             placeholder="Start typing to see options"
             required={true}
@@ -51,7 +47,6 @@ const Settings = () => {
 
         <div className="flex items-end gap-2">
           <ArticleAutocomplete
-     
             label="Select ending article"
             placeholder="Start typing to see options"
             required={true}

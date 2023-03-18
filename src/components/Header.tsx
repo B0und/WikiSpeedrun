@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { X, GitHub, Moon, Sun } from 'react-feather';
+import { GitHub, Moon, Sun } from 'react-feather';
 
 const links = [
   { name: 'Play', path: '/settings' },

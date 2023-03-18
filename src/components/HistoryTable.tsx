@@ -1,9 +1,6 @@
-import { useEndingArticle, useHistory, useIsGameRunning, useStartingArticle } from '../GameStore';
+import { useHistory } from '../GameStore';
 
 const HistoryTable = () => {
-  const isGameRunning = useIsGameRunning();
-  const startTitle = useStartingArticle();
-  const endTitle = useEndingArticle();
   const articleHistory = useHistory();
 
   return (

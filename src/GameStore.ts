@@ -43,7 +43,17 @@ const useGameStore = create<GameStore>()(
         setIsGameRunning: (flag: boolean) =>
           set(() => ({ isGameRunning: flag }), false, 'setIsGameRunning'),
         addHistoryArticle: (article: ArticleHistory) =>
-          set((state) => ({ history: [...state.history, article] }), false, 'addHistoryArticle'),
+          set(
+            (state) => {
+              // without this, first article will be slightly later than 0
+              if (state.history.length === 0) {
+                article.time = '00:00.000';
+              }
+              return { history: [...state.history, article] };
+            },
+            false,
+            'addHistoryArticle'
+          ),
       },
     }),
     {

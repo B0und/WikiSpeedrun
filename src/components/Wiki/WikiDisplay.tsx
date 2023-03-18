@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useHistory, useGameStoreActions, useStartingArticle } from '../../GameStore';
-import { useStopwatchActions, useStopwatchValue } from '../StopwatchContext';
+import { useGameStoreActions, useStartingArticle } from '../../GameStore';
+import { useStopwatchActions } from '../StopwatchContext';
 import { WikiApiArticle } from './Wiki.types';
 import { usePauseWhileLoading } from './WikiDisplay.utils';
 import useWikiLogic from './WikiLogic';
@@ -25,15 +24,12 @@ const getArticleData = async (title: string) => {
 };
 
 const WikiDisplay = () => {
-  const articleHistory = useHistory();
   const startingArticle = useStartingArticle();
   const { addHistoryArticle } = useGameStoreActions();
   const routeParams = useParams();
   const { handleWikiArticleClick } = useWikiLogic();
 
   const { getFormattedTime, start } = useStopwatchActions();
-
-  console.log('death');
 
   const wikiArticle = routeParams.wikiTitle || startingArticle;
 
@@ -50,9 +46,6 @@ const WikiDisplay = () => {
     onSuccess: (data) => {
       // add to history
       const time = getFormattedTime();
-      if (articleHistory.length === 0) {
-        time.ms = '000';
-      }
       addHistoryArticle({ title: data.title || '', time: `${time.min}:${time.sec}.${time.ms}` });
       start();
     },

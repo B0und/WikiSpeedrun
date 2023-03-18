@@ -13,7 +13,7 @@ const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
   const [localesLoaded, setLocalesLoaded] = useState(false);
   useEffect(() => {
     loadLocaleAsync(locale).then(() => setLocalesLoaded(true));
-  }, [locale]);
+  }, []);
 
   if (!localesLoaded) {
     return null;

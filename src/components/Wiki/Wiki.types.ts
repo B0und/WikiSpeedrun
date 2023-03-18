@@ -6,6 +6,7 @@ export interface Parse {
   title?: Title;
   pageid?: number;
   revid?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   redirects?: any[];
   text?: Text;
   langlinks?: Langlink[];

@@ -73,9 +73,9 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     }
     return 'No articles found';
   };
-  // console.log('inputText', inputText);
+
   return (
-    <div className="w-[300px]">
+    <div>
       <label htmlFor={selectId}>{label}</label>
       <Select
         key={defaultValue} // dirty hack
@@ -98,7 +98,6 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
         getOptionLabel={(option: AutocompleteOption) => option.label}
         getOptionValue={(option: AutocompleteOption) => option.value}
         onChange={(newValue) => {
-          console.log('Onchange', newValue);
           const value = newValue?.label ?? '';
           setSelectedOption(value);
           onSelect(value);
@@ -117,7 +116,7 @@ export default ArticleAutocomplete;
 const customStyles: StylesConfig<AutocompleteOption> = {
   control: (base) => ({
     ...base,
-    // width: '300px',
+    width: '300px',
     // flexDirection: 'row-reverse',
   }),
   clearIndicator: (base) => ({
