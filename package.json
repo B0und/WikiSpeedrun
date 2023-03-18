@@ -28,6 +28,7 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-router-dom": "^6.9.0",
+    "react-select": "^5.7.0",
     "react-stately": "^3.21.0",
     "typesafe-i18n": "^5.24.2",
     "vite-plugin-svgr": "^2.4.0",

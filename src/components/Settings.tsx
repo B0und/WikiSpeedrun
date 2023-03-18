@@ -2,11 +2,11 @@ import React, { FormEvent, FormEventHandler, useContext, useEffect, useRef, useS
 import { Link, useNavigate } from 'react-router-dom';
 import { Item, Section } from 'react-stately';
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from '../GameStore';
-import ArticleAutocomplete from './ArticleAutocomplete/OldArticleAutocomplete';
+import ArticleAutocomplete from './ArticleAutocomplete/ArticleAutocomplete';
 import { SearchAutocomplete } from './Autocomplete/Autocomplete';
 import { Autocomplete, AutocompleteOption } from './AutocompleteOld';
 import RandomButton from './RandomButton/RandomButton';
-import { getHighestLinksPage } from './Settings.helpers';
+import { getHighestLinksPage, handleOnRandomSuccess } from './Settings.helpers';
 import { useStopwatchActions } from './StopwatchContext';
 
 const Settings = () => {
@@ -32,50 +32,37 @@ const Settings = () => {
 
       <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
         <div className="flex items-end gap-2">
-          {/* <ArticleAutocomplete
-            key="start"
+          <ArticleAutocomplete
+    
             label="Select starting article"
             placeholder="Start typing to see options"
             required={true}
-            onSelect={(option) => setStartingArticle(option.text)}
+            onSelect={setStartingArticle}
             defaultValue={startArticle}
-          /> */}
-          {/* <SearchAutocomplete label="Search" items={[{name: "asdsd", id: 1}, {name: "dsfggsdsd", id: 2}]}>
-
-          </SearchAutocomplete> */}
+            selectId="startArticle"
+          />
           <RandomButton
             queryKey="startingArticle"
             onSuccess={(data) => {
-              const articleWithLinks = getHighestLinksPage(data);
-              console.log(articleWithLinks);
-              if (!articleWithLinks?.title) {
-                return; // todo show error notification
-              }
-              setStartingArticle(articleWithLinks?.title);
+              handleOnRandomSuccess({ data, setArticle: setStartingArticle });
             }}
           />
         </div>
 
         <div className="flex items-end gap-2">
           <ArticleAutocomplete
-            key="end"
+     
             label="Select ending article"
             placeholder="Start typing to see options"
             required={true}
-            onSelect={(option) => {
-              console.log('SLECET', option);
-              setEndingArticle(option.name ?? '');
-            }}
+            onSelect={setEndingArticle}
             defaultValue={endArticle}
+            selectId="startArticle"
           />
           <RandomButton
             queryKey="endingArticle"
             onSuccess={(data) => {
-              const articleWithLinks = getHighestLinksPage(data);
-              if (!articleWithLinks?.title) {
-                return; // todo show error notification
-              }
-              setEndingArticle(articleWithLinks?.title);
+              handleOnRandomSuccess({ data, setArticle: setEndingArticle });
             }}
           />
         </div>
