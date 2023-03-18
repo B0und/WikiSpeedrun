@@ -12,11 +12,11 @@
     "prettify": "prettier --write ./src"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/base": "5.0.0-alpha.120",
-    "@mui/system": "^5.11.13",
     "@radix-ui/react-visually-hidden": "^1.0.2",
+    "@react-aria/listbox": "^3.8.1",
+    "@react-aria/overlays": "^3.13.0",
+    "@react-types/combobox": "^3.6.0",
+    "@react-types/shared": "^3.17.0",
     "@tanstack/react-query": "^4.27.0",
     "@tanstack/react-query-devtools": "^4.27.0",
     "clsx": "^1.2.1",
@@ -24,9 +24,11 @@
     "rc-dock": "^3.2.17",
     "re-resizable": "^6.9.9",
     "react": "^18.2.0",
+    "react-aria": "^3.23.1",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-router-dom": "^6.9.0",
+    "react-stately": "^3.21.0",
     "typesafe-i18n": "^5.24.2",
     "vite-plugin-svgr": "^2.4.0",
     "zustand": "^4.3.6"

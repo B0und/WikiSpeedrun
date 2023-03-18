@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useDebounce from '../../hooks/useDebounce';
-import { Autocomplete, AutocompleteOption } from '../Autocomplete';
+import { Autocomplete, AutocompleteOption } from '../AutocompleteOld';
 import { WikiSearch } from './WikiSearch.types';
 
 const getArticles = async (debouncedTerm: string) => {
@@ -26,14 +26,22 @@ interface ArticleAutocompleteProps {
   placeholder: string;
   required: boolean;
   onSelect: (option: AutocompleteOption) => void;
+  defaultValue: string;
 }
 const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
-  const { label, placeholder, required, onSelect } = props;
+  const { label, placeholder, required, onSelect, defaultValue } = props;
+
+  // console.log(defaultValue);
   // const navigate = useNavigate();
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState('asd');
   // const [selectedArticle, setSelectedArticle] = useState<AutocompleteOption>();
   // const [options, setOptions] = useState<AutocompleteOption[]>([]);
   const debouncedInputText = useDebounce(inputText).toLowerCase();
+
+  // useEffect(() => {
+  //   console.log('Setting!!!!: ', defaultValue);
+  //   setInputText(defaultValue);
+  // }, [defaultValue]);
 
   const { data } = useQuery({
     queryKey: ['selectOptions', debouncedInputText],
@@ -53,10 +61,12 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     <Autocomplete
       onSelect={onSelect}
       options={data ?? []}
+      // value={inputText}
       setInputValue={setInputText}
       label={label}
       placeholder={placeholder}
       required={required}
+      defaultInputValue={defaultValue}
     />
   );
 };

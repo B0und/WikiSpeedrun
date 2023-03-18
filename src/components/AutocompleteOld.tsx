@@ -14,9 +14,18 @@ export interface AutocompleteProps<T extends AutocompleteOption> {
   placeholder: string;
   label: string;
   required?: boolean;
+  defaultInputValue?: string;
 }
 export const Autocomplete = <T extends AutocompleteOption>(props: AutocompleteProps<T>) => {
-  const { options, onSelect, setInputValue, placeholder, label, required = false } = props;
+  const {
+    options,
+    onSelect,
+    setInputValue,
+    placeholder,
+    label,
+    required = false,
+    defaultInputValue,
+  } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   const {
     isOpen,
@@ -37,6 +46,7 @@ export const Autocomplete = <T extends AutocompleteOption>(props: AutocompletePr
       onSelect(selectedItem);
       inputRef.current?.blur();
     },
+    defaultInputValue,
 
     items: options,
     itemToString(item) {
