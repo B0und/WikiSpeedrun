@@ -1,6 +1,4 @@
-import Test from './components/Test';
 import Providers from './components/Providers';
-import { Resizable } from 're-resizable';
 import { useNoCheating, useWikiConsoleLogo } from './App.utils';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

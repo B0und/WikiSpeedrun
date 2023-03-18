@@ -40,9 +40,9 @@ const Settings = () => {
             onSelect={(option) => setStartingArticle(option.text)}
             defaultValue={startArticle}
           /> */}
-          <SearchAutocomplete label="Search" items={[{name: "asdsd", id: 1}, {name: "dsfggsdsd", id: 2}]}>
+          {/* <SearchAutocomplete label="Search" items={[{name: "asdsd", id: 1}, {name: "dsfggsdsd", id: 2}]}>
 
-          </SearchAutocomplete>
+          </SearchAutocomplete> */}
           <RandomButton
             queryKey="startingArticle"
             onSuccess={(data) => {
@@ -62,7 +62,10 @@ const Settings = () => {
             label="Select ending article"
             placeholder="Start typing to see options"
             required={true}
-            onSelect={(option) => setEndingArticle(option.text)}
+            onSelect={(option) => {
+              console.log('SLECET', option);
+              setEndingArticle(option.name ?? '');
+            }}
             defaultValue={endArticle}
           />
           <RandomButton
