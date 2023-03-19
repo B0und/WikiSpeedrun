@@ -56,7 +56,9 @@ const useWikiLogic = () => {
       target?.nodeName === 'IMG' ||
       hrefText.startsWith('/wiki/Wikipedia:') ||
       hrefText.startsWith('/wiki/Template:') ||
-      hrefText.startsWith('/wiki/Portal:')
+      hrefText.startsWith('/wiki/Portal:') ||
+      hrefText.startsWith('/wiki/Help:') ||
+      hrefText.startsWith('/wiki/Talk:')
     ) {
       //   notifications.showNotification(errorParams);
       return;

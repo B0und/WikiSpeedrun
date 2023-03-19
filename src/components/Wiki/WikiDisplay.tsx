@@ -9,6 +9,7 @@ import useWikiLogic from './WikiLogic';
 import './unreset.css';
 import './vec2022-base.css';
 import './vector2022.css';
+import './overrides.css';
 
 const getArticleData = async (title: string) => {
   if (!title) return;
