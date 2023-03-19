@@ -638,7 +638,7 @@ a.mw-ui-button:focus {
   }
   .mw-ui-icon-with-label-desktop:before {
     width: auto;
-    display: inline-block;
+    display: inline-block;https://en.wikipedia.org/wiki/International_Criminal_Court
     margin-right: 6px;
     vertical-align: text-bottom;
   }
@@ -930,8 +930,9 @@ div.thumbinner {
     font-family: sans-serif;
   }
   .wiki-insert ul {
-    list-style-image: url(/w/skins/Vector/resources/common/images/bullet-icon.svg?d4515);
+    list-style-image: url(/wiki-assets/bullet-icon.svg);
   }
+
   .wiki-insert pre,
   .mw-code {
     line-height: 1.3;
@@ -1041,7 +1042,7 @@ div.thumbinner {
     word-wrap: break-word;
   }
   .mw-parser-output a.external {
-    background-image: url(/w/skins/Vector/resources/common/images/link-external-small-ltr-progressive.svg?2cd31);
+    background-image: url(/wiki-assets/link-external-small-ltr-progressive.svg);
     background-position: center right;
     background-repeat: no-repeat;
     background-size: 0.857em;
@@ -3801,6 +3802,3 @@ ul.gallery.gallery.gallery.mw-gallery-slideshow {
     overflow: visible;
   }
 }
-
-
-

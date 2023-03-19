@@ -40,8 +40,8 @@ const useWikiLogic = () => {
 
     const target = e.target as HTMLAnchorElement;
 
-    // if clicked on a link
     const hrefText = isWikiLink(target?.attributes[0]?.value);
+
     const parent = target.parentNode as HTMLAnchorElement;
     const parentHref = isWikiLink(parent?.attributes[0]?.value);
 
