@@ -1,7 +1,6 @@
 import { MouseEvent } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-// import { useNotifications } from "@mantine/notifications";
 
 const errorToast = () => toast.error('Choose another link', { position: 'bottom-center' });
 
