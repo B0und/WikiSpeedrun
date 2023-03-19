@@ -3,7 +3,7 @@ TODO
 [x] - modify select styles
 [] - win screen
 [] - dark theme
-[] - notification system
+[x] - notification system
 [x] - input clear button
 Ideas:
 

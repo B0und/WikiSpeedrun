@@ -27,6 +27,7 @@
     "react-aria": "^3.23.1",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
+    "react-hot-toast": "^2.4.0",
     "react-router-dom": "^6.9.0",
     "react-select": "^5.7.0",
     "react-stately": "^3.21.0",

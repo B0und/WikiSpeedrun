@@ -1,15 +1,9 @@
 import { MouseEvent } from 'react';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 // import { useNotifications } from "@mantine/notifications";
 
-const validateNavigation = (hrefText: string | null) => {
-  if (!hrefText) return null;
-  if (hrefText.startsWith('#')) {
-    return hrefText;
-  } else {
-    return null;
-  }
-};
+const errorToast = () => toast.error('Choose another link', { position: 'bottom-center' });
 
 const getFilteredLink = (hrefText: string | null) => {
   if (!hrefText) return null;
@@ -20,6 +14,7 @@ const getFilteredLink = (hrefText: string | null) => {
   const ignoreList = [
     '/wiki/Wikipedia:',
     '/wiki/Template:',
+    '/wiki/Template_talk:',
     '/wiki/Portal:',
     '/wiki/Help:',
     '/wiki/Talk:',
@@ -28,7 +23,6 @@ const getFilteredLink = (hrefText: string | null) => {
     '/wiki/File:',
   ];
   if (ignoreList.some((item) => hrefText.startsWith(item))) {
-    //   notifications.showNotification(errorParams);
     return null;
   }
 
@@ -46,7 +40,7 @@ const filterOtherStuff = (target: HTMLAnchorElement) => {
     classNameParent?.className === 'external text' ||
     classNameParent?.className === 'new'
   ) {
-    //   notifications.showNotification(errorParams);
+    errorToast();
     return true;
   }
   return false;
@@ -54,9 +48,9 @@ const filterOtherStuff = (target: HTMLAnchorElement) => {
 
 const handleNavigation = (parentHref: string | null) => {
   if (!parentHref) return false;
-  let navigateId = validateNavigation(parentHref);
-  if (!navigateId) return false;
+  if (!parentHref.startsWith('#')) return false;
 
+  let navigateId = parentHref;
   // try to scroll to the element
   navigateId = navigateId.replaceAll('#', '');
   const element = document.getElementById(navigateId);
@@ -67,15 +61,6 @@ const handleNavigation = (parentHref: string | null) => {
 const useWikiLogic = () => {
   const navigate = useNavigate();
 
-  //   const notifications = useNotifications();
-
-  //   const errorParams = {
-  //     title: "Wrong link",
-  //     message: "Try another one",
-  //     autoClose: 1500,
-  //     color: "red",
-  //   };
-
   const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
 
@@ -85,8 +70,6 @@ const useWikiLogic = () => {
 
     const parent = target.parentNode as HTMLAnchorElement;
     const parentHref = getFilteredLink(parent?.attributes[0]?.value);
-
-
 
     // handle navigation and leave
     if (handleNavigation(parentHref)) {
@@ -109,6 +92,8 @@ const useWikiLogic = () => {
     if (filterOtherStuff(target)) {
       return;
     }
+
+    errorToast();
   };
 
   return { handleWikiArticleClick };
