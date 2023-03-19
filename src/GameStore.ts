@@ -28,6 +28,7 @@ const initialState = {
   history: [],
   startingArticle: '',
   endingArticle: '',
+  currentArticle: '',
   isGameRunning: false,
 };
 
@@ -69,3 +70,9 @@ export const useEndingArticle = () => useGameStore((state) => state.endingArticl
 export const useHistory = () => useGameStore((state) => state.history);
 export const useClicks = () =>
   useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
+export const useCurrentArticle = () => useGameStore((state) => state.history.slice(-1)?.[0]?.title);
+export const useIsWin = () =>
+  useGameStore((state) => {
+    const currentArticle = state.history.slice(-1)?.[0]?.title;
+    return state.endingArticle === currentArticle;
+  });

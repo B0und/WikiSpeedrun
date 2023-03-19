@@ -1,9 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
-import { useGameStoreActions, useStartingArticle } from '../../GameStore';
-import { useStopwatchActions } from '../StopwatchContext';
-import { WikiApiArticle } from './Wiki.types';
-import { usePauseWhileLoading } from './WikiDisplay.utils';
+import { usePauseWhileLoading, useWikiQuery } from './WikiDisplay.utils';
 import useWikiLogic from './WikiLogic';
 
 import './unreset.css';
@@ -11,53 +6,9 @@ import './vec2022-base.css';
 import './vector2022.css';
 import './overrides.css';
 
-const getArticleData = async (title: string) => {
-  if (!title) return;
-
-  const resp = await fetch(
-    'https://en.wikipedia.org/w/api.php?' +
-      new URLSearchParams({
-        page: title,
-        origin: '*',
-        action: 'parse',
-        format: 'json',
-        disableeditsection: 'true',
-        redirects: 'true', // automatically redirects from plural form
-      })
-  );
-  return resp.json() as Promise<WikiApiArticle>;
-};
-
 const WikiDisplay = () => {
-  const startingArticle = useStartingArticle();
-  const { addHistoryArticle } = useGameStoreActions();
-  const routeParams = useParams();
   const { handleWikiArticleClick } = useWikiLogic();
-
-  const { getFormattedTime, start } = useStopwatchActions();
-
-  const wikiArticle = routeParams.wikiTitle || startingArticle;
-
-  const { data, isFetching } = useQuery({
-    queryKey: ['article', wikiArticle],
-    queryFn: () => getArticleData(wikiArticle),
-    refetchOnWindowFocus: false,
-    enabled: Boolean(wikiArticle),
-    select: (data) => ({
-      html: data?.parse?.text?.['*'],
-      title: data?.parse?.title,
-      pageid: data?.parse?.pageid,
-    }),
-    onSuccess: (data) => {
-      // add to history
-      const time = getFormattedTime();
-      addHistoryArticle({ title: data.title || '', time: `${time.min}:${time.sec}.${time.ms}` });
-      start();
-    },
-    onSettled: () => {
-      // do stuff
-    },
-  });
+  const { isFetching, data } = useWikiQuery();
 
   usePauseWhileLoading(isFetching);
 
