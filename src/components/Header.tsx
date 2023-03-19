@@ -51,6 +51,5 @@ const Header = () => {
     </div>
   );
 };
-// hsla(203, 66%, 56%)
 
 export default Header;

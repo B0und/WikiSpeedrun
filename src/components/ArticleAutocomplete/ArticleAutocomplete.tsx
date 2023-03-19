@@ -39,7 +39,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   const [inputText, setInputText] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
 
-  const debouncedInputText = useDebounce(inputText).toLowerCase();
+  const debouncedInputText = useDebounce(inputText, 500).toLowerCase();
 
   const { data, isFetching } = useQuery({
     queryKey: ['selectOptions', debouncedInputText],
@@ -117,22 +117,11 @@ const customStyles: StylesConfig<AutocompleteOption> = {
   control: (base) => ({
     ...base,
     width: '300px',
-    // flexDirection: 'row-reverse',
-  }),
-  clearIndicator: (base) => ({
-    ...base,
-    // position: 'absolute',
-    // right: 0,
-  }),
-  valueContainer: (base) => ({
-    ...base,
-    // paddingRight: '2.3rem',
+    '&:hover': {
+      borderColor: 'hsla(203, 66%, 56%)',
+    },
+    '&:focus': {
+      boxShadow: '0 0 0 1px hsla(203, 66%, 56%)',
+    },
   }),
 };
-
-// const Input = (props: any) => (
-//   <components.Input
-//     {...props}
-//     inputClassName="outline-none border-none shadow-none focus:ring-transparent"
-//   />
-// );
