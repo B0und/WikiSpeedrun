@@ -1,9 +1,29 @@
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useEndingArticle } from '../../GameStore';
 // import { useNotifications } from "@mantine/notifications";
+
+const isWikiLink = (hrefText: string | null) => {
+  if (!hrefText) return null;
+  if (hrefText.startsWith('/wiki/')) {
+    return hrefText;
+  }
+
+  return null;
+};
+
+const validateNavigation = (hrefText: string | null) => {
+  if (!hrefText) return null;
+  if (hrefText.startsWith('#')) {
+    return hrefText;
+  } else {
+    return null;
+  }
+};
 
 const useWikiLogic = () => {
   const navigate = useNavigate();
+  const targetArticle = useEndingArticle();
   //   const notifications = useNotifications();
 
   //   const errorParams = {
@@ -13,23 +33,7 @@ const useWikiLogic = () => {
   //     color: "red",
   //   };
 
-  const validateHref = (hrefText: string) => {
-    if (hrefText === undefined) return null;
-    if (hrefText.startsWith('/wiki/')) {
-      return hrefText;
-    }
-
-    return null;
-  };
-
-  const validateNavigation = (hrefText: string) => {
-    if (hrefText === undefined) return null;
-    if (hrefText.startsWith('#')) {
-      return hrefText;
-    } else {
-      return null;
-    }
-  };
+  // const checkIfWin = () => {};
 
   const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -37,32 +41,41 @@ const useWikiLogic = () => {
     const target = e.target as HTMLAnchorElement;
 
     // if clicked on a link
-    const hrefText = target?.attributes[0]?.value;
-    let href = validateHref(hrefText);
+    const hrefText = isWikiLink(target?.attributes[0]?.value);
+    const parent = target.parentNode as HTMLAnchorElement;
+    const parentHref = isWikiLink(parent?.attributes[0]?.value);
 
     //  Show error:
     // if its a cite note
-    // an image
-    if (hrefText?.includes('#cite_note-') || target?.nodeName === 'IMG') {
+    // or an image
+    console.log(hrefText);
+    console.log(target);
+    if (
+      !hrefText ||
+      hrefText?.includes('#cite_note-') ||
+      target?.nodeName === 'IMG' ||
+      hrefText.startsWith('/wiki/Wikipedia:') ||
+      hrefText.startsWith('/wiki/Template:') ||
+      hrefText.startsWith('/wiki/Portal:')
+    ) {
       //   notifications.showNotification(errorParams);
       return;
     }
 
-    if (href) {
-      navigate(href);
+    if (hrefText) {
+      console.log('hrefText:', decodeURI(hrefText));
+      navigate(hrefText);
       return;
     }
 
-    const parent = target.parentNode as HTMLAnchorElement;
     // if parent is a link
-    href = validateHref(parent?.attributes[0]?.value);
-    if (href) {
-      navigate(href);
+    if (parentHref) {
+      navigate(parentHref);
       return;
     }
 
     // if clicked on navigation link
-    let navigateId = validateNavigation(parent?.attributes[0]?.value);
+    let navigateId = validateNavigation(parentHref);
     if (navigateId) {
       // try to scroll to the element
       navigateId = navigateId.replaceAll('#', '');

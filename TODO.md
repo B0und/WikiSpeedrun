@@ -4,7 +4,7 @@ TODO
 [] - win screen
 [] - dark theme
 [] - notification system
-[] - input clear button
+[x] - input clear button
 Ideas:
 
 i18n: https://github.com/lingui/js-lingui

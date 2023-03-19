@@ -1,0 +1,339 @@
+.wiki-insert cite,
+.wiki-insert dfn {
+  font-style: inherit;
+}
+.wiki-insert q {
+  quotes: '"' '"' "'" "'";
+}
+.wiki-insert blockquote {
+  overflow: hidden;
+  margin: 1em 0;
+  padding: 0 40px;
+}
+.wiki-insert small {
+  font-size: 85%;
+}
+.mw-body-content sub,
+.mw-body-content sup {
+  font-size: 80%;
+}
+.ns-talk .mw-body-content dd {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+.client-js .mw-special-Watchlist #watchlist-message,
+.client-js .collapsible:not(.mw-made-collapsible).collapsed > tbody > tr:not(:first-child),
+.client-js .outercollapse .innercollapse.mw-collapsible:not(.mw-made-collapsible) > p,
+.client-js .outercollapse .innercollapse.mw-collapsible:not(.mw-made-collapsible) > table,
+.client-js .outercollapse .innercollapse.mw-collapsible:not(.mw-made-collapsible) > thead + tbody,
+.client-js
+  .outercollapse
+  .innercollapse.mw-collapsible:not(.mw-made-collapsible)
+  tr:not(:first-child),
+.client-js
+  .outercollapse
+  .innercollapse.mw-collapsible:not(.mw-made-collapsible)
+  .mw-collapsible-content,
+#editpage-specialchars {
+  display: none;
+}
+.wiki-insert ol.references {
+  font-size: 90%;
+  margin-bottom: 0.5em;
+}
+span[rel='mw:referencedBy'] {
+  counter-reset: mw-ref-linkback 0;
+}
+span[rel='mw:referencedBy'] > a::before {
+  content: counter(mw-ref-linkback, lower-alpha);
+  font-size: 80%;
+  font-weight: bold;
+  font-style: italic;
+}
+.wiki-insert a[rel='mw:referencedBy']::before {
+  font-weight: bold;
+  content: '^';
+}
+span[rel='mw:referencedBy']::before {
+  content: '^ ';
+}
+.mw-ref > a[data-mw-group='lower-alpha']::after {
+  content: '[' counter(mw-Ref, lower-alpha) ']';
+}
+.mw-ref > a[data-mw-group='upper-alpha']::after {
+  content: '[' counter(mw-Ref, upper-alpha) ']';
+}
+.mw-ref > a[data-mw-group='decimal']::after {
+  content: '[' counter(mw-Ref, decimal) ']';
+}
+.mw-ref > a[data-mw-group='lower-roman']::after {
+  content: '[' counter(mw-Ref, lower-roman) ']';
+}
+.mw-ref > a[data-mw-group='upper-roman']::after {
+  content: '[' counter(mw-Ref, upper-roman) ']';
+}
+.mw-ref > a[data-mw-group='lower-greek']::after {
+  content: '[' counter(mw-Ref, lower-greek) ']';
+}
+.mw-parser-output .mw-collapsible-toggle:not(.mw-ui-button) {
+  font-weight: normal;
+  padding-right: 0.2em;
+  padding-left: 0.2em;
+}
+.mw-collapsible-leftside-toggle .mw-collapsible-toggle {
+  float: left;
+}
+.wikitable td ul,
+.wikitable td ol,
+.wikitable td dl {
+  text-align: left;
+}
+.mw-parser-output a[href$='.pdf'].external,
+.mw-parser-output a[href*='.pdf?'].external,
+.mw-parser-output a[href*='.pdf#'].external,
+.mw-parser-output a[href$='.PDF'].external,
+.mw-parser-output a[href*='.PDF?'].external,
+.mw-parser-output a[href*='.PDF#'].external {
+  background: url(//upload.wikimedia.org/wikipedia/commons/4/4d/Icon_pdf_file.png) no-repeat right;
+  padding: 8px 18px 8px 0;
+}
+div.mw-warning-with-logexcerpt,
+div.mw-lag-warn-high,
+div.mw-cascadeprotectedwarning,
+div#mw-protect-cascadeon,
+div.titleblacklist-warning {
+  clear: both;
+  margin: 0.2em 0;
+  border: 1px solid #bb7070;
+  background-color: #ffdbdb;
+  padding: 0.25em 0.9em;
+  box-sizing: border-box;
+}
+.mw-contributions-blocked-notice-partial .mw-warning-with-logexcerpt {
+  border-color: #fc3;
+  background-color: #fef6e7;
+}
+#wpUploadDescription {
+  height: 13em;
+}
+figure[typeof~='mw:File/Thumb'],
+figure[typeof~='mw:File/Frame'],
+.thumbinner {
+  min-width: 100px;
+}
+#mw-subcategories,
+#mw-pages,
+#mw-category-media,
+#filehistory,
+#wikiPreview,
+#wikiDiff {
+  clear: both;
+}
+.mw-tag-markers {
+  font-style: italic;
+  font-size: 90%;
+}
+.checkuser-show,
+.sysop-show,
+.abusefilter-show,
+.abusefilter-helper-show,
+.patroller-show,
+.templateeditor-show,
+.extendedmover-show,
+.extendedconfirmed-show,
+.autoconfirmed-show,
+.user-show {
+  display: none;
+}
+.ve-ui-mwNoticesPopupTool-item .editnotice-redlink,
+.ve-ui-mwNoticesPopupTool-item .mbox-image,
+.ve-ui-mwNoticesPopupTool-item .mbox-imageright {
+  display: none !important;
+}
+ul.permissions-errors {
+  margin: 0;
+}
+ul.permissions-errors > li {
+  list-style: none;
+}
+span.mwe-math-mathml-inline {
+  font-size: 118%;
+}
+.mwe-math-fallback-image-display,
+.mwe-math-mathml-display {
+  margin-left: 1.6em !important;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+.mwe-math-mathml-display math {
+  display: inline;
+}
+@media screen {
+  #content .gallerybox div.thumb {
+    background-color: #f8f9fa;
+  }
+  .gallerybox .thumb img {
+    background: #fff url(//upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png) repeat;
+  }
+  .ns-0 .gallerybox .thumb img,
+  .ns-2 .gallerybox .thumb img,
+  .ns-100 .gallerybox .thumb img {
+    background-image: none;
+  }
+  #siteSub {
+    display: block;
+  }
+}
+.flaggedrevs_draft_synced,
+.flaggedrevs_stable_synced,
+#t-upload,
+.mw-special-Book #coll-downloadbox {
+  display: none;
+}
+.wiki-insert .infobox {
+  border: 1px solid #a2a9b1;
+  border-spacing: 3px;
+  background-color: #f8f9fa;
+  color: black;
+  margin: 0.5em 0 0.5em 1em;
+  padding: 0.2em;
+  float: right;
+  clear: right;
+  font-size: 88%;
+  line-height: 1.5em;
+  width: 22em;
+}
+.wiki-insert .infobox-header,
+.wiki-insert .infobox-label,
+.wiki-insert .infobox-above,
+.wiki-insert .infobox-full-data,
+.wiki-insert .infobox-data,
+.wiki-insert .infobox-below,
+.wiki-insert .infobox-subheader,
+.wiki-insert .infobox-image,
+.wiki-insert .infobox-navbar,
+.wiki-insert .infobox th,
+.wiki-insert .infobox td {
+  vertical-align: top;
+}
+.wiki-insert .infobox-label,
+.wiki-insert .infobox-data,
+.wiki-insert .infobox th,
+.wiki-insert .infobox td {
+  text-align: left;
+}
+.wiki-insert .infobox .infobox-above,
+.wiki-insert .infobox .infobox-title,
+.wiki-insert .infobox caption {
+  font-size: 125%;
+  font-weight: bold;
+  text-align: center;
+}
+.wiki-insert .infobox-title,
+.wiki-insert .infobox caption {
+  padding: 0.2em;
+}
+.wiki-insert .infobox .infobox-header,
+.wiki-insert .infobox .infobox-subheader,
+.wiki-insert .infobox .infobox-image,
+.wiki-insert .infobox .infobox-full-data,
+.wiki-insert .infobox .infobox-below {
+  text-align: center;
+}
+.wiki-insert .infobox .infobox-navbar {
+  text-align: right;
+}
+.wiki-insert .wikitable.plainrowheaders th[scope='row'],
+.wiki-insert .wikitable.plainrowheaders th[scope='rowgroup'] {
+  font-weight: normal;
+  text-align: left;
+}
+.wiki-insert  .nounderlines a,
+.wiki-insert  .IPA a:link,
+.wiki-insert  .IPA a:visited {
+  text-decoration: none !important;
+}
+.wiki-insert .nowrap,
+.wiki-insert .nowraplinks a {
+  white-space: nowrap;
+}
+.wiki-insert .wrap,
+.wiki-insert .wraplinks a {
+  white-space: normal;
+}
+.wiki-insert span.texhtml {
+  font-family: 'Nimbus Roman No9 L', 'Times New Roman', Times, serif;
+  font-size: 118%;
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-font-feature-settings: 'lnum', 'tnum', 'kern' 0;
+  font-feature-settings: 'lnum', 'tnum', 'kern' 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-kerning: none;
+}
+span.texhtml span.texhtml {
+  font-size: 100%;
+}
+@media screen {
+  .nochecker .gallerybox .thumb img {
+    background-image: none;
+  }
+}
+.skin-vector-2022 #coordinates {
+  top: 2em;
+}
+@media (max-width: 719px) {
+  .skin-vector-2022 a.external {
+    word-break: break-word;
+  }
+}
+.page-Main_Page #deleteconfirm,
+.page-Main_Page #t-cite,
+.page-Main_Page #footer-info-lastmod,
+.action-view.page-Main_Page #siteSub,
+.action-view.page-Main_Page #contentSub,
+.action-view.page-Main_Page #contentSub2 {
+  display: none !important;
+}
+.wiki-insert #coordinates {
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: right;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+  text-align: right;
+  text-indent: 0;
+  font-size: 85%;
+  text-transform: none;
+  white-space: nowrap;
+}
+.ve-ce-surface-enabled #coordinates {
+  margin-right: 2em;
+  margin-top: -1em;
+}
+.mw-indicator #coordinates {
+  position: absolute;
+  top: 3.5em;
+  right: 0;
+  line-height: 1.6;
+  text-align: right;
+  font-size: 92%;
+  white-space: nowrap;
+}
+body.skin-vector-legacy div.flaggedrevs_short {
+  position: absolute;
+  top: -3em;
+  right: 100px;
+  z-index: 1;
+}
+body.skin-vector-legacy #siteSub {
+  font-size: 92%;
+}
+body.skin-vector-legacy .mw-indicators {
+  padding-top: 0.4em;
+}
+.mw-body-content blockquote {
+  border-left: none;
+}
