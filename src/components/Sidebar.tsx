@@ -1,7 +1,7 @@
 import { Resizable } from 're-resizable';
 import { useClicks } from '../GameStore';
 import HistoryTable from './HistoryTable';
-import Stopwatch from './Stopwatch';
+import { Stopwatch } from './Stopwatch';
 
 const Sidebar = () => {
   const clicks = useClicks();

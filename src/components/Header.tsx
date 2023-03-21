@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { GitHub, Moon, Sun } from 'react-feather';
+import { ResultDialog } from './ResultDialog';
 
 const links = [
   { name: 'Play', path: '/settings' },
@@ -32,6 +33,7 @@ const Header = () => {
             </li>
           ))}
         </ul>
+        <ResultDialog />
         <ul className="ml-auto flex h-full gap-4">
           <li className="h-full">
             <button className="flex h-full w-12 items-center justify-center hover:text-primary-blue">

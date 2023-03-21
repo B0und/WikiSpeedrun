@@ -14,7 +14,9 @@ https://maps.wikimedia.org/img/osm-intl,10,a,a,250x200.png?lang=en&domain=en.wik
 
 article preview
 
+typesafe routing
 ---
+
 
 time-travel after game
 missed-wins count

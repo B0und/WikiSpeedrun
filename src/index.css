@@ -9,6 +9,10 @@
     @apply h-full font-sans;
   }
 
+   #root {
+    @apply isolate;
+  }
+
   /* For Firefox Browser */
   .scrollbar {
     scrollbar-width: auto;

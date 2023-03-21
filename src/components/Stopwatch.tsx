@@ -1,6 +1,6 @@
 import { useStopwatchValue } from './StopwatchContext';
 
-const Stopwatch = () => {
+export const Stopwatch = () => {
   const { time } = useStopwatchValue();
 
   return (
@@ -12,5 +12,3 @@ const Stopwatch = () => {
     </div>
   );
 };
-
-export default Stopwatch;
