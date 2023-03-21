@@ -1,7 +1,8 @@
 TODO
+[] - add reset run logic
 [x] - random button selects article
 [x] - modify select styles
-[] - win screen
+[x] - win screen
 [] - dark theme
 [x] - notification system
 [x] - input clear button
