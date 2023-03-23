@@ -42,6 +42,7 @@ specifiers:
   tailwindcss: ^3.2.7
   typesafe-i18n: ^5.24.2
   typescript: ^4.9.5
+  use-local-storage: ^2.3.6
   vite: ^4.2.0
   vite-plugin-svgr: ^2.4.0
   zustand: ^4.3.6
@@ -69,6 +70,7 @@ dependencies:
   react-select: 5.7.0_zula6vjvt3wdocc4mwcxqa6nzi
   react-stately: 3.21.0_react@18.2.0
   typesafe-i18n: 5.24.2_typescript@4.9.5
+  use-local-storage: 2.3.6_react@18.2.0
   vite-plugin-svgr: 2.4.0_vite@4.2.0
   zustand: 4.3.6_react@18.2.0
 
@@ -5218,6 +5220,14 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.0.28
+      react: 18.2.0
+    dev: false
+
+  /use-local-storage/2.3.6_react@18.2.0:
+    resolution: {integrity: sha512-OJQHWYbH2M5mMaSY6uYIbfzOm7eVz1fBYFw1wqQurCR2+gQb+FjVt0KzzDAsgTOSEUNVAbaiJ0I4WcNjRn7u5w==}
+    peerDependencies:
+      react: '>=16.8.1'
+    dependencies:
       react: 18.2.0
     dev: false
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GitHub, Moon, Sun } from 'react-feather';
 import { ResultDialog } from './ResultDialog';
+import { useThemeValue } from './ThemeContext';
 
 const links = [
   { name: 'Play', path: '/settings' },
@@ -8,9 +9,9 @@ const links = [
 ];
 
 const Header = () => {
-  const theme = 'light';
+  const { colorMode, switchTheme } = useThemeValue();
 
-  const imageSrc = theme === 'light' ? '/new-wiki-logo-light' : '/new-wiki-logo-dark';
+  const imageSrc = colorMode === 'light' ? '/new-wiki-logo-light' : '/new-wiki-logo-dark';
   return (
     <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3">
       <picture className="basis-[200px]">
@@ -36,8 +37,11 @@ const Header = () => {
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4">
           <li className="h-full">
-            <button className="flex h-full w-12 items-center justify-center hover:text-primary-blue">
-              {theme === 'light' ? <Sun /> : <Moon />}
+            <button
+              className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
+              onClick={switchTheme}
+            >
+              {colorMode === 'light' ? <Sun /> : <Moon />}
             </button>
           </li>
           <li className="h-full">

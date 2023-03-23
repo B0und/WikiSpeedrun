@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 
 const Layout = () => {
   return (
-    <div className="flex h-full max-h-full flex-col items-stretch bg-neutral-50 px-9 pt-4">
+    <div className="flex h-full max-h-full flex-col items-stretch bg-neutral-50 px-9 pt-4 dark:bg-gray-800">
       <Header />
 
       <div className="flex  min-h-0 flex-1 flex-row">
