@@ -70,6 +70,11 @@ const useWikiLogic = () => {
     const parent = target.parentNode as HTMLAnchorElement;
     const parentHref = getFilteredLink(parent?.attributes[0]?.value);
 
+    // not a link - exit
+    if (target.nodeName !== 'A' && parent.nodeName !== 'A') {
+      return;
+    }
+
     // handle navigation and leave
     if (handleNavigation(parentHref)) {
       return;
@@ -91,7 +96,6 @@ const useWikiLogic = () => {
     if (filterOtherStuff(target)) {
       return;
     }
-
     errorToast();
   };
 
