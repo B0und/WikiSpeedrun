@@ -8,7 +8,7 @@ const HistoryTable = () => {
       <table className="mb-auto w-full table-auto">
         <caption className=" text-start text-xl">History</caption>
 
-        <thead className="sticky top-0 h-9 bg-neutral-50 align-top mt-2">
+        <thead className="sticky top-0 h-9 bg-neutral-50 align-top mt-2 dark:bg-dark-surface">
           <tr>
             <th className="text-start">Article</th>
             <th className="text-start">Time</th>
@@ -16,7 +16,10 @@ const HistoryTable = () => {
         </thead>
         <tbody>
           {articleHistory.map((article) => (
-            <tr key={`${article.title}${article.time}`} className="even:bg-gray-200">
+            <tr
+              key={`${article.title}${article.time}`}
+              className="even:bg-gray-200 dark:even:bg-dark-surface-secondary"
+            >
               <td className="py-2 pr-4">{article.title}</td>
               <td className="py-2 pr-4">{article.time}</td>
             </tr>

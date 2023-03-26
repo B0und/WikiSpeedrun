@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -11,6 +11,9 @@ module.exports = {
         'primary-blue': 'hsla(203, 66%, 56%)',
         'secondary-blue': 'hsl(204, 87%, 81%, 0.5)',
         'secondary-border': '#c9c9c98f',
+        'dark-surface': '#1c1d1f',
+        'dark-surface-secondary': '#303030',
+        'dark-primary': '#e9e6e6',
       },
       fontFamily: {
         sans: ['Noto Sans', ...defaultTheme.fontFamily.sans],

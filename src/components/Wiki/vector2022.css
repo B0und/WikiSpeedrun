@@ -1268,7 +1268,7 @@ div.thumbinner {
     scroll-padding-top: 75px;
   }
   #wikiBody {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     color: #202122;
     overflow-y: scroll;
   }
@@ -1975,7 +1975,7 @@ div.thumbinner {
     margin-left: -14px;
     margin-top: 11px;
     padding: 6px 14px;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
   }
   .vector-feature-page-tools-enabled
     #vector-main-menu-pinned-container
@@ -2001,7 +2001,7 @@ div.thumbinner {
   }
   .vector-feature-page-tools-disabled .vector-main-menu {
     padding: 12px 19px 12px 9px;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
   }
   .vector-feature-page-tools-disabled .vector-main-menu-action .vector-main-menu-action-item {
     margin-top: 4px;
@@ -2948,7 +2948,7 @@ div.thumbinner {
 @media screen {
   div.thumbinner {
     border: 1px solid #c8ccd1;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     font-size: 94%;
   }
   .thumbimage {
@@ -3063,7 +3063,7 @@ div.thumbinner {
     display: none;
   }
   .wikitable {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     color: #202122;
     margin: 1em 0;
     border: 1px solid #a2a9b1;
@@ -3089,7 +3089,7 @@ div.thumbinner {
   }
   .catlinks {
     border: 1px solid #a2a9b1;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     padding: 5px;
     margin-top: 1em;
     clear: both;
@@ -3281,7 +3281,7 @@ div.thumbinner {
   .wiki-insert pre,
   .wiki-insert code,
   .mw-code {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     color: #000;
     border: 1px solid #eaecf0;
   }
@@ -3753,7 +3753,7 @@ ul.gallery.gallery.gallery.mw-gallery-slideshow {
 @media screen {
   li.gallerybox div.thumb {
     border: 1px solid #c8ccd1;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
   }
 }
 @media print {

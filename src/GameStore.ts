@@ -10,6 +10,7 @@ interface Actions {
   setEndingArticle: (article: string) => void;
   setIsGameRunning: (flag: boolean) => void;
   addHistoryArticle: (article: ArticleHistory) => void;
+  resetGame: () => void;
 }
 
 interface ArticleHistory {
@@ -28,7 +29,6 @@ const initialState = {
   history: [],
   startingArticle: '',
   endingArticle: '',
-  currentArticle: '',
   isGameRunning: false,
 };
 
@@ -55,6 +55,8 @@ const useGameStore = create<GameStore>()(
             false,
             'addHistoryArticle'
           ),
+        resetGame: () =>
+          set(() => ({ history: [], isGameRunning: false }), false, 'setStartingArticle'),
       },
     }),
     {

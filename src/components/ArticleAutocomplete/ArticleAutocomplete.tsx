@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import useDebounce from '../../hooks/useDebounce';
 import { WikiSearch } from './WikiSearch.types';
 import Select, { InputActionMeta, StylesConfig } from 'react-select';
+import { useThemeContext } from '../ThemeContext';
+import clsx from 'clsx';
 
 const getArticles = async (debouncedTerm: string) => {
   if (!debouncedTerm) return;
@@ -38,6 +40,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   const { label, placeholder, required, onSelect, defaultValue, selectId } = props;
   const [inputText, setInputText] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
+  const { colorMode } = useThemeContext();
+  const isDarkMode = colorMode === 'dark';
 
   const debouncedInputText = useDebounce(inputText, 500).toLowerCase();
 
@@ -106,6 +110,23 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
           return option.label === selectedOption;
         })}
         isMulti={false}
+        classNames={{
+          control: () => (isDarkMode ? 'dark:bg-dark-surface dark:text-dark-primary' : ''),
+          // valueContainer: () => (isDarkMode ? 'border-red-600' : ''),
+          menu: () => (isDarkMode ? 'dark:bg-dark-surface-secondary dark:text-dark-primary' : ''),
+          loadingIndicator: () => (isDarkMode ? 'dark:bg-dark-surface' : ''),
+          noOptionsMessage: () =>
+            isDarkMode ? 'dark:bg-dark-surface-secondary dark:text-dark-primary' : '',
+          input: () => (isDarkMode ? ' dark:text-dark-primary' : ''),
+          option: (state) =>
+            clsx(
+              state.isFocused && 'dark:bg-[#464242] dark:text-primary-blue',
+              isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`
+            ),
+
+          loadingMessage: () =>
+            isDarkMode ? 'dark:bg-dark-surface-secondary dark:text-dark-primary' : '',
+        }}
       />
     </div>
   );

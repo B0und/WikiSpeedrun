@@ -170,7 +170,7 @@ span.mwe-math-mathml-inline {
 }
 @media screen {
   #content .gallerybox div.thumb {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
   }
   .gallerybox .thumb img {
     background: #fff url(//upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png) repeat;
@@ -193,7 +193,7 @@ span.mwe-math-mathml-inline {
 .wiki-insert .infobox {
   border: 1px solid #a2a9b1;
   border-spacing: 3px;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   color: black;
   margin: 0.5em 0 0.5em 1em;
   padding: 0.2em;

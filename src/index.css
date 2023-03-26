@@ -9,7 +9,7 @@
     @apply h-full font-sans;
   }
 
-   #root {
+  #root {
     @apply isolate;
   }
 
@@ -46,5 +46,22 @@
   .dropdown-shadow {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px, rgba(0, 0, 0, 0.05) 0px 10px 15px -5px,
       rgba(0, 0, 0, 0.04) 0px 7px 7px -5px;
+  }
+
+  .wiki-dark-theme {
+    filter: invert(1) hue-rotate(180deg) !important;
+    color: #303030;
+  }
+
+  .wiki-dark-theme img {
+    filter: invert() hue-rotate(180deg);
+  }
+
+  .wiki-dark-theme a:visited {
+    color: #3366cc !important;
+  }
+
+  .wiki-dark-theme .mw-parser-output .ambox {
+    background-color: inherit;
   }
 }

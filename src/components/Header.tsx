@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GitHub, Moon, Sun } from 'react-feather';
 import { ResultDialog } from './ResultDialog';
-import { useThemeValue } from './ThemeContext';
+import { useThemeContext } from './ThemeContext';
 
 const links = [
   { name: 'Play', path: '/settings' },
@@ -9,7 +9,7 @@ const links = [
 ];
 
 const Header = () => {
-  const { colorMode, switchTheme } = useThemeValue();
+  const { colorMode, switchTheme } = useThemeContext();
 
   const imageSrc = colorMode === 'light' ? '/new-wiki-logo-light' : '/new-wiki-logo-dark';
   return (

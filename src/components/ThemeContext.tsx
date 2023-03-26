@@ -29,7 +29,7 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
   );
 };
 
-export function useThemeValue() {
+export function useThemeContext() {
   const context = React.useContext(ThemeContext);
 
   if (!context) {
