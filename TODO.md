@@ -1,5 +1,5 @@
 # TODO
-[] - dark theme
+[x] - dark theme
 [] - result css
 [] - give up button
 [] - twitter share button
@@ -9,7 +9,7 @@
 [x] - win screen
 [x] - notification system
 [x] - input clear button
-
+[] - handle article download errors
 
 # Ideas:
 

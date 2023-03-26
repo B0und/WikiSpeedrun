@@ -5,12 +5,14 @@ import {
   useClicks,
   useEndingArticle,
   useGameStoreActions,
+  useHistory,
   useIsWin,
   useStartingArticle,
 } from '../GameStore';
-import { Stopwatch } from './Stopwatch';
+
 import { useNavigate } from 'react-router-dom';
 import { useStopwatchActions } from './StopwatchContext';
+import { StopwatchDisplay } from './StopwatchDisplay';
 
 export const ResultDialog = () => {
   const [open, setOpen] = useState(false);
@@ -20,6 +22,8 @@ export const ResultDialog = () => {
   const { resetGame } = useGameStoreActions();
   const endingArticle = useEndingArticle();
   const { reset } = useStopwatchActions();
+  const history = useHistory();
+  const [lastArticle] = history.slice(-1);
   const clicks = useClicks();
   const isWin = useIsWin();
 
@@ -41,7 +45,11 @@ export const ResultDialog = () => {
           <Dialog.Description className="mt-[10px] mb-5 text-[15px] leading-normal">
             From {startingArticle} to {endingArticle} in {clicks} clicks.
           </Dialog.Description>
-          <Stopwatch />
+          <StopwatchDisplay
+            min={lastArticle?.time.min}
+            sec={lastArticle?.time.sec}
+            ms={lastArticle?.time.ms}
+          />
 
           <div className="mt-[25px] flex justify-end">
             <Dialog.Close asChild>

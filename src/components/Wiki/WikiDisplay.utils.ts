@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import {
@@ -45,15 +45,19 @@ export const useWikiQuery = () => {
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
   const isGameRunning = useIsGameRunning();
   const targetArticle = useEndingArticle();
-  const { getFormattedTime, start } = useStopwatchActions();
+  const { getFormattedTime, start, pause } = useStopwatchActions();
 
-  const handleWin = (article: NonNullable<(typeof query)['data']>) => {
-    if (article.title !== targetArticle) {
-      return false;
-    }
-    setIsGameRunning(false);
-    return true;
-  };
+  const handleWin = useCallback(
+    (article: NonNullable<(typeof query)['data']>) => {
+      if (article.title !== targetArticle) {
+        return false;
+      }
+      pause();
+      setIsGameRunning(false);
+      return true;
+    },
+    [pause, setIsGameRunning, targetArticle]
+  );
 
   const query = useQuery({
     queryKey: ['article', wikiArticle],
@@ -65,21 +69,28 @@ export const useWikiQuery = () => {
       title: data?.parse?.title,
       pageid: data?.parse?.pageid,
     }),
-    onSuccess: (data) => {
-      if (!isGameRunning) return;
-
-      const time = getFormattedTime();
-      addHistoryArticle({
-        title: data.title || '',
-        time: `${time.min}:${time.sec}.${time.ms}`,
-      });
-
-      if (handleWin(data)) {
-        return;
-      }
-
-      start();
-    },
+    // onSuccess: (data) => {
+    // }
   });
+
+  useEffect(() => {
+    if (!isGameRunning) return;
+
+    const time = getFormattedTime();
+
+    if (!query.data) return;
+    const { min, ms, sec } = time;
+    addHistoryArticle({
+      title: query.data.title || '',
+      time: { min, sec, ms },
+    });
+
+    if (handleWin(query.data)) {
+      return;
+    }
+
+    start();
+  }, [addHistoryArticle, getFormattedTime, handleWin, isGameRunning, query.data, start]);
+
   return query;
 };

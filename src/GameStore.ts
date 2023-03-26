@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { StopwatchProps } from './components/StopwatchDisplay';
 
 /*
  This file is only for runtime data that gets erased of webpage restart 
@@ -15,7 +16,7 @@ interface Actions {
 
 interface ArticleHistory {
   title: string;
-  time: string;
+  time: StopwatchProps;
 }
 interface GameStore {
   actions: Actions;
@@ -48,7 +49,7 @@ const useGameStore = create<GameStore>()(
             (state) => {
               // without this, first article will be slightly later than 0
               if (state.history.length === 0) {
-                article.time = '00:00.000';
+                article.time.ms = '000';
               }
               return { history: [...state.history, article] };
             },
@@ -56,7 +57,13 @@ const useGameStore = create<GameStore>()(
             'addHistoryArticle'
           ),
         resetGame: () =>
-          set(() => ({ history: [], isGameRunning: false }), false, 'setStartingArticle'),
+          set(
+            () => {
+              return { history: [], isGameRunning: false };
+            },
+            false,
+            'resetGame'
+          ),
       },
     }),
     {

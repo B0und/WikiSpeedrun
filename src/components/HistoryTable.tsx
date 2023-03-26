@@ -17,11 +17,13 @@ const HistoryTable = () => {
         <tbody>
           {articleHistory.map((article) => (
             <tr
-              key={`${article.title}${article.time}`}
+              key={`${article.title}${article.time.min}${article.time.sec}${article.time.ms}`}
               className="even:bg-gray-200 dark:even:bg-dark-surface-secondary"
             >
               <td className="py-2 pr-4">{article.title}</td>
-              <td className="py-2 pr-4">{article.time}</td>
+              <td className="py-2 pr-4">
+                {article.time.min}:{article.time.sec}.{article.time.ms}
+              </td>
             </tr>
           ))}
         </tbody>

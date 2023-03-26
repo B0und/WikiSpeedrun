@@ -1,14 +1,8 @@
 import { useStopwatchValue } from './StopwatchContext';
+import { StopwatchDisplay } from './StopwatchDisplay';
 
 export const Stopwatch = () => {
   const { time } = useStopwatchValue();
 
-  return (
-    <div className="">
-      <span className="stopwatch text-5xl">
-        {time.min}:{time.sec}
-      </span>
-      <span className="stopwatch text-2xl">.{time.ms}</span>
-    </div>
-  );
+  return <StopwatchDisplay min={time.min} sec={time.sec} ms={time.ms} />;
 };
