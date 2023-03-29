@@ -1,6 +1,6 @@
 # TODO
 [x] - dark theme
-[] - result css
+[x] - result css
 [] - give up button
 [] - twitter share button
 [x] - add reset run logic

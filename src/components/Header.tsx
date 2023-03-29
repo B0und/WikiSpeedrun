@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { GitHub, Moon, Sun } from 'react-feather';
 import { ResultDialog } from './ResultDialog';
 import { useThemeContext } from './ThemeContext';
+import { useIsGameRunning } from '../GameStore';
 
 const links = [
   { name: 'Play', path: '/settings' },
@@ -10,6 +11,7 @@ const links = [
 
 const Header = () => {
   const { colorMode, switchTheme } = useThemeContext();
+  const isGameRunning = useIsGameRunning();
 
   const imageSrc = colorMode === 'light' ? '/new-wiki-logo-light' : '/new-wiki-logo-dark';
   return (
@@ -26,13 +28,15 @@ const Header = () => {
       </picture>
       <nav className="flex h-full flex-1 items-center gap-4">
         <ul className="flex gap-4">
-          {links.map((link) => (
-            <li key={link.path}>
-              <Link to={link.path} className="p-4 hover:text-primary-blue">
-                {link.name}
-              </Link>
-            </li>
-          ))}
+          {!isGameRunning &&
+            links.map((link) => (
+              <li key={link.path}>
+                <Link to={link.path} className="p-4 hover:text-primary-blue">
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          {isGameRunning && <button className="p-4 hover:text-primary-blue">Give up</button>}
         </ul>
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4">
