@@ -13,7 +13,7 @@ const getRandomArticles = async () => {
         format: 'json',
         generator: 'random',
         grnnamespace: '0',
-        grnlimit: '100',
+        grnlimit: '10',
         prop: 'linkshere',
         lhnamespace: '0',
         lhlimit: '500',
@@ -21,6 +21,7 @@ const getRandomArticles = async () => {
         lhprop: 'pageid',
       })
   );
+
   return res.json() as WikiRandom;
 };
 
@@ -40,7 +41,7 @@ const RandomButton = ({ queryKey, onSuccess }: RandomButtonProps) => {
 
   return (
     <button
-      className={clsx('w-fit p-2 mb-[-2px]', isFetching && 'animate-spin-dice')}
+      className={clsx('mb-[-2px] w-fit p-2', isFetching && 'animate-spin-dice')}
       type="button"
       onClick={() => refetch()}
     >

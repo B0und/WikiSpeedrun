@@ -54,7 +54,11 @@
   }
 
   .wiki-dark-theme img {
-    filter: invert() hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  .wiki-dark-theme .mwe-math-element img {
+    filter: invert(0) hue-rotate(0deg);
   }
 
   .wiki-dark-theme a:visited {

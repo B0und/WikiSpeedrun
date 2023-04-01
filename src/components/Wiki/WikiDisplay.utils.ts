@@ -41,6 +41,7 @@ const getArticleData = async (title: string) => {
 export const useWikiQuery = () => {
   const startingArticle = useStartingArticle();
   const routeParams = useParams();
+  const isGameRunning = useIsGameRunning();
   const wikiArticle = routeParams.wikiTitle || startingArticle;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
 
@@ -70,6 +71,7 @@ export const useWikiQuery = () => {
       pageid: data?.parse?.pageid,
     }),
     onSuccess: (data) => {
+      if (!isGameRunning) return;
       const time = getFormattedTime();
 
       const { min, ms, sec } = time;

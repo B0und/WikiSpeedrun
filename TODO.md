@@ -1,7 +1,7 @@
 # TODO
 [x] - dark theme
 [x] - result css
-[] - give up button
+[x] - give up button
 [] - twitter share button
 [x] - add reset run logic
 [x] - random button selects article

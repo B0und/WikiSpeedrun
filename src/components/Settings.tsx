@@ -5,6 +5,7 @@ import ArticleAutocomplete from './ArticleAutocomplete/ArticleAutocomplete';
 import RandomButton from './RandomButton/RandomButton';
 import { handleOnRandomSuccess } from './Settings.helpers';
 import { useStopwatchActions } from './StopwatchContext';
+import { useResetGame } from '../hooks/useResetGame';
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -12,9 +13,11 @@ const Settings = () => {
   const { setIsGameRunning, setStartingArticle, setEndingArticle } = useGameStoreActions();
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
+  const resetGame = useResetGame();
 
-  const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
+  const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    await resetGame();
     navigate('/wiki');
     startStopwatch();
     setIsGameRunning(true);
@@ -23,7 +26,7 @@ const Settings = () => {
   return (
     <div>
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">Settings</h3>
-      <p className="pt-4 pb-8">
+      <p className="pb-8 pt-4">
         Start typing and then select values from the dropdown list or press the random button.
       </p>
 
@@ -57,6 +60,8 @@ const Settings = () => {
           <RandomButton
             queryKey="endingArticle"
             onSuccess={(data) => {
+              console.log(data.query?.pages);
+
               handleOnRandomSuccess({ data, setArticle: setEndingArticle });
             }}
           />

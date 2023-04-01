@@ -15,7 +15,7 @@ const Sidebar = () => {
         minHeight="100%"
         minWidth={200}
         maxWidth={1000}
-        className="border-r-[2px] border-secondary-blue  pt-3 pr-3 hover:border-r-[2px] hover:border-primary-blue"
+        className="border-r-[2px] border-secondary-blue  pr-3 pt-3 hover:border-r-[2px] hover:border-primary-blue"
         enable={{
           top: false,
           right: true,
@@ -29,7 +29,7 @@ const Sidebar = () => {
       >
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
-          <div className="mt-auto flex w-full items-baseline justify-between pb-6 pr-6 overflow-auto flex-wrap">
+          <div className="flex-wra mt-auto flex w-full shrink-0 items-baseline justify-between overflow-auto pb-6 pr-6">
             <span>Clicks: {clicks}</span>
             <Stopwatch />
           </div>

@@ -8,11 +8,10 @@ export const useResetGame = () => {
   const { resetStoreState } = useGameStoreActions();
   const { resetStopwatch } = useStopwatchActions();
 
-  const resetGameFn = () => {
-    queryClient.invalidateQueries({ queryKey: ['article'] });
+  return async () => {
+    await queryClient.removeQueries({ queryKey: ['article'] });
     resetStoreState();
     resetStopwatch();
     navigate('/settings');
   };
-  return resetGameFn;
 };
