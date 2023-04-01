@@ -48,6 +48,10 @@
       rgba(0, 0, 0, 0.04) 0px 7px 7px -5px;
   }
 
+  .wiki-insert a:visited {
+    color: #3366cc !important;
+  }
+
   .wiki-dark-theme {
     filter: invert(1) hue-rotate(180deg) !important;
     color: #303030;

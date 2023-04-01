@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 
 import {
+  useCheatingAttempts,
   useClicks,
   useEndingArticle,
   useHistory,
@@ -25,6 +26,7 @@ export const ResultDialog = () => {
   const [lastArticle] = history.slice(-1);
   const clicks = useClicks();
   const isWin = useIsWin();
+  const cheatingAttempts = useCheatingAttempts()
 
   useEffect(() => {
     setOpen(isWin);
@@ -32,9 +34,7 @@ export const ResultDialog = () => {
 
   const resultStats = [
     { name: 'Article clicks', value: clicks },
-    { name: 'Missed wins', value: 140 },
-    { name: 'Cheating attempts', value: 777 },
-    { name: 'Achievements unlocked', value: 66 },
+    { name: 'Cheating attempts', value: cheatingAttempts },
   ];
 
   return (
@@ -51,7 +51,7 @@ export const ResultDialog = () => {
       triggerNode={
         isWin && (
           <Dialog.Trigger asChild>
-            <button className="">Results</button>
+            <button className="p-4 hover:text-primary-blue">Results</button>
           </Dialog.Trigger>
         )
       }

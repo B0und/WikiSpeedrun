@@ -40,8 +40,6 @@ const WikiDisplay = () => {
                 className="skin-vector vector-body skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject  skin-vector-2022 action-view uls-dialog-sticky-hide vector-below-page-title"
               >
                 <div
-                  // isDarkTheme={colorMode === "dark"}
-                  // className={clsx(isDarkTheme && 'wiki-dark-theme')}
                   onClick={handleWikiArticleClick}
                   dangerouslySetInnerHTML={{ __html: data?.html }}
                 />

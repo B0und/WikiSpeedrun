@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useGameStoreActions, useIsGameRunning } from './GameStore';
 
 const isNotDev = process.env.NODE_ENV !== 'development';
 
@@ -13,19 +14,26 @@ export const useWikiConsoleLogo = () => {
 };
 
 export const useNoCheating = () => {
-  const disableSearch = (e: globalThis.KeyboardEvent) => {
-    if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
-      if (isNotDev) {
+  const { increaseCheatingAttemptsCounter } = useGameStoreActions();
+  const isGameRunning = useIsGameRunning();
+  const disableSearch = useCallback(
+    (e: globalThis.KeyboardEvent) => {
+      if (!isGameRunning) return;
+      if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+        // if (isNotDev) {
+        // }
         e.preventDefault();
+        increaseCheatingAttemptsCounter();
         console.error('No cheating!');
       }
-    }
-  };
+    },
+    [increaseCheatingAttemptsCounter, isGameRunning]
+  );
   useEffect(() => {
     window.addEventListener('keydown', disableSearch);
 
     return () => {
       window.removeEventListener('keydown', disableSearch);
     };
-  }, []);
+  }, [disableSearch]);
 };

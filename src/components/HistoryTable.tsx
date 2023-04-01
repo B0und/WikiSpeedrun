@@ -34,7 +34,10 @@ const HistoryTable = () => {
                 <td className="py-2 pr-4">{article.title}</td>
               ) : (
                 <td>
-                  <button onClick={() => navigate(`/wiki/${article.title}`)}>
+                  <button
+                    className="text-primary-blue underline"
+                    onClick={() => navigate(`/wiki/${article.title}`)}
+                  >
                     {article.title}
                   </button>
                 </td>

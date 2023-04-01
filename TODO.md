@@ -1,4 +1,7 @@
 # TODO
+[] - i18n: https://github.com/lingui/js-lingui
+[] - analytics
+[] - ship it
 [x] - dark theme
 [x] - result css
 [x] - give up button
@@ -13,15 +16,14 @@
 
 # Ideas:
 
-i18n: https://github.com/lingui/js-lingui
 
 article preview
 
 typesafe routing
 ---
 
-
-time-travel after game
+cheating attempts
+[x] -time-travel after game
 missed-wins count (highlight winning link)
 longest title (# of characters)
 achievements

@@ -3,7 +3,7 @@ import { devtools } from 'zustand/middleware';
 import { StopwatchProps } from './components/StopwatchDisplay';
 
 /*
- This file is only for runtime data that gets erased of webpage restart 
+ This file is only for runtime data that gets erased on webpage restart 
 */
 
 interface Actions {
@@ -12,6 +12,7 @@ interface Actions {
   setIsGameRunning: (flag: boolean) => void;
   addHistoryArticle: (article: ArticleHistory) => void;
   resetStoreState: () => void;
+  increaseCheatingAttemptsCounter: () => void;
 }
 
 interface ArticleHistory {
@@ -24,19 +25,21 @@ interface GameStore {
   startingArticle: string;
   endingArticle: string;
   isGameRunning: boolean;
+  cheatingAttempts: number;
 }
 
 const initialState = {
   history: [],
-  startingArticle: '',
-  endingArticle: '',
   isGameRunning: false,
+  cheatingAttempts: 0,
 };
 
 const useGameStore = create<GameStore>()(
   devtools(
     (set) => ({
       ...initialState,
+      startingArticle: '',
+      endingArticle: '',
       actions: {
         setStartingArticle: (title: string) =>
           set(() => ({ startingArticle: title }), false, 'setStartingArticle'),
@@ -56,13 +59,12 @@ const useGameStore = create<GameStore>()(
             false,
             'addHistoryArticle'
           ),
-        resetStoreState: () =>
+        resetStoreState: () => set(() => initialState, false, 'resetGame'),
+        increaseCheatingAttemptsCounter: () =>
           set(
-            () => {
-              return { history: [], isGameRunning: false };
-            },
+            (state) => ({ cheatingAttempts: state.cheatingAttempts + 1 }),
             false,
-            'resetGame'
+            'increaseCheatingAttemptsCounter'
           ),
       },
     }),
@@ -85,3 +87,5 @@ export const useIsWin = () =>
     const currentArticle = state.history.slice(-1)?.[0]?.title;
     return state.endingArticle === currentArticle;
   });
+
+export const useCheatingAttempts = () => useGameStore((state) => state.cheatingAttempts);

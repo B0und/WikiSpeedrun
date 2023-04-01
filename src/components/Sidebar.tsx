@@ -29,7 +29,7 @@ const Sidebar = () => {
       >
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
-          <div className="flex-wra mt-auto flex w-full shrink-0 items-baseline justify-between overflow-auto pb-6 pr-6">
+          <div className="flex-wrap mt-auto flex w-full shrink-0 items-baseline justify-between overflow-auto pb-6 pr-6 ">
             <span>Clicks: {clicks}</span>
             <Stopwatch />
           </div>
