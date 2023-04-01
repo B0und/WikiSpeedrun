@@ -9,10 +9,10 @@ export const useResetGame = () => {
   const { resetStopwatch } = useStopwatchActions();
 
   const resetGameFn = () => {
+    queryClient.invalidateQueries({ queryKey: ['article'] });
     resetStoreState();
     resetStopwatch();
     navigate('/settings');
-    queryClient.invalidateQueries({ queryKey: ['article'] });
   };
   return resetGameFn;
 };
