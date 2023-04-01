@@ -13,12 +13,12 @@ import { WikiApiArticle } from './Wiki.types';
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
-  const { pause } = useStopwatchActions();
+  const { pauseStopwatch } = useStopwatchActions();
   useEffect(() => {
     if (isLoading && isGameRunning) {
-      pause();
+      pauseStopwatch();
     }
-  }, [isGameRunning, isLoading, pause]);
+  }, [isGameRunning, isLoading, pauseStopwatch]);
 };
 
 const getArticleData = async (title: string) => {
@@ -43,20 +43,20 @@ export const useWikiQuery = () => {
   const routeParams = useParams();
   const wikiArticle = routeParams.wikiTitle || startingArticle;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
-  const isGameRunning = useIsGameRunning();
+
   const targetArticle = useEndingArticle();
-  const { getFormattedTime, start, pause } = useStopwatchActions();
+  const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)['data']>) => {
       if (article.title !== targetArticle) {
         return false;
       }
-      pause();
+      pauseStopwatch();
       setIsGameRunning(false);
       return true;
     },
-    [pause, setIsGameRunning, targetArticle]
+    [pauseStopwatch, setIsGameRunning, targetArticle]
   );
 
   const query = useQuery({
@@ -69,28 +69,22 @@ export const useWikiQuery = () => {
       title: data?.parse?.title,
       pageid: data?.parse?.pageid,
     }),
-    // onSuccess: (data) => {
-    // }
+    onSuccess: (data) => {
+      const time = getFormattedTime();
+
+      const { min, ms, sec } = time;
+      addHistoryArticle({
+        title: data.title || '',
+        time: { min, sec, ms },
+      });
+
+      if (handleWin(data)) {
+        return;
+      }
+
+      startStopwatch();
+    },
   });
-
-  useEffect(() => {
-    if (!isGameRunning) return;
-
-    const time = getFormattedTime();
-
-    if (!query.data) return;
-    const { min, ms, sec } = time;
-    addHistoryArticle({
-      title: query.data.title || '',
-      time: { min, sec, ms },
-    });
-
-    if (handleWin(query.data)) {
-      return;
-    }
-
-    start();
-  }, [addHistoryArticle, getFormattedTime, handleWin, isGameRunning, query.data, start]);
 
   return query;
 };

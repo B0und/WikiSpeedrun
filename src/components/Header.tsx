@@ -3,6 +3,7 @@ import { GitHub, Moon, Sun } from 'react-feather';
 import { ResultDialog } from './ResultDialog';
 import { useThemeContext } from './ThemeContext';
 import { useIsGameRunning } from '../GameStore';
+import { GiveUpModal } from './ConfirmNavigation';
 
 const links = [
   { name: 'Play', path: '/settings' },
@@ -36,7 +37,7 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-          {isGameRunning && <button className="p-4 hover:text-primary-blue">Give up</button>}
+          {isGameRunning && <GiveUpModal />}
         </ul>
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4">

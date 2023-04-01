@@ -49,20 +49,20 @@ const useStopwatch = () => {
   const totalLapse = pastLapse + currentLapse;
   totalLapseRef.current = totalLapse;
 
-  const pause = useCallback(() => {
+  const pauseStopwatch = useCallback(() => {
     if (isRunning) {
       setPastLapse((l) => l + performance.now() - startTime);
       setStartTime(null);
     }
   }, [isRunning, startTime]);
 
-  const start = useCallback(() => {
+  const startStopwatch = useCallback(() => {
     if (!isRunning) {
       setStartTime(performance.now());
     }
   }, [isRunning]);
 
-  const reset = useCallback(() => {
+  const resetStopwatch = useCallback(() => {
     setPastLapse(0);
     setStartTime(null);
   }, []);
@@ -97,7 +97,7 @@ const useStopwatch = () => {
   const time = getFormattedTime();
   const timeInMs = getTimeInMs();
 
-  return { time, timeInMs, pause, start, reset, getFormattedTime };
+  return { time, timeInMs, pauseStopwatch, startStopwatch, resetStopwatch, getFormattedTime };
 };
 
 export default useStopwatch;

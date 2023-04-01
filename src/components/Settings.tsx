@@ -8,7 +8,7 @@ import { useStopwatchActions } from './StopwatchContext';
 
 const Settings = () => {
   const navigate = useNavigate();
-  const { start } = useStopwatchActions();
+  const { startStopwatch } = useStopwatchActions();
   const { setIsGameRunning, setStartingArticle, setEndingArticle } = useGameStoreActions();
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
@@ -16,7 +16,7 @@ const Settings = () => {
   const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate('/wiki');
-    start();
+    startStopwatch();
     setIsGameRunning(true);
   };
 

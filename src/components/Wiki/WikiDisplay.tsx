@@ -10,6 +10,7 @@ import clsx from 'clsx';
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
+
   const isDarkTheme = colorMode === 'dark';
   const { handleWikiArticleClick } = useWikiLogic();
   const { isFetching, data } = useWikiQuery();
@@ -24,7 +25,7 @@ const WikiDisplay = () => {
     <>
       {data?.html && (
         <>
-          <h2 className="border-b-[1px] border-secondary-border text-3xl font-serif">
+          <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
             {data.title}
           </h2>
           <div className={clsx('unreset wiki-insert', isDarkTheme && 'wiki-dark-theme')}>
