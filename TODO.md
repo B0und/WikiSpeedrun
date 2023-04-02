@@ -1,5 +1,6 @@
 # TODO
 [x] - i18n
+[] - add missing translation text
 [] - analytics
 [] - ship it
 [x] - dark theme
@@ -23,12 +24,11 @@ article preview
 typesafe routing
 ---
 
-cheating attempts
+[x] - cheating attempts
 [x] -time-travel after game
 missed-wins count (highlight winning link)
 longest title (# of characters)
 achievements
-show result screen after closing button
 
 dissallow disambiguation links
 predefined paths
@@ -45,6 +45,6 @@ option to move sidebar to the right
 
 glitch mode - the link get "corrupted" visually 
 
-dark mode color as as setting
+dark mode bg color as as setting
 
 local runs history
