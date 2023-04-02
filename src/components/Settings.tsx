@@ -6,8 +6,11 @@ import RandomButton from './RandomButton/RandomButton';
 import { handleOnRandomSuccess } from './Settings.helpers';
 import { useStopwatchActions } from './StopwatchContext';
 import { useResetGame } from '../hooks/useResetGame';
+import { useI18nContext } from '../i18n/i18n-react';
+import { WikiLanguageSelect } from './WikiLanguageSelect';
 
 const Settings = () => {
+  const { LL } = useI18nContext();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
   const { setIsGameRunning, setStartingArticle, setEndingArticle } = useGameStoreActions();
@@ -25,16 +28,15 @@ const Settings = () => {
 
   return (
     <div>
-      <h3 className="border-b-[1px] border-secondary-border text-2xl ">Settings</h3>
-      <p className="pb-8 pt-4">
-        Start typing and then select values from the dropdown list or press the random button.
-      </p>
+      <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
+      <p className="pb-8 pt-4">{LL.SETTINGS_DESCRIPTION()}</p>
 
       <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
+        <WikiLanguageSelect />
         <div className="flex items-end gap-2">
           <ArticleAutocomplete
-            label="Select starting article"
-            placeholder="Start typing to see options"
+            label={LL.STARTING_ARTICLE_LABEL()}
+            placeholder={LL.INPUT_PLACEHOLDER()}
             required={true}
             onSelect={setStartingArticle}
             defaultValue={startArticle}
@@ -50,8 +52,8 @@ const Settings = () => {
 
         <div className="flex items-end gap-2">
           <ArticleAutocomplete
-            label="Select ending article"
-            placeholder="Start typing to see options"
+            label={LL.ENDING_ARTICLE_LABEL()}
+            placeholder={LL.INPUT_PLACEHOLDER()}
             required={true}
             onSelect={setEndingArticle}
             defaultValue={endArticle}
@@ -68,7 +70,7 @@ const Settings = () => {
         </div>
 
         <button type="submit" className="w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
-          Play
+          {LL.PLAY()}
         </button>
       </form>
     </div>

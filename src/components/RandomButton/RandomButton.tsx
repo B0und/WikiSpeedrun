@@ -3,6 +3,7 @@ import { ReactComponent as DiceIcon } from '../../assets/dice.svg';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import clsx from 'clsx';
 import { WikiRandom } from './RandomButton.types';
+import { useI18nContext } from '../../i18n/i18n-react';
 
 const getRandomArticles = async () => {
   const res = await fetch(
@@ -30,6 +31,8 @@ interface RandomButtonProps {
   onSuccess: (data: WikiRandom) => void;
 }
 const RandomButton = ({ queryKey, onSuccess }: RandomButtonProps) => {
+  const { LL } = useI18nContext();
+
   const { refetch, isFetching } = useQuery({
     queryKey: ['randomButton', queryKey],
     queryFn: getRandomArticles,
@@ -45,7 +48,7 @@ const RandomButton = ({ queryKey, onSuccess }: RandomButtonProps) => {
       type="button"
       onClick={() => refetch()}
     >
-      <VisuallyHidden.Root>Get random article</VisuallyHidden.Root>
+      <VisuallyHidden.Root>{LL.GET_RANDOM_ARTICLE()}</VisuallyHidden.Root>
       <DiceIcon />
     </button>
   );

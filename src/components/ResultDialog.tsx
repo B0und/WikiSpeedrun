@@ -13,8 +13,10 @@ import {
 import { StopwatchDisplay } from './StopwatchDisplay';
 import { DialogDisplay } from './Dialog';
 import { useResetGame } from '../hooks/useResetGame';
+import { useI18nContext } from '../i18n/i18n-react';
 
 export const ResultDialog = () => {
+  const { LL } = useI18nContext();
   const [open, setOpen] = useState(false);
   const resetGame = useResetGame();
 
@@ -26,32 +28,33 @@ export const ResultDialog = () => {
   const [lastArticle] = history.slice(-1);
   const clicks = useClicks();
   const isWin = useIsWin();
-  const cheatingAttempts = useCheatingAttempts()
+  const cheatingAttempts = useCheatingAttempts();
 
   useEffect(() => {
     setOpen(isWin);
   }, [isWin]);
 
   const resultStats = [
-    { name: 'Article clicks', value: clicks },
-    { name: 'Cheating attempts', value: cheatingAttempts },
+    { name: LL.ARTICLE_CLICKS(), value: clicks },
+    { name: LL.CHEATING_ATTEMPTS(), value: cheatingAttempts },
   ];
 
   return (
     <DialogDisplay
       descriptionNode={
-        <>
-          Speedrun from <span className="font-bold">{startingArticle}</span> to{' '}
-          <span className="font-bold">{endingArticle}</span> complete.
-        </>
+        <div>
+          <p className="font-bold">
+            {startingArticle} → {endingArticle}
+          </p>
+        </div>
       }
       open={open}
       onOpenChange={setOpen}
-      title="Results"
+      title={LL.RESULTS()}
       triggerNode={
         isWin && (
           <Dialog.Trigger asChild>
-            <button className="p-4 hover:text-primary-blue">Results</button>
+            <button className="p-4 hover:text-primary-blue">{LL.RESULTS()}</button>
           </Dialog.Trigger>
         )
       }
@@ -86,7 +89,7 @@ export const ResultDialog = () => {
                 onClick={resetGame}
                 className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
               >
-                Play again
+                {LL.PLAY_AGAIN()}
               </button>
             </Dialog.Close>
           </div>

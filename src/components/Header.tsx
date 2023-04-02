@@ -4,13 +4,17 @@ import { ResultDialog } from './ResultDialog';
 import { useThemeContext } from './ThemeContext';
 import { useIsGameRunning } from '../GameStore';
 import { GiveUpModal } from './ConfirmNavigation';
-
-const links = [
-  { name: 'Play', path: '/settings' },
-  { name: 'About', path: '/about' },
-];
+import { useI18nContext } from '../i18n/i18n-react';
+import { InterfaceLanguageSelect } from './InterfaceLanguageSelect';
 
 const Header = () => {
+  const { LL } = useI18nContext();
+
+  const links = [
+    { name: LL.PLAY(), path: '/settings' },
+    { name: LL.ABOUT(), path: '/about' },
+  ];
+
   const { colorMode, switchTheme } = useThemeContext();
   const isGameRunning = useIsGameRunning();
 
@@ -24,7 +28,7 @@ const Header = () => {
         <img
           className="block h-full"
           src={window.location.origin + `/${imageSrc}.png`}
-          alt="Wiki speedrun logo, featuring a Wikipedia sphere with a timer across it. (looks like a big black stripe with a green time text on top)"
+          alt={LL.WIKI_ALT_TEXT()}
         />
       </picture>
       <nav className="flex h-full flex-1 items-center gap-4">
@@ -41,6 +45,7 @@ const Header = () => {
         </ul>
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4">
+          <InterfaceLanguageSelect />
           <li className="h-full">
             <button
               className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
@@ -51,8 +56,10 @@ const Header = () => {
           </li>
           <li className="h-full">
             <a
-              href="#"
-              className="flex  h-full w-12 items-center justify-center hover:text-primary-blue"
+              target="_blank"
+              href="https://github.com/B0und/WikiSpeedrun"
+              className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
+              rel="noreferrer"
             >
               <GitHub />
             </a>

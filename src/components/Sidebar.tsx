@@ -2,8 +2,11 @@ import { Resizable } from 're-resizable';
 import { useClicks } from '../GameStore';
 import HistoryTable from './HistoryTable';
 import { Stopwatch } from './Stopwatch';
+import { useI18nContext } from '../i18n/i18n-react';
 
 const Sidebar = () => {
+  const { LL } = useI18nContext();
+
   const clicks = useClicks();
   return (
     <>
@@ -29,8 +32,8 @@ const Sidebar = () => {
       >
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
-          <div className="flex-wrap mt-auto flex w-full shrink-0 items-baseline justify-between overflow-auto pb-6 pr-6 ">
-            <span>Clicks: {clicks}</span>
+          <div className="mt-auto flex w-full shrink-0 flex-wrap items-baseline justify-between overflow-auto pb-6 pr-6 ">
+            <span>{LL.CLICKS_NUM(clicks)}</span>
             <Stopwatch />
           </div>
         </div>

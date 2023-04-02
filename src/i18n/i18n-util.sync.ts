@@ -7,10 +7,30 @@ import { loadedFormatters, loadedLocales, locales } from './i18n-util.js'
 
 import de from './de/index.js'
 import en from './en/index.js'
+import es from './es/index.js'
+import fr from './fr/index.js'
+import it from './it/index.js'
+import ja from './ja/index.js'
+import nl from './nl/index.js'
+import pl from './pl/index.js'
+import ru from './ru/index.js'
+import sv from './sv/index.js'
+import vi from './vi/index.js'
+import zh from './zh/index.js'
 
 const localeTranslations = {
 	de,
 	en,
+	es,
+	fr,
+	it,
+	ja,
+	nl,
+	pl,
+	ru,
+	sv,
+	vi,
+	zh,
 }
 
 export const loadLocale = (locale: Locales): void => {

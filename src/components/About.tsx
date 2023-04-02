@@ -1,30 +1,28 @@
 import { Link } from 'react-router-dom';
+import { useI18nContext } from '../i18n/i18n-react';
 
 const About = () => {
+  const { LL } = useI18nContext();
   return (
     <>
-      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
-        Wiki Speedrun Game
-      </h2>
-      <p className="pt-4 pb-8">
-        The goal of the game is to navigate from a starting wikipedia article to another one, in the
-        least amount of clicks and time.
-      </p>
-      <h3 className="border-b-[1px] border-secondary-border text-2xl">Features</h3>
-      <ul className="flex list-inside list-disc flex-col gap-2 pt-4 pb-8 pl-4">
-        <li>No registration required</li>
+      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">{LL.TITLE()}</h2>
+      <p className="pb-8 pt-4">{LL.GAME_DESCRIPTION()}</p>
+      <h3 className="border-b-[1px] border-secondary-border text-2xl">{LL.FEATURES()}</h3>
+      <ul className="flex list-inside list-disc flex-col gap-2 pb-8 pl-4 pt-4">
+        <li>{LL.MULTIPLE_LANGUAGES()}</li>
+        <li>{LL.NO_REGISTRATION()}</li>
         <li>
-          High precision fair™ timer
+          {LL.TIMER_DESCRIPTION()}
           <ul className="list-inside list-[circle]">
-            <li className="pl-6">actually stops while you are loading the next article</li>
+            <li className="pl-6"> {LL.TIMER_SUB_DESCRIPTION()}</li>
           </ul>
         </li>
-        <li>Keeps track of your session progress</li>
-        <li>Dark theme support</li>
-        <li>Open source</li>
+        <li> {LL.SESSION_PROGRESS()}</li>
+        <li> {LL.DARK_THEME()}</li>
+        <li> {LL.OPEN_SOURCE()}</li>
       </ul>
       <Link to={'/settings'} className="bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
-        Play
+        {LL.PLAY()}
       </Link>
     </>
   );

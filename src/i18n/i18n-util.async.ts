@@ -8,6 +8,16 @@ import { loadedFormatters, loadedLocales, locales } from './i18n-util.js'
 const localeTranslationLoaders = {
 	de: () => import('./de/index.js'),
 	en: () => import('./en/index.js'),
+	es: () => import('./es/index.js'),
+	fr: () => import('./fr/index.js'),
+	it: () => import('./it/index.js'),
+	ja: () => import('./ja/index.js'),
+	nl: () => import('./nl/index.js'),
+	pl: () => import('./pl/index.js'),
+	ru: () => import('./ru/index.js'),
+	sv: () => import('./sv/index.js'),
+	vi: () => import('./vi/index.js'),
+	zh: () => import('./zh/index.js'),
 }
 
 const updateDictionary = (locale: Locales, dictionary: Partial<Translations>): Translations =>

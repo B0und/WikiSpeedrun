@@ -5,6 +5,7 @@ import { WikiSearch } from './WikiSearch.types';
 import Select, { InputActionMeta, StylesConfig } from 'react-select';
 import { useThemeContext } from '../ThemeContext';
 import clsx from 'clsx';
+import { useI18nContext } from '../../i18n/i18n-react';
 
 const getArticles = async (debouncedTerm: string) => {
   if (!debouncedTerm) return;
@@ -38,6 +39,7 @@ interface AutocompleteOption {
 
 const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   const { label, placeholder, required, onSelect, defaultValue, selectId } = props;
+  const { LL } = useI18nContext();
   const [inputText, setInputText] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const { colorMode } = useThemeContext();
@@ -75,7 +77,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     if (obj.inputValue.trim().length === 0) {
       return null;
     }
-    return 'No articles found';
+    return LL.NO_ARTICLES_FOUND();
   };
 
   return (
@@ -112,7 +114,6 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
         isMulti={false}
         classNames={{
           control: () => (isDarkMode ? 'dark:bg-dark-surface dark:text-dark-primary' : ''),
-          // valueContainer: () => (isDarkMode ? 'border-red-600' : ''),
           menu: () => (isDarkMode ? 'dark:bg-dark-surface-secondary dark:text-dark-primary' : ''),
           loadingIndicator: () => (isDarkMode ? 'dark:bg-dark-surface' : ''),
           noOptionsMessage: () =>
