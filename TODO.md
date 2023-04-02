@@ -1,5 +1,5 @@
 # TODO
-[] - i18n: https://github.com/lingui/js-lingui
+[x] - i18n
 [] - analytics
 [] - ship it
 [x] - dark theme
@@ -14,6 +14,7 @@
 [x] - input clear button
 [] - handle article download errors
 
+[] - Caspar David Friedrich (fix navigation)
 # Ideas:
 
 

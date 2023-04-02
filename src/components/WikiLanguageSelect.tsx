@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import Select, { StylesConfig } from 'react-select';
 import { useThemeContext } from './ThemeContext';
 import { useI18nContext } from '../i18n/i18n-react';
+import { useSettingsStoreActions, useWikiLanguage } from '../SettingsStore';
+import { useGameStoreActions } from '../GameStore';
 
 const selectId = 'wikiLanguageSelect';
 
@@ -9,21 +11,34 @@ export const WikiLanguageSelect = () => {
   const { colorMode } = useThemeContext();
   const isDarkMode = colorMode === 'dark';
   const { LL } = useI18nContext();
+  const { setWikiLanguage } = useSettingsStoreActions();
+  const wikiLanguage = useWikiLanguage();
+  const { setEndingArticle, setStartingArticle } = useGameStoreActions();
 
   return (
     <div>
       <label htmlFor={selectId}>{LL.SELECT_ARTICLE_LANGUAGE()}</label>
       <Select
         inputId={selectId}
-        defaultValue={LANGUAGES[0]}
+        defaultValue={LANGUAGES.find((language) => language.value === wikiLanguage)}
         isClearable={false}
         isSearchable={true}
         name={selectId}
         styles={customStyles}
         options={LANGUAGES}
+        onChange={(e) => {
+          setWikiLanguage(e?.value || '');
+          setStartingArticle('');
+          setEndingArticle('');
+        }}
+        isMulti={false}
         classNames={{
-          control: () => (isDarkMode ? 'dark:bg-dark-surface dark:text-dark-primary' : ''),
-          menu: () => (isDarkMode ? 'dark:bg-dark-surface-secondary dark:text-dark-primary' : ''),
+          control: () => clsx(isDarkMode && 'dark:bg-dark-surface dark:text-dark-primary', ''),
+          menu: () =>
+            clsx(
+              isDarkMode && 'dark:bg-dark-surface-secondary dark:text-dark-primary',
+              'bg-neutral-50'
+            ),
           loadingIndicator: () => (isDarkMode ? 'dark:bg-dark-surface' : ''),
           noOptionsMessage: () =>
             isDarkMode ? 'dark:bg-dark-surface-secondary dark:text-dark-primary' : '',
@@ -45,12 +60,17 @@ const customStyles: StylesConfig<WikiLanguage> = {
   control: (base) => ({
     ...base,
     width: '300px',
+    backgroundColor: '#fafafa',
     '&:hover': {
       borderColor: 'hsla(203, 66%, 56%)',
     },
     '&:focus': {
       boxShadow: '0 0 0 1px hsla(203, 66%, 56%)',
     },
+  }),
+  menu: (base) => ({
+    ...base,
+    width: '300px',
   }),
 };
 
@@ -74,7 +94,7 @@ export const LANGUAGES: ReadonlyArray<WikiLanguage> = [
   { value: 'id', label: 'bahasa Indonesia', isoCode: 'id' },
   { value: 'nl', label: 'Nederlands', isoCode: 'nl' },
   { value: 'it', label: 'Italiano', isoCode: 'it' },
-  { value: 'ja', label: '日本語', isoCode: 'ja' },
+  { value: 'ja', label: '日本語', isoCode: 'jp' },
   { value: 'sv', label: 'Svenska', isoCode: 'sv' },
   { value: 'pl', label: 'Polski', isoCode: 'pl' },
   { value: 'vi', label: 'Tiếng Việt', isoCode: 'vi' },

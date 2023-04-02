@@ -11,7 +11,7 @@ export type Locales =
 	| 'es'
 	| 'fr'
 	| 'it'
-	| 'ja'
+	| 'jp'
 	| 'nl'
 	| 'pl'
 	| 'ru'
@@ -157,6 +157,10 @@ type RootTranslation = {
 	 * S​e​l​e​c​t​ ​a​r​t​i​c​l​e​ ​l​a​n​g​u​a​g​e
 	 */
 	SELECT_ARTICLE_LANGUAGE: string
+	/**
+	 * L​a​n​g​u​a​g​e
+	 */
+	LANGUAGE: string
 }
 
 export type TranslationFunctions = {
@@ -292,6 +296,10 @@ export type TranslationFunctions = {
 	 * Select article language
 	 */
 	SELECT_ARTICLE_LANGUAGE: () => LocalizedString
+	/**
+	 * Language
+	 */
+	LANGUAGE: () => LocalizedString
 }
 
 export type Formatters = {}

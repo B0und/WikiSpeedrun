@@ -10,7 +10,7 @@ import en from './en/index.js'
 import es from './es/index.js'
 import fr from './fr/index.js'
 import it from './it/index.js'
-import ja from './ja/index.js'
+import jp from './jp/index.js'
 import nl from './nl/index.js'
 import pl from './pl/index.js'
 import ru from './ru/index.js'
@@ -24,7 +24,7 @@ const localeTranslations = {
 	es,
 	fr,
 	it,
-	ja,
+	jp,
 	nl,
 	pl,
 	ru,

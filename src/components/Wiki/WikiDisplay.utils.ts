@@ -10,6 +10,7 @@ import {
 } from '../../GameStore';
 import { useStopwatchActions } from '../StopwatchContext';
 import { WikiApiArticle } from './Wiki.types';
+import { useWikiLanguage } from '../../SettingsStore';
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
@@ -21,11 +22,11 @@ export const usePauseWhileLoading = (isLoading: boolean) => {
   }, [isGameRunning, isLoading, pauseStopwatch]);
 };
 
-const getArticleData = async (title: string) => {
+const getArticleData = async (language: string, title: string) => {
   if (!title) return;
 
   const resp = await fetch(
-    'https://en.wikipedia.org/w/api.php?' +
+    `https://${language}.wikipedia.org/w/api.php?` +
       new URLSearchParams({
         page: title,
         origin: '*',
@@ -40,6 +41,7 @@ const getArticleData = async (title: string) => {
 
 export const useWikiQuery = () => {
   const startingArticle = useStartingArticle();
+  const language = useWikiLanguage();
   const routeParams = useParams();
   const isGameRunning = useIsGameRunning();
   const wikiArticle = routeParams.wikiTitle || startingArticle;
@@ -61,8 +63,8 @@ export const useWikiQuery = () => {
   );
 
   const query = useQuery({
-    queryKey: ['article', wikiArticle],
-    queryFn: () => getArticleData(wikiArticle),
+    queryKey: ['article', wikiArticle, language],
+    queryFn: () => getArticleData(language, wikiArticle),
     refetchOnWindowFocus: false,
     enabled: Boolean(wikiArticle),
     select: (data) => ({

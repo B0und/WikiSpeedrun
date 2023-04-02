@@ -6,12 +6,13 @@ import Select, { InputActionMeta, StylesConfig } from 'react-select';
 import { useThemeContext } from '../ThemeContext';
 import clsx from 'clsx';
 import { useI18nContext } from '../../i18n/i18n-react';
+import { useWikiLanguage } from '../../SettingsStore';
 
-const getArticles = async (debouncedTerm: string) => {
+const getArticles = async (language: string, debouncedTerm: string) => {
   if (!debouncedTerm) return;
 
   const resp = await fetch(
-    'https://en.wikipedia.org/w/api.php?' +
+    `https://${language}.wikipedia.org/w/api.php?` +
       new URLSearchParams({
         action: 'query',
         list: 'search',
@@ -39,6 +40,7 @@ interface AutocompleteOption {
 
 const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   const { label, placeholder, required, onSelect, defaultValue, selectId } = props;
+  const language = useWikiLanguage();
   const { LL } = useI18nContext();
   const [inputText, setInputText] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
@@ -48,8 +50,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   const debouncedInputText = useDebounce(inputText, 500).toLowerCase();
 
   const { data, isFetching } = useQuery({
-    queryKey: ['selectOptions', debouncedInputText],
-    queryFn: () => getArticles(debouncedInputText),
+    queryKey: ['selectOptions', language, debouncedInputText],
+    queryFn: () => getArticles(language, debouncedInputText),
     refetchOnWindowFocus: false,
     enabled: Boolean(debouncedInputText),
     select: (data) =>
@@ -139,6 +141,7 @@ const customStyles: StylesConfig<AutocompleteOption> = {
   control: (base) => ({
     ...base,
     width: '300px',
+    backgroundColor: '#fafafa',
     '&:hover': {
       borderColor: 'hsla(203, 66%, 56%)',
     },

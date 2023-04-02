@@ -4,10 +4,11 @@ import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import clsx from 'clsx';
 import { WikiRandom } from './RandomButton.types';
 import { useI18nContext } from '../../i18n/i18n-react';
+import { useWikiLanguage } from '../../SettingsStore';
 
-const getRandomArticles = async () => {
+const getRandomArticles = async (language: string) => {
   const res = await fetch(
-    'https://en.wikipedia.org/w/api.php?' +
+    `https://${language}.wikipedia.org/w/api.php?` +
       new URLSearchParams({
         origin: '*',
         action: 'query',
@@ -32,10 +33,11 @@ interface RandomButtonProps {
 }
 const RandomButton = ({ queryKey, onSuccess }: RandomButtonProps) => {
   const { LL } = useI18nContext();
+  const language = useWikiLanguage();
 
   const { refetch, isFetching } = useQuery({
-    queryKey: ['randomButton', queryKey],
-    queryFn: getRandomArticles,
+    queryKey: ['randomButton', language, queryKey],
+    queryFn: () => getRandomArticles(language),
     refetchOnWindowFocus: false,
     enabled: false,
     staleTime: 0,

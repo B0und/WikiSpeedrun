@@ -1,34 +1,55 @@
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
 import clsx from 'clsx';
-import { CheckmarkIcon } from 'react-hot-toast';
+import { ChevronUp, ChevronDown } from 'react-feather';
 import { locales } from '../i18n/i18n-util';
 import { LANGUAGES } from './WikiLanguageSelect';
 import { Locales } from '../i18n/i18n-types';
+import { useI18nContext } from '../i18n/i18n-react';
+import { useInterfaceLanguage, useSettingsStoreActions } from '../SettingsStore';
+import { loadLocaleAsync } from '../i18n/i18n-util.async';
 
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) =>
   locales.includes(language.isoCode as Locales)
 );
 
 export const InterfaceLanguageSelect = () => {
+  const { LL, setLocale } = useI18nContext();
+  const language = useInterfaceLanguage();
+  const { setInterfaceLanguage } = useSettingsStoreActions();
+
   return (
-    <Select.Root>
+    <Select.Root
+      value={language}
+      onValueChange={async (locale: Locales) => {
+        await loadLocaleAsync(locale);
+        setInterfaceLanguage(locale);
+        setLocale(locale);
+      }}
+    >
       <Select.Trigger
-        className=" inline-flex h-[35px] items-center justify-center gap-[5px] rounded bg-white px-[15px] text-[13px] leading-none shadow-[0_2px_10px] shadow-black/10 outline-none hover:bg-blue-300 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-black"
-        aria-label="Food"
+        className="inline-flex h-full items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
+        aria-label={LL.LANGUAGE()}
       >
-        <Select.Value placeholder="Select a fruit…" />
-        <Select.Icon className="">{/* <ChevronDownIcon /> */}</Select.Icon>
+        <Select.Value aria-label={language}>
+          <img
+            src={`/flags/${language}.svg`}
+            alt=""
+            className="h-6 w-8 rounded-sm border-[1px] border-secondary-border object-contain"
+          />
+        </Select.Value>
       </Select.Trigger>
       <Select.Portal>
         <Select.Content
           position="popper"
           sideOffset={5}
-          className="overflow-hidden rounded-md bg-white "
+          align="center"
+          className="max-h-[300px] overflow-hidden rounded-md border-[1px] border-secondary-border bg-neutral-50 shadow-sm dark:bg-dark-surface-secondary dark:text-dark-primary"
         >
-          <Select.ScrollUpButton className=" flex h-[25px] cursor-default items-center justify-center bg-white">
-            {/* <ChevronUpIcon /> */}
+          <Select.ScrollUpButton className=" flex h-[30px] cursor-default items-center justify-center ">
+            <ChevronUp />
           </Select.ScrollUpButton>
+
           <Select.Viewport className="p-[5px]">
             {INTERFACE_LANGUAGES.map((language) => (
               <SelectItem value={language.isoCode} key={language.isoCode}>
@@ -36,8 +57,8 @@ export const InterfaceLanguageSelect = () => {
               </SelectItem>
             ))}
           </Select.Viewport>
-          <Select.ScrollDownButton className=" flex h-[25px] cursor-default items-center justify-center bg-white">
-            {/* <ChevronDownIcon /> */}
+          <Select.ScrollDownButton className=" flex h-[30px] cursor-default items-center justify-center ">
+            <ChevronDown />
           </Select.ScrollDownButton>
         </Select.Content>
       </Select.Portal>
@@ -46,8 +67,8 @@ export const InterfaceLanguageSelect = () => {
 };
 
 interface SelectItemProps {
-  children: React.ReactNode;
-  className: string;
+  children?: React.ReactNode;
+  className?: string;
   value: string;
 }
 const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
@@ -55,7 +76,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     return (
       <Select.Item
         className={clsx(
-          ' data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[35px] text-[13px] leading-none data-[disabled]:pointer-events-none data-[highlighted]:outline-none',
+          ' relative flex h-[40px] select-none items-center rounded-[3px]  px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none',
           className
         )}
         value={value}
@@ -64,9 +85,6 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
       >
         <img src={`/flags/${value}.svg`} alt="" className="h-3 w-8 object-contain" />
         <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className="absolute left-0 inline-flex w-[25px] items-center justify-center">
-          <CheckmarkIcon />
-        </Select.ItemIndicator>
       </Select.Item>
     );
   }

@@ -35,7 +35,8 @@ const en: BaseTranslation = {
   NO_ARTICLES_FOUND: 'No articles found',
   GET_RANDOM_ARTICLE: "Get random article",
   WIKI_ALT_TEXT: "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across it. (looks like a big black stripe with a green time text on top). The time is 9 seconds and 5 milliseconds.",
-  SELECT_ARTICLE_LANGUAGE: "Select article language"
+  SELECT_ARTICLE_LANGUAGE: "Select article language",
+  LANGUAGE: "Language"
 };
 
 export default en;
