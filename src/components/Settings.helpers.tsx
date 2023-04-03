@@ -1,9 +1,9 @@
-import { WikiRandom } from './RandomButton/RandomButton.types';
+import { WikiRandom } from "./RandomButton/RandomButton.types";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) return;
   const highestLinksPage = Object.values(data.query.pages)
-    .filter((page) => Object.prototype.hasOwnProperty.call(page, 'linkshere'))
+    .filter((page) => Object.prototype.hasOwnProperty.call(page, "linkshere"))
     .reduce((prev, current) => {
       const previousLinksphere = prev?.linkshere ?? [];
       const currentLinksphere = current?.linkshere ?? [];

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // https://twitter.com/dan_abramov/status/1102690107264520193
 // https://codesandbox.io/s/1qwlpk4o8l?file=/src/index.js:259-998
@@ -74,7 +74,7 @@ const useStopwatch = () => {
   const getFormattedTime = useCallback(() => {
     const pad = (time: string, length: number) => {
       while (time.length < length) {
-        time = '0' + time;
+        time = "0" + time;
       }
       return time;
     };

@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import { StopwatchProps } from './components/StopwatchDisplay';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
+import { StopwatchProps } from "./components/StopwatchDisplay";
 
 /*
  This file is only for runtime data that gets erased on webpage restart 
@@ -38,38 +38,38 @@ const useGameStore = create<GameStore>()(
   devtools(
     (set) => ({
       ...initialState,
-      startingArticle: '',
-      endingArticle: '',
+      startingArticle: "",
+      endingArticle: "",
       actions: {
         setStartingArticle: (title: string) =>
-          set(() => ({ startingArticle: title }), false, 'setStartingArticle'),
+          set(() => ({ startingArticle: title }), false, "setStartingArticle"),
         setEndingArticle: (title: string) =>
-          set(() => ({ endingArticle: title }), false, 'setEndingArticle'),
+          set(() => ({ endingArticle: title }), false, "setEndingArticle"),
         setIsGameRunning: (flag: boolean) =>
-          set(() => ({ isGameRunning: flag }), false, 'setIsGameRunning'),
+          set(() => ({ isGameRunning: flag }), false, "setIsGameRunning"),
         addHistoryArticle: (article: ArticleHistory) =>
           set(
             (state) => {
               // without this, first article will be slightly later than 0
               if (state.history.length === 0) {
-                article.time.ms = '000';
+                article.time.ms = "000";
               }
               return { history: [...state.history, article] };
             },
             false,
-            'addHistoryArticle'
+            "addHistoryArticle"
           ),
-        resetStoreState: () => set(() => initialState, false, 'resetGame'),
+        resetStoreState: () => set(() => initialState, false, "resetGame"),
         increaseCheatingAttemptsCounter: () =>
           set(
             (state) => ({ cheatingAttempts: state.cheatingAttempts + 1 }),
             false,
-            'increaseCheatingAttemptsCounter'
+            "increaseCheatingAttemptsCounter"
           ),
       },
     }),
     {
-      name: 'game-store',
+      name: "game-store",
     }
   )
 );

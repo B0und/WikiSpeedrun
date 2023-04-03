@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
+import { useEffect, useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 
 import {
   useCheatingAttempts,
@@ -8,12 +8,12 @@ import {
   useHistory,
   useIsWin,
   useStartingArticle,
-} from '../GameStore';
+} from "../GameStore";
 
-import { StopwatchDisplay } from './StopwatchDisplay';
-import { DialogDisplay } from './Dialog';
-import { useResetGame } from '../hooks/useResetGame';
-import { useI18nContext } from '../i18n/i18n-react';
+import { StopwatchDisplay } from "./StopwatchDisplay";
+import { DialogDisplay } from "./Dialog";
+import { useResetGame } from "../hooks/useResetGame";
+import { useI18nContext } from "../i18n/i18n-react";
 
 export const ResultDialog = () => {
   const { LL } = useI18nContext();

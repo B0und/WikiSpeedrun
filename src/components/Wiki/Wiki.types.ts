@@ -26,7 +26,7 @@ export interface Parse {
 export interface Category {
   sortkey?: Title;
   hidden?: string;
-  '*'?: string;
+  "*"?: string;
 }
 
 export type Title = string;
@@ -34,7 +34,7 @@ export type Title = string;
 export interface Iwlink {
   prefix?: string;
   url?: string;
-  '*'?: string;
+  "*"?: string;
 }
 
 export interface Langlink {
@@ -42,18 +42,18 @@ export interface Langlink {
   url?: string;
   langname?: string;
   autonym?: string;
-  '*'?: string;
+  "*"?: string;
 }
 
 export interface Link {
   ns?: number;
   exists?: string;
-  '*'?: string;
+  "*"?: string;
 }
 
 export interface Property {
   name?: string;
-  '*'?: string;
+  "*"?: string;
 }
 
 export interface Section {
@@ -71,5 +71,5 @@ export interface Section {
 export type Fromtitle = string;
 
 export interface Text {
-  '*'?: string;
+  "*"?: string;
 }

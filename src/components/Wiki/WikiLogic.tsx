@@ -1,25 +1,25 @@
-import { MouseEvent } from 'react';
-import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { MouseEvent } from "react";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const errorToast = () => toast.error('Choose another link', { position: 'bottom-center' });
+const errorToast = () => toast.error("Choose another link", { position: "bottom-center" });
 
 const getFilteredLink = (hrefText: string | null) => {
   if (!hrefText) return null;
-  if (!hrefText.startsWith('/wiki/')) {
+  if (!hrefText.startsWith("/wiki/")) {
     return null;
   }
 
   const ignoreList = [
-    '/wiki/Wikipedia:',
-    '/wiki/Template:',
-    '/wiki/Template_talk:',
-    '/wiki/Portal:',
-    '/wiki/Help:',
-    '/wiki/Talk:',
-    '/wiki/Special:',
-    '/wiki/Category:',
-    '/wiki/File:',
+    "/wiki/Wikipedia:",
+    "/wiki/Template:",
+    "/wiki/Template_talk:",
+    "/wiki/Portal:",
+    "/wiki/Help:",
+    "/wiki/Talk:",
+    "/wiki/Special:",
+    "/wiki/Category:",
+    "/wiki/File:",
   ];
   if (ignoreList.some((item) => hrefText.startsWith(item))) {
     return null;
@@ -32,12 +32,12 @@ const filterOtherStuff = (target: HTMLAnchorElement) => {
   const classNameParent = target?.parentNode as HTMLElement;
   // show notification about non-wiki link
   if (
-    target?.className === 'external text' ||
-    target?.className === 'new' ||
-    target?.className === 'geo-dec' ||
-    classNameParent?.className === 'reference-text' ||
-    classNameParent?.className === 'external text' ||
-    classNameParent?.className === 'new'
+    target?.className === "external text" ||
+    target?.className === "new" ||
+    target?.className === "geo-dec" ||
+    classNameParent?.className === "reference-text" ||
+    classNameParent?.className === "external text" ||
+    classNameParent?.className === "new"
   ) {
     errorToast();
     return true;
@@ -47,11 +47,11 @@ const filterOtherStuff = (target: HTMLAnchorElement) => {
 
 const handleNavigation = (parentHref: string | null) => {
   if (!parentHref) return false;
-  if (!parentHref.startsWith('#')) return false;
+  if (!parentHref.startsWith("#")) return false;
 
   let navigateId = parentHref;
   // try to scroll to the element
-  navigateId = navigateId.replaceAll('#', '');
+  navigateId = navigateId.replaceAll("#", "");
   const element = document.getElementById(navigateId);
   element?.scrollIntoView();
   return true;
@@ -71,7 +71,7 @@ const useWikiLogic = () => {
     const parentHref = getFilteredLink(parent?.attributes[0]?.value);
 
     // not a link - exit
-    if (target.nodeName !== 'A' && parent.nodeName !== 'A') {
+    if (target.nodeName !== "A" && parent.nodeName !== "A") {
       return;
     }
 

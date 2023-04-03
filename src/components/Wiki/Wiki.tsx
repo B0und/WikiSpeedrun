@@ -1,8 +1,8 @@
-import { useEndingArticle, useStartingArticle } from '../../GameStore';
+import { useEndingArticle, useStartingArticle } from "../../GameStore";
 
 // import './wiki-common.css';
 
-import WikiDisplay from './WikiDisplay';
+import WikiDisplay from "./WikiDisplay";
 
 const Wiki = () => {
   const startTitle = useStartingArticle();

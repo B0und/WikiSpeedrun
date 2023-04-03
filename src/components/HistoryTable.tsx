@@ -1,7 +1,7 @@
-import { useRef, useEffect } from 'react';
-import { useHistory, useIsGameRunning } from '../GameStore';
-import { useNavigate } from 'react-router';
-import { useI18nContext } from '../i18n/i18n-react';
+import { useRef, useEffect } from "react";
+import { useHistory, useIsGameRunning } from "../GameStore";
+import { useNavigate } from "react-router";
+import { useI18nContext } from "../i18n/i18n-react";
 
 const HistoryTable = () => {
   const { LL } = useI18nContext();
@@ -12,7 +12,7 @@ const HistoryTable = () => {
   const tableRef = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
-    tableRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    tableRef?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [articleHistory.length]);
 
   return (

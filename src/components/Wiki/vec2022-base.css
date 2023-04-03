@@ -41,39 +41,39 @@
   font-size: 90%;
   margin-bottom: 0.5em;
 }
-span[rel='mw:referencedBy'] {
+span[rel="mw:referencedBy"] {
   counter-reset: mw-ref-linkback 0;
 }
-span[rel='mw:referencedBy'] > a::before {
+span[rel="mw:referencedBy"] > a::before {
   content: counter(mw-ref-linkback, lower-alpha);
   font-size: 80%;
   font-weight: bold;
   font-style: italic;
 }
-.wiki-insert a[rel='mw:referencedBy']::before {
+.wiki-insert a[rel="mw:referencedBy"]::before {
   font-weight: bold;
-  content: '^';
+  content: "^";
 }
-span[rel='mw:referencedBy']::before {
-  content: '^ ';
+span[rel="mw:referencedBy"]::before {
+  content: "^ ";
 }
-.mw-ref > a[data-mw-group='lower-alpha']::after {
-  content: '[' counter(mw-Ref, lower-alpha) ']';
+.mw-ref > a[data-mw-group="lower-alpha"]::after {
+  content: "[" counter(mw-Ref, lower-alpha) "]";
 }
-.mw-ref > a[data-mw-group='upper-alpha']::after {
-  content: '[' counter(mw-Ref, upper-alpha) ']';
+.mw-ref > a[data-mw-group="upper-alpha"]::after {
+  content: "[" counter(mw-Ref, upper-alpha) "]";
 }
-.mw-ref > a[data-mw-group='decimal']::after {
-  content: '[' counter(mw-Ref, decimal) ']';
+.mw-ref > a[data-mw-group="decimal"]::after {
+  content: "[" counter(mw-Ref, decimal) "]";
 }
-.mw-ref > a[data-mw-group='lower-roman']::after {
-  content: '[' counter(mw-Ref, lower-roman) ']';
+.mw-ref > a[data-mw-group="lower-roman"]::after {
+  content: "[" counter(mw-Ref, lower-roman) "]";
 }
-.mw-ref > a[data-mw-group='upper-roman']::after {
-  content: '[' counter(mw-Ref, upper-roman) ']';
+.mw-ref > a[data-mw-group="upper-roman"]::after {
+  content: "[" counter(mw-Ref, upper-roman) "]";
 }
-.mw-ref > a[data-mw-group='lower-greek']::after {
-  content: '[' counter(mw-Ref, lower-greek) ']';
+.mw-ref > a[data-mw-group="lower-greek"]::after {
+  content: "[" counter(mw-Ref, lower-greek) "]";
 }
 .mw-parser-output .mw-collapsible-toggle:not(.mw-ui-button) {
   font-weight: normal;
@@ -88,12 +88,12 @@ span[rel='mw:referencedBy']::before {
 .wikitable td dl {
   text-align: left;
 }
-.mw-parser-output a[href$='.pdf'].external,
-.mw-parser-output a[href*='.pdf?'].external,
-.mw-parser-output a[href*='.pdf#'].external,
-.mw-parser-output a[href$='.PDF'].external,
-.mw-parser-output a[href*='.PDF?'].external,
-.mw-parser-output a[href*='.PDF#'].external {
+.mw-parser-output a[href$=".pdf"].external,
+.mw-parser-output a[href*=".pdf?"].external,
+.mw-parser-output a[href*=".pdf#"].external,
+.mw-parser-output a[href$=".PDF"].external,
+.mw-parser-output a[href*=".PDF?"].external,
+.mw-parser-output a[href*=".PDF#"].external {
   background: url(//upload.wikimedia.org/wikipedia/commons/4/4d/Icon_pdf_file.png) no-repeat right;
   padding: 8px 18px 8px 0;
 }
@@ -116,8 +116,8 @@ div.titleblacklist-warning {
 #wpUploadDescription {
   height: 13em;
 }
-figure[typeof~='mw:File/Thumb'],
-figure[typeof~='mw:File/Frame'],
+figure[typeof~="mw:File/Thumb"],
+figure[typeof~="mw:File/Frame"],
 .thumbinner {
   min-width: 100px;
 }
@@ -243,14 +243,14 @@ span.mwe-math-mathml-inline {
 .wiki-insert .infobox .infobox-navbar {
   text-align: right;
 }
-.wiki-insert .wikitable.plainrowheaders th[scope='row'],
-.wiki-insert .wikitable.plainrowheaders th[scope='rowgroup'] {
+.wiki-insert .wikitable.plainrowheaders th[scope="row"],
+.wiki-insert .wikitable.plainrowheaders th[scope="rowgroup"] {
   font-weight: normal;
   text-align: left;
 }
-.wiki-insert  .nounderlines a,
-.wiki-insert  .IPA a:link,
-.wiki-insert  .IPA a:visited {
+.wiki-insert .nounderlines a,
+.wiki-insert .IPA a:link,
+.wiki-insert .IPA a:visited {
   text-decoration: none !important;
 }
 .wiki-insert .nowrap,
@@ -262,12 +262,12 @@ span.mwe-math-mathml-inline {
   white-space: normal;
 }
 .wiki-insert span.texhtml {
-  font-family: 'Nimbus Roman No9 L', 'Times New Roman', Times, serif;
+  font-family: "Nimbus Roman No9 L", "Times New Roman", Times, serif;
   font-size: 118%;
   line-height: 1;
   white-space: nowrap;
-  -webkit-font-feature-settings: 'lnum', 'tnum', 'kern' 0;
-  font-feature-settings: 'lnum', 'tnum', 'kern' 0;
+  -webkit-font-feature-settings: "lnum", "tnum", "kern" 0;
+  font-feature-settings: "lnum", "tnum", "kern" 0;
   font-variant-numeric: lining-nums tabular-nums;
   font-kerning: none;
 }

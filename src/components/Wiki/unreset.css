@@ -18,7 +18,7 @@
   }
 
   q {
-    quotes: '“' '”' '‘' '’';
+    quotes: "“" "”" "‘" "’";
 
     &:before {
       content: open-quote;
@@ -166,8 +166,6 @@
     margin: 1em 0;
     padding: 0 0 0 40px;
   }
-
-
 
   dd {
     margin: 0 0 0 40px;

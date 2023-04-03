@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { useI18nContext } from '../i18n/i18n-react';
+import { Link } from "react-router-dom";
+import { useI18nContext } from "../i18n/i18n-react";
 
 const About = () => {
   const { LL } = useI18nContext();
@@ -21,7 +21,7 @@ const About = () => {
         <li> {LL.DARK_THEME()}</li>
         <li> {LL.OPEN_SOURCE()}</li>
       </ul>
-      <Link to={'/settings'} className="bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
+      <Link to={"/settings"} className="bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
         {LL.PLAY()}
       </Link>
     </>

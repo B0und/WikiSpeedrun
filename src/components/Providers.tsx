@@ -1,10 +1,10 @@
-import React from 'react';
-import LocaleProvider from './LocaleProvider';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { StopwatchContextProvider } from './StopwatchContext';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Toaster } from 'react-hot-toast';
-import { ThemeContextProvider } from './ThemeContext';
+import React from "react";
+import LocaleProvider from "./LocaleProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { StopwatchContextProvider } from "./StopwatchContext";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "react-hot-toast";
+import { ThemeContextProvider } from "./ThemeContext";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +24,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
             {children}
             <Toaster
               toastOptions={{
-                position: 'bottom-center',
+                position: "bottom-center",
                 duration: 1500,
               }}
             />

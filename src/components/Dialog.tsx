@@ -1,7 +1,7 @@
-import React from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
-import { X } from 'react-feather';
-import { Dispatch, SetStateAction } from 'react';
+import React from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import { X } from "react-feather";
+import { Dispatch, SetStateAction } from "react";
 
 interface DialogDisplayProps {
   defaultOpen?: boolean;

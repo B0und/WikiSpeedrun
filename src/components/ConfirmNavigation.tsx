@@ -1,7 +1,7 @@
-import { DialogDisplay } from './Dialog';
-import * as Dialog from '@radix-ui/react-dialog';
-import { useResetGame } from '../hooks/useResetGame';
-import { useI18nContext } from '../i18n/i18n-react';
+import { DialogDisplay } from "./Dialog";
+import * as Dialog from "@radix-ui/react-dialog";
+import { useResetGame } from "../hooks/useResetGame";
+import { useI18nContext } from "../i18n/i18n-react";
 
 export const GiveUpModal = () => {
   const { LL } = useI18nContext();

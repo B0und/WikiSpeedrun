@@ -1,13 +1,13 @@
-import { FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useEndingArticle, useGameStoreActions, useStartingArticle } from '../GameStore';
-import ArticleAutocomplete from './ArticleAutocomplete/ArticleAutocomplete';
-import RandomButton from './RandomButton/RandomButton';
-import { handleOnRandomSuccess } from './Settings.helpers';
-import { useStopwatchActions } from './StopwatchContext';
-import { useResetGame } from '../hooks/useResetGame';
-import { useI18nContext } from '../i18n/i18n-react';
-import { WikiLanguageSelect } from './WikiLanguageSelect';
+import { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../GameStore";
+import ArticleAutocomplete from "./ArticleAutocomplete/ArticleAutocomplete";
+import RandomButton from "./RandomButton/RandomButton";
+import { handleOnRandomSuccess } from "./Settings.helpers";
+import { useStopwatchActions } from "./StopwatchContext";
+import { useResetGame } from "../hooks/useResetGame";
+import { useI18nContext } from "../i18n/i18n-react";
+import { WikiLanguageSelect } from "./WikiLanguageSelect";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -21,7 +21,7 @@ const Settings = () => {
   const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await resetGame();
-    navigate('/wiki');
+    navigate("/wiki");
     startStopwatch();
     setIsGameRunning(true);
   };

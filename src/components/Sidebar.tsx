@@ -1,8 +1,8 @@
-import { Resizable } from 're-resizable';
-import { useClicks } from '../GameStore';
-import HistoryTable from './HistoryTable';
-import { Stopwatch } from './Stopwatch';
-import { useI18nContext } from '../i18n/i18n-react';
+import { Resizable } from "re-resizable";
+import { useClicks } from "../GameStore";
+import HistoryTable from "./HistoryTable";
+import { Stopwatch } from "./Stopwatch";
+import { useI18nContext } from "../i18n/i18n-react";
 
 const Sidebar = () => {
   const { LL } = useI18nContext();
@@ -13,7 +13,7 @@ const Sidebar = () => {
       <Resizable
         defaultSize={{
           width: 400,
-          height: '100%',
+          height: "100%",
         }}
         minHeight="100%"
         minWidth={200}

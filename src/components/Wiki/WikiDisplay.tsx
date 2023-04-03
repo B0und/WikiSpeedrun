@@ -1,17 +1,17 @@
-import { usePauseWhileLoading, useWikiQuery } from './WikiDisplay.utils';
-import useWikiLogic from './WikiLogic';
+import { usePauseWhileLoading, useWikiQuery } from "./WikiDisplay.utils";
+import useWikiLogic from "./WikiLogic";
 
-import './unreset.css';
-import './vec2022-base.css';
-import './vector2022.css';
-import './overrides.css';
-import { useThemeContext } from '../ThemeContext';
-import clsx from 'clsx';
+import "./unreset.css";
+import "./vec2022-base.css";
+import "./vector2022.css";
+import "./overrides.css";
+import { useThemeContext } from "../ThemeContext";
+import clsx from "clsx";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
 
-  const isDarkTheme = colorMode === 'dark';
+  const isDarkTheme = colorMode === "dark";
   const { handleWikiArticleClick } = useWikiLogic();
   const { isFetching, data } = useWikiQuery();
 
@@ -28,7 +28,7 @@ const WikiDisplay = () => {
           <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
             {data.title}
           </h2>
-          <div className={clsx('unreset wiki-insert', isDarkTheme && 'wiki-dark-theme')}>
+          <div className={clsx("unreset wiki-insert", isDarkTheme && "wiki-dark-theme")}>
             {/* todo delete unused classnames */}
             <div
               id="wikiHtml"

@@ -1,13 +1,13 @@
-import React from 'react';
-import * as Select from '@radix-ui/react-select';
-import clsx from 'clsx';
-import { ChevronUp, ChevronDown } from 'react-feather';
-import { locales } from '../i18n/i18n-util';
-import { LANGUAGES } from './WikiLanguageSelect';
-import { Locales } from '../i18n/i18n-types';
-import { useI18nContext } from '../i18n/i18n-react';
-import { useInterfaceLanguage, useSettingsStoreActions } from '../SettingsStore';
-import { loadLocaleAsync } from '../i18n/i18n-util.async';
+import React from "react";
+import * as Select from "@radix-ui/react-select";
+import clsx from "clsx";
+import { ChevronUp, ChevronDown } from "react-feather";
+import { locales } from "../i18n/i18n-util";
+import { LANGUAGES } from "./WikiLanguageSelect";
+import { Locales } from "../i18n/i18n-types";
+import { useI18nContext } from "../i18n/i18n-react";
+import { useInterfaceLanguage, useSettingsStoreActions } from "../SettingsStore";
+import { loadLocaleAsync } from "../i18n/i18n-util.async";
 
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) =>
   locales.includes(language.isoCode as Locales)
@@ -76,7 +76,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     return (
       <Select.Item
         className={clsx(
-          ' relative flex h-[40px] select-none items-center rounded-[3px]  px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none',
+          " relative flex h-[40px] select-none items-center rounded-[3px]  px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
           className
         )}
         value={value}
@@ -90,4 +90,4 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   }
 );
 
-SelectItem.displayName = 'SelectItem';
+SelectItem.displayName = "SelectItem";

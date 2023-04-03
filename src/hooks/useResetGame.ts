@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router';
-import { useGameStoreActions } from '../GameStore';
-import { queryClient } from '../components/Providers';
-import { useStopwatchActions } from '../components/StopwatchContext';
+import { useNavigate } from "react-router";
+import { useGameStoreActions } from "../GameStore";
+import { queryClient } from "../components/Providers";
+import { useStopwatchActions } from "../components/StopwatchContext";
 
 export const useResetGame = () => {
   const navigate = useNavigate();
@@ -9,9 +9,9 @@ export const useResetGame = () => {
   const { resetStopwatch } = useStopwatchActions();
 
   return async () => {
-    await queryClient.removeQueries({ queryKey: ['article'] });
+    await queryClient.removeQueries({ queryKey: ["article"] });
     resetStoreState();
     resetStopwatch();
-    navigate('/settings');
+    navigate("/settings");
   };
 };

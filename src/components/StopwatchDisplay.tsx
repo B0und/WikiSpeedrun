@@ -3,9 +3,9 @@ export interface StopwatchProps {
   sec: string;
   ms: string;
 }
-export const StopwatchDisplay = ({ min = '00', sec = '00', ms = '000' }: StopwatchProps) => {
+export const StopwatchDisplay = ({ min = "00", sec = "00", ms = "000" }: StopwatchProps) => {
   return (
-    <div >
+    <div>
       <span className="stopwatch text-5xl">
         {min}:{sec}
       </span>

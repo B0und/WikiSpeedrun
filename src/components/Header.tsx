@@ -1,24 +1,24 @@
-import { Link } from 'react-router-dom';
-import { GitHub, Moon, Sun } from 'react-feather';
-import { ResultDialog } from './ResultDialog';
-import { useThemeContext } from './ThemeContext';
-import { useIsGameRunning } from '../GameStore';
-import { GiveUpModal } from './ConfirmNavigation';
-import { useI18nContext } from '../i18n/i18n-react';
-import { InterfaceLanguageSelect } from './InterfaceLanguageSelect';
+import { Link } from "react-router-dom";
+import { GitHub, Moon, Sun } from "react-feather";
+import { ResultDialog } from "./ResultDialog";
+import { useThemeContext } from "./ThemeContext";
+import { useIsGameRunning } from "../GameStore";
+import { GiveUpModal } from "./ConfirmNavigation";
+import { useI18nContext } from "../i18n/i18n-react";
+import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
 
 const Header = () => {
   const { LL } = useI18nContext();
 
   const links = [
-    { name: LL.PLAY(), path: '/settings' },
-    { name: LL.ABOUT(), path: '/about' },
+    { name: LL.PLAY(), path: "/settings" },
+    { name: LL.ABOUT(), path: "/about" },
   ];
 
   const { colorMode, switchTheme } = useThemeContext();
   const isGameRunning = useIsGameRunning();
 
-  const imageSrc = colorMode === 'light' ? '/new-wiki-logo-light' : '/new-wiki-logo-dark';
+  const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
   return (
     <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3">
       <picture className="basis-[200px]">
@@ -51,7 +51,7 @@ const Header = () => {
               className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
               onClick={switchTheme}
             >
-              {colorMode === 'light' ? <Sun /> : <Moon />}
+              {colorMode === "light" ? <Sun /> : <Moon />}
             </button>
           </li>
           <li className="h-full">

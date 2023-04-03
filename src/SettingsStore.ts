@@ -1,14 +1,14 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import { Locales } from './i18n/i18n-types';
-import { LANGUAGES } from './components/WikiLanguageSelect';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { Locales } from "./i18n/i18n-types";
+import { LANGUAGES } from "./components/WikiLanguageSelect";
 
 /*
  Data that gets persisted in local storage
 */
 
-type WikiLanguage = (typeof LANGUAGES)[number]['value'];
+type WikiLanguage = (typeof LANGUAGES)[number]["value"];
 interface Actions {
   actions: {
     setInterfaceLanguage: (language: Locales) => void;
@@ -21,8 +21,8 @@ interface Values {
 }
 
 const initialState: Values = {
-  interfaceLanguage: '' as Locales,
-  wikiLanguage: 'en',
+  interfaceLanguage: "" as Locales,
+  wikiLanguage: "en",
 };
 
 type SettingsStore = Values & Actions;
@@ -33,20 +33,20 @@ const useSettingsStore = create<SettingsStore>()(
         ...initialState,
         actions: {
           setInterfaceLanguage: (language: Locales) =>
-            set(() => ({ interfaceLanguage: language }), false, 'setInterfaceLanguage'),
+            set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage"),
           setWikiLanguage: (language: WikiLanguage) =>
-            set(() => ({ wikiLanguage: language }), false, 'setWikiLanguage'),
+            set(() => ({ wikiLanguage: language }), false, "setWikiLanguage"),
         },
       }),
       {
-        name: 'settings',
+        name: "settings",
         storage: createJSONStorage(() => localStorage),
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         partialize: ({ actions, ...rest }: SettingsStore) => rest,
       }
     ),
     {
-      name: 'settings-store',
+      name: "settings-store",
     }
   )
 );
