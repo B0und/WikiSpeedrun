@@ -19,6 +19,7 @@ export const WikiLanguageSelect = () => {
     <div>
       <label htmlFor={selectId}>{LL.SELECT_ARTICLE_LANGUAGE()}</label>
       <Select
+        key={wikiLanguage}
         inputId={selectId}
         defaultValue={LANGUAGES.find((language) => language.value === wikiLanguage)}
         isClearable={false}
@@ -59,7 +60,8 @@ export const WikiLanguageSelect = () => {
 const customStyles: StylesConfig<WikiLanguage> = {
   control: (base) => ({
     ...base,
-    width: "300px",
+    width: "fit-content",
+    minWidth: "300px",
     backgroundColor: "#fafafa",
     "&:hover": {
       borderColor: "hsla(203, 66%, 56%)",

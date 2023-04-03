@@ -13,22 +13,25 @@ const locale = detectLocale(navigatorDetector);
 const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
   const [localesLoaded, setLocalesLoaded] = useState(false);
   const interfaceLanguage = useInterfaceLanguage();
-
   const { setInterfaceLanguage } = useSettingsStoreActions();
+
+  // use language from localstore or detected
+  const userLocale = interfaceLanguage ? interfaceLanguage : locale;
+
   useEffect(() => {
-    loadLocaleAsync(locale).then(() => {
+    loadLocaleAsync(userLocale).then(() => {
       setLocalesLoaded(true);
       if (!interfaceLanguage) {
         setInterfaceLanguage(locale);
       }
     });
-  }, [interfaceLanguage, setInterfaceLanguage]);
+  }, [interfaceLanguage, setInterfaceLanguage, userLocale]);
 
   if (!localesLoaded) {
     return null;
   }
 
-  return <TypesafeI18n locale={locale}>{children}</TypesafeI18n>;
+  return <TypesafeI18n locale={userLocale}>{children}</TypesafeI18n>;
 };
 
 export default LocaleProvider;

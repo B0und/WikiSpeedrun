@@ -8,6 +8,7 @@ import { Locales } from "../i18n/i18n-types";
 import { useI18nContext } from "../i18n/i18n-react";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../SettingsStore";
 import { loadLocaleAsync } from "../i18n/i18n-util.async";
+import { useGameStoreActions } from "../GameStore";
 
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) =>
   locales.includes(language.isoCode as Locales)
@@ -16,7 +17,8 @@ const INTERFACE_LANGUAGES = LANGUAGES.filter((language) =>
 export const InterfaceLanguageSelect = () => {
   const { LL, setLocale } = useI18nContext();
   const language = useInterfaceLanguage();
-  const { setInterfaceLanguage } = useSettingsStoreActions();
+  const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions();
+  const { setEndingArticle, setStartingArticle } = useGameStoreActions();
 
   return (
     <Select.Root
@@ -24,6 +26,9 @@ export const InterfaceLanguageSelect = () => {
       onValueChange={async (locale: Locales) => {
         await loadLocaleAsync(locale);
         setInterfaceLanguage(locale);
+        setStartingArticle("");
+        setEndingArticle("");
+        setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
         setLocale(locale);
       }}
     >

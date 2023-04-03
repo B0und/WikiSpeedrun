@@ -12,7 +12,9 @@ export const GiveUpModal = () => {
       descriptionNode={LL.LEAVE_WARNING()}
       triggerNode={
         <Dialog.Trigger asChild>
-          <button>{LL.GIVE_UP()}</button>
+          <button className="p-4 hover:text-primary-blue focus-visible:text-primary-blue">
+            {LL.GIVE_UP()}
+          </button>
         </Dialog.Trigger>
       }
       contentNode={

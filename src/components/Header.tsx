@@ -36,7 +36,10 @@ const Header = () => {
           {!isGameRunning &&
             links.map((link) => (
               <li key={link.path}>
-                <Link to={link.path} className="p-4 hover:text-primary-blue">
+                <Link
+                  to={link.path}
+                  className="p-4 hover:text-primary-blue focus-visible:text-primary-blue"
+                >
                   {link.name}
                 </Link>
               </li>
@@ -45,7 +48,7 @@ const Header = () => {
         </ul>
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4">
-          <InterfaceLanguageSelect />
+          {!isGameRunning && <InterfaceLanguageSelect />}
           <li className="h-full">
             <button
               className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
