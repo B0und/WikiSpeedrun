@@ -27,7 +27,7 @@ export const handleOnRandomSuccess = ({ setArticle, data }: RandomSuccessProps) 
   const articleWithLinks = getHighestLinksPage(data);
   if (!articleWithLinks?.title || articleWithLinks?.title.includes("(disambiguation)")) {
     errorToast();
-    return; // todo show error notification
+    return;
   }
   setArticle(articleWithLinks?.title);
 };
