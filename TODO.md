@@ -1,6 +1,6 @@
 # TODO
 [x] - i18n
-[] - add missing translation text
+[x] - add missing translation text
 [] - analytics
 [] - ship it
 [x] - dark theme
