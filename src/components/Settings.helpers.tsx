@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { WikiRandom } from "./RandomButton/RandomButton.types";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
@@ -20,9 +21,12 @@ interface RandomSuccessProps {
   data: WikiRandom;
 }
 
+const errorToast = () => toast.error("Random failed, try again", { position: "bottom-center" });
+
 export const handleOnRandomSuccess = ({ setArticle, data }: RandomSuccessProps) => {
   const articleWithLinks = getHighestLinksPage(data);
-  if (!articleWithLinks?.title) {
+  if (!articleWithLinks?.title || articleWithLinks?.title.includes("(disambiguation)")) {
+    errorToast();
     return; // todo show error notification
   }
   setArticle(articleWithLinks?.title);

@@ -62,8 +62,6 @@ const Settings = () => {
           <RandomButton
             queryKey="endingArticle"
             onSuccess={(data) => {
-              console.log(data.query?.pages);
-
               handleOnRandomSuccess({ data, setArticle: setEndingArticle });
             }}
           />

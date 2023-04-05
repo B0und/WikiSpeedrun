@@ -1,7 +1,7 @@
 # TODO
 [x] - i18n
 [x] - add missing translation text
-[] - analytics
+[x] - analytics
 [] - ship it
 [x] - dark theme
 [x] - result css

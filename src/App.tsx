@@ -8,6 +8,7 @@ import NoMatch from "./components/NoMatch";
 import Settings from "./components/Settings";
 import Wiki from "./components/Wiki/Wiki";
 
+
 const App = () => {
   useWikiConsoleLogo();
   useNoCheating();
