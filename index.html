@@ -4,7 +4,50 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Wiki Speedrun</title>
+
+    <meta
+      name="description"
+      content="The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time."
+    />
+    <!-- metadata for reddit -->
+    <meta property="og:image" content="https://wikispeedrun.org/twitter-img.jpg" />
+    <meta property="og:image:alt" content="A wikipedia logo with speedrun timer on top of it" />
+    <!-- twitter metadata -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@unbound_dev" />
+    <meta name="twitter:url" content="https://wikispeedrun.org" />
+    <meta name="twitter:title" content="Wiki Speedrun Game" />
+    <meta
+      name="twitter:description"
+      content="The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time."
+    />
+    <meta name="twitter:image" content="https://wikispeedrun.org/twitter-img.jpg" />
+    <meta name="twitter:image:alt" content="A wikipedia logo with speedrun timer on top of it." />
+
+    <%if (process.env.NODE_ENV === 'production') { %>
+    <!-- old icon format -->
+    <link rel="icon" sizes="any" href="favicon.ico" />
+
+    <!-- svg icon -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+
+    <% } %> <%if (process.env.NODE_ENV === 'development') { %>
+    <!-- old icon format -->
+    <link rel="icon" sizes="any" href="favicon-dev.ico" />
+
+    <!-- svg icon -->
+    <link rel="icon" type="image/svg+xml" href="icon-dev.svg" />
+    <% } %>
+
+    <!-- apple icon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://wikispeedrun.org/apple-touch-icon.png"
+    />
+
+    <link rel="manifest" href="https://wikispeedrun.org/site.webmanifest" />
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,13 +59,13 @@
     <script>
       // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
       if (
-        localStorage.getItem('color-theme') === 'dark' ||
-        (!('color-theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
       }
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
