@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply h-full font-sans;
+  }
+
+  #root {
+    @apply isolate;
+  }
+
+  /* For Firefox Browser */
+  .scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: hsla(203, 66%, 56%) hsl(204, 87%, 81%, 0.5);
+  }
+
+  /* For Chrome, EDGE, Opera, Others */
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    /* background: #fff; */
+    @apply bg-secondary-blue;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    /* background: #000; */
+    @apply bg-primary-blue;
+  }
+
+  .stopwatch {
+    background-image: linear-gradient(180deg, #4acd79, #1cad4a);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dropdown-shadow {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px, rgba(0, 0, 0, 0.05) 0px 10px 15px -5px,
+      rgba(0, 0, 0, 0.04) 0px 7px 7px -5px;
+  }
+
+  .wiki-insert a:visited {
+    color: #3366cc !important;
+  }
+
+  .wiki-dark-theme {
+    filter: invert(1) hue-rotate(180deg) !important;
+    color: #303030;
+  }
+
+  .wiki-dark-theme img {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  .wiki-dark-theme .mwe-math-element img {
+    filter: invert(0) hue-rotate(0deg);
+  }
+
+  .wiki-dark-theme a:visited {
+    color: #3366cc !important;
+  }
+
+  .wiki-dark-theme .mw-parser-output .ambox {
+    background-color: inherit;
+  }
+}

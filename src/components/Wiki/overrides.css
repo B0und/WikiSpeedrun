@@ -1,0 +1,14 @@
+a[title="About this image"] {
+  visibility: hidden;
+}
+
+sup[class="noprint Inline-Template Template-Fact"] {
+  display: none;
+}
+#coordinates {
+  display: none;
+}
+
+a[href*="#cite_note"] {
+  display: none;
+}
