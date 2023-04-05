@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { useGameStoreActions, useIsGameRunning } from "./GameStore";
+import { toast } from "react-hot-toast";
 
 const isNotDev = process.env.NODE_ENV !== "development";
 
@@ -13,6 +14,8 @@ export const useWikiConsoleLogo = () => {
   }, []);
 };
 
+const errorToast = () => toast.error("No cheating!", { position: "bottom-center" });
+
 export const useNoCheating = () => {
   const { increaseCheatingAttemptsCounter } = useGameStoreActions();
   const isGameRunning = useIsGameRunning();
@@ -20,11 +23,9 @@ export const useNoCheating = () => {
     (e: globalThis.KeyboardEvent) => {
       if (!isGameRunning) return;
       if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
-        // if (isNotDev) {
-        // }
         e.preventDefault();
         increaseCheatingAttemptsCounter();
-        console.error("No cheating!");
+        errorToast();
       }
     },
     [increaseCheatingAttemptsCounter, isGameRunning]
