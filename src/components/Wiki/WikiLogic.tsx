@@ -5,9 +5,14 @@ import { useI18nContext } from "../../i18n/i18n-react";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
+const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
+
 const getFilteredLink = (hrefText: string | null) => {
   if (!hrefText) return null;
   if (!hrefText.startsWith("/wiki/")) {
+    return null;
+  }
+  if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
     return null;
   }
 
