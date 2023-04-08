@@ -20,8 +20,8 @@ const Header = () => {
 
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
   return (
-    <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3">
-      <picture className="basis-[200px]">
+    <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3 sm:gap-0">
+      <picture className="basis-[200px] sm:hidden">
         <source srcSet={window.location.origin + `/${imageSrc}.webp`} type="image/webp" />
 
         <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
@@ -47,7 +47,7 @@ const Header = () => {
           {isGameRunning && <GiveUpModal />}
         </ul>
         <ResultDialog />
-        <ul className="ml-auto flex h-full gap-4">
+        <ul className="ml-auto flex h-full gap-4 ">
           {!isGameRunning && <InterfaceLanguageSelect />}
           <li className="h-full">
             <button

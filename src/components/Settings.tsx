@@ -67,7 +67,10 @@ const Settings = () => {
           />
         </div>
 
-        <button type="submit" className="w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
+        <button
+          type="submit"
+          className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue"
+        >
           {LL.PLAY()}
         </button>
       </form>

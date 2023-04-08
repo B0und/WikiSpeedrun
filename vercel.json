@@ -4,5 +4,16 @@
         "source": "/(.*)",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "headers": [
+      {
+          "source": "/(.{jpg,webp,svg,png})",
+          "headers" : [
+              {
+                  "key" : "Cache-Control",
+                  "value" : "public, max-age=31536000, immutable"
+              }
+          ]
+      }
+  ]
   }

@@ -43,7 +43,7 @@ export const ResultDialog = () => {
     <DialogDisplay
       descriptionNode={
         <div>
-          <p className="font-bold">
+          <p className="font-bold text-lg">
             {startingArticle} → {endingArticle}
           </p>
         </div>
