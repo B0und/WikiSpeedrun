@@ -140,7 +140,7 @@ export default ArticleAutocomplete;
 const customStyles: StylesConfig<AutocompleteOption> = {
   control: (base) => ({
     ...base,
-    width: "350px",
+    width: "min(350px, 75vw)",
     backgroundColor: "#fafafa",
     "&:hover": {
       borderColor: "hsla(203, 66%, 56%)",

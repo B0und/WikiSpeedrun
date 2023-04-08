@@ -35,7 +35,11 @@ const it: Translation = {
   GET_RANDOM_ARTICLE: "Ottieni un articolo a caso",
   WIKI_ALT_TEXT: "Logo Wiki speedrun, con una sfera di Wikipedia con un timer su di essa. (sembra una grande striscia nera con un testo verde in cima). Il tempo è di 9 secondi e 5 millisecondi.",
   SELECT_ARTICLE_LANGUAGE: "Seleziona la lingua dell'articolo",
-  LANGUAGE: "Lingua"
+  LANGUAGE: "Lingua",
+  NAVIGATION: "Navigazione",
+  NO_CHEATING: "Non barare!",
+  RANDOM_FAIL: "Casuale fallito, riprova",
+  INVALID_LINK: "Scegli un altro collegamento"
 };
 
 export default it;

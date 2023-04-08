@@ -35,7 +35,11 @@ const nl: Translation = {
   GET_RANDOM_ARTICLE: "Ontvang een willekeurig artikel",
   WIKI_ALT_TEXT: "Wiki speedrun-logo, met een Wikipedia-bol met een timer eroverheen. (ziet eruit als een grote zwarte streep met daarboven een groene tijdtekst). De tijd is 9 seconden en 5 milliseconden.",
   SELECT_ARTICLE_LANGUAGE: "Selecteer artikeltaal",
-  LANGUAGE: "Taal"
+  LANGUAGE: "Taal",
+  NAVIGATION: "Navigatie",
+  NO_CHEATING: "Niet valsspelen!",
+  RANDOM_FAIL: "Willekeurig mislukt, probeer het opnieuw",
+  INVALID_LINK: "Kies een andere koppeling"
 };
 
 export default nl;

@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "react-feather";
 import { Dispatch, SetStateAction } from "react";
 
-interface DialogDisplayProps {
+interface ModalDisplayProps {
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: Dispatch<SetStateAction<boolean>>;
@@ -13,7 +13,7 @@ interface DialogDisplayProps {
   title: string;
 }
 
-export const DialogDisplay = (props: DialogDisplayProps) => {
+export const ModalDisplay = (props: ModalDisplayProps) => {
   const { triggerNode, descriptionNode, title, contentNode, defaultOpen, onOpenChange, open } =
     props;
   props.open;
@@ -23,8 +23,8 @@ export const DialogDisplay = (props: DialogDisplayProps) => {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-60 data-[state=open]:animate-overlayShow" />
-        <Dialog.Content className=" fixed left-[50%] top-[50%] flex max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  flex-col   rounded-[6px] bg-neutral-50 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] data-[state=open]:animate-contentShow dark:bg-dark-surface dark:text-dark-primary">
-          <Dialog.Title className="m-0 border-b-[1px] border-b-secondary-border text-xl font-medium">
+        <Dialog.Content className=" fixed left-[50%] top-[50%] flex max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  flex-col   rounded-md bg-neutral-50 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] data-[state=open]:animate-contentShow dark:bg-dark-surface dark:text-dark-primary">
+          <Dialog.Title className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
             {title}
           </Dialog.Title>
 

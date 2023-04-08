@@ -61,7 +61,7 @@ const customStyles: StylesConfig<WikiLanguage> = {
   control: (base) => ({
     ...base,
     width: "fit-content",
-    minWidth: "300px",
+    minWidth: "min(300px, 75vw)",
     backgroundColor: "#fafafa",
     "&:hover": {
       borderColor: "hsla(203, 66%, 56%)",

@@ -11,7 +11,7 @@ import {
 } from "../GameStore";
 
 import { StopwatchDisplay } from "./StopwatchDisplay";
-import { DialogDisplay } from "./Dialog";
+import { ModalDisplay } from "./Dialog";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 
@@ -40,10 +40,10 @@ export const ResultDialog = () => {
   ];
 
   return (
-    <DialogDisplay
+    <ModalDisplay
       descriptionNode={
         <div>
-          <p className="font-bold">
+          <p className="text-lg font-bold">
             {startingArticle} → {endingArticle}
           </p>
         </div>
@@ -54,7 +54,7 @@ export const ResultDialog = () => {
       triggerNode={
         isWin && (
           <Dialog.Trigger asChild>
-            <button className="p-4 hover:text-primary-blue">{LL.RESULTS()}</button>
+            <button className="p-4 hover:text-primary-blue sm:p-2">{LL.RESULTS()}</button>
           </Dialog.Trigger>
         )
       }

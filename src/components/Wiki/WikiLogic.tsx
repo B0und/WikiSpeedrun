@@ -1,12 +1,18 @@
 import { MouseEvent } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useI18nContext } from "../../i18n/i18n-react";
 
-const errorToast = () => toast.error("Choose another link", { position: "bottom-center" });
+const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
+
+const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
 
 const getFilteredLink = (hrefText: string | null) => {
   if (!hrefText) return null;
   if (!hrefText.startsWith("/wiki/")) {
+    return null;
+  }
+  if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
     return null;
   }
 
@@ -28,7 +34,7 @@ const getFilteredLink = (hrefText: string | null) => {
   return hrefText;
 };
 
-const filterOtherStuff = (target: HTMLAnchorElement) => {
+const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
   const classNameParent = target?.parentNode as HTMLElement;
   // show notification about non-wiki link
   if (
@@ -39,7 +45,7 @@ const filterOtherStuff = (target: HTMLAnchorElement) => {
     classNameParent?.className === "external text" ||
     classNameParent?.className === "new"
   ) {
-    errorToast();
+    errorToast(errorText);
     return true;
   }
   return false;
@@ -59,6 +65,8 @@ const handleNavigation = (parentHref: string | null) => {
 
 const useWikiLogic = () => {
   const navigate = useNavigate();
+  const { LL } = useI18nContext();
+  const invalidLinkText = LL.INVALID_LINK();
 
   const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -93,10 +101,10 @@ const useWikiLogic = () => {
     }
 
     // handle misc stuff
-    if (filterOtherStuff(target)) {
+    if (filterOtherStuff(target, invalidLinkText)) {
       return;
     }
-    errorToast();
+    errorToast(invalidLinkText);
   };
 
   return { handleWikiArticleClick };

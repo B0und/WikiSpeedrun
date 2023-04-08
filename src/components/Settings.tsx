@@ -18,6 +18,8 @@ const Settings = () => {
   const endArticle = useEndingArticle();
   const resetGame = useResetGame();
 
+  const randomFailText = LL.RANDOM_FAIL();
+
   const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await resetGame();
@@ -29,10 +31,11 @@ const Settings = () => {
   return (
     <div>
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
-      <p className="pb-8 pt-4">{LL.SETTINGS_DESCRIPTION()}</p>
+      <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
       <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
+
         <div className="flex items-end gap-2">
           <ArticleAutocomplete
             label={LL.STARTING_ARTICLE_LABEL()}
@@ -45,7 +48,11 @@ const Settings = () => {
           <RandomButton
             queryKey="startingArticle"
             onSuccess={(data) => {
-              handleOnRandomSuccess({ data, setArticle: setStartingArticle });
+              handleOnRandomSuccess({
+                data,
+                setArticle: setStartingArticle,
+                failText: randomFailText,
+              });
             }}
           />
         </div>
@@ -62,12 +69,19 @@ const Settings = () => {
           <RandomButton
             queryKey="endingArticle"
             onSuccess={(data) => {
-              handleOnRandomSuccess({ data, setArticle: setEndingArticle });
+              handleOnRandomSuccess({
+                data,
+                setArticle: setEndingArticle,
+                failText: randomFailText,
+              });
             }}
           />
         </div>
 
-        <button type="submit" className="w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
+        <button
+          type="submit"
+          className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue"
+        >
           {LL.PLAY()}
         </button>
       </form>

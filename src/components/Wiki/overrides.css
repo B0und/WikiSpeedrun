@@ -12,3 +12,28 @@ sup[class="noprint Inline-Template Template-Fact"] {
 a[href*="#cite_note"] {
   display: none;
 }
+
+.wiki-insert a:visited {
+  color: #3366cc !important;
+}
+
+.wiki-dark-theme {
+  filter: invert(1) hue-rotate(180deg) !important;
+  color: #303030;
+}
+
+.wiki-dark-theme img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.wiki-dark-theme .mwe-math-element img {
+  filter: invert(0) hue-rotate(0deg);
+}
+
+.wiki-dark-theme a:visited {
+  color: #3366cc !important;
+}
+
+.wiki-dark-theme .mw-parser-output .ambox {
+  background-color: inherit;
+}

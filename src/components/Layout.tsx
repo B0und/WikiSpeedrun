@@ -4,12 +4,12 @@ import Sidebar from "./Sidebar";
 
 const Layout = () => {
   return (
-    <div className="flex h-full max-h-full flex-col items-stretch bg-neutral-50 px-9 pt-4 dark:bg-dark-surface dark:text-dark-primary">
+    <div className="flex h-full max-h-full flex-col items-stretch bg-neutral-50 px-9 pt-4 dark:bg-dark-surface dark:text-dark-primary sm:px-4">
       <Header />
 
       <div className="flex  min-h-0 flex-1 flex-row">
         <Sidebar />
-        <div className="scrollbar flex-1 overflow-auto px-8 pt-8">
+        <div className="scrollbar flex-1 overflow-auto px-8 pt-8 sm:px-0 sm:pt-4">
           <Outlet />
         </div>
       </div>
