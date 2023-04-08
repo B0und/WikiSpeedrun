@@ -1,6 +1,5 @@
 import { toast } from "react-hot-toast";
 import { WikiRandom } from "./RandomButton/RandomButton.types";
-import { useI18nContext } from "../i18n/i18n-react";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) return;
@@ -23,7 +22,7 @@ interface RandomSuccessProps {
   failText: string;
 }
 
-const errorToast = (text : string) => toast.error(text, { position: "bottom-center" });
+const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
 export const handleOnRandomSuccess = ({ setArticle, data, failText }: RandomSuccessProps) => {
   const articleWithLinks = getHighestLinksPage(data);
