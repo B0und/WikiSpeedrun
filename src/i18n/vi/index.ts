@@ -36,6 +36,10 @@ const vi: Translation = {
   WIKI_ALT_TEXT: "Logo speedrun của Wiki, có hình cầu Wikipedia với bộ đếm thời gian trên đó. (trông giống như một sọc đen lớn với dòng chữ thời gian màu xanh lục ở trên cùng). Thời gian là 9 giây và 5 mili giây.",
   SELECT_ARTICLE_LANGUAGE: "Chọn ngôn ngữ bài viết",
   LANGUAGE: "Ngôn ngữ",
+  NAVIGATION: "dẫn đường",
+  NO_CHEATING: "Không gian lận!",
+  RANDOM_FAIL: "Ngẫu nhiên không thành công, hãy thử lại",
+  INVALID_LINK: "Chọn một liên kết khác"
 };
 
 export default vi;
