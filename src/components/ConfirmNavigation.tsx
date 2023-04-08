@@ -1,4 +1,4 @@
-import { DialogDisplay } from "./Dialog";
+import { ModalDisplay } from "./Dialog";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
@@ -7,12 +7,12 @@ export const GiveUpModal = () => {
   const { LL } = useI18nContext();
   const resetGame = useResetGame();
   return (
-    <DialogDisplay
+    <ModalDisplay
       title={LL.CONFIRM_ACTION()}
       descriptionNode={LL.LEAVE_WARNING()}
       triggerNode={
         <Dialog.Trigger asChild>
-          <button className="p-4 hover:text-primary-blue focus-visible:text-primary-blue">
+          <button className="p-4 hover:text-primary-blue focus-visible:text-primary-blue sm:p-2">
             {LL.GIVE_UP()}
           </button>
         </Dialog.Trigger>

@@ -3,6 +3,7 @@ import { useEndingArticle, useStartingArticle } from "../../GameStore";
 
 import WikiDisplay from "./WikiDisplay";
 import { useEffect } from "react";
+import { Stopwatch } from "../Stopwatch";
 
 const Wiki = () => {
   const startTitle = useStartingArticle();
@@ -21,6 +22,11 @@ const Wiki = () => {
         {startTitle} → {endTitle}
       </div>
       <WikiDisplay />
+
+      <div className="pointer-events-none absolute bottom-0  right-0  hidden overflow-hidden p-2 sm:flex">
+        <div className="absolute inset-0  bg-black bg-opacity-80" />
+        <Stopwatch />
+      </div>
     </div>
   );
 };

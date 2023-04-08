@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useGameStoreActions, useIsGameRunning } from "./GameStore";
 import { toast } from "react-hot-toast";
+import { useI18nContext } from "./i18n/i18n-react";
 
 const isNotDev = process.env.NODE_ENV !== "development";
 
@@ -14,9 +15,10 @@ export const useWikiConsoleLogo = () => {
   }, []);
 };
 
-const errorToast = () => toast.error("No cheating!", { position: "bottom-center" });
+const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
 export const useNoCheating = () => {
+  const { LL } = useI18nContext();
   const { increaseCheatingAttemptsCounter } = useGameStoreActions();
   const isGameRunning = useIsGameRunning();
   const disableSearch = useCallback(
@@ -25,10 +27,10 @@ export const useNoCheating = () => {
       if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
         e.preventDefault();
         increaseCheatingAttemptsCounter();
-        errorToast();
+        errorToast(LL.NO_CHEATING());
       }
     },
-    [increaseCheatingAttemptsCounter, isGameRunning]
+    [LL, increaseCheatingAttemptsCounter, isGameRunning]
   );
   useEffect(() => {
     window.addEventListener("keydown", disableSearch);

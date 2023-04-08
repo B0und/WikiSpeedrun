@@ -39,6 +39,10 @@ const en: BaseTranslation = {
     "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across it. (looks like a big black stripe with a green time text on top). The time is 9 seconds and 5 milliseconds.",
   SELECT_ARTICLE_LANGUAGE: "Select article language",
   LANGUAGE: "Language",
+  NAVIGATION: "Navigation",
+  NO_CHEATING: "No Cheating!",
+  RANDOM_FAIL: "Random failed, try again",
+  INVALID_LINK: "Choose another link",
 };
 
 export default en;

@@ -162,6 +162,22 @@ type RootTranslation = {
 	 * L​a​n​g​u​a​g​e
 	 */
 	LANGUAGE: string
+	/**
+	 * N​a​v​i​g​a​t​i​o​n
+	 */
+	NAVIGATION: string
+	/**
+	 * N​o​ ​C​h​e​a​t​i​n​g​!
+	 */
+	NO_CHEATING: string
+	/**
+	 * R​a​n​d​o​m​ ​f​a​i​l​e​d​,​ ​t​r​y​ ​a​g​a​i​n
+	 */
+	RANDOM_FAIL: string
+	/**
+	 * C​h​o​o​s​e​ ​a​n​o​t​h​e​r​ ​l​i​n​k
+	 */
+	INVALID_LINK: string
 }
 
 export type TranslationFunctions = {
@@ -301,6 +317,22 @@ export type TranslationFunctions = {
 	 * Language
 	 */
 	LANGUAGE: () => LocalizedString
+	/**
+	 * Navigation
+	 */
+	NAVIGATION: () => LocalizedString
+	/**
+	 * No Cheating!
+	 */
+	NO_CHEATING: () => LocalizedString
+	/**
+	 * Random failed, try again
+	 */
+	RANDOM_FAIL: () => LocalizedString
+	/**
+	 * Choose another link
+	 */
+	INVALID_LINK: () => LocalizedString
 }
 
 export type Formatters = {}
