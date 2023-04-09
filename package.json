@@ -20,6 +20,7 @@
     "@tanstack/react-query-devtools": "^4.28.0",
     "@vercel/analytics": "^0.1.11",
     "clsx": "^1.2.1",
+    "immer": "^9.0.21",
     "re-resizable": "^6.9.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -32,7 +33,8 @@
     "use-local-storage": "^2.3.6",
     "vite-plugin-ejs": "^1.6.4",
     "vite-plugin-svgr": "^2.4.0",
-    "zustand": "^4.3.7"
+    "zustand": "^4.3.7",
+    "zustand-querystring": "^0.0.13"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^4.27.0",

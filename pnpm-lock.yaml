@@ -22,6 +22,9 @@ dependencies:
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
+  immer:
+    specifier: ^9.0.21
+    version: 9.0.21
   re-resizable:
     specifier: ^6.9.9
     version: 6.9.9(react-dom@18.2.0)(react@18.2.0)
@@ -60,7 +63,10 @@ dependencies:
     version: 2.4.0(vite@4.2.1)
   zustand:
     specifier: ^4.3.7
-    version: 4.3.7(react@18.2.0)
+    version: 4.3.7(immer@9.0.21)(react@18.2.0)
+  zustand-querystring:
+    specifier: ^0.0.13
+    version: 0.0.13
 
 devDependencies:
   '@tanstack/eslint-plugin-query':
@@ -2513,6 +2519,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immer@9.0.21:
+    resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
+    dev: false
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -2786,6 +2796,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -4059,7 +4073,13 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@4.3.7(react@18.2.0):
+  /zustand-querystring@0.0.13:
+    resolution: {integrity: sha512-c22iwgMCuZGg3DU8khMUCmvA/YNKzZHBZbSC/6MEDv/R6/1/uX8/lrYhItv6mOwpSPbb0TVVNeS74XrDqJEAuA==}
+    dependencies:
+      lodash-es: 4.17.21
+    dev: false
+
+  /zustand@4.3.7(immer@9.0.21)(react@18.2.0):
     resolution: {integrity: sha512-dY8ERwB9Nd21ellgkBZFhudER8KVlelZm8388B5nDAXhO/+FZDhYMuRnqDgu5SYyRgz/iaf8RKnbUs/cHfOGlQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -4071,6 +4091,7 @@ packages:
       react:
         optional: true
     dependencies:
+      immer: 9.0.21
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false

@@ -10,8 +10,8 @@ export const useResetGame = () => {
 
   return async () => {
     await queryClient.removeQueries({ queryKey: ["article"] });
-    resetStoreState();
     resetStopwatch();
+    resetStoreState();
     navigate("/settings");
   };
 };

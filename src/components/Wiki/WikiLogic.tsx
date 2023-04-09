@@ -72,23 +72,20 @@ const useWikiLogic = () => {
     e.preventDefault();
 
     const target = e.target as HTMLAnchorElement;
-
-    const hrefText = getFilteredLink(target?.attributes[0]?.value);
-
     const parent = target.parentNode as HTMLAnchorElement;
-    const parentHref = getFilteredLink(parent?.attributes[0]?.value);
-
     // not a link - exit
     if (target.nodeName !== "A" && parent.nodeName !== "A") {
       return;
     }
 
     // handle navigation and leave
+    const parentHref = getFilteredLink(parent?.attributes[0]?.value);
     if (handleNavigation(parentHref)) {
       return;
     }
 
     // handle correct link
+    const hrefText = getFilteredLink(target?.attributes[0]?.value);
     if (hrefText) {
       navigate(hrefText);
       return;

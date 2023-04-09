@@ -1,9 +1,11 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { StopwatchProps } from "./components/StopwatchDisplay";
+import { querystring } from "zustand-querystring";
+import { immer } from "zustand/middleware/immer";
 
 /*
- This file is only for runtime data that gets erased on webpage restart 
+ Data partially synced with URL
 */
 
 interface Actions {
@@ -36,38 +38,73 @@ const initialState = {
 
 const useGameStore = create<GameStore>()(
   devtools(
-    (set) => ({
-      ...initialState,
-      startingArticle: "",
-      endingArticle: "",
-      actions: {
-        setStartingArticle: (title: string) =>
-          set(() => ({ startingArticle: title }), false, "setStartingArticle"),
-        setEndingArticle: (title: string) =>
-          set(() => ({ endingArticle: title }), false, "setEndingArticle"),
-        setIsGameRunning: (flag: boolean) =>
-          set(() => ({ isGameRunning: flag }), false, "setIsGameRunning"),
-        addHistoryArticle: (article: ArticleHistory) =>
-          set(
-            (state) => {
-              // without this, first article will be slightly later than 0
-              if (state.history.length === 0) {
-                article.time.ms = "000";
-              }
-              return { history: [...state.history, article] };
-            },
-            false,
-            "addHistoryArticle"
-          ),
-        resetStoreState: () => set(() => initialState, false, "resetGame"),
-        increaseCheatingAttemptsCounter: () =>
-          set(
-            (state) => ({ cheatingAttempts: state.cheatingAttempts + 1 }),
-            false,
-            "increaseCheatingAttemptsCounter"
-          ),
-      },
-    }),
+    querystring(
+      immer((set) => ({
+        ...initialState,
+        startingArticle: "",
+        endingArticle: "",
+        actions: {
+          setStartingArticle: (title: string) =>
+            set(
+              (state) => {
+                state.startingArticle = title;
+              },
+              false,
+              "setStartingArticle"
+            ),
+          setEndingArticle: (title: string) =>
+            set(
+              (state) => {
+                state.endingArticle = title;
+              },
+              false,
+              "setEndingArticle"
+            ),
+          setIsGameRunning: (flag: boolean) =>
+            set(
+              (state) => {
+                state.isGameRunning = flag;
+              },
+              false,
+              "setIsGameRunning"
+            ),
+          addHistoryArticle: (article: ArticleHistory) =>
+            set(
+              (state) => {
+                // without this, first article will be slightly later than 0
+                if (state.history.length === 0) {
+                  article.time.ms = "000";
+                }
+                state.history.push(article);
+              },
+              false,
+              "addHistoryArticle"
+            ),
+          resetStoreState: () => set(() => ({ ...initialState, history: [] }), false, "resetGame"),
+          increaseCheatingAttemptsCounter: () =>
+            set(
+              (state) => {
+                state.cheatingAttempts += 1;
+              },
+              false,
+              "increaseCheatingAttemptsCounter"
+            ),
+        },
+      })),
+      {
+        select(pathname) {
+          const isWikiPage = pathname.startsWith("/wiki");
+
+          return {
+            history: isWikiPage,
+            startingArticle: true,
+            endingArticle: true,
+            isGameRunning: false,
+            cheatingAttempts: isWikiPage,
+          };
+        },
+      }
+    ),
     {
       name: "game-store",
     }
