@@ -40,7 +40,10 @@ const ja: Translation = {
   NAVIGATION: "ナビゲーション",
   NO_CHEATING: "不正をしない！",
   RANDOM_FAIL: "ランダム失敗、再試行",
-  INVALID_LINK: "他のリンクを選択する"
+  INVALID_LINK: "他のリンクを選択する",
+  SHARE_SETTINGS: "共有設定",
+  LINK_COPIED: "クリップボードにコピーされる",
+  SHARE_RESULT: "シェア実績"
 };
 
 export default ja;

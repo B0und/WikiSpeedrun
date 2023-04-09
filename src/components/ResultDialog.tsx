@@ -14,6 +14,7 @@ import { StopwatchDisplay } from "./StopwatchDisplay";
 import { ModalDisplay } from "./Dialog";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
+import { toast } from "react-hot-toast";
 
 export const ResultDialog = () => {
   const { LL } = useI18nContext();
@@ -21,14 +22,14 @@ export const ResultDialog = () => {
   const resetGame = useResetGame();
 
   const startingArticle = useStartingArticle();
-
   const endingArticle = useEndingArticle();
-
   const history = useHistory();
   const [lastArticle] = history.slice(-1);
   const clicks = useClicks();
   const isWin = useIsWin();
   const cheatingAttempts = useCheatingAttempts();
+
+  const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
 
   useEffect(() => {
     setOpen(isWin);
@@ -82,7 +83,16 @@ export const ResultDialog = () => {
             />
           </div>
 
-          <div className="mt-9 flex justify-end">
+          <div className="mt-9 flex justify-end gap-8 flex-wrap">
+            <button
+              className="border-b-[1px] border-b-transparent  hover:border-b-primary-blue focus-visible:border-b-primary-blue"
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                copyNotification();
+              }}
+            >
+              {LL.SHARE_RESULT()}
+            </button>
             <Dialog.Close asChild>
               <button
                 type="button"

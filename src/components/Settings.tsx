@@ -8,6 +8,7 @@ import { useStopwatchActions } from "./StopwatchContext";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import { WikiLanguageSelect } from "./WikiLanguageSelect";
+import { toast } from "react-hot-toast";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -19,6 +20,8 @@ const Settings = () => {
   const resetGame = useResetGame();
 
   const randomFailText = LL.RANDOM_FAIL();
+
+  const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
 
   const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -78,12 +81,24 @@ const Settings = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue"
-        >
-          {LL.PLAY()}
-        </button>
+        <div className="flex flex-wrap gap-8">
+          <button
+            type="button"
+            className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              copyNotification();
+            }}
+          >
+            {LL.SHARE_SETTINGS()}
+          </button>
+          <button
+            type="submit"
+            className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue"
+          >
+            {LL.PLAY()}
+          </button>
+        </div>
       </form>
     </div>
   );

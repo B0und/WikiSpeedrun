@@ -39,7 +39,10 @@ const fr: Translation = {
   NAVIGATION: "La navigation",
   NO_CHEATING: "Pas de tricherie!",
   RANDOM_FAIL: "Aléatoire échoué, réessayez",
-  INVALID_LINK: "Choisissez un autre lien"
+  INVALID_LINK: "Choisissez un autre lien",
+  SHARE_SETTINGS: "Paramètres de partage",
+  LINK_COPIED: "Copié dans le presse-papier",
+  SHARE_RESULT: "Partager le résultat"
 };
 
 export default fr;

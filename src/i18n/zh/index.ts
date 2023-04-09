@@ -33,14 +33,16 @@ const zh: Translation = {
   CLICKS_NUM: "点击率{0}",
   NO_ARTICLES_FOUND: "没有发现文章",
   GET_RANDOM_ARTICLE: "获取随机文章",
-  WIKI_ALT_TEXT:
-    "维基速记的标志，以维基百科的球体为特色，上面有一个计时器。(看起来像一个大的黑色条纹，上面有一个绿色的时间文本）。时间是9秒5毫秒。",
+  WIKI_ALT_TEXT: "维基速记的标志，以维基百科的球体为特色，上面有一个计时器。(看起来像一个大的黑色条纹，上面有一个绿色的时间文本）。时间是9秒5毫秒。",
   SELECT_ARTICLE_LANGUAGE: "选择文章语言",
   LANGUAGE: "语言",
   NAVIGATION: "导航",
   NO_CHEATING: "不作弊!",
   RANDOM_FAIL: "随机失败，再试",
   INVALID_LINK: "选择另一个链接",
+  SHARE_SETTINGS: "共享设置",
+  LINK_COPIED: "复制到剪贴板",
+  SHARE_RESULT: "分享结果"
 };
 
 export default zh;

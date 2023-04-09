@@ -39,7 +39,10 @@ const nl: Translation = {
   NAVIGATION: "Navigatie",
   NO_CHEATING: "Niet valsspelen!",
   RANDOM_FAIL: "Willekeurig mislukt, probeer het opnieuw",
-  INVALID_LINK: "Kies een andere koppeling"
+  INVALID_LINK: "Kies een andere koppeling",
+  SHARE_SETTINGS: "Deel instellingen",
+  LINK_COPIED: "Gekopieerd naar het klembord",
+  SHARE_RESULT: "Resultaat delen"
 };
 
 export default nl;

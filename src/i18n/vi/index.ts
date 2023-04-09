@@ -39,7 +39,10 @@ const vi: Translation = {
   NAVIGATION: "dẫn đường",
   NO_CHEATING: "Không gian lận!",
   RANDOM_FAIL: "Ngẫu nhiên không thành công, hãy thử lại",
-  INVALID_LINK: "Chọn một liên kết khác"
+  INVALID_LINK: "Chọn một liên kết khác",
+  SHARE_SETTINGS: "Chia sẻ cài đặt",
+  LINK_COPIED: "Sao chép vào clipboard",
+  SHARE_RESULT: "Chia sẻ kết quả"
 };
 
 export default vi;

@@ -40,7 +40,10 @@ const pl: Translation = {
   NAVIGATION: "Nawigacja",
   NO_CHEATING: "Bez oszukiwania!",
   RANDOM_FAIL: "Losowe nie powiodło się, spróbuj ponownie",
-  INVALID_LINK: "Wybierz inny link"
+  INVALID_LINK: "Wybierz inny link",
+  SHARE_SETTINGS: "Udostępnij ustawienia",
+  LINK_COPIED: "Skopiowane do schowka",
+  SHARE_RESULT: "Udostępnij wynik"
 };
 
 export default pl;

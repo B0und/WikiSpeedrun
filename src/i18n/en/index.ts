@@ -43,6 +43,9 @@ const en: BaseTranslation = {
   NO_CHEATING: "No Cheating!",
   RANDOM_FAIL: "Random failed, try again",
   INVALID_LINK: "Choose another link",
+  SHARE_SETTINGS: "Share settings",
+  LINK_COPIED: "Copied to clipboard",
+  SHARE_RESULT: "Share Result"
 };
 
 export default en;

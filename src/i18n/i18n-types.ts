@@ -178,6 +178,18 @@ type RootTranslation = {
 	 * C​h​o​o​s​e​ ​a​n​o​t​h​e​r​ ​l​i​n​k
 	 */
 	INVALID_LINK: string
+	/**
+	 * S​h​a​r​e​ ​s​e​t​t​i​n​g​s
+	 */
+	SHARE_SETTINGS: string
+	/**
+	 * C​o​p​i​e​d​ ​t​o​ ​c​l​i​p​b​o​a​r​d
+	 */
+	LINK_COPIED: string
+	/**
+	 * S​h​a​r​e​ ​R​e​s​u​l​t
+	 */
+	SHARE_RESULT: string
 }
 
 export type TranslationFunctions = {
@@ -333,6 +345,18 @@ export type TranslationFunctions = {
 	 * Choose another link
 	 */
 	INVALID_LINK: () => LocalizedString
+	/**
+	 * Share settings
+	 */
+	SHARE_SETTINGS: () => LocalizedString
+	/**
+	 * Copied to clipboard
+	 */
+	LINK_COPIED: () => LocalizedString
+	/**
+	 * Share Result
+	 */
+	SHARE_RESULT: () => LocalizedString
 }
 
 export type Formatters = {}

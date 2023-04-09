@@ -40,7 +40,10 @@ const sv: Translation = {
   NAVIGATION: "Navigering",
   NO_CHEATING: "Inget fusk!",
   RANDOM_FAIL: "Slumpmässigt misslyckades, försök igen",
-  INVALID_LINK: "Välj en annan länk"
+  INVALID_LINK: "Välj en annan länk",
+  SHARE_SETTINGS: "Dela inställningar",
+  LINK_COPIED: "Kopierade till urklipp",
+  SHARE_RESULT: "Dela resultat"
 };
 
 export default sv;

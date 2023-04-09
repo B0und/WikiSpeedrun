@@ -48,3 +48,5 @@ glitch mode - the link get "corrupted" visually
 dark mode bg color as as setting
 
 local runs history
+
+multi-lingual-achievements
