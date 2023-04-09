@@ -1,5 +1,5 @@
 import Providers from "./components/Providers";
-import { useNoCheating, useWikiConsoleLogo } from "./App.utils";
+import { useWikiConsoleLogo } from "./App.utils";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
@@ -8,10 +8,9 @@ import NoMatch from "./components/NoMatch";
 import Settings from "./components/Settings";
 import Wiki from "./components/Wiki/Wiki";
 
-
 const App = () => {
   useWikiConsoleLogo();
-  useNoCheating();
+
   return (
     <Providers>
       <BrowserRouter>

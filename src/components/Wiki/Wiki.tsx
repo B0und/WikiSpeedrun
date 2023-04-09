@@ -4,8 +4,10 @@ import { useEndingArticle, useStartingArticle } from "../../GameStore";
 import WikiDisplay from "./WikiDisplay";
 import { useEffect } from "react";
 import { Stopwatch } from "../Stopwatch";
+import { useNoCheating } from "./Wiki.utils";
 
 const Wiki = () => {
+  useNoCheating();
   const startTitle = useStartingArticle();
   const endTitle = useEndingArticle();
   const navigate = useNavigate();
