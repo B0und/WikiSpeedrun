@@ -11,10 +11,20 @@ import {
 } from "../GameStore";
 
 import { StopwatchDisplay } from "./StopwatchDisplay";
-import { ModalDisplay } from "./Dialog";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import { toast } from "react-hot-toast";
+import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
+import ConfettiExplosion from "react-confetti-explosion";
+import { ConfettiProps } from "react-confetti-explosion";
+
+const confettiParams: ConfettiProps = {
+  force: 0.6,
+  duration: 3000,
+  particleCount: 400,
+  height: 1600,
+  width: 1600,
+};
 
 export const ResultDialog = () => {
   const { LL } = useI18nContext();
@@ -41,24 +51,23 @@ export const ResultDialog = () => {
   ];
 
   return (
-    <ModalDisplay
-      descriptionNode={
-        <p className="text-lg font-bold">
-          {startingArticle.title} → {endingArticle.title}
-        </p>
-      }
-      open={open}
-      onOpenChange={setOpen}
-      title={LL.RESULTS()}
-      triggerNode={
-        isWin && (
-          <Dialog.Trigger asChild>
-            <button className="p-4 hover:text-primary-blue sm:p-2">{LL.RESULTS()}</button>
-          </Dialog.Trigger>
-        )
-      }
-      contentNode={
+    <ModalRoot open={open} onOpenChange={setOpen}>
+      <ModalTrigger asChild>
+        {isWin && <button className="p-4 hover:text-primary-blue sm:p-2">{LL.RESULTS()}</button>}
+      </ModalTrigger>
+      <ModalContent>
         <>
+          <div className="flex flex-col items-center justify-center">
+            {open && <ConfettiExplosion {...confettiParams} />}
+          </div>
+          <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
+            {LL.RESULTS()}
+          </ModalTitle>
+          <ModalDescription>
+            <p className="mb-5 mt-[10px] text-lg font-bold ">
+              {startingArticle.title} → {endingArticle.title}
+            </p>
+          </ModalDescription>
           <table className="mb-5 w-full table-auto">
             <tbody>
               {resultStats.map((stat) => (
@@ -102,7 +111,7 @@ export const ResultDialog = () => {
             </Dialog.Close>
           </div>
         </>
-      }
-    />
+      </ModalContent>
+    </ModalRoot>
   );
 };
