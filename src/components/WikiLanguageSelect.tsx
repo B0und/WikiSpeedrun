@@ -29,8 +29,8 @@ export const WikiLanguageSelect = () => {
         options={LANGUAGES}
         onChange={(e) => {
           setWikiLanguage(e?.value || "");
-          setStartingArticle("");
-          setEndingArticle("");
+          setStartingArticle({ pageid: "", title: "" });
+          setEndingArticle({ pageid: "", title: "" });
         }}
         isMulti={false}
         classNames={{

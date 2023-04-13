@@ -26,8 +26,8 @@ export const InterfaceLanguageSelect = () => {
       onValueChange={async (locale: Locales) => {
         await loadLocaleAsync(locale);
         setInterfaceLanguage(locale);
-        setStartingArticle("");
-        setEndingArticle("");
+        setStartingArticle({pageid: "", title: ""});
+        setEndingArticle({pageid: "", title: ""});
         setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
         setLocale(locale);
       }}

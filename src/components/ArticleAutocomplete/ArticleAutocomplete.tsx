@@ -7,6 +7,7 @@ import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useWikiLanguage } from "../../SettingsStore";
+import { Article } from "../../GameStore";
 
 const getArticles = async (language: string, debouncedTerm: string) => {
   if (!debouncedTerm) return;
@@ -28,7 +29,7 @@ interface ArticleAutocompleteProps {
   label: string;
   placeholder: string;
   required: boolean;
-  onSelect: (option: string) => void;
+  onSelect: (option: Article) => void;
   defaultValue: string;
   selectId: string;
 }
@@ -105,10 +106,9 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
         noOptionsMessage={noOptionsMessage}
         getOptionLabel={(option: AutocompleteOption) => option.label}
         getOptionValue={(option: AutocompleteOption) => option.value}
-        onChange={(newValue) => {
-          const value = newValue?.label ?? "";
-          setSelectedOption(value);
-          onSelect(value);
+        onChange={(article) => {
+          setSelectedOption(article?.label || "");
+          onSelect({ pageid: article?.value || "", title: article?.label || "" });
         }}
         value={data?.filter(function (option) {
           return option.label === selectedOption;

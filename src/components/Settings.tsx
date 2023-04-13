@@ -9,6 +9,7 @@ import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import { WikiLanguageSelect } from "./WikiLanguageSelect";
 import { toast } from "react-hot-toast";
+import ArticlePreview from "./ArticlePreview";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -37,6 +38,7 @@ const Settings = () => {
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
       <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
+        <ArticlePreview pageid={startArticle.pageid} />
         <WikiLanguageSelect />
 
         <div className="flex items-end gap-2">
@@ -45,7 +47,7 @@ const Settings = () => {
             placeholder={LL.INPUT_PLACEHOLDER()}
             required={true}
             onSelect={setStartingArticle}
-            defaultValue={startArticle}
+            defaultValue={startArticle.title}
             selectId="startArticle"
           />
           <RandomButton
@@ -66,7 +68,7 @@ const Settings = () => {
             placeholder={LL.INPUT_PLACEHOLDER()}
             required={true}
             onSelect={setEndingArticle}
-            defaultValue={endArticle}
+            defaultValue={endArticle.title}
             selectId="startArticle"
           />
           <RandomButton

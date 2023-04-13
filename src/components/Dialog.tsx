@@ -13,6 +13,9 @@ interface ModalDisplayProps {
   title: string;
 }
 
+
+TODO fix this awful modal api
+extract parts into exports and use them
 export const ModalDisplay = (props: ModalDisplayProps) => {
   const { triggerNode, descriptionNode, title, contentNode, defaultOpen, onOpenChange, open } =
     props;
@@ -28,7 +31,7 @@ export const ModalDisplay = (props: ModalDisplayProps) => {
             {title}
           </Dialog.Title>
 
-          <Dialog.Description className="mb-5 mt-[10px] text-sm leading-normal">
+          <Dialog.Description className="mb-5 mt-[10px] text-sm leading-normal" asChild>
             {descriptionNode}
           </Dialog.Description>
 

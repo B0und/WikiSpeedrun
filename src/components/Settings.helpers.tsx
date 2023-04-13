@@ -1,5 +1,6 @@
 import { toast } from "react-hot-toast";
 import { WikiRandom } from "./RandomButton/RandomButton.types";
+import { Article } from "../GameStore";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) return;
@@ -17,7 +18,7 @@ export const getHighestLinksPage = (data: WikiRandom) => {
 };
 
 interface RandomSuccessProps {
-  setArticle: (article: string) => void;
+  setArticle: (article: Article) => void;
   data: WikiRandom;
   failText: string;
 }
@@ -30,5 +31,8 @@ export const handleOnRandomSuccess = ({ setArticle, data, failText }: RandomSucc
     errorToast(failText);
     return;
   }
-  setArticle(articleWithLinks?.title);
+  setArticle({
+    title: articleWithLinks?.title,
+    pageid: String(articleWithLinks.pageid) || "",
+  });
 };

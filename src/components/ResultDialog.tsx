@@ -43,11 +43,9 @@ export const ResultDialog = () => {
   return (
     <ModalDisplay
       descriptionNode={
-        <div>
-          <p className="text-lg font-bold">
-            {startingArticle} → {endingArticle}
-          </p>
-        </div>
+        <p className="text-lg font-bold">
+          {startingArticle.title} → {endingArticle.title}
+        </p>
       }
       open={open}
       onOpenChange={setOpen}
@@ -83,7 +81,7 @@ export const ResultDialog = () => {
             />
           </div>
 
-          <div className="mt-9 flex justify-end gap-8 flex-wrap">
+          <div className="mt-9 flex flex-wrap justify-end gap-8">
             <button
               className="border-b-[1px] border-b-transparent  hover:border-b-primary-blue focus-visible:border-b-primary-blue"
               onClick={() => {
