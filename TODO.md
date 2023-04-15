@@ -1,8 +1,9 @@
 # TODO
+
 [x] - i18n
 [x] - add missing translation text
 [x] - analytics
-[] - ship it
+[x] - ship it
 [x] - dark theme
 [x] - result css
 [x] - give up button
@@ -15,14 +16,12 @@
 [x] - input clear button
 [] - handle article download errors
 
-[] - Caspar David Friedrich (fix navigation)
+
 # Ideas:
 
+[x] - article preview
 
-article preview
-
-typesafe routing
----
+## typesafe routing
 
 [x] - cheating attempts
 [x] -time-travel after game
@@ -43,11 +42,14 @@ random button for 5 options
 
 option to move sidebar to the right
 
-glitch mode - the link get "corrupted" visually 
+glitch mode - the link get "corrupted" visually
 
-dark mode bg color as as setting
+dark mode bg color as setting
 
 local runs history
 
 multi-lingual-achievements
 zz
+
+no duplicate articles setting
+

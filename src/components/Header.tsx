@@ -126,7 +126,7 @@ const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Link
           <Link
             key={link.path}
             to={link.path}
-            className="w-full p-4 hover:text-primary-blue focus-visible:text-primary-blue"
+            className="w-full whitespace-nowrap p-4 hover:text-primary-blue focus-visible:text-primary-blue"
           >
             {link.name}
           </Link>

@@ -42,7 +42,9 @@ const de: Translation = {
   INVALID_LINK: "Wählen Sie einen anderen Link",
   SHARE_SETTINGS: "Einstellungen teilen",
   LINK_COPIED: "In die Zwischenablage kopiert",
-  SHARE_RESULT: "Ergebnis teilen"
+  SHARE_RESULT: "Ergebnis teilen",
+  LOADING: "Wird geladen...",
+  ARTICLE_PREVIEW_LOAD_FAILED: "Artikelvorschau konnte nicht geladen werden"
 };
 
 export default de;

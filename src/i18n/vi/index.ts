@@ -42,7 +42,9 @@ const vi: Translation = {
   INVALID_LINK: "Chọn một liên kết khác",
   SHARE_SETTINGS: "Chia sẻ cài đặt",
   LINK_COPIED: "Sao chép vào clipboard",
-  SHARE_RESULT: "Chia sẻ kết quả"
+  SHARE_RESULT: "Chia sẻ kết quả",
+  LOADING: "Đang tải",
+  ARTICLE_PREVIEW_LOAD_FAILED: "Không thể tải bản xem trước bài viết"
 };
 
 export default vi;

@@ -7,9 +7,11 @@ import "./vector2022.css";
 import "./overrides.css";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
+import { useI18nContext } from "../../i18n/i18n-react";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
+  const { LL } = useI18nContext();
 
   const isDarkTheme = colorMode === "dark";
   const { handleWikiArticleClick } = useWikiLogic();
@@ -18,7 +20,7 @@ const WikiDisplay = () => {
   usePauseWhileLoading(isFetching);
 
   if (isFetching) {
-    return <p>Loading...</p>;
+    return <p>{LL.LOADING()}</p>;
   }
 
   return (

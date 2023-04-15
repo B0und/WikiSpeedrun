@@ -4,15 +4,15 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "react-feather";
 import clsx from "clsx";
 
-interface DialogContentBase {
+interface DrawerExtraProps {
   side?: "right" | "left";
   className?: string;
 }
-type DialogContentProps = React.ComponentProps<typeof DialogPrimitive.Content> & DialogContentBase;
+type DrawerContentProps = React.ComponentProps<typeof DialogPrimitive.Content> & DrawerExtraProps;
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  DialogContentProps
+  DrawerContentProps
 >(({ children, side = "right", className, ...props }, forwardedRef) => (
   <DialogPrimitive.Portal>
     <DialogPrimitive.Overlay

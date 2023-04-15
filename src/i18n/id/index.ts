@@ -43,7 +43,9 @@ const id: Translation = {
   INVALID_LINK: "Pilih tautan lain",
   SHARE_SETTINGS: "Berbagi pengaturan",
   LINK_COPIED: "Disalin ke papan klip",
-  SHARE_RESULT: "Bagikan Hasil"
+  SHARE_RESULT: "Bagikan Hasil",
+  LOADING: "Memuat...",
+  ARTICLE_PREVIEW_LOAD_FAILED: "Tidak dapat memuat pratinjau artikel"
 };
 
 export default id;

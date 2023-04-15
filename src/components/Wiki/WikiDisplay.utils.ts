@@ -44,7 +44,7 @@ export const useWikiQuery = () => {
   const language = useWikiLanguage();
   const routeParams = useParams();
   const isGameRunning = useIsGameRunning();
-  const wikiArticle = routeParams.wikiTitle || startingArticle;
+  const wikiArticle = routeParams.wikiTitle || startingArticle.title;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
 
   const targetArticle = useEndingArticle();
@@ -52,7 +52,7 @@ export const useWikiQuery = () => {
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
-      if (article.title !== targetArticle) {
+      if (article.title !== targetArticle.title) {
         return false;
       }
       pauseStopwatch();

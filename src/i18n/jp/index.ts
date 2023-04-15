@@ -43,7 +43,9 @@ const ja: Translation = {
   INVALID_LINK: "他のリンクを選択する",
   SHARE_SETTINGS: "共有設定",
   LINK_COPIED: "クリップボードにコピーされる",
-  SHARE_RESULT: "シェア実績"
+  SHARE_RESULT: "シェア実績",
+  LOADING: "ローディング",
+  ARTICLE_PREVIEW_LOAD_FAILED: "記事のプレビューを読み込むことができませんでした"
 };
 
 export default ja;

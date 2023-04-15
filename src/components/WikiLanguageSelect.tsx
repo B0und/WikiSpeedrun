@@ -29,8 +29,8 @@ export const WikiLanguageSelect = () => {
         options={LANGUAGES}
         onChange={(e) => {
           setWikiLanguage(e?.value || "");
-          setStartingArticle("");
-          setEndingArticle("");
+          setStartingArticle({ pageid: "", title: "" });
+          setEndingArticle({ pageid: "", title: "" });
         }}
         isMulti={false}
         classNames={{
@@ -60,8 +60,7 @@ export const WikiLanguageSelect = () => {
 const customStyles: StylesConfig<WikiLanguage> = {
   control: (base) => ({
     ...base,
-    width: "fit-content",
-    minWidth: "min(300px, 75vw)",
+    maxWidth: "300px",
     backgroundColor: "#fafafa",
     "&:hover": {
       borderColor: "hsla(203, 66%, 56%)",

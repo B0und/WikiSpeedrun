@@ -9,8 +9,8 @@ import { immer } from "zustand/middleware/immer";
 */
 
 interface Actions {
-  setStartingArticle: (article: string) => void;
-  setEndingArticle: (article: string) => void;
+  setStartingArticle: (article: Article) => void;
+  setEndingArticle: (article: Article) => void;
   setIsGameRunning: (flag: boolean) => void;
   addHistoryArticle: (article: ArticleHistory) => void;
   resetStoreState: () => void;
@@ -21,11 +21,16 @@ interface ArticleHistory {
   title: string;
   time: StopwatchProps;
 }
+
+export interface Article {
+  title: string;
+  pageid: string;
+}
 interface GameStore {
   actions: Actions;
   history: ArticleHistory[];
-  startingArticle: string;
-  endingArticle: string;
+  startingArticle: Article;
+  endingArticle: Article;
   isGameRunning: boolean;
   cheatingAttempts: number;
 }
@@ -41,22 +46,22 @@ const useGameStore = create<GameStore>()(
     querystring(
       immer((set) => ({
         ...initialState,
-        startingArticle: "",
-        endingArticle: "",
+        startingArticle: { pageid: "", title: "" },
+        endingArticle: { pageid: "", title: "" },
         actions: {
-          setStartingArticle: (title: string) =>
+          setStartingArticle: (article: Article) =>
             set(
-              (state) => {
-                state.startingArticle = title;
-              },
+              () => ({
+                startingArticle: article,
+              }),
               false,
               "setStartingArticle"
             ),
-          setEndingArticle: (title: string) =>
+          setEndingArticle: (article: Article) =>
             set(
-              (state) => {
-                state.endingArticle = title;
-              },
+              () => ({
+                endingArticle: article,
+              }),
               false,
               "setEndingArticle"
             ),
@@ -122,7 +127,7 @@ export const useCurrentArticle = () => useGameStore((state) => state.history.sli
 export const useIsWin = () =>
   useGameStore((state) => {
     const currentArticle = state.history.slice(-1)?.[0]?.title;
-    return state.endingArticle === currentArticle;
+    return state.endingArticle.title === currentArticle;
   });
 
 export const useCheatingAttempts = () => useGameStore((state) => state.cheatingAttempts);

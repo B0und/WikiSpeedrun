@@ -43,7 +43,9 @@ const sv: Translation = {
   INVALID_LINK: "Välj en annan länk",
   SHARE_SETTINGS: "Dela inställningar",
   LINK_COPIED: "Kopierade till urklipp",
-  SHARE_RESULT: "Dela resultat"
+  SHARE_RESULT: "Dela resultat",
+  LOADING: "Läser in",
+  ARTICLE_PREVIEW_LOAD_FAILED: "Det gick inte att läsa in förhandsgranskningen av artikeln"
 };
 
 export default sv;

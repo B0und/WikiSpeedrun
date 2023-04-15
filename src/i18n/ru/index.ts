@@ -43,7 +43,9 @@ const ru: Translation = {
   INVALID_LINK: "Выберите другую ссылку",
   SHARE_SETTINGS: "Поделиться настройками",
   LINK_COPIED: "Скопировано в буфер обмена",
-  SHARE_RESULT: "Поделиться результатом"
+  SHARE_RESULT: "Поделиться результатом",
+  LOADING: "Загрузка...",
+  ARTICLE_PREVIEW_LOAD_FAILED: "Не удалось загрузить предварительный просмотр статьи."
 };
 
 export default ru;
