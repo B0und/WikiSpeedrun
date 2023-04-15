@@ -51,41 +51,41 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
       <Popover.Trigger asChild>
         <button
           className={clsx(
-            "w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent  focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary ",
-            pageid && "cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue"
+            "pointer-events-none w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent  focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary ",
+            pageid &&
+              "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue"
           )}
           aria-label="Article preview"
         >
           <HelpCircle />
         </button>
       </Popover.Trigger>
-      {pageid && (
-        <Popover.Portal>
-          <Popover.Content
-            className="scrollbar max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md  bg-neutral-50 p-5  shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
-            sideOffset={5}
-          >
-            <h3 className="border-b-[1px] border-b-secondary-border font-bold">
-              {articlePreview?.query?.pages?.[pageid].title}
-              {isarticlePreviewLoading && "Please wait"}
-            </h3>
-            {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
-            <p className="mt-2 text-base">
-              {isarticlePreviewLoading
-                ? LL.LOADING()
-                : articlePreview?.query?.pages?.[pageid].extract}
-              {isError && LL.ARTICLE_PREVIEW_LOAD_FAILED()}
-            </p>
 
-            <Popover.Close
-              className="absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
-              aria-label="Close"
-            >
-              <X />
-            </Popover.Close>
-          </Popover.Content>
-        </Popover.Portal>
-      )}
+      <Popover.Portal>
+        <Popover.Content
+          className="scrollbar max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md  bg-neutral-50 p-5  shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
+          sideOffset={5}
+        >
+          <h3 className="border-b-[1px] border-b-secondary-border font-bold">
+            {articlePreview?.query?.pages?.[pageid].title}
+            {isarticlePreviewLoading && "Please wait"}
+          </h3>
+          {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
+          <p className="mt-2 text-base">
+            {isarticlePreviewLoading
+              ? LL.LOADING()
+              : articlePreview?.query?.pages?.[pageid].extract}
+            {isError && LL.ARTICLE_PREVIEW_LOAD_FAILED()}
+          </p>
+
+          <Popover.Close
+            className="absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
+            aria-label="Close"
+          >
+            <X />
+          </Popover.Close>
+        </Popover.Content>
+      </Popover.Portal>
     </Popover.Root>
   );
 };

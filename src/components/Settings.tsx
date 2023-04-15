@@ -37,7 +37,7 @@ const Settings = () => {
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
-      <form className="flex flex-col gap-4 max-w-[500px]" onSubmit={startGameHandler}>
+      <form className="flex max-w-[500px] flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
 
         <div className="flex items-end gap-2 sm:gap-0">
