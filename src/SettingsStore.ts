@@ -13,16 +13,19 @@ interface Actions {
   actions: {
     setInterfaceLanguage: (language: Locales) => void;
     setWikiLanguage: (language: WikiLanguage) => void;
+    setSidebarWidth: (width: number) => void;
   };
 }
 interface Values {
   interfaceLanguage: Locales;
   wikiLanguage: WikiLanguage;
+  sidebarWidth: number;
 }
 
 const initialState: Values = {
   interfaceLanguage: "" as Locales,
   wikiLanguage: "en",
+  sidebarWidth: 400,
 };
 
 type SettingsStore = Values & Actions;
@@ -36,6 +39,7 @@ const useSettingsStore = create<SettingsStore>()(
             set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage"),
           setWikiLanguage: (language: WikiLanguage) =>
             set(() => ({ wikiLanguage: language }), false, "setWikiLanguage"),
+          setSidebarWidth: (width: number) => set(() => ({ sidebarWidth: width })),
         },
       }),
       {
@@ -54,3 +58,4 @@ const useSettingsStore = create<SettingsStore>()(
 export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);
 export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage);
 export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
+export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);

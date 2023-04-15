@@ -1,4 +1,27 @@
 # TODO
+[x] - save sidebar width locally
+[] - missed-wins count (highlight winning link)
+[] - random button for 5 options
+
+
+## Ideas
+
+handle article download errors
+typesafe routing
+twitter share button
+achievements
+dissallow disambiguation links (partially fixed)
+predefined paths
+multiple articles ?
+option to move sidebar to the right
+glitch mode - the link get "corrupted" visually
+dark mode bg color as setting
+local runs history
+longest title (# of characters)
+multi-lingual-achievements
+no duplicate articles setting
+
+## Done
 
 [x] - i18n
 [x] - add missing translation text
@@ -7,49 +30,13 @@
 [x] - dark theme
 [x] - result css
 [x] - give up button
-[] - twitter share button
 [x] - add reset run logic
 [x] - random button selects article
 [x] - modify select styles
 [x] - win screen
 [x] - notification system
 [x] - input clear button
-[] - handle article download errors
-
-
-# Ideas:
-
 [x] - article preview
-
-## typesafe routing
-
-[x] - cheating attempts
 [x] -time-travel after game
-missed-wins count (highlight winning link)
-longest title (# of characters)
-achievements
-
-dissallow disambiguation links
-predefined paths
-
-multiple articles ?
-
+[x] - cheating attempts
 [x] - some dice animation
-
-save sidebar width locally
-
-random button for 5 options
-
-option to move sidebar to the right
-
-glitch mode - the link get "corrupted" visually
-
-dark mode bg color as setting
-
-local runs history
-
-multi-lingual-achievements
-zz
-
-no duplicate articles setting
-

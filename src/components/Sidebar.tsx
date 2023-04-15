@@ -3,17 +3,23 @@ import { useClicks } from "../GameStore";
 import HistoryTable from "./HistoryTable";
 import { Stopwatch } from "./Stopwatch";
 import { useI18nContext } from "../i18n/i18n-react";
+import { useSettingsStoreActions, useSidebarWidth } from "../SettingsStore";
 
 const Sidebar = () => {
   const { LL } = useI18nContext();
+  const sidebarWidth = useSidebarWidth();
+  const { setSidebarWidth } = useSettingsStoreActions();
 
   const clicks = useClicks();
   return (
     <>
       <Resizable
-        defaultSize={{
-          width: 400,
+        size={{
+          width: sidebarWidth,
           height: "100%",
+        }}
+        onResizeStop={(e, direction, ref, d) => {
+          setSidebarWidth(ref.offsetWidth);
         }}
         minHeight="100%"
         minWidth={200}
