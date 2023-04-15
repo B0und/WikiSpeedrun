@@ -1270,7 +1270,7 @@ div.thumbinner {
   #wikiBody {
     /* background-color: #f8f9fa; */
     color: #202122;
-    overflow-y: scroll;
+    overflow-y: hidden;
   }
   .mw-body,
   .parsoid-body {

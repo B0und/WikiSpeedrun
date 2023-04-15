@@ -46,7 +46,10 @@ const RandomButton = ({ queryKey, onSuccess }: RandomButtonProps) => {
 
   return (
     <button
-      className={clsx("mb-[-2px] w-fit p-2", isFetching && "animate-spin-dice")}
+      className={clsx(
+        "mb-[-2px] w-fit p-2 hover:text-primary-blue",
+        isFetching && "animate-spin-dice"
+      )}
       type="button"
       onClick={() => refetch()}
     >

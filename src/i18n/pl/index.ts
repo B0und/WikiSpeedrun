@@ -43,7 +43,9 @@ const pl: Translation = {
   INVALID_LINK: "Wybierz inny link",
   SHARE_SETTINGS: "Udostępnij ustawienia",
   LINK_COPIED: "Skopiowane do schowka",
-  SHARE_RESULT: "Udostępnij wynik"
+  SHARE_RESULT: "Udostępnij wynik",
+  LOADING: "Ładowanie...",
+  ARTICLE_PREVIEW_LOAD_FAILED: "Nie można załadować podglądu artykułu"
 };
 
 export default pl;

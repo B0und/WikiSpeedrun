@@ -12,8 +12,6 @@
   #root {
     @apply isolate;
   }
-
- 
 }
 
 @layer components {
@@ -36,7 +34,7 @@
   /* For Firefox Browser */
   .scrollbar {
     scrollbar-width: auto;
-    scrollbar-color: hsla(203, 66%, 56%) hsl(204, 87%, 81%, 0.5);
+    scrollbar-color: hsla(203, 66%, 56%) hsla(207, 50%, 92%, 0);
   }
 
   /* For Chrome, EDGE, Opera, Others */
@@ -46,7 +44,7 @@
 
   .scrollbar::-webkit-scrollbar-track {
     /* background: #fff; */
-    @apply bg-secondary-blue;
+    @apply bg-transparent;
   }
 
   .scrollbar::-webkit-scrollbar-thumb {

@@ -84,7 +84,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-1 flex-col min-w-0">
       <label htmlFor={selectId}>{label}</label>
       <Select
         key={defaultValue} // dirty hack
@@ -140,7 +140,6 @@ export default ArticleAutocomplete;
 const customStyles: StylesConfig<AutocompleteOption> = {
   control: (base) => ({
     ...base,
-    width: "min(350px, 75vw)",
     backgroundColor: "#fafafa",
     "&:hover": {
       borderColor: "hsla(203, 66%, 56%)",

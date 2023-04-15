@@ -45,7 +45,9 @@ const en: BaseTranslation = {
   INVALID_LINK: "Choose another link",
   SHARE_SETTINGS: "Share settings",
   LINK_COPIED: "Copied to clipboard",
-  SHARE_RESULT: "Share Result"
+  SHARE_RESULT: "Share Result",
+  LOADING: "Loading...",
+  ARTICLE_PREVIEW_LOAD_FAILED: "Couldn't load article preview"
 };
 
 export default en;

@@ -19,10 +19,7 @@
 
 # Ideas:
 
-article preview
-
-summary: https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&pageids=11231720
-image: https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&pageids=25751778
+[x] - article preview
 
 ## typesafe routing
 
@@ -47,7 +44,7 @@ option to move sidebar to the right
 
 glitch mode - the link get "corrupted" visually
 
-dark mode bg color as as setting
+dark mode bg color as setting
 
 local runs history
 

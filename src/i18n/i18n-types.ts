@@ -190,6 +190,14 @@ type RootTranslation = {
 	 * S​h​a​r​e​ ​R​e​s​u​l​t
 	 */
 	SHARE_RESULT: string
+	/**
+	 * L​o​a​d​i​n​g​.​.​.
+	 */
+	LOADING: string
+	/**
+	 * C​o​u​l​d​n​'​t​ ​l​o​a​d​ ​a​r​t​i​c​l​e​ ​p​r​e​v​i​e​w
+	 */
+	ARTICLE_PREVIEW_LOAD_FAILED: string
 }
 
 export type TranslationFunctions = {
@@ -357,6 +365,14 @@ export type TranslationFunctions = {
 	 * Share Result
 	 */
 	SHARE_RESULT: () => LocalizedString
+	/**
+	 * Loading...
+	 */
+	LOADING: () => LocalizedString
+	/**
+	 * Couldn't load article preview
+	 */
+	ARTICLE_PREVIEW_LOAD_FAILED: () => LocalizedString
 }
 
 export type Formatters = {}

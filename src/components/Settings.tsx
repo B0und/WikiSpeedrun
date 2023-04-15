@@ -9,7 +9,7 @@ import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import { WikiLanguageSelect } from "./WikiLanguageSelect";
 import { toast } from "react-hot-toast";
-import ArticlePreview from "./ArticlePreview";
+import ArticlePreview from "./ArticlePreview/ArticlePreview";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -37,11 +37,10 @@ const Settings = () => {
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
-      <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
-        <ArticlePreview pageid={startArticle.pageid} />
+      <form className="flex flex-col gap-4 max-w-[500px]" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
 
-        <div className="flex items-end gap-2">
+        <div className="flex items-end gap-2 sm:gap-0">
           <ArticleAutocomplete
             label={LL.STARTING_ARTICLE_LABEL()}
             placeholder={LL.INPUT_PLACEHOLDER()}
@@ -50,6 +49,7 @@ const Settings = () => {
             defaultValue={startArticle.title}
             selectId="startArticle"
           />
+          <ArticlePreview pageid={startArticle.pageid} />
           <RandomButton
             queryKey="startingArticle"
             onSuccess={(data) => {
@@ -62,7 +62,7 @@ const Settings = () => {
           />
         </div>
 
-        <div className="flex items-end gap-2">
+        <div className="flex items-end gap-2 sm:gap-0">
           <ArticleAutocomplete
             label={LL.ENDING_ARTICLE_LABEL()}
             placeholder={LL.INPUT_PLACEHOLDER()}
@@ -71,6 +71,7 @@ const Settings = () => {
             defaultValue={endArticle.title}
             selectId="startArticle"
           />
+          <ArticlePreview pageid={endArticle.pageid} />
           <RandomButton
             queryKey="endingArticle"
             onSuccess={(data) => {

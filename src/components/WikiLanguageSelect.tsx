@@ -60,8 +60,7 @@ export const WikiLanguageSelect = () => {
 const customStyles: StylesConfig<WikiLanguage> = {
   control: (base) => ({
     ...base,
-    width: "fit-content",
-    minWidth: "min(300px, 75vw)",
+    maxWidth: "300px",
     backgroundColor: "#fafafa",
     "&:hover": {
       borderColor: "hsla(203, 66%, 56%)",
