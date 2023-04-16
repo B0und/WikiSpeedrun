@@ -18,7 +18,7 @@ const Sidebar = () => {
           width: sidebarWidth,
           height: "100%",
         }}
-        onResizeStop={(e, direction, ref, d) => {
+        onResizeStop={(e, direction, ref) => {
           setSidebarWidth(ref.offsetWidth);
         }}
         minHeight="100%"
@@ -49,3 +49,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

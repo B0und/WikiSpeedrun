@@ -2,6 +2,8 @@ import { MouseEvent } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useI18nContext } from "../../i18n/i18n-react";
+import { useStopwatchActions } from "../StopwatchContext";
+import { useGameStoreActions } from "../../GameStore";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
@@ -63,10 +65,30 @@ const handleNavigation = (parentHref: string | null) => {
   return true;
 };
 
+const hrefToText = (href: string) => {
+  const urlTitle = href.split("/wiki/")[1];
+  return decodeURI(urlTitle).replaceAll("_", " ");
+};
+
 const useWikiLogic = () => {
   const navigate = useNavigate();
   const { LL } = useI18nContext();
   const invalidLinkText = LL.INVALID_LINK();
+  const { getFormattedTime } = useStopwatchActions();
+  const { addHistoryArticle } = useGameStoreActions();
+
+  const addHrefToHistory = (href: string) => {
+    const time = getFormattedTime();
+    const { min, ms, sec } = time;
+
+    const title = hrefToText(href);
+
+    addHistoryArticle({
+      title,
+      time: { min, sec, ms },
+      winningLinks: 0,
+    });
+  };
 
   const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -87,12 +109,14 @@ const useWikiLogic = () => {
     // handle correct link
     const hrefText = getFilteredLink(target?.attributes[0]?.value);
     if (hrefText) {
+      addHrefToHistory(hrefText);
       navigate(hrefText);
       return;
     }
 
     // if parent is a link
     if (parentHref) {
+      addHrefToHistory(parentHref);
       navigate(parentHref);
       return;
     }
