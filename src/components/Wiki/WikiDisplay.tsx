@@ -12,8 +12,9 @@ import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../G
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
-  const { LL } = useI18nContext();
   const isDarkTheme = colorMode === "dark";
+  
+  const { LL } = useI18nContext();
   const { handleWikiArticleClick } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();
   const isGameRunning = useIsGameRunning();
@@ -25,8 +26,8 @@ const WikiDisplay = () => {
 
   const wikiRefCallback = (node: HTMLDivElement | null) => {
     if (!node || isFetching || isError) return;
-    const visibleWinningLinks = findVisibleWinningLinks(endingArticle);
 
+    const visibleWinningLinks = findVisibleWinningLinks(endingArticle);
     if (isGameRunning) {
       setLastArticleWinningLinks(visibleWinningLinks.length);
     }

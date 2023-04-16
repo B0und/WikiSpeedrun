@@ -15,18 +15,27 @@ const Settings = () => {
   const { LL } = useI18nContext();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
-  const { setIsGameRunning, setStartingArticle, setEndingArticle } = useGameStoreActions();
+  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } =
+    useGameStoreActions();
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
   const resetGame = useResetGame();
 
   const randomFailText = LL.RANDOM_FAIL();
-
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
 
   const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await resetGame();
+    addHistoryArticle({
+      title: startArticle.title,
+      time: {
+        min: "00",
+        sec: "00",
+        ms: "000",
+      },
+      winningLinks: 0,
+    });
     navigate("/wiki");
     startStopwatch();
     setIsGameRunning(true);

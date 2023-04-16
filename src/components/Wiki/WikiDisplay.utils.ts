@@ -80,24 +80,18 @@ export const useWikiQuery = () => {
       title: data?.parse?.title,
       pageid: data?.parse?.pageid,
     }),
-    onSuccess: (data) => {
-      if (!isGameRunning) return;
-      const time = getFormattedTime();
-      const { min, ms, sec } = time;
-
-      addHistoryArticle({
-        title: data.title || "",
-        time: { min, sec, ms },
-        winningLinks: 0,
-      });
-
-      if (handleWin(data)) {
-        return;
-      }
-
-      startStopwatch();
-    },
   });
+
+  useEffect(() => {
+    if (!query.data) return;
+    if (!isGameRunning) return;
+
+    if (handleWin(query.data)) {
+      return;
+    }
+
+    startStopwatch();
+  }, [addHistoryArticle, getFormattedTime, handleWin, isGameRunning, query.data, startStopwatch]);
 
   return query;
 };
