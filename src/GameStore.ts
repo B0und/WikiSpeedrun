@@ -15,11 +15,13 @@ interface Actions {
   addHistoryArticle: (article: ArticleHistory) => void;
   resetStoreState: () => void;
   increaseCheatingAttemptsCounter: () => void;
+  setLastArticleWinningLinks: (links: number) => void;
 }
 
 interface ArticleHistory {
   title: string;
   time: StopwatchProps;
+  winningLinks: number;
 }
 
 export interface Article {
@@ -44,8 +46,7 @@ const initialState = {
 const useGameStore = create<GameStore>()(
   devtools(
     querystring(
-      immer(
-        (set) => ({
+      immer((set) => ({
         ...initialState,
         startingArticle: { pageid: "", title: "" },
         endingArticle: { pageid: "", title: "" },
@@ -95,9 +96,18 @@ const useGameStore = create<GameStore>()(
               false,
               "increaseCheatingAttemptsCounter"
             ),
+          setLastArticleWinningLinks: (links: number) =>
+            set(
+              (state) => {
+                state.history[state.history.length - 1].winningLinks = links;
+              },
+              false,
+              "setLastArticleWinningLinks"
+            ),
         },
       })),
       {
+        // save to URL if specified as true
         select(pathname) {
           const isWikiPage = pathname.startsWith("/wiki");
 

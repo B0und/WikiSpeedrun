@@ -44,7 +44,9 @@ const fr: Translation = {
   LINK_COPIED: "Copié dans le presse-papier",
   SHARE_RESULT: "Partager le résultat",
   LOADING: "Chargement...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Impossible de charger l'aperçu de l'article"
+  ARTICLE_PREVIEW_LOAD_FAILED: "Impossible de charger l'aperçu de l'article",
+  WINNING_LINKS: "Liens gagnants",
+  MISSED_WINS: "Victoires manquées"
 };
 
 export default fr;

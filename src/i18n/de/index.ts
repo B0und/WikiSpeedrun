@@ -44,7 +44,9 @@ const de: Translation = {
   LINK_COPIED: "In die Zwischenablage kopiert",
   SHARE_RESULT: "Ergebnis teilen",
   LOADING: "Wird geladen...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Artikelvorschau konnte nicht geladen werden"
+  ARTICLE_PREVIEW_LOAD_FAILED: "Artikelvorschau konnte nicht geladen werden",
+  WINNING_LINKS: "Gewinnende Links",
+  MISSED_WINS: "Verpasste Siege"
 };
 
 export default de;

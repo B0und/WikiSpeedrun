@@ -44,7 +44,9 @@ const es: Translation = {
   LINK_COPIED: "Copiado al portapapeles",
   SHARE_RESULT: "Compartir resultado",
   LOADING: "Cargando...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "No se pudo cargar la vista previa del artículo"
+  ARTICLE_PREVIEW_LOAD_FAILED: "No se pudo cargar la vista previa del artículo",
+  WINNING_LINKS: "Enlaces ganadores",
+  MISSED_WINS: "victorias perdidas"
 };
 
 export default es;

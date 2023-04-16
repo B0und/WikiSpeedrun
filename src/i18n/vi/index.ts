@@ -44,7 +44,9 @@ const vi: Translation = {
   LINK_COPIED: "Sao chép vào clipboard",
   SHARE_RESULT: "Chia sẻ kết quả",
   LOADING: "Đang tải",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Không thể tải bản xem trước bài viết"
+  ARTICLE_PREVIEW_LOAD_FAILED: "Không thể tải bản xem trước bài viết",
+  WINNING_LINKS: "Liên kết chiến thắng",
+  MISSED_WINS: "bỏ lỡ chiến thắng"
 };
 
 export default vi;

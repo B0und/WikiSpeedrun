@@ -38,6 +38,7 @@ export const ResultDialog = () => {
   const clicks = useClicks();
   const isWin = useIsWin();
   const cheatingAttempts = useCheatingAttempts();
+  const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
 
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
 
@@ -48,6 +49,7 @@ export const ResultDialog = () => {
   const resultStats = [
     { name: LL.ARTICLE_CLICKS(), value: clicks },
     { name: LL.CHEATING_ATTEMPTS(), value: cheatingAttempts },
+    { name: LL.MISSED_WINS(), value: missedWins },
   ];
 
   return (
@@ -63,7 +65,7 @@ export const ResultDialog = () => {
           <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
             {LL.RESULTS()}
           </ModalTitle>
-          <ModalDescription>
+          <ModalDescription asChild>
             <p className="mb-5 mt-[10px] text-lg font-bold ">
               {startingArticle.title} → {endingArticle.title}
             </p>
