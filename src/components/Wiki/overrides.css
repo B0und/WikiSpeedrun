@@ -14,7 +14,7 @@ a[href*="#cite_note"] {
 }
 
 .wiki-insert a:visited {
-  color: #3366cc !important;
+  color: #3366cc;
 }
 
 .wiki-dark-theme {
@@ -31,9 +31,10 @@ a[href*="#cite_note"] {
 }
 
 .wiki-dark-theme a:visited {
-  color: #3366cc !important;
+  color: #3366cc;
 }
 
 .wiki-dark-theme .mw-parser-output .ambox {
   background-color: inherit;
 }
+

@@ -24,6 +24,7 @@ const HistoryTable = () => {
           <tr>
             <th className="text-start">{LL.ARTICLE()}</th>
             <th className="text-start">{LL.TIME()}</th>
+            {!isGameRunning && <th className="text-start">{LL.WINNING_LINKS()}</th>}
           </tr>
         </thead>
         <tbody ref={tableRef}>
@@ -37,7 +38,7 @@ const HistoryTable = () => {
               ) : (
                 <td>
                   <button
-                    className="text-primary-blue underline"
+                    className="text-left text-primary-blue underline"
                     onClick={() => navigate(`/wiki/${article.title}`)}
                   >
                     {article.title}
@@ -47,6 +48,7 @@ const HistoryTable = () => {
               <td className="py-2 pr-4">
                 {article.time.min}:{article.time.sec}.{article.time.ms}
               </td>
+              {!isGameRunning && <td className="py-2 pr-4">{article.winningLinks}</td>}
             </tr>
           ))}
         </tbody>

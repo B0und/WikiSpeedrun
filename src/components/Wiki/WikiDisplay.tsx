@@ -1,4 +1,4 @@
-import { usePauseWhileLoading, useWikiQuery } from "./WikiDisplay.utils";
+import { findVisibleWinningLinks, usePauseWhileLoading, useWikiQuery } from "./WikiDisplay.utils";
 import useWikiLogic from "./WikiLogic";
 
 import "./unreset.css";
@@ -8,16 +8,37 @@ import "./overrides.css";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
+import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../GameStore";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
   const { LL } = useI18nContext();
-
   const isDarkTheme = colorMode === "dark";
   const { handleWikiArticleClick } = useWikiLogic();
-  const { isFetching, data } = useWikiQuery();
+  const { isFetching, data, isError } = useWikiQuery();
+  const isGameRunning = useIsGameRunning();
+  const endingArticle = useEndingArticle();
+
+  const { setLastArticleWinningLinks } = useGameStoreActions();
 
   usePauseWhileLoading(isFetching);
+
+  const wikiRefCallback = (node: HTMLDivElement | null) => {
+    if (!node || isFetching || isError) return;
+    const visibleWinningLinks = findVisibleWinningLinks(endingArticle);
+
+    if (isGameRunning) {
+      setLastArticleWinningLinks(visibleWinningLinks.length);
+    }
+
+    if (!isGameRunning) {
+      for (const link of visibleWinningLinks) {
+        link.style.color = "#aa6600";
+        link.style.border = "1px solid #aa6600";
+        link.style.fontWeight = "bold";
+      }
+    }
+  };
 
   if (isFetching) {
     return <p>{LL.LOADING()}</p>;
@@ -42,6 +63,7 @@ const WikiDisplay = () => {
                 className="skin-vector vector-body skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject  skin-vector-2022 action-view uls-dialog-sticky-hide vector-below-page-title"
               >
                 <div
+                  ref={(ref) => wikiRefCallback(ref)}
                   onClick={handleWikiArticleClick}
                   dangerouslySetInnerHTML={{ __html: data?.html }}
                 />

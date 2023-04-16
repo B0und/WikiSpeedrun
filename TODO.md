@@ -1,8 +1,6 @@
 # TODO
-[x] - save sidebar width locally
-[] - missed-wins count (highlight winning link)
-[] - random button for 5 options
 
+[] - random button for 5 options
 
 ## Ideas
 
@@ -23,6 +21,8 @@ no duplicate articles setting
 
 ## Done
 
+[x] - missed-wins count (highlight winning link)
+[x] - save sidebar width locally
 [x] - i18n
 [x] - add missing translation text
 [x] - analytics

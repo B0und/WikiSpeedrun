@@ -44,7 +44,9 @@ const it: Translation = {
   LINK_COPIED: "Copiato negli appunti",
   SHARE_RESULT: "Condividi risultato",
   LOADING: "Caricamento...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Impossibile caricare l'anteprima dell'articolo"
+  ARTICLE_PREVIEW_LOAD_FAILED: "Impossibile caricare l'anteprima dell'articolo",
+  WINNING_LINKS: "Link vincenti",
+  MISSED_WINS: "Vittorie mancate"
 };
 
 export default it;

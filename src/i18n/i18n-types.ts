@@ -198,6 +198,14 @@ type RootTranslation = {
 	 * C​o​u​l​d​n​'​t​ ​l​o​a​d​ ​a​r​t​i​c​l​e​ ​p​r​e​v​i​e​w
 	 */
 	ARTICLE_PREVIEW_LOAD_FAILED: string
+	/**
+	 * W​i​n​n​i​n​g​ ​l​i​n​k​s
+	 */
+	WINNING_LINKS: string
+	/**
+	 * M​i​s​s​e​d​ ​w​i​n​s
+	 */
+	MISSED_WINS: string
 }
 
 export type TranslationFunctions = {
@@ -373,6 +381,14 @@ export type TranslationFunctions = {
 	 * Couldn't load article preview
 	 */
 	ARTICLE_PREVIEW_LOAD_FAILED: () => LocalizedString
+	/**
+	 * Winning links
+	 */
+	WINNING_LINKS: () => LocalizedString
+	/**
+	 * Missed wins
+	 */
+	MISSED_WINS: () => LocalizedString
 }
 
 export type Formatters = {}

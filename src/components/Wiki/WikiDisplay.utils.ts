@@ -3,6 +3,7 @@ import { useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import {
+  Article,
   useEndingArticle,
   useGameStoreActions,
   useIsGameRunning,
@@ -20,6 +21,13 @@ export const usePauseWhileLoading = (isLoading: boolean) => {
       pauseStopwatch();
     }
   }, [isGameRunning, isLoading, pauseStopwatch]);
+};
+
+export const findVisibleWinningLinks = (articleTitle: Article) => {
+  const winningLinks = document.querySelectorAll<HTMLElement>(
+    `[href="/wiki/${articleTitle.title.replaceAll(" ", "_")}"]`
+  );
+  return Array.from(winningLinks).filter((link) => link.offsetWidth > 0);
 };
 
 const getArticleData = async (language: string, title: string) => {
@@ -75,11 +83,12 @@ export const useWikiQuery = () => {
     onSuccess: (data) => {
       if (!isGameRunning) return;
       const time = getFormattedTime();
-
       const { min, ms, sec } = time;
+
       addHistoryArticle({
         title: data.title || "",
         time: { min, sec, ms },
+        winningLinks: 0,
       });
 
       if (handleWin(data)) {

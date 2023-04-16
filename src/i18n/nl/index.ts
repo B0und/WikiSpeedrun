@@ -3,8 +3,7 @@ import { Translation } from "../i18n-types";
 // Dutch
 const nl: Translation = {
   TITLE: "Wiki Speedrun-spel",
-  GAME_DESCRIPTION:
-    "Het doel van het spel is om met zo min mogelijk klikken en tijd van een beginnend Wikipedia-artikel naar een ander artikel te navigeren.",
+  GAME_DESCRIPTION: "Het doel van het spel is om met zo min mogelijk klikken en tijd van een beginnend Wikipedia-artikel naar een ander artikel te navigeren.",
   FEATURES: "Functies",
   MULTIPLE_LANGUAGES: "Ondersteunt nu meerdere talen",
   NO_REGISTRATION: "Geen registratie vereist",
@@ -16,8 +15,7 @@ const nl: Translation = {
   PLAY: "Toneelstuk",
   ABOUT: "Over",
   SETTINGS: "Instellingen",
-  SETTINGS_DESCRIPTION:
-    "Begin met typen en selecteer vervolgens waarden in de vervolgkeuzelijst of druk op de willekeurige knop.",
+  SETTINGS_DESCRIPTION: "Begin met typen en selecteer vervolgens waarden in de vervolgkeuzelijst of druk op de willekeurige knop.",
   STARTING_ARTICLE_LABEL: "Selecteer startartikel",
   ENDING_ARTICLE_LABEL: "Selecteer eindartikel",
   INPUT_PLACEHOLDER: "Begin met typen om opties te zien",
@@ -35,8 +33,7 @@ const nl: Translation = {
   CLICKS_NUM: "Klikken: {0}",
   NO_ARTICLES_FOUND: "Geen artikelen gevonden",
   GET_RANDOM_ARTICLE: "Ontvang een willekeurig artikel",
-  WIKI_ALT_TEXT:
-    "Wiki speedrun-logo, met een Wikipedia-bol met een timer eroverheen. (ziet eruit als een grote zwarte streep met daarboven een groene tijdtekst). De tijd is 9 seconden en 5 milliseconden.",
+  WIKI_ALT_TEXT: "Wiki speedrun-logo, met een Wikipedia-bol met een timer eroverheen. (ziet eruit als een grote zwarte streep met daarboven een groene tijdtekst). De tijd is 9 seconden en 5 milliseconden.",
   SELECT_ARTICLE_LANGUAGE: "Selecteer artikeltaal",
   LANGUAGE: "Taal",
   NAVIGATION: "Navigatie",
@@ -48,6 +45,8 @@ const nl: Translation = {
   SHARE_RESULT: "Resultaat delen",
   LOADING: "Bezig met laden",
   ARTICLE_PREVIEW_LOAD_FAILED: "Kan artikelvoorbeeld niet laden",
+  WINNING_LINKS: "Winnende koppelingen",
+  MISSED_WINS: "Gemiste overwinningen"
 };
 
 export default nl;

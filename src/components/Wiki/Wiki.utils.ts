@@ -4,6 +4,7 @@ import { useI18nContext } from "../../i18n/i18n-react";
 import { toast } from "react-hot-toast";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
+const isNotDev = process.env.NODE_ENV !== "development";
 
 export const useNoCheating = () => {
   const { LL } = useI18nContext();
@@ -13,7 +14,9 @@ export const useNoCheating = () => {
     (e: globalThis.KeyboardEvent) => {
       if (!isGameRunning) return;
       if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
-        e.preventDefault();
+        if (isNotDev) {
+          e.preventDefault();
+        }
         increaseCheatingAttemptsCounter();
         errorToast(LL.NO_CHEATING());
       }

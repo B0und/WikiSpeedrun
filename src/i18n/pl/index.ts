@@ -45,7 +45,9 @@ const pl: Translation = {
   LINK_COPIED: "Skopiowane do schowka",
   SHARE_RESULT: "Udostępnij wynik",
   LOADING: "Ładowanie...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Nie można załadować podglądu artykułu"
+  ARTICLE_PREVIEW_LOAD_FAILED: "Nie można załadować podglądu artykułu",
+  WINNING_LINKS: "Zwycięskie linki",
+  MISSED_WINS: "Zmarnowane zwycięstwa"
 };
 
 export default pl;

@@ -45,7 +45,9 @@ const id: Translation = {
   LINK_COPIED: "Disalin ke papan klip",
   SHARE_RESULT: "Bagikan Hasil",
   LOADING: "Memuat...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Tidak dapat memuat pratinjau artikel"
+  ARTICLE_PREVIEW_LOAD_FAILED: "Tidak dapat memuat pratinjau artikel",
+  WINNING_LINKS: "Tautan pemenang",
+  MISSED_WINS: "Kemenangan yang terlewatkan"
 };
 
 export default id;

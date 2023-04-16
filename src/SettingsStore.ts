@@ -39,7 +39,8 @@ const useSettingsStore = create<SettingsStore>()(
             set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage"),
           setWikiLanguage: (language: WikiLanguage) =>
             set(() => ({ wikiLanguage: language }), false, "setWikiLanguage"),
-          setSidebarWidth: (width: number) => set(() => ({ sidebarWidth: width })),
+          setSidebarWidth: (width: number) =>
+            set(() => ({ sidebarWidth: width }), false, "setSidebarWidth"),
         },
       }),
       {

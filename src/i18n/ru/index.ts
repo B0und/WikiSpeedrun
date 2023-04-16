@@ -45,7 +45,9 @@ const ru: Translation = {
   LINK_COPIED: "Скопировано в буфер обмена",
   SHARE_RESULT: "Поделиться результатом",
   LOADING: "Загрузка...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Не удалось загрузить предварительный просмотр статьи."
+  ARTICLE_PREVIEW_LOAD_FAILED: "Не удалось загрузить предварительный просмотр статьи.",
+  WINNING_LINKS: "Выигрышные ссылки",
+  MISSED_WINS: "Пропущенные победы"
 };
 
 export default ru;
