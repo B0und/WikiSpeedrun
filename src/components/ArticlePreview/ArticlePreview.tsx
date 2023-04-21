@@ -61,31 +61,29 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         </button>
       </Popover.Trigger>
 
-      <Popover.Portal>
-        <Popover.Content
-          className="scrollbar max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md  bg-neutral-50 p-5  shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
-          sideOffset={5}
-        >
-          <h3 className="border-b-[1px] border-b-secondary-border font-bold">
-            {articlePreview?.query?.pages?.[pageid].title}
-            {isarticlePreviewLoading && "Please wait"}
-          </h3>
-          {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
-          <p className="mt-2 text-base">
-            {isarticlePreviewLoading
-              ? LL.LOADING()
-              : articlePreview?.query?.pages?.[pageid].extract}
-            {isError && LL.ARTICLE_PREVIEW_LOAD_FAILED()}
-          </p>
+      {/* <Popover.Portal> */}
+      <Popover.Content
+        className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto  rounded-md bg-neutral-50  p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
+        sideOffset={5}
+      >
+        <h3 className="border-b-[1px] border-b-secondary-border font-bold">
+          {articlePreview?.query?.pages?.[pageid].title}
+          {isarticlePreviewLoading && "Please wait"}
+        </h3>
+        {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
+        <p className="mt-2 text-base">
+          {isarticlePreviewLoading ? LL.LOADING() : articlePreview?.query?.pages?.[pageid].extract}
+          {isError && LL.ARTICLE_PREVIEW_LOAD_FAILED()}
+        </p>
 
-          <Popover.Close
-            className="absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
-            aria-label="Close"
-          >
-            <X />
-          </Popover.Close>
-        </Popover.Content>
-      </Popover.Portal>
+        <Popover.Close
+          className="absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
+          aria-label="Close"
+        >
+          <X />
+        </Popover.Close>
+      </Popover.Content>
+      {/* </Popover.Portal> */}
     </Popover.Root>
   );
 };

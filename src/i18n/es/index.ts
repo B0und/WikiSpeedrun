@@ -3,7 +3,8 @@ import { Translation } from "../i18n-types";
 // Spanish
 const es: Translation = {
   TITLE: "Juego Wiki Speedrun",
-  GAME_DESCRIPTION: "El objetivo del juego es navegar de un artículo inicial de wikipedia a otro, en la menor cantidad de clics y tiempo.",
+  GAME_DESCRIPTION:
+    "El objetivo del juego es navegar de un artículo inicial de wikipedia a otro, en la menor cantidad de clics y tiempo.",
   FEATURES: "Características",
   MULTIPLE_LANGUAGES: "Ahora es compatible con varios idiomas",
   NO_REGISTRATION: "No es necesario registrarse",
@@ -15,7 +16,8 @@ const es: Translation = {
   PLAY: "Jugar",
   ABOUT: "Acerca de",
   SETTINGS: "Ajustes",
-  SETTINGS_DESCRIPTION: "Comience a escribir y luego seleccione valores de la lista desplegable o presione el botón aleatorio.",
+  SETTINGS_DESCRIPTION:
+    "Comience a escribir y luego seleccione valores de la lista desplegable o presione el botón aleatorio.",
   STARTING_ARTICLE_LABEL: "Seleccionar artículo inicial",
   ENDING_ARTICLE_LABEL: "Seleccionar artículo final",
   INPUT_PLACEHOLDER: "Empiece a escribir para ver las opciones",
@@ -33,7 +35,8 @@ const es: Translation = {
   CLICKS_NUM: "Clics: {0}",
   NO_ARTICLES_FOUND: "No se encontraron artículos",
   GET_RANDOM_ARTICLE: "Obtener artículo aleatorio",
-  WIKI_ALT_TEXT: "Logotipo de Wiki speedrun, que presenta una esfera de Wikipedia con un temporizador. (Parece una gran franja negra con un texto de tiempo verde en la parte superior). El tiempo es de 9 segundos y 5 milisegundos.",
+  WIKI_ALT_TEXT:
+    "Logotipo de Wiki speedrun, que presenta una esfera de Wikipedia con un temporizador. (Parece una gran franja negra con un texto de tiempo verde en la parte superior). El tiempo es de 9 segundos y 5 milisegundos.",
   SELECT_ARTICLE_LANGUAGE: "Seleccione el idioma del artículo",
   LANGUAGE: "Idioma",
   NAVIGATION: "Navegación",
@@ -46,7 +49,8 @@ const es: Translation = {
   LOADING: "Cargando...",
   ARTICLE_PREVIEW_LOAD_FAILED: "No se pudo cargar la vista previa del artículo",
   WINNING_LINKS: "Enlaces ganadores",
-  MISSED_WINS: "victorias perdidas"
+  MISSED_WINS: "victorias perdidas",
+  CHOOSE_ARTICLE: "Elige tu artículo",
 };
 
 export default es;

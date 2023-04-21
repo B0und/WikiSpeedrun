@@ -1,15 +1,17 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../GameStore";
 import ArticleAutocomplete from "./ArticleAutocomplete/ArticleAutocomplete";
 import RandomButton from "./RandomButton/RandomButton";
-import { handleOnRandomSuccess } from "./Settings.helpers";
+import { getNHighestLinksPages, handleOnRandomSuccess } from "./Settings.helpers";
 import { useStopwatchActions } from "./StopwatchContext";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import { WikiLanguageSelect } from "./WikiLanguageSelect";
 import { toast } from "react-hot-toast";
 import ArticlePreview from "./ArticlePreview/ArticlePreview";
+import { RandomModal } from "./RandomModal";
+import { Article } from "../GameStore";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -20,6 +22,9 @@ const Settings = () => {
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
   const resetGame = useResetGame();
+  const [modalData, setModalData] = useState<Article[] | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalFunction, setModalFunction] = useState({ fn: setStartingArticle });
 
   const randomFailText = LL.RANDOM_FAIL();
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
@@ -46,8 +51,14 @@ const Settings = () => {
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
-      <form className="flex max-w-[500px] flex-col gap-4" onSubmit={startGameHandler}>
+      <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
+        <RandomModal
+          data={modalData}
+          open={modalOpen}
+          setOpen={setModalOpen}
+          setArticle={modalFunction.fn}
+        />
 
         <div className="flex items-end gap-2 sm:gap-0">
           <ArticleAutocomplete
@@ -67,6 +78,18 @@ const Settings = () => {
                 setArticle: setStartingArticle,
                 failText: randomFailText,
               });
+            }}
+          />
+          <RandomButton
+            queryKey="startingArticleMultiple"
+            randomCount={5}
+            onSuccess={(data) => {
+              setModalFunction({ fn: setStartingArticle });
+              setModalOpen(true);
+              const articles = getNHighestLinksPages(data, 5);
+              if (articles) {
+                setModalData(articles);
+              }
             }}
           />
         </div>
@@ -89,6 +112,18 @@ const Settings = () => {
                 setArticle: setEndingArticle,
                 failText: randomFailText,
               });
+            }}
+          />
+          <RandomButton
+            queryKey="endingArticleMultiple"
+            randomCount={5}
+            onSuccess={(data) => {
+              setModalFunction({ fn: setEndingArticle });
+              setModalOpen(true);
+              const articles = getNHighestLinksPages(data, 5);
+              if (articles) {
+                setModalData(articles);
+              }
             }}
           />
         </div>

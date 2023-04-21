@@ -47,7 +47,8 @@ const ja: Translation = {
   LOADING: "ローディング",
   ARTICLE_PREVIEW_LOAD_FAILED: "記事のプレビューを読み込むことができませんでした",
   WINNING_LINKS: "受賞リンク",
-  MISSED_WINS: "優勝を逃した"
+  MISSED_WINS: "優勝を逃した",
+  CHOOSE_ARTICLE: "記事を選択する"
 };
 
 export default ja;

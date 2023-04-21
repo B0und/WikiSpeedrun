@@ -1,6 +1,6 @@
 # TODO
 
-[] - random button for 5 options
+[] - remove onsuccess from random button
 
 ## Ideas
 
@@ -21,6 +21,7 @@ no duplicate articles setting
 
 ## Done
 
+[x] - random button for 5 options
 [x] - missed-wins count (highlight winning link)
 [x] - save sidebar width locally
 [x] - i18n

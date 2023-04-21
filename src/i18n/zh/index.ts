@@ -46,7 +46,8 @@ const zh: Translation = {
   LOADING: "正在加载",
   ARTICLE_PREVIEW_LOAD_FAILED: "无法加载文章预览",
   WINNING_LINKS: "赢家链接",
-  MISSED_WINS: "错过的胜利"
+  MISSED_WINS: "错过的胜利",
+  CHOOSE_ARTICLE: "选择你的文章"
 };
 
 export default zh;

@@ -206,6 +206,10 @@ type RootTranslation = {
 	 * M​i​s​s​e​d​ ​w​i​n​s
 	 */
 	MISSED_WINS: string
+	/**
+	 * C​h​o​o​s​e​ ​y​o​u​r​ ​a​r​t​i​c​l​e
+	 */
+	CHOOSE_ARTICLE: string
 }
 
 export type TranslationFunctions = {
@@ -389,6 +393,10 @@ export type TranslationFunctions = {
 	 * Missed wins
 	 */
 	MISSED_WINS: () => LocalizedString
+	/**
+	 * Choose your article
+	 */
+	CHOOSE_ARTICLE: () => LocalizedString
 }
 
 export type Formatters = {}
