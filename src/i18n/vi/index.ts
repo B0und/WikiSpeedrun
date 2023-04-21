@@ -3,7 +3,8 @@ import { Translation } from "../i18n-types";
 // Vietnamese
 const vi: Translation = {
   TITLE: "Trò chơi chạy tốc độ Wiki",
-  GAME_DESCRIPTION: "Mục tiêu của trò chơi là điều hướng từ một bài viết bắt đầu trên wikipedia sang một bài viết khác, với số lần nhấp và thời gian ít nhất.",
+  GAME_DESCRIPTION:
+    "Mục tiêu của trò chơi là điều hướng từ một bài viết bắt đầu trên wikipedia sang một bài viết khác, với số lần nhấp và thời gian ít nhất.",
   FEATURES: "Đặc trưng",
   MULTIPLE_LANGUAGES: "Hiện hỗ trợ nhiều ngôn ngữ",
   NO_REGISTRATION: "Không cần đăng ký",
@@ -15,7 +16,8 @@ const vi: Translation = {
   PLAY: "Chơi",
   ABOUT: "Giới thiệu về trò chơi",
   SETTINGS: "Cài đặt",
-  SETTINGS_DESCRIPTION: "Bắt đầu nhập và sau đó chọn các giá trị từ danh sách thả xuống hoặc nhấn nút ngẫu nhiên.",
+  SETTINGS_DESCRIPTION:
+    "Bắt đầu nhập và sau đó chọn các giá trị từ danh sách thả xuống hoặc nhấn nút ngẫu nhiên.",
   STARTING_ARTICLE_LABEL: "Chọn bài viết bắt đầu",
   ENDING_ARTICLE_LABEL: "Chọn bài viết kết thúc",
   INPUT_PLACEHOLDER: "Bắt đầu nhập để xem các tùy chọn",
@@ -33,7 +35,8 @@ const vi: Translation = {
   CLICKS_NUM: "lần nhấp: {0}",
   NO_ARTICLES_FOUND: "Không tìm thấy bài báo nào",
   GET_RANDOM_ARTICLE: "Nhận bài viết ngẫu nhiên",
-  WIKI_ALT_TEXT: "Logo speedrun của Wiki, có hình cầu Wikipedia với bộ đếm thời gian trên đó. (trông giống như một sọc đen lớn với dòng chữ thời gian màu xanh lục ở trên cùng). Thời gian là 9 giây và 5 mili giây.",
+  WIKI_ALT_TEXT:
+    "Logo speedrun của Wiki, có hình cầu Wikipedia với bộ đếm thời gian trên đó. (trông giống như một sọc đen lớn với dòng chữ thời gian màu xanh lục ở trên cùng). Thời gian là 9 giây và 5 mili giây.",
   SELECT_ARTICLE_LANGUAGE: "Chọn ngôn ngữ bài viết",
   LANGUAGE: "Ngôn ngữ",
   NAVIGATION: "dẫn đường",
@@ -46,7 +49,8 @@ const vi: Translation = {
   LOADING: "Đang tải",
   ARTICLE_PREVIEW_LOAD_FAILED: "Không thể tải bản xem trước bài viết",
   WINNING_LINKS: "Liên kết chiến thắng",
-  MISSED_WINS: "bỏ lỡ chiến thắng"
+  MISSED_WINS: "bỏ lỡ chiến thắng",
+  CHOOSE_ARTICLE: "Chọn bài viết của bạn",
 };
 
 export default vi;

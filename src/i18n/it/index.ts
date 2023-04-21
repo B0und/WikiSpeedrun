@@ -3,7 +3,8 @@ import { Translation } from "../i18n-types";
 // Italian
 const it: Translation = {
   TITLE: "Wiki Speedrun Gioco",
-  GAME_DESCRIPTION: "L'obiettivo del gioco è quello di navigare da un articolo iniziale di wikipedia a un altro, nel minor numero di clic e di tempo.",
+  GAME_DESCRIPTION:
+    "L'obiettivo del gioco è quello di navigare da un articolo iniziale di wikipedia a un altro, nel minor numero di clic e di tempo.",
   FEATURES: "Caratteristiche",
   MULTIPLE_LANGUAGES: "Ora supporta più lingue",
   NO_REGISTRATION: "Nessuna registrazione richiesta",
@@ -15,7 +16,8 @@ const it: Translation = {
   PLAY: "Giocare",
   ABOUT: "Di",
   SETTINGS: "Impostazioni",
-  SETTINGS_DESCRIPTION: "Inizia a digitare e quindi seleziona i valori dall'elenco a discesa o premi il pulsante casuale.",
+  SETTINGS_DESCRIPTION:
+    "Inizia a digitare e quindi seleziona i valori dall'elenco a discesa o premi il pulsante casuale.",
   STARTING_ARTICLE_LABEL: "Seleziona l'articolo iniziale",
   ENDING_ARTICLE_LABEL: "Seleziona l'articolo finale",
   INPUT_PLACEHOLDER: "Inizia a digitare per visualizzare le opzioni",
@@ -33,7 +35,8 @@ const it: Translation = {
   CLICKS_NUM: "Clic: {0}",
   NO_ARTICLES_FOUND: "Nessun articolo trovato",
   GET_RANDOM_ARTICLE: "Ottieni un articolo a caso",
-  WIKI_ALT_TEXT: "Logo Wiki speedrun, con una sfera di Wikipedia con un timer su di essa. (sembra una grande striscia nera con un testo verde in cima). Il tempo è di 9 secondi e 5 millisecondi.",
+  WIKI_ALT_TEXT:
+    "Logo Wiki speedrun, con una sfera di Wikipedia con un timer su di essa. (sembra una grande striscia nera con un testo verde in cima). Il tempo è di 9 secondi e 5 millisecondi.",
   SELECT_ARTICLE_LANGUAGE: "Seleziona la lingua dell'articolo",
   LANGUAGE: "Lingua",
   NAVIGATION: "Navigazione",
@@ -46,7 +49,8 @@ const it: Translation = {
   LOADING: "Caricamento...",
   ARTICLE_PREVIEW_LOAD_FAILED: "Impossibile caricare l'anteprima dell'articolo",
   WINNING_LINKS: "Link vincenti",
-  MISSED_WINS: "Vittorie mancate"
+  MISSED_WINS: "Vittorie mancate",
+  CHOOSE_ARTICLE: "Scegli il tuo articolo",
 };
 
 export default it;

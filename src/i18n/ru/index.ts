@@ -47,7 +47,8 @@ const ru: Translation = {
   LOADING: "Загрузка...",
   ARTICLE_PREVIEW_LOAD_FAILED: "Не удалось загрузить предварительный просмотр статьи.",
   WINNING_LINKS: "Выигрышные ссылки",
-  MISSED_WINS: "Пропущенные победы"
+  MISSED_WINS: "Пропущенные победы",
+  CHOOSE_ARTICLE: "Выберите статью"
 };
 
 export default ru;

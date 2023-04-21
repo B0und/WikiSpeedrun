@@ -47,7 +47,8 @@ const id: Translation = {
   LOADING: "Memuat...",
   ARTICLE_PREVIEW_LOAD_FAILED: "Tidak dapat memuat pratinjau artikel",
   WINNING_LINKS: "Tautan pemenang",
-  MISSED_WINS: "Kemenangan yang terlewatkan"
+  MISSED_WINS: "Kemenangan yang terlewatkan",
+  CHOOSE_ARTICLE: "Pilih artikel Anda"
 };
 
 export default id;

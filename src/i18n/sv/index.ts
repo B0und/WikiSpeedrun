@@ -47,7 +47,8 @@ const sv: Translation = {
   LOADING: "Läser in",
   ARTICLE_PREVIEW_LOAD_FAILED: "Det gick inte att läsa in förhandsgranskningen av artikeln",
   WINNING_LINKS: "Vinnande länkar",
-  MISSED_WINS: "Missade vinster"
+  MISSED_WINS: "Missade vinster",
+  CHOOSE_ARTICLE: "Välj din artikel"
 };
 
 export default sv;

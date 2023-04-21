@@ -14,9 +14,9 @@ export interface Query {
 }
 
 export interface Page {
-  pageid?: number;
+  pageid: number;
   ns?: number;
-  title?: string;
+  title: string;
   linkshere?: Linkshere[];
 }
 
