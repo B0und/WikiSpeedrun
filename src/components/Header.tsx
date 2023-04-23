@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { GitHub, Menu, Moon, Sun } from "react-feather";
+import { GitHub, Moon, Sun } from "react-feather";
 import { ResultDialog } from "./ResultDialog";
 import { useThemeContext } from "./ThemeContext";
-import { useIsGameRunning } from "../GameStore";
+import { useIsGameRunning } from "../stores/GameStore";
 import { GiveUpModal } from "./ConfirmNavigation";
 import { useI18nContext } from "../i18n/i18n-react";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
-import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "./Drawer";
 import { LocalizedString } from "typesafe-i18n";
+import { MobileMenu } from "./MobileMenu";
 
-interface Link {
+export interface Link {
   name: LocalizedString;
   path: string;
 }
@@ -54,51 +54,6 @@ const Header = () => {
   );
 };
 
-const MobileMenu = ({ links }: { links: Link[] }) => {
-  const { LL } = useI18nContext();
-
-  const isGameRunning = useIsGameRunning();
-
-  return (
-    <div className="hidden sm:block">
-      <Drawer>
-        <DrawerTrigger asChild>
-          {!isGameRunning && (
-            <button
-              type="button"
-              aria-label="Menu"
-              className="-ml-3 bg-inherit p-3  hover:text-primary-blue focus-visible:text-primary-blue "
-            >
-              <Menu />
-            </button>
-          )}
-        </DrawerTrigger>
-        <DrawerContent side="left" className="flex flex-col items-start">
-          <h3 className="w-full border-b-[1px] border-secondary-border text-xl ">
-            {LL.NAVIGATION()}
-          </h3>
-          <nav className=" -ml-4 mt-4 flex w-full flex-col gap-2">
-            {!isGameRunning &&
-              links.map((link) => (
-                <DrawerClose key={link.path} asChild>
-                  <Link
-                    to={link.path}
-                    className="w-full p-4 hover:text-primary-blue focus-visible:text-primary-blue"
-                  >
-                    {link.name}
-                  </Link>
-                </DrawerClose>
-              ))}
-          </nav>
-          <div className="mt-auto">
-            <GithubLink />
-          </div>
-        </DrawerContent>
-      </Drawer>
-    </div>
-  );
-};
-
 const WikiLogo = () => {
   const { LL } = useI18nContext();
   const { colorMode } = useThemeContext();
@@ -135,7 +90,7 @@ const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Link
   );
 };
 
-const GithubLink = () => {
+export const GithubLink = () => {
   return (
     <a
       target="_blank"

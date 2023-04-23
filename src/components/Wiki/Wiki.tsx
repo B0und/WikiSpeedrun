@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useEndingArticle, useStartingArticle } from "../../GameStore";
+import { useEndingArticle, useStartingArticle } from "../../stores/GameStore";
 
 import WikiDisplay from "./WikiDisplay";
 import { useEffect } from "react";

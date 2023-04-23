@@ -6,8 +6,8 @@ import Select, { InputActionMeta, StylesConfig } from "react-select";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useWikiLanguage } from "../../SettingsStore";
-import { Article } from "../../GameStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
+import { Article } from "../../stores/GameStore";
 
 const getArticles = async (language: string, debouncedTerm: string) => {
   if (!debouncedTerm) return;
@@ -84,7 +84,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   };
 
   return (
-    <div className="flex flex-1 flex-col min-w-0">
+    <div className="flex min-w-0 flex-1 flex-col">
       <label htmlFor={selectId}>{label}</label>
       <Select
         key={defaultValue} // dirty hack

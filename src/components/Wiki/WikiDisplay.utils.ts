@@ -8,10 +8,11 @@ import {
   useGameStoreActions,
   useIsGameRunning,
   useStartingArticle,
-} from "../../GameStore";
+} from "../../stores/GameStore";
 import { useStopwatchActions } from "../StopwatchContext";
 import { WikiApiArticle } from "./Wiki.types";
-import { useWikiLanguage } from "../../SettingsStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
+import { useStatsStoreActions } from "../../stores/StatisticsStore";
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
@@ -57,6 +58,7 @@ export const useWikiQuery = () => {
 
   const targetArticle = useEndingArticle();
   const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
+  const { increaseWins } = useStatsStoreActions();
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
@@ -65,9 +67,10 @@ export const useWikiQuery = () => {
       }
       pauseStopwatch();
       setIsGameRunning(false);
+      increaseWins();
       return true;
     },
-    [pauseStopwatch, setIsGameRunning, targetArticle]
+    [increaseWins, pauseStopwatch, setIsGameRunning, targetArticle.title]
   );
 
   const query = useQuery({

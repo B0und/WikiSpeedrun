@@ -1,9 +1,9 @@
 import { Resizable } from "re-resizable";
-import { useClicks } from "../GameStore";
+import { useClicks } from "../stores/GameStore";
 import HistoryTable from "./HistoryTable";
 import { Stopwatch } from "./Stopwatch";
 import { useI18nContext } from "../i18n/i18n-react";
-import { useSettingsStoreActions, useSidebarWidth } from "../SettingsStore";
+import { useSettingsStoreActions, useSidebarWidth } from "../stores/SettingsStore";
 
 const Sidebar = () => {
   const { LL } = useI18nContext();
@@ -49,4 +49,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

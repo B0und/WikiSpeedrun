@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useStopwatchActions } from "../StopwatchContext";
-import { useGameStoreActions } from "../../GameStore";
+import { useGameStoreActions } from "../../stores/GameStore";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 

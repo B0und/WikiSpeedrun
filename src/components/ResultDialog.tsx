@@ -8,7 +8,7 @@ import {
   useHistory,
   useIsWin,
   useStartingArticle,
-} from "../GameStore";
+} from "../stores/GameStore";
 
 import { StopwatchDisplay } from "./StopwatchDisplay";
 import { useResetGame } from "../hooks/useResetGame";

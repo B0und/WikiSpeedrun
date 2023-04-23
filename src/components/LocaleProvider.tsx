@@ -3,7 +3,7 @@ import TypesafeI18n from "../i18n/i18n-react";
 import { detectLocale } from "../i18n/i18n-util";
 import { loadLocaleAsync } from "../i18n/i18n-util.async";
 import { navigatorDetector } from "typesafe-i18n/detectors";
-import { useInterfaceLanguage, useSettingsStoreActions } from "../SettingsStore";
+import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 
 // Detect locale
 // (Use as advanaced locale detection strategy as you like.

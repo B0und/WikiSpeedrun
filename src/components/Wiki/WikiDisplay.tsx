@@ -8,12 +8,12 @@ import "./overrides.css";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../GameStore";
+import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
   const isDarkTheme = colorMode === "dark";
-  
+
   const { LL } = useI18nContext();
   const { handleWikiArticleClick } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();

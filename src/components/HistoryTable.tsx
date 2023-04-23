@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useHistory, useIsGameRunning } from "../GameStore";
+import { useHistory, useIsGameRunning } from "../stores/GameStore";
 import { useNavigate } from "react-router";
 import { useI18nContext } from "../i18n/i18n-react";
 

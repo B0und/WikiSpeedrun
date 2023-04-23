@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useGameStoreActions, useIsGameRunning } from "../../GameStore";
+import { useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { toast } from "react-hot-toast";
 

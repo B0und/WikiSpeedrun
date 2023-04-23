@@ -2,8 +2,8 @@ import clsx from "clsx";
 import Select, { StylesConfig } from "react-select";
 import { useThemeContext } from "./ThemeContext";
 import { useI18nContext } from "../i18n/i18n-react";
-import { useSettingsStoreActions, useWikiLanguage } from "../SettingsStore";
-import { useGameStoreActions } from "../GameStore";
+import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
+import { useGameStoreActions } from "../stores/GameStore";
 
 const selectId = "wikiLanguageSelect";
 

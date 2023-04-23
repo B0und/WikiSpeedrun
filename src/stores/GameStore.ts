@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { StopwatchProps } from "./components/StopwatchDisplay";
+import { StopwatchProps } from "../components/StopwatchDisplay";
 import { querystring } from "zustand-querystring";
 import { immer } from "zustand/middleware/immer";
 
 /*
- Data partially synced with URL
+Data partially synced with URL
 */
 
 interface Actions {

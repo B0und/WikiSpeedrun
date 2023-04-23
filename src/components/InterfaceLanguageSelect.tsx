@@ -6,9 +6,9 @@ import { locales } from "../i18n/i18n-util";
 import { LANGUAGES } from "./WikiLanguageSelect";
 import { Locales } from "../i18n/i18n-types";
 import { useI18nContext } from "../i18n/i18n-react";
-import { useInterfaceLanguage, useSettingsStoreActions } from "../SettingsStore";
+import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { loadLocaleAsync } from "../i18n/i18n-util.async";
-import { useGameStoreActions } from "../GameStore";
+import { useGameStoreActions } from "../stores/GameStore";
 
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) =>
   locales.includes(language.isoCode as Locales)
@@ -26,14 +26,14 @@ export const InterfaceLanguageSelect = () => {
       onValueChange={async (locale: Locales) => {
         await loadLocaleAsync(locale);
         setInterfaceLanguage(locale);
-        setStartingArticle({pageid: "", title: ""});
-        setEndingArticle({pageid: "", title: ""});
+        setStartingArticle({ pageid: "", title: "" });
+        setEndingArticle({ pageid: "", title: "" });
         setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
         setLocale(locale);
       }}
     >
       <Select.Trigger
-        className="inline-flex h-full items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue min-w-fit"
+        className="inline-flex h-full min-w-fit items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
         aria-label={LL.LANGUAGE()}
       >
         <Select.Value aria-label={language}>

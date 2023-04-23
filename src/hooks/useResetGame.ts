@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useGameStoreActions } from "../GameStore";
+import { useGameStoreActions } from "../stores/GameStore";
 import { useStopwatchActions } from "../components/StopwatchContext";
 
 export const useResetGame = () => {

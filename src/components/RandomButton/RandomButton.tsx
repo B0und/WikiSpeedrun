@@ -4,7 +4,7 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import clsx from "clsx";
 import { WikiRandom } from "./RandomButton.types";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useWikiLanguage } from "../../SettingsStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
 
 const getRandomArticles = async (language: string) => {
   const res = await fetch(

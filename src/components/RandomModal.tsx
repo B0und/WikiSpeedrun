@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalClose, ModalContent, ModalRoot, ModalTitle } from "./Modal";
-import { Article } from "../GameStore";
+import { Article } from "../stores/GameStore";
 import ArticlePreview from "./ArticlePreview/ArticlePreview";
 import { useI18nContext } from "../i18n/i18n-react";
 

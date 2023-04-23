@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { Locales } from "./i18n/i18n-types";
-import { LANGUAGES } from "./components/WikiLanguageSelect";
+import { Locales } from "../i18n/i18n-types";
+import { LANGUAGES } from "../components/WikiLanguageSelect";
 
 /*
- Data that gets persisted in local storage
+ Data gets persisted in local storage
 */
 
 type WikiLanguage = (typeof LANGUAGES)[number]["value"];

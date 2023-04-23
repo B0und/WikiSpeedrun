@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../GameStore";
+import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
 import ArticleAutocomplete from "./ArticleAutocomplete/ArticleAutocomplete";
 import RandomButton from "./RandomButton/RandomButton";
 import { getNHighestLinksPages, handleOnRandomSuccess } from "./Settings.helpers";
@@ -11,7 +11,8 @@ import { WikiLanguageSelect } from "./WikiLanguageSelect";
 import { toast } from "react-hot-toast";
 import ArticlePreview from "./ArticlePreview/ArticlePreview";
 import { RandomModal } from "./RandomModal";
-import { Article } from "../GameStore";
+import { Article } from "../stores/GameStore";
+import { useStatsStoreActions } from "../stores/StatisticsStore";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -25,6 +26,7 @@ const Settings = () => {
   const [modalData, setModalData] = useState<Article[] | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalFunction, setModalFunction] = useState({ fn: setStartingArticle });
+  const { increaseTotalRuns } = useStatsStoreActions();
 
   const randomFailText = LL.RANDOM_FAIL();
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
@@ -44,6 +46,7 @@ const Settings = () => {
     navigate("/wiki");
     startStopwatch();
     setIsGameRunning(true);
+    increaseTotalRuns();
   };
 
   return (
