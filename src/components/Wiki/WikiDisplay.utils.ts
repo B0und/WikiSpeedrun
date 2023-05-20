@@ -58,7 +58,7 @@ export const useWikiQuery = () => {
 
   const targetArticle = useEndingArticle();
   const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
-  const { increaseWins } = useStatsStoreActions();
+  const { increaseWins, checkAchievements } = useStatsStoreActions();
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
@@ -68,9 +68,10 @@ export const useWikiQuery = () => {
       pauseStopwatch();
       setIsGameRunning(false);
       increaseWins();
+      checkAchievements();
       return true;
     },
-    [increaseWins, pauseStopwatch, setIsGameRunning, targetArticle.title]
+    [checkAchievements, increaseWins, pauseStopwatch, setIsGameRunning, targetArticle.title]
   );
 
   const query = useQuery({

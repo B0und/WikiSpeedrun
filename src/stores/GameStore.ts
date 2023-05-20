@@ -46,7 +46,8 @@ const initialState = {
 const useGameStore = create<GameStore>()(
   devtools(
     querystring(
-      immer((set) => ({
+      immer(
+        (set) => ({
         ...initialState,
         startingArticle: { pageid: "", title: "" },
         endingArticle: { pageid: "", title: "" },
