@@ -4,10 +4,6 @@
 
 <p align="center">
   <a href="#">
-    <img alt="Vercel deployments" src="https://img.shields.io/github/deployments/B0und/WikiSpeedrun/production?color=%231CAD4A&label=vercel&logo=vercel&logoColor=white&style=flat-square">
-  </a>
-  &nbsp
-  <a href="#">
     <img alt="GitHub" src="https://img.shields.io/github/license/B0und/WikiSpeedrun?color=%231CAD4A&style=flat-square">
   </a>
   &nbsp

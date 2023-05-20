@@ -5,7 +5,6 @@ import { StopwatchContextProvider } from "./StopwatchContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { ThemeContextProvider } from "./ThemeContext";
-import { Analytics } from "@vercel/analytics/react";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,7 +18,6 @@ export const queryClient = new QueryClient({
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeContextProvider>
-      <Analytics />
       <LocaleProvider>
         <StopwatchContextProvider>
           <QueryClientProvider client={queryClient}>
