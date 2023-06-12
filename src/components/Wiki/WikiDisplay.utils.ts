@@ -12,7 +12,11 @@ import {
 import { useStopwatchActions } from "../StopwatchContext";
 import { WikiApiArticle } from "./Wiki.types";
 import { useWikiLanguage } from "../../stores/SettingsStore";
-import { useStatsStoreActions } from "../../stores/StatisticsStore";
+import {
+  useAchievements,
+  useStatsStoreActions,
+  checkAchievements,
+} from "../../stores/StatisticsStore";
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
@@ -55,10 +59,11 @@ export const useWikiQuery = () => {
   const isGameRunning = useIsGameRunning();
   const wikiArticle = routeParams.wikiTitle || startingArticle.title;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
+  const achievements = useAchievements();
 
   const targetArticle = useEndingArticle();
   const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
-  const { increaseWins, checkAchievements } = useStatsStoreActions();
+  const { increaseWins, unlockAchievements } = useStatsStoreActions();
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
@@ -68,10 +73,20 @@ export const useWikiQuery = () => {
       pauseStopwatch();
       setIsGameRunning(false);
       increaseWins();
-      checkAchievements();
+      const unlockedAchievements = checkAchievements(achievements);
+      console.log("Unlocked achievements: ", unlockedAchievements);
+
+      unlockAchievements(unlockedAchievements);
       return true;
     },
-    [checkAchievements, increaseWins, pauseStopwatch, setIsGameRunning, targetArticle.title]
+    [
+      achievements,
+      increaseWins,
+      pauseStopwatch,
+      setIsGameRunning,
+      targetArticle.title,
+      unlockAchievements,
+    ]
   );
 
   const query = useQuery({

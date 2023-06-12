@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
+import { Achievement, achievements, getConditionFunction } from "../achievements";
 
 /*
 Data gets persisted in local storage
@@ -11,7 +12,7 @@ interface Actions {
   actions: {
     increaseTotalRuns: () => void;
     increaseWins: () => void;
-    checkAchievements: () => void;
+    unlockAchievements: (unlockedAchievements: Achievement[]) => void;
   };
 }
 
@@ -25,52 +26,28 @@ const initialState: Values = {
   wins: 0,
 };
 
-export interface Achievement {
-  title: string;
-  description: string;
-  unlocked: boolean;
-  condition: () => boolean;
-  image: string;
-}
-
 type StatsStore = Values &
   Actions & {
     achievements: Achievement[];
   };
 
-const useStatsStore = create<StatsStore>()(
+export const useStatsStore = create<StatsStore>()(
   devtools(
     persist(
       immer((set, get) => ({
         ...initialState,
-        achievements: [
-          {
-            title: "Getting started",
-            description: "Get your first win",
-            condition: () => get().wins > 0,
-            unlocked: false,
-            image: "wiki-waifu.png",
-          },
-          {
-            title: "Gamer",
-            description: "Get your first win",
-            condition: () => get().totalRuns > 5,
-            unlocked: false,
-            image: "wiki-waifu.png",
-          },
-        ],
+        achievements,
         actions: {
           increaseTotalRuns: () =>
             set((state) => ({ totalRuns: state.totalRuns + 1 }), false, "increaseTotalRuns"),
           increaseWins: () => set((state) => ({ wins: state.wins + 1 }), false, "increaseWins"),
-          checkAchievements: () =>
+          unlockAchievements: (unlockedAchievements: Achievement[]) =>
             set((state) => {
-              state.achievements.forEach((achievement) => {
-                if (!achievement.unlocked && achievement.condition()) {
+              for (const achievement of state.achievements) {
+                if (unlockedAchievements.some((u) => achievement.conditionId === u.conditionId)) {
                   achievement.unlocked = true;
-                  console.log(`Achievement unlocked: ${achievement.title}`);
                 }
-              });
+              }
             }),
         },
       })),
@@ -90,3 +67,11 @@ const useStatsStore = create<StatsStore>()(
 export const useStatsStoreActions = () => useStatsStore((state) => state.actions);
 export const useTotalRuns = () => useStatsStore((state) => state.totalRuns);
 export const useWinsCount = () => useStatsStore((state) => state.wins);
+export const useAchievements = () => useStatsStore((state) => state.achievements);
+
+export const checkAchievements = (achievements: Achievement[]) => {
+  return achievements.filter((achievement) => {
+    const conditionFn = getConditionFunction(achievement.conditionId);
+    return !achievement.unlocked && conditionFn();
+  });
+};
