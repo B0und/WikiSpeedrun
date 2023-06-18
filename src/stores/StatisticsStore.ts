@@ -73,6 +73,6 @@ export const useAchievements = () => useStatsStore((state) => state.achievements
 export const checkAchievements = (achievements: Achievement[]) => {
   return achievements.filter((achievement) => {
     const conditionFn = getConditionFunction(achievement.conditionId);
-    return !achievement.unlocked && conditionFn(achievement.conditionParams);
+    return !achievement.unlocked && conditionFn(achievement?.conditionParams);
   });
 };
