@@ -45,7 +45,8 @@ export const useStatsStore = create<StatsStore>()(
             set((state) => {
               for (const achievement of state.achievements) {
                 if (unlockedAchievements.some((u) => achievement.conditionId === u.conditionId)) {
-                  achievement.unlocked = true;
+                  // TODO uncomment
+                  // achievement.unlocked = true;
                 }
               }
             }),
@@ -72,6 +73,6 @@ export const useAchievements = () => useStatsStore((state) => state.achievements
 export const checkAchievements = (achievements: Achievement[]) => {
   return achievements.filter((achievement) => {
     const conditionFn = getConditionFunction(achievement.conditionId);
-    return !achievement.unlocked && conditionFn();
+    return !achievement.unlocked && conditionFn(achievement.conditionParams);
   });
 };

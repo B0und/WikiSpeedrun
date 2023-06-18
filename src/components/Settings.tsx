@@ -13,6 +13,8 @@ import ArticlePreview from "./ArticlePreview/ArticlePreview";
 import { RandomModal } from "./RandomModal";
 import { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
+import { achievements } from "../achievements";
+import { achievementToast } from "./AchievementNotification";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -49,11 +51,19 @@ const Settings = () => {
     increaseTotalRuns();
   };
 
-  const { unlockAchievements: checkAchievements } = useStatsStoreActions();
-
   return (
     <div>
-      <button onClick={checkAchievements}>asd</button>
+      <button
+        onClick={() => {
+          achievements.forEach((achievement, index) => {
+            setTimeout(() => {
+              achievementToast(achievement);
+            }, index * 400);
+          });
+        }}
+      >
+        asaaaaaaaaaaaaaad
+      </button>
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
