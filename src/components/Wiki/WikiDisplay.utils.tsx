@@ -71,6 +71,7 @@ export const useWikiQuery = () => {
       if (article.title !== targetArticle.title) {
         return false;
       }
+
       pauseStopwatch();
       setIsGameRunning(false);
       increaseWins();
