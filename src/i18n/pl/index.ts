@@ -9,16 +9,16 @@ const pl: Translation = {
   FEATURES: "Cechy",
   MULTIPLE_LANGUAGES: "Teraz obsługuje wiele języków",
   NO_REGISTRATION: "Rejestracja nie jest wymagana",
-  TIMER_DESCRIPTION: "Wysoka precyzja fair™ timer", // The trademark was missing
+  TIMER_DESCRIPTION: "Wysoka precyzja fair™ timer",
   TIMER_SUB_DESCRIPTION: "faktycznie zatrzymuje się podczas ładowania następnego artykułu",
   SESSION_PROGRESS: "Śledzi postęp sesji",
   DARK_THEME: "Obsługa ciemnego motywu",
   OPEN_SOURCE: "Otwarte źródło",
-  PLAY: "Graj", // Grać is a infinitive and looks somewhat unnatrual Graj is an imperative from
-  ABOUT: "O grze", // Single letter "O" also looks unnatrual "O grze" means "About the game"
+  PLAY: "Graj",
+  ABOUT: "O grze",
   SETTINGS: "Ustawienia",
   SETTINGS_DESCRIPTION:
-    "Zacznij wpisywać, a następnie wybierz wartości z rozwijanej listy lub naciśnij przycisk losuj.", // Losowy przycisk implies that you could press any button on the page
+    "Zacznij wpisywać, a następnie wybierz wartości z rozwijanej listy lub naciśnij przycisk losuj.",
   STARTING_ARTICLE_LABEL: "Wybierz artykuł początkowy",
   ENDING_ARTICLE_LABEL: "Wybierz artykuł końcowy",
   INPUT_PLACEHOLDER: "Zacznij pisać, aby zobaczyć opcje",
@@ -26,7 +26,7 @@ const pl: Translation = {
   CHEATING_ATTEMPTS: "Próby oszustwa",
   RESULTS: "Wyniki",
   PLAY_AGAIN: "Zagraj ponownie",
-  GIVE_UP: "Poddaje się", // Direct translation: I give up
+  GIVE_UP: "Poddaje się",
   CONFIRM_ACTION: "Potwierdź działanie",
   LEAVE_WARNING: "Jeśli opuścisz grę, Twoje obecne postępy zostaną utracone",
   HISTORY: "Historia",
@@ -42,7 +42,7 @@ const pl: Translation = {
   LANGUAGE: "Język",
   NAVIGATION: "Nawigacja",
   NO_CHEATING: "Bez oszukiwania!",
-  RANDOM_FAIL: "Losowanie nie powiodło się, spróbuj ponownie", // word "Losowe" was wrong in this sentence
+  RANDOM_FAIL: "Losowanie nie powiodło się, spróbuj ponownie",
   INVALID_LINK: "Wybierz inny link",
   SHARE_SETTINGS: "Udostępnij ustawienia",
   LINK_COPIED: "Skopiowane do schowka",
