@@ -17,6 +17,7 @@ const ru: Translation = {
   ABOUT: "Об Игре",
   SETTINGS: "Настройки",
   SETTINGS_DESCRIPTION: "Начните вводить, а затем выберите значения из раскрывающегося списка или нажмите на кнопку выбора случайной статьи.",
+  ADD_ARTICLE: "Добавить статью",
   STARTING_ARTICLE_LABEL: "Выберите начальную статью",
   CHECKPOINT_ARTICLE_LABEL: "Выберите промежуточную статью",
   ENDING_ARTICLE_LABEL: "Выберите конечную статью",

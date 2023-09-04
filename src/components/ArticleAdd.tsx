@@ -1,7 +1,9 @@
 import { useGameStoreActions, useArticles } from "../GameStore";
+import { useI18nContext } from "../i18n/i18n-react";
 
 export default function ArticleAdd() {
   const { setArticles } = useGameStoreActions();
+  const { LL } = useI18nContext();
   const articles = useArticles();
 
   const addArticle = () => {
@@ -9,10 +11,10 @@ export default function ArticleAdd() {
   };
 
   return (
-    <button className="border w-40 rounded hover:border-primary-blue" onClick={addArticle} type="button">
+    <button className="border max-w-fit rounded hover:border-primary-blue" onClick={addArticle} type="button">
       <span className="p-1 w-full flex justify-between">
-        <p>Add Article</p>
-        <p className="pr-2">+</p>
+        <p>{LL.ADD_ARTICLE()}</p>
+        <p className="px-2">+</p>
       </span>
     </button>
   );

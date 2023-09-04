@@ -18,6 +18,7 @@ const vi: Translation = {
   SETTINGS: "Cài đặt",
   SETTINGS_DESCRIPTION:
     "Bắt đầu nhập và sau đó chọn các giá trị từ danh sách thả xuống hoặc nhấn nút ngẫu nhiên.",
+  ADD_ARTICLE: "Thêm bài viết",
   STARTING_ARTICLE_LABEL: "Chọn bài viết bắt đầu",
   CHECKPOINT_ARTICLE_LABEL: "Chọn bài viết kiểm tra",
   ENDING_ARTICLE_LABEL: "Chọn bài viết kết thúc",

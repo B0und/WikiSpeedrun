@@ -18,6 +18,7 @@ const es: Translation = {
   SETTINGS: "Ajustes",
   SETTINGS_DESCRIPTION:
     "Comience a escribir y luego seleccione valores de la lista desplegable o presione el botón aleatorio.",
+  ADD_ARTICLE: "Agregar artículo",
   STARTING_ARTICLE_LABEL: "Seleccionar artículo inicial",
   CHECKPOINT_ARTICLE_LABEL: "Seleccionar artículo de control",
   ENDING_ARTICLE_LABEL: "Seleccionar artículo final",

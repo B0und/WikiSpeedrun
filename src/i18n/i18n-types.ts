@@ -82,6 +82,10 @@ type RootTranslation = {
 	 */
 	SETTINGS_DESCRIPTION: string
 	/**
+	 * Add Article
+	 */
+	ADD_ARTICLE: string
+	/**
 	 * S​e​l​e​c​t​ ​s​t​a​r​t​i​n​g​ ​a​r​t​i​c​l​e
 	 */
 	STARTING_ARTICLE_LABEL: string
@@ -273,6 +277,10 @@ export type TranslationFunctions = {
 	 * Start typing and then select values from the dropdown list or press the random button.
 	 */
 	SETTINGS_DESCRIPTION: () => LocalizedString
+	/**
+	 * Add Article
+	 */
+	ADD_ARTICLE: () => LocalizedString
 	/**
 	 * Select starting article
 	 */
