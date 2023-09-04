@@ -65,7 +65,7 @@ export const ResultDialog = () => {
           </ModalTitle>
           <ModalDescription asChild>
             <p className="mb-5 mt-[10px] text-lg font-bold ">
-              {// list all the articles in the path with arrows in between
+              {
                 articles.map((article, index) => {
                   return (
                     <span>

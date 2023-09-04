@@ -20,7 +20,7 @@ const Wiki = () => {
   return (
     <div className="-mt-8">
       <div className="sticky -top-8 z-10 mb-2 bg-neutral-50 py-2 text-lg font-bold dark:bg-dark-surface sm:-top-4">
-        {// list all the articles in the path with arrows in between
+        {
         articles.map((article, index) => {
           return (
             <span>
