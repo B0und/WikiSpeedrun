@@ -12,6 +12,8 @@ import { toast } from "react-hot-toast";
 import ArticlePreview from "./ArticlePreview/ArticlePreview";
 import { RandomModal } from "./RandomModal";
 import { Article } from "../GameStore";
+import ArticleRemove from "./ArticleRemove";
+import ArticleAdd from "./ArticleAdd";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -35,18 +37,26 @@ const Settings = () => {
   const randomFailText = LL.RANDOM_FAIL();
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
 
-  const addArticle = () => {
-    setArticles([...articles, { pageid: "", title: "" }]);
-  };
 
-  const removeArticle = (index: number) => {
+  const moveLater = (index: number) => {
     return () => {
       const newArticles = [...articles];
-      newArticles.splice(index, 1);
+      const temp = newArticles[index];
+      newArticles[index] = newArticles[index + 1];
+      newArticles[index + 1] = temp;
       setArticles(newArticles);
     };
   };
 
+  const moveFormer = (index: number) => {
+    return () => {
+      const newArticles = [...articles];
+      const temp = newArticles[index];
+      newArticles[index] = newArticles[index - 1];
+      newArticles[index - 1] = temp;
+      setArticles(newArticles);
+    };
+  };
 
   const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,7 +80,7 @@ const Settings = () => {
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
-      <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
+      <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
         <RandomModal
           data={modalData}
@@ -78,17 +88,22 @@ const Settings = () => {
           setOpen={setModalOpen}
           setArticle={modalFunction.fn}
         />
-        <button className="border w-40" onClick={addArticle}>Add Article</button>
+        <ArticleAdd/>
         {articles.map((article, index) => (
 
           <div key={index} className="flex items-end gap-2 sm:gap-0">
             <ArticleAutocomplete
-              label={LL.STARTING_ARTICLE_LABEL()}
+              label={
+                index === 0 ? LL.STARTING_ARTICLE_LABEL() :
+                index === articles.length - 1 ? LL.ENDING_ARTICLE_LABEL() : 
+                "Select checkpoint article"
+              }
               placeholder={LL.INPUT_PLACEHOLDER()}
               required={true}
               onSelect={setArticle(index)}
               defaultValue={articles[index].title}
-              selectId="startArticle"
+              selectId={`article${index}`}
+              className="max-w-[450px]"
             />
             <div className="flex gap-2 sm:gap-0 items-center">
               <ArticlePreview pageid={articles[index].pageid} />
@@ -114,9 +129,9 @@ const Settings = () => {
                   }
                 }}
               />
-              {articles.length > 2 && (
-                <button onClick={removeArticle(index)}>X</button>
-              )}
+              {articles.length > 2 && 
+                <ArticleRemove index={index}/>
+              }
             </div>
           </div>
         ))}

@@ -32,6 +32,7 @@ interface ArticleAutocompleteProps {
   onSelect: (option: Article) => void;
   defaultValue: string;
   selectId: string;
+  className?: string;
 }
 
 interface AutocompleteOption {
@@ -40,7 +41,7 @@ interface AutocompleteOption {
 }
 
 const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
-  const { label, placeholder, required, onSelect, defaultValue, selectId } = props;
+  const { label, placeholder, required, onSelect, defaultValue, selectId, className } = props;
   const language = useWikiLanguage();
   const { LL } = useI18nContext();
   const [inputText, setInputText] = useState("");
@@ -84,7 +85,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   };
 
   return (
-    <div className="flex flex-1 flex-col min-w-0">
+    <div className={`flex flex-1 flex-col min-w-0 ${className}`}>
       <label htmlFor={selectId}>{label}</label>
       <Select
         key={defaultValue} // dirty hack
