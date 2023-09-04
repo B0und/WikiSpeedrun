@@ -114,6 +114,7 @@ const useGameStore = create<GameStore>()(
           return {
             history: isWikiPage,
             articles: true,
+            targetArticle: isWikiPage,
             isGameRunning: false,
             cheatingAttempts: isWikiPage,
           };
