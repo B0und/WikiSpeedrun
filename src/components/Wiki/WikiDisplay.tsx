@@ -8,7 +8,7 @@ import "./overrides.css";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../GameStore";
+import { useArticles, useGameStoreActions, useIsGameRunning, useTargetArticle } from "../../GameStore";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
@@ -18,7 +18,7 @@ const WikiDisplay = () => {
   const { handleWikiArticleClick } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();
   const isGameRunning = useIsGameRunning();
-  const endingArticle = useEndingArticle();
+  const targetArticle = useArticles()[useTargetArticle()];
 
   const { setLastArticleWinningLinks } = useGameStoreActions();
 
@@ -27,7 +27,7 @@ const WikiDisplay = () => {
   const wikiRefCallback = (node: HTMLDivElement | null) => {
     if (!node || isFetching || isError) return;
 
-    const visibleWinningLinks = findVisibleWinningLinks(endingArticle);
+    const visibleWinningLinks = findVisibleWinningLinks(targetArticle);
     if (isGameRunning) {
       setLastArticleWinningLinks(visibleWinningLinks.length);
     }

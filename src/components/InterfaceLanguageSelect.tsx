@@ -18,7 +18,7 @@ export const InterfaceLanguageSelect = () => {
   const { LL, setLocale } = useI18nContext();
   const language = useInterfaceLanguage();
   const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions();
-  const { setEndingArticle, setStartingArticle } = useGameStoreActions();
+  const { setArticles } = useGameStoreActions();
 
   return (
     <Select.Root
@@ -26,8 +26,7 @@ export const InterfaceLanguageSelect = () => {
       onValueChange={async (locale: Locales) => {
         await loadLocaleAsync(locale);
         setInterfaceLanguage(locale);
-        setStartingArticle({pageid: "", title: ""});
-        setEndingArticle({pageid: "", title: ""});
+        setArticles([{pageid: "", title: ""}, {pageid: "", title: ""}]);
         setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
         setLocale(locale);
       }}
