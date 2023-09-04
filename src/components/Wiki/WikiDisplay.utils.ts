@@ -8,7 +8,6 @@ import {
   useGameStoreActions,
   useIsGameRunning,
   useIsWin,
-  useTargetArticle,
 } from "../../GameStore";
 import { useStopwatchActions } from "../StopwatchContext";
 import { WikiApiArticle } from "./Wiki.types";
@@ -57,7 +56,6 @@ export const useWikiQuery = () => {
   const wikiArticle = routeParams.wikiTitle || startingArticle.title;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
 
-  const targetArticle = useArticles()[useArticles().length - 1];
   const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
 
   const handleWin = useCallback(
@@ -69,7 +67,7 @@ export const useWikiQuery = () => {
       setIsGameRunning(false);
       return true;
     },
-    [pauseStopwatch, setIsGameRunning, targetArticle, isWin]
+    [pauseStopwatch, setIsGameRunning, isWin]
   );
 
   const query = useQuery({
