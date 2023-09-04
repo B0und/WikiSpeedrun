@@ -37,27 +37,6 @@ const Settings = () => {
   const randomFailText = LL.RANDOM_FAIL();
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
 
-
-  const moveLater = (index: number) => {
-    return () => {
-      const newArticles = [...articles];
-      const temp = newArticles[index];
-      newArticles[index] = newArticles[index + 1];
-      newArticles[index + 1] = temp;
-      setArticles(newArticles);
-    };
-  };
-
-  const moveFormer = (index: number) => {
-    return () => {
-      const newArticles = [...articles];
-      const temp = newArticles[index];
-      newArticles[index] = newArticles[index - 1];
-      newArticles[index - 1] = temp;
-      setArticles(newArticles);
-    };
-  };
-
   const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await resetGame();
