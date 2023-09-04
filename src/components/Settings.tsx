@@ -96,7 +96,7 @@ const Settings = () => {
               label={
                 index === 0 ? LL.STARTING_ARTICLE_LABEL() :
                 index === articles.length - 1 ? LL.ENDING_ARTICLE_LABEL() : 
-                "Select checkpoint article"
+                LL.CHECKPOINT_ARTICLE_LABEL()
               }
               placeholder={LL.INPUT_PLACEHOLDER()}
               required={true}

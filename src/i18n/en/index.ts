@@ -19,6 +19,7 @@ const en: BaseTranslation = {
   SETTINGS_DESCRIPTION:
     "Start typing and then select values from the dropdown list or press the random button.",
   STARTING_ARTICLE_LABEL: "Select starting article",
+  CHECKPOINT_ARTICLE_LABEL: "Select checkpoint article",
   ENDING_ARTICLE_LABEL: "Select ending article",
   INPUT_PLACEHOLDER: "Start typing to see options",
   ARTICLE_CLICKS: "Article clicks",

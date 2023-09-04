@@ -19,6 +19,7 @@ const fr: Translation = {
   SETTINGS_DESCRIPTION:
     "Commencez à taper, puis sélectionnez des valeurs dans la liste déroulante ou appuyez sur le bouton aléatoire.",
   STARTING_ARTICLE_LABEL: "Sélectionnez l'article de départ",
+  CHECKPOINT_ARTICLE_LABEL: "Sélectionnez l'article de contrôle",
   ENDING_ARTICLE_LABEL: "Sélectionnez l'article de fin",
   INPUT_PLACEHOLDER: "Commencez à taper pour voir les options",
   ARTICLE_CLICKS: "Clics sur les articles",

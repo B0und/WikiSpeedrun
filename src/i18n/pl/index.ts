@@ -20,6 +20,7 @@ const pl: Translation = {
   SETTINGS_DESCRIPTION:
     "Zacznij wpisywać, a następnie wybierz wartości z rozwijanej listy lub naciśnij przycisk losuj.",
   STARTING_ARTICLE_LABEL: "Wybierz artykuł początkowy",
+  CHECKPOINT_ARTICLE_LABEL: "Wybierz artykuł kontrolny",
   ENDING_ARTICLE_LABEL: "Wybierz artykuł końcowy",
   INPUT_PLACEHOLDER: "Zacznij pisać, aby zobaczyć opcje",
   ARTICLE_CLICKS: "Kliknięcia artykułów",

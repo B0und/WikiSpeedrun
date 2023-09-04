@@ -18,6 +18,7 @@ const ja: Translation = {
   SETTINGS: "設定",
   SETTINGS_DESCRIPTION: "入力を開始し、ドロップダウンリストから値を選択するか、ランダムボタンを押す",
   STARTING_ARTICLE_LABEL: "スタート記事を選択",
+  CHECKPOINT_ARTICLE_LABEL: "チェックポイント記事を選択",
   ENDING_ARTICLE_LABEL: "エンディング記事を選択",
   INPUT_PLACEHOLDER: "選択肢を表示するために入力を開始する",
   ARTICLE_CLICKS: "記事クリック",

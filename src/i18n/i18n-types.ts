@@ -86,6 +86,10 @@ type RootTranslation = {
 	 */
 	STARTING_ARTICLE_LABEL: string
 	/**
+	 * S​e​l​e​c​t​ ​c​h​e​c​k​p​o​i​n​t​ ​a​r​t​i​c​l​e
+	 */
+	CHECKPOINT_ARTICLE_LABEL: string
+	/**
 	 * S​e​l​e​c​t​ ​e​n​d​i​n​g​ ​a​r​t​i​c​l​e
 	 */
 	ENDING_ARTICLE_LABEL: string
@@ -273,6 +277,10 @@ export type TranslationFunctions = {
 	 * Select starting article
 	 */
 	STARTING_ARTICLE_LABEL: () => LocalizedString
+	/**
+	 * Select checkpoint article
+	 */
+	CHECKPOINT_ARTICLE_LABEL: () => LocalizedString
 	/**
 	 * Select ending article
 	 */

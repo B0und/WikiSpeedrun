@@ -18,6 +18,7 @@ const sv: Translation = {
   SETTINGS: "inställningar",
   SETTINGS_DESCRIPTION: "Börja skriva och välj sedan värden från rullgardinsmenyn eller tryck på slumpmässiga knappen.",
   STARTING_ARTICLE_LABEL: "Välj startartikel",
+  CHECKPOINT_ARTICLE_LABEL: "Välj checkpoint-artikel",
   ENDING_ARTICLE_LABEL: "Välj slutartikel",
   INPUT_PLACEHOLDER: "Börja skriva för att se alternativ",
   ARTICLE_CLICKS: "Artikelklickar",

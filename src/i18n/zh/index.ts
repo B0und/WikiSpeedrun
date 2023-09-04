@@ -17,6 +17,7 @@ const zh: Translation = {
   SETTINGS: "设置",
   SETTINGS_DESCRIPTION: "开始输入，然后从下拉列表中选择数值，或按随机按钮。",
   STARTING_ARTICLE_LABEL: "选择起始条款",
+  CHECKPOINT_ARTICLE_LABEL: "选择检查点条款",
   ENDING_ARTICLE_LABEL: "选择结尾条款",
   INPUT_PLACEHOLDER: "开始键入以查看选项",
   ARTICLE_CLICKS: "文章点击率",

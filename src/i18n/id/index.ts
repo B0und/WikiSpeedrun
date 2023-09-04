@@ -18,6 +18,7 @@ const id: Translation = {
   SETTINGS: "Pengaturan",
   SETTINGS_DESCRIPTION: "Mulailah mengetik lalu pilih nilai dari daftar dropdown atau tekan tombol acak.",
   STARTING_ARTICLE_LABEL: "Pilih artikel awal",
+  CHECKPOINT_ARTICLE_LABEL: "Pilih artikel checkpoint",
   ENDING_ARTICLE_LABEL: "Pilih artikel penutup",
   INPUT_PLACEHOLDER: "Mulai mengetik untuk melihat opsi",
   ARTICLE_CLICKS: "Klik artikel",

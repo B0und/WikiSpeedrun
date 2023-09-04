@@ -18,6 +18,7 @@ const ru: Translation = {
   SETTINGS: "Настройки",
   SETTINGS_DESCRIPTION: "Начните вводить, а затем выберите значения из раскрывающегося списка или нажмите на кнопку выбора случайной статьи.",
   STARTING_ARTICLE_LABEL: "Выберите начальную статью",
+  CHECKPOINT_ARTICLE_LABEL: "Выберите промежуточную статью",
   ENDING_ARTICLE_LABEL: "Выберите конечную статью",
   INPUT_PLACEHOLDER: "Начните печатать, чтобы увидеть варианты",
   ARTICLE_CLICKS: "Клики по статьям",
