@@ -82,7 +82,7 @@ type RootTranslation = {
 	 */
 	SETTINGS_DESCRIPTION: string
 	/**
-	 * Add Article
+	 * A​d​d​ ​a​r​t​i​c​l​e
 	 */
 	ADD_ARTICLE: string
 	/**
@@ -278,7 +278,7 @@ export type TranslationFunctions = {
 	 */
 	SETTINGS_DESCRIPTION: () => LocalizedString
 	/**
-	 * Add Article
+	 * Add article
 	 */
 	ADD_ARTICLE: () => LocalizedString
 	/**
