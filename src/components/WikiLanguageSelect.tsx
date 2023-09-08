@@ -13,7 +13,7 @@ export const WikiLanguageSelect = () => {
   const { LL } = useI18nContext();
   const { setWikiLanguage } = useSettingsStoreActions();
   const wikiLanguage = useWikiLanguage();
-  const { setEndingArticle, setStartingArticle } = useGameStoreActions();
+  const { setArticles} = useGameStoreActions();
 
   return (
     <div>
@@ -29,8 +29,7 @@ export const WikiLanguageSelect = () => {
         options={LANGUAGES}
         onChange={(e) => {
           setWikiLanguage(e?.value || "");
-          setStartingArticle({ pageid: "", title: "" });
-          setEndingArticle({ pageid: "", title: "" });
+          setArticles([{pageid: "", title: ""}, {pageid: "", title: ""}]);
         }}
         isMulti={false}
         classNames={{

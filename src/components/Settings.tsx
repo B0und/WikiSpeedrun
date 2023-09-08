@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../GameStore";
+import { useArticles, useGameStoreActions } from "../GameStore";
 import ArticleAutocomplete from "./ArticleAutocomplete/ArticleAutocomplete";
 import RandomButton from "./RandomButton/RandomButton";
 import { getNHighestLinksPages, handleOnRandomSuccess } from "./Settings.helpers";
@@ -12,19 +12,27 @@ import { toast } from "react-hot-toast";
 import ArticlePreview from "./ArticlePreview/ArticlePreview";
 import { RandomModal } from "./RandomModal";
 import { Article } from "../GameStore";
+import ArticleRemove from "./ArticleRemove";
+import ArticleAdd from "./ArticleAdd";
 
 const Settings = () => {
   const { LL } = useI18nContext();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
-  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } =
+  const { setIsGameRunning, setArticles, addHistoryArticle } =
     useGameStoreActions();
-  const startArticle = useStartingArticle();
-  const endArticle = useEndingArticle();
+  const articles = useArticles();
   const resetGame = useResetGame();
   const [modalData, setModalData] = useState<Article[] | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalFunction, setModalFunction] = useState({ fn: setStartingArticle });
+  const setArticle = (index: number) => {
+    return (article: Article) => {
+      const newArticles = [...articles];
+      newArticles[index] = article;
+      setArticles(newArticles);
+    };
+  };
+  const [modalFunction, setModalFunction] = useState({ fn: setArticle(0) });
 
   const randomFailText = LL.RANDOM_FAIL();
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
@@ -33,7 +41,7 @@ const Settings = () => {
     e.preventDefault();
     await resetGame();
     addHistoryArticle({
-      title: startArticle.title,
+      title: articles[0].title,
       time: {
         min: "00",
         sec: "00",
@@ -51,7 +59,7 @@ const Settings = () => {
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
 
-      <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
+      <form className="flex flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
         <RandomModal
           data={modalData}
@@ -59,74 +67,53 @@ const Settings = () => {
           setOpen={setModalOpen}
           setArticle={modalFunction.fn}
         />
+        <ArticleAdd/>
+        {articles.map((article, index) => (
 
-        <div className="flex items-end gap-2 sm:gap-0">
-          <ArticleAutocomplete
-            label={LL.STARTING_ARTICLE_LABEL()}
-            placeholder={LL.INPUT_PLACEHOLDER()}
-            required={true}
-            onSelect={setStartingArticle}
-            defaultValue={startArticle.title}
-            selectId="startArticle"
-          />
-          <ArticlePreview pageid={startArticle.pageid} />
-          <RandomButton
-            queryKey="startingArticle"
-            onSuccess={(data) => {
-              handleOnRandomSuccess({
-                data,
-                setArticle: setStartingArticle,
-                failText: randomFailText,
-              });
-            }}
-          />
-          <RandomButton
-            queryKey="startingArticleMultiple"
-            randomCount={5}
-            onSuccess={(data) => {
-              setModalFunction({ fn: setStartingArticle });
-              setModalOpen(true);
-              const articles = getNHighestLinksPages(data, 5);
-              if (articles) {
-                setModalData(articles);
+          <div key={index} className="flex items-end gap-2 sm:gap-0">
+            <ArticleAutocomplete
+              label={
+                index === 0 ? LL.STARTING_ARTICLE_LABEL() :
+                index === articles.length - 1 ? LL.ENDING_ARTICLE_LABEL() : 
+                LL.CHECKPOINT_ARTICLE_LABEL()
               }
-            }}
-          />
-        </div>
-
-        <div className="flex items-end gap-2 sm:gap-0">
-          <ArticleAutocomplete
-            label={LL.ENDING_ARTICLE_LABEL()}
-            placeholder={LL.INPUT_PLACEHOLDER()}
-            required={true}
-            onSelect={setEndingArticle}
-            defaultValue={endArticle.title}
-            selectId="startArticle"
-          />
-          <ArticlePreview pageid={endArticle.pageid} />
-          <RandomButton
-            queryKey="endingArticle"
-            onSuccess={(data) => {
-              handleOnRandomSuccess({
-                data,
-                setArticle: setEndingArticle,
-                failText: randomFailText,
-              });
-            }}
-          />
-          <RandomButton
-            queryKey="endingArticleMultiple"
-            randomCount={5}
-            onSuccess={(data) => {
-              setModalFunction({ fn: setEndingArticle });
-              setModalOpen(true);
-              const articles = getNHighestLinksPages(data, 5);
-              if (articles) {
-                setModalData(articles);
+              placeholder={LL.INPUT_PLACEHOLDER()}
+              required={true}
+              onSelect={setArticle(index)}
+              defaultValue={articles[index].title}
+              selectId={`article${index}`}
+              className="max-w-[450px]"
+            />
+            <div className="flex gap-2 sm:gap-0 items-center">
+              <ArticlePreview pageid={articles[index].pageid} />
+              <RandomButton
+                queryKey={`article${index}`}
+                onSuccess={(data) => {
+                  handleOnRandomSuccess({
+                    data,
+                    setArticle: setArticle(index),
+                    failText: randomFailText,
+                  });
+                }}
+              />
+              <RandomButton
+                queryKey={`article${index}multiple`}
+                randomCount={5}
+                onSuccess={(data) => {
+                  setModalFunction({ fn: setArticle(index) });
+                  setModalOpen(true);
+                  const articles = getNHighestLinksPages(data, 5);
+                  if (articles) {
+                    setModalData(articles);
+                  }
+                }}
+              />
+              {articles.length > 2 && 
+                <ArticleRemove index={index}/>
               }
-            }}
-          />
-        </div>
+            </div>
+          </div>
+        ))}
 
         <div className="flex flex-wrap gap-8">
           <button

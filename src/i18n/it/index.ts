@@ -18,7 +18,9 @@ const it: Translation = {
   SETTINGS: "Impostazioni",
   SETTINGS_DESCRIPTION:
     "Inizia a digitare e quindi seleziona i valori dall'elenco a discesa o premi il pulsante casuale.",
+  ADD_ARTICLE: "Aggiungi articolo",
   STARTING_ARTICLE_LABEL: "Seleziona l'articolo iniziale",
+  CHECKPOINT_ARTICLE_LABEL: "Seleziona l'articolo di controllo",
   ENDING_ARTICLE_LABEL: "Seleziona l'articolo finale",
   INPUT_PLACEHOLDER: "Inizia a digitare per visualizzare le opzioni",
   ARTICLE_CLICKS: "L'articolo fa clic",

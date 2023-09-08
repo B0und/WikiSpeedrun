@@ -9,8 +9,8 @@ import { immer } from "zustand/middleware/immer";
 */
 
 interface Actions {
-  setStartingArticle: (article: Article) => void;
-  setEndingArticle: (article: Article) => void;
+  setArticles: (articles: Article[]) => void;
+  setTargetArticle: (index: number) => void;
   setIsGameRunning: (flag: boolean) => void;
   addHistoryArticle: (article: ArticleHistory) => void;
   resetStoreState: () => void;
@@ -31,8 +31,8 @@ export interface Article {
 interface GameStore {
   actions: Actions;
   history: ArticleHistory[];
-  startingArticle: Article;
-  endingArticle: Article;
+  articles: Article[];
+  targetArticle: number;
   isGameRunning: boolean;
   cheatingAttempts: number;
 }
@@ -48,24 +48,24 @@ const useGameStore = create<GameStore>()(
     querystring(
       immer((set) => ({
         ...initialState,
-        startingArticle: { pageid: "", title: "" },
-        endingArticle: { pageid: "", title: "" },
+        articles: [{ pageid: "", title: "" },{ pageid: "", title: "" }],
+        targetArticle: 1,
         actions: {
-          setStartingArticle: (article: Article) =>
+          setArticles: (articles: Article[]) =>
             set(
-              () => ({
-                startingArticle: article,
-              }),
+              (state) => {
+                state.articles = articles;
+              },
               false,
-              "setStartingArticle"
+              "setArticles"
             ),
-          setEndingArticle: (article: Article) =>
+          setTargetArticle: (index: number) =>
             set(
-              () => ({
-                endingArticle: article,
-              }),
+              (state) => {
+                state.targetArticle = index;
+              },
               false,
-              "setEndingArticle"
+              "setTargetArticle"
             ),
           setIsGameRunning: (flag: boolean) =>
             set(
@@ -113,8 +113,8 @@ const useGameStore = create<GameStore>()(
 
           return {
             history: isWikiPage,
-            startingArticle: true,
-            endingArticle: true,
+            articles: true,
+            targetArticle: isWikiPage,
             isGameRunning: false,
             cheatingAttempts: isWikiPage,
           };
@@ -129,8 +129,8 @@ const useGameStore = create<GameStore>()(
 
 export const useGameStoreActions = () => useGameStore((state) => state.actions);
 export const useIsGameRunning = () => useGameStore((state) => state.isGameRunning);
-export const useStartingArticle = () => useGameStore((state) => state.startingArticle);
-export const useEndingArticle = () => useGameStore((state) => state.endingArticle);
+export const useArticles = () => useGameStore((state) => state.articles);
+export const useTargetArticle = () => useGameStore((state) => state.targetArticle);
 export const useHistory = () => useGameStore((state) => state.history);
 export const useClicks = () =>
   useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
@@ -138,7 +138,16 @@ export const useCurrentArticle = () => useGameStore((state) => state.history.sli
 export const useIsWin = () =>
   useGameStore((state) => {
     const currentArticle = state.history.slice(-1)?.[0]?.title;
-    return state.endingArticle.title === currentArticle;
+    if (state.articles[state.targetArticle]?.title === currentArticle){
+      if (state.articles.length === state.targetArticle + 1) {
+        return true;
+      }
+      else {
+        state.actions.setTargetArticle(state.targetArticle + 1);
+        return false;
+      }
+    }
+    return false;
   });
 
 export const useCheatingAttempts = () => useGameStore((state) => state.cheatingAttempts);

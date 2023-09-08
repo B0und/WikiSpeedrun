@@ -18,7 +18,9 @@ const nl: Translation = {
   SETTINGS: "Instellingen",
   SETTINGS_DESCRIPTION:
     "Begin met typen en selecteer vervolgens waarden in de vervolgkeuzelijst of druk op de willekeurige knop.",
+  ADD_ARTICLE: "Voeg artikel toe",
   STARTING_ARTICLE_LABEL: "Selecteer startartikel",
+  CHECKPOINT_ARTICLE_LABEL: "Selecteer controlepuntartikel",
   ENDING_ARTICLE_LABEL: "Selecteer eindartikel",
   INPUT_PLACEHOLDER: "Begin met typen om opties te zien",
   ARTICLE_CLICKS: "Klikken op artikelen",

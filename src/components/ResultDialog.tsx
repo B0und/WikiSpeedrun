@@ -4,10 +4,9 @@ import * as Dialog from "@radix-ui/react-dialog";
 import {
   useCheatingAttempts,
   useClicks,
-  useEndingArticle,
+  useArticles,
   useHistory,
   useIsWin,
-  useStartingArticle,
 } from "../GameStore";
 
 import { StopwatchDisplay } from "./StopwatchDisplay";
@@ -31,8 +30,7 @@ export const ResultDialog = () => {
   const [open, setOpen] = useState(false);
   const resetGame = useResetGame();
 
-  const startingArticle = useStartingArticle();
-  const endingArticle = useEndingArticle();
+  const articles = useArticles();
   const history = useHistory();
   const [lastArticle] = history.slice(-1);
   const clicks = useClicks();
@@ -67,7 +65,15 @@ export const ResultDialog = () => {
           </ModalTitle>
           <ModalDescription asChild>
             <p className="mb-5 mt-[10px] text-lg font-bold ">
-              {startingArticle.title} → {endingArticle.title}
+              {
+                articles.map((article, index) => {
+                  return (
+                    <span>
+                      {article.title}{index != articles.length - 1 && " → "}
+                    </span>
+                  );
+                }
+              )}
             </p>
           </ModalDescription>
           <table className="mb-5 w-full table-auto">

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useEndingArticle, useStartingArticle } from "../../GameStore";
+import { useArticles, useTargetArticle } from "../../GameStore";
 
 import WikiDisplay from "./WikiDisplay";
 import { useEffect } from "react";
@@ -8,20 +8,28 @@ import { useNoCheating } from "./Wiki.utils";
 
 const Wiki = () => {
   useNoCheating();
-  const startTitle = useStartingArticle();
-  const endTitle = useEndingArticle();
+  const articles = useArticles();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!startTitle || !endTitle) {
+    if (articles.length === 0) {
       navigate("/settings");
     }
-  }, [endTitle, navigate, startTitle]);
+  }, [articles, navigate]);
 
   return (
     <div className="-mt-8">
       <div className="sticky -top-8 z-10 mb-2 bg-neutral-50 py-2 text-lg font-bold dark:bg-dark-surface sm:-top-4">
-        {startTitle.title} → {endTitle.title}
+        {
+        articles.map((article, index) => {
+          return (
+            <span>
+              <span className={index === useTargetArticle() ? "text-yellow-700 dark:text-yellow-300" : ""}>{article.title}</span>
+              {index != articles.length - 1 && " → "}
+            </span>
+          );
+        }
+        )}
       </div>
       <WikiDisplay />
 

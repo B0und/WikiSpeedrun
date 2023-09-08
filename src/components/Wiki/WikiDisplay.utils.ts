@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 
 import {
   Article,
-  useEndingArticle,
+  useArticles,
   useGameStoreActions,
   useIsGameRunning,
-  useStartingArticle,
+  useIsWin,
 } from "../../GameStore";
 import { useStopwatchActions } from "../StopwatchContext";
 import { WikiApiArticle } from "./Wiki.types";
@@ -48,26 +48,26 @@ const getArticleData = async (language: string, title: string) => {
 };
 
 export const useWikiQuery = () => {
-  const startingArticle = useStartingArticle();
+  const startingArticle = useArticles()[0];
   const language = useWikiLanguage();
   const routeParams = useParams();
   const isGameRunning = useIsGameRunning();
+  const isWin = useIsWin();
   const wikiArticle = routeParams.wikiTitle || startingArticle.title;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
 
-  const targetArticle = useEndingArticle();
   const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
-      if (article.title !== targetArticle.title) {
+      if (!isWin) {
         return false;
       }
       pauseStopwatch();
       setIsGameRunning(false);
       return true;
     },
-    [pauseStopwatch, setIsGameRunning, targetArticle]
+    [pauseStopwatch, setIsGameRunning, isWin]
   );
 
   const query = useQuery({

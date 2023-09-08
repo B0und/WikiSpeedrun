@@ -18,7 +18,9 @@ const de: Translation = {
   SETTINGS: "Einstellungen",
   SETTINGS_DESCRIPTION:
     "Beginnen Sie mit der Eingabe und wählen Sie dann Werte aus der Dropdown-Liste aus oder drücken Sie die Zufallstaste.",
+  ADD_ARTICLE: "Artikel hinzufügen",
   STARTING_ARTICLE_LABEL: "Startartikel auswählen",
+  CHECKPOINT_ARTICLE_LABEL: "Checkpoint-Artikel auswählen",
   ENDING_ARTICLE_LABEL: "Endartikel auswählen",
   INPUT_PLACEHOLDER: "Beginnen Sie mit der Eingabe, um Optionen anzuzeigen",
   ARTICLE_CLICKS: "Artikel klickt",
