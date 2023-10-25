@@ -15,5 +15,9 @@
         }
       ]
     }
-  ]
+  ],
+
+  "github": {
+    "silent": true
+  }
 }
