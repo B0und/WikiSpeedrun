@@ -2,7 +2,7 @@ import { Translation } from "../i18n-types";
 
 // Swedish
 
-const sv: Translation = {
+const se: Translation = {
   TITLE: "Wiki Speedrun-spel",
   GAME_DESCRIPTION: "Målet med spelet är att navigera från en startartikel på wikipedia till en annan, med minsta möjliga antal klick och tid.",
   FEATURES: "Funktioner",
@@ -51,4 +51,4 @@ const sv: Translation = {
   CHOOSE_ARTICLE: "Välj din artikel"
 };
 
-export default sv;
+export default se;
