@@ -3,6 +3,7 @@ import { X } from "react-feather";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useWikiLanguage } from "../../SettingsStore";
 import { ArticlePreview } from "./ArticlePreview.types";
 import { ReactComponent as HelpCircle } from "./helpcircle.svg";
 import clsx from "clsx";
@@ -31,16 +32,18 @@ interface ArticlePreviewProps {
 }
 const ArticlePreview = (props: ArticlePreviewProps) => {
   const { pageid } = props;
-  const { LL, locale } = useI18nContext();
+  const { LL } = useI18nContext();
   const [open, setOpen] = useState(false);
+
+  const wikiLang = useWikiLanguage();
 
   const {
     data: articlePreview,
     isLoading: isarticlePreviewLoading,
     isError,
   } = useQuery({
-    queryFn: () => getArticleSummary(locale, pageid),
-    queryKey: ["articleSummary", pageid, locale],
+    queryFn: () => getArticleSummary(wikiLang, pageid),
+    queryKey: ["articleSummary", pageid, wikiLang],
     enabled: open,
   });
 
