@@ -16,7 +16,7 @@ const localeTranslationLoaders = {
 	nl: () => import('./nl/index.js'),
 	pl: () => import('./pl/index.js'),
 	ru: () => import('./ru/index.js'),
-	sv: () => import('./sv/index.js'),
+	se: () => import('./se/index.js'),
 	vi: () => import('./vi/index.js'),
 	zh: () => import('./zh/index.js'),
 }

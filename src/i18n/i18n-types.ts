@@ -16,7 +16,7 @@ export type Locales =
 	| 'nl'
 	| 'pl'
 	| 'ru'
-	| 'sv'
+	| 'se'
 	| 'vi'
 	| 'zh'
 

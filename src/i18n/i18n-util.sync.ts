@@ -15,7 +15,7 @@ import jp from './jp/index.js'
 import nl from './nl/index.js'
 import pl from './pl/index.js'
 import ru from './ru/index.js'
-import sv from './sv/index.js'
+import se from './se/index.js'
 import vi from './vi/index.js'
 import zh from './zh/index.js'
 
@@ -30,7 +30,7 @@ const localeTranslations = {
 	nl,
 	pl,
 	ru,
-	sv,
+	se,
 	vi,
 	zh,
 }
