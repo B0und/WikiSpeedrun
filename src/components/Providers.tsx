@@ -6,7 +6,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { ThemeContextProvider } from "./ThemeContext";
 
-
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

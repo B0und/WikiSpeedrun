@@ -85,7 +85,7 @@ export const LANGUAGES: ReadonlyArray<WikiLanguage> = [
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },
-  { value: "sv", label: "Svenska", isoCode: "sv" },
+  { value: "sv", label: "Svenska", isoCode: "se" },
   { value: "fr", label: "Français", isoCode: "fr" },
   { value: "nl", label: "Nederlands", isoCode: "nl" },
   { value: "ru", label: "Русский", isoCode: "ru" },
