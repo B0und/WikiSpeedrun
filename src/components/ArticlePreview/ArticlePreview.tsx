@@ -3,10 +3,10 @@ import { X } from "react-feather";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useWikiLanguage } from "../../SettingsStore";
 import { ArticlePreview } from "./ArticlePreview.types";
 import { ReactComponent as HelpCircle } from "./helpcircle.svg";
 import clsx from "clsx";
+import { useWikiLanguage } from "../../stores/SettingsStore";
 
 const getArticleSummary = async (language: string, pageid: string) => {
   const res = await fetch(

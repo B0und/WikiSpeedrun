@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^4.27.0",
+    "@total-typescript/ts-reset": "^0.5.1",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",

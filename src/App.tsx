@@ -1,5 +1,4 @@
 import Providers from "./components/Providers";
-import { useWikiConsoleLogo } from "./App.utils";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
@@ -7,6 +6,7 @@ import About from "./components/About";
 import NoMatch from "./components/NoMatch";
 import Settings from "./components/Settings";
 import Wiki from "./components/Wiki/Wiki";
+import { useWikiConsoleLogo } from "./hooks/useWikiConsoleLogo";
 
 const App = () => {
   useWikiConsoleLogo();
