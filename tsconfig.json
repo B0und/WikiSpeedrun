@@ -17,5 +17,5 @@
     "composite": true,
     "types": ["node", "vite/client"]
   },
-  "include": ["src", "reset.d.ts", "vite.config.ts"]
+  "include": ["src", "src/reset.d.ts", "vite.config.ts"]
 }
