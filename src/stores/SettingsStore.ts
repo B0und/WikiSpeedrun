@@ -48,6 +48,7 @@ const useSettingsStore = create<SettingsStore>()(
         storage: createJSONStorage(() => localStorage),
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         partialize: ({ actions, ...rest }: SettingsStore) => rest,
+        version: 1
       }
     ),
     {
