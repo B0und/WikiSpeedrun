@@ -22,7 +22,7 @@ export const getNHighestLinksPages = (data: WikiRandom, limit: number) => {
 
   let linkPages = Object.values(data.query.pages)
     .filter((page) => Object.prototype.hasOwnProperty.call(page, "linkshere"))
-    .sort((a, b) => (b?.linkshere?.length || 0) - (a?.linkshere?.length || 0))
+    .sort((a, b) => (b?.linkshere?.length ?? 0) - (a?.linkshere?.length ?? 0))
     .slice(0, limit || 5)
     .map((p) => ({ title: p.title, pageid: String(p.pageid) }))
     .filter((v, i, a) => a.findIndex((v2) => v2.pageid === v.pageid) === i); // remove duplicate objects

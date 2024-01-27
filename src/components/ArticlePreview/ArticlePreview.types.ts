@@ -7,9 +7,7 @@ export interface Query {
   pages?: Pages;
 }
 
-export interface Pages {
-  [pageid: string]: ArticleContent;
-}
+export type Pages = Record<string, ArticleContent>;
 
 export interface ArticleContent {
   pageid?: number;

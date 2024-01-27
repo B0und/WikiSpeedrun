@@ -34,7 +34,7 @@ type StatsStore = Values &
 export const useStatsStore = create<StatsStore>()(
   devtools(
     persist(
-      immer((set, get) => ({
+      immer((set, _get) => ({
         ...initialState,
         achievements,
         actions: {
@@ -73,6 +73,8 @@ export const useAchievements = () => useStatsStore((state) => state.achievements
 export const checkAchievements = (achievements: Achievement[]) => {
   return achievements.filter((achievement) => {
     const conditionFn = getConditionFunction(achievement.conditionId);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    // @ts-expect-error temp
     return !achievement.unlocked && conditionFn(achievement?.conditionParams);
   });
 };

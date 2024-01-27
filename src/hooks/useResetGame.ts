@@ -7,7 +7,7 @@ export const useResetGame = () => {
   const { resetStoreState } = useGameStoreActions();
   const { resetStopwatch } = useStopwatchActions();
 
-  return async () => {
+  return () => {
     resetStopwatch();
     resetStoreState();
     navigate("/settings");

@@ -95,8 +95,8 @@ export const ResultDialog = () => {
           <div className="mt-9 flex flex-wrap justify-end gap-8">
             <button
               className="border-b-[1px] border-b-transparent  hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
+              onClick={async () => {
+                await navigator.clipboard.writeText(window.location.href);
                 copyNotification();
               }}
             >

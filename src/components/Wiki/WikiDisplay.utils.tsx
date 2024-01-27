@@ -48,7 +48,7 @@ const getArticleData = async (language: string, title: string) => {
         format: "json",
         disableeditsection: "true",
         redirects: "true", // automatically redirects from plural form
-      })
+      }).toString()
   );
   return resp.json() as Promise<WikiApiArticle>;
 };
@@ -58,7 +58,7 @@ export const useWikiQuery = () => {
   const language = useWikiLanguage();
   const routeParams = useParams();
   const isGameRunning = useIsGameRunning();
-  const wikiArticle = routeParams.wikiTitle || startingArticle.title;
+  const wikiArticle = routeParams.wikiTitle ?? startingArticle.title;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
   const achievements = useAchievements();
 

@@ -4,7 +4,7 @@ import { useI18nContext } from "../../i18n/i18n-react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ArticlePreview } from "./ArticlePreview.types";
-import { ReactComponent as HelpCircle } from "./helpcircle.svg";
+import HelpCircle from "./helpcircle.svg?react";
 import clsx from "clsx";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 
@@ -21,7 +21,7 @@ const getArticleSummary = async (language: string, pageid: string) => {
         explaintext: "",
         redirects: "1",
         pageids: pageid,
-      })
+      }).toString()
   );
 
   return res.json() as ArticlePreview;

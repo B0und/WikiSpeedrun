@@ -19,7 +19,7 @@ const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
   const userLocale = interfaceLanguage ? interfaceLanguage : locale;
 
   useEffect(() => {
-    loadLocaleAsync(userLocale).then(() => {
+    void loadLocaleAsync(userLocale).then(() => {
       setLocalesLoaded(true);
       if (!interfaceLanguage) {
         setInterfaceLanguage(locale);

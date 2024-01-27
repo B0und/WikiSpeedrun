@@ -20,7 +20,7 @@ const getArticles = async (language: string, debouncedTerm: string) => {
         origin: "*",
         format: "json",
         srsearch: debouncedTerm,
-      })
+      }).toString()
   );
   return resp.json() as Promise<WikiSearch>;
 };
@@ -61,7 +61,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
           ({
             label: article.title,
             value: String(article.pageid),
-          } as AutocompleteOption)
+          }) as AutocompleteOption
       ),
   });
 
@@ -107,8 +107,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
         getOptionLabel={(option: AutocompleteOption) => option.label}
         getOptionValue={(option: AutocompleteOption) => option.value}
         onChange={(article) => {
-          setSelectedOption(article?.label || "");
-          onSelect({ pageid: article?.value || "", title: article?.label || "" });
+          setSelectedOption(article?.label ?? "");
+          onSelect({ pageid: article?.value ?? "", title: article?.label ?? "" });
         }}
         value={data?.filter(function (option) {
           return option.label === selectedOption;

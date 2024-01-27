@@ -28,7 +28,7 @@ export const WikiLanguageSelect = () => {
         styles={customStyles}
         options={LANGUAGES}
         onChange={(e) => {
-          setWikiLanguage(e?.value || "");
+          setWikiLanguage(e?.value ?? "");
           setStartingArticle({ pageid: "", title: "" });
           setEndingArticle({ pageid: "", title: "" });
         }}
@@ -81,7 +81,7 @@ interface WikiLanguage {
   readonly isoCode: string; // ISO language code
 }
 
-export const LANGUAGES: ReadonlyArray<WikiLanguage> = [
+export const LANGUAGES: readonly WikiLanguage[] = [
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },

@@ -33,9 +33,9 @@ const Settings = () => {
   const randomFailText = LL.RANDOM_FAIL();
   const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
 
-  const startGameHandler = async (e: FormEvent<HTMLFormElement>) => {
+  const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await resetGame();
+    resetGame();
     addHistoryArticle({
       title: startArticle.title,
       time: {
@@ -87,7 +87,6 @@ const Settings = () => {
           />
           <ArticlePreview pageid={startArticle.pageid} />
           <RandomButton
-            queryKey="startingArticle"
             onSuccess={(data) => {
               handleOnRandomSuccess({
                 data,
@@ -97,7 +96,6 @@ const Settings = () => {
             }}
           />
           <RandomButton
-            queryKey="startingArticleMultiple"
             randomCount={5}
             onSuccess={(data) => {
               setModalFunction({ fn: setStartingArticle });
@@ -121,7 +119,6 @@ const Settings = () => {
           />
           <ArticlePreview pageid={endArticle.pageid} />
           <RandomButton
-            queryKey="endingArticle"
             onSuccess={(data) => {
               handleOnRandomSuccess({
                 data,
@@ -131,7 +128,6 @@ const Settings = () => {
             }}
           />
           <RandomButton
-            queryKey="endingArticleMultiple"
             randomCount={5}
             onSuccess={(data) => {
               setModalFunction({ fn: setEndingArticle });
@@ -148,8 +144,8 @@ const Settings = () => {
           <button
             type="button"
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-            onClick={() => {
-              navigator.clipboard.writeText(window.location.href);
+            onClick={async () => {
+              await navigator.clipboard.writeText(window.location.href);
               copyNotification();
             }}
           >

@@ -1,9 +1,9 @@
 import { useStatsStore } from "./stores/StatisticsStore";
 
-type ConditionParams = {
+export interface ConditionParams {
   winsGreaterThanN: { wins: number };
-  winsGreaterThan0: any;
-};
+  winsGreaterThan0: unknown;
+}
 
 type ConditionFunction<T extends keyof ConditionParams> = (
   conditionParams: ConditionParams[T]
