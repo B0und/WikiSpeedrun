@@ -1,10 +1,10 @@
 import { findVisibleWinningLinks, usePauseWhileLoading, useWikiQuery } from "./WikiDisplay.utils";
 import useWikiLogic from "./WikiLogic";
 
-import "./unreset.css";
-import "./vec2022-base.css";
-import "./vector2022.css";
-import "./overrides.css";
+import "./styles/unreset.css";
+import "./styles/vec2022-base.css";
+import "./styles/vector2022.css";
+import "./styles/overrides.css";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";

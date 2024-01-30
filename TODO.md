@@ -1,7 +1,7 @@
 # TODO
 
 add anime achievement
-
+add tooltip to statistics and achievements page explaining local storage mechanics
 ## Ideas
 add e2e (playwright)
 !! Stats card image generation !!

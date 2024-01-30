@@ -11,7 +11,6 @@ import {
   useSlowestAnswerTime,
   useTotalRuns,
   useWins,
-  useAchievements,
 } from "../stores/StatisticsStore";
 // TODO add i18n
 

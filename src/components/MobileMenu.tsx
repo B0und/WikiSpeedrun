@@ -9,7 +9,7 @@ import { LocalizedString } from "typesafe-i18n";
 import { GithubLink } from "./Header";
 
 interface Link {
-  name: LocalizedString;
+  name: LocalizedString | string; // TODO fixme, delete duplicate interface
   path: string;
 }
 

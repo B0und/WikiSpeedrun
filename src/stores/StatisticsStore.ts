@@ -117,7 +117,7 @@ export const useStatsStore = create<StatsStore>()(
   )
 );
 
-export const checkAchievements = (achievements: Achievement[]) => {
+export const checkAchievements = (achievements: readonly Achievement[]) => {
   return achievements.filter((achievement) => {
     const conditionFn = achivementConditionCheckByIdMap[achievement.id];
     return !achievement.unlocked && conditionFn();

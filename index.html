@@ -72,14 +72,14 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- Cloudflare Web Analytics -->
     <% if(isProd){ %>
+    <!-- Cloudflare Web Analytics -->
     <script
       defer
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "6d1eeb4908dc4fc38247c05e48505d88"}'
     ></script>
-    <% } %>
     <!-- End Cloudflare Web Analytics -->
+    <% } %>
   </body>
 </html>
