@@ -1,11 +1,13 @@
 # TODO
 
-[] - remove onsuccess from random button
+add anime achievement
 
 ## Ideas
+add e2e (playwright)
+!! Stats card image generation !!
 
 handle article download errors
-typesafe routing
+typesafe routing (tanstack router)
 twitter share button
 achievements
 dissallow disambiguation links (partially fixed)
@@ -21,6 +23,7 @@ no duplicate articles setting
 
 ## Done
 
+[x] - remove onsuccess from random button
 [x] - random button for 5 options
 [x] - missed-wins count (highlight winning link)
 [x] - save sidebar width locally

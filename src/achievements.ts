@@ -1,197 +1,144 @@
 import { useStatsStore } from "./stores/StatisticsStore";
 
-export interface ConditionParams {
-  winsGreaterThanN: { wins: number };
-  winsGreaterThan0: unknown;
-}
-
-type ConditionFunction<T extends keyof ConditionParams> = (
-  conditionParams: ConditionParams[T]
-) => boolean;
-
-const conditionFunctions: {
-  [K in keyof ConditionParams]: ConditionFunction<K>;
-} = {
-  winsGreaterThan0: () => useStatsStore.getState().wins > 0,
-  winsGreaterThanN: (conditionParams) => useStatsStore.getState().wins >= conditionParams.wins,
-  // Add more condition functions here
-};
-
-type ConditionId = keyof ConditionParams;
-
-export interface Achievement<T extends ConditionId = ConditionId> {
+export interface Achievement {
   title: string;
   description: string;
   unlocked: boolean;
-  conditionId: T;
-  conditionParams?: ConditionParams[T];
-  condition?: ConditionFunction<T>;
+  id: string;
+  conditionCheck: () => boolean;
   image: string;
   imageAlt: string;
 }
 
-export const achievements = [
+export const ACHIEVEMENTS_LIST = [
   {
     title: "First W",
     description: "Get your first win",
-    conditionId: "winsGreaterThan0",
+    id: "FirstWin",
+    conditionCheck: () => useStatsStore.getState().wins > 0,
     unlocked: false,
-    image: "",
-    imageAlt: "asd",
-  },
-  {
-    title: "Rookie Champion",
-    description: "Win 10 games",
-    conditionId: "winsGreaterThanN",
-    conditionParams: {
-      wins: 10,
-    },
-    unlocked: false,
-    image: "",
-    imageAlt: 'A trophy with a "10" emblem.',
-  },
-  {
-    title: "Seasoned Victor",
-    description: "Win 25 games",
-    conditionId: "winsGreaterThanN",
-    conditionParams: {
-      wins: 25,
-    },
-    unlocked: false,
-    image: "",
-    imageAlt: "vvv",
-  },
-  {
-    title: "Elite Conqueror",
-    description: "Win 50 games",
-    conditionId: "winsGreaterThanN",
-    conditionParams: {
-      wins: 50,
-    },
-    unlocked: false,
-    image: "",
-    imageAlt: "A golden crown symbolizing elite achievement.",
-  },
-  {
-    title: "Master Speedrunner",
-    description: "Win 100 games",
-    conditionId: "winsGreaterThanN",
-    conditionParams: {
-      wins: 100,
-    },
-    unlocked: false,
-    image: "",
-    imageAlt: "A lightning bolt with a '100' emblem.",
-  },
-  {
-    title: "Legendary Victor",
-    description: "Win 500 games",
-    conditionId: "winsGreaterThanN",
-    conditionParams: {
-      wins: 500,
-    },
-    unlocked: false,
-    image: "",
-    imageAlt: "A mythical creature holding a banner with '500' inscribed on it.",
+    image: "FirstWin",
+    imageAlt: "FirstWin alt",
   },
 
   {
-    title: "Speedster",
-    description: "Reach your destination article in less than 10 clicks and 2 minutes.",
-    conditionId: "winsGreaterThan0",
+    title: "3 Third WWW",
+    description: "Get your 3rd win",
+    id: "ThirdWin",
+    conditionCheck: () => useStatsStore.getState().wins === 3,
     unlocked: false,
-    image: "",
-    imageAlt: "A stopwatch with wings, symbolizing speed.",
+    image: "3Win",
+    imageAlt: "3Win alt",
   },
-  {
-    title: "Efficient Explorer",
-    description: "Reach your destination article in the fewest clicks possible.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A map with a direct path between the start and destination points.",
-  },
-  {
-    title: "Lightning Linker",
-    description: "Complete a journey in less than 30 seconds.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A lightning bolt connecting two articles.",
-  },
-  {
-    title: "Speed of Light",
-    description: "Finish a journey with an average of less than 5 seconds per click.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A shining star traveling at high speed.",
-  },
-  {
-    title: "Fast Fingers",
-    description: "Complete a journey with an average of less than 2 seconds per click.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A hand typing at lightning speed.",
-  },
-  {
-    title: "Turbo Tracker",
-    description: "Complete 100 journeys with an average speed of less than 10 seconds per click.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A turbocharged car racing towards the destination article.",
-  },
-  {
-    title: "One-Click Wonder",
-    description: "Reach your destination article in a single click.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A finger pressing a button with a target symbol.",
-  },
-  {
-    title: "Hyperlink Hero",
-    description:
-      "Navigate through 100 articles by following only the hyperlinks within each article.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A chain-link representing interconnected articles.",
-  },
-  {
-    title: "Wiki Wizard",
-    description: "Complete a journey using keyboard shortcuts only.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A wizard's hat with keyboard keys as symbols.",
-  },
-  {
-    title: "Language Luminary",
-    description:
-      "Complete a journey by navigating through articles in a language other than your native tongue.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "Flags of different countries with articles flowing between them.",
-  },
-  {
-    title: "Trailblazer",
-    description:
-      "Successfully complete 25 journeys through newly created or recently edited articles.",
-    conditionId: "winsGreaterThan0",
-    unlocked: false,
-    image: "",
-    imageAlt: "A footstep leaving a trail of edits.",
-  },
-] satisfies Achievement[];
 
-// Retrieve the condition function based on the ID
-export function getConditionFunction<T extends ConditionId>(id: T) {
-  return conditionFunctions[id];
-}
+  // {
+  //   title: "Speedster",
+  //   description: "Reach your destination article in less than 10 clicks and 2 minutes.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A stopwatch with wings, symbolizing speed.",
+  // },
+  // {
+  //   title: "Efficient Explorer",
+  //   description: "Reach your destination article in the fewest clicks possible.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A map with a direct path between the start and destination points.",
+  // },
+  // {
+  //   title: "Lightning Linker",
+  //   description: "Complete a journey in less than 30 seconds.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A lightning bolt connecting two articles.",
+  // },
+  // {
+  //   title: "Speed of Light",
+  //   description: "Finish a journey with an average of less than 5 seconds per click.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A shining star traveling at high speed.",
+  // },
+  // {
+  //   title: "Fast Fingers",
+  //   description: "Complete a journey with an average of less than 2 seconds per click.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A hand typing at lightning speed.",
+  // },
+  // {
+  //   title: "Turbo Tracker",
+  //   description: "Complete 100 journeys with an average speed of less than 10 seconds per click.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A turbocharged car racing towards the destination article.",
+  // },
+  // {
+  //   title: "One-Click Wonder",
+  //   description: "Reach your destination article in a single click.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A finger pressing a button with a target symbol.",
+  // },
+  // {
+  //   title: "Hyperlink Hero",
+  //   description:
+  //     "Navigate through 100 articles by following only the hyperlinks within each article.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A chain-link representing interconnected articles.",
+  // },
+  // {
+  //   title: "Wiki Wizard",
+  //   description: "Complete a journey using keyboard shortcuts only.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A wizard's hat with keyboard keys as symbols.",
+  // },
+  // {
+  //   title: "Language Luminary",
+  //   description:
+  //     "Complete a journey by navigating through articles in a language other than your native tongue.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "Flags of different countries with articles flowing between them.",
+  // },
+  // {
+  //   title: "Trailblazer",
+  //   description:
+  //     "Successfully complete 25 journeys through newly created or recently edited articles.",
+  //   conditionId: "winsGreaterThan0",
+  //   unlocked: false,
+  //   image: "",
+  //   imageAlt: "A footstep leaving a trail of edits.",
+  // },
+  // ] as const satisfies readonly Achievement[];
+] as const satisfies readonly Achievement[];
+
+// for getting a function for condition (based on its id)
+// eslint-disable-next-line @typescript-eslint/ban-types
+const init = {} as Record<
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  (typeof ACHIEVEMENTS_LIST)[number]["id"] | (string & {}),
+  () => boolean
+>;
+export const achivementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce(
+  (acc, achievement) => ({
+    ...acc,
+    [achievement.id]: achievement.conditionCheck,
+  }),
+  init
+);
 
 /**
  * 

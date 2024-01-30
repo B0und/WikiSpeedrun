@@ -10,14 +10,17 @@ import { LocalizedString } from "typesafe-i18n";
 import { MobileMenu } from "./MobileMenu";
 
 export interface Link {
-  name: LocalizedString;
+  name: LocalizedString | string; // TODO remove string
   path: string;
 }
 const Header = () => {
   const { LL } = useI18nContext();
 
-  const links = [
+  // TODO i18n
+  const links: Link[] = [
     { name: LL.PLAY(), path: "/settings" },
+    { name: "Statistics", path: "/stats" },
+    { name: "Achievements", path: "/achievements" },
     { name: LL.ABOUT(), path: "/about" },
   ];
 

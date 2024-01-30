@@ -1,20 +1,20 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
-import ArticleAutocomplete from "./ArticleAutocomplete/ArticleAutocomplete";
-import RandomButton from "./RandomButton/RandomButton";
-import { getNHighestLinksPages, handleOnRandomSuccess } from "./Settings.helpers";
-import { useStopwatchActions } from "./StopwatchContext";
+import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
+import RandomButton from "../components/RandomButton/RandomButton";
+import { getNHighestLinksPages, handleOnRandomSuccess } from "../components/Settings.helpers";
+import { useStopwatchActions } from "../components/StopwatchContext";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
-import { WikiLanguageSelect } from "./WikiLanguageSelect";
+import { WikiLanguageSelect } from "../components/WikiLanguageSelect";
 import { toast } from "react-hot-toast";
-import ArticlePreview from "./ArticlePreview/ArticlePreview";
-import { RandomModal } from "./RandomModal";
+import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
+import { RandomModal } from "../components/RandomModal";
 import { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
-import { achievements } from "../achievements";
-import { achievementToast } from "./AchievementNotification";
+import { ACHIEVEMENTS_LIST } from "../achievements";
+import { achievementToast } from "../components/AchievementNotification";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -55,7 +55,7 @@ const Settings = () => {
     <div>
       <button
         onClick={() => {
-          achievements.forEach((achievement, index) => {
+          ACHIEVEMENTS_LIST.forEach((achievement, index) => {
             setTimeout(() => {
               achievementToast(achievement);
             }, index * 400);
@@ -115,7 +115,7 @@ const Settings = () => {
             required={true}
             onSelect={setEndingArticle}
             defaultValue={endArticle.title}
-            selectId="startArticle"
+            selectId="endArticle"
           />
           <ArticlePreview pageid={endArticle.pageid} />
           <RandomButton

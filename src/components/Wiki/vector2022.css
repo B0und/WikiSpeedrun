@@ -65,9 +65,9 @@ sup.reference:target {
 }
 
 #p-lang .uls-settings-trigger {
-  /* background: transparent
+  background: transparent
     url(/w/extensions/UniversalLanguageSelector/resources/images/cog-sprite.svg?cca73) no-repeat
-    center top; */
+    center top;
   border: 0;
   min-height: 16px;
   min-width: 16px;
@@ -104,7 +104,7 @@ sup.reference:target {
   margin-left: 0.25em;
   color: #54595d;
 }
-/* .badge-goodarticle,
+.badge-goodarticle,
 .badge-goodlist,
 .badge-recommendedarticle {
   list-style-image: url(/w/extensions/WikimediaBadges/resources/images/badge-silver-star.png?70a8c);
@@ -125,7 +125,7 @@ sup.reference:target {
 }
 .badge-digitaldocument {
   list-style-image: url(/w/extensions/WikimediaBadges/resources/images/badge-digitaldocument.png?d1c50);
-} */
+}
 .client-js ol.mw-collapsible:before,
 .client-js ul.mw-collapsible:before,
 .client-js .mw-collapsible-toggle-li {
@@ -643,7 +643,7 @@ a.mw-ui-button:focus {
     vertical-align: text-bottom;
   }
 }
-/* .mw-ui-icon-wikimedia-labFlask:before {
+.mw-ui-icon-wikimedia-labFlask:before {
   background-image: url(/w/load.php?modules=skins.vector.icons&image=labFlask&format=original&skin=vector-2022&version=1pc90);
 }
 .mw-ui-icon-wikimedia-labFlask-progressive:before {
@@ -768,7 +768,7 @@ a.mw-ui-button:focus {
 }
 .mw-ui-icon-wikimedia-watchlist-progressive:before {
   background-image: url(/w/load.php?modules=skins.vector.icons&image=watchlist&variant=progressive&format=original&lang=en&skin=vector-2022&version=1pc90);
-} */
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
@@ -1042,7 +1042,7 @@ div.thumbinner {
     word-wrap: break-word;
   }
   .mw-parser-output a.external {
-    /* background-image: url(/wiki-assets/link-external-small-ltr-progressive.svg); */
+    background-image: url(/wiki-assets/link-external-small-ltr-progressive.svg);
     background-position: center right;
     background-repeat: no-repeat;
     background-size: 0.857em;
@@ -1196,8 +1196,8 @@ div.thumbinner {
     z-index: 1;
   }
   .searchButton[name="go"] {
-    /* background: no-repeat center / 1.23076923em
-      url(/w/skins/Vector/resources/common/images/search.svg?ac00d); */
+    background: no-repeat center / 1.23076923em
+      url(/w/skins/Vector/resources/common/images/search.svg?ac00d);
     opacity: 0.67;
   }
   .search-toggle {
@@ -1385,7 +1385,7 @@ div.thumbinner {
   }
   .mixin-vector-legacy-menu-heading-arrow {
     content: "";
-    /* background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat; */
+    background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat;
     width: 1.23076923em;
     height: 1.23076923em;
   }
@@ -1582,7 +1582,7 @@ div.thumbinner {
     opacity: 1;
   }
   .vector-page-titlebar .mw-portlet-lang .vector-menu-heading.mw-ui-progressive.mw-ui-quiet:after {
-    /* background-image: url(/w/skins/Vector/resources/common/images/arrow-down-progressive.svg?f0b59); */
+    background-image: url(/w/skins/Vector/resources/common/images/arrow-down-progressive.svg?f0b59);
     opacity: 1;
   }
   .vector-page-titlebar
@@ -1595,9 +1595,9 @@ div.thumbinner {
   .vector-page-titlebar
     .mw-portlet-lang
     input:active
-    /* + .vector-menu-heading.mw-ui-progressive.mw-ui-quiet:after {
+    + .vector-menu-heading.mw-ui-progressive.mw-ui-quiet:after {
     background-image: url(/w/skins/Vector/resources/common/images/arrow-down-invert.svg?e24ea);
-  } */
+  }
   .vector-page-titlebar .mw-portlet-lang > .vector-menu-content {
     top: auto;
     left: -1px;
@@ -1638,7 +1638,7 @@ div.thumbinner {
   }
   .mw-interlanguage-selector:after {
     content: "";
-    /* background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat; */
+    background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat;
     width: 1.23076923em;
     height: 1.23076923em;
     margin-left: -1px;
@@ -1684,7 +1684,7 @@ div.thumbinner {
   }
   .vector-user-menu-logged-in .vector-menu-heading:after {
     content: "";
-    /* background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat; */
+    background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat;
     width: 1.23076923em;
     height: 1.23076923em;
     margin-left: -1px;
@@ -1741,7 +1741,7 @@ div.thumbinner {
   }
   .vector-dropdown > .vector-menu-heading:not(.mw-ui-icon-element):after {
     content: "";
-    /* background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat; */
+    background: url(/w/skins/Vector/resources/common/images/arrow-down.svg?9426f) 100% 50% no-repeat;
     width: 1.23076923em;
     height: 1.23076923em;
     margin-left: -1px;
@@ -2033,11 +2033,11 @@ div.thumbinner {
     .vector-language-sidebar-alert {
     padding: 0.75em;
   }
-  /* #mw-sidebar-button:before {
+  #mw-sidebar-button:before {
   }
   .vector-feature-page-tools-disabled #mw-sidebar-button:before {
     background-image: url(/w/skins/Vector/resources/skins.vector.styles/images/chevronHorizontal-ltr.svg?c223c);
-  } */
+  }
   .vector-feature-page-tools-disabled
     #mw-sidebar-checkbox:not(:checked)
     ~ .mw-header
@@ -2973,7 +2973,7 @@ div.thumbinner {
     overflow: hidden;
     width: 15px;
     height: 11px;
-    /* background-image: url(/w/resources/src/mediawiki.skinning/images/magnify-clip-ltr.svg?8330e); */
+    background-image: url(/w/resources/src/mediawiki.skinning/images/magnify-clip-ltr.svg?8330e);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -2990,17 +2990,17 @@ div.thumbinner {
     margin-right: 0;
     float: right;
   }
-  /* .mw-content-ltr .magnify a {
+  .mw-content-ltr .magnify a {
     background-image: url(/w/resources/src/mediawiki.skinning/images/magnify-clip-ltr.svg?8330e);
-  } */
+  }
   .mw-content-rtl .magnify {
     margin-left: 0;
     margin-right: 3px;
     float: left;
   }
-  /* .mw-content-rtl .magnify a {
+  .mw-content-rtl .magnify a {
     background-image: url(/w/resources/src/mediawiki.skinning/images/magnify-clip-rtl.svg?38fd5);
-  } */
+  }
   a.new {
     color: #dd3333;
   }
