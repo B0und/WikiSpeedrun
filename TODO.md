@@ -1,8 +1,14 @@
 # TODO
 
-add anime achievement
+add anime achievement + others
+add stats tracking
 add tooltip to statistics and achievements page explaining local storage mechanics
+
 ## Ideas
+
+fix jp font
+migrate to another i18n library
+add donation link
 add e2e (playwright)
 !! Stats card image generation !!
 

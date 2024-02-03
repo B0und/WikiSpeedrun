@@ -34,15 +34,6 @@ The goal of the game is to navigate from a starting wikipedia article to another
 
 - More stuff coming soon™
 
-## Technologies used
-
-- React
-- Zustand
-- React-router
-- Vite
-- Tailwindcss
-- Radix UI
-
 ## Build it yourself
 
 Clone the project:
@@ -60,6 +51,11 @@ To run the app in the development mode.
 ### `pnpm run build`
 
 To build the app for production to the `build` folder.
+
+## Contributing
+
+If you want to fix some translations, you can find and edit them in `src/i18n`.
+If you want to make some major code changes, please contact me first/open an issue.
 
 ## License
 

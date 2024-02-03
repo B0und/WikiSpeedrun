@@ -62,7 +62,7 @@ const Settings = () => {
           });
         }}
       >
-        asaaaaaaaaaaaaaad
+        asaaaaaaaaaaaaaad DELETEME
       </button>
       <h3 className="border-b-[1px] border-secondary-border text-2xl ">{LL.SETTINGS()}</h3>
       <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
