@@ -2,6 +2,7 @@ import React from "react";
 import { useAchievements } from "../stores/StatisticsStore";
 import { Achievement } from "../components/Achievement";
 import styles from "./Achievements.module.css";
+
 // TODO add i18n
 export const Achievements = () => {
   const achievements = useAchievements();

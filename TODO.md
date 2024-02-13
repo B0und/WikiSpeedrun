@@ -6,8 +6,9 @@ add tooltip to statistics and achievements page explaining local storage mechani
 
 ## Ideas
 
+win highlight upgrade (https://frontendmasters.com/blog/highlight-text-when-a-user-scrolls-down-to-that-piece-of-text/)
 fix jp font
-migrate to another i18n library
+migrate to another i18n library (rip)
 add donation link
 add e2e (playwright)
 !! Stats card image generation !!

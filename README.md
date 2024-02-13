@@ -18,6 +18,8 @@ The goal of the game is to navigate from a starting wikipedia article to another
 
 [Start playing now!](https://wikispeedrun.org/)
 
+If you like the game, give it a star 🌟
+
 ## Features
 
 - 🌐 Now supports multiple languages (i18n)
@@ -56,6 +58,10 @@ To build the app for production to the `build` folder.
 
 If you want to fix some translations, you can find and edit them in `src/i18n`.
 If you want to make some major code changes, please contact me first/open an issue.
+
+## Donations
+
+USDT (TRC20)
 
 ## License
 
