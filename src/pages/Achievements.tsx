@@ -1,7 +1,5 @@
-import React from "react";
 import { useAchievements } from "../stores/StatisticsStore";
 import { Achievement } from "../components/Achievement";
-import styles from "./Achievements.module.css";
 
 // TODO add i18n
 export const Achievements = () => {
@@ -17,9 +15,9 @@ export const Achievements = () => {
         </p>
       </div>
 
-      <div className={styles.grid}>
+      <div className="achievements-grid">
         {achievements.map((achievement) => (
-          <Achievement achievement={achievement} />
+          <Achievement achievement={achievement} key={achievement.id} />
         ))}
       </div>
     </div>

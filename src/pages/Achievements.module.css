@@ -1,6 +1,0 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--achievement-size), 1fr));
-  column-gap: 36px;
-  row-gap: 64px;
-}

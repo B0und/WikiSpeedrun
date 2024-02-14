@@ -4,6 +4,9 @@ add anime achievement + others
 add stats tracking
 add tooltip to statistics and achievements page explaining local storage mechanics
 
+
+https://www.svgrepo.com/svg/262028/trophy
+
 ## Ideas
 
 win highlight upgrade (https://frontendmasters.com/blog/highlight-text-when-a-user-scrolls-down-to-that-piece-of-text/)

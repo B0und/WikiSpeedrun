@@ -6,85 +6,34 @@ export interface Achievement {
   unlocked: boolean;
   id: string;
   conditionCheck: () => boolean;
-  image: string;
-  imageAlt: string;
+
+  targetValue: number;
+  currentValue: () => number;
 }
 
 export const ACHIEVEMENTS_LIST = [
   {
+    id: "FirstWin",
     title: "First W",
     description: "Get your first win",
-    id: "FirstWin",
-    conditionCheck: () => useStatsStore.getState().wins > 0,
+    targetValue: 1,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
     unlocked: false,
-    image: "FirstWin",
-    imageAlt: "FirstWin alt",
   },
 
   {
-    title: "3 Third WWW",
-    description: "Get your 3rd win",
     id: "ThirdWin",
-    conditionCheck: () => useStatsStore.getState().wins === 3,
-    unlocked: false,
-    image: "3Win",
-    imageAlt: "3Win alt",
-  },
-
-  {
-    title: "3 Third WWW",
+    title: "WWW",
     description: "Get your 3rd win",
-    id: "ThirdWin",
-    conditionCheck: () => useStatsStore.getState().wins === 3,
+    targetValue: 3,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
     unlocked: false,
-    image: "3Win",
-    imageAlt: "3Win alt",
-  },
-  {
-    title: "3 Third WWW",
-    description: "Get your 3rd win",
-    id: "ThirdWin",
-    conditionCheck: () => useStatsStore.getState().wins === 3,
-    unlocked: false,
-    image: "3Win",
-    imageAlt: "3Win alt",
-  },
-  {
-    title: "3 Third WWW",
-    description: "Get your 3rd win",
-    id: "ThirdWin",
-    conditionCheck: () => useStatsStore.getState().wins === 3,
-    unlocked: false,
-    image: "3Win",
-    imageAlt: "3Win alt",
-  },
-  {
-    title: "3 Third WWW",
-    description: "Get your 3rd win",
-    id: "ThirdWin",
-    conditionCheck: () => useStatsStore.getState().wins === 3,
-    unlocked: false,
-    image: "3Win",
-    imageAlt: "3Win alt",
-  },
-
-  {
-    title: "3 Third WWW",
-    description: "Get your 3rd win",
-    id: "ThirdWin",
-    conditionCheck: () => useStatsStore.getState().wins === 3,
-    unlocked: false,
-    image: "3Win",
-    imageAlt: "3Win alt",
-  },
-  {
-    title: "3 Third WWW",
-    description: "Get your 3rd win",
-    id: "ThirdWin",
-    conditionCheck: () => useStatsStore.getState().wins === 3,
-    unlocked: false,
-    image: "3Win",
-    imageAlt: "3Win alt",
   },
   // {
   //   title: "Speedster",
@@ -190,13 +139,15 @@ const init = {} as Record<
 export const achivementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce(
   (acc, achievement) => ({
     ...acc,
-    [achievement.id]: achievement.conditionCheck,
+    [achievement.id]: achievement.conditionCheck.bind(achievement),
   }),
   init
 );
 
-/**
- * 
+/*
+
+Both articles were random - stat
+
 Speedster
 Description: Reach your destination article in less than 10 clicks and 2 minutes.
 Image: A stopwatch with wings, symbolizing speed.

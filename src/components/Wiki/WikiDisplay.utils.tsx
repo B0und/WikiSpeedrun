@@ -17,7 +17,7 @@ import {
   useStatsStoreActions,
   checkAchievements,
 } from "../../stores/StatisticsStore";
-import { toast } from "react-hot-toast";
+import { achievementToast } from "../AchievementNotification";
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
@@ -79,13 +79,7 @@ export const useWikiQuery = () => {
       console.log("Unlocked achievements: ", unlockedAchievements);
 
       for (const achievement of unlockedAchievements) {
-        toast(
-          <div className="min-w-[300px]">
-            <p>{achievement.title}</p>
-            <p>{achievement.description}</p>
-          </div>,
-          { duration: Infinity, position: "bottom-right" }
-        );
+        achievementToast(achievement);
       }
 
       unlockAchievements(unlockedAchievements);

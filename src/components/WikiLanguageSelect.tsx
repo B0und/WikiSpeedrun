@@ -34,7 +34,7 @@ export const WikiLanguageSelect = () => {
         }}
         isMulti={false}
         classNames={{
-          control: () => clsx(isDarkMode && "dark:bg-dark-surface dark:text-dark-primary", ""),
+          control: () => clsx(isDarkMode && "dark:bg-dark-surface dark:text-dark-primary"),
           menu: () =>
             clsx(
               isDarkMode && "dark:bg-dark-surface-secondary dark:text-dark-primary",

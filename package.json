@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel start typesafe-i18n",
     "start": "vite --open",
-    "build": "pnpm typecheck && vite build",
+    "build": "pnpm typecheck && pnpm lint && vite build",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "typesafe-i18n": "typesafe-i18n",
@@ -40,6 +40,7 @@
     "zustand-querystring": "^0.0.19"
   },
   "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
     "@tanstack/eslint-plugin-query": "^5.17.22",
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/node": "^20.11.8",

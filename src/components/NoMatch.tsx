@@ -1,4 +1,3 @@
-import React from "react";
 import { useI18nContext } from "../i18n/i18n-react";
 
 const NoMatch = () => {
