@@ -1,21 +1,37 @@
+import { useGameStore } from "./stores/GameStore";
 import { useStatsStore } from "./stores/StatisticsStore";
 
-export interface Achievement {
-  title: string;
-  description: string;
-  unlocked: boolean;
-  id: string;
-  conditionCheck: () => boolean;
+export type Achievement =
+  | {
+      title: string;
+      description: string;
+      unlocked: boolean;
+      id: string;
+      conditionCheck: () => boolean;
+      targetValue: number;
+      currentValue: () => number;
+    }
+  | {
+      title: string;
+      description: string;
+      unlocked: boolean;
+      id: string;
+      conditionCheck: () => boolean;
+      targetValue?: never;
+      currentValue?: never;
+    };
 
-  targetValue: number;
-  currentValue: () => number;
-}
+const missedWinsCondition = (minArticles: number) => {
+  const gameState = useGameStore.getState();
+  const missedWins = gameState.history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
 
+  return missedWins === 0 && gameState.history.length - 1 >= minArticles;
+};
 export const ACHIEVEMENTS_LIST = [
   {
     id: "FirstWin",
-    title: "First W",
-    description: "Get your first win",
+    title: "First Victory",
+    description: "Complete your first speedrun",
     targetValue: 1,
     currentValue: () => useStatsStore.getState().wins,
     conditionCheck() {
@@ -23,16 +39,125 @@ export const ACHIEVEMENTS_LIST = [
     },
     unlocked: false,
   },
-
   {
-    id: "ThirdWin",
-    title: "WWW",
-    description: "Get your 3rd win",
-    targetValue: 3,
+    id: "NoviceRunner",
+    title: "Novice Runner",
+    description: "Win 10 speedruns",
+    targetValue: 10,
     currentValue: () => useStatsStore.getState().wins,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
+    unlocked: false,
+  },
+  {
+    id: "Speedster",
+    title: "Speedster",
+    description: "Win 25 speedruns",
+    targetValue: 25,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "WikiExplorer",
+    title: "Wiki Explorer",
+    description: "Win 50 speedruns",
+    targetValue: 50,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "SpeedDemon",
+    title: "Speed Demon",
+    description: "Win 100 speedruns",
+    targetValue: 100,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "MasterRunner",
+    title: "Master Runner",
+    description: "Win 250 speedruns",
+    targetValue: 250,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "WikipediaChampion",
+    title: "Wikipedia Champion",
+    description: "Win 500 speedruns",
+    targetValue: 500,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "SpeedrunAddict",
+    title: "Speedrun Addict",
+    description: "Win 1000 speedruns",
+    targetValue: 1000,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "WikipediaLegend",
+    title: "Wikipedia Legend",
+    description: "Win 2500 speedruns",
+    targetValue: 2500,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "SpeedrunGod",
+    title: "Speedrun God",
+    description: "Win 5000 speedruns",
+    targetValue: 5000,
+    currentValue: () => useStatsStore.getState().wins,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  //////// missed wins
+  {
+    id: "AttentiveExplorer",
+    title: "Attentive Explorer",
+    description: "Navigate through at least 10 articles without missing the winning link",
+    conditionCheck: () => missedWinsCondition(10),
+    unlocked: false,
+  },
+  {
+    id: "KeenPathfinder",
+    title: "Keen Pathfinder",
+    description: "Navigate through at least 25 articles without missing the winning link",
+    conditionCheck: () => missedWinsCondition(25),
+    unlocked: false,
+  },
+  {
+    id: "SharpNavigator",
+    title: "Sharp Navigator",
+    description: "Navigate through at least 50 articles without missing the winning link",
+    conditionCheck: () => missedWinsCondition(50),
     unlocked: false,
   },
   // {
@@ -90,23 +215,6 @@ export const ACHIEVEMENTS_LIST = [
   //   unlocked: false,
   //   image: "",
   //   imageAlt: "A finger pressing a button with a target symbol.",
-  // },
-  // {
-  //   title: "Hyperlink Hero",
-  //   description:
-  //     "Navigate through 100 articles by following only the hyperlinks within each article.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A chain-link representing interconnected articles.",
-  // },
-  // {
-  //   title: "Wiki Wizard",
-  //   description: "Complete a journey using keyboard shortcuts only.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A wizard's hat with keyboard keys as symbols.",
   // },
   // {
   //   title: "Language Luminary",

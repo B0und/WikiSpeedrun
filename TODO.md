@@ -9,6 +9,7 @@ https://www.svgrepo.com/svg/262028/trophy
 
 ## Ideas
 
+local runs history
 win highlight upgrade (https://frontendmasters.com/blog/highlight-text-when-a-user-scrolls-down-to-that-piece-of-text/)
 fix jp font
 migrate to another i18n library (rip)
@@ -26,7 +27,6 @@ multiple articles ?
 option to move sidebar to the right
 glitch mode - the link get "corrupted" visually
 dark mode bg color as setting
-local runs history
 longest title (# of characters)
 multi-lingual-achievements
 no duplicate articles setting

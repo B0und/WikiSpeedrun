@@ -13,6 +13,8 @@ import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import { RandomModal } from "../components/RandomModal";
 import { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
+import { ACHIEVEMENTS_LIST } from "../achievements";
+import { achievementToast } from "../components/AchievementNotification";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -51,7 +53,7 @@ const Settings = () => {
 
   return (
     <div>
-      {/* <button
+      <button
         onClick={() => {
           ACHIEVEMENTS_LIST.forEach((achievement, index) => {
             setTimeout(() => {
@@ -61,7 +63,7 @@ const Settings = () => {
         }}
       >
         asaaaaaaaaaaaaaad DELETEME
-      </button> */}
+      </button>
       <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
         {LL.SETTINGS()}
       </h2>

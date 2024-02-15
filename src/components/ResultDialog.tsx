@@ -62,14 +62,17 @@ export const ResultDialog = () => {
           <div className="flex flex-col items-center justify-center">
             {open && <ConfettiExplosion {...confettiParams} />}
           </div>
+
           <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
             {LL.RESULTS()}
           </ModalTitle>
+
           <ModalDescription asChild>
             <p className="mb-5 mt-[10px] text-lg font-bold ">
               {startingArticle.title} → {endingArticle.title}
             </p>
           </ModalDescription>
+
           <table className="mb-5 w-full table-auto">
             <tbody>
               {resultStats.map((stat) => (

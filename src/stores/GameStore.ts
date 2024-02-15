@@ -43,7 +43,7 @@ const initialState = {
   cheatingAttempts: 0,
 };
 
-const useGameStore = create<GameStore>()(
+export const useGameStore = create<GameStore>()(
   devtools(
     querystring(
       immer(

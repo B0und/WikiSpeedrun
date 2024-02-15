@@ -40,6 +40,7 @@
     grid-template-columns: repeat(auto-fill, minmax(var(--achievement-size), 1fr));
     column-gap: 64px;
     row-gap: 82px;
+    padding-bottom: 16px;
   }
 
   .stat-wrapper::after {
