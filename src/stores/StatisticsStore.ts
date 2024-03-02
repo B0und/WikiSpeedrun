@@ -67,30 +67,49 @@ export const useStatsStore = create<StatsStore>()(
 
         actions: {
           increaseTotalRuns: () =>
-            set((state) => ({ totalRuns: state.total_runs + 1 }), false, "increaseTotalRuns"),
-          increaseWins: () => set((state) => ({ wins: state.wins + 1 }), false, "increaseWins"),
+            set(
+              (state) => {
+                state.total_runs += 1;
+              },
+              false,
+              "increaseTotalRuns"
+            ),
+          increaseWins: () =>
+            set(
+              (state) => {
+                state.wins += 1;
+              },
+              false,
+              "increaseWins"
+            ),
           increaseSingleRandomPressed: () =>
             set(
               (state) => {
-                return { single_random_pressed: state.single_random_pressed + 1 };
+                state.single_random_pressed += 1;
               },
               false,
               "increaseSingleRandomPressed"
             ),
           increaseMultipleRandomPressed: () =>
             set(
-              (state) => ({ multiple_random_pressed: state.multiple_random_pressed + 1 }),
+              (state) => {
+                state.multiple_random_pressed += 1;
+              },
               false,
               "increaseMultipleRandomPressed"
             ),
           unlockAchievements: (unlockedAchievements: Achievement[]) =>
-            set((state) => {
-              for (const achievement of state.achievements) {
-                if (unlockedAchievements.some((u) => achievement.id === u.id)) {
-                  achievement.unlocked = true;
+            set(
+              (state) => {
+                for (const achievement of state.achievements) {
+                  if (unlockedAchievements.some((u) => achievement.id === u.id)) {
+                    achievement.unlocked = true;
+                  }
                 }
-              }
-            }),
+              },
+              false,
+              "unlockAchievements"
+            ),
         },
       })),
       {
@@ -132,8 +151,6 @@ export const useStatsStore = create<StatsStore>()(
     }
   )
 );
-
-
 
 export const checkAchievements = (achievements: readonly Achievement[]) => {
   return achievements.filter((achievement) => {
