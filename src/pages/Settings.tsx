@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
@@ -12,11 +12,11 @@ import { toast } from "react-hot-toast";
 import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import { RandomModal } from "../components/RandomModal";
 import { Article } from "../stores/GameStore";
-import { StatsValues, useStatsStore, useStatsStoreActions } from "../stores/StatisticsStore";
+import { useStatsStoreActions } from "../stores/StatisticsStore";
 import { ACHIEVEMENTS_LIST } from "../achievements";
 import { achievementToast } from "../components/AchievementNotification";
-import { useUnlockAchievements } from "../hooks/useUnlockAchievements";
 import { useCheckAchievements } from "../hooks/useCheckAchievements";
+import { useIsFetching } from "@tanstack/react-query";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -31,6 +31,7 @@ const Settings = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalFunction, setModalFunction] = useState({ fn: setStartingArticle });
   const { increaseTotalRuns, increaseSingleRandomPressed } = useStatsStoreActions();
+  const isFetching = useIsFetching() > 0;
 
   useCheckAchievements({
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],
@@ -164,7 +165,8 @@ const Settings = () => {
           </button>
           <button
             type="submit"
-            className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue"
+            disabled={isFetching}
+            className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue disabled:grayscale"
           >
             {LL.PLAY()}
           </button>

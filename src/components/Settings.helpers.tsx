@@ -7,8 +7,8 @@ export const getHighestLinksPage = (data: WikiRandom) => {
   const highestLinksPage = Object.values(data.query.pages)
     .filter((page) => Object.prototype.hasOwnProperty.call(page, "linkshere"))
     .reduce((prev, current) => {
-      const previousLinksphere = prev?.linkshere ?? [];
-      const currentLinksphere = current?.linkshere ?? [];
+      const previousLinksphere = prev.linkshere ?? [];
+      const currentLinksphere = current.linkshere ?? [];
       return previousLinksphere.length > currentLinksphere.length ? prev : current;
     });
 
@@ -22,7 +22,7 @@ export const getNHighestLinksPages = (data: WikiRandom, limit: number) => {
 
   let linkPages = Object.values(data.query.pages)
     .filter((page) => Object.prototype.hasOwnProperty.call(page, "linkshere"))
-    .sort((a, b) => (b?.linkshere?.length ?? 0) - (a?.linkshere?.length ?? 0))
+    .sort((a, b) => (b.linkshere?.length ?? 0) - (a.linkshere?.length ?? 0))
     .slice(0, limit || 5)
     .map((p) => ({ title: p.title, pageid: String(p.pageid) }))
     .filter((v, i, a) => a.findIndex((v2) => v2.pageid === v.pageid) === i); // remove duplicate objects
@@ -49,12 +49,12 @@ const errorToast = (text: string) => toast.error(text, { position: "bottom-cente
 
 export const handleOnRandomSuccess = ({ setArticle, data, failText }: RandomSuccessProps) => {
   const articleWithLinks = getHighestLinksPage(data);
-  if (!articleWithLinks?.title || articleWithLinks?.title.includes("(disambiguation)")) {
+  if (!articleWithLinks?.title || articleWithLinks.title.includes("(disambiguation)")) {
     errorToast(failText);
     return;
   }
   setArticle({
-    title: articleWithLinks?.title,
+    title: articleWithLinks.title,
     pageid: String(articleWithLinks.pageid) || "",
   });
 };

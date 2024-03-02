@@ -12,7 +12,7 @@ const HistoryTable = () => {
   const tableRef = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
-    tableRef?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [articleHistory.length]);
 
   return (
@@ -39,7 +39,7 @@ const HistoryTable = () => {
                 <td>
                   <button
                     className="text-left text-primary-blue underline"
-                    onClick={() => navigate(`/wiki/${article.title.replaceAll(" ", "_")}`)}
+                    onClick={() => { navigate(`/wiki/${article.title.replaceAll(" ", "_")}`); }}
                   >
                     {article.title}
                   </button>

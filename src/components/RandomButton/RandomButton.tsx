@@ -48,7 +48,9 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
           isPending && "animate-spin-dice"
         )}
         type="button"
-        onClick={() => mutate()}
+        onClick={() => {
+          mutate();
+        }}
       >
         <VisuallyHidden.Root>{LL.GET_RANDOM_ARTICLE()}</VisuallyHidden.Root>
         <DiceIcon />

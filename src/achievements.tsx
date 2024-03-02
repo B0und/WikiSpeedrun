@@ -1,25 +1,25 @@
+import { InaDescription } from "./components/InaDescription";
 import { useGameStore } from "./stores/GameStore";
 import { useStatsStore } from "./stores/StatisticsStore";
 
-export type Achievement =
+export type Achievement = {
+  title: string;
+  description: React.ReactNode | JSX.Element;
+  unlocked: boolean;
+  id: string;
+  imgUrl?: string;
+} & (
   | {
-      title: string;
-      description: string;
-      unlocked: boolean;
-      id: string;
       conditionCheck: () => boolean;
       targetValue: number;
       currentValue: () => number;
     }
   | {
-      title: string;
-      description: string;
-      unlocked: boolean;
-      id: string;
       conditionCheck: () => boolean;
       targetValue?: never;
       currentValue?: never;
-    };
+    }
+);
 
 const missedWinsCondition = (minArticles: number) => {
   const gameState = useGameStore.getState();
@@ -292,6 +292,28 @@ export const ACHIEVEMENTS_LIST = [
       return this.currentValue() >= this.targetValue;
     },
     unlocked: false,
+  },
+  {
+    id: "EgoStroke",
+    title: "Ego Stroke",
+    description: `Thank you for inspiring this whole project`,
+    conditionCheck: () => {
+      const gameState = useGameStore.getState();
+      return gameState.endingArticle.pageid === "63249569";
+    },
+    unlocked: false,
+    imgUrl: "/ludwig-ahgren.webp",
+  },
+  {
+    id: "SpeedrunWaifu",
+    title: "Wiki Speedrun Waifu",
+    description: InaDescription,
+    conditionCheck: () => {
+      const gameState = useGameStore.getState();
+      return gameState.endingArticle.pageid === "800";
+    },
+    unlocked: false,
+    imgUrl: "/wiki-waifu.png",
   },
   // {
   //   title: "Speedster",

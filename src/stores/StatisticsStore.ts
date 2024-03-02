@@ -69,47 +69,52 @@ export const useStatsStore = create<StatsStore>()(
         ...initialState,
 
         actions: {
-          increaseTotalRuns: () =>
+          increaseTotalRuns: () => {
             set(
               (state) => {
                 state.total_runs += 1;
               },
               false,
               "increaseTotalRuns"
-            ),
-          increaseWins: () =>
+            );
+          },
+          increaseWins: () => {
             set(
               (state) => {
                 state.wins += 1;
               },
               false,
               "increaseWins"
-            ),
-          increaseSingleRandomPressed: () =>
+            );
+          },
+          increaseSingleRandomPressed: () => {
             set(
               (state) => {
                 state.single_random_pressed += 1;
               },
               false,
               "increaseSingleRandomPressed"
-            ),
-          increaseMultipleRandomPressed: () =>
+            );
+          },
+          increaseMultipleRandomPressed: () => {
             set(
               (state) => {
                 state.multiple_random_pressed += 1;
               },
               false,
               "increaseMultipleRandomPressed"
-            ),
-          increaseArticlePreviewPressed: () =>
+            );
+          },
+          increaseArticlePreviewPressed: () => {
             set(
               (state) => {
                 state.article_preview_pressed += 1;
               },
               false,
               "increaseArticlePreviewPressed"
-            ),
-          addKnownLanguage: (newLanguage) =>
+            );
+          },
+          addKnownLanguage: (newLanguage) => {
             set(
               (state) => {
                 state.known_wiki_languages.push(newLanguage);
@@ -117,16 +122,18 @@ export const useStatsStore = create<StatsStore>()(
               },
               false,
               "addKnownLanguage"
-            ),
-          increaseArticlesClicked: (amount) =>
+            );
+          },
+          increaseArticlesClicked: (amount) => {
             set(
               (state) => {
                 state.articles_clicked += amount;
               },
               false,
               "increaseArticleClicked"
-            ),
-          unlockAchievements: (unlockedAchievements) =>
+            );
+          },
+          unlockAchievements: (unlockedAchievements) => {
             set(
               (state) => {
                 for (const achievement of state.achievements) {
@@ -137,7 +144,8 @@ export const useStatsStore = create<StatsStore>()(
               },
               false,
               "unlockAchievements"
-            ),
+            );
+          },
         },
       })),
       {

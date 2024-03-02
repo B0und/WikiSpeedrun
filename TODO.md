@@ -1,11 +1,11 @@
 # TODO
 
-[x] -  articles looked up
+[x] - articles looked up
 [x] - wiki languages
-[] - Articles clicked:
+[x] - Articles clicked:
 [] - add donation addr
 
-add anime achievement + others
+[x] - add anime achievement + others
 add stats tracking
 [] - add tooltip to statistics and achievements page explaining local storage mechanics
 

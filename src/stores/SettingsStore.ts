@@ -36,11 +36,11 @@ const useSettingsStore = create<SettingsStore>()(
         ...initialState,
         actions: {
           setInterfaceLanguage: (language: Locales) =>
-            set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage"),
+            { set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage"); },
           setWikiLanguage: (language: WikiLanguage) =>
-            set(() => ({ wikiLanguage: language }), false, "setWikiLanguage"),
+            { set(() => ({ wikiLanguage: language }), false, "setWikiLanguage"); },
           setSidebarWidth: (width: number) =>
-            set(() => ({ sidebarWidth: width }), false, "setSidebarWidth"),
+            { set(() => ({ sidebarWidth: width }), false, "setSidebarWidth"); },
         },
       }),
       {

@@ -34,7 +34,7 @@ export const ResultDialog = () => {
   const startingArticle = useStartingArticle();
   const endingArticle = useEndingArticle();
   const history = useHistory();
-  const [lastArticle] = history.slice(-1);
+  const lastArticle = history.length > 0 ? history.slice(-1)[0] : undefined;
   const clicks = useClicks();
   const isWin = useIsWin();
   const cheatingAttempts = useCheatingAttempts();
@@ -77,7 +77,7 @@ export const ResultDialog = () => {
             <tbody>
               {resultStats.map((stat) => (
                 <tr
-                  key={`${stat.name}`}
+                  key={stat.name}
                   className="even:bg-gray-200 dark:even:bg-dark-surface-secondary"
                 >
                   <td className="py-2 pr-4">{stat.name}</td>
@@ -89,9 +89,9 @@ export const ResultDialog = () => {
 
           <div className="flex-1 border-t-[1px] border-b-secondary-border pt-2 text-right">
             <StopwatchDisplay
-              min={lastArticle?.time.min}
-              sec={lastArticle?.time.sec}
-              ms={lastArticle?.time.ms}
+              min={lastArticle?.time.min ?? ""}
+              sec={lastArticle?.time.sec ?? ""}
+              ms={lastArticle?.time.ms ?? ""}
             />
           </div>
 

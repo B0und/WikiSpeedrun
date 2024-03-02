@@ -94,7 +94,7 @@ function scrollToElement(elementId: string | null | undefined) {
 }
 
 const getFilteredLink = (element: HTMLAnchorElement) => {
-  const hrefText = element?.getAttribute("href");
+  const hrefText = element.getAttribute("href");
 
   console.log({ hrefText });
 
@@ -135,15 +135,15 @@ const getFilteredLink = (element: HTMLAnchorElement) => {
 };
 
 const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
-  const classNameParent = target?.parentNode as HTMLElement;
+  const classNameParent = target.parentNode as HTMLElement;
   // show notification about non-wiki link
   if (
-    target?.className === "external text" ||
-    target?.className === "new" ||
-    target?.className === "geo-dec" ||
-    classNameParent?.className === "reference-text" ||
-    classNameParent?.className === "external text" ||
-    classNameParent?.className === "new"
+    target.className === "external text" ||
+    target.className === "new" ||
+    target.className === "geo-dec" ||
+    classNameParent.className === "reference-text" ||
+    classNameParent.className === "external text" ||
+    classNameParent.className === "new"
   ) {
     errorToast(errorText);
     return true;

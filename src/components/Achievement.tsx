@@ -12,12 +12,12 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
       <img
         width={128}
         height={128}
-        src="/trophy.svg"
+        src={achievement.imgUrl ?? "/trophy.svg"}
         alt="Golden prize cup with three stars on top" // TODO i18n
-        className={clsx(!achievement.unlocked && "grayscale")}
+        className={clsx("h-full bg-center object-cover", !achievement.unlocked && " grayscale")}
       />
       <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">
-        <div>
+        <div className="flex flex-col gap-1">
           <h3 className="text-lg">{achievement.title}</h3>
           <p className="line-clamp-2 text-xs" title="asd">
             {achievement.description}
@@ -41,7 +41,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
               value={currentValue}
               max={achievement.targetValue}
             >
-              {((currentValue ?? 0) * 100) / (achievement?.targetValue ?? 1)}%
+              {((currentValue ?? 0) * 100) / (achievement.targetValue ?? 1)}%
             </progress>
           </label>
         }

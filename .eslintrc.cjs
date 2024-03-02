@@ -16,7 +16,7 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:@typescript-eslint/strict-type-checked",
     "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
   overrides: [],
@@ -50,5 +50,6 @@ module.exports = {
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
+    "@typescript-eslint/no-unnecessary-condition": "error",
   },
 };
