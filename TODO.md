@@ -1,6 +1,6 @@
 # TODO
 
-articles looked up
+[x] -  articles looked up
 
 add anime achievement + others
 add stats tracking

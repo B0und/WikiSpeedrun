@@ -9,6 +9,7 @@ import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
+import purify from "dompurify";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
@@ -66,7 +67,7 @@ const WikiDisplay = () => {
                 <div
                   ref={(ref) => wikiRefCallback(ref)}
                   onClick={handleWikiArticleClick}
-                  dangerouslySetInnerHTML={{ __html: data?.html }}
+                  dangerouslySetInnerHTML={{ __html: purify.sanitize(data?.html) }}
                 />
               </div>
             </div>

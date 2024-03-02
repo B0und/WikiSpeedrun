@@ -7,29 +7,128 @@ import { useGameStoreActions } from "../../stores/GameStore";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
-const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
+const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 
-const getFilteredLink = (hrefText: string | null) => {
+const useWikiLogic = () => {
+  const navigate = useNavigate();
+  const { LL } = useI18nContext();
+  const invalidLinkText = LL.INVALID_LINK();
+  const { getFormattedTime } = useStopwatchActions();
+  const { addHistoryArticle } = useGameStoreActions();
+
+  const addHrefToHistory = (href: string) => {
+    const time = getFormattedTime();
+    const { min, ms, sec } = time;
+
+    const title = href.split("/wiki/")?.[1] ?? "";
+
+    addHistoryArticle({
+      title,
+      time: { min, sec, ms },
+      winningLinks: 0,
+    });
+  };
+
+  const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    const target = e.target as HTMLAnchorElement;
+    const parent = target.parentNode as HTMLAnchorElement;
+    // not a link - exit
+    if (target.nodeName !== "A" && parent.nodeName !== "A") {
+      return;
+    }
+
+    if (handleNavigation(parent) || handleNavigation(target)) {
+      return;
+    }
+
+    const parentHref = getFilteredLink(parent);
+    const hrefText = getFilteredLink(target);
+
+    // handle correct link
+    if (hrefText) {
+      addHrefToHistory(hrefText);
+      navigate(hrefText);
+      return;
+    }
+
+    // if parent is a link
+    if (parentHref) {
+      addHrefToHistory(parentHref);
+      navigate(parentHref);
+      return;
+    }
+
+    // handle misc stuff
+    if (filterOtherStuff(target, invalidLinkText)) {
+      return;
+    }
+    // console.log({ target });
+
+    errorToast(invalidLinkText);
+  };
+
+  return { handleWikiArticleClick };
+};
+
+export default useWikiLogic;
+
+function isScrollingAnchor(node: HTMLElement): boolean {
+  // Check if the node is an anchor tag
+  if (node.tagName.toLowerCase() === "a") {
+    // Check if the href attribute starts with #
+    const href = node.getAttribute("href");
+    return href !== null && href.startsWith("#");
+  }
+  return false;
+}
+
+function scrollToElement(elementId: string | null | undefined) {
+  if (!elementId) {
+    return;
+  }
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+const getFilteredLink = (element: HTMLAnchorElement) => {
+  const hrefText = element?.getAttribute("href");
+
+  console.log({ hrefText });
+
   if (!hrefText) return null;
   if (!hrefText.startsWith("/wiki/")) {
     return null;
   }
+
   if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
+    return null;
+  }
+  if (
+    ["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(
+      element.hostname
+    )
+  ) {
     return null;
   }
 
   const ignoreList = [
-    "/wiki/Wikipedia:",
-    "/wiki/Template:",
-    "/wiki/Template_talk:",
-    "/wiki/Portal:",
-    "/wiki/Help:",
-    "/wiki/Talk:",
-    "/wiki/Special:",
-    "/wiki/Category:",
-    "/wiki/File:",
+    "Wikipedia:",
+    "Template:",
+    "Шаблон:",
+    "Template_talk:",
+    "Portal:",
+    "Help:",
+    "Talk:",
+    "Special:",
+    "Category:",
+    "File:",
+    "Википедия:",
   ];
-  if (ignoreList.some((item) => hrefText.startsWith(item))) {
+  if (ignoreList.some((item) => element.title.startsWith(item))) {
     return null;
   }
 
@@ -53,82 +152,15 @@ const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
   return false;
 };
 
-const handleNavigation = (parentHref: string | null) => {
-  if (!parentHref) return false;
-  if (!parentHref.startsWith("#")) return false;
+// test cases
+// Википедия:Ссылки на источники
+const handleNavigation = (node: HTMLAnchorElement) => {
+  if (isScrollingAnchor(node)) {
+    const hrefWithoutHash = node.getAttribute("href")?.substring(1);
+    scrollToElement(hrefWithoutHash);
+    return true;
+  }
 
-  let navigateId = parentHref;
-  // try to scroll to the element
-  navigateId = navigateId.replaceAll("#", "");
-  const element = document.getElementById(navigateId);
-  element?.scrollIntoView();
-  return true;
+  return false;
 };
 
-const hrefToText = (href: string) => {
-  const urlTitle = href.split("/wiki/")[1];
-  return decodeURI(urlTitle).replaceAll("_", " ");
-};
-
-const useWikiLogic = () => {
-  const navigate = useNavigate();
-  const { LL } = useI18nContext();
-  const invalidLinkText = LL.INVALID_LINK();
-  const { getFormattedTime } = useStopwatchActions();
-  const { addHistoryArticle } = useGameStoreActions();
-
-  const addHrefToHistory = (href: string) => {
-    const time = getFormattedTime();
-    const { min, ms, sec } = time;
-
-    const title = hrefToText(href);
-
-    addHistoryArticle({
-      title,
-      time: { min, sec, ms },
-      winningLinks: 0,
-    });
-  };
-
-  const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-
-    const target = e.target as HTMLAnchorElement;
-    const parent = target.parentNode as HTMLAnchorElement;
-    // not a link - exit
-    if (target.nodeName !== "A" && parent.nodeName !== "A") {
-      return;
-    }
-
-    // handle navigation and leave
-    const parentHref = getFilteredLink(parent?.attributes[0]?.value);
-    if (handleNavigation(parentHref)) {
-      return;
-    }
-
-    // handle correct link
-    const hrefText = getFilteredLink(target?.attributes[0]?.value);
-    if (hrefText) {
-      addHrefToHistory(hrefText);
-      navigate(hrefText);
-      return;
-    }
-
-    // if parent is a link
-    if (parentHref) {
-      addHrefToHistory(parentHref);
-      navigate(parentHref);
-      return;
-    }
-
-    // handle misc stuff
-    if (filterOtherStuff(target, invalidLinkText)) {
-      return;
-    }
-    errorToast(invalidLinkText);
-  };
-
-  return { handleWikiArticleClick };
-};
-
-export default useWikiLogic;
