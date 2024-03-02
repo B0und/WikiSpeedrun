@@ -2,8 +2,6 @@ import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "react-feather";
 
-
-
 type DrawerContentProps = React.ComponentProps<typeof Dialog.Content>;
 
 const ModalContent = React.forwardRef<React.ElementRef<typeof Dialog.Content>, DrawerContentProps>(

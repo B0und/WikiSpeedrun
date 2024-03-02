@@ -4,7 +4,8 @@ import { Translation } from "../i18n-types";
 
 const se: Translation = {
   TITLE: "Wiki Speedrun-spel",
-  GAME_DESCRIPTION: "Målet med spelet är att navigera från en startartikel på wikipedia till en annan, med minsta möjliga antal klick och tid.",
+  GAME_DESCRIPTION:
+    "Målet med spelet är att navigera från en startartikel på wikipedia till en annan, med minsta möjliga antal klick och tid.",
   FEATURES: "Funktioner",
   MULTIPLE_LANGUAGES: "Stöder flera språk",
   NO_REGISTRATION: "Ingen registrering krävs",
@@ -16,7 +17,8 @@ const se: Translation = {
   PLAY: "Spela",
   ABOUT: "Om",
   SETTINGS: "inställningar",
-  SETTINGS_DESCRIPTION: "Börja skriva och välj sedan värden från rullgardinsmenyn eller tryck på slumpmässiga knappen.",
+  SETTINGS_DESCRIPTION:
+    "Börja skriva och välj sedan värden från rullgardinsmenyn eller tryck på slumpmässiga knappen.",
   STARTING_ARTICLE_LABEL: "Välj startartikel",
   ENDING_ARTICLE_LABEL: "Välj slutartikel",
   INPUT_PLACEHOLDER: "Börja skriva för att se alternativ",
@@ -34,7 +36,8 @@ const se: Translation = {
   CLICKS_NUM: "Klick: {0}",
   NO_ARTICLES_FOUND: "Inga artiklar hittades",
   GET_RANDOM_ARTICLE: "Få en slumpmässig artikel",
-  WIKI_ALT_TEXT: "Wiki speedrun-logotyp, med en Wikipedia-sfär med en timer över den. (ser ut som en stor svart rand med en grön tidstext ovanpå). Tiden är 9 sekunder och 5 millisekunder.",
+  WIKI_ALT_TEXT:
+    "Wiki speedrun-logotyp, med en Wikipedia-sfär med en timer över den. (ser ut som en stor svart rand med en grön tidstext ovanpå). Tiden är 9 sekunder och 5 millisekunder.",
   SELECT_ARTICLE_LANGUAGE: "Välj artikelspråk",
   LANGUAGE: "Språk",
   NAVIGATION: "Navigering",
@@ -48,7 +51,7 @@ const se: Translation = {
   ARTICLE_PREVIEW_LOAD_FAILED: "Det gick inte att läsa in förhandsgranskningen av artikeln",
   WINNING_LINKS: "Vinnande länkar",
   MISSED_WINS: "Missade vinster",
-  CHOOSE_ARTICLE: "Välj din artikel"
+  CHOOSE_ARTICLE: "Välj din artikel",
 };
 
 export default se;

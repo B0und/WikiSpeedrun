@@ -50,7 +50,7 @@ const en: BaseTranslation = {
   ARTICLE_PREVIEW_LOAD_FAILED: "Couldn't load article preview",
   WINNING_LINKS: "Winning links",
   MISSED_WINS: "Missed wins",
-  CHOOSE_ARTICLE: "Choose your article"
+  CHOOSE_ARTICLE: "Choose your article",
 };
 
 export default en;

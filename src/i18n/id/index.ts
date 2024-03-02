@@ -4,7 +4,8 @@ import { Translation } from "../i18n-types";
 
 const id: Translation = {
   TITLE: "Permainan Speedrun Wiki",
-  GAME_DESCRIPTION: "Tujuan permainan ini adalah untuk menavigasi dari artikel wikipedia awal ke artikel lain, dengan jumlah klik dan waktu paling sedikit.",
+  GAME_DESCRIPTION:
+    "Tujuan permainan ini adalah untuk menavigasi dari artikel wikipedia awal ke artikel lain, dengan jumlah klik dan waktu paling sedikit.",
   FEATURES: "Fitur",
   MULTIPLE_LANGUAGES: "Sekarang mendukung banyak bahasa",
   NO_REGISTRATION: "Tidak diperlukan pendaftaran",
@@ -16,7 +17,8 @@ const id: Translation = {
   PLAY: "Bermain",
   ABOUT: "Tentang",
   SETTINGS: "Pengaturan",
-  SETTINGS_DESCRIPTION: "Mulailah mengetik lalu pilih nilai dari daftar dropdown atau tekan tombol acak.",
+  SETTINGS_DESCRIPTION:
+    "Mulailah mengetik lalu pilih nilai dari daftar dropdown atau tekan tombol acak.",
   STARTING_ARTICLE_LABEL: "Pilih artikel awal",
   ENDING_ARTICLE_LABEL: "Pilih artikel penutup",
   INPUT_PLACEHOLDER: "Mulai mengetik untuk melihat opsi",
@@ -34,7 +36,8 @@ const id: Translation = {
   CLICKS_NUM: "Klik {0}",
   NO_ARTICLES_FOUND: "Tidak ada artikel yang ditemukan",
   GET_RANDOM_ARTICLE: "Dapatkan artikel acak",
-  WIKI_ALT_TEXT: "Logo wiki speedrun, menampilkan bola Wikipedia dengan pengatur waktu di atasnya. (terlihat seperti garis hitam besar dengan teks waktu berwarna hijau di atasnya). Waktunya adalah 9 detik dan 5 milidetik.",
+  WIKI_ALT_TEXT:
+    "Logo wiki speedrun, menampilkan bola Wikipedia dengan pengatur waktu di atasnya. (terlihat seperti garis hitam besar dengan teks waktu berwarna hijau di atasnya). Waktunya adalah 9 detik dan 5 milidetik.",
   SELECT_ARTICLE_LANGUAGE: "Pilih bahasa artikel",
   LANGUAGE: "Bahasa",
   NAVIGATION: "Navigasi",
@@ -48,7 +51,7 @@ const id: Translation = {
   ARTICLE_PREVIEW_LOAD_FAILED: "Tidak dapat memuat pratinjau artikel",
   WINNING_LINKS: "Tautan pemenang",
   MISSED_WINS: "Kemenangan yang terlewatkan",
-  CHOOSE_ARTICLE: "Pilih artikel Anda"
+  CHOOSE_ARTICLE: "Pilih artikel Anda",
 };
 
 export default id;

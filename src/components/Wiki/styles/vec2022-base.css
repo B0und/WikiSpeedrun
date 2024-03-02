@@ -266,8 +266,14 @@ span.mwe-math-mathml-inline {
   font-size: 118%;
   line-height: 1;
   white-space: nowrap;
-  -webkit-font-feature-settings: "lnum", "tnum", "kern" 0;
-  font-feature-settings: "lnum", "tnum", "kern" 0;
+  -webkit-font-feature-settings:
+    "lnum",
+    "tnum",
+    "kern" 0;
+  font-feature-settings:
+    "lnum",
+    "tnum",
+    "kern" 0;
   font-variant-numeric: lining-nums tabular-nums;
   font-kerning: none;
 }

@@ -32,7 +32,7 @@ export const Stats = () => {
     <>
       <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">Statistics</h2>
       <div className="@container">
-        <ul className="@3xl:max-w-[calc(min(50%,700px))] flex  flex-col gap-3 pt-4">
+        <ul className="flex flex-col  gap-3 pt-4 @3xl:max-w-[calc(min(50%,700px))]">
           <Stat name="wins:" value={wins} />
           <Stat name="totalRuns:" value={totalRuns} />
           <Stat name="giveUpCount:" value={giveUpCount} />

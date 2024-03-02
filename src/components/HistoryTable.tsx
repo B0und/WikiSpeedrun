@@ -39,7 +39,9 @@ const HistoryTable = () => {
                 <td>
                   <button
                     className="text-left text-primary-blue underline"
-                    onClick={() => { navigate(`/wiki/${article.title.replaceAll(" ", "_")}`); }}
+                    onClick={() => {
+                      navigate(`/wiki/${article.title.replaceAll(" ", "_")}`);
+                    }}
                   >
                     {article.title}
                   </button>

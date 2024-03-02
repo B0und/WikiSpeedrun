@@ -243,7 +243,9 @@ ul.mw-collapsible:not(.mw-made-collapsible):before {
 .mw-ui-button:not(:disabled):focus {
   color: #202122;
   border-color: #3366cc;
-  box-shadow: inset 0 0 0 1px #3366cc, inset 0 0 0 2px #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #3366cc,
+    inset 0 0 0 2px #ffffff;
   outline-width: 0;
 }
 .mw-ui-button:not(:disabled):focus::-moz-focus-inner {
@@ -273,7 +275,9 @@ input[type="checkbox"]:focus + .mw-ui-button,
 .mw-ui-button:focus {
   color: #202122;
   border-color: #3366cc;
-  box-shadow: inset 0 0 0 1px #3366cc, inset 0 0 0 2px #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #3366cc,
+    inset 0 0 0 2px #ffffff;
   outline-width: 0;
 }
 input[type="checkbox"]:active + .mw-ui-button,
@@ -344,7 +348,9 @@ input[type="checkbox"]:focus + .mw-ui-button.mw-ui-quiet.mw-ui-destructive,
 .mw-ui-button.mw-ui-quiet.mw-ui-destructive:focus {
   color: #202122;
   border-color: #3366cc;
-  box-shadow: inset 0 0 0 1px #3366cc, inset 0 0 0 2px #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #3366cc,
+    inset 0 0 0 2px #ffffff;
 }
 input[type="checkbox"]:active + .mw-ui-button.mw-ui-quiet,
 input[type="checkbox"]:active + .mw-ui-button.mw-ui-quiet.mw-ui-progressive,
@@ -380,7 +386,9 @@ input[type="checkbox"]:active + .mw-ui-button.mw-ui-quiet.mw-ui-destructive,
   border-color: #447ff5;
 }
 .mw-ui-button.mw-ui-progressive:not(:disabled):focus {
-  box-shadow: inset 0 0 0 1px #3366cc, inset 0 0 0 2px #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #3366cc,
+    inset 0 0 0 2px #ffffff;
 }
 .mw-ui-button.mw-ui-progressive:not(:disabled):active,
 .mw-ui-button.mw-ui-progressive:not(:disabled).is-on {
@@ -425,7 +433,9 @@ input[type="checkbox"]:active + .mw-ui-button.mw-ui-progressive.mw-ui-quiet,
   border-color: #ff4242;
 }
 .mw-ui-button.mw-ui-destructive:not(:disabled):focus {
-  box-shadow: inset 0 0 0 1px #dd3333, inset 0 0 0 2px #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #dd3333,
+    inset 0 0 0 2px #ffffff;
 }
 .mw-ui-button.mw-ui-destructive:not(:disabled):active,
 .mw-ui-button.mw-ui-destructive:not(:disabled).is-on {
@@ -1438,7 +1448,9 @@ div.thumbinner {
     white-space: nowrap;
     text-overflow: ellipsis;
     z-index: 1;
-    background: linear-gradient(90deg, #3366cc 0%, #3366cc 100%) -10% 0 / 0 2px no-repeat, #ffffff;
+    background:
+      linear-gradient(90deg, #3366cc 0%, #3366cc 100%) -10% 0 / 0 2px no-repeat,
+      #ffffff;
     animation: search-loader-progress-bar 1200ms linear 500ms infinite alternate;
   }
   .vector-search-box-show-thumbnail.vector-search-box-auto-expand-width .search-form__loader:after {
@@ -3334,16 +3346,16 @@ div.thumbinner {
   }
   @counter-style meetei {
     system: numeric;
-    symbols: "\ABF0""\ABF1""\ABF2""\ABF3""\ABF4""\ABF5""\ABF6""\ABF7""\ABF8""\ABF9";
+    symbols: "\ABF0" "\ABF1" "\ABF2" "\ABF3" "\ABF4" "\ABF5" "\ABF6" "\ABF7" "\ABF8" "\ABF9";
     suffix: ") ";
   }
   @counter-style santali {
     system: numeric;
-    symbols: "\1C50""\1C51""\1C52""\1C53""\1C54""\1C55""\1C56""\1C57""\1C58""\1C59";
+    symbols: "\1C50" "\1C51" "\1C52" "\1C53" "\1C54" "\1C55" "\1C56" "\1C57" "\1C58" "\1C59";
   }
   @counter-style myanmar_with_period {
     system: numeric;
-    symbols: "\1040""\1041""\1042""\1043""\1044""\1045""\1046""\1047""\1048""\1049";
+    symbols: "\1040" "\1041" "\1042" "\1043" "\1044" "\1045" "\1046" "\1047" "\1048" "\1049";
     suffix: "\104B\0020";
   }
   ol:lang(azb) li,

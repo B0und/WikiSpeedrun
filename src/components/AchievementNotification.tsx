@@ -5,7 +5,9 @@ export const achievementToast = (achievement: Achievement) => {
   toast(
     (t) => (
       <div
-        onClick={() => { toast.dismiss(t.id); }}
+        onClick={() => {
+          toast.dismiss(t.id);
+        }}
         className="flex min-w-[350px] max-w-[350px] animate-drawerSlideInRight cursor-pointer items-center gap-4 rounded-lg bg-primary-blue p-4 text-white shadow-lg  shadow-slate-950/25 dark:shadow-slate-50/25 sm:min-w-[150px] sm:max-w-[150px]"
       >
         <img

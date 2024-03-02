@@ -33,7 +33,8 @@ const zh: Translation = {
   CLICKS_NUM: "点击率{0}",
   NO_ARTICLES_FOUND: "没有发现文章",
   GET_RANDOM_ARTICLE: "获取随机文章",
-  WIKI_ALT_TEXT: "维基速记的标志，以维基百科的球体为特色，上面有一个计时器。(看起来像一个大的黑色条纹，上面有一个绿色的时间文本）。时间是9秒5毫秒。",
+  WIKI_ALT_TEXT:
+    "维基速记的标志，以维基百科的球体为特色，上面有一个计时器。(看起来像一个大的黑色条纹，上面有一个绿色的时间文本）。时间是9秒5毫秒。",
   SELECT_ARTICLE_LANGUAGE: "选择文章语言",
   LANGUAGE: "语言",
   NAVIGATION: "导航",
@@ -47,7 +48,7 @@ const zh: Translation = {
   ARTICLE_PREVIEW_LOAD_FAILED: "无法加载文章预览",
   WINNING_LINKS: "赢家链接",
   MISSED_WINS: "错过的胜利",
-  CHOOSE_ARTICLE: "选择你的文章"
+  CHOOSE_ARTICLE: "选择你的文章",
 };
 
 export default zh;
