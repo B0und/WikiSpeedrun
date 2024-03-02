@@ -1,9 +1,13 @@
 # TODO
 
+articles looked up
+
 add anime achievement + others
 add stats tracking
 add tooltip to statistics and achievements page explaining local storage mechanics
 
+translate achievements
+check for all TODO comments
 
 https://www.svgrepo.com/svg/262028/trophy
 

@@ -37,7 +37,6 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: () => getRandomArticles(language),
-
     onSuccess: onSuccess,
   });
 

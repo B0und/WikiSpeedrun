@@ -12,12 +12,8 @@ import {
 import { useStopwatchActions } from "../StopwatchContext";
 import { WikiApiArticle } from "./Wiki.types";
 import { useWikiLanguage } from "../../stores/SettingsStore";
-import {
-  useAchievements,
-  useStatsStoreActions,
-  checkAchievements,
-} from "../../stores/StatisticsStore";
-import { achievementToast } from "../AchievementNotification";
+import { useStatsStoreActions } from "../../stores/StatisticsStore";
+import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
@@ -60,11 +56,12 @@ export const useWikiQuery = () => {
   const isGameRunning = useIsGameRunning();
   const wikiArticle = routeParams.wikiTitle ?? startingArticle.title;
   const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
-  const achievements = useAchievements();
 
   const targetArticle = useEndingArticle();
   const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
-  const { increaseWins, unlockAchievements } = useStatsStoreActions();
+  const { increaseWins } = useStatsStoreActions();
+
+  const checkAchievements = useUnlockAchievements();
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
@@ -75,24 +72,13 @@ export const useWikiQuery = () => {
       pauseStopwatch();
       setIsGameRunning(false);
       increaseWins();
-      const unlockedAchievements = checkAchievements(achievements);
-      console.log("Unlocked achievements: ", unlockedAchievements);
+      // add new languages known
+      //
+      checkAchievements();
 
-      for (const achievement of unlockedAchievements) {
-        achievementToast(achievement);
-      }
-
-      unlockAchievements(unlockedAchievements);
       return true;
     },
-    [
-      achievements,
-      increaseWins,
-      pauseStopwatch,
-      setIsGameRunning,
-      targetArticle.title,
-      unlockAchievements,
-    ]
+    [checkAchievements, increaseWins, pauseStopwatch, setIsGameRunning, targetArticle.title]
   );
 
   const query = useQuery({

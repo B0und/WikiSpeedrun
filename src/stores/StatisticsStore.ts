@@ -12,6 +12,8 @@ interface Actions {
   actions: {
     increaseTotalRuns: () => void;
     increaseWins: () => void;
+    increaseSingleRandomPressed: () => void;
+    increaseMultipleRandomPressed: () => void;
     unlockAchievements: (unlockedAchievements: Achievement[]) => void;
   };
 }
@@ -20,8 +22,8 @@ export interface StatsValues {
   total_runs: number;
   wins: number;
   article_clicks: number;
-  random1_pressed: number;
-  random5_pressed: number;
+  single_random_pressed: number; // random 1 button
+  multiple_random_pressed: number; // random 5 button
   article_preview_pressed: number;
   give_up_count: number;
   known_wiki_languages: string[];
@@ -40,8 +42,8 @@ const initialState: StatsValues = {
   fastest_answer_time: 0,
   give_up_count: 0,
   known_wiki_languages: [],
-  random1_pressed: 0,
-  random5_pressed: 0,
+  single_random_pressed: 0,
+  multiple_random_pressed: 0,
   share_settings_pressed: 0,
   slowest_answer_time: 0,
   total_runs: 0,
@@ -67,6 +69,20 @@ export const useStatsStore = create<StatsStore>()(
           increaseTotalRuns: () =>
             set((state) => ({ totalRuns: state.total_runs + 1 }), false, "increaseTotalRuns"),
           increaseWins: () => set((state) => ({ wins: state.wins + 1 }), false, "increaseWins"),
+          increaseSingleRandomPressed: () =>
+            set(
+              (state) => {
+                return { single_random_pressed: state.single_random_pressed + 1 };
+              },
+              false,
+              "increaseSingleRandomPressed"
+            ),
+          increaseMultipleRandomPressed: () =>
+            set(
+              (state) => ({ multiple_random_pressed: state.multiple_random_pressed + 1 }),
+              false,
+              "increaseMultipleRandomPressed"
+            ),
           unlockAchievements: (unlockedAchievements: Achievement[]) =>
             set((state) => {
               for (const achievement of state.achievements) {
@@ -117,6 +133,8 @@ export const useStatsStore = create<StatsStore>()(
   )
 );
 
+
+
 export const checkAchievements = (achievements: readonly Achievement[]) => {
   return achievements.filter((achievement) => {
     const conditionFn = achivementConditionCheckByIdMap[achievement.id];
@@ -132,8 +150,8 @@ export const useAverageAnswerTime = () => useStatsStore((state) => state.average
 export const useFastestAnswerTime = () => useStatsStore((state) => state.fastest_answer_time);
 export const useGiveUpCount = () => useStatsStore((state) => state.give_up_count);
 export const useKnownWikiLanguages = () => useStatsStore((state) => state.known_wiki_languages);
-export const useRandom1Pressed = () => useStatsStore((state) => state.random1_pressed);
-export const useRandom5Pressed = () => useStatsStore((state) => state.random5_pressed);
+export const useRandom1Pressed = () => useStatsStore((state) => state.single_random_pressed);
+export const useRandom5Pressed = () => useStatsStore((state) => state.multiple_random_pressed);
 export const useShareSettingsPressed = () => useStatsStore((state) => state.share_settings_pressed);
 export const useSlowestAnswerTime = () => useStatsStore((state) => state.slowest_answer_time);
 export const useTotalRuns = () => useStatsStore((state) => state.total_runs);

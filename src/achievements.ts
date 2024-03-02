@@ -160,6 +160,59 @@ export const ACHIEVEMENTS_LIST = [
     conditionCheck: () => missedWinsCondition(50),
     unlocked: false,
   },
+  /////////////// Random selection
+  {
+    id: "ExplorerOfChance",
+    title: "Explorer of Chance",
+    description: `Select 10 random articles`,
+    targetValue: 10,
+    currentValue: () =>
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "FortuneSeeker",
+    title: "Fortune Seeker",
+    description: `Select 100 random articles`,
+    targetValue: 100,
+    currentValue: () =>
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "GachaAddict",
+    title: "Gacha Addict",
+    description: `Select 1000 random articles`,
+    targetValue: 1000,
+    currentValue: () =>
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "GachaOverlord",
+    title: "Gacha Overlord",
+    description: `Select 10000 random articles`,
+    targetValue: 10000,
+    currentValue: () =>
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
   // {
   //   title: "Speedster",
   //   description: "Reach your destination article in less than 10 clicks and 2 minutes.",
@@ -284,21 +337,13 @@ One-Click Wonder
 Description: Reach your destination article in a single click.
 Image: A finger pressing a button with a target symbol.
 
-Hyperlink Hero
-Description: Navigate through 100 articles by following only the hyperlinks within each article.
-Image: A chain-link representing interconnected articles.
 
-Wiki Wizard
-Description: Complete a journey using keyboard shortcuts only.
-Image: A wizard's hat with keyboard keys as symbols.
 
 Language Luminary
 Description: Complete a journey by navigating through articles in a language other than your native tongue.
 Image: Flags of different countries with articles flowing between them.
 
-Trailblazer
-Description: Successfully complete 25 journeys through newly created or recently edited articles.
-Image: A footstep leaving a trail of edits.
+
 
 
 Achievement Title: Elite Conqueror

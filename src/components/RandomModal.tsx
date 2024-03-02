@@ -3,6 +3,7 @@ import { ModalClose, ModalContent, ModalRoot, ModalTitle } from "./Modal";
 import { Article } from "../stores/GameStore";
 import ArticlePreview from "./ArticlePreview/ArticlePreview";
 import { useI18nContext } from "../i18n/i18n-react";
+import { useStatsStoreActions } from "../stores/StatisticsStore";
 
 interface RandomModalProps {
   data: Article[] | null;
@@ -12,6 +13,8 @@ interface RandomModalProps {
 }
 export const RandomModal = (props: RandomModalProps) => {
   const { LL } = useI18nContext();
+  const { increaseMultipleRandomPressed } = useStatsStoreActions();
+
   return (
     <ModalRoot open={props.open} onOpenChange={props.setOpen}>
       <ModalContent>
@@ -24,7 +27,10 @@ export const RandomModal = (props: RandomModalProps) => {
               <ModalClose asChild>
                 <button
                   type="button"
-                  onClick={() => props.setArticle(article)}
+                  onClick={() => {
+                    props.setArticle(article);
+                    increaseMultipleRandomPressed();
+                  }}
                   className="flex-1 border-[1px] border-black px-2 py-3 text-left hover:border-primary-blue hover:text-primary-blue focus-visible:border-primary-blue focus-visible:text-primary-blue dark:border-secondary-border dark:hover:border-primary-blue"
                 >
                   {article.title}
