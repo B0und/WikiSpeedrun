@@ -15,6 +15,8 @@ interface Actions {
     increaseSingleRandomPressed: () => void;
     increaseMultipleRandomPressed: () => void;
     increaseArticlePreviewPressed: () => void;
+    addKnownLanguage: (newLanguage: string) => void;
+    increaseArticlesClicked: (amount: number) => void;
     unlockAchievements: (unlockedAchievements: Achievement[]) => void;
   };
 }
@@ -22,7 +24,7 @@ interface Actions {
 export interface StatsValues {
   total_runs: number;
   wins: number;
-  article_clicks: number;
+  articles_clicked: number;
   single_random_pressed: number; // random 1 button
   multiple_random_pressed: number; // random 5 button
   article_preview_pressed: number;
@@ -37,7 +39,7 @@ export interface StatsValues {
 }
 
 const initialState: StatsValues = {
-  article_clicks: 0,
+  articles_clicked: 0,
   article_preview_pressed: 0,
   average_answer_time: 0,
   fastest_answer_time: 0,
@@ -99,7 +101,7 @@ export const useStatsStore = create<StatsStore>()(
               false,
               "increaseMultipleRandomPressed"
             ),
-            increaseArticlePreviewPressed: () =>
+          increaseArticlePreviewPressed: () =>
             set(
               (state) => {
                 state.article_preview_pressed += 1;
@@ -107,7 +109,24 @@ export const useStatsStore = create<StatsStore>()(
               false,
               "increaseArticlePreviewPressed"
             ),
-          unlockAchievements: (unlockedAchievements: Achievement[]) =>
+          addKnownLanguage: (newLanguage) =>
+            set(
+              (state) => {
+                state.known_wiki_languages.push(newLanguage);
+                state.known_wiki_languages = [...new Set(state.known_wiki_languages)];
+              },
+              false,
+              "addKnownLanguage"
+            ),
+          increaseArticlesClicked: (amount) =>
+            set(
+              (state) => {
+                state.articles_clicked += amount;
+              },
+              false,
+              "increaseArticleClicked"
+            ),
+          unlockAchievements: (unlockedAchievements) =>
             set(
               (state) => {
                 for (const achievement of state.achievements) {
@@ -169,7 +188,7 @@ export const checkAchievements = (achievements: readonly Achievement[]) => {
 };
 
 export const useStatsStoreActions = () => useStatsStore((state) => state.actions);
-export const useArticleClicks = () => useStatsStore((state) => state.article_clicks);
+export const useArticleClicks = () => useStatsStore((state) => state.articles_clicked);
 export const useArticlePreviewPressed = () =>
   useStatsStore((state) => state.article_preview_pressed);
 export const useAverageAnswerTime = () => useStatsStore((state) => state.average_answer_time);

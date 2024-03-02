@@ -259,6 +259,40 @@ export const ACHIEVEMENTS_LIST = [
     },
     unlocked: false,
   },
+  ////////////// KNOWN LANGUAGES
+  {
+    id: "Bilingual",
+    title: "Bilingual",
+    description: `Explore articles in 2 different languages`,
+    targetValue: 2,
+    currentValue: () => useStatsStore.getState().known_wiki_languages.length,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "Trilingual",
+    title: "Trilingual",
+    description: `Explore articles in 3 different languages`,
+    targetValue: 3,
+    currentValue: () => useStatsStore.getState().known_wiki_languages.length,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "Polyglot",
+    title: "Polyglot",
+    description: `Explore articles in 5 different languages`,
+    targetValue: 5,
+    currentValue: () => useStatsStore.getState().known_wiki_languages.length,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
   // {
   //   title: "Speedster",
   //   description: "Reach your destination article in less than 10 clicks and 2 minutes.",

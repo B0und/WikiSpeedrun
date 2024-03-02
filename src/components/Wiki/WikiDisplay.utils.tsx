@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import {
   Article,
+  useClicks,
   useEndingArticle,
   useGameStoreActions,
   useIsGameRunning,
@@ -55,30 +56,48 @@ export const useWikiQuery = () => {
   const routeParams = useParams();
   const isGameRunning = useIsGameRunning();
   const wikiArticle = routeParams.wikiTitle ?? startingArticle.title;
-  const { addHistoryArticle, setIsGameRunning } = useGameStoreActions();
+  const { addHistoryArticle, setIsGameRunning, setIsWin } = useGameStoreActions();
 
   const targetArticle = useEndingArticle();
   const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
-  const { increaseWins } = useStatsStoreActions();
+  const { increaseWins, addKnownLanguage, increaseArticlesClicked } = useStatsStoreActions();
+  const clicks = useClicks();
 
   const checkAchievements = useUnlockAchievements();
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
-      if (article.title !== targetArticle.title) {
-        return false;
+      if (
+        article.title === targetArticle.title ||
+        String(article.pageid) === targetArticle.pageid
+      ) {
+        pauseStopwatch();
+        setIsGameRunning(false);
+        setIsWin(true);
+        increaseWins();
+        addKnownLanguage(language);
+        increaseArticlesClicked(clicks);
+        // add new languages known
+        //
+        checkAchievements();
+        return true;
       }
 
-      pauseStopwatch();
-      setIsGameRunning(false);
-      increaseWins();
-      // add new languages known
-      //
-      checkAchievements();
-
-      return true;
+      return false;
     },
-    [checkAchievements, increaseWins, pauseStopwatch, setIsGameRunning, targetArticle.title]
+    [
+      addKnownLanguage,
+      checkAchievements,
+      clicks,
+      increaseArticlesClicked,
+      increaseWins,
+      language,
+      pauseStopwatch,
+      setIsGameRunning,
+      setIsWin,
+      targetArticle.pageid,
+      targetArticle.title,
+    ]
   );
 
   const query = useQuery({
