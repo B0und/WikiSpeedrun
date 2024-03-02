@@ -60,17 +60,6 @@ const Settings = () => {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          ACHIEVEMENTS_LIST.forEach((achievement, index) => {
-            setTimeout(() => {
-              achievementToast(achievement);
-            }, index * 400);
-          });
-        }}
-      >
-        asaaaaaaaaaaaaaad DELETEME
-      </button>
       <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
         {LL.SETTINGS()}
       </h2>
