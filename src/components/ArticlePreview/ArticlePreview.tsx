@@ -7,6 +7,7 @@ import { ArticlePreview } from "./ArticlePreview.types";
 import HelpCircle from "./helpcircle.svg?react";
 import clsx from "clsx";
 import { useWikiLanguage } from "../../stores/SettingsStore";
+import { useStatsStoreActions } from "../../stores/StatisticsStore";
 
 const getArticleSummary = async (language: string, pageid: string) => {
   const res = await fetch(
@@ -36,6 +37,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
   const [open, setOpen] = useState(false);
 
   const wikiLang = useWikiLanguage();
+  const { increaseArticlePreviewPressed } = useStatsStoreActions();
 
   const {
     data: articlePreview,
@@ -59,12 +61,12 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
               "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue"
           )}
           aria-label="Article preview"
+          onClick={increaseArticlePreviewPressed}
         >
           <HelpCircle />
         </button>
       </Popover.Trigger>
 
-      {/* <Popover.Portal> */}
       <Popover.Content
         className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto  rounded-md bg-neutral-50  p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
         sideOffset={5}
@@ -86,7 +88,6 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           <X />
         </Popover.Close>
       </Popover.Content>
-      {/* </Popover.Portal> */}
     </Popover.Root>
   );
 };

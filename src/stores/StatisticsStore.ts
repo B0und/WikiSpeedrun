@@ -14,6 +14,7 @@ interface Actions {
     increaseWins: () => void;
     increaseSingleRandomPressed: () => void;
     increaseMultipleRandomPressed: () => void;
+    increaseArticlePreviewPressed: () => void;
     unlockAchievements: (unlockedAchievements: Achievement[]) => void;
   };
 }
@@ -97,6 +98,14 @@ export const useStatsStore = create<StatsStore>()(
               },
               false,
               "increaseMultipleRandomPressed"
+            ),
+            increaseArticlePreviewPressed: () =>
+            set(
+              (state) => {
+                state.article_preview_pressed += 1;
+              },
+              false,
+              "increaseArticlePreviewPressed"
             ),
           unlockAchievements: (unlockedAchievements: Achievement[]) =>
             set(

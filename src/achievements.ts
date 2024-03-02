@@ -27,6 +27,7 @@ const missedWinsCondition = (minArticles: number) => {
 
   return missedWins === 0 && gameState.history.length - 1 >= minArticles;
 };
+
 export const ACHIEVEMENTS_LIST = [
   {
     id: "FirstWin",
@@ -208,6 +209,51 @@ export const ACHIEVEMENTS_LIST = [
     currentValue: () =>
       useStatsStore.getState().single_random_pressed +
       useStatsStore.getState().multiple_random_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  /////// ARTICLE PREVIEW
+  {
+    id: "Curiosity",
+    title: "Curiosity didn't kill the cat",
+    description: `Preview an article`,
+    targetValue: 1,
+    currentValue: () => useStatsStore.getState().article_preview_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "CuriousExplorer",
+    title: "Curious Explorer",
+    description: `Preview 100 articles`,
+    targetValue: 100,
+    currentValue: () => useStatsStore.getState().article_preview_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "PreviewEnthusiast",
+    title: "Preview Enthusiast",
+    description: `Preview 1000 articles`,
+    targetValue: 1000,
+    currentValue: () => useStatsStore.getState().article_preview_pressed,
+    conditionCheck() {
+      return this.currentValue() >= this.targetValue;
+    },
+    unlocked: false,
+  },
+  {
+    id: "InsatiablesReader",
+    title: "Insatiable Reader",
+    description: `Preview 10000 articles`,
+    targetValue: 10000,
+    currentValue: () => useStatsStore.getState().article_preview_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
