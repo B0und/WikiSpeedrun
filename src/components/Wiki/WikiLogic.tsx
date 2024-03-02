@@ -20,8 +20,7 @@ const useWikiLogic = () => {
     const time = getFormattedTime();
     const { min, ms, sec } = time;
 
-    const title = href.split("/wiki/")?.[1] ?? "";
-
+    const title = hrefToText(href);
     addHistoryArticle({
       title,
       time: { min, sec, ms },
@@ -119,7 +118,7 @@ const getFilteredLink = (element: HTMLAnchorElement) => {
     "Wikipedia:",
     "Template:",
     "Шаблон:",
-    "Template_talk:",
+    "Template talk:",
     "Portal:",
     "Help:",
     "Talk:",
@@ -164,3 +163,7 @@ const handleNavigation = (node: HTMLAnchorElement) => {
   return false;
 };
 
+const hrefToText = (href: string) => {
+  const urlTitle = href.split("/wiki/")[1];
+  return decodeURI(urlTitle).replaceAll("_", " ");
+};
