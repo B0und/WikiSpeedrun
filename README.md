@@ -18,6 +18,8 @@ The goal of the game is to navigate from a starting wikipedia article to another
 
 [Start playing now!](https://wikispeedrun.org/)
 
+If you like the game, give it a star 🌟
+
 ## Features
 
 - 🌐 Now supports multiple languages (i18n)
@@ -33,15 +35,6 @@ The goal of the game is to navigate from a starting wikipedia article to another
 - 👀 Open source
 
 - More stuff coming soon™
-
-## Technologies used
-
-- React
-- Zustand
-- React-router
-- Vite
-- Tailwindcss
-- Radix UI
 
 ## Build it yourself
 
@@ -60,6 +53,16 @@ To run the app in the development mode.
 ### `pnpm run build`
 
 To build the app for production to the `build` folder.
+
+## Contributing
+
+If you want to fix some translations, you can find and edit them in `src/i18n`.
+If you want to make some major code changes, please contact me first/open an issue.
+
+## Donations
+
+USDT (TRC20) TNtJLB7bdaAaG22tNfxvaKvvscfk3KhUuD
+USDT (ERC20) 0x98F0d68C0a69B869260e7CB78341FeAF3d03fb0c
 
 ## License
 

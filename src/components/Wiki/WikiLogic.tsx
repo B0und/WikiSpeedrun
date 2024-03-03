@@ -3,77 +3,16 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useStopwatchActions } from "../StopwatchContext";
-import { useGameStoreActions } from "../../GameStore";
+import { useGameStoreActions } from "../../stores/GameStore";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
-const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
-
-const getFilteredLink = (hrefText: string | null) => {
-  if (!hrefText) return null;
-  if (!hrefText.startsWith("/wiki/")) {
-    return null;
-  }
-  if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
-    return null;
-  }
-
-  const ignoreList = [
-    "/wiki/Wikipedia:",
-    "/wiki/Template:",
-    "/wiki/Template_talk:",
-    "/wiki/Portal:",
-    "/wiki/Help:",
-    "/wiki/Talk:",
-    "/wiki/Special:",
-    "/wiki/Category:",
-    "/wiki/File:",
-  ];
-  if (ignoreList.some((item) => hrefText.startsWith(item))) {
-    return null;
-  }
-
-  return hrefText;
-};
-
-const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
-  const classNameParent = target?.parentNode as HTMLElement;
-  // show notification about non-wiki link
-  if (
-    target?.className === "external text" ||
-    target?.className === "new" ||
-    target?.className === "geo-dec" ||
-    classNameParent?.className === "reference-text" ||
-    classNameParent?.className === "external text" ||
-    classNameParent?.className === "new"
-  ) {
-    errorToast(errorText);
-    return true;
-  }
-  return false;
-};
-
-const handleNavigation = (parentHref: string | null) => {
-  if (!parentHref) return false;
-  if (!parentHref.startsWith("#")) return false;
-
-  let navigateId = parentHref;
-  // try to scroll to the element
-  navigateId = navigateId.replaceAll("#", "");
-  const element = document.getElementById(navigateId);
-  element?.scrollIntoView();
-  return true;
-};
-
-const hrefToText = (href: string) => {
-  const urlTitle = href.split("/wiki/")[1];
-  return decodeURI(urlTitle).replaceAll("_", " ");
-};
+const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 
 const useWikiLogic = () => {
   const navigate = useNavigate();
   const { LL } = useI18nContext();
-  const invalidLinkText = LL.INVALID_LINK();
+  const invalidLinkText = LL["Choose another link"]();
   const { getFormattedTime } = useStopwatchActions();
   const { addHistoryArticle } = useGameStoreActions();
 
@@ -82,7 +21,6 @@ const useWikiLogic = () => {
     const { min, ms, sec } = time;
 
     const title = hrefToText(href);
-
     addHistoryArticle({
       title,
       time: { min, sec, ms },
@@ -100,14 +38,14 @@ const useWikiLogic = () => {
       return;
     }
 
-    // handle navigation and leave
-    const parentHref = getFilteredLink(parent?.attributes[0]?.value);
-    if (handleNavigation(parentHref)) {
+    if (handleNavigation(parent) || handleNavigation(target)) {
       return;
     }
 
+    const parentHref = getFilteredLink(parent);
+    const hrefText = getFilteredLink(target);
+
     // handle correct link
-    const hrefText = getFilteredLink(target?.attributes[0]?.value);
     if (hrefText) {
       addHrefToHistory(hrefText);
       navigate(hrefText);
@@ -125,6 +63,7 @@ const useWikiLogic = () => {
     if (filterOtherStuff(target, invalidLinkText)) {
       return;
     }
+
     errorToast(invalidLinkText);
   };
 
@@ -132,3 +71,96 @@ const useWikiLogic = () => {
 };
 
 export default useWikiLogic;
+
+function isScrollingAnchor(node: HTMLElement): boolean {
+  // Check if the node is an anchor tag
+  if (node.tagName.toLowerCase() === "a") {
+    // Check if the href attribute starts with #
+    const href = node.getAttribute("href");
+    return href !== null && href.startsWith("#");
+  }
+  return false;
+}
+
+function scrollToElement(elementId: string | null | undefined) {
+  if (!elementId) {
+    return;
+  }
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+const getFilteredLink = (element: HTMLAnchorElement) => {
+  const hrefText = element.getAttribute("href");
+
+  if (!hrefText) return null;
+  if (!hrefText.startsWith("/wiki/")) {
+    return null;
+  }
+
+  if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
+    return null;
+  }
+  if (
+    ["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(
+      element.hostname
+    )
+  ) {
+    return null;
+  }
+
+  const ignoreList = [
+    "Wikipedia:",
+    "Template:",
+    "Шаблон:",
+    "Template talk:",
+    "Portal:",
+    "Help:",
+    "Talk:",
+    "Special:",
+    "Category:",
+    "File:",
+    "Википедия:",
+  ];
+  if (ignoreList.some((item) => element.title.startsWith(item))) {
+    return null;
+  }
+
+  return hrefText;
+};
+
+const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
+  const classNameParent = target.parentNode as HTMLElement;
+  // show notification about non-wiki link
+  if (
+    target.className === "external text" ||
+    target.className === "new" ||
+    target.className === "geo-dec" ||
+    classNameParent.className === "reference-text" ||
+    classNameParent.className === "external text" ||
+    classNameParent.className === "new"
+  ) {
+    errorToast(errorText);
+    return true;
+  }
+  return false;
+};
+
+// test cases
+// Википедия:Ссылки на источники
+const handleNavigation = (node: HTMLAnchorElement) => {
+  if (isScrollingAnchor(node)) {
+    const hrefWithoutHash = node.getAttribute("href")?.substring(1);
+    scrollToElement(hrefWithoutHash);
+    return true;
+  }
+
+  return false;
+};
+
+const hrefToText = (href: string) => {
+  const urlTitle = href.split("/wiki/")[1];
+  return decodeURI(urlTitle).replaceAll("_", " ");
+};

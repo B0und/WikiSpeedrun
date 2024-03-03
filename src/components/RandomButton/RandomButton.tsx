@@ -1,10 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { ReactComponent as DiceIcon } from "../../assets/dice.svg";
+import { useMutation } from "@tanstack/react-query";
+import DiceIcon from "../../assets/dice.svg?react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import clsx from "clsx";
 import { WikiRandom } from "./RandomButton.types";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useWikiLanguage } from "../../SettingsStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
 
 const getRandomArticles = async (language: string) => {
   const res = await fetch(
@@ -21,27 +21,22 @@ const getRandomArticles = async (language: string) => {
         lhlimit: "500",
         lhshow: "!redirect",
         lhprop: "pageid",
-      })
+      }).toString()
   );
 
   return res.json() as WikiRandom;
 };
 
 interface RandomButtonProps {
-  queryKey: string;
   onSuccess: (data: WikiRandom) => void;
   randomCount?: number;
 }
-const RandomButton = ({ queryKey, onSuccess, randomCount = 1 }: RandomButtonProps) => {
+const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
   const { LL } = useI18nContext();
   const language = useWikiLanguage();
 
-  const { refetch, isFetching } = useQuery({
-    queryKey: ["randomButton", language, queryKey],
-    queryFn: () => getRandomArticles(language),
-    refetchOnWindowFocus: false,
-    enabled: false,
-    staleTime: 0,
+  const { mutate, isPending } = useMutation({
+    mutationFn: () => getRandomArticles(language),
     onSuccess: onSuccess,
   });
 
@@ -50,12 +45,14 @@ const RandomButton = ({ queryKey, onSuccess, randomCount = 1 }: RandomButtonProp
       <button
         className={clsx(
           "mb-[-2px] w-fit p-2 hover:text-primary-blue",
-          isFetching && "animate-spin-dice"
+          isPending && "animate-spin-dice"
         )}
         type="button"
-        onClick={() => refetch()}
+        onClick={() => {
+          mutate();
+        }}
       >
-        <VisuallyHidden.Root>{LL.GET_RANDOM_ARTICLE()}</VisuallyHidden.Root>
+        <VisuallyHidden.Root>{LL["Get random article"]()}</VisuallyHidden.Root>
         <DiceIcon />
       </button>
       <div className="pointer-events-none absolute right-0 top-0 w-[18px] rounded-full border-[1px] border-black bg-neutral-50 text-center text-xs dark:border-neutral-50 dark:bg-dark-surface dark:text-neutral-50">

@@ -3,7 +3,7 @@ import TypesafeI18n from "../i18n/i18n-react";
 import { detectLocale } from "../i18n/i18n-util";
 import { loadLocaleAsync } from "../i18n/i18n-util.async";
 import { navigatorDetector } from "typesafe-i18n/detectors";
-import { useInterfaceLanguage, useSettingsStoreActions } from "../SettingsStore";
+import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 
 // Detect locale
 // (Use as advanaced locale detection strategy as you like.
@@ -16,12 +16,12 @@ const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
   const { setInterfaceLanguage } = useSettingsStoreActions();
 
   // use language from localstore or detected
-  const userLocale = interfaceLanguage ? interfaceLanguage : locale;
+  const userLocale = interfaceLanguage.length > 0 ? interfaceLanguage : locale;
 
   useEffect(() => {
-    loadLocaleAsync(userLocale).then(() => {
+    void loadLocaleAsync(userLocale).then(() => {
       setLocalesLoaded(true);
-      if (!interfaceLanguage) {
+      if (interfaceLanguage.length === 0) {
         setInterfaceLanguage(locale);
       }
     });

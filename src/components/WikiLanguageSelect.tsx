@@ -2,8 +2,8 @@ import clsx from "clsx";
 import Select, { StylesConfig } from "react-select";
 import { useThemeContext } from "./ThemeContext";
 import { useI18nContext } from "../i18n/i18n-react";
-import { useSettingsStoreActions, useWikiLanguage } from "../SettingsStore";
-import { useGameStoreActions } from "../GameStore";
+import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
+import { useGameStoreActions } from "../stores/GameStore";
 
 const selectId = "wikiLanguageSelect";
 
@@ -17,7 +17,7 @@ export const WikiLanguageSelect = () => {
 
   return (
     <div>
-      <label htmlFor={selectId}>{LL.SELECT_ARTICLE_LANGUAGE()}</label>
+      <label htmlFor={selectId}>{LL["Select article language"]()}</label>
       <Select
         key={wikiLanguage}
         inputId={selectId}
@@ -28,13 +28,14 @@ export const WikiLanguageSelect = () => {
         styles={customStyles}
         options={LANGUAGES}
         onChange={(e) => {
-          setWikiLanguage(e?.value || "");
+          setWikiLanguage(e?.value ?? "");
           setStartingArticle({ pageid: "", title: "" });
           setEndingArticle({ pageid: "", title: "" });
         }}
         isMulti={false}
         classNames={{
-          control: () => clsx(isDarkMode && "dark:bg-dark-surface dark:text-dark-primary", ""),
+          input: () => (isDarkMode ? " dark:text-dark-primary" : ""),
+          control: () => clsx(isDarkMode && "dark:bg-dark-surface dark:text-dark-primary"),
           menu: () =>
             clsx(
               isDarkMode && "dark:bg-dark-surface-secondary dark:text-dark-primary",
@@ -81,7 +82,7 @@ interface WikiLanguage {
   readonly isoCode: string; // ISO language code
 }
 
-export const LANGUAGES: ReadonlyArray<WikiLanguage> = [
+export const LANGUAGES: readonly WikiLanguage[] = [
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },

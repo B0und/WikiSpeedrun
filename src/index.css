@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --achievement-size: 420px;
+}
+
 @layer base {
   html,
   body,
@@ -25,8 +29,30 @@
   }
 
   .dropdown-shadow {
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px, rgba(0, 0, 0, 0.05) 0px 10px 15px -5px,
+    box-shadow:
+      rgba(0, 0, 0, 0.05) 0px 1px 3px,
+      rgba(0, 0, 0, 0.05) 0px 10px 15px -5px,
       rgba(0, 0, 0, 0.04) 0px 7px 7px -5px;
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--achievement-size), 1fr));
+    column-gap: 64px;
+    row-gap: 82px;
+    padding-bottom: 16px;
+  }
+
+  .stat-wrapper::after {
+    background-image: radial-gradient(circle, currentcolor 1px, transparent 1.5px);
+    background-position: bottom;
+    background-size: 1ex 4.5px;
+    background-repeat: space no-repeat;
+    content: "";
+    flex-grow: 1;
+    height: 1em;
+    order: 2;
+    align-self: center;
   }
 }
 

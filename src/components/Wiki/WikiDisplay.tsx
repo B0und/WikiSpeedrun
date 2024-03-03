@@ -1,19 +1,20 @@
 import { findVisibleWinningLinks, usePauseWhileLoading, useWikiQuery } from "./WikiDisplay.utils";
 import useWikiLogic from "./WikiLogic";
 
-import "./unreset.css";
-import "./vec2022-base.css";
-import "./vector2022.css";
-import "./overrides.css";
+import "./styles/unreset.css";
+import "./styles/vec2022-base.css";
+import "./styles/vector2022.css";
+import "./styles/overrides.css";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../GameStore";
+import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
+import purify from "dompurify";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
   const isDarkTheme = colorMode === "dark";
-  
+
   const { LL } = useI18nContext();
   const { handleWikiArticleClick } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();
@@ -42,7 +43,7 @@ const WikiDisplay = () => {
   };
 
   if (isFetching) {
-    return <p>{LL.LOADING()}</p>;
+    return <p>{LL.Loading()}</p>;
   }
 
   return (
@@ -64,9 +65,11 @@ const WikiDisplay = () => {
                 className="skin-vector vector-body skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject  skin-vector-2022 action-view uls-dialog-sticky-hide vector-below-page-title"
               >
                 <div
-                  ref={(ref) => wikiRefCallback(ref)}
+                  ref={(ref) => {
+                    wikiRefCallback(ref);
+                  }}
                   onClick={handleWikiArticleClick}
-                  dangerouslySetInnerHTML={{ __html: data?.html }}
+                  dangerouslySetInnerHTML={{ __html: purify.sanitize(data.html) }}
                 />
               </div>
             </div>

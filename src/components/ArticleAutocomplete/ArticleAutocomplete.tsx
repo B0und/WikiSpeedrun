@@ -6,8 +6,8 @@ import Select, { InputActionMeta, StylesConfig } from "react-select";
 import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useWikiLanguage } from "../../SettingsStore";
-import { Article } from "../../GameStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
+import { Article } from "../../stores/GameStore";
 
 const getArticles = async (language: string, debouncedTerm: string) => {
   if (!debouncedTerm) return;
@@ -20,7 +20,7 @@ const getArticles = async (language: string, debouncedTerm: string) => {
         origin: "*",
         format: "json",
         srsearch: debouncedTerm,
-      })
+      }).toString()
   );
   return resp.json() as Promise<WikiSearch>;
 };
@@ -61,7 +61,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
           ({
             label: article.title,
             value: String(article.pageid),
-          } as AutocompleteOption)
+          }) as AutocompleteOption
       ),
   });
 
@@ -80,11 +80,11 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     if (obj.inputValue.trim().length === 0) {
       return null;
     }
-    return LL.NO_ARTICLES_FOUND();
+    return LL["No articles found"]();
   };
 
   return (
-    <div className="flex flex-1 flex-col min-w-0">
+    <div className="flex min-w-0 flex-1 flex-col">
       <label htmlFor={selectId}>{label}</label>
       <Select
         key={defaultValue} // dirty hack
@@ -107,8 +107,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
         getOptionLabel={(option: AutocompleteOption) => option.label}
         getOptionValue={(option: AutocompleteOption) => option.value}
         onChange={(article) => {
-          setSelectedOption(article?.label || "");
-          onSelect({ pageid: article?.value || "", title: article?.label || "" });
+          setSelectedOption(article?.label ?? "");
+          onSelect({ pageid: article?.value ?? "", title: article?.label ?? "" });
         }}
         value={data?.filter(function (option) {
           return option.label === selectedOption;

@@ -10,7 +10,7 @@ export interface Continue {
 }
 
 export interface Query {
-  pages?: { [key: string]: Page };
+  pages?: Record<string, Page>;
 }
 
 export interface Page {

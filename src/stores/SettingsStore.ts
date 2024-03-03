@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { Locales } from "./i18n/i18n-types";
-import { LANGUAGES } from "./components/WikiLanguageSelect";
+import { Locales } from "../i18n/i18n-types";
+import { LANGUAGES } from "../components/WikiLanguageSelect";
 
 /*
- Data that gets persisted in local storage
+ Data gets persisted in local storage
 */
 
 type WikiLanguage = (typeof LANGUAGES)[number]["value"];
@@ -35,12 +35,15 @@ const useSettingsStore = create<SettingsStore>()(
       (set) => ({
         ...initialState,
         actions: {
-          setInterfaceLanguage: (language: Locales) =>
-            set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage"),
-          setWikiLanguage: (language: WikiLanguage) =>
-            set(() => ({ wikiLanguage: language }), false, "setWikiLanguage"),
-          setSidebarWidth: (width: number) =>
-            set(() => ({ sidebarWidth: width }), false, "setSidebarWidth"),
+          setInterfaceLanguage: (language: Locales) => {
+            set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage");
+          },
+          setWikiLanguage: (language: WikiLanguage) => {
+            set(() => ({ wikiLanguage: language }), false, "setWikiLanguage");
+          },
+          setSidebarWidth: (width: number) => {
+            set(() => ({ sidebarWidth: width }), false, "setSidebarWidth");
+          },
         },
       }),
       {
@@ -48,7 +51,7 @@ const useSettingsStore = create<SettingsStore>()(
         storage: createJSONStorage(() => localStorage),
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         partialize: ({ actions, ...rest }: SettingsStore) => rest,
-        version: 1
+        version: 1,
       }
     ),
     {

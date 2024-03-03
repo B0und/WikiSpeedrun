@@ -5,7 +5,8 @@ import { StopwatchContextProvider } from "./StopwatchContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { ThemeContextProvider } from "./ThemeContext";
-
+import * as Portal from "@radix-ui/react-portal";
+import { TooltipProvider } from "./Tooltip";
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -20,16 +21,20 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     <ThemeContextProvider>
       <LocaleProvider>
         <StopwatchContextProvider>
-          <QueryClientProvider client={queryClient}>
-            {children}
-            <Toaster
-              toastOptions={{
-                position: "bottom-center",
-                duration: 1500,
-              }}
-            />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
+          <TooltipProvider delayDuration={500}>
+            <QueryClientProvider client={queryClient}>
+              {children}
+              <Portal.Root>
+                <Toaster
+                  toastOptions={{
+                    position: "bottom-center",
+                    duration: 1500,
+                  }}
+                />
+              </Portal.Root>
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+          </TooltipProvider>
         </StopwatchContextProvider>
       </LocaleProvider>
     </ThemeContextProvider>

@@ -3,10 +3,11 @@ import { X } from "react-feather";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useWikiLanguage } from "../../SettingsStore";
 import { ArticlePreview } from "./ArticlePreview.types";
-import { ReactComponent as HelpCircle } from "./helpcircle.svg";
+import HelpCircle from "./helpcircle.svg?react";
 import clsx from "clsx";
+import { useWikiLanguage } from "../../stores/SettingsStore";
+import { useStatsStoreActions } from "../../stores/StatisticsStore";
 
 const getArticleSummary = async (language: string, pageid: string) => {
   const res = await fetch(
@@ -21,7 +22,7 @@ const getArticleSummary = async (language: string, pageid: string) => {
         explaintext: "",
         redirects: "1",
         pageids: pageid,
-      })
+      }).toString()
   );
 
   return res.json() as ArticlePreview;
@@ -36,6 +37,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
   const [open, setOpen] = useState(false);
 
   const wikiLang = useWikiLanguage();
+  const { increaseArticlePreviewPressed } = useStatsStoreActions();
 
   const {
     data: articlePreview,
@@ -59,12 +61,12 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
               "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue"
           )}
           aria-label="Article preview"
+          onClick={increaseArticlePreviewPressed}
         >
           <HelpCircle />
         </button>
       </Popover.Trigger>
 
-      {/* <Popover.Portal> */}
       <Popover.Content
         className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto  rounded-md bg-neutral-50  p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
         sideOffset={5}
@@ -75,8 +77,8 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         </h3>
         {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
         <p className="mt-2 text-base">
-          {isarticlePreviewLoading ? LL.LOADING() : articlePreview?.query?.pages?.[pageid].extract}
-          {isError && LL.ARTICLE_PREVIEW_LOAD_FAILED()}
+          {isarticlePreviewLoading ? LL.Loading() : articlePreview?.query?.pages?.[pageid].extract}
+          {isError && LL["Couldn't load article preview"]()}
         </p>
 
         <Popover.Close
@@ -86,7 +88,6 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           <X />
         </Popover.Close>
       </Popover.Content>
-      {/* </Popover.Portal> */}
     </Popover.Root>
   );
 };

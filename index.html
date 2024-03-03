@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,14 +25,14 @@
     <meta name="twitter:image" content="https://wikispeedrun.org/twitter-img.jpg" />
     <meta name="twitter:image:alt" content="A wikipedia logo with speedrun timer on top of it." />
 
-    <%if (process.env.NODE_ENV === 'production') { %>
+    <%if (isProd) { %>
     <!-- old icon format -->
     <link rel="icon" sizes="any" href="favicon.ico" />
 
     <!-- svg icon -->
     <link rel="icon" type="image/svg+xml" href="icon.svg" />
 
-    <% } %> <%if (process.env.NODE_ENV === 'development') { %>
+    <% } %> <%if (isDev) { %>
     <!-- old icon format -->
     <link rel="icon" sizes="any" href="favicon-dev.ico" />
 
@@ -72,6 +72,7 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <% if(isProd){ %>
     <!-- Cloudflare Web Analytics -->
     <script
       defer
@@ -79,5 +80,6 @@
       data-cf-beacon='{"token": "6d1eeb4908dc4fc38247c05e48505d88"}'
     ></script>
     <!-- End Cloudflare Web Analytics -->
+    <% } %>
   </body>
 </html>

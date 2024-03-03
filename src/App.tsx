@@ -1,12 +1,14 @@
 import Providers from "./components/Providers";
-import { useWikiConsoleLogo } from "./App.utils";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import About from "./components/About";
+import About from "./pages/About";
 import NoMatch from "./components/NoMatch";
-import Settings from "./components/Settings";
-import Wiki from "./components/Wiki/Wiki";
+import Settings from "./pages/Settings";
+const Wiki = React.lazy(() => import("./components/Wiki/Wiki"));
+import { useWikiConsoleLogo } from "./hooks/useWikiConsoleLogo";
+import { Achievements } from "./pages/Achievements";
+import { Stats } from "./pages/Stats";
 
 const App = () => {
   useWikiConsoleLogo();
@@ -18,6 +20,8 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<About />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/stats" element={<Stats />} />
+            <Route path="/achievements" element={<Achievements />} />
             <Route index path="/about" element={<About />} />
             <Route
               path="/wiki"

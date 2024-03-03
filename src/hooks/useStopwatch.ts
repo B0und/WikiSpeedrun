@@ -28,7 +28,9 @@ const useFrameNow = (isActive: boolean) => {
     updateNow();
     // Let the magic go.
     let id = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(id);
+    return () => {
+      cancelAnimationFrame(id);
+    };
   }, [isActive]);
 
   return isActive ? now : null;
