@@ -34,7 +34,7 @@ export const Stats = () => {
       <div className="@container">
         <ul className="flex flex-col  gap-3 pt-4 @3xl:max-w-[calc(min(50%,700px))]">
           <Stat name={LL["Wins:"]()} value={wins} />
-          <Stat name={LL["Total runs:"]()} value={totalRuns} />
+          <Stat name={LL["Total games:"]()} value={totalRuns} />
           {/* <Stat name="Average Answer Time:" value={averageAnswerTime} />
           <Stat name="Fastest Answer Time:" value={fastestAnswerTime} />
           <Stat name="slowestAnswerTime:" value={slowestAnswerTime} /> */}

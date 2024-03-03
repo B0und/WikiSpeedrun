@@ -219,9 +219,9 @@ type RootTranslation = {
 	 */
 	'Wins:': string
 	/**
-	 * T​o​t​a​l​ ​r​u​n​s​:
+	 * T​o​t​a​l​ ​g​a​m​e​s​:
 	 */
-	'Total runs:': string
+	'Total games:': string
 	/**
 	 * K​n​o​w​n​ ​l​a​n​g​u​a​g​e​s​:
 	 */
@@ -266,7 +266,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​1​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​1​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -276,7 +276,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​2​5​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​2​5​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -286,7 +286,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​5​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​5​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -296,7 +296,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​1​0​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​1​0​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -306,7 +306,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​2​5​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​2​5​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -316,7 +316,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​5​0​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​5​0​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -326,7 +326,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​1​0​0​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​1​0​0​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -336,7 +336,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​2​5​0​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​2​5​0​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -346,7 +346,7 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
-		 * W​i​n​ ​5​0​0​0​ ​s​p​e​e​d​r​u​n​s
+		 * W​i​n​ ​5​0​0​0​ ​g​a​m​e​s
 		 */
 		description: string
 	}
@@ -718,9 +718,9 @@ export type TranslationFunctions = {
 	 */
 	'Wins:': () => LocalizedString
 	/**
-	 * Total runs:
+	 * Total games:
 	 */
-	'Total runs:': () => LocalizedString
+	'Total games:': () => LocalizedString
 	/**
 	 * Known languages:
 	 */
@@ -765,7 +765,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 10 speedruns
+		 * Win 10 games
 		 */
 		description: () => LocalizedString
 	}
@@ -775,7 +775,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 25 speedruns
+		 * Win 25 games
 		 */
 		description: () => LocalizedString
 	}
@@ -785,7 +785,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 50 speedruns
+		 * Win 50 games
 		 */
 		description: () => LocalizedString
 	}
@@ -795,7 +795,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 100 speedruns
+		 * Win 100 games
 		 */
 		description: () => LocalizedString
 	}
@@ -805,7 +805,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 250 speedruns
+		 * Win 250 games
 		 */
 		description: () => LocalizedString
 	}
@@ -815,7 +815,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 500 speedruns
+		 * Win 500 games
 		 */
 		description: () => LocalizedString
 	}
@@ -825,7 +825,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 1000 speedruns
+		 * Win 1000 games
 		 */
 		description: () => LocalizedString
 	}
@@ -835,7 +835,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 2500 speedruns
+		 * Win 2500 games
 		 */
 		description: () => LocalizedString
 	}
@@ -845,7 +845,7 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
-		 * Win 5000 speedruns
+		 * Win 5000 games
 		 */
 		description: () => LocalizedString
 	}

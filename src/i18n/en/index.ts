@@ -55,7 +55,7 @@ const en: BaseTranslation = {
   "Choose your article": "Choose your article",
   Statistics: "Statistics",
   "Wins:": "Wins:",
-  "Total runs:": "Total runs:",
+  "Total games:": "Total games:",
   "Known languages:": "Known languages:",
   "Random choices:": "Random choices:",
   "Articles clicked:": "Articles clicked:",
@@ -72,39 +72,39 @@ const en: BaseTranslation = {
   },
   NoviceRunner: {
     title: "Novice Runner",
-    description: "Win 10 speedruns",
+    description: "Win 10 games",
   },
   Speedster: {
     title: "Speedster",
-    description: "Win 25 speedruns",
+    description: "Win 25 games",
   },
   WikiExplorer: {
     title: "Wiki Explorer",
-    description: "Win 50 speedruns",
+    description: "Win 50 games",
   },
   SpeedDemon: {
     title: "Speed Demon",
-    description: "Win 100 speedruns",
+    description: "Win 100 games",
   },
   MasterRunner: {
     title: "Master Runner",
-    description: "Win 250 speedruns",
+    description: "Win 250 games",
   },
   WikipediaChampion: {
     title: "Wikipedia Champion",
-    description: "Win 500 speedruns",
+    description: "Win 500 games",
   },
   SpeedrunAddict: {
     title: "Speedrun Addict",
-    description: "Win 1000 speedruns",
+    description: "Win 1000 games",
   },
   WikipediaLegend: {
     title: "Wikipedia Legend",
-    description: "Win 2500 speedruns",
+    description: "Win 2500 games",
   },
   SpeedrunGod: {
     title: "Speedrun God",
-    description: "Win 5000 speedruns",
+    description: "Win 5000 games",
   },
   AttentiveExplorer: {
     title: "Attentive Explorer",
