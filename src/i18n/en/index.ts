@@ -173,5 +173,9 @@ const en: BaseTranslation = {
   "Made by Ina_den": "Made by Ina_den.",
   "Follow him on": "Follow him on",
   "twitter (X)": " twitter (X)",
+  "Achievement unlocked": "Achievement unlocked",
+  WaifuAlt:
+    "Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby",
+  "Prize trophy": "Prize Trophy",
 };
 export default en;

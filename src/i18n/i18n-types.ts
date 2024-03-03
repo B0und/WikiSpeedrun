@@ -522,6 +522,18 @@ type RootTranslation = {
 	 *  ​t​w​i​t​t​e​r​ ​(​X​)
 	 */
 	'twitter (X)': string
+	/**
+	 * A​c​h​i​e​v​e​m​e​n​t​ ​u​n​l​o​c​k​e​d
+	 */
+	'Achievement unlocked': string
+	/**
+	 * C​u​t​e​ ​a​n​i​m​e​ ​g​i​r​l​ ​w​i​t​h​ ​a​ ​b​l​u​e​ ​d​r​e​s​s​ ​s​i​t​t​i​n​g​ ​i​n​ ​a​ ​l​i​b​r​a​r​y​,​ ​w​h​i​l​e​ ​a​ ​w​i​k​i​p​e​d​i​a​ ​g​l​o​b​e​ ​w​i​t​h​ ​a​ ​s​p​e​e​d​r​u​n​ ​t​i​m​e​r​ ​a​t​t​a​c​h​e​d​ ​i​s​ ​f​l​o​a​t​i​n​g​ ​n​e​a​r​b​y
+	 */
+	WaifuAlt: string
+	/**
+	 * P​r​i​z​e​ ​T​r​o​p​h​y
+	 */
+	'Prize trophy': string
 }
 
 export type TranslationFunctions = {
@@ -1021,6 +1033,18 @@ export type TranslationFunctions = {
 	 *  twitter (X)
 	 */
 	'twitter (X)': () => LocalizedString
+	/**
+	 * Achievement unlocked
+	 */
+	'Achievement unlocked': () => LocalizedString
+	/**
+	 * Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby
+	 */
+	WaifuAlt: () => LocalizedString
+	/**
+	 * Prize Trophy
+	 */
+	'Prize trophy': () => LocalizedString
 }
 
 export type Formatters = {}

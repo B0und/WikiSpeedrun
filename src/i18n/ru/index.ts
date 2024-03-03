@@ -56,7 +56,7 @@ const ru: Translation = {
   "Choose your article": "Выберите свою статью",
   Statistics: "Статистика",
   "Wins:": "Победы:",
-  "Total runs:": "Всего игр:",
+  "Total games:": "Всего игр:",
   "Known languages:": "Известные языки:",
   "Random choices:": "Случайные выборы:",
   "Articles clicked:": "Количество кликов по статьям:",
@@ -72,15 +72,15 @@ const ru: Translation = {
     description: "Завершите свою первую игру",
   },
   NoviceRunner: {
-    title: "Новичок бегун",
+    title: "Бегун новичок",
     description: "Выиграйте 10 игр",
   },
   Speedster: {
-    title: "Скоростник",
+    title: "Скоростной",
     description: "Выиграйте 25 игр",
   },
   WikiExplorer: {
-    title: "Исследователь Wiki",
+    title: "Исследователь Википедии",
     description: "Выиграйте 50 игр",
   },
   SpeedDemon: {
@@ -88,7 +88,7 @@ const ru: Translation = {
     description: "Выиграйте 100 игр",
   },
   MasterRunner: {
-    title: "Мастер бегун",
+    title: "Мастер Википедии",
     description: "Выиграйте 250 игр",
   },
   WikipediaChampion: {
@@ -168,12 +168,16 @@ const ru: Translation = {
     description: "Спасибо за вдохновение на весь этот проект",
   },
   SpeedrunWaifu: {
-    title: "Wiki Вайфу",
+    title: "Википедия Вайфу",
     description: "Сделано Ina_den. Подпишитесь на него в твиттере",
   },
   "Made by Ina_den": "Сделано Ina_den.",
   "Follow him on": "Подпишитесь на",
   "twitter (X)": "твиттер (X)",
+  "Achievement unlocked": "Достижение разблокировано",
+  WaifuAlt:
+    "Милая аниме-девушка в синем платье сидит в библиотеке, пока рядом не плавает карта Википедии с прикрепленным к ней таймером спидрана",
+  "Prize trophy": "Призовой трофей",
 };
 
 export default ru;

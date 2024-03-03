@@ -4,6 +4,7 @@ import { useI18nContext } from "../i18n/i18n-react";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
   const { LL } = useI18nContext();
+
   let currentValue = undefined;
   if (achievement.targetValue) {
     currentValue = Math.min(achievement.currentValue(), achievement.targetValue);
@@ -16,6 +17,8 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
   // @ts-expect-error dynamic key generation
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   let achievementDescription = LL[achievement.id]?.description();
+
+  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]();
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
@@ -31,6 +34,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
         </a>
       </span>
     );
+    achievementAltText = LL.WaifuAlt();
   }
   return (
     <div className="flex max-w-[var(--achievement-size)] items-start justify-start gap-5">
@@ -38,7 +42,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
         width={128}
         height={128}
         src={achievement.imgUrl ?? "/trophy.svg"}
-        alt="Golden prize cup with three stars on top" // TODO i18n
+        alt={achievementAltText}
         className={clsx("h-full bg-center object-cover", !achievement.unlocked && " grayscale")}
       />
       <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">

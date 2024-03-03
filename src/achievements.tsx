@@ -5,6 +5,7 @@ export type Achievement = {
   unlocked: boolean;
   id: string;
   imgUrl?: string;
+  imgAlt?: string;
 } & (
   | {
       conditionCheck: () => boolean;
@@ -246,6 +247,7 @@ export const ACHIEVEMENTS_LIST = [
     },
     unlocked: false,
     imgUrl: "/ludwig-ahgren.webp",
+    imgAlt: "Ludwig Ahgren",
   },
   {
     id: "SpeedrunWaifu",
