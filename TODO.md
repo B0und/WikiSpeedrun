@@ -1,20 +1,6 @@
 # TODO
 
-[x] - articles looked up
-[x] - wiki languages
-[x] - Articles clicked:
-[] - add donation addr
-
-[x] - add anime achievement + others
-add stats tracking
-[] - add tooltip to statistics and achievements page explaining local storage mechanics
-
-translate achievements
-check for all TODO comments
-
 [] - refactor isWin condition
-
-https://www.svgrepo.com/svg/262028/trophy
 
 ## Ideas
 
