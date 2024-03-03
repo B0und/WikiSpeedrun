@@ -4,9 +4,10 @@ import { useI18nContext } from "../i18n/i18n-react";
 import { useIsGameRunning } from "../stores/GameStore";
 import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "./Drawer";
 
-import { GithubLink, Link } from "./Header";
+import { GithubLink, type WikiLink } from "./Header";
+import { Link } from "react-router-dom";
 
-export const MobileMenu = ({ links }: { links: Link[] }) => {
+export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
   const { LL } = useI18nContext();
 
   const isGameRunning = useIsGameRunning();

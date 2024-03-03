@@ -9,14 +9,14 @@ import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
 import { LocalizedString } from "typesafe-i18n";
 import { MobileMenu } from "./MobileMenu";
 
-export interface Link {
+export interface WikiLink {
   name: LocalizedString;
   path: string;
 }
 const Header = () => {
   const { LL } = useI18nContext();
 
-  const links: Link[] = [
+  const links: WikiLink[] = [
     { name: LL.Play(), path: "/settings" },
     { name: LL.Statistics(), path: "/stats" },
     { name: LL.Achievements(), path: "/achievements" },
@@ -77,7 +77,7 @@ const WikiLogo = () => {
   );
 };
 
-const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Link[] }) => {
+const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: WikiLink[] }) => {
   return (
     <>
       {!isGameRunning &&
