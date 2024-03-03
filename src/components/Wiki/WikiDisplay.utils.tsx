@@ -77,8 +77,6 @@ export const useWikiQuery = () => {
         increaseWins();
         addKnownLanguage(language);
         increaseArticlesClicked(clicks);
-        // add new languages known
-        //
         checkAchievements();
         return true;
       }
