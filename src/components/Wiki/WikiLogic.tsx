@@ -63,7 +63,6 @@ const useWikiLogic = () => {
     if (filterOtherStuff(target, invalidLinkText)) {
       return;
     }
-    // console.log({ target });
 
     errorToast(invalidLinkText);
   };
@@ -95,8 +94,6 @@ function scrollToElement(elementId: string | null | undefined) {
 
 const getFilteredLink = (element: HTMLAnchorElement) => {
   const hrefText = element.getAttribute("href");
-
-  console.log({ hrefText });
 
   if (!hrefText) return null;
   if (!hrefText.startsWith("/wiki/")) {
