@@ -62,6 +62,7 @@ If you want to make some major code changes, please contact me first/open an iss
 ## Donations
 
 USDT (TRC20) TNtJLB7bdaAaG22tNfxvaKvvscfk3KhUuD
+
 USDT (ERC20) 0x98F0d68C0a69B869260e7CB78341FeAF3d03fb0c
 
 ## License
