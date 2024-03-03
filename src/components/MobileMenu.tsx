@@ -4,14 +4,7 @@ import { useI18nContext } from "../i18n/i18n-react";
 import { useIsGameRunning } from "../stores/GameStore";
 import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "./Drawer";
 
-import { Link } from "react-router-dom";
-import { LocalizedString } from "typesafe-i18n";
-import { GithubLink } from "./Header";
-
-interface Link {
-  name: LocalizedString | string; // TODO fixme, delete duplicate interface
-  path: string;
-}
+import { GithubLink, Link } from "./Header";
 
 export const MobileMenu = ({ links }: { links: Link[] }) => {
   const { LL } = useI18nContext();
