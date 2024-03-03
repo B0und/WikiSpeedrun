@@ -315,81 +315,6 @@ export const ACHIEVEMENTS_LIST = [
     unlocked: false,
     imgUrl: "/wiki-waifu.png",
   },
-  // {
-  //   title: "Speedster",
-  //   description: "Reach your destination article in less than 10 clicks and 2 minutes.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A stopwatch with wings, symbolizing speed.",
-  // },
-  // {
-  //   title: "Efficient Explorer",
-  //   description: "Reach your destination article in the fewest clicks possible.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A map with a direct path between the start and destination points.",
-  // },
-  // {
-  //   title: "Lightning Linker",
-  //   description: "Complete a journey in less than 30 seconds.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A lightning bolt connecting two articles.",
-  // },
-  // {
-  //   title: "Speed of Light",
-  //   description: "Finish a journey with an average of less than 5 seconds per click.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A shining star traveling at high speed.",
-  // },
-  // {
-  //   title: "Fast Fingers",
-  //   description: "Complete a journey with an average of less than 2 seconds per click.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A hand typing at lightning speed.",
-  // },
-  // {
-  //   title: "Turbo Tracker",
-  //   description: "Complete 100 journeys with an average speed of less than 10 seconds per click.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A turbocharged car racing towards the destination article.",
-  // },
-  // {
-  //   title: "One-Click Wonder",
-  //   description: "Reach your destination article in a single click.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A finger pressing a button with a target symbol.",
-  // },
-  // {
-  //   title: "Language Luminary",
-  //   description:
-  //     "Complete a journey by navigating through articles in a language other than your native tongue.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "Flags of different countries with articles flowing between them.",
-  // },
-  // {
-  //   title: "Trailblazer",
-  //   description:
-  //     "Successfully complete 25 journeys through newly created or recently edited articles.",
-  //   conditionId: "winsGreaterThan0",
-  //   unlocked: false,
-  //   image: "",
-  //   imageAlt: "A footstep leaving a trail of edits.",
-  // },
-  // ] as const satisfies readonly Achievement[];
 ] as const satisfies readonly Achievement[];
 
 // for getting a function for condition (based on its id)
@@ -407,56 +332,13 @@ export const achivementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce(
   init
 );
 
-/*
+const achievementsI18n = {};
+ACHIEVEMENTS_LIST.forEach((achievement) => {
+  // Create an object for each achievement with title and description fields
+  achievementsI18n[achievement.id] = {
+    title: achievement.title,
+    description: achievement.description,
+  };
+});
 
-Both articles were random - stat
-
-Speedster
-Description: Reach your destination article in less than 10 clicks and 2 minutes.
-Image: A stopwatch with wings, symbolizing speed.
-
-Efficient Explorer
-Description: Reach your destination article in the fewest clicks possible.
-Image: A map with a direct path between the start and destination points.
-
-Lightning Linker
-Description: Complete a journey in less than 30 seconds.
-Image: A lightning bolt connecting two articles.
-
-Speed of Light
-Description: Finish a journey with an average of less than 5 seconds per click.
-Image: A shining star traveling at high speed.
-
-Fast Fingers
-Description: Complete a journey with an average of less than 2 seconds per click.
-Image: A hand typing at lightning speed.
-
-Turbo Tracker
-Description: Complete 100 journeys with an average speed of less than 10 seconds per click.
-Image: A turbocharged car racing towards the destination article.
-
-One-Click Wonder
-Description: Reach your destination article in a single click.
-Image: A finger pressing a button with a target symbol.
-
-
-
-Language Luminary
-Description: Complete a journey by navigating through articles in a language other than your native tongue.
-Image: Flags of different countries with articles flowing between them.
-
-
-
-
-Achievement Title: Elite Conqueror
-Description: Win 50 games in the speedrun category.
-Image: A golden crown symbolizing elite achievement.
-
-Achievement Title: Master Speedrunner
-Description: Win 100 games in the speedrun category.
-Image: A lightning bolt with a "100" emblem.
-
-Achievement Title: Legendary Victor
-Description: Win 500 games in the speedrun category.
-Image: A mythical creature holding a banner with "500" inscribed on it.
- */
+console.log({ achievementsI18n });

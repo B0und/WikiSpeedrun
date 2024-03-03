@@ -17,7 +17,7 @@ export const WikiLanguageSelect = () => {
 
   return (
     <div>
-      <label htmlFor={selectId}>{LL.SELECT_ARTICLE_LANGUAGE()}</label>
+      <label htmlFor={selectId}>{LL["Select article language"]()}</label>
       <Select
         key={wikiLanguage}
         inputId={selectId}

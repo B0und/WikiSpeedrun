@@ -34,7 +34,7 @@ export const MobileMenu = ({ links }: { links: Link[] }) => {
         </DrawerTrigger>
         <DrawerContent side="left" className="flex flex-col items-start">
           <h3 className="w-full border-b-[1px] border-secondary-border text-xl ">
-            {LL.NAVIGATION()}
+            {LL.Navigation()}
           </h3>
           <nav className=" -ml-4 mt-4 flex w-full flex-col gap-2">
             {!isGameRunning &&

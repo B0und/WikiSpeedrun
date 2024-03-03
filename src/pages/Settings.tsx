@@ -13,8 +13,6 @@ import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import { RandomModal } from "../components/RandomModal";
 import { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
-import { ACHIEVEMENTS_LIST } from "../achievements";
-import { achievementToast } from "../components/AchievementNotification";
 import { useCheckAchievements } from "../hooks/useCheckAchievements";
 import { useIsFetching } from "@tanstack/react-query";
 
@@ -37,8 +35,9 @@ const Settings = () => {
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],
   });
 
-  const randomFailText = LL.RANDOM_FAIL();
-  const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
+  const randomFailText = LL["Random failed, try again"]();
+  const copyNotification = () =>
+    toast.success(LL["Copied to clipboard"](), { position: "top-center" });
 
   const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,10 +60,14 @@ const Settings = () => {
   return (
     <div>
       <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
-        {LL.SETTINGS()}
+        {LL.Settings()}
       </h2>
 
-      <p className="pb-8 pt-4 dark:text-dark-primary">{LL.SETTINGS_DESCRIPTION()}</p>
+      <p className="pb-8 pt-4 dark:text-dark-primary">
+        {LL[
+          "Start typing and then select values from the dropdown list or press the random button"
+        ]()}
+      </p>
 
       <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
@@ -77,8 +80,8 @@ const Settings = () => {
 
         <div className="flex items-end gap-2 sm:gap-0">
           <ArticleAutocomplete
-            label={LL.STARTING_ARTICLE_LABEL()}
-            placeholder={LL.INPUT_PLACEHOLDER()}
+            label={LL["Select starting article"]()}
+            placeholder={LL["Start typing to see options"]()}
             required={true}
             onSelect={setStartingArticle}
             defaultValue={startArticle.title}
@@ -110,8 +113,8 @@ const Settings = () => {
 
         <div className="flex items-end gap-2 sm:gap-0">
           <ArticleAutocomplete
-            label={LL.ENDING_ARTICLE_LABEL()}
-            placeholder={LL.INPUT_PLACEHOLDER()}
+            label={LL["Select ending article"]()}
+            placeholder={LL["Start typing to see options"]()}
             required={true}
             onSelect={setEndingArticle}
             defaultValue={endArticle.title}
@@ -150,14 +153,14 @@ const Settings = () => {
               copyNotification();
             }}
           >
-            {LL.SHARE_SETTINGS()}
+            {LL["Share settings"]()}
           </button>
           <button
             type="submit"
             disabled={isFetching}
             className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue disabled:grayscale"
           >
-            {LL.PLAY()}
+            {LL.Play()}
           </button>
         </div>
       </form>

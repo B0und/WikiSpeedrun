@@ -18,10 +18,10 @@ const Header = () => {
 
   // TODO i18n
   const links: Link[] = [
-    { name: LL.PLAY(), path: "/settings" },
-    { name: "Statistics", path: "/stats" },
-    { name: "Achievements", path: "/achievements" },
-    { name: LL.ABOUT(), path: "/about" },
+    { name: LL.Play(), path: "/settings" },
+    { name: LL.Statistics(), path: "/stats" },
+    { name: LL.Achievements(), path: "/achievements" },
+    { name: LL.About(), path: "/about" },
   ];
 
   const isGameRunning = useIsGameRunning();
@@ -70,7 +70,9 @@ const WikiLogo = () => {
       <img
         className="block h-full"
         src={window.location.origin + `/${imageSrc}.png`}
-        alt={LL.WIKI_ALT_TEXT()}
+        alt={LL[
+          "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
+        ]()}
       />
     </picture>
   );

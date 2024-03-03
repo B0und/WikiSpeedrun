@@ -19,7 +19,7 @@ export const RandomModal = (props: RandomModalProps) => {
     <ModalRoot open={props.open} onOpenChange={props.setOpen}>
       <ModalContent>
         <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
-          {LL.CHOOSE_ARTICLE()}
+          {LL["Choose your article"]()}
         </ModalTitle>
         <div className="gap flex flex-col gap-3 pt-5">
           {props.data?.map((article) => (

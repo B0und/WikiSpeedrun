@@ -52,7 +52,7 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
           mutate();
         }}
       >
-        <VisuallyHidden.Root>{LL.GET_RANDOM_ARTICLE()}</VisuallyHidden.Root>
+        <VisuallyHidden.Root>{LL["Get random article"]()}</VisuallyHidden.Root>
         <DiceIcon />
       </button>
       <div className="pointer-events-none absolute right-0 top-0 w-[18px] rounded-full border-[1px] border-black bg-neutral-50 text-center text-xs dark:border-neutral-50 dark:bg-dark-surface dark:text-neutral-50">

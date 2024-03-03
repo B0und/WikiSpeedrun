@@ -43,7 +43,7 @@ const WikiDisplay = () => {
   };
 
   if (isFetching) {
-    return <p>{LL.LOADING()}</p>;
+    return <p>{LL.Loading()}</p>;
   }
 
   return (

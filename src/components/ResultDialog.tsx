@@ -40,22 +40,23 @@ export const ResultDialog = () => {
   const cheatingAttempts = useCheatingAttempts();
   const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
 
-  const copyNotification = () => toast.success(LL.LINK_COPIED(), { position: "top-center" });
+  const copyNotification = () =>
+    toast.success(LL["Copied to clipboard"](), { position: "top-center" });
 
   useEffect(() => {
     setOpen(isWin);
   }, [isWin]);
 
   const resultStats = [
-    { name: LL.ARTICLE_CLICKS(), value: clicks },
-    { name: LL.CHEATING_ATTEMPTS(), value: cheatingAttempts },
-    { name: LL.MISSED_WINS(), value: missedWins },
+    { name: LL["Article clicks"](), value: clicks },
+    { name: LL["Cheating attempts"](), value: cheatingAttempts },
+    { name: LL["Missed wins"](), value: missedWins },
   ];
 
   return (
     <ModalRoot open={open} onOpenChange={setOpen}>
       <ModalTrigger asChild>
-        {isWin && <button className="p-4 hover:text-primary-blue sm:p-2">{LL.RESULTS()}</button>}
+        {isWin && <button className="p-4 hover:text-primary-blue sm:p-2">{LL.Results()}</button>}
       </ModalTrigger>
       <ModalContent>
         <>
@@ -64,7 +65,7 @@ export const ResultDialog = () => {
           </div>
 
           <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
-            {LL.RESULTS()}
+            {LL.Results()}
           </ModalTitle>
 
           <ModalDescription asChild>
@@ -103,7 +104,7 @@ export const ResultDialog = () => {
                 copyNotification();
               }}
             >
-              {LL.SHARE_RESULT()}
+              {LL["Share Result"]()}
             </button>
             <Dialog.Close asChild>
               <button
@@ -111,7 +112,7 @@ export const ResultDialog = () => {
                 onClick={resetGame}
                 className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
               >
-                {LL.PLAY_AGAIN()}
+                {LL["Play again"]()}
               </button>
             </Dialog.Close>
           </div>

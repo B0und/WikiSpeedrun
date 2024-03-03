@@ -28,12 +28,10 @@ export interface StatsValues {
   single_random_pressed: number; // random 1 button
   multiple_random_pressed: number; // random 5 button
   article_preview_pressed: number;
-  give_up_count: number;
   known_wiki_languages: string[];
   average_answer_time: number;
   fastest_answer_time: number;
   slowest_answer_time: number;
-  share_settings_pressed: number;
   missed_wins: number; // # of winning article links that you missed
   achievements: readonly Achievement[];
 }
@@ -43,11 +41,9 @@ const initialState: StatsValues = {
   article_preview_pressed: 0,
   average_answer_time: 0,
   fastest_answer_time: 0,
-  give_up_count: 0,
   known_wiki_languages: [],
   single_random_pressed: 0,
   multiple_random_pressed: 0,
-  share_settings_pressed: 0,
   slowest_answer_time: 0,
   total_runs: 0,
   wins: 0,
@@ -201,11 +197,9 @@ export const useArticlePreviewPressed = () =>
   useStatsStore((state) => state.article_preview_pressed);
 export const useAverageAnswerTime = () => useStatsStore((state) => state.average_answer_time);
 export const useFastestAnswerTime = () => useStatsStore((state) => state.fastest_answer_time);
-export const useGiveUpCount = () => useStatsStore((state) => state.give_up_count);
 export const useKnownWikiLanguages = () => useStatsStore((state) => state.known_wiki_languages);
 export const useRandom1Pressed = () => useStatsStore((state) => state.single_random_pressed);
 export const useRandom5Pressed = () => useStatsStore((state) => state.multiple_random_pressed);
-export const useShareSettingsPressed = () => useStatsStore((state) => state.share_settings_pressed);
 export const useSlowestAnswerTime = () => useStatsStore((state) => state.slowest_answer_time);
 export const useTotalRuns = () => useStatsStore((state) => state.total_runs);
 export const useWins = () => useStatsStore((state) => state.wins);

@@ -77,8 +77,8 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         </h3>
         {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
         <p className="mt-2 text-base">
-          {isarticlePreviewLoading ? LL.LOADING() : articlePreview?.query?.pages?.[pageid].extract}
-          {isError && LL.ARTICLE_PREVIEW_LOAD_FAILED()}
+          {isarticlePreviewLoading ? LL.Loading() : articlePreview?.query?.pages?.[pageid].extract}
+          {isError && LL["Couldn't load article preview"]()}
         </p>
 
         <Popover.Close

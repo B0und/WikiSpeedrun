@@ -5,24 +5,30 @@ const About = () => {
   const { LL } = useI18nContext();
   return (
     <>
-      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">{LL.TITLE()}</h2>
-      <p className="pb-8 pt-4">{LL.GAME_DESCRIPTION()}</p>
-      <h3 className="border-b-[1px] border-secondary-border text-2xl">{LL.FEATURES()}</h3>
+      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
+        {LL["Wiki Speedrun Game"]()}
+      </h2>
+      <p className="pb-8 pt-4">
+        {LL[
+          "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
+        ]()}
+      </p>
+      <h3 className="border-b-[1px] border-secondary-border text-2xl">{LL.Features()}</h3>
       <ul className="flex list-inside list-disc flex-col gap-2 pb-8 pl-4 pt-4">
-        <li>{LL.MULTIPLE_LANGUAGES()}</li>
-        <li>{LL.NO_REGISTRATION()}</li>
+        <li>{LL["Now supports multiple languages"]()}</li>
+        <li>{LL["No registration required"]()}</li>
         <li>
-          {LL.TIMER_DESCRIPTION()}
+          {LL["High precision fair™ timer"]()}
           <ul className="list-inside list-[circle]">
-            <li className="pl-6"> {LL.TIMER_SUB_DESCRIPTION()}</li>
+            <li className="pl-6"> {LL["actually stops while you are loading the next article"]()}</li>
           </ul>
         </li>
-        <li> {LL.SESSION_PROGRESS()}</li>
-        <li> {LL.DARK_THEME()}</li>
-        <li> {LL.OPEN_SOURCE()}</li>
+        <li> {LL["Keeps track of your session progress"]()}</li>
+        <li> {LL["Dark theme support"]()}</li>
+        <li> {LL["Open source"]()}</li>
       </ul>
       <Link to={"/settings"} className="bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
-        {LL.PLAY()}
+        {LL.Play()}
       </Link>
     </>
   );

@@ -39,7 +39,7 @@ const Sidebar = () => {
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
           <div className="mt-auto flex w-full shrink-0 flex-wrap items-baseline justify-between overflow-auto pb-6 pr-6 ">
-            <span>{LL.CLICKS_NUM(clicks)}</span>
+            <span>{LL["Clicks: {0}"](clicks)}</span>
             <Stopwatch />
           </div>
         </div>

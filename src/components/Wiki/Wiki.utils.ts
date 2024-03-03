@@ -18,7 +18,7 @@ export const useNoCheating = () => {
           e.preventDefault();
         }
         increaseCheatingAttemptsCounter();
-        errorToast(LL.NO_CHEATING());
+        errorToast(LL["No Cheating!"]());
       }
     },
     [LL, increaseCheatingAttemptsCounter, isGameRunning]

@@ -2,55 +2,173 @@ import type { BaseTranslation } from "../i18n-types";
 
 // English
 const en: BaseTranslation = {
-  TITLE: "Wiki Speedrun Game",
-  GAME_DESCRIPTION:
+  "Wiki Speedrun Game": "Wiki Speedrun Game",
+  "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time":
     "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time.",
-  FEATURES: "Features",
-  MULTIPLE_LANGUAGES: "Now supports multiple languages",
-  NO_REGISTRATION: "No registration required",
-  TIMER_DESCRIPTION: "High precision fair™ timer",
-  TIMER_SUB_DESCRIPTION: "actually stops while you are loading the next article",
-  SESSION_PROGRESS: "Keeps track of your session progress",
-  DARK_THEME: "Dark theme support",
-  OPEN_SOURCE: "Open source",
-  PLAY: "Play",
-  ABOUT: "About",
-  SETTINGS: "Settings",
-  SETTINGS_DESCRIPTION:
+  Features: "Features",
+  "Now supports multiple languages": "Now supports multiple languages",
+  "No registration required": "No registration required",
+  "High precision fair™ timer": "High precision fair™ timer",
+  "actually stops while you are loading the next article":
+    "actually stops while you are loading the next article",
+  "Keeps track of your session progress": "Keeps track of your session progress",
+  "Dark theme support": "Dark theme support",
+  "Open source": "Open source",
+  Play: "Play",
+  About: "About",
+  Settings: "Settings",
+  "Start typing and then select values from the dropdown list or press the random button":
     "Start typing and then select values from the dropdown list or press the random button.",
-  STARTING_ARTICLE_LABEL: "Select starting article",
-  ENDING_ARTICLE_LABEL: "Select ending article",
-  INPUT_PLACEHOLDER: "Start typing to see options",
-  ARTICLE_CLICKS: "Article clicks",
-  CHEATING_ATTEMPTS: "Cheating attempts",
-  RESULTS: "Results",
-  PLAY_AGAIN: "Play again",
-  GIVE_UP: "Give up",
-  CONFIRM_ACTION: "Confirm action",
-  LEAVE_WARNING: "If you leave, your current progress will be lost",
-  HISTORY: "History",
-  ARTICLE: "Article",
-  TIME: "Time",
-  NO_PAGE: "This page doesn't exist",
-  CLICKS_NUM: "Clicks: {0}",
-  NO_ARTICLES_FOUND: "No articles found",
-  GET_RANDOM_ARTICLE: "Get random article",
-  WIKI_ALT_TEXT:
+  "Select starting article": "Select starting article",
+  "Select ending article": "Select ending article",
+  "Start typing to see options": "Start typing to see options",
+  "Article clicks": "Article clicks",
+  "Cheating attempts": "Cheating attempts",
+  Results: "Results",
+  "Play again": "Play again",
+  "Give up": "Give up",
+  "Confirm action": "Confirm action",
+  "If you leave, your current progress will be lost":
+    "If you leave, your current progress will be lost",
+  History: "History",
+  Article: "Article",
+  Time: "Time",
+  "This page doesn't exist": "This page doesn't exist",
+  "Clicks: {0}": "Clicks: {0}",
+  "No articles found": "No articles found",
+  "Get random article": "Get random article",
+  "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds":
     "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across it. (looks like a big black stripe with a green time text on top). The time is 9 seconds and 5 milliseconds.",
-  SELECT_ARTICLE_LANGUAGE: "Select article language",
-  LANGUAGE: "Language",
-  NAVIGATION: "Navigation",
-  NO_CHEATING: "No Cheating!",
-  RANDOM_FAIL: "Random failed, try again",
-  INVALID_LINK: "Choose another link",
-  SHARE_SETTINGS: "Share settings",
-  LINK_COPIED: "Copied to clipboard",
-  SHARE_RESULT: "Share Result",
-  LOADING: "Loading...",
-  ARTICLE_PREVIEW_LOAD_FAILED: "Couldn't load article preview",
-  WINNING_LINKS: "Winning links",
-  MISSED_WINS: "Missed wins",
-  CHOOSE_ARTICLE: "Choose your article",
+  "Select article language": "Select article language",
+  Language: "Language",
+  Navigation: "Navigation",
+  "No Cheating!": "No Cheating!",
+  "Random failed, try again": "Random failed, try again",
+  "Choose another link": "Choose another link",
+  "Share settings": "Share settings",
+  "Copied to clipboard": "Copied to clipboard",
+  "Share Result": "Share Result",
+  Loading: "Loading...",
+  "Couldn't load article preview": "Couldn't load article preview",
+  "Winning links": "Winning links",
+  "Missed wins": "Missed wins",
+  "Choose your article": "Choose your article",
+  Statistics: "Statistics",
+  "Wins:": "Wins:",
+  "Total runs:": "Total runs:",
+  "Known languages:": "Known languages:",
+  "Random choices:": "Random choices:",
+  "Articles clicked:": "Articles clicked:",
+  "Previewed Articles:": "Previewed Articles:",
+  Achievements: "Achievements",
+  "All of the information is stored locally in your browser (because servers cost money)":
+    "All of the information is stored locally in your browser (because servers cost money)",
+  "If you clear your browser data or switch to another browser all of your data will be gone":
+    "If you clear your browser data or switch to another browser all of your data will be gone.",
+  // ACHIEVEMENTS
+  FirstWin: {
+    title: "First Victory",
+    description: "Complete your first speedrun",
+  },
+  NoviceRunner: {
+    title: "Novice Runner",
+    description: "Win 10 speedruns",
+  },
+  Speedster: {
+    title: "Speedster",
+    description: "Win 25 speedruns",
+  },
+  WikiExplorer: {
+    title: "Wiki Explorer",
+    description: "Win 50 speedruns",
+  },
+  SpeedDemon: {
+    title: "Speed Demon",
+    description: "Win 100 speedruns",
+  },
+  MasterRunner: {
+    title: "Master Runner",
+    description: "Win 250 speedruns",
+  },
+  WikipediaChampion: {
+    title: "Wikipedia Champion",
+    description: "Win 500 speedruns",
+  },
+  SpeedrunAddict: {
+    title: "Speedrun Addict",
+    description: "Win 1000 speedruns",
+  },
+  WikipediaLegend: {
+    title: "Wikipedia Legend",
+    description: "Win 2500 speedruns",
+  },
+  SpeedrunGod: {
+    title: "Speedrun God",
+    description: "Win 5000 speedruns",
+  },
+  AttentiveExplorer: {
+    title: "Attentive Explorer",
+    description: "Navigate through at least 10 articles without missing the winning link",
+  },
+  KeenPathfinder: {
+    title: "Keen Pathfinder",
+    description: "Navigate through at least 25 articles without missing the winning link",
+  },
+  SharpNavigator: {
+    title: "Sharp Navigator",
+    description: "Navigate through at least 50 articles without missing the winning link",
+  },
+  ExplorerOfChance: {
+    title: "Explorer of Chance",
+    description: "Select 10 random articles",
+  },
+  FortuneSeeker: {
+    title: "Fortune Seeker",
+    description: "Select 100 random articles",
+  },
+  GachaAddict: {
+    title: "Gacha Addict",
+    description: "Select 1000 random articles",
+  },
+  GachaOverlord: {
+    title: "Gacha Overlord",
+    description: "Select 10000 random articles",
+  },
+  Curiosity: {
+    title: "Curiosity didn't kill the cat",
+    description: "Preview an article",
+  },
+  CuriousExplorer: {
+    title: "Curious Explorer",
+    description: "Preview 100 articles",
+  },
+  PreviewEnthusiast: {
+    title: "Preview Enthusiast",
+    description: "Preview 1000 articles",
+  },
+  InsatiablesReader: {
+    title: "Insatiable Reader",
+    description: "Preview 10000 articles",
+  },
+  Bilingual: {
+    title: "Bilingual",
+    description: "Explore articles in 2 different languages",
+  },
+  Trilingual: {
+    title: "Trilingual",
+    description: "Explore articles in 3 different languages",
+  },
+  Polyglot: {
+    title: "Polyglot",
+    description: "Explore articles in 5 different languages",
+  },
+  EgoStroke: {
+    title: "Ego Stroke",
+    description: "Thank you for inspiring this whole project",
+  },
+  SpeedrunWaifu: {
+    title: "Wiki Speedrun Waifu",
+    description: "Made by Ina_den. Follow him on twitter",
+  },
 };
-
 export default en;

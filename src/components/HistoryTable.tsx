@@ -18,13 +18,13 @@ const HistoryTable = () => {
   return (
     <div id="history-scroll" className="scrollbar self-stretch overflow-y-auto pr-3">
       <table className="mb-auto w-full table-auto">
-        <caption className=" text-start text-xl">{LL.HISTORY()}</caption>
+        <caption className=" text-start text-xl">{LL.History()}</caption>
 
         <thead className="sticky top-0 mt-2 h-9 bg-neutral-50 align-top dark:bg-dark-surface">
           <tr>
-            <th className="text-start">{LL.ARTICLE()}</th>
-            <th className="text-start">{LL.TIME()}</th>
-            {!isGameRunning && <th className="text-start">{LL.WINNING_LINKS()}</th>}
+            <th className="text-start">{LL.Article()}</th>
+            <th className="text-start">{LL.Time()}</th>
+            {!isGameRunning && <th className="text-start">{LL["Winning links"]()}</th>}
           </tr>
         </thead>
         <tbody ref={tableRef}>

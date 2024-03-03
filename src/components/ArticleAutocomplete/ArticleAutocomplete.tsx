@@ -80,7 +80,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     if (obj.inputValue.trim().length === 0) {
       return null;
     }
-    return LL.NO_ARTICLES_FOUND();
+    return LL["No articles found"]();
   };
 
   return (

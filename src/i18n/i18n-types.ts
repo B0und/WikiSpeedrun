@@ -28,375 +28,975 @@ type RootTranslation = {
 	/**
 	 * W​i​k​i​ ​S​p​e​e​d​r​u​n​ ​G​a​m​e
 	 */
-	TITLE: string
+	'Wiki Speedrun Game': string
 	/**
 	 * T​h​e​ ​g​o​a​l​ ​o​f​ ​t​h​e​ ​g​a​m​e​ ​i​s​ ​t​o​ ​n​a​v​i​g​a​t​e​ ​f​r​o​m​ ​a​ ​s​t​a​r​t​i​n​g​ ​w​i​k​i​p​e​d​i​a​ ​a​r​t​i​c​l​e​ ​t​o​ ​a​n​o​t​h​e​r​ ​o​n​e​,​ ​i​n​ ​t​h​e​ ​l​e​a​s​t​ ​a​m​o​u​n​t​ ​o​f​ ​c​l​i​c​k​s​ ​a​n​d​ ​t​i​m​e​.
 	 */
-	GAME_DESCRIPTION: string
+	'The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time': string
 	/**
 	 * F​e​a​t​u​r​e​s
 	 */
-	FEATURES: string
+	Features: string
 	/**
 	 * N​o​w​ ​s​u​p​p​o​r​t​s​ ​m​u​l​t​i​p​l​e​ ​l​a​n​g​u​a​g​e​s
 	 */
-	MULTIPLE_LANGUAGES: string
+	'Now supports multiple languages': string
 	/**
 	 * N​o​ ​r​e​g​i​s​t​r​a​t​i​o​n​ ​r​e​q​u​i​r​e​d
 	 */
-	NO_REGISTRATION: string
+	'No registration required': string
 	/**
 	 * H​i​g​h​ ​p​r​e​c​i​s​i​o​n​ ​f​a​i​r​™​ ​t​i​m​e​r
 	 */
-	TIMER_DESCRIPTION: string
+	'High precision fair™ timer': string
 	/**
 	 * a​c​t​u​a​l​l​y​ ​s​t​o​p​s​ ​w​h​i​l​e​ ​y​o​u​ ​a​r​e​ ​l​o​a​d​i​n​g​ ​t​h​e​ ​n​e​x​t​ ​a​r​t​i​c​l​e
 	 */
-	TIMER_SUB_DESCRIPTION: string
+	'actually stops while you are loading the next article': string
 	/**
 	 * K​e​e​p​s​ ​t​r​a​c​k​ ​o​f​ ​y​o​u​r​ ​s​e​s​s​i​o​n​ ​p​r​o​g​r​e​s​s
 	 */
-	SESSION_PROGRESS: string
+	'Keeps track of your session progress': string
 	/**
 	 * D​a​r​k​ ​t​h​e​m​e​ ​s​u​p​p​o​r​t
 	 */
-	DARK_THEME: string
+	'Dark theme support': string
 	/**
 	 * O​p​e​n​ ​s​o​u​r​c​e
 	 */
-	OPEN_SOURCE: string
+	'Open source': string
 	/**
 	 * P​l​a​y
 	 */
-	PLAY: string
+	Play: string
 	/**
 	 * A​b​o​u​t
 	 */
-	ABOUT: string
+	About: string
 	/**
 	 * S​e​t​t​i​n​g​s
 	 */
-	SETTINGS: string
+	Settings: string
 	/**
 	 * S​t​a​r​t​ ​t​y​p​i​n​g​ ​a​n​d​ ​t​h​e​n​ ​s​e​l​e​c​t​ ​v​a​l​u​e​s​ ​f​r​o​m​ ​t​h​e​ ​d​r​o​p​d​o​w​n​ ​l​i​s​t​ ​o​r​ ​p​r​e​s​s​ ​t​h​e​ ​r​a​n​d​o​m​ ​b​u​t​t​o​n​.
 	 */
-	SETTINGS_DESCRIPTION: string
+	'Start typing and then select values from the dropdown list or press the random button': string
 	/**
 	 * S​e​l​e​c​t​ ​s​t​a​r​t​i​n​g​ ​a​r​t​i​c​l​e
 	 */
-	STARTING_ARTICLE_LABEL: string
+	'Select starting article': string
 	/**
 	 * S​e​l​e​c​t​ ​e​n​d​i​n​g​ ​a​r​t​i​c​l​e
 	 */
-	ENDING_ARTICLE_LABEL: string
+	'Select ending article': string
 	/**
 	 * S​t​a​r​t​ ​t​y​p​i​n​g​ ​t​o​ ​s​e​e​ ​o​p​t​i​o​n​s
 	 */
-	INPUT_PLACEHOLDER: string
+	'Start typing to see options': string
 	/**
 	 * A​r​t​i​c​l​e​ ​c​l​i​c​k​s
 	 */
-	ARTICLE_CLICKS: string
+	'Article clicks': string
 	/**
 	 * C​h​e​a​t​i​n​g​ ​a​t​t​e​m​p​t​s
 	 */
-	CHEATING_ATTEMPTS: string
+	'Cheating attempts': string
 	/**
 	 * R​e​s​u​l​t​s
 	 */
-	RESULTS: string
+	Results: string
 	/**
 	 * P​l​a​y​ ​a​g​a​i​n
 	 */
-	PLAY_AGAIN: string
+	'Play again': string
 	/**
 	 * G​i​v​e​ ​u​p
 	 */
-	GIVE_UP: string
+	'Give up': string
 	/**
 	 * C​o​n​f​i​r​m​ ​a​c​t​i​o​n
 	 */
-	CONFIRM_ACTION: string
+	'Confirm action': string
 	/**
 	 * I​f​ ​y​o​u​ ​l​e​a​v​e​,​ ​y​o​u​r​ ​c​u​r​r​e​n​t​ ​p​r​o​g​r​e​s​s​ ​w​i​l​l​ ​b​e​ ​l​o​s​t
 	 */
-	LEAVE_WARNING: string
+	'If you leave, your current progress will be lost': string
 	/**
 	 * H​i​s​t​o​r​y
 	 */
-	HISTORY: string
+	History: string
 	/**
 	 * A​r​t​i​c​l​e
 	 */
-	ARTICLE: string
+	Article: string
 	/**
 	 * T​i​m​e
 	 */
-	TIME: string
+	Time: string
 	/**
 	 * T​h​i​s​ ​p​a​g​e​ ​d​o​e​s​n​'​t​ ​e​x​i​s​t
 	 */
-	NO_PAGE: string
+	'This page doesn\'t exist': string
 	/**
 	 * C​l​i​c​k​s​:​ ​{​0​}
 	 * @param {unknown} 0
 	 */
-	CLICKS_NUM: RequiredParams<'0'>
+	'Clicks: {0}': RequiredParams<'0'>
 	/**
 	 * N​o​ ​a​r​t​i​c​l​e​s​ ​f​o​u​n​d
 	 */
-	NO_ARTICLES_FOUND: string
+	'No articles found': string
 	/**
 	 * G​e​t​ ​r​a​n​d​o​m​ ​a​r​t​i​c​l​e
 	 */
-	GET_RANDOM_ARTICLE: string
+	'Get random article': string
 	/**
 	 * W​i​k​i​ ​s​p​e​e​d​r​u​n​ ​l​o​g​o​,​ ​f​e​a​t​u​r​i​n​g​ ​a​ ​W​i​k​i​p​e​d​i​a​ ​s​p​h​e​r​e​ ​w​i​t​h​ ​a​ ​t​i​m​e​r​ ​a​c​r​o​s​s​ ​i​t​.​ ​(​l​o​o​k​s​ ​l​i​k​e​ ​a​ ​b​i​g​ ​b​l​a​c​k​ ​s​t​r​i​p​e​ ​w​i​t​h​ ​a​ ​g​r​e​e​n​ ​t​i​m​e​ ​t​e​x​t​ ​o​n​ ​t​o​p​)​.​ ​T​h​e​ ​t​i​m​e​ ​i​s​ ​9​ ​s​e​c​o​n​d​s​ ​a​n​d​ ​5​ ​m​i​l​l​i​s​e​c​o​n​d​s​.
 	 */
-	WIKI_ALT_TEXT: string
+	'Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds': string
 	/**
 	 * S​e​l​e​c​t​ ​a​r​t​i​c​l​e​ ​l​a​n​g​u​a​g​e
 	 */
-	SELECT_ARTICLE_LANGUAGE: string
+	'Select article language': string
 	/**
 	 * L​a​n​g​u​a​g​e
 	 */
-	LANGUAGE: string
+	Language: string
 	/**
 	 * N​a​v​i​g​a​t​i​o​n
 	 */
-	NAVIGATION: string
+	Navigation: string
 	/**
 	 * N​o​ ​C​h​e​a​t​i​n​g​!
 	 */
-	NO_CHEATING: string
+	'No Cheating!': string
 	/**
 	 * R​a​n​d​o​m​ ​f​a​i​l​e​d​,​ ​t​r​y​ ​a​g​a​i​n
 	 */
-	RANDOM_FAIL: string
+	'Random failed, try again': string
 	/**
 	 * C​h​o​o​s​e​ ​a​n​o​t​h​e​r​ ​l​i​n​k
 	 */
-	INVALID_LINK: string
+	'Choose another link': string
 	/**
 	 * S​h​a​r​e​ ​s​e​t​t​i​n​g​s
 	 */
-	SHARE_SETTINGS: string
+	'Share settings': string
 	/**
 	 * C​o​p​i​e​d​ ​t​o​ ​c​l​i​p​b​o​a​r​d
 	 */
-	LINK_COPIED: string
+	'Copied to clipboard': string
 	/**
 	 * S​h​a​r​e​ ​R​e​s​u​l​t
 	 */
-	SHARE_RESULT: string
+	'Share Result': string
 	/**
 	 * L​o​a​d​i​n​g​.​.​.
 	 */
-	LOADING: string
+	Loading: string
 	/**
 	 * C​o​u​l​d​n​'​t​ ​l​o​a​d​ ​a​r​t​i​c​l​e​ ​p​r​e​v​i​e​w
 	 */
-	ARTICLE_PREVIEW_LOAD_FAILED: string
+	'Couldn\'t load article preview': string
 	/**
 	 * W​i​n​n​i​n​g​ ​l​i​n​k​s
 	 */
-	WINNING_LINKS: string
+	'Winning links': string
 	/**
 	 * M​i​s​s​e​d​ ​w​i​n​s
 	 */
-	MISSED_WINS: string
+	'Missed wins': string
 	/**
 	 * C​h​o​o​s​e​ ​y​o​u​r​ ​a​r​t​i​c​l​e
 	 */
-	CHOOSE_ARTICLE: string
+	'Choose your article': string
+	/**
+	 * S​t​a​t​i​s​t​i​c​s
+	 */
+	Statistics: string
+	/**
+	 * W​i​n​s​:
+	 */
+	'Wins:': string
+	/**
+	 * T​o​t​a​l​ ​r​u​n​s​:
+	 */
+	'Total runs:': string
+	/**
+	 * K​n​o​w​n​ ​l​a​n​g​u​a​g​e​s​:
+	 */
+	'Known languages:': string
+	/**
+	 * R​a​n​d​o​m​ ​c​h​o​i​c​e​s​:
+	 */
+	'Random choices:': string
+	/**
+	 * A​r​t​i​c​l​e​s​ ​c​l​i​c​k​e​d​:
+	 */
+	'Articles clicked:': string
+	/**
+	 * P​r​e​v​i​e​w​e​d​ ​A​r​t​i​c​l​e​s​:
+	 */
+	'Previewed Articles:': string
+	/**
+	 * A​c​h​i​e​v​e​m​e​n​t​s
+	 */
+	Achievements: string
+	/**
+	 * A​l​l​ ​o​f​ ​t​h​e​ ​i​n​f​o​r​m​a​t​i​o​n​ ​i​s​ ​s​t​o​r​e​d​ ​l​o​c​a​l​l​y​ ​i​n​ ​y​o​u​r​ ​b​r​o​w​s​e​r​ ​(​b​e​c​a​u​s​e​ ​s​e​r​v​e​r​s​ ​c​o​s​t​ ​m​o​n​e​y​)
+	 */
+	'All of the information is stored locally in your browser (because servers cost money)': string
+	/**
+	 * I​f​ ​y​o​u​ ​c​l​e​a​r​ ​y​o​u​r​ ​b​r​o​w​s​e​r​ ​d​a​t​a​ ​o​r​ ​s​w​i​t​c​h​ ​t​o​ ​a​n​o​t​h​e​r​ ​b​r​o​w​s​e​r​ ​a​l​l​ ​o​f​ ​y​o​u​r​ ​d​a​t​a​ ​w​i​l​l​ ​b​e​ ​g​o​n​e​.
+	 */
+	'If you clear your browser data or switch to another browser all of your data will be gone': string
+	FirstWin: {
+		/**
+		 * F​i​r​s​t​ ​V​i​c​t​o​r​y
+		 */
+		title: string
+		/**
+		 * C​o​m​p​l​e​t​e​ ​y​o​u​r​ ​f​i​r​s​t​ ​s​p​e​e​d​r​u​n
+		 */
+		description: string
+	}
+	NoviceRunner: {
+		/**
+		 * N​o​v​i​c​e​ ​R​u​n​n​e​r
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​1​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	Speedster: {
+		/**
+		 * S​p​e​e​d​s​t​e​r
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​2​5​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	WikiExplorer: {
+		/**
+		 * W​i​k​i​ ​E​x​p​l​o​r​e​r
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​5​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	SpeedDemon: {
+		/**
+		 * S​p​e​e​d​ ​D​e​m​o​n
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​1​0​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	MasterRunner: {
+		/**
+		 * M​a​s​t​e​r​ ​R​u​n​n​e​r
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​2​5​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	WikipediaChampion: {
+		/**
+		 * W​i​k​i​p​e​d​i​a​ ​C​h​a​m​p​i​o​n
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​5​0​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	SpeedrunAddict: {
+		/**
+		 * S​p​e​e​d​r​u​n​ ​A​d​d​i​c​t
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​1​0​0​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	WikipediaLegend: {
+		/**
+		 * W​i​k​i​p​e​d​i​a​ ​L​e​g​e​n​d
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​2​5​0​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	SpeedrunGod: {
+		/**
+		 * S​p​e​e​d​r​u​n​ ​G​o​d
+		 */
+		title: string
+		/**
+		 * W​i​n​ ​5​0​0​0​ ​s​p​e​e​d​r​u​n​s
+		 */
+		description: string
+	}
+	AttentiveExplorer: {
+		/**
+		 * A​t​t​e​n​t​i​v​e​ ​E​x​p​l​o​r​e​r
+		 */
+		title: string
+		/**
+		 * N​a​v​i​g​a​t​e​ ​t​h​r​o​u​g​h​ ​a​t​ ​l​e​a​s​t​ ​1​0​ ​a​r​t​i​c​l​e​s​ ​w​i​t​h​o​u​t​ ​m​i​s​s​i​n​g​ ​t​h​e​ ​w​i​n​n​i​n​g​ ​l​i​n​k
+		 */
+		description: string
+	}
+	KeenPathfinder: {
+		/**
+		 * K​e​e​n​ ​P​a​t​h​f​i​n​d​e​r
+		 */
+		title: string
+		/**
+		 * N​a​v​i​g​a​t​e​ ​t​h​r​o​u​g​h​ ​a​t​ ​l​e​a​s​t​ ​2​5​ ​a​r​t​i​c​l​e​s​ ​w​i​t​h​o​u​t​ ​m​i​s​s​i​n​g​ ​t​h​e​ ​w​i​n​n​i​n​g​ ​l​i​n​k
+		 */
+		description: string
+	}
+	SharpNavigator: {
+		/**
+		 * S​h​a​r​p​ ​N​a​v​i​g​a​t​o​r
+		 */
+		title: string
+		/**
+		 * N​a​v​i​g​a​t​e​ ​t​h​r​o​u​g​h​ ​a​t​ ​l​e​a​s​t​ ​5​0​ ​a​r​t​i​c​l​e​s​ ​w​i​t​h​o​u​t​ ​m​i​s​s​i​n​g​ ​t​h​e​ ​w​i​n​n​i​n​g​ ​l​i​n​k
+		 */
+		description: string
+	}
+	ExplorerOfChance: {
+		/**
+		 * E​x​p​l​o​r​e​r​ ​o​f​ ​C​h​a​n​c​e
+		 */
+		title: string
+		/**
+		 * S​e​l​e​c​t​ ​1​0​ ​r​a​n​d​o​m​ ​a​r​t​i​c​l​e​s
+		 */
+		description: string
+	}
+	FortuneSeeker: {
+		/**
+		 * F​o​r​t​u​n​e​ ​S​e​e​k​e​r
+		 */
+		title: string
+		/**
+		 * S​e​l​e​c​t​ ​1​0​0​ ​r​a​n​d​o​m​ ​a​r​t​i​c​l​e​s
+		 */
+		description: string
+	}
+	GachaAddict: {
+		/**
+		 * G​a​c​h​a​ ​A​d​d​i​c​t
+		 */
+		title: string
+		/**
+		 * S​e​l​e​c​t​ ​1​0​0​0​ ​r​a​n​d​o​m​ ​a​r​t​i​c​l​e​s
+		 */
+		description: string
+	}
+	GachaOverlord: {
+		/**
+		 * G​a​c​h​a​ ​O​v​e​r​l​o​r​d
+		 */
+		title: string
+		/**
+		 * S​e​l​e​c​t​ ​1​0​0​0​0​ ​r​a​n​d​o​m​ ​a​r​t​i​c​l​e​s
+		 */
+		description: string
+	}
+	Curiosity: {
+		/**
+		 * C​u​r​i​o​s​i​t​y​ ​d​i​d​n​'​t​ ​k​i​l​l​ ​t​h​e​ ​c​a​t
+		 */
+		title: string
+		/**
+		 * P​r​e​v​i​e​w​ ​a​n​ ​a​r​t​i​c​l​e
+		 */
+		description: string
+	}
+	CuriousExplorer: {
+		/**
+		 * C​u​r​i​o​u​s​ ​E​x​p​l​o​r​e​r
+		 */
+		title: string
+		/**
+		 * P​r​e​v​i​e​w​ ​1​0​0​ ​a​r​t​i​c​l​e​s
+		 */
+		description: string
+	}
+	PreviewEnthusiast: {
+		/**
+		 * P​r​e​v​i​e​w​ ​E​n​t​h​u​s​i​a​s​t
+		 */
+		title: string
+		/**
+		 * P​r​e​v​i​e​w​ ​1​0​0​0​ ​a​r​t​i​c​l​e​s
+		 */
+		description: string
+	}
+	InsatiablesReader: {
+		/**
+		 * I​n​s​a​t​i​a​b​l​e​ ​R​e​a​d​e​r
+		 */
+		title: string
+		/**
+		 * P​r​e​v​i​e​w​ ​1​0​0​0​0​ ​a​r​t​i​c​l​e​s
+		 */
+		description: string
+	}
+	Bilingual: {
+		/**
+		 * B​i​l​i​n​g​u​a​l
+		 */
+		title: string
+		/**
+		 * E​x​p​l​o​r​e​ ​a​r​t​i​c​l​e​s​ ​i​n​ ​2​ ​d​i​f​f​e​r​e​n​t​ ​l​a​n​g​u​a​g​e​s
+		 */
+		description: string
+	}
+	Trilingual: {
+		/**
+		 * T​r​i​l​i​n​g​u​a​l
+		 */
+		title: string
+		/**
+		 * E​x​p​l​o​r​e​ ​a​r​t​i​c​l​e​s​ ​i​n​ ​3​ ​d​i​f​f​e​r​e​n​t​ ​l​a​n​g​u​a​g​e​s
+		 */
+		description: string
+	}
+	Polyglot: {
+		/**
+		 * P​o​l​y​g​l​o​t
+		 */
+		title: string
+		/**
+		 * E​x​p​l​o​r​e​ ​a​r​t​i​c​l​e​s​ ​i​n​ ​5​ ​d​i​f​f​e​r​e​n​t​ ​l​a​n​g​u​a​g​e​s
+		 */
+		description: string
+	}
+	EgoStroke: {
+		/**
+		 * E​g​o​ ​S​t​r​o​k​e
+		 */
+		title: string
+		/**
+		 * T​h​a​n​k​ ​y​o​u​ ​f​o​r​ ​i​n​s​p​i​r​i​n​g​ ​t​h​i​s​ ​w​h​o​l​e​ ​p​r​o​j​e​c​t
+		 */
+		description: string
+	}
+	SpeedrunWaifu: {
+		/**
+		 * W​i​k​i​ ​S​p​e​e​d​r​u​n​ ​W​a​i​f​u
+		 */
+		title: string
+		/**
+		 * M​a​d​e​ ​b​y​ ​I​n​a​_​d​e​n​.​ ​F​o​l​l​o​w​ ​h​i​m​ ​o​n​ ​t​w​i​t​t​e​r
+		 */
+		description: string
+	}
 }
 
 export type TranslationFunctions = {
 	/**
 	 * Wiki Speedrun Game
 	 */
-	TITLE: () => LocalizedString
+	'Wiki Speedrun Game': () => LocalizedString
 	/**
 	 * The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time.
 	 */
-	GAME_DESCRIPTION: () => LocalizedString
+	'The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time': () => LocalizedString
 	/**
 	 * Features
 	 */
-	FEATURES: () => LocalizedString
+	Features: () => LocalizedString
 	/**
 	 * Now supports multiple languages
 	 */
-	MULTIPLE_LANGUAGES: () => LocalizedString
+	'Now supports multiple languages': () => LocalizedString
 	/**
 	 * No registration required
 	 */
-	NO_REGISTRATION: () => LocalizedString
+	'No registration required': () => LocalizedString
 	/**
 	 * High precision fair™ timer
 	 */
-	TIMER_DESCRIPTION: () => LocalizedString
+	'High precision fair™ timer': () => LocalizedString
 	/**
 	 * actually stops while you are loading the next article
 	 */
-	TIMER_SUB_DESCRIPTION: () => LocalizedString
+	'actually stops while you are loading the next article': () => LocalizedString
 	/**
 	 * Keeps track of your session progress
 	 */
-	SESSION_PROGRESS: () => LocalizedString
+	'Keeps track of your session progress': () => LocalizedString
 	/**
 	 * Dark theme support
 	 */
-	DARK_THEME: () => LocalizedString
+	'Dark theme support': () => LocalizedString
 	/**
 	 * Open source
 	 */
-	OPEN_SOURCE: () => LocalizedString
+	'Open source': () => LocalizedString
 	/**
 	 * Play
 	 */
-	PLAY: () => LocalizedString
+	Play: () => LocalizedString
 	/**
 	 * About
 	 */
-	ABOUT: () => LocalizedString
+	About: () => LocalizedString
 	/**
 	 * Settings
 	 */
-	SETTINGS: () => LocalizedString
+	Settings: () => LocalizedString
 	/**
 	 * Start typing and then select values from the dropdown list or press the random button.
 	 */
-	SETTINGS_DESCRIPTION: () => LocalizedString
+	'Start typing and then select values from the dropdown list or press the random button': () => LocalizedString
 	/**
 	 * Select starting article
 	 */
-	STARTING_ARTICLE_LABEL: () => LocalizedString
+	'Select starting article': () => LocalizedString
 	/**
 	 * Select ending article
 	 */
-	ENDING_ARTICLE_LABEL: () => LocalizedString
+	'Select ending article': () => LocalizedString
 	/**
 	 * Start typing to see options
 	 */
-	INPUT_PLACEHOLDER: () => LocalizedString
+	'Start typing to see options': () => LocalizedString
 	/**
 	 * Article clicks
 	 */
-	ARTICLE_CLICKS: () => LocalizedString
+	'Article clicks': () => LocalizedString
 	/**
 	 * Cheating attempts
 	 */
-	CHEATING_ATTEMPTS: () => LocalizedString
+	'Cheating attempts': () => LocalizedString
 	/**
 	 * Results
 	 */
-	RESULTS: () => LocalizedString
+	Results: () => LocalizedString
 	/**
 	 * Play again
 	 */
-	PLAY_AGAIN: () => LocalizedString
+	'Play again': () => LocalizedString
 	/**
 	 * Give up
 	 */
-	GIVE_UP: () => LocalizedString
+	'Give up': () => LocalizedString
 	/**
 	 * Confirm action
 	 */
-	CONFIRM_ACTION: () => LocalizedString
+	'Confirm action': () => LocalizedString
 	/**
 	 * If you leave, your current progress will be lost
 	 */
-	LEAVE_WARNING: () => LocalizedString
+	'If you leave, your current progress will be lost': () => LocalizedString
 	/**
 	 * History
 	 */
-	HISTORY: () => LocalizedString
+	History: () => LocalizedString
 	/**
 	 * Article
 	 */
-	ARTICLE: () => LocalizedString
+	Article: () => LocalizedString
 	/**
 	 * Time
 	 */
-	TIME: () => LocalizedString
+	Time: () => LocalizedString
 	/**
 	 * This page doesn't exist
 	 */
-	NO_PAGE: () => LocalizedString
+	'This page doesn\'t exist': () => LocalizedString
 	/**
 	 * Clicks: {0}
 	 */
-	CLICKS_NUM: (arg0: unknown) => LocalizedString
+	'Clicks: {0}': (arg0: unknown) => LocalizedString
 	/**
 	 * No articles found
 	 */
-	NO_ARTICLES_FOUND: () => LocalizedString
+	'No articles found': () => LocalizedString
 	/**
 	 * Get random article
 	 */
-	GET_RANDOM_ARTICLE: () => LocalizedString
+	'Get random article': () => LocalizedString
 	/**
 	 * Wiki speedrun logo, featuring a Wikipedia sphere with a timer across it. (looks like a big black stripe with a green time text on top). The time is 9 seconds and 5 milliseconds.
 	 */
-	WIKI_ALT_TEXT: () => LocalizedString
+	'Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds': () => LocalizedString
 	/**
 	 * Select article language
 	 */
-	SELECT_ARTICLE_LANGUAGE: () => LocalizedString
+	'Select article language': () => LocalizedString
 	/**
 	 * Language
 	 */
-	LANGUAGE: () => LocalizedString
+	Language: () => LocalizedString
 	/**
 	 * Navigation
 	 */
-	NAVIGATION: () => LocalizedString
+	Navigation: () => LocalizedString
 	/**
 	 * No Cheating!
 	 */
-	NO_CHEATING: () => LocalizedString
+	'No Cheating!': () => LocalizedString
 	/**
 	 * Random failed, try again
 	 */
-	RANDOM_FAIL: () => LocalizedString
+	'Random failed, try again': () => LocalizedString
 	/**
 	 * Choose another link
 	 */
-	INVALID_LINK: () => LocalizedString
+	'Choose another link': () => LocalizedString
 	/**
 	 * Share settings
 	 */
-	SHARE_SETTINGS: () => LocalizedString
+	'Share settings': () => LocalizedString
 	/**
 	 * Copied to clipboard
 	 */
-	LINK_COPIED: () => LocalizedString
+	'Copied to clipboard': () => LocalizedString
 	/**
 	 * Share Result
 	 */
-	SHARE_RESULT: () => LocalizedString
+	'Share Result': () => LocalizedString
 	/**
 	 * Loading...
 	 */
-	LOADING: () => LocalizedString
+	Loading: () => LocalizedString
 	/**
 	 * Couldn't load article preview
 	 */
-	ARTICLE_PREVIEW_LOAD_FAILED: () => LocalizedString
+	'Couldn\'t load article preview': () => LocalizedString
 	/**
 	 * Winning links
 	 */
-	WINNING_LINKS: () => LocalizedString
+	'Winning links': () => LocalizedString
 	/**
 	 * Missed wins
 	 */
-	MISSED_WINS: () => LocalizedString
+	'Missed wins': () => LocalizedString
 	/**
 	 * Choose your article
 	 */
-	CHOOSE_ARTICLE: () => LocalizedString
+	'Choose your article': () => LocalizedString
+	/**
+	 * Statistics
+	 */
+	Statistics: () => LocalizedString
+	/**
+	 * Wins:
+	 */
+	'Wins:': () => LocalizedString
+	/**
+	 * Total runs:
+	 */
+	'Total runs:': () => LocalizedString
+	/**
+	 * Known languages:
+	 */
+	'Known languages:': () => LocalizedString
+	/**
+	 * Random choices:
+	 */
+	'Random choices:': () => LocalizedString
+	/**
+	 * Articles clicked:
+	 */
+	'Articles clicked:': () => LocalizedString
+	/**
+	 * Previewed Articles:
+	 */
+	'Previewed Articles:': () => LocalizedString
+	/**
+	 * Achievements
+	 */
+	Achievements: () => LocalizedString
+	/**
+	 * All of the information is stored locally in your browser (because servers cost money)
+	 */
+	'All of the information is stored locally in your browser (because servers cost money)': () => LocalizedString
+	/**
+	 * If you clear your browser data or switch to another browser all of your data will be gone.
+	 */
+	'If you clear your browser data or switch to another browser all of your data will be gone': () => LocalizedString
+	FirstWin: {
+		/**
+		 * First Victory
+		 */
+		title: () => LocalizedString
+		/**
+		 * Complete your first speedrun
+		 */
+		description: () => LocalizedString
+	}
+	NoviceRunner: {
+		/**
+		 * Novice Runner
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 10 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	Speedster: {
+		/**
+		 * Speedster
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 25 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	WikiExplorer: {
+		/**
+		 * Wiki Explorer
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 50 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	SpeedDemon: {
+		/**
+		 * Speed Demon
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 100 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	MasterRunner: {
+		/**
+		 * Master Runner
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 250 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	WikipediaChampion: {
+		/**
+		 * Wikipedia Champion
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 500 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	SpeedrunAddict: {
+		/**
+		 * Speedrun Addict
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 1000 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	WikipediaLegend: {
+		/**
+		 * Wikipedia Legend
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 2500 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	SpeedrunGod: {
+		/**
+		 * Speedrun God
+		 */
+		title: () => LocalizedString
+		/**
+		 * Win 5000 speedruns
+		 */
+		description: () => LocalizedString
+	}
+	AttentiveExplorer: {
+		/**
+		 * Attentive Explorer
+		 */
+		title: () => LocalizedString
+		/**
+		 * Navigate through at least 10 articles without missing the winning link
+		 */
+		description: () => LocalizedString
+	}
+	KeenPathfinder: {
+		/**
+		 * Keen Pathfinder
+		 */
+		title: () => LocalizedString
+		/**
+		 * Navigate through at least 25 articles without missing the winning link
+		 */
+		description: () => LocalizedString
+	}
+	SharpNavigator: {
+		/**
+		 * Sharp Navigator
+		 */
+		title: () => LocalizedString
+		/**
+		 * Navigate through at least 50 articles without missing the winning link
+		 */
+		description: () => LocalizedString
+	}
+	ExplorerOfChance: {
+		/**
+		 * Explorer of Chance
+		 */
+		title: () => LocalizedString
+		/**
+		 * Select 10 random articles
+		 */
+		description: () => LocalizedString
+	}
+	FortuneSeeker: {
+		/**
+		 * Fortune Seeker
+		 */
+		title: () => LocalizedString
+		/**
+		 * Select 100 random articles
+		 */
+		description: () => LocalizedString
+	}
+	GachaAddict: {
+		/**
+		 * Gacha Addict
+		 */
+		title: () => LocalizedString
+		/**
+		 * Select 1000 random articles
+		 */
+		description: () => LocalizedString
+	}
+	GachaOverlord: {
+		/**
+		 * Gacha Overlord
+		 */
+		title: () => LocalizedString
+		/**
+		 * Select 10000 random articles
+		 */
+		description: () => LocalizedString
+	}
+	Curiosity: {
+		/**
+		 * Curiosity didn't kill the cat
+		 */
+		title: () => LocalizedString
+		/**
+		 * Preview an article
+		 */
+		description: () => LocalizedString
+	}
+	CuriousExplorer: {
+		/**
+		 * Curious Explorer
+		 */
+		title: () => LocalizedString
+		/**
+		 * Preview 100 articles
+		 */
+		description: () => LocalizedString
+	}
+	PreviewEnthusiast: {
+		/**
+		 * Preview Enthusiast
+		 */
+		title: () => LocalizedString
+		/**
+		 * Preview 1000 articles
+		 */
+		description: () => LocalizedString
+	}
+	InsatiablesReader: {
+		/**
+		 * Insatiable Reader
+		 */
+		title: () => LocalizedString
+		/**
+		 * Preview 10000 articles
+		 */
+		description: () => LocalizedString
+	}
+	Bilingual: {
+		/**
+		 * Bilingual
+		 */
+		title: () => LocalizedString
+		/**
+		 * Explore articles in 2 different languages
+		 */
+		description: () => LocalizedString
+	}
+	Trilingual: {
+		/**
+		 * Trilingual
+		 */
+		title: () => LocalizedString
+		/**
+		 * Explore articles in 3 different languages
+		 */
+		description: () => LocalizedString
+	}
+	Polyglot: {
+		/**
+		 * Polyglot
+		 */
+		title: () => LocalizedString
+		/**
+		 * Explore articles in 5 different languages
+		 */
+		description: () => LocalizedString
+	}
+	EgoStroke: {
+		/**
+		 * Ego Stroke
+		 */
+		title: () => LocalizedString
+		/**
+		 * Thank you for inspiring this whole project
+		 */
+		description: () => LocalizedString
+	}
+	SpeedrunWaifu: {
+		/**
+		 * Wiki Speedrun Waifu
+		 */
+		title: () => LocalizedString
+		/**
+		 * Made by Ina_den. Follow him on twitter
+		 */
+		description: () => LocalizedString
+	}
 }
 
 export type Formatters = {}

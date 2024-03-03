@@ -12,7 +12,7 @@ const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 const useWikiLogic = () => {
   const navigate = useNavigate();
   const { LL } = useI18nContext();
-  const invalidLinkText = LL.INVALID_LINK();
+  const invalidLinkText = LL["Choose another link"]();
   const { getFormattedTime } = useStopwatchActions();
   const { addHistoryArticle } = useGameStoreActions();
 
