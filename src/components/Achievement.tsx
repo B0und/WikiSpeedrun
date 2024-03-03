@@ -1,12 +1,37 @@
 import clsx from "clsx";
 import { type Achievement as IAchievement } from "../achievements";
+import { useI18nContext } from "../i18n/i18n-react";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
+  const { LL } = useI18nContext();
   let currentValue = undefined;
   if (achievement.targetValue) {
     currentValue = Math.min(achievement.currentValue(), achievement.targetValue);
   }
 
+  // @ts-expect-error dynamic key generation
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  const achievementTitle = LL[achievement.id]?.title();
+
+  // @ts-expect-error dynamic key generation
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  let achievementDescription = LL[achievement.id]?.description();
+
+  if (achievement.id === "SpeedrunWaifu") {
+    achievementDescription = (
+      <span>
+        {LL["Made by Ina_den"]()} {LL["Follow him on"]()}{" "}
+        <a
+          href="https://twitter.com/Ina_den_"
+          target="_blank"
+          rel="noreferrer"
+          className="text-primary-blue underline"
+        >
+          {LL["twitter (X)"]()}
+        </a>
+      </span>
+    );
+  }
   return (
     <div className="flex max-w-[var(--achievement-size)] items-start justify-start gap-5">
       <img
@@ -18,9 +43,9 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
       />
       <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">
         <div className="flex flex-col gap-1">
-          <h3 className="text-lg">{achievement.title}</h3>
+          <h3 className="text-lg">{achievementTitle}</h3>
           <p className="line-clamp-2 text-xs" title="asd">
-            {achievement.description}
+            {achievementDescription}
           </p>
         </div>
 

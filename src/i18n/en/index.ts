@@ -170,5 +170,8 @@ const en: BaseTranslation = {
     title: "Wiki Speedrun Waifu",
     description: "Made by Ina_den. Follow him on twitter",
   },
+  "Made by Ina_den": "Made by Ina_den.",
+  "Follow him on": "Follow him on",
+  "twitter (X)": " twitter (X)",
 };
 export default en;

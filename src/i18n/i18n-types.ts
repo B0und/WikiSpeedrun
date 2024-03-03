@@ -510,6 +510,18 @@ type RootTranslation = {
 		 */
 		description: string
 	}
+	/**
+	 * M​a​d​e​ ​b​y​ ​I​n​a​_​d​e​n​.
+	 */
+	'Made by Ina_den': string
+	/**
+	 * F​o​l​l​o​w​ ​h​i​m​ ​o​n
+	 */
+	'Follow him on': string
+	/**
+	 *  ​t​w​i​t​t​e​r​ ​(​X​)
+	 */
+	'twitter (X)': string
 }
 
 export type TranslationFunctions = {
@@ -997,6 +1009,18 @@ export type TranslationFunctions = {
 		 */
 		description: () => LocalizedString
 	}
+	/**
+	 * Made by Ina_den.
+	 */
+	'Made by Ina_den': () => LocalizedString
+	/**
+	 * Follow him on
+	 */
+	'Follow him on': () => LocalizedString
+	/**
+	 *  twitter (X)
+	 */
+	'twitter (X)': () => LocalizedString
 }
 
 export type Formatters = {}
