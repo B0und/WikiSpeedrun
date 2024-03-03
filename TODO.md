@@ -1,9 +1,8 @@
 # TODO
 
-[] - refactor isWin condition
-
 ## Ideas
 
+[] - refactor isWin condition
 local runs history
 win highlight upgrade (https://frontendmasters.com/blog/highlight-text-when-a-user-scrolls-down-to-that-piece-of-text/)
 fix jp font
