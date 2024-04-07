@@ -41,6 +41,7 @@ export const InterfaceLanguageSelect = () => {
             src={`/flags/${language}.svg`}
             alt=""
             className="h-6 w-8 rounded-sm border-[1px] border-secondary-border object-contain"
+            loading="lazy"
           />
         </Select.Value>
       </Select.Trigger>
@@ -88,7 +89,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
         {...props}
         ref={forwardedRef}
       >
-        <img src={`/flags/${value}.svg`} alt="" className="h-3 w-8 object-contain" />
+        <img src={`/flags/${value}.svg`} alt="" className="h-3 w-8 object-contain" loading="lazy" />
         <Select.ItemText>{children}</Select.ItemText>
       </Select.Item>
     );
