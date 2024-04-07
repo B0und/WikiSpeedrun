@@ -44,6 +44,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
         src={achievement.imgUrl ?? "/trophy.svg"}
         alt={achievementAltText}
         className={clsx("h-full bg-center object-cover", !achievement.unlocked && " grayscale")}
+        loading="lazy"
       />
       <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">
         <div className="flex flex-col gap-1">
