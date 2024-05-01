@@ -84,7 +84,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   };
 
   return (
-    <div className="flex min-w-0 flex-1 flex-col">
+    <div className="flex min-w-52 flex-1 flex-col">
       <label htmlFor={selectId}>{label}</label>
       <Select
         key={defaultValue} // dirty hack

@@ -28,14 +28,13 @@ const Settings = () => {
   const [modalData, setModalData] = useState<Article[] | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalFunction, setModalFunction] = useState({ fn: setStartingArticle });
-  const { increaseTotalRuns, increaseSingleRandomPressed } = useStatsStoreActions();
+  const { increaseTotalRuns } = useStatsStoreActions();
   const isFetching = useIsFetching() > 0;
 
   useCheckAchievements({
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],
   });
 
-  const randomFailText = LL["Random failed, try again"]();
   const copyNotification = () =>
     toast.success(LL["Copied to clipboard"](), { position: "top-center" });
 
@@ -78,71 +77,31 @@ const Settings = () => {
           setArticle={modalFunction.fn}
         />
 
-        <div className="flex items-end gap-2 sm:gap-0">
-          <ArticleAutocomplete
-            label={LL["Select starting article"]()}
-            placeholder={LL["Start typing to see options"]()}
-            required={true}
-            onSelect={setStartingArticle}
-            defaultValue={startArticle.title}
-            selectId="startArticle"
-          />
-          <ArticlePreview pageid={startArticle.pageid} />
-          <RandomButton
-            onSuccess={(data) => {
-              increaseSingleRandomPressed();
-              handleOnRandomSuccess({
-                data,
-                setArticle: setStartingArticle,
-                failText: randomFailText,
-              });
-            }}
-          />
-          <RandomButton
-            randomCount={5}
-            onSuccess={(data) => {
-              setModalFunction({ fn: setStartingArticle });
-              setModalOpen(true);
-              const articles = getNHighestLinksPages(data, 5);
-              if (articles) {
-                setModalData(articles);
-              }
-            }}
-          />
-        </div>
+        <SelectArticleSettings
+          label={LL["Select starting article"]()}
+          placeholder={LL["Start typing to see options"]()}
+          required={true}
+          setArticle={setStartingArticle}
+          defaultValue={startArticle.title}
+          selectId="startArticle"
+          pageId={startArticle.pageid}
+          setModalData={setModalData}
+          setModalFunction={setModalFunction}
+          setModalOpen={setModalOpen}
+        />
 
-        <div className="flex items-end gap-2 sm:gap-0">
-          <ArticleAutocomplete
-            label={LL["Select ending article"]()}
-            placeholder={LL["Start typing to see options"]()}
-            required={true}
-            onSelect={setEndingArticle}
-            defaultValue={endArticle.title}
-            selectId="endArticle"
-          />
-          <ArticlePreview pageid={endArticle.pageid} />
-          <RandomButton
-            onSuccess={(data) => {
-              increaseSingleRandomPressed();
-              handleOnRandomSuccess({
-                data,
-                setArticle: setEndingArticle,
-                failText: randomFailText,
-              });
-            }}
-          />
-          <RandomButton
-            randomCount={5}
-            onSuccess={(data) => {
-              setModalFunction({ fn: setEndingArticle });
-              setModalOpen(true);
-              const articles = getNHighestLinksPages(data, 5);
-              if (articles) {
-                setModalData(articles);
-              }
-            }}
-          />
-        </div>
+        <SelectArticleSettings
+          label={LL["Select ending article"]()}
+          placeholder={LL["Start typing to see options"]()}
+          required={true}
+          setArticle={setEndingArticle}
+          defaultValue={endArticle.title}
+          selectId="endArticle"
+          pageId={endArticle.pageid}
+          setModalData={setModalData}
+          setModalFunction={setModalFunction}
+          setModalOpen={setModalOpen}
+        />
 
         <div className="flex flex-wrap gap-8">
           <button
@@ -169,3 +128,71 @@ const Settings = () => {
 };
 
 export default Settings;
+
+interface Props {
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  setArticle: (option: Article) => void;
+  defaultValue: string;
+  selectId: string;
+  pageId: string;
+  setModalData: React.Dispatch<React.SetStateAction<Article[] | null>>;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalFunction: React.Dispatch<
+    React.SetStateAction<{
+      fn: (article: Article) => void;
+    }>
+  >;
+}
+const SelectArticleSettings: React.FC<Props> = ({
+  label,
+  placeholder,
+  required = false,
+  setArticle,
+  defaultValue,
+  selectId,
+  pageId,
+  setModalData,
+  setModalFunction,
+  setModalOpen,
+}) => {
+  const { LL } = useI18nContext();
+  const { increaseSingleRandomPressed } = useStatsStoreActions();
+  const randomFailText = LL["Random failed, try again"]();
+
+  return (
+    <div className="flex flex-wrap items-end gap-2 sm:gap-0">
+      <ArticleAutocomplete
+        label={label}
+        placeholder={placeholder}
+        required={required}
+        onSelect={setArticle}
+        defaultValue={defaultValue}
+        selectId={selectId}
+      />
+      <ArticlePreview pageid={pageId} />
+      <RandomButton
+        onSuccess={(data) => {
+          increaseSingleRandomPressed();
+          handleOnRandomSuccess({
+            data,
+            setArticle: setArticle,
+            failText: randomFailText,
+          });
+        }}
+      />
+      <RandomButton
+        randomCount={5}
+        onSuccess={(data) => {
+          setModalFunction({ fn: setArticle });
+          setModalOpen(true);
+          const articles = getNHighestLinksPages(data, 5);
+          if (articles) {
+            setModalData(articles);
+          }
+        }}
+      />
+    </div>
+  );
+};
