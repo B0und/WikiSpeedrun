@@ -62,7 +62,7 @@ const WikiLogo = () => {
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 
   return (
-    <picture className="basis-[200px] sm:hidden">
+    <picture className="shrink-0 basis-[200px] sm:hidden">
       <source srcSet={window.location.origin + `/${imageSrc}.webp`} type="image/webp" />
 
       <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
