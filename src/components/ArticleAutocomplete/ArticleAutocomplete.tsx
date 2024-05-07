@@ -56,13 +56,13 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     refetchOnWindowFocus: false,
     enabled: Boolean(debouncedInputText),
     select: (data) =>
-      data?.query.search.map(
-        (article) =>
-          ({
-            label: article.title,
-            value: String(article.pageid),
-          }) as AutocompleteOption
-      ),
+      data?.query.search.map((article) => {
+        const option: AutocompleteOption = {
+          label: article.title,
+          value: String(article.pageid),
+        };
+        return option;
+      }),
   });
 
   useEffect(() => {
