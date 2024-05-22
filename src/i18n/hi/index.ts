@@ -68,7 +68,7 @@ const hi: BaseTranslation = {
   // ACHIEVEMENTS
   FirstWin: {
     title: "पहली जीत",
-    description: "Complete your first speedrun",
+    description: "अपना पहला स्पीडरन पूरा करें",
   },
   NoviceRunner: {
     title: "नौसिखिया धावक",
