@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
 import RandomButton from "../components/RandomButton/RandomButton";
-import { getNHighestLinksPages, handleOnRandomSuccess } from "../components/Settings.helpers";
+import {
+  getNHighestLinksPages,
+  handleOnRandomSuccess,
+  useSyncWikiLanguageFromUrl,
+} from "../components/Settings.helpers";
 import { useStopwatchActions } from "../components/StopwatchContext";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
@@ -15,6 +19,7 @@ import { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
 import { useCheckAchievements } from "../hooks/useCheckAchievements";
 import { useIsFetching } from "@tanstack/react-query";
+import { useWikiLanguage } from "../stores/SettingsStore";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -29,7 +34,10 @@ const Settings = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalFunction, setModalFunction] = useState({ fn: setStartingArticle });
   const { increaseTotalRuns } = useStatsStoreActions();
+  const wikiLang = useWikiLanguage();
   const isFetching = useIsFetching() > 0;
+
+  useSyncWikiLanguageFromUrl();
 
   useCheckAchievements({
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],
@@ -108,7 +116,7 @@ const Settings = () => {
             type="button"
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={async () => {
-              await navigator.clipboard.writeText(window.location.href);
+              await navigator.clipboard.writeText(window.location.href + `&lang=${wikiLang}`);
               copyNotification();
             }}
           >
