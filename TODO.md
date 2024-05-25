@@ -2,7 +2,7 @@
 
 [x] - fix logo shrink
 [] - add hack setting
-[] - fix share with different langs
+[x] - fix share with different langs
 [] - twitter share button
 [] - handle article download errors
 

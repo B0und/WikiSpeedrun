@@ -36,7 +36,6 @@ const Settings = () => {
   const { increaseTotalRuns } = useStatsStoreActions();
   const wikiLang = useWikiLanguage();
   const isFetching = useIsFetching() > 0;
-
   useSyncWikiLanguageFromUrl();
 
   useCheckAchievements({
