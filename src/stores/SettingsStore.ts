@@ -3,7 +3,6 @@ import { devtools } from "zustand/middleware";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { Locales } from "../i18n/i18n-types";
 import { LANGUAGES } from "../components/WikiLanguageSelect";
-import { querystring } from "zustand-querystring";
 
 /*
  Data gets persisted in local storage
@@ -60,8 +59,6 @@ const useSettingsStore = create<SettingsStore>()(
     }
   )
 );
-
-
 
 export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);
 export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage);

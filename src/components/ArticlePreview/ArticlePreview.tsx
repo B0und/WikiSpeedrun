@@ -3,7 +3,7 @@ import { X } from "react-feather";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { ArticlePreview } from "./ArticlePreview.types";
+import { type ArticlePreview } from "./ArticlePreview.types";
 import HelpCircle from "./helpcircle.svg?react";
 import clsx from "clsx";
 import { useWikiLanguage } from "../../stores/SettingsStore";
