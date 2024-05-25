@@ -45,6 +45,6 @@ no duplicate articles setting
 [x] - notification system
 [x] - input clear button
 [x] - article preview
-[x] -time-travel after game
+[x] - time-travel after game
 [x] - cheating attempts
 [x] - some dice animation
