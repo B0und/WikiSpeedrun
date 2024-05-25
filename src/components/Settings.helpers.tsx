@@ -1,6 +1,8 @@
 import { toast } from "react-hot-toast";
 import { WikiRandom } from "./RandomButton/RandomButton.types";
 import { Article } from "../stores/GameStore";
+import { useEffect } from "react";
+import { useSettingsStoreActions } from "../stores/SettingsStore";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) return;
@@ -17,13 +19,13 @@ export const getHighestLinksPage = (data: WikiRandom) => {
   return { title, pageid };
 };
 
-export const getNHighestLinksPages = (data: WikiRandom, limit: number) => {
+export const getNHighestLinksPages = (data: WikiRandom, limit = 5) => {
   if (!data.query?.pages) return;
 
   let linkPages = Object.values(data.query.pages)
     .filter((page) => Object.prototype.hasOwnProperty.call(page, "linkshere"))
     .sort((a, b) => (b.linkshere?.length ?? 0) - (a.linkshere?.length ?? 0))
-    .slice(0, limit || 5)
+    .slice(0, limit)
     .map((p) => ({ title: p.title, pageid: String(p.pageid) }))
     .filter((v, i, a) => a.findIndex((v2) => v2.pageid === v.pageid) === i); // remove duplicate objects
   const selectedArticleTitles = linkPages.map((p) => p.title);
@@ -57,4 +59,15 @@ export const handleOnRandomSuccess = ({ setArticle, data, failText }: RandomSucc
     title: articleWithLinks.title,
     pageid: String(articleWithLinks.pageid) || "",
   });
+};
+
+export const useSyncWikiLanguageFromUrl = () => {
+  const { setWikiLanguage } = useSettingsStoreActions();
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLanguage = urlParams.get("lang");
+    if (urlLanguage) {
+      setWikiLanguage(urlLanguage);
+    }
+  }, [setWikiLanguage]);
 };

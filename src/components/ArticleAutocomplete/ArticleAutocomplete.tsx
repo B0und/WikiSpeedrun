@@ -56,13 +56,13 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     refetchOnWindowFocus: false,
     enabled: Boolean(debouncedInputText),
     select: (data) =>
-      data?.query.search.map(
-        (article) =>
-          ({
-            label: article.title,
-            value: String(article.pageid),
-          }) as AutocompleteOption
-      ),
+      data?.query.search.map((article) => {
+        const option: AutocompleteOption = {
+          label: article.title,
+          value: String(article.pageid),
+        };
+        return option;
+      }),
   });
 
   useEffect(() => {
@@ -84,7 +84,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   };
 
   return (
-    <div className="flex min-w-0 flex-1 flex-col">
+    <div className="flex min-w-52 flex-1 flex-col">
       <label htmlFor={selectId}>{label}</label>
       <Select
         key={defaultValue} // dirty hack
