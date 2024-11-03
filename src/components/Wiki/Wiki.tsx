@@ -5,6 +5,7 @@ import WikiDisplay from "./WikiDisplay";
 import { useEffect } from "react";
 import { Stopwatch } from "../Stopwatch";
 import { useNoCheating } from "./Wiki.utils";
+import { StartArrowEnd } from "../StartArrowEnd";
 
 const Wiki = () => {
   useNoCheating();
@@ -21,7 +22,7 @@ const Wiki = () => {
   return (
     <div className="-mt-8">
       <div className="sticky -top-8 z-10 mb-2 bg-neutral-50 py-2 text-lg font-bold dark:bg-dark-surface sm:-top-4">
-        {startArticle.title} → {endArticle.title}
+        <StartArrowEnd startText={startArticle.title} endText={endArticle.title} />
       </div>
       <WikiDisplay />
 

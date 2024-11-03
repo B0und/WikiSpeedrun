@@ -17,6 +17,7 @@ import { toast } from "react-hot-toast";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
 import ConfettiExplosion from "react-confetti-explosion";
 import { ConfettiProps } from "react-confetti-explosion";
+import { StartArrowEnd } from "./StartArrowEnd";
 
 const confettiParams: ConfettiProps = {
   force: 0.6,
@@ -69,9 +70,11 @@ export const ResultDialog = () => {
           </ModalTitle>
 
           <ModalDescription asChild>
-            <p className="mb-5 mt-[10px] flex items-center gap-2 text-lg font-bold">
-              <span>{startingArticle.title}</span> <RightArrow /> <span>{endingArticle.title}</span>
-            </p>
+            <StartArrowEnd
+              className="mb-5 mt-[10px]"
+              startText={startingArticle.title}
+              endText={endingArticle.title}
+            />
           </ModalDescription>
 
           <table className="mb-5 w-full table-auto">
@@ -121,18 +124,3 @@ export const ResultDialog = () => {
     </ModalRoot>
   );
 };
-
-const RightArrow = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    className="size-5 translate-y-[2px]"
-  >
-    <path
-      fillRule="evenodd"
-      d="M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 0 0 1 2 10Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
