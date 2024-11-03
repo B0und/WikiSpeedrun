@@ -19,7 +19,12 @@ import { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
 import { useCheckAchievements } from "../hooks/useCheckAchievements";
 import { useIsFetching } from "@tanstack/react-query";
-import { useWikiLanguage } from "../stores/SettingsStore";
+import {
+  useIsCtrlFEnabled,
+  useSettingsStoreActions,
+  useWikiLanguage,
+} from "../stores/SettingsStore";
+import { LabelSwitch } from "../components/Switch";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -36,6 +41,10 @@ const Settings = () => {
   const { increaseTotalRuns } = useStatsStoreActions();
   const wikiLang = useWikiLanguage();
   const isFetching = useIsFetching() > 0;
+
+  const { set_is_CTRL_F_enabled } = useSettingsStoreActions();
+  const isCTRLFEnabled = useIsCtrlFEnabled();
+
   useSyncWikiLanguageFromUrl();
 
   useCheckAchievements({
@@ -110,7 +119,13 @@ const Settings = () => {
           setModalOpen={setModalOpen}
         />
 
-        <div className="flex flex-wrap gap-8">
+        <LabelSwitch
+          switchText={LL["Enable search during gameplay"]()}
+          checked={isCTRLFEnabled}
+          onCheckedChange={set_is_CTRL_F_enabled}
+        />
+
+        <div className="mt-6 flex flex-wrap gap-8">
           <button
             type="button"
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"

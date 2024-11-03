@@ -176,6 +176,7 @@ const ja: Translation = {
   WaifuAlt:
     "ブルーのドレスを着たかわいいアニメの女の子が図書館に座っている間、近くにはスピードランタイマー付きのウィキペディアの地球儀が浮かんでいます",
   "Prize trophy": "賞のトロフィー",
+  "Enable search during gameplay": "ゲーム中に検索を有効にする",
 };
 
 export default ja;

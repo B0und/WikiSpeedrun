@@ -14,18 +14,21 @@ interface Actions {
     setInterfaceLanguage: (language: Locales) => void;
     setWikiLanguage: (language: WikiLanguage) => void;
     setSidebarWidth: (width: number) => void;
+    set_is_CTRL_F_enabled: (flag: boolean) => void;
   };
 }
 interface Values {
   interfaceLanguage: Locales;
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
+  is_CTRL_F_enabled: boolean;
 }
 
 const initialState: Values = {
   interfaceLanguage: "" as Locales,
   wikiLanguage: "en",
   sidebarWidth: 400,
+  is_CTRL_F_enabled: false,
 };
 
 type SettingsStore = Values & Actions;
@@ -43,6 +46,9 @@ const useSettingsStore = create<SettingsStore>()(
           },
           setSidebarWidth: (width: number) => {
             set(() => ({ sidebarWidth: width }), false, "setSidebarWidth");
+          },
+          set_is_CTRL_F_enabled: (flag: boolean) => {
+            set(() => ({ is_CTRL_F_enabled: flag }), false, "setSearchEnabled");
           },
         },
       }),
@@ -64,3 +70,4 @@ export const useSettingsStoreActions = () => useSettingsStore((state) => state.a
 export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage);
 export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
 export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);
+export const useIsCtrlFEnabled = () => useSettingsStore((state) => state.is_CTRL_F_enabled);

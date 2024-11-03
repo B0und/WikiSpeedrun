@@ -177,6 +177,7 @@ const fr: Translation = {
   WaifuAlt:
     "Fille d'anime mignonne avec une robe bleue assise dans une bibliothèque, tandis qu'un globe wikipedia avec un minuteur speedrun attaché flotte à proximité",
   "Prize trophy": "Trophée de prix",
+  "Enable search during gameplay": "Activer la recherche pendant le jeu"
 };
 
 export default fr;

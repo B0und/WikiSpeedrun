@@ -177,5 +177,6 @@ const en: BaseTranslation = {
   WaifuAlt:
     "Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby",
   "Prize trophy": "Prize Trophy",
+  "Enable search during gameplay": "Enable search during gameplay",
 };
 export default en;

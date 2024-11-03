@@ -535,6 +535,10 @@ type RootTranslation = {
 	 * P​r​i​z​e​ ​T​r​o​p​h​y
 	 */
 	'Prize trophy': string
+	/**
+	 * E​n​a​b​l​e​ ​s​e​a​r​c​h​ ​d​u​r​i​n​g​ ​g​a​m​e​p​l​a​y
+	 */
+	'Enable search during gameplay': string
 }
 
 export type TranslationFunctions = {
@@ -1046,6 +1050,10 @@ export type TranslationFunctions = {
 	 * Prize Trophy
 	 */
 	'Prize trophy': () => LocalizedString
+	/**
+	 * Enable search during gameplay
+	 */
+	'Enable search during gameplay': () => LocalizedString
 }
 
 export type Formatters = {}

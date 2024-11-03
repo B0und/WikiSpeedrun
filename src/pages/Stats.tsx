@@ -9,7 +9,6 @@ import {
   useTotalRuns,
   useWins,
 } from "../stores/StatisticsStore";
-// TODO add i18n
 
 export const Stats = () => {
   const { LL } = useI18nContext();
