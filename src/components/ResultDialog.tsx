@@ -17,6 +17,7 @@ import { toast } from "react-hot-toast";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
 import ConfettiExplosion from "react-confetti-explosion";
 import { ConfettiProps } from "react-confetti-explosion";
+import { StartArrowEnd } from "./StartArrowEnd";
 
 const confettiParams: ConfettiProps = {
   force: 0.6,
@@ -69,9 +70,11 @@ export const ResultDialog = () => {
           </ModalTitle>
 
           <ModalDescription asChild>
-            <p className="mb-5 mt-[10px] text-lg font-bold ">
-              {startingArticle.title} → {endingArticle.title}
-            </p>
+            <StartArrowEnd
+              className="mb-5 mt-[10px]"
+              startText={startingArticle.title}
+              endText={endingArticle.title}
+            />
           </ModalDescription>
 
           <table className="mb-5 w-full table-auto">

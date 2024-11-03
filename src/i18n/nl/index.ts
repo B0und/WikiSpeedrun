@@ -176,6 +176,7 @@ const nl: Translation = {
   WaifuAlt:
     "Schattig anime-meisje met een blauwe jurk zittend in een bibliotheek, terwijl een wikipedia-globe met een speedrun-timer eraan vastzit in de buurt zweeft",
   "Prize trophy": "Prijs trofee",
+  "Enable search during gameplay": "Zoeken tijdens het spelen inschakelen"
 };
 
 export default nl;

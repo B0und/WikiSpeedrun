@@ -1,7 +1,7 @@
-import type { BaseTranslation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Hindi
-const hi: BaseTranslation = {
+const hi: Translation = {
   "Wiki Speedrun Game": "विकी स्पीडरन गेम",
   "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time":
     "गेम का लक्ष्य कम से कम क्लिक और समय में एक प्रारंभिक विकिपीडिया लेख से दूसरे लेख तक नेविगेट करना है",
@@ -177,5 +177,6 @@ const hi: BaseTranslation = {
   WaifuAlt:
     "नीली पोशाक वाली प्यारी एनीमे लड़की लाइब्रेरी में बैठी है, जबकि स्पीडरन टाइमर के साथ एक विकिपीडिया ग्लोब पास में तैर रहा है",
   "Prize trophy": "पुरस्कार ट्रॉफी",
+  "Enable search during gameplay": "गेमप्ले के दौरान खोज सक्षम करें"
 };
 export default hi;
