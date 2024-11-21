@@ -19,6 +19,7 @@ import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
   const { pauseStopwatch } = useStopwatchActions();
+
   useEffect(() => {
     if (isLoading && isGameRunning) {
       pauseStopwatch();
@@ -55,7 +56,11 @@ export const useWikiQuery = () => {
   const language = useWikiLanguage();
   const routeParams = useParams();
   const isGameRunning = useIsGameRunning();
-  const wikiArticle = routeParams.wikiTitle ?? startingArticle.title;
+
+  const wikiArticle = routeParams.wikiTitle
+    ? decodeURIComponent(routeParams.wikiTitle).replace("/wiki/", "")
+    : startingArticle.title;
+
   const { addHistoryArticle, setIsGameRunning, setIsWin } = useGameStoreActions();
 
   const targetArticle = useEndingArticle();

@@ -48,14 +48,18 @@ const useWikiLogic = () => {
     // handle correct link
     if (hrefText) {
       addHrefToHistory(hrefText);
-      navigate(hrefText);
+      /**
+       * encodeURIComponent is needed because articles with slashes break
+       * TODO rewrite to query params instead of path segments??
+       */
+      navigate(encodeURIComponent(hrefText));
       return;
     }
 
     // if parent is a link
     if (parentHref) {
       addHrefToHistory(parentHref);
-      navigate(parentHref);
+      navigate(encodeURIComponent(parentHref));
       return;
     }
 
@@ -162,5 +166,6 @@ const handleNavigation = (node: HTMLAnchorElement) => {
 
 const hrefToText = (href: string) => {
   const urlTitle = href.split("/wiki/")[1];
+
   return decodeURI(urlTitle).replaceAll("_", " ");
 };

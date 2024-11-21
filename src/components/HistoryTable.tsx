@@ -40,7 +40,7 @@ const HistoryTable = () => {
                   <button
                     className="text-left text-primary-blue underline"
                     onClick={() => {
-                      navigate(`/wiki/${article.title.replaceAll(" ", "_")}`);
+                      navigate(`/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}`);
                     }}
                   >
                     {article.title}
