@@ -21,7 +21,6 @@ const About = () => {
           {LL["High precision fair™ timer"]()}
           <ul className="list-inside list-[circle]">
             <li className="pl-6">
-              {" "}
               {LL["actually stops while you are loading the next article"]()}
             </li>
           </ul>
