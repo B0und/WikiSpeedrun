@@ -15,7 +15,7 @@ const Wiki = () => {
 
   useEffect(() => {
     if (!startArticle.title || !endArticle.title) {
-      navigate("/settings");
+      void navigate("/settings");
     }
   }, [endArticle, navigate, startArticle]);
 

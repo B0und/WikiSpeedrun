@@ -66,7 +66,7 @@ const Settings = () => {
       },
       winningLinks: 0,
     });
-    navigate("/wiki");
+    void navigate("/wiki");
     startStopwatch();
     setIsGameRunning(true);
     increaseTotalRuns();
