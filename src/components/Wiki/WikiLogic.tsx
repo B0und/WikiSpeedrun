@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useStopwatchActions } from "../StopwatchContext";
 import { useGameStoreActions } from "../../stores/GameStore";

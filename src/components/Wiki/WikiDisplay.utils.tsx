@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 import {
   Article,

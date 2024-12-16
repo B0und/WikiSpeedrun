@@ -5,7 +5,7 @@ import { useIsGameRunning } from "../stores/GameStore";
 import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "./Drawer";
 
 import { GithubLink, type WikiLink } from "./Header";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
   const { LL } = useI18nContext();

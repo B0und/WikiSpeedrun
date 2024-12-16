@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
 import RandomButton from "../components/RandomButton/RandomButton";
