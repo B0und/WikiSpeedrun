@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { GitHub, Moon, Sun } from "react-feather";
 import { ResultDialog } from "./ResultDialog";
 import { useThemeContext } from "./ThemeContext";

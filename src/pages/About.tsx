@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useI18nContext } from "../i18n/i18n-react";
 
 const About = () => {
   const { LL } = useI18nContext();
   return (
     <>
-      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
+      <h1 className="border-b-[1px] border-secondary-border font-serif text-3xl">
         {LL["Wiki Speedrun Game"]()}
-      </h2>
+      </h1>
       <p className="pb-8 pt-4">
         {LL[
           "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
@@ -20,7 +20,9 @@ const About = () => {
         <li>
           {LL["High precision fair™ timer"]()}
           <ul className="list-inside list-[circle]">
-            <li className="pl-6"> {LL["actually stops while you are loading the next article"]()}</li>
+            <li className="pl-6">
+              {LL["actually stops while you are loading the next article"]()}
+            </li>
           </ul>
         </li>
         <li> {LL["Keeps track of your session progress"]()}</li>
