@@ -13,7 +13,7 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
   const isGameRunning = useIsGameRunning();
 
   return (
-    <div className="hidden sm:block">
+    <div className="hidden md:block">
       <Drawer>
         <DrawerTrigger asChild>
           {!isGameRunning && (

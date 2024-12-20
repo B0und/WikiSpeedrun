@@ -1,5 +1,11 @@
 # TODO
 
+[] - migrate to @tanstack/react-router from 48KB REACT*ROUTER * WTF????????? 48 GZIPPED?
+[] - migrate to lingui5 maybe????
+[] - optimize the fucking react confetti??
+it uses ALL of lodash WTF
+[] - get rid of react-select...
+
 [x] - fix logo shrink
 [] - add hack setting
 [x] - fix share with different langs

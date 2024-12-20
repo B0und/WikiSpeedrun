@@ -31,7 +31,7 @@ const Header = () => {
     <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3 sm:gap-0">
       <WikiLogo />
       <nav className="flex h-full flex-1 items-center gap-4">
-        <div className="flex gap-4 sm:hidden">
+        <div className="flex gap-4 md:hidden">
           <LeftNav isGameRunning={isGameRunning} links={links} />
         </div>
         {isGameRunning && <GiveUpModal />}
@@ -62,7 +62,7 @@ const WikiLogo = () => {
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 
   return (
-    <picture className="shrink-0 basis-[200px] sm:hidden">
+    <picture className="shrink-0 basis-[200px] md:hidden">
       <source srcSet={window.location.origin + `/${imageSrc}.webp`} type="image/webp" />
 
       <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
