@@ -77,6 +77,9 @@ importers:
       tailwind-merge:
         specifier: 2.3.0
         version: 2.3.0
+      tweakpane:
+        specifier: ^4.0.5
+        version: 4.0.5
       typesafe-i18n:
         specifier: 5.26.2
         version: 5.26.2(typescript@5.4.5)
@@ -99,6 +102,9 @@ importers:
       '@total-typescript/ts-reset':
         specifier: 0.5.1
         version: 0.5.1
+      '@tweakpane/core':
+        specifier: ^2.0.5
+        version: 2.0.5
       '@types/canvas-confetti':
         specifier: ^1.9.0
         version: 1.9.0
@@ -1330,6 +1336,9 @@ packages:
 
   '@total-typescript/ts-reset@0.5.1':
     resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
+
+  '@tweakpane/core@2.0.5':
+    resolution: {integrity: sha512-punBgD5rKCF5vcNo6BsSOXiDR/NSs9VM7SG65QSLJIxfRaGgj54ree9zQW6bO3pNFf3AogiGgaNODUVQRk9YqQ==}
 
   '@types/canvas-confetti@1.9.0':
     resolution: {integrity: sha512-aBGj/dULrimR1XDZLtG9JwxX1b4HPRF6CX9Yfwh3NvstZEm1ZL7RBnel4keCPSqs1ANRu1u2Aoz9R+VmtjYuTg==}
@@ -3038,6 +3047,9 @@ packages:
   turbo-stream@2.4.0:
     resolution: {integrity: sha512-FHncC10WpBd2eOmGwpmQsWLDoK4cqsA/UT/GqNoaKOQnT8uzhtCbg3EoUDMvqpOSAI0S26mr0rkjzbOO6S3v1g==}
 
+  tweakpane@4.0.5:
+    resolution: {integrity: sha512-rxEXdSI+ArlG1RyO6FghC4ZUX8JkEfz8F3v1JuteXSV0pEtHJzyo07fcDG+NsJfN5L39kSbCYbB9cBGHyuI/tQ==}
+
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -4387,6 +4399,8 @@ snapshots:
       react: 18.3.1
 
   '@total-typescript/ts-reset@0.5.1': {}
+
+  '@tweakpane/core@2.0.5': {}
 
   '@types/canvas-confetti@1.9.0': {}
 
@@ -6272,6 +6286,8 @@ snapshots:
   tslib@2.6.2: {}
 
   turbo-stream@2.4.0: {}
+
+  tweakpane@4.0.5: {}
 
   type-check@0.4.0:
     dependencies:
