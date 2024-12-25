@@ -55,9 +55,6 @@ export const ResultDialog = () => {
         </ModalTrigger>
         <ModalContent>
           <>
-            <div className="flex flex-col items-center justify-center">
-              {/* {open && <ConfettiExplo sion {...confettiParams} />} */}
-            </div>
             <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
               {LL.Results()}
             </ModalTitle>
@@ -112,10 +109,7 @@ export const ResultDialog = () => {
         </ModalContent>
       </ModalRoot>
       {open && (
-        <Portal.Root
-          id="fuckthis"
-          className="pointer-events-none fixed left-0 top-0 z-50 grid h-full w-full place-items-center"
-        >
+        <Portal.Root className="pointer-events-none fixed left-0 top-0 z-50 grid h-full w-full place-items-center">
           <VictoryConfetti />
         </Portal.Root>
       )}
