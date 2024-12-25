@@ -2,8 +2,6 @@
 
 [] - migrate to @tanstack/react-router from 48KB REACT*ROUTER * WTF????????? 48 GZIPPED?
 [] - migrate to lingui5 maybe????
-[] - optimize the fucking react confetti??
-it uses ALL of lodash WTF
 [] - get rid of react-select...
 
 [x] - fix logo shrink
@@ -30,6 +28,7 @@ no duplicate articles setting
 
 ## Done
 
+[x] - optimize the fucking react confetti??
 [x] - achievements
 [x] - add donation link
 [x] - multi-lingual-achievements
