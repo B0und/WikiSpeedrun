@@ -69,6 +69,8 @@ const WikiLogo = () => {
 
       <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
       <img
+        width={200}
+        height={68}
         className="block h-full"
         src={window.location.origin + `/${imageSrc}.png`}
         alt={LL[
