@@ -10,9 +10,6 @@ import clsx from "clsx";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import purify from "dompurify";
-import { lazy } from "react";
-
-
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
