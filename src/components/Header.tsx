@@ -8,6 +8,7 @@ import { useI18nContext } from "../i18n/i18n-react";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
 import { LocalizedString } from "typesafe-i18n";
 import { MobileMenu } from "./MobileMenu";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export interface WikiLink {
   name: LocalizedString;
@@ -38,13 +39,14 @@ const Header = () => {
         <MobileMenu links={links} />
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4 ">
-          {!isGameRunning && <InterfaceLanguageSelect />}
+          <li>{!isGameRunning && <InterfaceLanguageSelect />}</li>
           <li className="h-full">
             <button
               className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
               onClick={switchTheme}
             >
               {colorMode === "light" ? <Sun /> : <Moon />}
+              <VisuallyHidden>Toggle theme</VisuallyHidden>
             </button>
           </li>
           <li className="h-full sm:hidden">
@@ -103,6 +105,7 @@ export const GithubLink = () => {
       rel="noreferrer"
     >
       <GitHub />
+      <VisuallyHidden>Source code on github</VisuallyHidden>
     </a>
   );
 };

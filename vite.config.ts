@@ -4,10 +4,12 @@ import svgr from "vite-plugin-svgr";
 import { ViteEjsPlugin } from "vite-plugin-ejs";
 import { visualizer } from "rollup-plugin-visualizer";
 import { reactClickToComponent } from "vite-plugin-react-click-to-component";
+import { optimizeLodashImports } from "@optimize-lodash/rollup-plugin";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    optimizeLodashImports(),
     reactClickToComponent(),
     svgr(),
     ViteEjsPlugin((config) => ({
@@ -24,7 +26,9 @@ export default defineConfig({
     }),
   ],
   build: {
+    minify: 'esbuild',
     rollupOptions: {
+      treeshake: true,
       output: {
         manualChunks: {
           react: ["react"],

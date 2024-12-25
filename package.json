@@ -7,7 +7,8 @@
     "dev": "npm-run-all --parallel start typesafe-i18n",
     "dev:withMocks": "cross-env-shell VITE_WITH_MOCKS=true npm-run-all --parallel start typesafe-i18n",
     "start": "vite --open",
-    "build": "pnpm typecheck && pnpm lint && vite build",
+    "viteBuild": "vite build",
+    "build": "npm-run-all --parallel typecheck lint viteBuild",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "typesafe-i18n": "typesafe-i18n",
@@ -42,9 +43,10 @@
     "typesafe-i18n": "5.26.2",
     "use-local-storage": "3.0.0",
     "zustand": "4.5.2",
-    "zustand-querystring": "0.0.19"
+    "zustand-querystring": "0.1.0"
   },
   "devDependencies": {
+    "@optimize-lodash/rollup-plugin": "^5.0.0",
     "@tailwindcss/container-queries": "0.1.1",
     "@tanstack/eslint-plugin-query": "5.35.6",
     "@total-typescript/ts-reset": "0.5.1",

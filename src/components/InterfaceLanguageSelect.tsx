@@ -41,6 +41,8 @@ export const InterfaceLanguageSelect = () => {
             src={`/flags/${language}.svg`}
             alt=""
             className="h-6 w-8 rounded-sm border-[1px] border-secondary-border object-contain"
+            width={32}
+            height={24}
             loading="lazy"
           />
         </Select.Value>

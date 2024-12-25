@@ -13,7 +13,7 @@ const About = () => {
           "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
         ]()}
       </p>
-      <h3 className="border-b-[1px] border-secondary-border text-2xl">{LL.Features()}</h3>
+      <h2 className="border-b-[1px] border-secondary-border text-2xl">{LL.Features()}</h2>
       <ul className="flex list-inside list-disc flex-col gap-2 pb-8 pl-4 pt-4">
         <li>{LL["Now supports multiple languages"]()}</li>
         <li>{LL["No registration required"]()}</li>
