@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import svgr from "vite-plugin-svgr";
 import { ViteEjsPlugin } from "vite-plugin-ejs";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { visualizer } from "rollup-plugin-visualizer";
 import { reactClickToComponent } from "vite-plugin-react-click-to-component";
 
@@ -16,12 +17,12 @@ export default defineConfig({
       isDev: config.mode === "development",
       isProd: config.mode === "production",
     })),
-    visualizer({
-      template: "treemap", // or sunburst
-      open: true,
-      // sourcemap: true,
-      filename: "analyse.html", // will be saved in project's root
-    }),
+    // visualizer({
+    //   template: "treemap", // or sunburst
+    //   open: true,
+    //   // sourcemap: true,
+    //   filename: "analyse.html", // will be saved in project's root
+    // }),
   ],
   build: {
     minify: "esbuild",
