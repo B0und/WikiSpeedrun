@@ -78,8 +78,8 @@ importers:
         specifier: 5.26.2
         version: 5.26.2(typescript@5.4.5)
       unbound-zustand-querystring:
-        specifier: 0.2.4
-        version: 0.2.4
+        specifier: 0.2.3
+        version: 0.2.3
       use-local-storage:
         specifier: 3.0.0
         version: 3.0.0(react@18.3.1)
@@ -3112,8 +3112,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  unbound-zustand-querystring@0.2.4:
-    resolution: {integrity: sha512-Fk9B3b6EBxkCdzgX4lq7a6s86YS3LD8d+RRW1hm52txHRfLpQQbOBX7tbtiTXrNey0mRNRsH3xkZ8KAQE9EOeg==}
+  unbound-zustand-querystring@0.2.3:
+    resolution: {integrity: sha512-t8rYCzENwz5A8xbtw+aSK7KNPsU/eaq5iSaJcDCC6WOJuF9k2a6lksX8Cs6cuSEysMDEJSYHz3WFyoaatVkmog==}
 
   unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
@@ -6373,7 +6373,7 @@ snapshots:
 
   typescript@5.4.5: {}
 
-  unbound-zustand-querystring@0.2.4:
+  unbound-zustand-querystring@0.2.3:
     dependencies:
       lodash-es: 4.17.21
 
