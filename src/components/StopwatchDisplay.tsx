@@ -1,7 +1,7 @@
 export interface StopwatchProps {
-  min: string;
-  sec: string;
-  ms: string;
+  min: string | undefined;
+  sec: string | undefined;
+  ms: string | undefined;
 }
 export const StopwatchDisplay = ({ min = "00", sec = "00", ms = "000" }: StopwatchProps) => {
   return (

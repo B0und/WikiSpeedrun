@@ -8,6 +8,7 @@ import { useI18nContext } from "../i18n/i18n-react";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
 import { LocalizedString } from "typesafe-i18n";
 import { MobileMenu } from "./MobileMenu";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export interface WikiLink {
   name: LocalizedString;
@@ -31,20 +32,21 @@ const Header = () => {
     <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3 sm:gap-0">
       <WikiLogo />
       <nav className="flex h-full flex-1 items-center gap-4">
-        <div className="flex gap-4 sm:hidden">
+        <div className="flex gap-4 md:hidden">
           <LeftNav isGameRunning={isGameRunning} links={links} />
         </div>
         {isGameRunning && <GiveUpModal />}
         <MobileMenu links={links} />
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4 ">
-          {!isGameRunning && <InterfaceLanguageSelect />}
+          <li>{!isGameRunning && <InterfaceLanguageSelect />}</li>
           <li className="h-full">
             <button
               className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
               onClick={switchTheme}
             >
               {colorMode === "light" ? <Sun /> : <Moon />}
+              <VisuallyHidden>Toggle theme</VisuallyHidden>
             </button>
           </li>
           <li className="h-full sm:hidden">
@@ -62,7 +64,7 @@ const WikiLogo = () => {
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 
   return (
-    <picture className="shrink-0 basis-[200px] sm:hidden">
+    <picture className="shrink-0 basis-[200px] md:hidden">
       <source srcSet={window.location.origin + `/${imageSrc}.webp`} type="image/webp" />
 
       <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
@@ -103,6 +105,7 @@ export const GithubLink = () => {
       rel="noreferrer"
     >
       <GitHub />
+      <VisuallyHidden>Source code on github</VisuallyHidden>
     </a>
   );
 };

@@ -37,13 +37,16 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     achievementAltText = LL.WaifuAlt();
   }
   return (
-    <div className="flex max-w-[var(--achievement-size)] items-start justify-start gap-5">
+    <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">
       <img
         width={128}
         height={128}
         src={achievement.imgUrl ?? "/trophy.svg"}
         alt={achievementAltText}
-        className={clsx("h-full bg-center object-cover", !achievement.unlocked && " grayscale")}
+        className={clsx(
+          "h-full bg-center object-cover sm:h-16 sm:w-16",
+          !achievement.unlocked && " grayscale"
+        )}
         loading="lazy"
       />
       <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">

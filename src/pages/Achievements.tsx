@@ -20,7 +20,7 @@ export const Achievements = () => {
         </p>
       </div>
 
-      <div className="achievements-grid">
+      <div className="achievements-grid sm:grid-cols-1 sm:gap-6 pb-8">
         {achievements.map((achievement) => (
           <Achievement achievement={achievement} key={achievement.id} />
         ))}

@@ -41,6 +41,8 @@ export const InterfaceLanguageSelect = () => {
             src={`/flags/${language}.svg`}
             alt=""
             className="h-6 w-8 rounded-sm border-[1px] border-secondary-border object-contain"
+            width={32}
+            height={24}
             loading="lazy"
           />
         </Select.Value>
@@ -82,7 +84,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     return (
       <Select.Item
         className={clsx(
-          " relative flex h-[40px] select-none items-center rounded-[3px]  px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
+          " relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
           className
         )}
         value={value}

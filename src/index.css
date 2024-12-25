@@ -41,6 +41,8 @@
     column-gap: 64px;
     row-gap: 82px;
     padding-bottom: 16px;
+    justify-content: flex-start;
+    justify-items: flex-start;
   }
 
   .stat-wrapper::after {
