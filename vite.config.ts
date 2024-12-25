@@ -4,12 +4,11 @@ import svgr from "vite-plugin-svgr";
 import { ViteEjsPlugin } from "vite-plugin-ejs";
 import { visualizer } from "rollup-plugin-visualizer";
 import { reactClickToComponent } from "vite-plugin-react-click-to-component";
-import { optimizeLodashImports } from "@optimize-lodash/rollup-plugin";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    optimizeLodashImports(),
     reactClickToComponent(),
     svgr(),
     ViteEjsPlugin((config) => ({
@@ -20,21 +19,23 @@ export default defineConfig({
     visualizer({
       template: "treemap", // or sunburst
       open: true,
-      gzipSize: true,
-      brotliSize: true,
+      // sourcemap: true,
       filename: "analyse.html", // will be saved in project's root
     }),
   ],
   build: {
-    minify: 'esbuild',
+    minify: "esbuild",
+    sourcemap: false,
     rollupOptions: {
-      treeshake: true,
+      treeshake: "smallest",
       output: {
         manualChunks: {
-          react: ["react"],
+          react: ["react", "react-dom"],
           reactSelect: ["react-select"],
           dompurify: ["dompurify"],
           reResizable: ["re-resizable"],
+          reactRouter: ["react-router"],
+          tailwindMerge: ["tailwind-merge"],
         },
       },
     },

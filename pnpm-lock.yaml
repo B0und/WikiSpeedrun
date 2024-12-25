@@ -35,9 +35,6 @@ importers:
       '@tanstack/react-query':
         specifier: 5.38.0
         version: 5.38.0(react@18.3.1)
-      '@tanstack/react-query-devtools':
-        specifier: 5.38.0
-        version: 5.38.0(@tanstack/react-query@5.38.0(react@18.3.1))(react@18.3.1)
       canvas-confetti:
         specifier: ^1.9.3
         version: 1.9.3
@@ -77,21 +74,18 @@ importers:
       tailwind-merge:
         specifier: 2.3.0
         version: 2.3.0
-      tweakpane:
-        specifier: ^4.0.5
-        version: 4.0.5
       typesafe-i18n:
         specifier: 5.26.2
         version: 5.26.2(typescript@5.4.5)
+      unbound-zustand-querystring:
+        specifier: 0.2.4
+        version: 0.2.4
       use-local-storage:
         specifier: 3.0.0
         version: 3.0.0(react@18.3.1)
       zustand:
         specifier: 4.5.2
         version: 4.5.2(@types/react@18.3.3)(immer@10.1.1)(react@18.3.1)
-      zustand-querystring:
-        specifier: 0.1.0
-        version: 0.1.0
     devDependencies:
       '@optimize-lodash/rollup-plugin':
         specifier: ^5.0.0
@@ -102,6 +96,9 @@ importers:
       '@tanstack/eslint-plugin-query':
         specifier: 5.35.6
         version: 5.35.6(eslint@8.57.0)(typescript@5.4.5)
+      '@tanstack/react-query-devtools':
+        specifier: 5.38.0
+        version: 5.38.0(@tanstack/react-query@5.38.0(react@18.3.1))(react@18.3.1)
       '@total-typescript/ts-reset':
         specifier: 0.5.1
         version: 0.5.1
@@ -177,6 +174,9 @@ importers:
       tailwindcss:
         specifier: 3.4.3
         version: 3.4.3
+      tweakpane:
+        specifier: ^4.0.5
+        version: 4.0.5
       type-fest:
         specifier: 4.18.3
         version: 4.18.3
@@ -3112,6 +3112,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  unbound-zustand-querystring@0.2.4:
+    resolution: {integrity: sha512-Fk9B3b6EBxkCdzgX4lq7a6s86YS3LD8d+RRW1hm52txHRfLpQQbOBX7tbtiTXrNey0mRNRsH3xkZ8KAQE9EOeg==}
+
   unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
 
@@ -3307,9 +3310,6 @@ packages:
 
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
-
-  zustand-querystring@0.1.0:
-    resolution: {integrity: sha512-TNREzWiRMZRSFiDTNxcwyerHWQIMGgSF/Opl65PbJoewdBuWIhyKzGkYEJl0nATogie9VQb1VNTnqwi8hkTLhA==}
 
   zustand@4.5.2:
     resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
@@ -6373,6 +6373,10 @@ snapshots:
 
   typescript@5.4.5: {}
 
+  unbound-zustand-querystring@0.2.4:
+    dependencies:
+      lodash-es: 4.17.21
+
   unbox-primitive@1.0.2:
     dependencies:
       call-bind: 1.0.7
@@ -6555,10 +6559,6 @@ snapshots:
       zod: 3.23.8
 
   zod@3.23.8: {}
-
-  zustand-querystring@0.1.0:
-    dependencies:
-      lodash-es: 4.17.21
 
   zustand@4.5.2(@types/react@18.3.3)(immer@10.1.1)(react@18.3.1):
     dependencies:
