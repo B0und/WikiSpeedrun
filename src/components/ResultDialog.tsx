@@ -15,23 +15,10 @@ import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import { toast } from "react-hot-toast";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
-// import ConfettiExplosion from "react-confetti-explosion";
-// import { ConfettiProps } from "react-confetti-explosion";
 import { StartArrowEnd } from "./StartArrowEnd";
-
-// import Fireworks from "react-canvas-confetti/dist/presets/realistic";
-// import Crossfire from "react-canvas-confetti/dist/presets/crossfire";
 
 import * as Portal from "@radix-ui/react-portal";
 import { VictoryConfetti } from "./VictoryConfetti";
-
-// const confettiParams: ConfettiProps = {
-//   force: 0.6,
-//   duration: 3000,
-//   particleCount: 400,
-//   height: 1600,
-//   width: 1600,
-// };
 
 export const ResultDialog = () => {
   const { LL } = useI18nContext();
@@ -130,13 +117,6 @@ export const ResultDialog = () => {
           className="pointer-events-none fixed left-0 top-0 z-50 grid h-full w-full place-items-center"
         >
           <VictoryConfetti />
-          {/* <Fireworks
-            autorun={{ speed: 3, duration: 50 }}
-            width={1600}
-            height={1600}
-            // decorateOptions={(opts) => ({})}
-          />
-          <Crossfire autorun={{ speed: 2, duration: 400 }} width={1600} height={1600} /> */}
         </Portal.Root>
       )}
     </>
