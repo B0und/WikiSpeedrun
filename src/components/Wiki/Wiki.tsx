@@ -78,17 +78,17 @@ function WikiNavigationBlockModal({
         <div className="mt-9 flex flex-wrap justify-end gap-8">
           <button
             type="button"
-            className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
-            onClick={onCancel}
-          >
-            No
-          </button>
-          <button
-            type="button"
             className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={onProceed}
           >
             Yes
+          </button>
+          <button
+            type="button"
+            className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
+            onClick={onCancel}
+          >
+            No
           </button>
         </div>
       </ModalContent>
