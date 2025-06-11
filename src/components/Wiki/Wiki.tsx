@@ -1,6 +1,5 @@
 import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { useI18nContext } from "../../i18n/i18n-react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
