@@ -14,6 +14,7 @@ import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
 import { useStopwatchActions } from "../StopwatchContext";
 import type { WikiApiArticle } from "./Wiki.types";
+import { wikiRoute } from "./Wiki";
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
@@ -53,15 +54,11 @@ const getArticleData = async (language: string, title: string) => {
 export const useWikiQuery = () => {
   const startingArticle = useStartingArticle();
   const language = useWikiLanguage();
-  const routeParams = useParams({ from: "/wiki/$wikiTitle*" });
+  const { _splat: wikiTitle } = wikiRoute.useParams();
+
   const isGameRunning = useIsGameRunning();
 
-  const wikiArticle = routeParams.wikiTitle
-    ? decodeURIComponent(routeParams.wikiTitle).replace("/wiki/", "")
-    : startingArticle.title;
-
-  // Debug log to ensure param updates
-  console.log("[useWikiQuery] wikiArticle:", wikiArticle, "routeParams:", routeParams);
+  const wikiArticle = wikiTitle ? decodeURIComponent(wikiTitle).replace("/wiki/", "") : startingArticle.title;
 
   const { setIsGameRunning, setIsWin } = useGameStoreActions();
 

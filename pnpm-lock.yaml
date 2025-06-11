@@ -105,6 +105,9 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: 5.38.0
         version: 5.38.0(@tanstack/react-query@5.38.0(react@18.3.1))(react@18.3.1)
+      '@tanstack/router-cli':
+        specifier: ^1.121.2
+        version: 1.121.2
       '@tanstack/router-plugin':
         specifier: ^1.121.2
         version: 1.121.2(@tanstack/react-router@1.121.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.0.3(@types/node@20.12.12)(jiti@1.21.0)(tsx@4.20.1)(yaml@2.4.2))
@@ -1729,6 +1732,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@tanstack/router-cli@1.121.2':
+    resolution: {integrity: sha512-IWHGgzkhG313xjucXYBttccGIbvqkBC5rZdj8f6DB7a3vwPTqLzHBl7lN+EHNEksSQX16jCRts3BLuVrHRY5Vw==}
+    engines: {node: '>=12'}
+    hasBin: true
 
   '@tanstack/router-core@1.121.2':
     resolution: {integrity: sha512-jwkhTTDUuhwWq6CeOwvJFcqXagmFu+2FSCx1WHj+mt516hDe7+qe5JWQ7KqMaAbV92Jue/qNnrRxMEONz8aKBg==}
@@ -5323,6 +5331,14 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       use-sync-external-store: 1.5.0(react@18.3.1)
+
+  '@tanstack/router-cli@1.121.2':
+    dependencies:
+      '@tanstack/router-generator': 1.121.2
+      chokidar: 3.6.0
+      yargs: 17.7.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@tanstack/router-core@1.121.2':
     dependencies:

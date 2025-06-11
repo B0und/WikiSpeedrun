@@ -1,10 +1,12 @@
-import { useNavigate } from "@tanstack/react-router";
+import { getRouteApi, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useEndingArticle, useStartingArticle } from "../../stores/GameStore";
 import { StartArrowEnd } from "../StartArrowEnd";
 import { Stopwatch } from "../Stopwatch";
 import { useNoCheating } from "./Wiki.utils";
 import WikiDisplay from "./WikiDisplay";
+
+export const wikiRoute = getRouteApi("/wiki/$");
 
 const Wiki = () => {
   useNoCheating();

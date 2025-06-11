@@ -42,8 +42,6 @@ const useWikiLogic = () => {
       node = node.parentElement;
     }
 
-    console.log("anchor", anchor);
-
     if (!anchor) {
       return;
     }

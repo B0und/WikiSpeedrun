@@ -11,6 +11,6 @@ export const useResetGame = () => {
     setIsWin(false);
     resetStopwatch();
     resetStoreState();
-    void navigate({ to: '/settings' });
+    void navigate({ to: "/settings" });
   };
 };
