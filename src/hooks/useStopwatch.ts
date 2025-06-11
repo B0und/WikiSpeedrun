@@ -76,12 +76,13 @@ const useStopwatch = () => {
   const getFormattedTime = useCallback(() => {
     const pad = (time: string, length: number) => {
       while (time.length < length) {
-        time = "0" + time;
+        time = `0${time}`;
       }
       return time;
     };
 
     let newMs = totalLapseRef.current;
+    // biome-ignore lint/suspicious/noImplicitAnyLet: todo
     let seconds;
     seconds = Math.floor(totalLapseRef.current / 1000);
     newMs = newMs - seconds * 1000;

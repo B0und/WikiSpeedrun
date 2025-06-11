@@ -1,20 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
-import { useParams } from "react-router";
-
+import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 import {
-  Article,
+  type Article,
   useClicks,
   useEndingArticle,
   useGameStoreActions,
   useIsGameRunning,
   useStartingArticle,
 } from "../../stores/GameStore";
-import { useStopwatchActions } from "../StopwatchContext";
-import { WikiApiArticle } from "./Wiki.types";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
-import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
+import { useStopwatchActions } from "../StopwatchContext";
+import { wikiRoute } from "./Wiki";
+import type { WikiApiArticle } from "./Wiki.types";
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();
@@ -29,7 +28,7 @@ export const usePauseWhileLoading = (isLoading: boolean) => {
 
 export const findVisibleWinningLinks = (articleTitle: Article) => {
   const winningLinks = document.querySelectorAll<HTMLElement>(
-    `[href="/wiki/${articleTitle.title.replaceAll(" ", "_")}"]`
+    `[href="/wiki/${articleTitle.title.replaceAll(" ", "_")}"]`,
   );
   return Array.from(winningLinks).filter((link) => link.offsetWidth > 0);
 };
@@ -46,7 +45,7 @@ const getArticleData = async (language: string, title: string) => {
         format: "json",
         disableeditsection: "true",
         redirects: "true", // automatically redirects from plural form
-      }).toString()
+      }).toString(),
   );
   return resp.json() as Promise<WikiApiArticle>;
 };
@@ -54,17 +53,16 @@ const getArticleData = async (language: string, title: string) => {
 export const useWikiQuery = () => {
   const startingArticle = useStartingArticle();
   const language = useWikiLanguage();
-  const routeParams = useParams();
+  const { _splat: wikiTitle } = wikiRoute.useParams();
+
   const isGameRunning = useIsGameRunning();
 
-  const wikiArticle = routeParams.wikiTitle
-    ? decodeURIComponent(routeParams.wikiTitle).replace("/wiki/", "")
-    : startingArticle.title;
+  const wikiArticle = wikiTitle ? decodeURIComponent(wikiTitle).replace("/wiki/", "") : startingArticle.title;
 
-  const { addHistoryArticle, setIsGameRunning, setIsWin } = useGameStoreActions();
+  const { setIsGameRunning, setIsWin } = useGameStoreActions();
 
   const targetArticle = useEndingArticle();
-  const { getFormattedTime, startStopwatch, pauseStopwatch } = useStopwatchActions();
+  const { startStopwatch, pauseStopwatch } = useStopwatchActions();
   const { increaseWins, addKnownLanguage, increaseArticlesClicked } = useStatsStoreActions();
   const clicks = useClicks();
 
@@ -72,10 +70,7 @@ export const useWikiQuery = () => {
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
-      if (
-        article.title === targetArticle.title ||
-        String(article.pageid) === targetArticle.pageid
-      ) {
+      if (article.title === targetArticle.title || String(article.pageid) === targetArticle.pageid) {
         pauseStopwatch();
         setIsGameRunning(false);
         setIsWin(true);
@@ -100,7 +95,7 @@ export const useWikiQuery = () => {
       setIsWin,
       targetArticle.pageid,
       targetArticle.title,
-    ]
+    ],
   );
 
   const query = useQuery({
@@ -124,7 +119,7 @@ export const useWikiQuery = () => {
     }
 
     startStopwatch();
-  }, [addHistoryArticle, getFormattedTime, handleWin, isGameRunning, query.data, startStopwatch]);
+  }, [handleWin, isGameRunning, query.data, startStopwatch]);
 
   return query;
 };

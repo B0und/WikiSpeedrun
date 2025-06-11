@@ -1,8 +1,7 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { Locales } from "../i18n/i18n-types";
-import { LANGUAGES } from "../components/WikiLanguageSelect";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import type { LANGUAGES } from "../components/WikiLanguageSelect";
+import type { Locales } from "../i18n/i18n-types";
 
 /*
  Data gets persisted in local storage
@@ -58,12 +57,12 @@ const useSettingsStore = create<SettingsStore>()(
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         partialize: ({ actions, ...rest }: SettingsStore) => rest,
         version: 1,
-      }
+      },
     ),
     {
       name: "settings-store",
-    }
-  )
+    },
+  ),
 );
 
 export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);

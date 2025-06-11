@@ -1,8 +1,8 @@
+import { querystring } from "unbound-zustand-querystring";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { StopwatchProps } from "../components/StopwatchDisplay";
-import { querystring } from "unbound-zustand-querystring";
 import { immer } from "zustand/middleware/immer";
+import type { StopwatchProps } from "../components/StopwatchDisplay";
 
 /*
 Data partially synced with URL
@@ -64,7 +64,7 @@ export const useGameStore = create<GameStore>()(
                 startingArticle: article,
               }),
               false,
-              "setStartingArticle"
+              "setStartingArticle",
             );
           },
           setEndingArticle: (article: Article) => {
@@ -73,7 +73,7 @@ export const useGameStore = create<GameStore>()(
                 endingArticle: article,
               }),
               false,
-              "setEndingArticle"
+              "setEndingArticle",
             );
           },
           setIsGameRunning: (flag: boolean) => {
@@ -82,7 +82,7 @@ export const useGameStore = create<GameStore>()(
                 state.isGameRunning = flag;
               },
               false,
-              "setIsGameRunning"
+              "setIsGameRunning",
             );
           },
           addHistoryArticle: (article: ArticleHistory) => {
@@ -95,7 +95,7 @@ export const useGameStore = create<GameStore>()(
                 state.history.push(article);
               },
               false,
-              "addHistoryArticle"
+              "addHistoryArticle",
             );
           },
           resetStoreState: () => {
@@ -107,7 +107,7 @@ export const useGameStore = create<GameStore>()(
                 state.cheatingAttempts += 1;
               },
               false,
-              "increaseCheatingAttemptsCounter"
+              "increaseCheatingAttemptsCounter",
             );
           },
           setLastArticleWinningLinks: (links) => {
@@ -116,7 +116,7 @@ export const useGameStore = create<GameStore>()(
                 state.history[state.history.length - 1].winningLinks = links;
               },
               false,
-              "setLastArticleWinningLinks"
+              "setLastArticleWinningLinks",
             );
           },
           setIsWin: (isWin) => {
@@ -125,7 +125,7 @@ export const useGameStore = create<GameStore>()(
                 state.isWin = isWin;
               },
               false,
-              "setIsWin"
+              "setIsWin",
             );
           },
         },
@@ -144,12 +144,12 @@ export const useGameStore = create<GameStore>()(
             isWin: false,
           };
         },
-      }
+      },
     ),
     {
       name: "game-store",
-    }
-  )
+    },
+  ),
 );
 
 export const useGameStoreActions = () => useGameStore((state) => state.actions);
@@ -157,8 +157,7 @@ export const useIsGameRunning = () => useGameStore((state) => state.isGameRunnin
 export const useStartingArticle = () => useGameStore((state) => state.startingArticle);
 export const useEndingArticle = () => useGameStore((state) => state.endingArticle);
 export const useHistory = () => useGameStore((state) => state.history);
-export const useClicks = () =>
-  useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
+export const useClicks = () => useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
 export const useCurrentArticle = () => useGameStore((state) => state.history.slice(-1)[0]?.title);
 export const useIsWin = () => useGameStore((state) => state.isWin);
 

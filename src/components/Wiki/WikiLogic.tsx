@@ -1,9 +1,9 @@
-import { MouseEvent } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import type { MouseEvent } from "react";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useStopwatchActions } from "../StopwatchContext";
 import { useGameStoreActions } from "../../stores/GameStore";
+import { useStopwatchActions } from "../StopwatchContext";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
@@ -31,19 +31,26 @@ const useWikiLogic = () => {
   const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
 
-    const target = e.target as HTMLAnchorElement;
-    const parent = target.parentNode as HTMLAnchorElement;
-    // not a link - exit
-    if (target.nodeName !== "A" && parent.nodeName !== "A") {
+    // Traverse up from the event target to find the nearest anchor element
+    let node = e.target as HTMLElement | null;
+    let anchor: HTMLAnchorElement | null = null;
+    while (node && node !== e.currentTarget) {
+      if (node.nodeName === "A") {
+        anchor = node as HTMLAnchorElement;
+        break;
+      }
+      node = node.parentElement;
+    }
+
+    if (!anchor) {
       return;
     }
 
-    if (handleNavigation(parent) || handleNavigation(target)) {
+    if (handleNavigation(anchor)) {
       return;
     }
 
-    const parentHref = getFilteredLink(parent);
-    const hrefText = getFilteredLink(target);
+    const hrefText = getFilteredLink(anchor);
 
     // handle correct link
     if (hrefText) {
@@ -52,19 +59,14 @@ const useWikiLogic = () => {
        * encodeURIComponent is needed because articles with slashes break
        * TODO rewrite to query params instead of path segments??
        */
-      void navigate(encodeURIComponent(hrefText));
-      return;
-    }
-
-    // if parent is a link
-    if (parentHref) {
-      addHrefToHistory(parentHref);
-      void navigate(encodeURIComponent(parentHref));
+      const articleTitle = hrefText.replace("/wiki/", "");
+      const encodedTitle = encodeURIComponent(articleTitle.replaceAll(" ", "_"));
+      void navigate({ to: `/wiki/${encodedTitle}` });
       return;
     }
 
     // handle misc stuff
-    if (filterOtherStuff(target, invalidLinkText)) {
+    if (filterOtherStuff(anchor, invalidLinkText)) {
       return;
     }
 
@@ -81,7 +83,7 @@ function isScrollingAnchor(node: HTMLElement): boolean {
   if (node.tagName.toLowerCase() === "a") {
     // Check if the href attribute starts with #
     const href = node.getAttribute("href");
-    return href !== null && href.startsWith("#");
+    return href?.startsWith("#") ?? false;
   }
   return false;
 }
@@ -107,11 +109,7 @@ const getFilteredLink = (element: HTMLAnchorElement) => {
   if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
     return null;
   }
-  if (
-    ["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(
-      element.hostname
-    )
-  ) {
+  if (["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(element.hostname)) {
     return null;
   }
 

@@ -6,7 +6,7 @@ export interface Parse {
   title?: Title;
   pageid?: number;
   revid?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: a
   redirects?: any[];
   text?: Text;
   langlinks?: Langlink[];

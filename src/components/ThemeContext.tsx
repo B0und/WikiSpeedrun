@@ -24,9 +24,7 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
     }
   }, [colorMode]);
 
-  return (
-    <ThemeContext.Provider value={{ colorMode, switchTheme }}>{children}</ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ colorMode, switchTheme }}>{children}</ThemeContext.Provider>;
 };
 
 export function useThemeContext() {

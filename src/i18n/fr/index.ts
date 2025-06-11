@@ -28,8 +28,7 @@ const fr: Translation = {
   "Play again": "Rejouer",
   "Give up": "Abandonner",
   "Confirm action": "Confirmer l'action",
-  "If you leave, your current progress will be lost":
-    "Si vous quittez, votre progression actuelle sera perdue",
+  "If you leave, your current progress will be lost": "Si vous quittez, votre progression actuelle sera perdue",
   History: "Historique",
   Article: "Article",
   Time: "Temps",
@@ -177,7 +176,7 @@ const fr: Translation = {
   WaifuAlt:
     "Fille d'anime mignonne avec une robe bleue assise dans une bibliothèque, tandis qu'un globe wikipedia avec un minuteur speedrun attaché flotte à proximité",
   "Prize trophy": "Trophée de prix",
-  "Enable search during gameplay": "Activer la recherche pendant le jeu"
+  "Enable search during gameplay": "Activer la recherche pendant le jeu",
 };
 
 export default fr;

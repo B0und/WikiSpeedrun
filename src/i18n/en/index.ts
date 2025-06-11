@@ -9,8 +9,7 @@ const en: BaseTranslation = {
   "Now supports multiple languages": "Now supports multiple languages",
   "No registration required": "No registration required",
   "High precision fair™ timer": "High precision fair™ timer",
-  "actually stops while you are loading the next article":
-    "actually stops while you are loading the next article",
+  "actually stops while you are loading the next article": "actually stops while you are loading the next article",
   "Keeps track of your session progress": "Keeps track of your session progress",
   "Dark theme support": "Dark theme support",
   "Open source": "Open source",
@@ -28,8 +27,7 @@ const en: BaseTranslation = {
   "Play again": "Play again",
   "Give up": "Give up",
   "Confirm action": "Confirm action",
-  "If you leave, your current progress will be lost":
-    "If you leave, your current progress will be lost",
+  "If you leave, your current progress will be lost": "If you leave, your current progress will be lost",
   History: "History",
   Article: "Article",
   Time: "Time",

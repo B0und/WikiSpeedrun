@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import useDebounce from "../../hooks/useDebounce";
-import { WikiSearch } from "./WikiSearch.types";
-import Select, { InputActionMeta, StylesConfig } from "react-select";
-import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
+import Select, { type InputActionMeta, type StylesConfig } from "react-select";
+import useDebounce from "../../hooks/useDebounce";
 import { useI18nContext } from "../../i18n/i18n-react";
+import type { Article } from "../../stores/GameStore";
 import { useWikiLanguage } from "../../stores/SettingsStore";
-import { Article } from "../../stores/GameStore";
+import { useThemeContext } from "../ThemeContext";
+import type { WikiSearch } from "./WikiSearch.types";
 
 const getArticles = async (language: string, debouncedTerm: string) => {
   if (!debouncedTerm) return;
@@ -20,7 +20,7 @@ const getArticles = async (language: string, debouncedTerm: string) => {
         origin: "*",
         format: "json",
         srsearch: debouncedTerm,
-      }).toString()
+      }).toString(),
   );
   return resp.json() as Promise<WikiSearch>;
 };
@@ -110,25 +110,21 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
           setSelectedOption(article?.label ?? "");
           onSelect({ pageid: article?.value ?? "", title: article?.label ?? "" });
         }}
-        value={data?.filter(function (option) {
-          return option.label === selectedOption;
-        })}
+        value={data?.filter((option) => option.label === selectedOption)}
         isMulti={false}
         classNames={{
           control: () => (isDarkMode ? "dark:bg-dark-surface dark:text-dark-primary" : ""),
           menu: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
           loadingIndicator: () => (isDarkMode ? "dark:bg-dark-surface" : ""),
-          noOptionsMessage: () =>
-            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
+          noOptionsMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
           input: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           option: (state) =>
             clsx(
               state.isFocused && "dark:bg-[#464242] dark:text-primary-blue",
-              isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`
+              isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
             ),
 
-          loadingMessage: () =>
-            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
+          loadingMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
         }}
       />
     </div>

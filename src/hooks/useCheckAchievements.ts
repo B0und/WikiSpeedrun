@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { StatsValues, useStatsStore } from "../stores/StatisticsStore";
+import { type StatsValues, useStatsStore } from "../stores/StatisticsStore";
 import { useUnlockAchievements } from "./useUnlockAchievements";
 
 interface UseCheckAchievementsProps {

@@ -9,8 +9,7 @@ const de: Translation = {
   "Now supports multiple languages": "Unterstützt jetzt mehrere Sprachen",
   "No registration required": "Keine Registrierung erforderlich",
   "High precision fair™ timer": "Hochpräziser fairer™ Timer",
-  "actually stops while you are loading the next article":
-    "stoppt tatsächlich, während Sie den nächsten Artikel laden",
+  "actually stops while you are loading the next article": "stoppt tatsächlich, während Sie den nächsten Artikel laden",
   "Keeps track of your session progress": "Behält Ihren Sitzungsfortschritt im Auge",
   "Dark theme support": "Unterstützung für dunkles Thema",
   "Open source": "Open Source",
@@ -28,8 +27,7 @@ const de: Translation = {
   "Play again": "Erneut spielen",
   "Give up": "Aufgeben",
   "Confirm action": "Aktion bestätigen",
-  "If you leave, your current progress will be lost":
-    "Wenn Sie gehen, geht Ihr aktueller Fortschritt verloren",
+  "If you leave, your current progress will be lost": "Wenn Sie gehen, geht Ihr aktueller Fortschritt verloren",
   History: "Verlauf",
   Article: "Artikel",
   Time: "Zeit",

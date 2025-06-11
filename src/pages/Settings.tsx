@@ -1,37 +1,32 @@
-import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router";
-import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
+import { useIsFetching } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
+import { type FormEvent, useState } from "react";
+import { toast } from "react-hot-toast";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
+import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import RandomButton from "../components/RandomButton/RandomButton";
+import { RandomModal } from "../components/RandomModal";
 import {
   getNHighestLinksPages,
   handleOnRandomSuccess,
   useSyncWikiLanguageFromUrl,
 } from "../components/Settings.helpers";
 import { useStopwatchActions } from "../components/StopwatchContext";
+import { LabelSwitch } from "../components/Switch";
+import { WikiLanguageSelect } from "../components/WikiLanguageSelect";
+import { useCheckAchievements } from "../hooks/useCheckAchievements";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
-import { WikiLanguageSelect } from "../components/WikiLanguageSelect";
-import { toast } from "react-hot-toast";
-import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
-import { RandomModal } from "../components/RandomModal";
-import { Article } from "../stores/GameStore";
+import type { Article } from "../stores/GameStore";
+import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
+import { useIsCtrlFEnabled, useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
-import { useCheckAchievements } from "../hooks/useCheckAchievements";
-import { useIsFetching } from "@tanstack/react-query";
-import {
-  useIsCtrlFEnabled,
-  useSettingsStoreActions,
-  useWikiLanguage,
-} from "../stores/SettingsStore";
-import { LabelSwitch } from "../components/Switch";
 
 const Settings = () => {
   const { LL } = useI18nContext();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
-  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } =
-    useGameStoreActions();
+  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } = useGameStoreActions();
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
   const resetGame = useResetGame();
@@ -51,8 +46,7 @@ const Settings = () => {
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],
   });
 
-  const copyNotification = () =>
-    toast.success(LL["Copied to clipboard"](), { position: "top-center" });
+  const copyNotification = () => toast.success(LL["Copied to clipboard"](), { position: "top-center" });
 
   const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,7 +60,8 @@ const Settings = () => {
       },
       winningLinks: 0,
     });
-    void navigate("/wiki");
+    void navigate({ to: "/wiki" });
+
     startStopwatch();
     setIsGameRunning(true);
     increaseTotalRuns();
@@ -74,24 +69,15 @@ const Settings = () => {
 
   return (
     <div>
-      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
-        {LL.Settings()}
-      </h2>
+      <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl">{LL.Settings()}</h2>
 
-      <p className="pb-8 pt-4 dark:text-dark-primary">
-        {LL[
-          "Start typing and then select values from the dropdown list or press the random button"
-        ]()}
+      <p className="pt-4 pb-8 dark:text-dark-primary">
+        {LL["Start typing and then select values from the dropdown list or press the random button"]()}
       </p>
 
       <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
-        <RandomModal
-          data={modalData}
-          open={modalOpen}
-          setOpen={setModalOpen}
-          setArticle={modalFunction.fn}
-        />
+        <RandomModal data={modalData} open={modalOpen} setOpen={setModalOpen} setArticle={modalFunction.fn} />
 
         <SelectArticleSettings
           label={LL["Select starting article"]()}
@@ -130,7 +116,7 @@ const Settings = () => {
             type="button"
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={async () => {
-              await navigator.clipboard.writeText(window.location.href + `&lang=${wikiLang}`);
+              await navigator.clipboard.writeText(`${window.location.href}&lang=${wikiLang}`);
               copyNotification();
             }}
           >

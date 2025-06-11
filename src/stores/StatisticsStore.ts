@@ -1,9 +1,9 @@
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { immer } from "zustand/middleware/immer";
-import { Achievement, ACHIEVEMENTS_LIST, achivementConditionCheckByIdMap } from "../achievements";
 import { produce } from "immer";
+import { create } from "zustand";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { immer } from "zustand/middleware/immer";
+import { ACHIEVEMENTS_LIST, type Achievement, achivementConditionCheckByIdMap } from "../achievements";
+
 /*
 Data gets persisted in local storage
 */
@@ -71,7 +71,7 @@ export const useStatsStore = create<StatsStore>()(
                 state.total_runs += 1;
               },
               false,
-              "increaseTotalRuns"
+              "increaseTotalRuns",
             );
           },
           increaseWins: () => {
@@ -80,7 +80,7 @@ export const useStatsStore = create<StatsStore>()(
                 state.wins += 1;
               },
               false,
-              "increaseWins"
+              "increaseWins",
             );
           },
           increaseSingleRandomPressed: () => {
@@ -89,7 +89,7 @@ export const useStatsStore = create<StatsStore>()(
                 state.single_random_pressed += 1;
               },
               false,
-              "increaseSingleRandomPressed"
+              "increaseSingleRandomPressed",
             );
           },
           increaseMultipleRandomPressed: () => {
@@ -98,7 +98,7 @@ export const useStatsStore = create<StatsStore>()(
                 state.multiple_random_pressed += 1;
               },
               false,
-              "increaseMultipleRandomPressed"
+              "increaseMultipleRandomPressed",
             );
           },
           increaseArticlePreviewPressed: () => {
@@ -107,7 +107,7 @@ export const useStatsStore = create<StatsStore>()(
                 state.article_preview_pressed += 1;
               },
               false,
-              "increaseArticlePreviewPressed"
+              "increaseArticlePreviewPressed",
             );
           },
           addKnownLanguage: (newLanguage) => {
@@ -117,7 +117,7 @@ export const useStatsStore = create<StatsStore>()(
                 state.known_wiki_languages = [...new Set(state.known_wiki_languages)];
               },
               false,
-              "addKnownLanguage"
+              "addKnownLanguage",
             );
           },
           increaseArticlesClicked: (amount) => {
@@ -126,7 +126,7 @@ export const useStatsStore = create<StatsStore>()(
                 state.articles_clicked += amount;
               },
               false,
-              "increaseArticleClicked"
+              "increaseArticleClicked",
             );
           },
           unlockAchievements: (unlockedAchievements) => {
@@ -139,7 +139,7 @@ export const useStatsStore = create<StatsStore>()(
                 }
               },
               false,
-              "unlockAchievements"
+              "unlockAchievements",
             );
           },
         },
@@ -162,7 +162,7 @@ export const useStatsStore = create<StatsStore>()(
           const unlockedAchievements = produce(currentState.achievements, (draftState) => {
             typedPersistedState.achievements.forEach((storageAchievement) => {
               const completedAchievement = draftState.find(
-                (draftAchievement) => draftAchievement.id === storageAchievement.id
+                (draftAchievement) => draftAchievement.id === storageAchievement.id,
               );
               if (completedAchievement) {
                 completedAchievement.unlocked = true;
@@ -176,12 +176,12 @@ export const useStatsStore = create<StatsStore>()(
             achievements: unlockedAchievements,
           };
         },
-      }
+      },
     ),
     {
       name: "statistics-store",
-    }
-  )
+    },
+  ),
 );
 
 export const checkAchievements = (achievements: readonly Achievement[]) => {
@@ -193,8 +193,7 @@ export const checkAchievements = (achievements: readonly Achievement[]) => {
 
 export const useStatsStoreActions = () => useStatsStore((state) => state.actions);
 export const useArticleClicks = () => useStatsStore((state) => state.articles_clicked);
-export const useArticlePreviewPressed = () =>
-  useStatsStore((state) => state.article_preview_pressed);
+export const useArticlePreviewPressed = () => useStatsStore((state) => state.article_preview_pressed);
 export const useAverageAnswerTime = () => useStatsStore((state) => state.average_answer_time);
 export const useFastestAnswerTime = () => useStatsStore((state) => state.fastest_answer_time);
 export const useKnownWikiLanguages = () => useStatsStore((state) => state.known_wiki_languages);

@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Polish
 
@@ -29,8 +29,7 @@ const pl: Translation = {
   "Play again": "Zagraj ponownie",
   "Give up": "Poddaj się",
   "Confirm action": "Potwierdź działanie",
-  "If you leave, your current progress will be lost":
-    "Jeśli wyjdziesz, bieżący postęp zostanie utracony",
+  "If you leave, your current progress will be lost": "Jeśli wyjdziesz, bieżący postęp zostanie utracony",
   History: "Historia",
   Article: "Artykuł",
   Time: "Czas",

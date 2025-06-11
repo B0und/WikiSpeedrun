@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Dutch
 const nl: Translation = {
@@ -9,8 +9,7 @@ const nl: Translation = {
   "Now supports multiple languages": "Ondersteunt nu meerdere talen",
   "No registration required": "Geen registratie vereist",
   "High precision fair™ timer": "Zeer nauwkeurige kermistimer",
-  "actually stops while you are loading the next article":
-    "stopt eigenlijk terwijl je het volgende artikel laadt",
+  "actually stops while you are loading the next article": "stopt eigenlijk terwijl je het volgende artikel laadt",
   "Keeps track of your session progress": "Houdt bij hoe ver je bent in je sessie",
   "Dark theme support": "Donker thema ondersteuning",
   "Open source": "Open source",
@@ -28,8 +27,7 @@ const nl: Translation = {
   "Play again": "Opnieuw spelen",
   "Give up": "Opgeven",
   "Confirm action": "Bevestig actie",
-  "If you leave, your current progress will be lost":
-    "Als je vertrekt, gaat je huidige voortgang verloren",
+  "If you leave, your current progress will be lost": "Als je vertrekt, gaat je huidige voortgang verloren",
   History: "Geschiedenis",
   Article: "Artikel",
   Time: "Tijd",
@@ -176,7 +174,7 @@ const nl: Translation = {
   WaifuAlt:
     "Schattig anime-meisje met een blauwe jurk zittend in een bibliotheek, terwijl een wikipedia-globe met een speedrun-timer eraan vastzit in de buurt zweeft",
   "Prize trophy": "Prijs trofee",
-  "Enable search during gameplay": "Zoeken tijdens het spelen inschakelen"
+  "Enable search during gameplay": "Zoeken tijdens het spelen inschakelen",
 };
 
 export default nl;

@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
-import { useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
-import { useI18nContext } from "../../i18n/i18n-react";
 import { toast } from "react-hot-toast";
+import { useI18nContext } from "../../i18n/i18n-react";
+import { useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useIsCtrlFEnabled } from "../../stores/SettingsStore";
 
 const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
@@ -24,7 +24,7 @@ export const useNoCheating = () => {
         errorToast(LL["No Cheating!"]());
       }
     },
-    [LL, increaseCheatingAttemptsCounter, isGameRunning]
+    [LL, increaseCheatingAttemptsCounter, isGameRunning],
   );
 
   useEffect(() => {

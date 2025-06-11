@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Italian
 const it: Translation = {
@@ -175,7 +175,7 @@ const it: Translation = {
   WaifuAlt:
     "Ragazza anime carina con un vestito blu seduta in una biblioteca, mentre un globo di Wikipedia con un timer per speedrun al suo interno fluttua nelle vicinanze",
   "Prize trophy": "Trofeo premio",
-  "Enable search during gameplay": "Abilita la ricerca durante il gioco"
+  "Enable search during gameplay": "Abilita la ricerca durante il gioco",
 };
 
 export default it;

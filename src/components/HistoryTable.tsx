@@ -1,7 +1,7 @@
-import { useRef, useEffect } from "react";
-import { useHistory, useIsGameRunning } from "../stores/GameStore";
-import { useNavigate } from "react-router";
+import { useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { useI18nContext } from "../i18n/i18n-react";
+import { useHistory, useIsGameRunning } from "../stores/GameStore";
 
 const HistoryTable = () => {
   const { LL } = useI18nContext();
@@ -11,6 +11,7 @@ const HistoryTable = () => {
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <>
   useEffect(() => {
     tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [articleHistory.length]);
@@ -38,11 +39,10 @@ const HistoryTable = () => {
               ) : (
                 <td>
                   <button
+                    type="button"
                     className="text-left text-primary-blue underline"
                     onClick={() => {
-                      void navigate(
-                        `/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}`
-                      );
+                      void navigate({ to: `/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}` });
                     }}
                   >
                     {article.title}

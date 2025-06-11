@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Japanese
 
@@ -10,8 +10,7 @@ const ja: Translation = {
   "Now supports multiple languages": "複数の言語に対応しています",
   "No registration required": "登録不要",
   "High precision fair™ timer": "高精度のフェアタイマー",
-  "actually stops while you are loading the next article":
-    "次の記事を読み込んでいる間は実際に停止します",
+  "actually stops while you are loading the next article": "次の記事を読み込んでいる間は実際に停止します",
   "Keeps track of your session progress": "セッションの進行状況を追跡します",
   "Dark theme support": "ダークテーマのサポート",
   "Open source": "オープンソース",

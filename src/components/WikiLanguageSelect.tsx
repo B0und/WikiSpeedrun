@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import Select, { StylesConfig } from "react-select";
-import { useThemeContext } from "./ThemeContext";
+import Select, { type StylesConfig } from "react-select";
 import { useI18nContext } from "../i18n/i18n-react";
-import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
 import { useGameStoreActions } from "../stores/GameStore";
+import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
+import { useThemeContext } from "./ThemeContext";
 
 const selectId = "wikiLanguageSelect";
 
@@ -36,22 +36,16 @@ export const WikiLanguageSelect = () => {
         classNames={{
           input: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           control: () => clsx(isDarkMode && "dark:bg-dark-surface dark:text-dark-primary"),
-          menu: () =>
-            clsx(
-              isDarkMode && "dark:bg-dark-surface-secondary dark:text-dark-primary",
-              "bg-neutral-50"
-            ),
+          menu: () => clsx(isDarkMode && "dark:bg-dark-surface-secondary dark:text-dark-primary", "bg-neutral-50"),
           loadingIndicator: () => (isDarkMode ? "dark:bg-dark-surface" : ""),
-          noOptionsMessage: () =>
-            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
+          noOptionsMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
           singleValue: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           option: (state) =>
             clsx(
               state.isFocused && "dark:bg-[#464242] dark:text-primary-blue",
-              isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`
+              isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
             ),
-          loadingMessage: () =>
-            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
+          loadingMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
         }}
       />
     </div>

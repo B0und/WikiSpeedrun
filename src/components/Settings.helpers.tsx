@@ -1,13 +1,13 @@
-import { toast } from "react-hot-toast";
-import { WikiRandom } from "./RandomButton/RandomButton.types";
-import { Article } from "../stores/GameStore";
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
+import type { Article } from "../stores/GameStore";
 import { useSettingsStoreActions } from "../stores/SettingsStore";
+import type { WikiRandom } from "./RandomButton/RandomButton.types";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) return;
   const highestLinksPage = Object.values(data.query.pages)
-    .filter((page) => Object.prototype.hasOwnProperty.call(page, "linkshere"))
+    .filter((page) => Object.hasOwn(page, "linkshere"))
     .reduce((prev, current) => {
       const previousLinksphere = prev.linkshere ?? [];
       const currentLinksphere = current.linkshere ?? [];
@@ -23,7 +23,7 @@ export const getNHighestLinksPages = (data: WikiRandom, limit = 5) => {
   if (!data.query?.pages) return;
 
   let linkPages = Object.values(data.query.pages)
-    .filter((page) => Object.prototype.hasOwnProperty.call(page, "linkshere"))
+    .filter((page) => Object.hasOwn(page, "linkshere"))
     .sort((a, b) => (b.linkshere?.length ?? 0) - (a.linkshere?.length ?? 0))
     .slice(0, limit)
     .map((p) => ({ title: p.title, pageid: String(p.pageid) }))

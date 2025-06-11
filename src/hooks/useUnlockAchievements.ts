@@ -1,10 +1,6 @@
 import { achievementToast } from "../components/AchievementNotification";
 import { useI18nContext } from "../i18n/i18n-react";
-import {
-  checkAchievements,
-  useAchievements,
-  useStatsStoreActions,
-} from "../stores/StatisticsStore";
+import { checkAchievements, useAchievements, useStatsStoreActions } from "../stores/StatisticsStore";
 
 export const useUnlockAchievements = () => {
   const { LL } = useI18nContext();

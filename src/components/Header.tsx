@@ -1,14 +1,14 @@
-import { Link } from "react-router";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Link } from "@tanstack/react-router";
 import { GitHub, Moon, Sun } from "react-feather";
-import { ResultDialog } from "./ResultDialog";
-import { useThemeContext } from "./ThemeContext";
+import type { LocalizedString } from "typesafe-i18n";
+import { useI18nContext } from "../i18n/i18n-react";
 import { useIsGameRunning } from "../stores/GameStore";
 import { GiveUpModal } from "./ConfirmNavigation";
-import { useI18nContext } from "../i18n/i18n-react";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
-import { LocalizedString } from "typesafe-i18n";
 import { MobileMenu } from "./MobileMenu";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { ResultDialog } from "./ResultDialog";
+import { useThemeContext } from "./ThemeContext";
 
 export interface WikiLink {
   name: LocalizedString;
@@ -29,7 +29,7 @@ const Header = () => {
   const { colorMode, switchTheme } = useThemeContext();
 
   return (
-    <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3 sm:gap-0">
+    <div className="flex items-center gap-12 border-secondary-blue border-b-[2px] pb-3 sm:gap-0">
       <WikiLogo />
       <nav className="flex h-full flex-1 items-center gap-4">
         <div className="flex gap-4 md:hidden">
@@ -42,6 +42,7 @@ const Header = () => {
           <li>{!isGameRunning && <InterfaceLanguageSelect />}</li>
           <li className="h-full">
             <button
+              type="button"
               className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
               onClick={switchTheme}
             >
@@ -65,14 +66,14 @@ const WikiLogo = () => {
 
   return (
     <picture className="shrink-0 basis-[200px] md:hidden">
-      <source srcSet={window.location.origin + `/${imageSrc}.webp`} type="image/webp" />
+      <source srcSet={`${window.location.origin}/${imageSrc}.webp`} type="image/webp" />
 
-      <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
+      <source srcSet={`${window.location.origin}/${imageSrc}.png`} type="image/png" />
       <img
         width={200}
         height={68}
         className="block h-full"
-        src={window.location.origin + `/${imageSrc}.png`}
+        src={`${window.location.origin}/${imageSrc}.png`}
         alt={LL[
           "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
         ]()}

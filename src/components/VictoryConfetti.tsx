@@ -1,5 +1,5 @@
+import { type CreateTypes, create, type Options } from "canvas-confetti";
 import { useEffect, useRef } from "react";
-import { CreateTypes, Options, create } from "canvas-confetti";
 
 function randomInRange(min: number, max: number): number {
   return Math.random() * (max - min) + min;
@@ -166,7 +166,7 @@ export const VictoryConfetti = () => {
   return (
     <canvas
       ref={canvasRef}
-      className={"pointer-events-none fixed left-0 top-0 h-full w-full"}
+      className={"pointer-events-none fixed top-0 left-0 h-full w-full"}
       width={1600}
       height={1600}
     />

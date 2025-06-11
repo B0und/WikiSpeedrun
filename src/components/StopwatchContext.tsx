@@ -1,5 +1,4 @@
-import React, { createContext } from "react";
-import { useMemo } from "react";
+import React, { createContext, useMemo } from "react";
 import useStopwatch from "../hooks/useStopwatch";
 
 interface StopwatchContext {
@@ -22,12 +21,11 @@ const StopwatchContextValue = createContext<StopwatchContext | undefined>(undefi
 const StopwatchContextActions = createContext<StopwatchContextActions | undefined>(undefined);
 
 export const StopwatchContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const { time, timeInMs, pauseStopwatch, startStopwatch, resetStopwatch, getFormattedTime } =
-    useStopwatch();
+  const { time, timeInMs, pauseStopwatch, startStopwatch, resetStopwatch, getFormattedTime } = useStopwatch();
 
   const actions = useMemo(
     () => ({ pauseStopwatch, startStopwatch, resetStopwatch, getFormattedTime }),
-    [getFormattedTime, pauseStopwatch, resetStopwatch, startStopwatch]
+    [getFormattedTime, pauseStopwatch, resetStopwatch, startStopwatch],
   );
   const values = useMemo(() => ({ time, timeInMs }), [time, timeInMs]);
 

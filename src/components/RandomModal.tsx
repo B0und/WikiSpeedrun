@@ -1,9 +1,9 @@
-import React from "react";
-import { ModalClose, ModalContent, ModalRoot, ModalTitle } from "./Modal";
-import { Article } from "../stores/GameStore";
-import ArticlePreview from "./ArticlePreview/ArticlePreview";
+import type React from "react";
 import { useI18nContext } from "../i18n/i18n-react";
+import type { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
+import ArticlePreview from "./ArticlePreview/ArticlePreview";
+import { ModalClose, ModalContent, ModalRoot, ModalTitle } from "./Modal";
 
 interface RandomModalProps {
   data: Article[] | null;
@@ -18,7 +18,7 @@ export const RandomModal = (props: RandomModalProps) => {
   return (
     <ModalRoot open={props.open} onOpenChange={props.setOpen}>
       <ModalContent>
-        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
+        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
           {LL["Choose your article"]()}
         </ModalTitle>
         <div className="gap flex flex-col gap-3 pt-5">

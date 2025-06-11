@@ -1,8 +1,12 @@
 # TODO
 
-[] - migrate to @tanstack/react-router from 48KB REACT*ROUTER * WTF????????? 48 GZIPPED?
+[x] - migrate to @tanstack/react-router from 48KB REACT*ROUTER * WTF????????? 48 GZIPPED?
 [] - migrate to lingui5 maybe????
 [] - get rid of react-select...
+
+[] - IPFS wiki mirror support
+
+[] - bug: reset game state when going back from playing state and ignore warning modal
 
 [x] - fix logo shrink
 [] - add hack setting

@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Vietnamese
 const vi: Translation = {
@@ -9,8 +9,7 @@ const vi: Translation = {
   "Now supports multiple languages": "Bây giờ hỗ trợ nhiều ngôn ngữ",
   "No registration required": "Không cần đăng ký",
   "High precision fair™ timer": "Đồng hồ đếm thời gian công bằng™ chính xác cao",
-  "actually stops while you are loading the next article":
-    "thực sự dừng lại trong khi bạn đang tải bài viết tiếp theo",
+  "actually stops while you are loading the next article": "thực sự dừng lại trong khi bạn đang tải bài viết tiếp theo",
   "Keeps track of your session progress": "Theo dõi tiến trình của phiên của bạn",
   "Dark theme support": "Hỗ trợ chủ đề tối",
   "Open source": "Mã nguồn mở",
@@ -28,8 +27,7 @@ const vi: Translation = {
   "Play again": "Chơi lại",
   "Give up": "Từ bỏ",
   "Confirm action": "Xác nhận hành động",
-  "If you leave, your current progress will be lost":
-    "Nếu bạn rời đi, tiến trình hiện tại của bạn sẽ bị mất",
+  "If you leave, your current progress will be lost": "Nếu bạn rời đi, tiến trình hiện tại của bạn sẽ bị mất",
   History: "Lịch sử",
   Article: "Bài viết",
   Time: "Thời gian",
@@ -176,7 +174,7 @@ const vi: Translation = {
   WaifuAlt:
     "Cô gái anime dễ thương với chiếc váy màu xanh ngồi trong một thư viện, trong khi một quả cầu Wikipedia với một bộ hẹn giờ speedrun đính kèm đang lơ lửng gần đó",
   "Prize trophy": "Cúp giải thưởng",
-  "Enable search during gameplay": "Bật tìm kiếm trong quá trình chơi"
+  "Enable search during gameplay": "Bật tìm kiếm trong quá trình chơi",
 };
 
 export default vi;

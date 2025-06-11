@@ -5,11 +5,11 @@ import "./styles/unreset.css";
 import "./styles/vec2022-base.css";
 import "./styles/vector2022.css";
 import "./styles/overrides.css";
-import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
+import purify from "dompurify";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
-import purify from "dompurify";
+import { useThemeContext } from "../ThemeContext";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
@@ -50,9 +50,7 @@ const WikiDisplay = () => {
     <>
       {data?.html && (
         <>
-          <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl sm:mt-8">
-            {data.title}
-          </h2>
+          <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl sm:mt-8">{data.title}</h2>
           <div className={clsx("unreset wiki-insert", isDarkTheme && "wiki-dark-theme")}>
             {/* todo delete unused classnames */}
             <div
@@ -62,13 +60,19 @@ const WikiDisplay = () => {
               {/* todo delete unused classnames */}
               <div
                 id="wikiBody"
-                className="skin-vector vector-body skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject  skin-vector-2022 action-view uls-dialog-sticky-hide vector-below-page-title"
+                className="skin-vector vector-body skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject skin-vector-2022 action-view uls-dialog-sticky-hide vector-below-page-title"
               >
                 <div
+                  role="button"
+                  tabIndex={0}
                   ref={(ref) => {
                     wikiRefCallback(ref);
                   }}
                   onClick={handleWikiArticleClick}
+                  onKeyDown={(e) =>
+                    e.key === "Enter" && handleWikiArticleClick(e as unknown as React.MouseEvent<HTMLDivElement>)
+                  }
+                  // biome-ignore lint/security/noDangerouslySetInnerHtml: <>
                   dangerouslySetInnerHTML={{ __html: purify.sanitize(data.html) }}
                 />
               </div>

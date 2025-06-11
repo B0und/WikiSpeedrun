@@ -1,10 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
-import DiceIcon from "../../assets/dice.svg?react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { useMutation } from "@tanstack/react-query";
 import clsx from "clsx";
-import { WikiRandom } from "./RandomButton.types";
+import DiceIcon from "../../assets/dice.svg?react";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useWikiLanguage } from "../../stores/SettingsStore";
+import type { WikiRandom } from "./RandomButton.types";
 
 const getRandomArticles = async (language: string) => {
   const res = await fetch(
@@ -21,7 +21,7 @@ const getRandomArticles = async (language: string) => {
         lhlimit: "500",
         lhshow: "!redirect",
         lhprop: "pageid",
-      }).toString()
+      }).toString(),
   );
 
   return res.json() as WikiRandom;
@@ -43,10 +43,7 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
   return (
     <div className="relative">
       <button
-        className={clsx(
-          "mb-[-2px] w-fit p-2 hover:text-primary-blue",
-          isPending && "animate-spin-dice"
-        )}
+        className={clsx("mb-[-2px] w-fit p-2 hover:text-primary-blue", isPending && "animate-spin-dice")}
         type="button"
         onClick={() => {
           mutate();
@@ -55,7 +52,7 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
         <VisuallyHidden.Root>{LL["Get random article"]()}</VisuallyHidden.Root>
         <DiceIcon />
       </button>
-      <div className="pointer-events-none absolute right-0 top-0 w-[18px] rounded-full border-[1px] border-black bg-neutral-50 text-center text-xs dark:border-neutral-50 dark:bg-dark-surface dark:text-neutral-50">
+      <div className="pointer-events-none absolute top-0 right-0 w-[18px] rounded-full border-[1px] border-black bg-neutral-50 text-center text-xs dark:border-neutral-50 dark:bg-dark-surface dark:text-neutral-50">
         {randomCount}
       </div>
     </div>

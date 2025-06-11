@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { navigatorDetector } from "typesafe-i18n/detectors";
 import TypesafeI18n from "../i18n/i18n-react";
 import { detectLocale } from "../i18n/i18n-util";
 import { loadLocaleAsync } from "../i18n/i18n-util.async";
-import { navigatorDetector } from "typesafe-i18n/detectors";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 
 // Detect locale

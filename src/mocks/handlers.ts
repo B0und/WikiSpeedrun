@@ -1,7 +1,6 @@
-import { http, HttpResponse } from "msw";
+import { HttpResponse, http } from "msw";
 
-const getSelectArticleUrl = (article: string) =>
-  `?action=query&list=search&origin=*&format=json&srsearch=${article}`;
+const getSelectArticleUrl = (article: string) => `?action=query&list=search&origin=*&format=json&srsearch=${article}`;
 
 export const handlers = [
   http.get("https://en.wikipedia.org/w/api.php", ({ request }) => {

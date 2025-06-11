@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Russian
 
@@ -29,8 +29,7 @@ const ru: Translation = {
   "Play again": "Играть снова",
   "Give up": "Сдаться",
   "Confirm action": "Подтвердите действие",
-  "If you leave, your current progress will be lost":
-    "Если вы уйдете, текущий прогресс будет потерян",
+  "If you leave, your current progress will be lost": "Если вы уйдете, текущий прогресс будет потерян",
   History: "История",
   Article: "Статья",
   Time: "Время",

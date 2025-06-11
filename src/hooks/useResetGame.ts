@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router";
-import { useGameStoreActions } from "../stores/GameStore";
+import { useNavigate } from "@tanstack/react-router";
 import { useStopwatchActions } from "../components/StopwatchContext";
+import { useGameStoreActions } from "../stores/GameStore";
 
 export const useResetGame = () => {
   const navigate = useNavigate();
@@ -11,6 +11,6 @@ export const useResetGame = () => {
     setIsWin(false);
     resetStopwatch();
     resetStoreState();
-    void navigate("/settings");
+    void navigate({ to: "/settings", ignoreBlocker: true });
   };
 };
