@@ -60,6 +60,9 @@ export const useWikiQuery = () => {
     ? decodeURIComponent(routeParams.wikiTitle).replace("/wiki/", "")
     : startingArticle.title;
 
+  // Debug log to ensure param updates
+  console.log("[useWikiQuery] wikiArticle:", wikiArticle, "routeParams:", routeParams);
+
   const { setIsGameRunning, setIsWin } = useGameStoreActions();
 
   const targetArticle = useEndingArticle();

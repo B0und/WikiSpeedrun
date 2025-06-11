@@ -1,14 +1,20 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import { ViteEjsPlugin } from "vite-plugin-ejs";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { visualizer } from "rollup-plugin-visualizer";
 import { reactClickToComponent } from "vite-plugin-react-click-to-component";
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+      verboseFileRoutes: false,
+    }),
     react(),
     reactClickToComponent(),
     svgr(),
