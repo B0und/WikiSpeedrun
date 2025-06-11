@@ -1,14 +1,14 @@
-import { Link } from "react-router";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Link } from "@tanstack/react-router";
 import { GitHub, Moon, Sun } from "react-feather";
-import { ResultDialog } from "./ResultDialog";
-import { useThemeContext } from "./ThemeContext";
+import type { LocalizedString } from "typesafe-i18n";
+import { useI18nContext } from "../i18n/i18n-react";
 import { useIsGameRunning } from "../stores/GameStore";
 import { GiveUpModal } from "./ConfirmNavigation";
-import { useI18nContext } from "../i18n/i18n-react";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
-import type { LocalizedString } from "typesafe-i18n";
 import { MobileMenu } from "./MobileMenu";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { ResultDialog } from "./ResultDialog";
+import { useThemeContext } from "./ThemeContext";
 
 export interface WikiLink {
   name: LocalizedString;

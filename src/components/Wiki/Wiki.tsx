@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router";
-import { useEndingArticle, useStartingArticle } from "../../stores/GameStore";
-
-import WikiDisplay from "./WikiDisplay";
+import { useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { useEndingArticle, useStartingArticle } from "../../stores/GameStore";
+import { StartArrowEnd } from "../StartArrowEnd";
 import { Stopwatch } from "../Stopwatch";
 import { useNoCheating } from "./Wiki.utils";
-import { StartArrowEnd } from "../StartArrowEnd";
+import WikiDisplay from "./WikiDisplay";
 
 const Wiki = () => {
   useNoCheating();
@@ -15,7 +14,7 @@ const Wiki = () => {
 
   useEffect(() => {
     if (!startArticle.title || !endArticle.title) {
-      void navigate("/settings");
+      void navigate({ to: "/settings" });
     }
   }, [endArticle, navigate, startArticle]);
 

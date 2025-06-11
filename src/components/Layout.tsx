@@ -1,7 +1,7 @@
-import { Outlet } from "react-router";
+import { Outlet } from "@tanstack/react-router";
+import type React from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import type React from "react";
 
 export const BaseLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (

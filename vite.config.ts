@@ -27,18 +27,5 @@ export default defineConfig({
   build: {
     minify: "esbuild",
     sourcemap: false,
-    rollupOptions: {
-      treeshake: "smallest",
-      output: {
-        manualChunks: {
-          react: ["react", "react-dom"],
-          reactSelect: ["react-select"],
-          dompurify: ["dompurify"],
-          reResizable: ["re-resizable"],
-          reactRouter: ["react-router"],
-          tailwindMerge: ["tailwind-merge"],
-        },
-      },
-    },
   },
 });

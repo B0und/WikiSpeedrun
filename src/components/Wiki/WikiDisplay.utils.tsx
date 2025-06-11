@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from "@tanstack/react-router";
 import { useCallback, useEffect } from "react";
-import { useParams } from "react-router";
 import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 import {
   type Article,
@@ -53,7 +53,7 @@ const getArticleData = async (language: string, title: string) => {
 export const useWikiQuery = () => {
   const startingArticle = useStartingArticle();
   const language = useWikiLanguage();
-  const routeParams = useParams();
+  const routeParams = useParams({ from: "/wiki/$wikiTitle*" });
   const isGameRunning = useIsGameRunning();
 
   const wikiArticle = routeParams.wikiTitle

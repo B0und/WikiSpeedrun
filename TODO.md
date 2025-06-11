@@ -4,6 +4,8 @@
 [] - migrate to lingui5 maybe????
 [] - get rid of react-select...
 
+[] - IPFS wiki mirror support
+
 [x] - fix logo shrink
 [] - add hack setting
 [x] - fix share with different langs

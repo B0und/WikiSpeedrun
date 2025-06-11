@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "@tanstack/react-router";
 import { useI18nContext } from "../i18n/i18n-react";
 
 const About = () => {

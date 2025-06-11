@@ -1,5 +1,5 @@
+import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router";
 import { useI18nContext } from "../i18n/i18n-react";
 import { useHistory, useIsGameRunning } from "../stores/GameStore";
 
@@ -42,7 +42,7 @@ const HistoryTable = () => {
                     type="button"
                     className="text-left text-primary-blue underline"
                     onClick={() => {
-                      void navigate(`/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}`);
+                      void navigate({ to: `/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}` });
                     }}
                   >
                     {article.title}

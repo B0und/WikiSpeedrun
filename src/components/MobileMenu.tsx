@@ -1,11 +1,9 @@
+import { Link } from "@tanstack/react-router";
 import { Menu } from "react-feather";
-
 import { useI18nContext } from "../i18n/i18n-react";
 import { useIsGameRunning } from "../stores/GameStore";
-import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "./Drawer";
-
+import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "./Drawer";
 import { GithubLink, type WikiLink } from "./Header";
-import { Link } from "react-router";
 
 export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
   const { LL } = useI18nContext();

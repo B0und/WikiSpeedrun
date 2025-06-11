@@ -1,7 +1,7 @@
 import { useIsFetching } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
 import { type FormEvent, useState } from "react";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
 import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import RandomButton from "../components/RandomButton/RandomButton";
@@ -60,7 +60,7 @@ const Settings = () => {
       },
       winningLinks: 0,
     });
-    void navigate("/wiki");
+    void navigate({ to: `/wiki/${encodeURIComponent(startArticle.title.replaceAll(" ", "_"))}` });
     startStopwatch();
     setIsGameRunning(true);
     increaseTotalRuns();
