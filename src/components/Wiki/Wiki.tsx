@@ -6,6 +6,7 @@ import { StartArrowEnd } from "../StartArrowEnd";
 import { Stopwatch } from "../Stopwatch";
 import { useNoCheating } from "./Wiki.utils";
 import WikiDisplay from "./WikiDisplay";
+import { useI18nContext } from "../../i18n/i18n-react";
 
 export const wikiRoute = getRouteApi("/wiki/$");
 
@@ -65,6 +66,7 @@ function WikiNavigationBlockModal({
   onProceed: () => void;
   onCancel: (() => void) | undefined;
 }) {
+  const { LL } = useI18nContext();
   return (
     <ModalRoot open={open} onOpenChange={onCancel}>
       <ModalContent>
@@ -72,7 +74,7 @@ function WikiNavigationBlockModal({
           Confirm action
         </ModalTitle>
         <ModalDescription className="mt-5 mb-5">
-          Are you sure you want to go back? All progress will be lost
+        {LL["If you leave, your current progress will be lost"]()}
         </ModalDescription>
         <div className="mt-9 flex flex-wrap justify-end gap-8">
           <button
