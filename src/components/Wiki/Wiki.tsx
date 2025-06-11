@@ -1,6 +1,8 @@
-import { getRouteApi, useNavigate } from "@tanstack/react-router";
+import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { useEndingArticle, useStartingArticle } from "../../stores/GameStore";
+import { useI18nContext } from "../../i18n/i18n-react";
+import { useEndingArticle, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
+import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
 import { Stopwatch } from "../Stopwatch";
 import { useNoCheating } from "./Wiki.utils";
@@ -13,6 +15,15 @@ const Wiki = () => {
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
   const navigate = useNavigate();
+  const isGameRunning = useIsGameRunning();
+  const { LL } = useI18nContext();
+  const { status, proceed, reset } = useBlocker({
+    shouldBlockFn: ({ action }) => {
+      console.log("action", action);
+      return isGameRunning && action === "BACK";
+    },
+    withResolver: true,
+  });
 
   useEffect(() => {
     if (!startArticle.title || !endArticle.title) {
@@ -21,17 +32,43 @@ const Wiki = () => {
   }, [endArticle, navigate, startArticle]);
 
   return (
-    <div className="-mt-8">
-      <div className="-top-8 sm:-top-4 sticky z-10 mb-2 bg-neutral-50 py-2 font-bold text-lg dark:bg-dark-surface">
-        <StartArrowEnd startText={startArticle.title} endText={endArticle.title} />
-      </div>
-      <WikiDisplay />
+    <>
+      <div className="-mt-8">
+        <div className="-top-8 sm:-top-4 sticky z-10 mb-2 bg-neutral-50 py-2 font-bold text-lg dark:bg-dark-surface">
+          <StartArrowEnd startText={startArticle.title} endText={endArticle.title} />
+        </div>
+        <WikiDisplay />
 
-      <div className="pointer-events-none absolute right-0 bottom-0 hidden overflow-hidden p-2 sm:flex">
-        <div className="absolute inset-0 bg-black bg-opacity-80" />
-        <Stopwatch />
+        <div className="pointer-events-none absolute right-0 bottom-0 hidden overflow-hidden p-2 sm:flex">
+          <div className="absolute inset-0 bg-black bg-opacity-80" />
+          <Stopwatch />
+        </div>
       </div>
-    </div>
+      <ModalRoot open={status === "blocked"} onOpenChange={reset}>
+        <ModalContent>
+          <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
+            {LL["Confirm action"]()}
+          </ModalTitle>
+          <ModalDescription className="mt-5 mb-5">Are you sure you want to go back?</ModalDescription>
+          <div className="mt-9 flex flex-wrap justify-end gap-8">
+            <button
+              type="button"
+              className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
+              onClick={proceed}
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
+              onClick={reset}
+            >
+              No
+            </button>
+          </div>
+        </ModalContent>
+      </ModalRoot>
+    </>
   );
 };
 
