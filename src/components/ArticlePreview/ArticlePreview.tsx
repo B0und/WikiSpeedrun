@@ -57,8 +57,9 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
         <button
           type="button"
           className={clsx(
-            "flex h-6 w-6 items-center justify-center rounded-full bg-secondary-blue text-white hover:bg-primary-blue focus-visible:bg-primary-blue",
-            open && "bg-primary-blue",
+            "pointer-events-none w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent  focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary ",
+            pageid &&
+              "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue"
           )}
           onClick={increaseArticlePreviewPressed}
         >
