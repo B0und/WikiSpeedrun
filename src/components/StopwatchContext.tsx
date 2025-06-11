@@ -1,5 +1,4 @@
-import React, { createContext } from "react";
-import { useMemo } from "react";
+import React, { createContext, useMemo } from "react";
 import useStopwatch from "../hooks/useStopwatch";
 
 interface StopwatchContext {

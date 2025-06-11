@@ -1,4 +1,4 @@
-import { http, HttpResponse } from "msw";
+import { HttpResponse, http } from "msw";
 
 const getSelectArticleUrl = (article: string) => `?action=query&list=search&origin=*&format=json&srsearch=${article}`;
 

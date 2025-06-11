@@ -1,5 +1,5 @@
+import { type CreateTypes, create, type Options } from "canvas-confetti";
 import { useEffect, useRef } from "react";
-import { type CreateTypes, type Options, create } from "canvas-confetti";
 
 function randomInRange(min: number, max: number): number {
   return Math.random() * (max - min) + min;

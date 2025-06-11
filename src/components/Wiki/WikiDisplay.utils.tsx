@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "@tanstack/react-router";
 import { useCallback, useEffect } from "react";
 import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 import {
@@ -13,8 +12,8 @@ import {
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
 import { useStopwatchActions } from "../StopwatchContext";
-import type { WikiApiArticle } from "./Wiki.types";
 import { wikiRoute } from "./Wiki";
+import type { WikiApiArticle } from "./Wiki.types";
 
 export const usePauseWhileLoading = (isLoading: boolean) => {
   const isGameRunning = useIsGameRunning();

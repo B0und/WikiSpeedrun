@@ -1,8 +1,8 @@
-import { toast } from "react-hot-toast";
-import type { WikiRandom } from "./RandomButton/RandomButton.types";
-import type { Article } from "../stores/GameStore";
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
+import type { Article } from "../stores/GameStore";
 import { useSettingsStoreActions } from "../stores/SettingsStore";
+import type { WikiRandom } from "./RandomButton/RandomButton.types";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) return;

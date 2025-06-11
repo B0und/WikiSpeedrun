@@ -1,10 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
-import DiceIcon from "../../assets/dice.svg?react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { useMutation } from "@tanstack/react-query";
 import clsx from "clsx";
-import type { WikiRandom } from "./RandomButton.types";
+import DiceIcon from "../../assets/dice.svg?react";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useWikiLanguage } from "../../stores/SettingsStore";
+import type { WikiRandom } from "./RandomButton.types";
 
 const getRandomArticles = async (language: string) => {
   const res = await fetch(

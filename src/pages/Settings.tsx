@@ -60,7 +60,8 @@ const Settings = () => {
       },
       winningLinks: 0,
     });
-    void navigate({ to: `/wiki/${encodeURIComponent(startArticle.title.replaceAll(" ", "_"))}` });
+    void navigate({ to: "/wiki" });
+
     startStopwatch();
     setIsGameRunning(true);
     increaseTotalRuns();

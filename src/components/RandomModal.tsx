@@ -1,9 +1,9 @@
 import type React from "react";
-import { ModalClose, ModalContent, ModalRoot, ModalTitle } from "./Modal";
-import type { Article } from "../stores/GameStore";
-import ArticlePreview from "./ArticlePreview/ArticlePreview";
 import { useI18nContext } from "../i18n/i18n-react";
+import type { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
+import ArticlePreview from "./ArticlePreview/ArticlePreview";
+import { ModalClose, ModalContent, ModalRoot, ModalTitle } from "./Modal";
 
 interface RandomModalProps {
   data: Article[] | null;

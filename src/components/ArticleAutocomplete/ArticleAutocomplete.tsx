@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import useDebounce from "../../hooks/useDebounce";
-import type { WikiSearch } from "./WikiSearch.types";
-import Select, { type InputActionMeta, type StylesConfig } from "react-select";
-import { useThemeContext } from "../ThemeContext";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
+import Select, { type InputActionMeta, type StylesConfig } from "react-select";
+import useDebounce from "../../hooks/useDebounce";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useWikiLanguage } from "../../stores/SettingsStore";
 import type { Article } from "../../stores/GameStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
+import { useThemeContext } from "../ThemeContext";
+import type { WikiSearch } from "./WikiSearch.types";
 
 const getArticles = async (language: string, debouncedTerm: string) => {
   if (!debouncedTerm) return;

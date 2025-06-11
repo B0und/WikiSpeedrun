@@ -1,9 +1,9 @@
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { immer } from "zustand/middleware/immer";
-import { type Achievement, ACHIEVEMENTS_LIST, achivementConditionCheckByIdMap } from "../achievements";
 import { produce } from "immer";
+import { create } from "zustand";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { immer } from "zustand/middleware/immer";
+import { ACHIEVEMENTS_LIST, type Achievement, achivementConditionCheckByIdMap } from "../achievements";
+
 /*
 Data gets persisted in local storage
 */

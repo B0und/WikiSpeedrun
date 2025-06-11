@@ -1,8 +1,8 @@
+import { querystring } from "unbound-zustand-querystring";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import type { StopwatchProps } from "../components/StopwatchDisplay";
-import { querystring } from "unbound-zustand-querystring";
 import { immer } from "zustand/middleware/immer";
+import type { StopwatchProps } from "../components/StopwatchDisplay";
 
 /*
 Data partially synced with URL

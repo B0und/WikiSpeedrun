@@ -5,7 +5,7 @@ import Providers, { queryClient } from "./components/Providers";
 import { useWikiConsoleLogo } from "./hooks/useWikiConsoleLogo";
 import { routeTree } from "./routeTree.gen";
 
-const router = createRouter({
+export const router = createRouter({
   routeTree,
   context: { queryClient },
 });

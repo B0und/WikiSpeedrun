@@ -1,8 +1,7 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { persist, createJSONStorage } from "zustand/middleware";
-import type { Locales } from "../i18n/i18n-types";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import type { LANGUAGES } from "../components/WikiLanguageSelect";
+import type { Locales } from "../i18n/i18n-types";
 
 /*
  Data gets persisted in local storage
