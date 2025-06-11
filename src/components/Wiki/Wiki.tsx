@@ -16,7 +16,6 @@ const Wiki = () => {
   const endArticle = useEndingArticle();
   const navigate = useNavigate();
   const isGameRunning = useIsGameRunning();
-  const { LL } = useI18nContext();
   const { resetStoreState } = useGameStoreActions();
   const { status, proceed, reset, next } = useBlocker({
     shouldBlockFn: ({ next }) => {
@@ -53,32 +52,48 @@ const Wiki = () => {
           <Stopwatch />
         </div>
       </div>
-      <ModalRoot open={status === "blocked"} onOpenChange={reset}>
-        <ModalContent>
-          <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
-            {LL["Confirm action"]()}
-          </ModalTitle>
-          <ModalDescription className="mt-5 mb-5">Are you sure you want to go back? All progress will be lost</ModalDescription>
-          <div className="mt-9 flex flex-wrap justify-end gap-8">
-            <button
-              type="button"
-              className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-              onClick={handleProceed}
-            >
-              Yes
-            </button>
-            <button
-              type="button"
-              className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
-              onClick={reset}
-            >
-              No
-            </button>
-          </div>
-        </ModalContent>
-      </ModalRoot>
+      <WikiNavigationBlockModal open={status === "blocked"} onProceed={handleProceed} onCancel={reset} />
     </>
   );
 };
+
+function WikiNavigationBlockModal({
+  open,
+  onProceed,
+  onCancel,
+}: {
+  open: boolean;
+  onProceed: () => void;
+  onCancel: (() => void) | undefined;
+}) {
+  return (
+    <ModalRoot open={open} onOpenChange={onCancel}>
+      <ModalContent>
+        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
+          Confirm action
+        </ModalTitle>
+        <ModalDescription className="mt-5 mb-5">
+          Are you sure you want to go back? All progress will be lost
+        </ModalDescription>
+        <div className="mt-9 flex flex-wrap justify-end gap-8">
+          <button
+            type="button"
+            className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
+            onClick={onCancel}
+          >
+            No
+          </button>
+          <button
+            type="button"
+            className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
+            onClick={onProceed}
+          >
+            Yes
+          </button>
+        </div>
+      </ModalContent>
+    </ModalRoot>
+  );
+}
 
 export default Wiki;
