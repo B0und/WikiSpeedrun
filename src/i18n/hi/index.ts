@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types"
+import type { Translation } from "../i18n-types";
 
 // Hindi
 const hi: Translation = {
@@ -9,8 +9,7 @@ const hi: Translation = {
   "Now supports multiple languages": "अब अनेक भाषाओं का समर्थन करता है",
   "No registration required": "पंजीकरण की आवश्यकता नहीं है",
   "High precision fair™ timer": "उच्च परिशुद्धता निष्पक्ष™ टाइमर",
-  "actually stops while you are loading the next article":
-    "वास्तव में जब आप अगला लेख लोड कर रहे होते हैं तो रुक जाता है",
+  "actually stops while you are loading the next article": "वास्तव में जब आप अगला लेख लोड कर रहे होते हैं तो रुक जाता है",
   "Keeps track of your session progress": "आपके सत्र की प्रगति पर नज़र रखता है",
   "Dark theme support": "डार्क थीम समर्थन",
   "Open source": "खुला स्त्रोत",
@@ -28,8 +27,7 @@ const hi: Translation = {
   "Play again": "फिर से चालू करें",
   "Give up": "छोड़ देना",
   "Confirm action": "कार्रवाई की पुष्टि करें",
-  "If you leave, your current progress will be lost":
-    "यदि आप चले गए तो आपकी वर्तमान प्रगति नष्ट हो जाएगी",
+  "If you leave, your current progress will be lost": "यदि आप चले गए तो आपकी वर्तमान प्रगति नष्ट हो जाएगी",
   History: "इतिहास",
   Article: "लेख",
   Time: "समय",
@@ -178,5 +176,5 @@ const hi: Translation = {
     "नीली पोशाक वाली प्यारी एनीमे लड़की लाइब्रेरी में बैठी है, जबकि स्पीडरन टाइमर के साथ एक विकिपीडिया ग्लोब पास में तैर रहा है",
   "Prize trophy": "पुरस्कार ट्रॉफी",
   "Enable search during gameplay": "गेमप्ले के दौरान खोज सक्षम करें",
-}
-export default hi
+};
+export default hi;

@@ -1,25 +1,28 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import App from "./App"
-import "./index.css"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
 async function enableMocking() {
   if (import.meta.env.VITE_WITH_MOCKS !== "true") {
-    return
+    return;
   }
 
-  const { worker } = await import("./mocks/browser")
+  const { worker } = await import("./mocks/browser");
 
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
-  return worker.start({ onUnhandledRequest: "bypass" })
+  return worker.start({ onUnhandledRequest: "bypass" });
 }
 
 void enableMocking().then(() => {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  ReactDOM.createRoot(document.getElementById("root")!).render(
+  const rootElement = document.getElementById("root");
+  if (!rootElement) {
+    throw new Error("Root element not found");
+  }
+  ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <App />
-    </React.StrictMode>
-  )
-})
+    </React.StrictMode>,
+  );
+});

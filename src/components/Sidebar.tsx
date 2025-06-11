@@ -1,16 +1,16 @@
-import { Resizable } from "re-resizable"
-import { useClicks } from "../stores/GameStore"
-import HistoryTable from "./HistoryTable"
-import { Stopwatch } from "./Stopwatch"
-import { useI18nContext } from "../i18n/i18n-react"
-import { useSettingsStoreActions, useSidebarWidth } from "../stores/SettingsStore"
+import { Resizable } from "re-resizable";
+import { useI18nContext } from "../i18n/i18n-react";
+import { useClicks } from "../stores/GameStore";
+import { useSettingsStoreActions, useSidebarWidth } from "../stores/SettingsStore";
+import HistoryTable from "./HistoryTable";
+import { Stopwatch } from "./Stopwatch";
 
 const Sidebar = () => {
-  const { LL } = useI18nContext()
-  const sidebarWidth = useSidebarWidth()
-  const { setSidebarWidth } = useSettingsStoreActions()
+  const { LL } = useI18nContext();
+  const sidebarWidth = useSidebarWidth();
+  const { setSidebarWidth } = useSettingsStoreActions();
 
-  const clicks = useClicks()
+  const clicks = useClicks();
   return (
     <>
       <Resizable
@@ -18,8 +18,8 @@ const Sidebar = () => {
           width: sidebarWidth,
           height: "100%",
         }}
-        onResizeStop={(e, direction, ref) => {
-          setSidebarWidth(ref.offsetWidth)
+        onResizeStop={(_e, _direction, ref) => {
+          setSidebarWidth(ref.offsetWidth);
         }}
         minHeight="100%"
         minWidth={300}
@@ -45,7 +45,7 @@ const Sidebar = () => {
         </div>
       </Resizable>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

@@ -1,35 +1,33 @@
-import React from "react"
-import * as Select from "@radix-ui/react-select"
-import clsx from "clsx"
-import { ChevronUp, ChevronDown } from "react-feather"
-import { locales } from "../i18n/i18n-util"
-import { LANGUAGES } from "./WikiLanguageSelect"
-import type { Locales } from "../i18n/i18n-types"
-import { useI18nContext } from "../i18n/i18n-react"
-import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore"
-import { loadLocaleAsync } from "../i18n/i18n-util.async"
-import { useGameStoreActions } from "../stores/GameStore"
+import React from "react";
+import * as Select from "@radix-ui/react-select";
+import clsx from "clsx";
+import { ChevronUp, ChevronDown } from "react-feather";
+import { locales } from "../i18n/i18n-util";
+import { LANGUAGES } from "./WikiLanguageSelect";
+import type { Locales } from "../i18n/i18n-types";
+import { useI18nContext } from "../i18n/i18n-react";
+import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
+import { loadLocaleAsync } from "../i18n/i18n-util.async";
+import { useGameStoreActions } from "../stores/GameStore";
 
-const INTERFACE_LANGUAGES = LANGUAGES.filter((language) =>
-  locales.includes(language.isoCode as Locales)
-)
+const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => locales.includes(language.isoCode as Locales));
 
 export const InterfaceLanguageSelect = () => {
-  const { LL, setLocale } = useI18nContext()
-  const language = useInterfaceLanguage()
-  const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions()
-  const { setEndingArticle, setStartingArticle } = useGameStoreActions()
+  const { LL, setLocale } = useI18nContext();
+  const language = useInterfaceLanguage();
+  const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions();
+  const { setEndingArticle, setStartingArticle } = useGameStoreActions();
 
   return (
     <Select.Root
       value={language}
       onValueChange={async (locale: Locales) => {
-        await loadLocaleAsync(locale)
-        setInterfaceLanguage(locale)
-        setStartingArticle({ pageid: "", title: "" })
-        setEndingArticle({ pageid: "", title: "" })
-        setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value)
-        setLocale(locale)
+        await loadLocaleAsync(locale);
+        setInterfaceLanguage(locale);
+        setStartingArticle({ pageid: "", title: "" });
+        setEndingArticle({ pageid: "", title: "" });
+        setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
+        setLocale(locale);
       }}
     >
       <Select.Trigger
@@ -71,13 +69,13 @@ export const InterfaceLanguageSelect = () => {
         </Select.Content>
       </Select.Portal>
     </Select.Root>
-  )
-}
+  );
+};
 
 interface SelectItemProps {
-  children?: React.ReactNode
-  className?: string
-  value: string
+  children?: React.ReactNode;
+  className?: string;
+  value: string;
 }
 const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   ({ children, className, value, ...props }, forwardedRef) => {
@@ -85,7 +83,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
       <Select.Item
         className={clsx(
           " relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
-          className
+          className,
         )}
         value={value}
         {...props}
@@ -94,8 +92,8 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
         <img src={`/flags/${value}.svg`} alt="" className="h-3 w-8 object-contain" loading="lazy" />
         <Select.ItemText>{children}</Select.ItemText>
       </Select.Item>
-    )
-  }
-)
+    );
+  },
+);
 
-SelectItem.displayName = "SelectItem"
+SelectItem.displayName = "SelectItem";

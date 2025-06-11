@@ -1,19 +1,20 @@
-import { useRef, useEffect } from "react"
-import { useHistory, useIsGameRunning } from "../stores/GameStore"
-import { useNavigate } from "react-router"
-import { useI18nContext } from "../i18n/i18n-react"
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router";
+import { useI18nContext } from "../i18n/i18n-react";
+import { useHistory, useIsGameRunning } from "../stores/GameStore";
 
 const HistoryTable = () => {
-  const { LL } = useI18nContext()
-  const articleHistory = useHistory()
-  const isGameRunning = useIsGameRunning()
-  const navigate = useNavigate()
+  const { LL } = useI18nContext();
+  const articleHistory = useHistory();
+  const isGameRunning = useIsGameRunning();
+  const navigate = useNavigate();
 
-  const tableRef = useRef<HTMLTableSectionElement>(null)
+  const tableRef = useRef<HTMLTableSectionElement>(null);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <>
   useEffect(() => {
-    tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" })
-  }, [articleHistory.length])
+    tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [articleHistory.length]);
 
   return (
     <div id="history-scroll" className="scrollbar self-stretch overflow-y-auto pr-3">
@@ -38,11 +39,10 @@ const HistoryTable = () => {
               ) : (
                 <td>
                   <button
+                    type="button"
                     className="text-left text-primary-blue underline"
                     onClick={() => {
-                      void navigate(
-                        `/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}`
-                      )
+                      void navigate(`/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}`);
                     }}
                   >
                     {article.title}
@@ -58,7 +58,7 @@ const HistoryTable = () => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default HistoryTable
+export default HistoryTable;

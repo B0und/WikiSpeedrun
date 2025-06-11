@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types"
+import type { Translation } from "../i18n-types";
 
 // Spanish
 const es: Translation = {
@@ -9,8 +9,7 @@ const es: Translation = {
   "Now supports multiple languages": "Ahora compatible con varios idiomas",
   "No registration required": "No se requiere registro",
   "High precision fair™ timer": "Temporizador justo de alta precisión™",
-  "actually stops while you are loading the next article":
-    "se detiene realmente mientras carga el siguiente artículo",
+  "actually stops while you are loading the next article": "se detiene realmente mientras carga el siguiente artículo",
   "Keeps track of your session progress": "Lleva un registro del progreso de tu sesión",
   "Dark theme support": "Soporte para tema oscuro",
   "Open source": "Código abierto",
@@ -176,6 +175,6 @@ const es: Translation = {
     "Chica de anime linda con un vestido azul sentada en una biblioteca, mientras flota cerca un globo terráqueo de Wikipedia con un cronómetro de speedrun adjunto",
   "Prize trophy": "Trofeo de premio",
   "Enable search during gameplay": "Habilitar búsqueda durante el juego",
-}
+};
 
-export default es
+export default es;

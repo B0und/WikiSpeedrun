@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types"
+import type { Translation } from "../i18n-types";
 
 // Polish
 
@@ -29,8 +29,7 @@ const pl: Translation = {
   "Play again": "Zagraj ponownie",
   "Give up": "Poddaj się",
   "Confirm action": "Potwierdź działanie",
-  "If you leave, your current progress will be lost":
-    "Jeśli wyjdziesz, bieżący postęp zostanie utracony",
+  "If you leave, your current progress will be lost": "Jeśli wyjdziesz, bieżący postęp zostanie utracony",
   History: "Historia",
   Article: "Artykuł",
   Time: "Czas",
@@ -178,6 +177,6 @@ const pl: Translation = {
     "Słodka dziewczyna anime w niebieskiej sukience siedząca w bibliotece, podczas gdy w pobliżu unosi się kula Wikipedia z przyczepionym do niej licznikiem speedrun",
   "Prize trophy": "Trofeum nagrody",
   "Enable search during gameplay": "Włącz wyszukiwanie podczas gry",
-}
+};
 
-export default pl
+export default pl;

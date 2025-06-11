@@ -1,18 +1,24 @@
-import { toast } from "react-hot-toast"
-import type { Achievement } from "../achievements"
-import type { TranslationFunctions } from "../i18n/i18n-types"
+import { toast } from "react-hot-toast";
+import type { Achievement } from "../achievements";
+import type { TranslationFunctions } from "../i18n/i18n-types";
 
 export const achievementToast = (achievement: Achievement, LL: TranslationFunctions) => {
   toast(
     (t) => {
       // @ts-expect-error dynamic key generation
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-      const achievementTitle = LL[achievement.id]?.title()
+      const achievementTitle = LL[achievement.id]?.title();
 
       return (
-        <div
+        <button
+          type="button"
           onClick={() => {
-            toast.dismiss(t.id)
+            toast.dismiss(t.id);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              toast.dismiss(t.id);
+            }
           }}
           className="flex min-w-[350px] max-w-[350px] animate-drawerSlideInRight cursor-pointer items-center gap-4 rounded-lg bg-primary-blue p-4 text-white shadow-lg shadow-slate-950/25 sm:min-w-[150px] sm:max-w-[150px] dark:shadow-slate-50/25"
         >
@@ -25,8 +31,8 @@ export const achievementToast = (achievement: Achievement, LL: TranslationFuncti
             <p className="text-lg dark:text-[#f8f8f8]">{LL["Achievement unlocked"]()}</p>
             <p className="font-semibold dark:text-[#f8f8f8]">{achievementTitle}</p>
           </div>
-        </div>
-      )
+        </button>
+      );
     },
     {
       duration: Infinity,
@@ -38,6 +44,6 @@ export const achievementToast = (achievement: Achievement, LL: TranslationFuncti
         boxShadow: "none",
         maxWidth: "unset",
       },
-    }
-  )
-}
+    },
+  );
+};

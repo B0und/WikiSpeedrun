@@ -1,4 +1,4 @@
-import type { BaseTranslation } from "../i18n-types"
+import type { BaseTranslation } from "../i18n-types";
 
 // English
 const en: BaseTranslation = {
@@ -9,8 +9,7 @@ const en: BaseTranslation = {
   "Now supports multiple languages": "Now supports multiple languages",
   "No registration required": "No registration required",
   "High precision fair™ timer": "High precision fair™ timer",
-  "actually stops while you are loading the next article":
-    "actually stops while you are loading the next article",
+  "actually stops while you are loading the next article": "actually stops while you are loading the next article",
   "Keeps track of your session progress": "Keeps track of your session progress",
   "Dark theme support": "Dark theme support",
   "Open source": "Open source",
@@ -28,8 +27,7 @@ const en: BaseTranslation = {
   "Play again": "Play again",
   "Give up": "Give up",
   "Confirm action": "Confirm action",
-  "If you leave, your current progress will be lost":
-    "If you leave, your current progress will be lost",
+  "If you leave, your current progress will be lost": "If you leave, your current progress will be lost",
   History: "History",
   Article: "Article",
   Time: "Time",
@@ -178,5 +176,5 @@ const en: BaseTranslation = {
     "Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby",
   "Prize trophy": "Prize Trophy",
   "Enable search during gameplay": "Enable search during gameplay",
-}
-export default en
+};
+export default en;

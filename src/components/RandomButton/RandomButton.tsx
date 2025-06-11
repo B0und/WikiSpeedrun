@@ -1,10 +1,10 @@
-import { useMutation } from "@tanstack/react-query"
-import DiceIcon from "../../assets/dice.svg?react"
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden"
-import clsx from "clsx"
-import type { WikiRandom } from "./RandomButton.types"
-import { useI18nContext } from "../../i18n/i18n-react"
-import { useWikiLanguage } from "../../stores/SettingsStore"
+import { useMutation } from "@tanstack/react-query";
+import DiceIcon from "../../assets/dice.svg?react";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import clsx from "clsx";
+import type { WikiRandom } from "./RandomButton.types";
+import { useI18nContext } from "../../i18n/i18n-react";
+import { useWikiLanguage } from "../../stores/SettingsStore";
 
 const getRandomArticles = async (language: string) => {
   const res = await fetch(
@@ -21,35 +21,32 @@ const getRandomArticles = async (language: string) => {
         lhlimit: "500",
         lhshow: "!redirect",
         lhprop: "pageid",
-      }).toString()
-  )
+      }).toString(),
+  );
 
-  return res.json() as WikiRandom
-}
+  return res.json() as WikiRandom;
+};
 
 interface RandomButtonProps {
-  onSuccess: (data: WikiRandom) => void
-  randomCount?: number
+  onSuccess: (data: WikiRandom) => void;
+  randomCount?: number;
 }
 const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
-  const { LL } = useI18nContext()
-  const language = useWikiLanguage()
+  const { LL } = useI18nContext();
+  const language = useWikiLanguage();
 
   const { mutate, isPending } = useMutation({
     mutationFn: () => getRandomArticles(language),
     onSuccess: onSuccess,
-  })
+  });
 
   return (
     <div className="relative">
       <button
-        className={clsx(
-          "mb-[-2px] w-fit p-2 hover:text-primary-blue",
-          isPending && "animate-spin-dice"
-        )}
+        className={clsx("mb-[-2px] w-fit p-2 hover:text-primary-blue", isPending && "animate-spin-dice")}
         type="button"
         onClick={() => {
-          mutate()
+          mutate();
         }}
       >
         <VisuallyHidden.Root>{LL["Get random article"]()}</VisuallyHidden.Root>
@@ -59,7 +56,7 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
         {randomCount}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RandomButton
+export default RandomButton;

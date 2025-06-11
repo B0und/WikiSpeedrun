@@ -1,32 +1,32 @@
-import { Link } from "react-router"
-import { GitHub, Moon, Sun } from "react-feather"
-import { ResultDialog } from "./ResultDialog"
-import { useThemeContext } from "./ThemeContext"
-import { useIsGameRunning } from "../stores/GameStore"
-import { GiveUpModal } from "./ConfirmNavigation"
-import { useI18nContext } from "../i18n/i18n-react"
-import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect"
-import type { LocalizedString } from "typesafe-i18n"
-import { MobileMenu } from "./MobileMenu"
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import { Link } from "react-router";
+import { GitHub, Moon, Sun } from "react-feather";
+import { ResultDialog } from "./ResultDialog";
+import { useThemeContext } from "./ThemeContext";
+import { useIsGameRunning } from "../stores/GameStore";
+import { GiveUpModal } from "./ConfirmNavigation";
+import { useI18nContext } from "../i18n/i18n-react";
+import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
+import type { LocalizedString } from "typesafe-i18n";
+import { MobileMenu } from "./MobileMenu";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export interface WikiLink {
-  name: LocalizedString
-  path: string
+  name: LocalizedString;
+  path: string;
 }
 const Header = () => {
-  const { LL } = useI18nContext()
+  const { LL } = useI18nContext();
 
   const links: WikiLink[] = [
     { name: LL.Play(), path: "/settings" },
     { name: LL.Statistics(), path: "/stats" },
     { name: LL.Achievements(), path: "/achievements" },
     { name: LL.About(), path: "/about" },
-  ]
+  ];
 
-  const isGameRunning = useIsGameRunning()
+  const isGameRunning = useIsGameRunning();
 
-  const { colorMode, switchTheme } = useThemeContext()
+  const { colorMode, switchTheme } = useThemeContext();
 
   return (
     <div className="flex items-center gap-12 border-secondary-blue border-b-[2px] pb-3 sm:gap-0">
@@ -56,13 +56,13 @@ const Header = () => {
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
 
 const WikiLogo = () => {
-  const { LL } = useI18nContext()
-  const { colorMode } = useThemeContext()
-  const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark"
+  const { LL } = useI18nContext();
+  const { colorMode } = useThemeContext();
+  const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 
   return (
     <picture className="shrink-0 basis-[200px] md:hidden">
@@ -79,8 +79,8 @@ const WikiLogo = () => {
         ]()}
       />
     </picture>
-  )
-}
+  );
+};
 
 const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: WikiLink[] }) => {
   return (
@@ -96,8 +96,8 @@ const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Wiki
           </Link>
         ))}
     </>
-  )
-}
+  );
+};
 
 export const GithubLink = () => {
   return (
@@ -110,7 +110,7 @@ export const GithubLink = () => {
       <GitHub />
       <VisuallyHidden>Source code on github</VisuallyHidden>
     </a>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

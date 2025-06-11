@@ -1,25 +1,25 @@
 export interface WikiRandom {
-  continue?: Continue
-  query?: Query
+  continue?: Continue;
+  query?: Query;
 }
 
 export interface Continue {
-  lhcontinue?: string
-  grncontinue?: string
-  continue?: string
+  lhcontinue?: string;
+  grncontinue?: string;
+  continue?: string;
 }
 
 export interface Query {
-  pages?: Record<string, Page>
+  pages?: Record<string, Page>;
 }
 
 export interface Page {
-  pageid: number
-  ns?: number
-  title: string
-  linkshere?: Linkshere[]
+  pageid: number;
+  ns?: number;
+  title: string;
+  linkshere?: Linkshere[];
 }
 
 export interface Linkshere {
-  pageid?: number
+  pageid?: number;
 }

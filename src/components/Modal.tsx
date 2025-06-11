@@ -1,8 +1,8 @@
-import React from "react"
-import * as Dialog from "@radix-ui/react-dialog"
-import { X } from "react-feather"
+import * as Dialog from "@radix-ui/react-dialog";
+import React from "react";
+import { X } from "react-feather";
 
-type DrawerContentProps = React.ComponentProps<typeof Dialog.Content>
+type DrawerContentProps = React.ComponentProps<typeof Dialog.Content>;
 
 const ModalContent = React.forwardRef<React.ElementRef<typeof Dialog.Content>, DrawerContentProps>(
   ({ children, ...props }, forwardedRef) => {
@@ -18,7 +18,8 @@ const ModalContent = React.forwardRef<React.ElementRef<typeof Dialog.Content>, D
 
           <Dialog.Close asChild>
             <button
-              className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full "
+              type="button"
+              className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
               aria-label="Close"
             >
               <X />
@@ -26,16 +27,16 @@ const ModalContent = React.forwardRef<React.ElementRef<typeof Dialog.Content>, D
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>
-    )
-  }
-)
+    );
+  },
+);
 
-ModalContent.displayName = "ModalContent"
+ModalContent.displayName = "ModalContent";
 
-const ModalRoot = Dialog.Root
-const ModalTitle = Dialog.Title
-const ModalDescription = Dialog.Description
-const ModalTrigger = Dialog.Trigger
-const ModalClose = Dialog.Close
+const ModalRoot = Dialog.Root;
+const ModalTitle = Dialog.Title;
+const ModalDescription = Dialog.Description;
+const ModalTrigger = Dialog.Trigger;
+const ModalClose = Dialog.Close;
 
-export { ModalContent, ModalRoot, ModalClose, ModalTrigger, ModalDescription, ModalTitle }
+export { ModalContent, ModalRoot, ModalClose, ModalTrigger, ModalDescription, ModalTitle };

@@ -1,23 +1,23 @@
-import { useNavigate } from "react-router"
-import { useEndingArticle, useStartingArticle } from "../../stores/GameStore"
+import { useNavigate } from "react-router";
+import { useEndingArticle, useStartingArticle } from "../../stores/GameStore";
 
-import WikiDisplay from "./WikiDisplay"
-import { useEffect } from "react"
-import { Stopwatch } from "../Stopwatch"
-import { useNoCheating } from "./Wiki.utils"
-import { StartArrowEnd } from "../StartArrowEnd"
+import WikiDisplay from "./WikiDisplay";
+import { useEffect } from "react";
+import { Stopwatch } from "../Stopwatch";
+import { useNoCheating } from "./Wiki.utils";
+import { StartArrowEnd } from "../StartArrowEnd";
 
 const Wiki = () => {
-  useNoCheating()
-  const startArticle = useStartingArticle()
-  const endArticle = useEndingArticle()
-  const navigate = useNavigate()
+  useNoCheating();
+  const startArticle = useStartingArticle();
+  const endArticle = useEndingArticle();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!startArticle.title || !endArticle.title) {
-      void navigate("/settings")
+      void navigate("/settings");
     }
-  }, [endArticle, navigate, startArticle])
+  }, [endArticle, navigate, startArticle]);
 
   return (
     <div className="-mt-8">
@@ -31,7 +31,7 @@ const Wiki = () => {
         <Stopwatch />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Wiki
+export default Wiki;

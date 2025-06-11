@@ -1,13 +1,11 @@
-import { Link } from "react-router"
-import { useI18nContext } from "../i18n/i18n-react"
+import { Link } from "react-router";
+import { useI18nContext } from "../i18n/i18n-react";
 
 const About = () => {
-  const { LL } = useI18nContext()
+  const { LL } = useI18nContext();
   return (
     <>
-      <h1 className="border-secondary-border border-b-[1px] font-serif text-3xl">
-        {LL["Wiki Speedrun Game"]()}
-      </h1>
+      <h1 className="border-secondary-border border-b-[1px] font-serif text-3xl">{LL["Wiki Speedrun Game"]()}</h1>
       <p className="pt-4 pb-8">
         {LL[
           "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
@@ -20,9 +18,7 @@ const About = () => {
         <li>
           {LL["High precision fair™ timer"]()}
           <ul className="list-inside list-[circle]">
-            <li className="pl-6">
-              {LL["actually stops while you are loading the next article"]()}
-            </li>
+            <li className="pl-6">{LL["actually stops while you are loading the next article"]()}</li>
           </ul>
         </li>
         <li> {LL["Keeps track of your session progress"]()}</li>
@@ -33,7 +29,7 @@ const About = () => {
         {LL.Play()}
       </Link>
     </>
-  )
-}
+  );
+};
 
-export default About
+export default About;

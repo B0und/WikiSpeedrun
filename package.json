@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "typesafe-i18n": "typesafe-i18n",
     "format": "biome format --write ./src",
-    "lint": "biome lint --apply-unsafe --write ./src && eslint --fix ./src"
+    "lint": "biome lint --fix && eslint --fix \"./src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.0.5",

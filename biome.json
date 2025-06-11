@@ -6,6 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
+    "includes": ["./src/**/*.{ts,tsx}"],
     "ignoreUnknown": false
   },
   "formatter": {
@@ -36,6 +37,6 @@
         }
       }
     },
-    "includes": ["./src/**/*.{ts,tsx}", "!./src/i18n/**/*"]
+    "includes": [ "!./src/i18n/**"]
   }
 }

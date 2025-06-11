@@ -9,7 +9,7 @@ module.exports = {
       version: "detect",
     },
   },
-  ignorePatterns: ["src/i18n/**/*"],
+
   extends: [
     "plugin:@tanstack/eslint-plugin-query/recommended",
   ],

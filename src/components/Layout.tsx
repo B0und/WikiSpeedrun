@@ -1,7 +1,7 @@
-import { Outlet } from "react-router"
-import Header from "./Header"
-import Sidebar from "./Sidebar"
-import type React from "react"
+import { Outlet } from "react-router";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import type React from "react";
 
 export const BaseLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
@@ -10,19 +10,17 @@ export const BaseLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
 
       <div className="flex min-h-0 flex-1 flex-row">
         <Sidebar />
-        <div className="scrollbar md:-mx-4 flex-1 overflow-auto px-8 pt-8 md:px-4 md:pt-4">
-          {children}
-        </div>
+        <div className="scrollbar md:-mx-4 flex-1 overflow-auto px-8 pt-8 md:px-4 md:pt-4">{children}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 const Layout = () => {
   return (
     <BaseLayout>
       <Outlet />
     </BaseLayout>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

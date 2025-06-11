@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types"
+import type { Translation } from "../i18n-types";
 
 // Swedish
 
@@ -10,8 +10,7 @@ const se: Translation = {
   "Now supports multiple languages": "Stödjer nu flera språk",
   "No registration required": "Ingen registrering krävs",
   "High precision fair™ timer": "Hög precision rättvis™ timer",
-  "actually stops while you are loading the next article":
-    "stannar faktiskt medan du laddar nästa artikel",
+  "actually stops while you are loading the next article": "stannar faktiskt medan du laddar nästa artikel",
   "Keeps track of your session progress": "Håller koll på din sessions framsteg",
   "Dark theme support": "Mörkt tema stöd",
   "Open source": "Öppen källkod",
@@ -29,8 +28,7 @@ const se: Translation = {
   "Play again": "Spela igen",
   "Give up": "Ge upp",
   "Confirm action": "Bekräfta åtgärd",
-  "If you leave, your current progress will be lost":
-    "Om du lämnar kommer din nuvarande framsteg att gå förlorad",
+  "If you leave, your current progress will be lost": "Om du lämnar kommer din nuvarande framsteg att gå förlorad",
   History: "Historik",
   Article: "Artikel",
   Time: "Tid",
@@ -178,6 +176,6 @@ const se: Translation = {
     "Söt anime-tjej med en blå klänning som sitter i ett bibliotek, medan en wikipedia-glob med en speedrun-timer bifogad svävar i närheten",
   "Prize trophy": "Pristrofé",
   "Enable search during gameplay": "Aktivera sökning under spelet",
-}
+};
 
-export default se
+export default se;

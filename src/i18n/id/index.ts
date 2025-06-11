@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types"
+import type { Translation } from "../i18n-types";
 
 // Indonesian
 
@@ -10,8 +10,7 @@ const id: Translation = {
   "Now supports multiple languages": "Sekarang mendukung beberapa bahasa",
   "No registration required": "Tidak perlu registrasi",
   "High precision fair™ timer": "Pengatur Waktu Tepat Tinggi™",
-  "actually stops while you are loading the next article":
-    "benar-benar berhenti saat Anda memuat artikel berikutnya",
+  "actually stops while you are loading the next article": "benar-benar berhenti saat Anda memuat artikel berikutnya",
   "Keeps track of your session progress": "Melacak kemajuan sesi Anda",
   "Dark theme support": "Dukungan tema gelap",
   "Open source": "Sumber terbuka",
@@ -29,8 +28,7 @@ const id: Translation = {
   "Play again": "Main lagi",
   "Give up": "Menyerah",
   "Confirm action": "Konfirmasi tindakan",
-  "If you leave, your current progress will be lost":
-    "Jika Anda meninggalkan, kemajuan saat ini akan hilang",
+  "If you leave, your current progress will be lost": "Jika Anda meninggalkan, kemajuan saat ini akan hilang",
   History: "Sejarah",
   Article: "Artikel",
   Time: "Waktu",
@@ -178,6 +176,6 @@ const id: Translation = {
     "Gadis anime lucu dengan gaun biru duduk di perpustakaan, sementara sebuah bola dunia Wikipedia dengan penghitung waktu speedrun terlampir mengambang di dekatnya",
   "Prize trophy": "Piala Hadiah",
   "Enable search during gameplay": "Aktifkan pencarian selama permainan",
-}
+};
 
-export default id
+export default id;

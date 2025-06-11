@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types"
+import type { Translation } from "../i18n-types";
 
 // Russian
 
@@ -29,8 +29,7 @@ const ru: Translation = {
   "Play again": "Играть снова",
   "Give up": "Сдаться",
   "Confirm action": "Подтвердите действие",
-  "If you leave, your current progress will be lost":
-    "Если вы уйдете, текущий прогресс будет потерян",
+  "If you leave, your current progress will be lost": "Если вы уйдете, текущий прогресс будет потерян",
   History: "История",
   Article: "Статья",
   Time: "Время",
@@ -179,6 +178,6 @@ const ru: Translation = {
     "Милая аниме-девушка в синем платье сидит в библиотеке, пока рядом не плавает карта Википедии с прикрепленным к ней таймером спидрана",
   "Prize trophy": "Призовой трофей",
   "Enable search during gameplay": "Разрешить поиск во время игры",
-}
+};
 
-export default ru
+export default ru;

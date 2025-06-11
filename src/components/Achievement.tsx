@@ -1,40 +1,37 @@
-import clsx from "clsx"
-import type { Achievement as IAchievement } from "../achievements"
-import { useI18nContext } from "../i18n/i18n-react"
+import clsx from "clsx";
+import type { Achievement as IAchievement } from "../achievements";
+import { useI18nContext } from "../i18n/i18n-react";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
-  const { LL } = useI18nContext()
+  const { LL } = useI18nContext();
 
-  let currentValue 
+  let currentValue: number;
   if (achievement.targetValue) {
-    currentValue = Math.min(achievement.currentValue(), achievement.targetValue)
+    currentValue = Math.min(achievement.currentValue(), achievement.targetValue);
+  } else {
+    currentValue = achievement.currentValue?.() ?? 0;
   }
 
   // @ts-expect-error dynamic key generation
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  const achievementTitle = LL[achievement.id]?.title()
+  const achievementTitle = LL[achievement.id]?.title();
 
   // @ts-expect-error dynamic key generation
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  let achievementDescription = LL[achievement.id]?.description()
+  let achievementDescription = LL[achievement.id]?.description();
 
-  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]()
+  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]();
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
       <span>
         {LL["Made by Ina_den"]()} {LL["Follow him on"]()}{" "}
-        <a
-          href="https://twitter.com/Ina_den_"
-          target="_blank"
-          rel="noreferrer"
-          className="text-primary-blue underline"
-        >
+        <a href="https://twitter.com/Ina_den_" target="_blank" rel="noreferrer" className="text-primary-blue underline">
           {LL["twitter (X)"]()}
         </a>
       </span>
-    )
-    achievementAltText = LL.WaifuAlt()
+    );
+    achievementAltText = LL.WaifuAlt();
   }
   return (
     <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">
@@ -43,10 +40,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
         height={128}
         src={achievement.imgUrl ?? "/trophy.svg"}
         alt={achievementAltText}
-        className={clsx(
-          "h-full bg-center object-cover sm:h-16 sm:w-16",
-          !achievement.unlocked && " grayscale"
-        )}
+        className={clsx("h-full bg-center object-cover sm:h-16 sm:w-16", !achievement.unlocked && " grayscale")}
         loading="lazy"
       />
       <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">
@@ -62,7 +56,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
             htmlFor=""
             className={clsx(
               "flex flex-col gap-1",
-              currentValue === undefined && achievement.targetValue === undefined && "invisible"
+              currentValue === undefined && achievement.targetValue === undefined && "invisible",
             )}
           >
             <span className="text-right text-sm">
@@ -80,5 +74,5 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
         }
       </div>
     </div>
-  )
-}
+  );
+};
