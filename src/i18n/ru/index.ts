@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Russian
 
@@ -179,6 +179,6 @@ const ru: Translation = {
     "Милая аниме-девушка в синем платье сидит в библиотеке, пока рядом не плавает карта Википедии с прикрепленным к ней таймером спидрана",
   "Prize trophy": "Призовой трофей",
   "Enable search during gameplay": "Разрешить поиск во время игры",
-};
+}
 
-export default ru;
+export default ru

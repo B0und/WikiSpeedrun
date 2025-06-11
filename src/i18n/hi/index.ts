@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Hindi
 const hi: Translation = {
@@ -177,6 +177,6 @@ const hi: Translation = {
   WaifuAlt:
     "नीली पोशाक वाली प्यारी एनीमे लड़की लाइब्रेरी में बैठी है, जबकि स्पीडरन टाइमर के साथ एक विकिपीडिया ग्लोब पास में तैर रहा है",
   "Prize trophy": "पुरस्कार ट्रॉफी",
-  "Enable search during gameplay": "गेमप्ले के दौरान खोज सक्षम करें"
-};
-export default hi;
+  "Enable search during gameplay": "गेमप्ले के दौरान खोज सक्षम करें",
+}
+export default hi

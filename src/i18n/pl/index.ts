@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Polish
 
@@ -178,6 +178,6 @@ const pl: Translation = {
     "Słodka dziewczyna anime w niebieskiej sukience siedząca w bibliotece, podczas gdy w pobliżu unosi się kula Wikipedia z przyczepionym do niej licznikiem speedrun",
   "Prize trophy": "Trofeum nagrody",
   "Enable search during gameplay": "Włącz wyszukiwanie podczas gry",
-};
+}
 
-export default pl;
+export default pl

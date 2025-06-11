@@ -1,13 +1,13 @@
-import * as Popover from "@radix-ui/react-popover";
-import { X } from "react-feather";
-import { useI18nContext } from "../../i18n/i18n-react";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { type ArticlePreview } from "./ArticlePreview.types";
-import HelpCircle from "./helpcircle.svg?react";
-import clsx from "clsx";
-import { useWikiLanguage } from "../../stores/SettingsStore";
-import { useStatsStoreActions } from "../../stores/StatisticsStore";
+import * as Popover from "@radix-ui/react-popover"
+import { X } from "react-feather"
+import { useI18nContext } from "../../i18n/i18n-react"
+import { useState } from "react"
+import { useQuery } from "@tanstack/react-query"
+import type { ArticlePreview } from "./ArticlePreview.types"
+import HelpCircle from "./helpcircle.svg?react"
+import clsx from "clsx"
+import { useWikiLanguage } from "../../stores/SettingsStore"
+import { useStatsStoreActions } from "../../stores/StatisticsStore"
 
 const getArticleSummary = async (language: string, pageid: string) => {
   const res = await fetch(
@@ -23,21 +23,21 @@ const getArticleSummary = async (language: string, pageid: string) => {
         redirects: "1",
         pageids: pageid,
       }).toString()
-  );
+  )
 
-  return res.json() as ArticlePreview;
-};
+  return res.json() as ArticlePreview
+}
 
 interface ArticlePreviewProps {
-  pageid: string;
+  pageid: string
 }
 const ArticlePreview = (props: ArticlePreviewProps) => {
-  const { pageid } = props;
-  const { LL } = useI18nContext();
-  const [open, setOpen] = useState(false);
+  const { pageid } = props
+  const { LL } = useI18nContext()
+  const [open, setOpen] = useState(false)
 
-  const wikiLang = useWikiLanguage();
-  const { increaseArticlePreviewPressed } = useStatsStoreActions();
+  const wikiLang = useWikiLanguage()
+  const { increaseArticlePreviewPressed } = useStatsStoreActions()
 
   const {
     data: articlePreview,
@@ -47,16 +47,16 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
     queryFn: () => getArticleSummary(wikiLang, pageid),
     queryKey: ["articleSummary", pageid, wikiLang],
     enabled: open,
-  });
+  })
 
-  const imageSrc = articlePreview?.query?.pages?.[pageid].original?.source;
+  const imageSrc = articlePreview?.query?.pages?.[pageid].original?.source
 
   return (
     <Popover.Root open={open} onOpenChange={setOpen}>
       <Popover.Trigger asChild>
         <button
           className={clsx(
-            "pointer-events-none w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent  focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary ",
+            "pointer-events-none w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary ",
             pageid &&
               "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue"
           )}
@@ -68,7 +68,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
       </Popover.Trigger>
 
       <Popover.Content
-        className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto  rounded-md bg-neutral-50  p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
+        className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md bg-neutral-50 p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
         sideOffset={5}
       >
         <h3 className="border-b-[1px] border-b-secondary-border font-bold">
@@ -82,14 +82,14 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         </p>
 
         <Popover.Close
-          className="absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
+          className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
           aria-label="Close"
         >
           <X />
         </Popover.Close>
       </Popover.Content>
     </Popover.Root>
-  );
-};
+  )
+}
 
-export default ArticlePreview;
+export default ArticlePreview

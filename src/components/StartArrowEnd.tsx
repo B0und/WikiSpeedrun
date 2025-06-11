@@ -1,17 +1,17 @@
-import { cn } from "../utils/cn";
+import { cn } from "../utils/cn"
 
 interface Props {
-  startText: string;
-  endText: string;
-  className?: string;
+  startText: string
+  endText: string
+  className?: string
 }
 export const StartArrowEnd = ({ endText, startText, className }: Props) => {
   return (
-    <p className={cn("flex items-center gap-2 text-lg font-bold", className)}>
+    <p className={cn("flex items-center gap-2 font-bold text-lg", className)}>
       <span>{startText}</span> <RightArrow /> <span>{endText}</span>
     </p>
-  );
-};
+  )
+}
 
 const RightArrow = () => (
   <svg
@@ -26,4 +26,4 @@ const RightArrow = () => (
       clipRule="evenodd"
     />
   </svg>
-);
+)

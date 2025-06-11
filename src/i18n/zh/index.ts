@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Chinese
 const zh: Translation = {
@@ -174,5 +174,5 @@ const zh: Translation = {
   WaifuAlt: "穿着蓝色裙子的可爱动漫女孩坐在图书馆里，而附近漂浮着一个附有速通计时器的维基百科球",
   "Prize trophy": "奖品奖杯",
   "Enable search during gameplay": "在游戏过程中启用搜索",
-};
-export default zh;
+}
+export default zh

@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
-import { CreateTypes, Options, create } from "canvas-confetti";
+import { useEffect, useRef } from "react"
+import { type CreateTypes, type Options, create } from "canvas-confetti"
 
 function randomInRange(min: number, max: number): number {
-  return Math.random() * (max - min) + min;
+  return Math.random() * (max - min) + min
 }
 
 const middle1: Options = {
@@ -20,7 +20,7 @@ const middle1: Options = {
   colors: ["#EDE574", "#E1F5C4", "#A8E6CF"],
   ticks: 100,
   disableForReducedMotion: true,
-};
+}
 
 const middle2: Options = {
   particleCount: 200,
@@ -37,7 +37,7 @@ const middle2: Options = {
   colors: ["#FFD700", "#FFFFFF", "#B0E0E6"],
   ticks: 100,
   disableForReducedMotion: true,
-};
+}
 
 const commonCornerExplosionOpts: Options = {
   gravity: 0,
@@ -47,56 +47,56 @@ const commonCornerExplosionOpts: Options = {
   decay: 0.95,
   startVelocity: 25,
   ticks: 80,
-};
+}
 
 const corner1: Options = {
   ...commonCornerExplosionOpts,
   angle: 45,
   origin: { x: 0, y: 1 },
-};
+}
 
 const corner2: Options = {
   ...commonCornerExplosionOpts,
   angle: -45,
   origin: { x: 0, y: 0 },
-};
+}
 
 const corner3: Options = {
   ...commonCornerExplosionOpts,
   angle: -135,
   origin: { x: 1, y: 0 },
-};
+}
 
 const corner4: Options = {
   ...commonCornerExplosionOpts,
   angle: 135,
   origin: { x: 1, y: 1 },
-};
+}
 
-const SHOW_CONFETTI_DEBUG_PANEL = false;
+const SHOW_CONFETTI_DEBUG_PANEL = false
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 if (import.meta.env.MODE === "development" && SHOW_CONFETTI_DEBUG_PANEL) {
   void import("tweakpane").then((TweakpaneModule) => {
-    const pane = new TweakpaneModule.Pane();
+    const pane = new TweakpaneModule.Pane()
 
     const addFolderWithExport = (title: string, options: Options) => {
       const folder = pane.addFolder({
         title: title,
         expanded: false,
-      });
+      })
 
       // Dynamically add bindings for each property in the options
       for (const [key, value] of Object.entries(options)) {
         if (["colors", "shapes"].includes(key)) {
-          continue;
+          continue
         }
         if (key === "origin") {
           folder.addBinding(options, key as keyof Options, {
             x: { min: -0.5, max: 1 },
             y: { min: -0.5, max: 1, inverted: true },
-          });
-          continue;
+          })
+          continue
         }
 
         if (typeof value === "number") {
@@ -104,71 +104,71 @@ if (import.meta.env.MODE === "development" && SHOW_CONFETTI_DEBUG_PANEL) {
             min: value > 1 ? 1 : 0,
             max: value > 1 ? 500 : 1,
             step: value > 1 ? 0.1 : 0.01,
-          });
+          })
         } else {
-          folder.addBinding(options, key as keyof Options);
+          folder.addBinding(options, key as keyof Options)
         }
       }
 
       // Add Export Button
-      const exportBtn = folder.addButton({ title: "Copy to clipboard" });
+      const exportBtn = folder.addButton({ title: "Copy to clipboard" })
       exportBtn.on("click", () => {
-        void navigator.clipboard.writeText(JSON.stringify(options, null, 2));
-      });
-    };
+        void navigator.clipboard.writeText(JSON.stringify(options, null, 2))
+      })
+    }
 
     // Add folders with specific settings
-    addFolderWithExport("Realistic2", middle1);
-    addFolderWithExport("Realistic3", middle2);
-    addFolderWithExport("Common corner settings", commonCornerExplosionOpts);
-    addFolderWithExport("corner1", corner1);
-    addFolderWithExport("corner2", corner2);
-    addFolderWithExport("corner3", corner3);
-    addFolderWithExport("corner4", corner4);
-  }); // <-- Properly close the `.then()` block here
+    addFolderWithExport("Realistic2", middle1)
+    addFolderWithExport("Realistic3", middle2)
+    addFolderWithExport("Common corner settings", commonCornerExplosionOpts)
+    addFolderWithExport("corner1", corner1)
+    addFolderWithExport("corner2", corner2)
+    addFolderWithExport("corner3", corner3)
+    addFolderWithExport("corner4", corner4)
+  }) // <-- Properly close the `.then()` block here
 }
 
 export const VictoryConfetti = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const confetti = useRef<CreateTypes | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const confetti = useRef<CreateTypes | null>(null)
 
   useEffect(() => {
     if (!canvasRef.current) {
-      return;
+      return
     }
 
-    const confettiInstance = create(canvasRef.current, {});
-    confetti.current = confettiInstance;
+    const confettiInstance = create(canvasRef.current, {})
+    confetti.current = confettiInstance
 
     const fire = (opts: Options, delay = 0) => {
       setTimeout(() => {
         void confettiInstance({
           ...opts,
-        });
-      }, delay);
-    };
+        })
+      }, delay)
+    }
 
     //  middle explosion
-    fire(middle1, 0);
-    fire(middle2, 0);
+    fire(middle1, 0)
+    fire(middle2, 0)
 
     // Corner explosions
-    fire(corner1, 0);
-    fire(corner2, 0);
-    fire(corner3, 0);
-    fire(corner4, 0);
+    fire(corner1, 0)
+    fire(corner2, 0)
+    fire(corner3, 0)
+    fire(corner4, 0)
 
     return () => {
-      confetti.current?.reset();
-    };
-  }, []);
+      confetti.current?.reset()
+    }
+  }, [])
 
   return (
     <canvas
       ref={canvasRef}
-      className={"pointer-events-none fixed left-0 top-0 h-full w-full"}
+      className={"pointer-events-none fixed top-0 left-0 h-full w-full"}
       width={1600}
       height={1600}
     />
-  );
-};
+  )
+}

@@ -1,27 +1,27 @@
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { Locales } from "../i18n/i18n-types";
-import { LANGUAGES } from "../components/WikiLanguageSelect";
+import { create } from "zustand"
+import { devtools } from "zustand/middleware"
+import { persist, createJSONStorage } from "zustand/middleware"
+import type { Locales } from "../i18n/i18n-types"
+import type { LANGUAGES } from "../components/WikiLanguageSelect"
 
 /*
  Data gets persisted in local storage
 */
 
-type WikiLanguage = (typeof LANGUAGES)[number]["value"];
+type WikiLanguage = (typeof LANGUAGES)[number]["value"]
 interface Actions {
   actions: {
-    setInterfaceLanguage: (language: Locales) => void;
-    setWikiLanguage: (language: WikiLanguage) => void;
-    setSidebarWidth: (width: number) => void;
-    set_is_CTRL_F_enabled: (flag: boolean) => void;
-  };
+    setInterfaceLanguage: (language: Locales) => void
+    setWikiLanguage: (language: WikiLanguage) => void
+    setSidebarWidth: (width: number) => void
+    set_is_CTRL_F_enabled: (flag: boolean) => void
+  }
 }
 interface Values {
-  interfaceLanguage: Locales;
-  wikiLanguage: WikiLanguage;
-  sidebarWidth: number;
-  is_CTRL_F_enabled: boolean;
+  interfaceLanguage: Locales
+  wikiLanguage: WikiLanguage
+  sidebarWidth: number
+  is_CTRL_F_enabled: boolean
 }
 
 const initialState: Values = {
@@ -29,9 +29,9 @@ const initialState: Values = {
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
-};
+}
 
-type SettingsStore = Values & Actions;
+type SettingsStore = Values & Actions
 const useSettingsStore = create<SettingsStore>()(
   devtools(
     persist(
@@ -39,16 +39,16 @@ const useSettingsStore = create<SettingsStore>()(
         ...initialState,
         actions: {
           setInterfaceLanguage: (language: Locales) => {
-            set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage");
+            set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage")
           },
           setWikiLanguage: (language: WikiLanguage) => {
-            set(() => ({ wikiLanguage: language }), false, "setWikiLanguage");
+            set(() => ({ wikiLanguage: language }), false, "setWikiLanguage")
           },
           setSidebarWidth: (width: number) => {
-            set(() => ({ sidebarWidth: width }), false, "setSidebarWidth");
+            set(() => ({ sidebarWidth: width }), false, "setSidebarWidth")
           },
           set_is_CTRL_F_enabled: (flag: boolean) => {
-            set(() => ({ is_CTRL_F_enabled: flag }), false, "setSearchEnabled");
+            set(() => ({ is_CTRL_F_enabled: flag }), false, "setSearchEnabled")
           },
         },
       }),
@@ -64,10 +64,10 @@ const useSettingsStore = create<SettingsStore>()(
       name: "settings-store",
     }
   )
-);
+)
 
-export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);
-export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage);
-export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
-export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);
-export const useIsCtrlFEnabled = () => useSettingsStore((state) => state.is_CTRL_F_enabled);
+export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions)
+export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage)
+export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage)
+export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth)
+export const useIsCtrlFEnabled = () => useSettingsStore((state) => state.is_CTRL_F_enabled)

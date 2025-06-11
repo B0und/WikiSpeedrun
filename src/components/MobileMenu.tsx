@@ -1,16 +1,16 @@
-import { Menu } from "react-feather";
+import { Menu } from "react-feather"
 
-import { useI18nContext } from "../i18n/i18n-react";
-import { useIsGameRunning } from "../stores/GameStore";
-import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "./Drawer";
+import { useI18nContext } from "../i18n/i18n-react"
+import { useIsGameRunning } from "../stores/GameStore"
+import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "./Drawer"
 
-import { GithubLink, type WikiLink } from "./Header";
-import { Link } from "react-router";
+import { GithubLink, type WikiLink } from "./Header"
+import { Link } from "react-router"
 
 export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
-  const { LL } = useI18nContext();
+  const { LL } = useI18nContext()
 
-  const isGameRunning = useIsGameRunning();
+  const isGameRunning = useIsGameRunning()
 
   return (
     <div className="hidden md:block">
@@ -20,14 +20,14 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
             <button
               type="button"
               aria-label="Menu"
-              className="-ml-3 bg-inherit p-3  hover:text-primary-blue focus-visible:text-primary-blue "
+              className="-ml-3 bg-inherit p-3 hover:text-primary-blue focus-visible:text-primary-blue "
             >
               <Menu />
             </button>
           )}
         </DrawerTrigger>
         <DrawerContent side="left" className="flex flex-col items-start">
-          <h3 className="w-full border-b-[1px] border-secondary-border text-xl ">
+          <h3 className="w-full border-secondary-border border-b-[1px] text-xl ">
             {LL.Navigation()}
           </h3>
           <nav className=" -ml-4 mt-4 flex w-full flex-col gap-2">
@@ -49,5 +49,5 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
         </DrawerContent>
       </Drawer>
     </div>
-  );
-};
+  )
+}

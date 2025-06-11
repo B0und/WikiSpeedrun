@@ -1,35 +1,35 @@
-import { Link } from "react-router";
-import { GitHub, Moon, Sun } from "react-feather";
-import { ResultDialog } from "./ResultDialog";
-import { useThemeContext } from "./ThemeContext";
-import { useIsGameRunning } from "../stores/GameStore";
-import { GiveUpModal } from "./ConfirmNavigation";
-import { useI18nContext } from "../i18n/i18n-react";
-import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
-import { LocalizedString } from "typesafe-i18n";
-import { MobileMenu } from "./MobileMenu";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Link } from "react-router"
+import { GitHub, Moon, Sun } from "react-feather"
+import { ResultDialog } from "./ResultDialog"
+import { useThemeContext } from "./ThemeContext"
+import { useIsGameRunning } from "../stores/GameStore"
+import { GiveUpModal } from "./ConfirmNavigation"
+import { useI18nContext } from "../i18n/i18n-react"
+import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect"
+import type { LocalizedString } from "typesafe-i18n"
+import { MobileMenu } from "./MobileMenu"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 export interface WikiLink {
-  name: LocalizedString;
-  path: string;
+  name: LocalizedString
+  path: string
 }
 const Header = () => {
-  const { LL } = useI18nContext();
+  const { LL } = useI18nContext()
 
   const links: WikiLink[] = [
     { name: LL.Play(), path: "/settings" },
     { name: LL.Statistics(), path: "/stats" },
     { name: LL.Achievements(), path: "/achievements" },
     { name: LL.About(), path: "/about" },
-  ];
+  ]
 
-  const isGameRunning = useIsGameRunning();
+  const isGameRunning = useIsGameRunning()
 
-  const { colorMode, switchTheme } = useThemeContext();
+  const { colorMode, switchTheme } = useThemeContext()
 
   return (
-    <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3 sm:gap-0">
+    <div className="flex items-center gap-12 border-secondary-blue border-b-[2px] pb-3 sm:gap-0">
       <WikiLogo />
       <nav className="flex h-full flex-1 items-center gap-4">
         <div className="flex gap-4 md:hidden">
@@ -42,6 +42,7 @@ const Header = () => {
           <li>{!isGameRunning && <InterfaceLanguageSelect />}</li>
           <li className="h-full">
             <button
+              type="button"
               className="flex h-full w-12 items-center justify-center hover:text-primary-blue"
               onClick={switchTheme}
             >
@@ -55,31 +56,31 @@ const Header = () => {
         </ul>
       </nav>
     </div>
-  );
-};
+  )
+}
 
 const WikiLogo = () => {
-  const { LL } = useI18nContext();
-  const { colorMode } = useThemeContext();
-  const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
+  const { LL } = useI18nContext()
+  const { colorMode } = useThemeContext()
+  const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark"
 
   return (
     <picture className="shrink-0 basis-[200px] md:hidden">
-      <source srcSet={window.location.origin + `/${imageSrc}.webp`} type="image/webp" />
+      <source srcSet={`${window.location.origin}/${imageSrc}.webp`} type="image/webp" />
 
-      <source srcSet={window.location.origin + `/${imageSrc}.png`} type="image/png" />
+      <source srcSet={`${window.location.origin}/${imageSrc}.png`} type="image/png" />
       <img
         width={200}
         height={68}
         className="block h-full"
-        src={window.location.origin + `/${imageSrc}.png`}
+        src={`${window.location.origin}/${imageSrc}.png`}
         alt={LL[
           "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
         ]()}
       />
     </picture>
-  );
-};
+  )
+}
 
 const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: WikiLink[] }) => {
   return (
@@ -95,8 +96,8 @@ const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Wiki
           </Link>
         ))}
     </>
-  );
-};
+  )
+}
 
 export const GithubLink = () => {
   return (
@@ -109,7 +110,7 @@ export const GithubLink = () => {
       <GitHub />
       <VisuallyHidden>Source code on github</VisuallyHidden>
     </a>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

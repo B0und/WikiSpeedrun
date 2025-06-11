@@ -1,40 +1,40 @@
-import React, { useEffect } from "react";
-import useLocalStorage from "use-local-storage";
+import React, { useEffect } from "react"
+import useLocalStorage from "use-local-storage"
 
 interface ThemeContext {
-  colorMode: string;
-  switchTheme: () => void;
+  colorMode: string
+  switchTheme: () => void
 }
-export const ThemeContext = React.createContext<ThemeContext | null>(null);
+export const ThemeContext = React.createContext<ThemeContext | null>(null)
 
 export const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [colorMode, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light");
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const [colorMode, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light")
 
   const switchTheme = () => {
-    const newTheme = colorMode === "light" ? "dark" : "light";
-    setTheme(newTheme);
-  };
+    const newTheme = colorMode === "light" ? "dark" : "light"
+    setTheme(newTheme)
+  }
 
   useEffect(() => {
     if (colorMode === "dark") {
-      document.documentElement.classList.add("dark");
+      document.documentElement.classList.add("dark")
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark")
     }
-  }, [colorMode]);
+  }, [colorMode])
 
   return (
     <ThemeContext.Provider value={{ colorMode, switchTheme }}>{children}</ThemeContext.Provider>
-  );
-};
+  )
+}
 
 export function useThemeContext() {
-  const context = React.useContext(ThemeContext);
+  const context = React.useContext(ThemeContext)
 
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeContext");
+    throw new Error("useTheme must be used within a ThemeContext")
   }
 
-  return context;
+  return context
 }

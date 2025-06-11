@@ -1,19 +1,19 @@
-import clsx from "clsx";
-import Select, { StylesConfig } from "react-select";
-import { useThemeContext } from "./ThemeContext";
-import { useI18nContext } from "../i18n/i18n-react";
-import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
-import { useGameStoreActions } from "../stores/GameStore";
+import clsx from "clsx"
+import Select, { type StylesConfig } from "react-select"
+import { useThemeContext } from "./ThemeContext"
+import { useI18nContext } from "../i18n/i18n-react"
+import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore"
+import { useGameStoreActions } from "../stores/GameStore"
 
-const selectId = "wikiLanguageSelect";
+const selectId = "wikiLanguageSelect"
 
 export const WikiLanguageSelect = () => {
-  const { colorMode } = useThemeContext();
-  const isDarkMode = colorMode === "dark";
-  const { LL } = useI18nContext();
-  const { setWikiLanguage } = useSettingsStoreActions();
-  const wikiLanguage = useWikiLanguage();
-  const { setEndingArticle, setStartingArticle } = useGameStoreActions();
+  const { colorMode } = useThemeContext()
+  const isDarkMode = colorMode === "dark"
+  const { LL } = useI18nContext()
+  const { setWikiLanguage } = useSettingsStoreActions()
+  const wikiLanguage = useWikiLanguage()
+  const { setEndingArticle, setStartingArticle } = useGameStoreActions()
 
   return (
     <div>
@@ -28,9 +28,9 @@ export const WikiLanguageSelect = () => {
         styles={customStyles}
         options={LANGUAGES}
         onChange={(e) => {
-          setWikiLanguage(e?.value ?? "");
-          setStartingArticle({ pageid: "", title: "" });
-          setEndingArticle({ pageid: "", title: "" });
+          setWikiLanguage(e?.value ?? "")
+          setStartingArticle({ pageid: "", title: "" })
+          setEndingArticle({ pageid: "", title: "" })
         }}
         isMulti={false}
         classNames={{
@@ -55,8 +55,8 @@ export const WikiLanguageSelect = () => {
         }}
       />
     </div>
-  );
-};
+  )
+}
 
 const customStyles: StylesConfig<WikiLanguage> = {
   control: (base) => ({
@@ -74,12 +74,12 @@ const customStyles: StylesConfig<WikiLanguage> = {
     ...base,
     width: "300px",
   }),
-};
+}
 
 interface WikiLanguage {
-  readonly value: string; // WP language code
-  readonly label: string;
-  readonly isoCode: string; // ISO language code
+  readonly value: string // WP language code
+  readonly label: string
+  readonly isoCode: string // ISO language code
 }
 
 export const LANGUAGES: readonly WikiLanguage[] = [
@@ -403,4 +403,4 @@ export const LANGUAGES: readonly WikiLanguage[] = [
   { label: "ཇོང་ཁ", value: "dz", isoCode: "" },
   { label: "farefare", value: "gur", isoCode: "" },
   { label: "Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ", value: "cr", isoCode: "" },
-].sort((a, b) => a.value.localeCompare(b.value));
+].sort((a, b) => a.value.localeCompare(b.value))

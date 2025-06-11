@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Japanese
 
@@ -177,6 +177,6 @@ const ja: Translation = {
     "ブルーのドレスを着たかわいいアニメの女の子が図書館に座っている間、近くにはスピードランタイマー付きのウィキペディアの地球儀が浮かんでいます",
   "Prize trophy": "賞のトロフィー",
   "Enable search during gameplay": "ゲーム中に検索を有効にする",
-};
+}
 
-export default ja;
+export default ja

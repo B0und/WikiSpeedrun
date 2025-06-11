@@ -1,12 +1,12 @@
-import { AlertCircle } from "react-feather";
-import { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";
-import { useI18nContext } from "../i18n/i18n-react";
+import { AlertCircle } from "react-feather"
+import { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip"
+import { useI18nContext } from "../i18n/i18n-react"
 
 interface InfoTooltipProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 export const InfoTooltip = ({ children }: InfoTooltipProps) => {
-  const { LL } = useI18nContext();
+  const { LL } = useI18nContext()
   return (
     <Tooltip>
       <TooltipTrigger className="flex items-center gap-3">
@@ -26,5 +26,5 @@ export const InfoTooltip = ({ children }: InfoTooltipProps) => {
         </p>
       </TooltipContent>
     </Tooltip>
-  );
-};
+  )
+}

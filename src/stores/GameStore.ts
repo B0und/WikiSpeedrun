@@ -1,44 +1,44 @@
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { StopwatchProps } from "../components/StopwatchDisplay";
-import { querystring } from "unbound-zustand-querystring";
-import { immer } from "zustand/middleware/immer";
+import { create } from "zustand"
+import { devtools } from "zustand/middleware"
+import type { StopwatchProps } from "../components/StopwatchDisplay"
+import { querystring } from "unbound-zustand-querystring"
+import { immer } from "zustand/middleware/immer"
 
 /*
 Data partially synced with URL
 */
 
 interface GameValues {
-  history: ArticleHistory[];
-  startingArticle: Article;
-  endingArticle: Article;
-  isGameRunning: boolean;
-  cheatingAttempts: number;
-  isWin: boolean;
+  history: ArticleHistory[]
+  startingArticle: Article
+  endingArticle: Article
+  isGameRunning: boolean
+  cheatingAttempts: number
+  isWin: boolean
 }
 
 interface Actions {
   actions: {
-    setStartingArticle: (article: Article) => void;
-    setEndingArticle: (article: Article) => void;
-    setIsGameRunning: (flag: boolean) => void;
-    addHistoryArticle: (article: ArticleHistory) => void;
-    resetStoreState: () => void;
-    increaseCheatingAttemptsCounter: () => void;
-    setLastArticleWinningLinks: (links: number) => void;
-    setIsWin: (isWin: boolean) => void;
-  };
+    setStartingArticle: (article: Article) => void
+    setEndingArticle: (article: Article) => void
+    setIsGameRunning: (flag: boolean) => void
+    addHistoryArticle: (article: ArticleHistory) => void
+    resetStoreState: () => void
+    increaseCheatingAttemptsCounter: () => void
+    setLastArticleWinningLinks: (links: number) => void
+    setIsWin: (isWin: boolean) => void
+  }
 }
 
 interface ArticleHistory {
-  title: string;
-  time: StopwatchProps;
-  winningLinks: number;
+  title: string
+  time: StopwatchProps
+  winningLinks: number
 }
 
 export interface Article {
-  title: string;
-  pageid: string;
+  title: string
+  pageid: string
 }
 
 const initialState: Omit<GameValues, "startingArticle" | "endingArticle"> = {
@@ -46,9 +46,9 @@ const initialState: Omit<GameValues, "startingArticle" | "endingArticle"> = {
   isGameRunning: false,
   cheatingAttempts: 0,
   isWin: false,
-};
+}
 
-type GameStore = GameValues & Actions;
+type GameStore = GameValues & Actions
 
 export const useGameStore = create<GameStore>()(
   devtools(
@@ -65,7 +65,7 @@ export const useGameStore = create<GameStore>()(
               }),
               false,
               "setStartingArticle"
-            );
+            )
           },
           setEndingArticle: (article: Article) => {
             set(
@@ -74,66 +74,66 @@ export const useGameStore = create<GameStore>()(
               }),
               false,
               "setEndingArticle"
-            );
+            )
           },
           setIsGameRunning: (flag: boolean) => {
             set(
               (state) => {
-                state.isGameRunning = flag;
+                state.isGameRunning = flag
               },
               false,
               "setIsGameRunning"
-            );
+            )
           },
           addHistoryArticle: (article: ArticleHistory) => {
             set(
               (state) => {
                 // without this, first article will be slightly later than 0
                 if (state.history.length === 0) {
-                  article.time.ms = "000";
+                  article.time.ms = "000"
                 }
-                state.history.push(article);
+                state.history.push(article)
               },
               false,
               "addHistoryArticle"
-            );
+            )
           },
           resetStoreState: () => {
-            set(() => ({ ...initialState, history: [] }), false, "resetGame");
+            set(() => ({ ...initialState, history: [] }), false, "resetGame")
           },
           increaseCheatingAttemptsCounter: () => {
             set(
               (state) => {
-                state.cheatingAttempts += 1;
+                state.cheatingAttempts += 1
               },
               false,
               "increaseCheatingAttemptsCounter"
-            );
+            )
           },
           setLastArticleWinningLinks: (links) => {
             set(
               (state) => {
-                state.history[state.history.length - 1].winningLinks = links;
+                state.history[state.history.length - 1].winningLinks = links
               },
               false,
               "setLastArticleWinningLinks"
-            );
+            )
           },
           setIsWin: (isWin) => {
             set(
               (state) => {
-                state.isWin = isWin;
+                state.isWin = isWin
               },
               false,
               "setIsWin"
-            );
+            )
           },
         },
       })),
       {
         // save to URL if specified as true
         select(pathname) {
-          const isWikiPage = pathname.startsWith("/wiki");
+          const isWikiPage = pathname.startsWith("/wiki")
 
           return {
             history: isWikiPage,
@@ -142,7 +142,7 @@ export const useGameStore = create<GameStore>()(
             isGameRunning: false,
             cheatingAttempts: isWikiPage,
             isWin: false,
-          };
+          }
         },
       }
     ),
@@ -150,16 +150,16 @@ export const useGameStore = create<GameStore>()(
       name: "game-store",
     }
   )
-);
+)
 
-export const useGameStoreActions = () => useGameStore((state) => state.actions);
-export const useIsGameRunning = () => useGameStore((state) => state.isGameRunning);
-export const useStartingArticle = () => useGameStore((state) => state.startingArticle);
-export const useEndingArticle = () => useGameStore((state) => state.endingArticle);
-export const useHistory = () => useGameStore((state) => state.history);
+export const useGameStoreActions = () => useGameStore((state) => state.actions)
+export const useIsGameRunning = () => useGameStore((state) => state.isGameRunning)
+export const useStartingArticle = () => useGameStore((state) => state.startingArticle)
+export const useEndingArticle = () => useGameStore((state) => state.endingArticle)
+export const useHistory = () => useGameStore((state) => state.history)
 export const useClicks = () =>
-  useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
-export const useCurrentArticle = () => useGameStore((state) => state.history.slice(-1)[0]?.title);
-export const useIsWin = () => useGameStore((state) => state.isWin);
+  useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0))
+export const useCurrentArticle = () => useGameStore((state) => state.history.slice(-1)[0]?.title)
+export const useIsWin = () => useGameStore((state) => state.isWin)
 
-export const useCheatingAttempts = () => useGameStore((state) => state.cheatingAttempts);
+export const useCheatingAttempts = () => useGameStore((state) => state.cheatingAttempts)

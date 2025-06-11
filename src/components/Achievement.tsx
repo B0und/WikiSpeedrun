@@ -1,24 +1,24 @@
-import clsx from "clsx";
-import { type Achievement as IAchievement } from "../achievements";
-import { useI18nContext } from "../i18n/i18n-react";
+import clsx from "clsx"
+import type { Achievement as IAchievement } from "../achievements"
+import { useI18nContext } from "../i18n/i18n-react"
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
-  const { LL } = useI18nContext();
+  const { LL } = useI18nContext()
 
-  let currentValue = undefined;
+  let currentValue 
   if (achievement.targetValue) {
-    currentValue = Math.min(achievement.currentValue(), achievement.targetValue);
+    currentValue = Math.min(achievement.currentValue(), achievement.targetValue)
   }
 
   // @ts-expect-error dynamic key generation
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  const achievementTitle = LL[achievement.id]?.title();
+  const achievementTitle = LL[achievement.id]?.title()
 
   // @ts-expect-error dynamic key generation
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  let achievementDescription = LL[achievement.id]?.description();
+  let achievementDescription = LL[achievement.id]?.description()
 
-  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]();
+  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]()
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
@@ -33,8 +33,8 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
           {LL["twitter (X)"]()}
         </a>
       </span>
-    );
-    achievementAltText = LL.WaifuAlt();
+    )
+    achievementAltText = LL.WaifuAlt()
   }
   return (
     <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">
@@ -70,7 +70,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
             </span>
 
             <progress
-              className="h-2 w-full progress-unfilled:bg-gray-200  progress-filled:bg-primary-blue dark:progress-unfilled:bg-gray-700"
+              className="h-2 w-full progress-filled:bg-primary-blue progress-unfilled:bg-gray-200 dark:progress-unfilled:bg-gray-700"
               value={currentValue}
               max={achievement.targetValue}
             >
@@ -80,5 +80,5 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
         }
       </div>
     </div>
-  );
-};
+  )
+}

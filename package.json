@@ -12,8 +12,8 @@
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "typesafe-i18n": "typesafe-i18n",
-    "prettify": "prettier --write ./src",
-    "lint": "eslint --fix ./src"
+    "format": "biome format --write ./src",
+    "lint": "biome lint --apply-unsafe --write ./src && eslint --fix ./src"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.0.5",
@@ -39,16 +39,16 @@
     "react-select": "5.8.0",
     "tailwind-merge": "2.3.0",
     "typesafe-i18n": "5.26.2",
+    "unbound-zustand-querystring": "0.2.3",
     "use-local-storage": "3.0.0",
-    "zustand": "4.5.2",
-    "unbound-zustand-querystring": "0.2.3"
+    "zustand": "4.5.2"
   },
   "devDependencies": {
-    "@tanstack/react-query-devtools": "5.38.0",
-    "tweakpane": "^4.0.5",
+    "@biomejs/biome": "^2.0.0-beta.5",
     "@optimize-lodash/rollup-plugin": "^5.0.0",
     "@tailwindcss/container-queries": "0.1.1",
     "@tanstack/eslint-plugin-query": "5.35.6",
+    "@tanstack/react-query-devtools": "5.38.0",
     "@total-typescript/ts-reset": "0.5.1",
     "@tweakpane/core": "^2.0.5",
     "@types/canvas-confetti": "^1.9.0",
@@ -74,6 +74,7 @@
     "prettier-plugin-tailwindcss": "0.5.14",
     "rollup-plugin-visualizer": "5.12.0",
     "tailwindcss": "3.4.3",
+    "tweakpane": "^4.0.5",
     "type-fest": "4.18.3",
     "typescript": "5.4.5",
     "vite": "6.0.3",

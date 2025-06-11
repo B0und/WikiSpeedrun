@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Vietnamese
 const vi: Translation = {
@@ -176,7 +176,7 @@ const vi: Translation = {
   WaifuAlt:
     "Cô gái anime dễ thương với chiếc váy màu xanh ngồi trong một thư viện, trong khi một quả cầu Wikipedia với một bộ hẹn giờ speedrun đính kèm đang lơ lửng gần đó",
   "Prize trophy": "Cúp giải thưởng",
-  "Enable search during gameplay": "Bật tìm kiếm trong quá trình chơi"
-};
+  "Enable search during gameplay": "Bật tìm kiếm trong quá trình chơi",
+}
 
-export default vi;
+export default vi

@@ -1,7 +1,7 @@
 export interface StopwatchProps {
-  min: string | undefined;
-  sec: string | undefined;
-  ms: string | undefined;
+  min: string | undefined
+  sec: string | undefined
+  ms: string | undefined
 }
 export const StopwatchDisplay = ({ min = "00", sec = "00", ms = "000" }: StopwatchProps) => {
   return (
@@ -11,5 +11,5 @@ export const StopwatchDisplay = ({ min = "00", sec = "00", ms = "000" }: Stopwat
       </span>
       <span className="stopwatch text-2xl sm:text-xl">.{ms}</span>
     </div>
-  );
-};
+  )
+}

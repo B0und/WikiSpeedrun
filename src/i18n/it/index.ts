@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Italian
 const it: Translation = {
@@ -28,7 +28,8 @@ const it: Translation = {
   "Play again": "Gioca di nuovo",
   "Give up": "Arrenditi",
   "Confirm action": "Conferma azione",
-  "If you leave, your current progress will be lost": "Se abbandoni, i tuoi progressi attuali saranno persi",
+  "If you leave, your current progress will be lost":
+    "Se abbandoni, i tuoi progressi attuali saranno persi",
   History: "Cronologia",
   Article: "Articolo",
   Time: "Tempo",
@@ -175,7 +176,7 @@ const it: Translation = {
   WaifuAlt:
     "Ragazza anime carina con un vestito blu seduta in una biblioteca, mentre un globo di Wikipedia con un timer per speedrun al suo interno fluttua nelle vicinanze",
   "Prize trophy": "Trofeo premio",
-  "Enable search during gameplay": "Abilita la ricerca durante il gioco"
-};
+  "Enable search during gameplay": "Abilita la ricerca durante il gioco",
+}
 
-export default it;
+export default it

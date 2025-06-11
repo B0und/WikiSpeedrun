@@ -1,4 +1,4 @@
-import type { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // German
 const de: Translation = {
@@ -177,6 +177,6 @@ const de: Translation = {
     "Niedliches Anime-Mädchen mit einem blauen Kleid sitzt in einer Bibliothek, während in der Nähe eine Wikipedia-Kugel mit einem angebrachten Speedrun-Timer schwebt",
   "Prize trophy": "Preis-Trophäe",
   "Enable search during gameplay": "Suche während des Spiels aktivieren",
-};
+}
 
-export default de;
+export default de

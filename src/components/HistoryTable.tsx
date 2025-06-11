@@ -1,19 +1,19 @@
-import { useRef, useEffect } from "react";
-import { useHistory, useIsGameRunning } from "../stores/GameStore";
-import { useNavigate } from "react-router";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useRef, useEffect } from "react"
+import { useHistory, useIsGameRunning } from "../stores/GameStore"
+import { useNavigate } from "react-router"
+import { useI18nContext } from "../i18n/i18n-react"
 
 const HistoryTable = () => {
-  const { LL } = useI18nContext();
-  const articleHistory = useHistory();
-  const isGameRunning = useIsGameRunning();
-  const navigate = useNavigate();
+  const { LL } = useI18nContext()
+  const articleHistory = useHistory()
+  const isGameRunning = useIsGameRunning()
+  const navigate = useNavigate()
 
-  const tableRef = useRef<HTMLTableSectionElement>(null);
+  const tableRef = useRef<HTMLTableSectionElement>(null)
 
   useEffect(() => {
-    tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [articleHistory.length]);
+    tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" })
+  }, [articleHistory.length])
 
   return (
     <div id="history-scroll" className="scrollbar self-stretch overflow-y-auto pr-3">
@@ -42,7 +42,7 @@ const HistoryTable = () => {
                     onClick={() => {
                       void navigate(
                         `/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}`
-                      );
+                      )
                     }}
                   >
                     {article.title}
@@ -58,7 +58,7 @@ const HistoryTable = () => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default HistoryTable;
+export default HistoryTable

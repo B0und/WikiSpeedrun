@@ -1,4 +1,4 @@
-import type { BaseTranslation } from "../i18n-types";
+import type { BaseTranslation } from "../i18n-types"
 
 // English
 const en: BaseTranslation = {
@@ -178,5 +178,5 @@ const en: BaseTranslation = {
     "Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby",
   "Prize trophy": "Prize Trophy",
   "Enable search during gameplay": "Enable search during gameplay",
-};
-export default en;
+}
+export default en

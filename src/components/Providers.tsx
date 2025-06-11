@@ -1,12 +1,12 @@
-import React from "react";
-import LocaleProvider from "./LocaleProvider";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { StopwatchContextProvider } from "./StopwatchContext";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Toaster } from "react-hot-toast";
-import { ThemeContextProvider } from "./ThemeContext";
-import * as Portal from "@radix-ui/react-portal";
-import { TooltipProvider } from "./Tooltip";
+import type React from "react"
+import LocaleProvider from "./LocaleProvider"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { StopwatchContextProvider } from "./StopwatchContext"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { Toaster } from "react-hot-toast"
+import { ThemeContextProvider } from "./ThemeContext"
+import * as Portal from "@radix-ui/react-portal"
+import { TooltipProvider } from "./Tooltip"
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -14,7 +14,7 @@ export const queryClient = new QueryClient({
       staleTime: Infinity,
     },
   },
-});
+})
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -38,7 +38,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         </StopwatchContextProvider>
       </LocaleProvider>
     </ThemeContextProvider>
-  );
-};
+  )
+}
 
-export default Providers;
+export default Providers

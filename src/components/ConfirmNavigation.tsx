@@ -1,10 +1,10 @@
-import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
-import { useResetGame } from "../hooks/useResetGame";
-import { useI18nContext } from "../i18n/i18n-react";
+import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal"
+import { useResetGame } from "../hooks/useResetGame"
+import { useI18nContext } from "../i18n/i18n-react"
 
 export const GiveUpModal = () => {
-  const { LL } = useI18nContext();
-  const resetGame = useResetGame();
+  const { LL } = useI18nContext()
+  const resetGame = useResetGame()
   return (
     <ModalRoot>
       <ModalTrigger asChild>
@@ -13,10 +13,10 @@ export const GiveUpModal = () => {
         </button>
       </ModalTrigger>
       <ModalContent>
-        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
+        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
           {LL["Confirm action"]()}
         </ModalTitle>
-        <ModalDescription className="mb-5 mt-[10px] text-sm leading-normal">
+        <ModalDescription className="mt-[10px] mb-5 text-sm leading-normal">
           {LL["If you leave, your current progress will be lost"]()}
         </ModalDescription>
         <ModalTrigger asChild>
@@ -29,5 +29,5 @@ export const GiveUpModal = () => {
         </ModalTrigger>
       </ModalContent>
     </ModalRoot>
-  );
-};
+  )
+}

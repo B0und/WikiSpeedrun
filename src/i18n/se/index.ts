@@ -1,4 +1,4 @@
-import { Translation } from "../i18n-types";
+import type { Translation } from "../i18n-types"
 
 // Swedish
 
@@ -178,6 +178,6 @@ const se: Translation = {
     "Söt anime-tjej med en blå klänning som sitter i ett bibliotek, medan en wikipedia-glob med en speedrun-timer bifogad svävar i närheten",
   "Prize trophy": "Pristrofé",
   "Enable search during gameplay": "Aktivera sökning under spelet",
-};
+}
 
-export default se;
+export default se

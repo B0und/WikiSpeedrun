@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
+import { useEffect, useState } from "react"
+import * as Dialog from "@radix-ui/react-dialog"
 
 import {
   useCheatingAttempts,
@@ -8,44 +8,44 @@ import {
   useHistory,
   useIsWin,
   useStartingArticle,
-} from "../stores/GameStore";
+} from "../stores/GameStore"
 
-import { StopwatchDisplay } from "./StopwatchDisplay";
-import { useResetGame } from "../hooks/useResetGame";
-import { useI18nContext } from "../i18n/i18n-react";
-import { toast } from "react-hot-toast";
-import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
-import { StartArrowEnd } from "./StartArrowEnd";
+import { StopwatchDisplay } from "./StopwatchDisplay"
+import { useResetGame } from "../hooks/useResetGame"
+import { useI18nContext } from "../i18n/i18n-react"
+import { toast } from "react-hot-toast"
+import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal"
+import { StartArrowEnd } from "./StartArrowEnd"
 
-import * as Portal from "@radix-ui/react-portal";
-import { VictoryConfetti } from "./VictoryConfetti";
+import * as Portal from "@radix-ui/react-portal"
+import { VictoryConfetti } from "./VictoryConfetti"
 
 export const ResultDialog = () => {
-  const { LL } = useI18nContext();
-  const [open, setOpen] = useState(false);
-  const resetGame = useResetGame();
+  const { LL } = useI18nContext()
+  const [open, setOpen] = useState(false)
+  const resetGame = useResetGame()
 
-  const startingArticle = useStartingArticle();
-  const endingArticle = useEndingArticle();
-  const history = useHistory();
-  const lastArticle = history.length > 0 ? history.slice(-1)[0] : undefined;
-  const clicks = useClicks();
-  const isWin = useIsWin();
-  const cheatingAttempts = useCheatingAttempts();
-  const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
+  const startingArticle = useStartingArticle()
+  const endingArticle = useEndingArticle()
+  const history = useHistory()
+  const lastArticle = history.length > 0 ? history.slice(-1)[0] : undefined
+  const clicks = useClicks()
+  const isWin = useIsWin()
+  const cheatingAttempts = useCheatingAttempts()
+  const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0)
 
   const copyNotification = () =>
-    toast.success(LL["Copied to clipboard"](), { position: "top-center" });
+    toast.success(LL["Copied to clipboard"](), { position: "top-center" })
 
   useEffect(() => {
-    setOpen(isWin);
-  }, [isWin]);
+    setOpen(isWin)
+  }, [isWin])
 
   const resultStats = [
     { name: LL["Article clicks"](), value: clicks },
     { name: LL["Cheating attempts"](), value: cheatingAttempts },
     { name: LL["Missed wins"](), value: missedWins },
-  ];
+  ]
 
   return (
     <>
@@ -55,12 +55,12 @@ export const ResultDialog = () => {
         </ModalTrigger>
         <ModalContent>
           <>
-            <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
+            <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
               {LL.Results()}
             </ModalTitle>
             <ModalDescription asChild>
               <StartArrowEnd
-                className="mb-5 mt-[10px]"
+                className="mt-[10px] mb-5"
                 startText={startingArticle.title}
                 endText={endingArticle.title}
               />
@@ -87,10 +87,10 @@ export const ResultDialog = () => {
             </div>
             <div className="mt-9 flex flex-wrap justify-end gap-8">
               <button
-                className="border-b-[1px] border-b-transparent  hover:border-b-primary-blue focus-visible:border-b-primary-blue"
+                className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
                 onClick={async () => {
-                  await navigator.clipboard.writeText(window.location.href);
-                  copyNotification();
+                  await navigator.clipboard.writeText(window.location.href)
+                  copyNotification()
                 }}
               >
                 {LL["Share Result"]()}
@@ -109,10 +109,10 @@ export const ResultDialog = () => {
         </ModalContent>
       </ModalRoot>
       {open && (
-        <Portal.Root className="pointer-events-none fixed left-0 top-0 z-50 grid h-full w-full place-items-center">
+        <Portal.Root className="pointer-events-none fixed top-0 left-0 z-50 grid h-full w-full place-items-center">
           <VictoryConfetti />
         </Portal.Root>
       )}
     </>
-  );
-};
+  )
+}
