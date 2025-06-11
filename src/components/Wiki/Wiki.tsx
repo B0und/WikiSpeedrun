@@ -1,7 +1,7 @@
 import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useEndingArticle, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
+import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
 import { Stopwatch } from "../Stopwatch";
@@ -17,10 +17,10 @@ const Wiki = () => {
   const navigate = useNavigate();
   const isGameRunning = useIsGameRunning();
   const { LL } = useI18nContext();
-  const { status, proceed, reset } = useBlocker({
-    shouldBlockFn: ({ action }) => {
-      console.log("action", action);
-      return isGameRunning && action === "BACK";
+  const { resetStoreState } = useGameStoreActions();
+  const { status, proceed, reset, next } = useBlocker({
+    shouldBlockFn: ({ next }) => {
+      return isGameRunning && !next.pathname.startsWith("/wiki");
     },
     withResolver: true,
   });
@@ -30,6 +30,15 @@ const Wiki = () => {
       void navigate({ to: "/settings" });
     }
   }, [endArticle, navigate, startArticle]);
+
+  const handleProceed = () => {
+    if (next?.pathname && !next.pathname.startsWith("/wiki")) {
+      resetStoreState();
+    }
+    if (proceed) {
+      proceed();
+    }
+  };
 
   return (
     <>
@@ -49,12 +58,12 @@ const Wiki = () => {
           <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
             {LL["Confirm action"]()}
           </ModalTitle>
-          <ModalDescription className="mt-5 mb-5">Are you sure you want to go back?</ModalDescription>
+          <ModalDescription className="mt-5 mb-5">Are you sure you want to go back? All progress will be lost</ModalDescription>
           <div className="mt-9 flex flex-wrap justify-end gap-8">
             <button
               type="button"
               className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-              onClick={proceed}
+              onClick={handleProceed}
             >
               Yes
             </button>
