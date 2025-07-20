@@ -14,7 +14,6 @@ export const handlers = [
     const url = new URL(request.url);
 
     if (url.search === getArticlePage("Chahkanduk, Birjand")) {
-
       return new HttpResponse(ChahkandukBirjand);
     }
   }),

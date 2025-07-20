@@ -44,7 +44,7 @@ const WikiDisplay = () => {
   };
 
   if (isFetching) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   return (

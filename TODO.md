@@ -1,5 +1,6 @@
 # TODO
 
+[] - run tests on push
 [] - add sidebar toggle
 [] - local runs history
 [] - IPFS wiki mirror support

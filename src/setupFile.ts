@@ -1,1 +1,1 @@
-import 'vitest-browser-react'
+import "vitest-browser-react";
