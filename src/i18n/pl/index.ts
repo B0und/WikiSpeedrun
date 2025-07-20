@@ -177,6 +177,9 @@ const pl: Translation = {
     "Słodka dziewczyna anime w niebieskiej sukience siedząca w bibliotece, podczas gdy w pobliżu unosi się kula Wikipedia z przyczepionym do niej licznikiem speedrun",
   "Prize trophy": "Trofeum nagrody",
   "Enable search during gameplay": "Włącz wyszukiwanie podczas gry",
+
+  Yes: "Tak",
+  No: "Nie"
 };
 
 export default pl;

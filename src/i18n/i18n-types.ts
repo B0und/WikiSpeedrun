@@ -539,6 +539,14 @@ type RootTranslation = {
 	 * E​n​a​b​l​e​ ​s​e​a​r​c​h​ ​d​u​r​i​n​g​ ​g​a​m​e​p​l​a​y
 	 */
 	'Enable search during gameplay': string
+	/**
+	 * Y​e​s
+	 */
+	Yes: string
+	/**
+	 * N​o
+	 */
+	No: string
 }
 
 export type TranslationFunctions = {
@@ -1054,6 +1062,14 @@ export type TranslationFunctions = {
 	 * Enable search during gameplay
 	 */
 	'Enable search during gameplay': () => LocalizedString
+	/**
+	 * Yes
+	 */
+	Yes: () => LocalizedString
+	/**
+	 * No
+	 */
+	No: () => LocalizedString
 }
 
 export type Formatters = {}

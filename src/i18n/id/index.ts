@@ -176,6 +176,11 @@ const id: Translation = {
     "Gadis anime lucu dengan gaun biru duduk di perpustakaan, sementara sebuah bola dunia Wikipedia dengan penghitung waktu speedrun terlampir mengambang di dekatnya",
   "Prize trophy": "Piala Hadiah",
   "Enable search during gameplay": "Aktifkan pencarian selama permainan",
+
+  Yes: "Ya",
+  No: "Tidak"
+
+  
 };
 
 export default id;

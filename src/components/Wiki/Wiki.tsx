@@ -74,7 +74,7 @@ function WikiNavigationBlockModal({
           Confirm action
         </ModalTitle>
         <ModalDescription className="mt-5 mb-5">
-        {LL["If you leave, your current progress will be lost"]()}
+          {LL["If you leave, your current progress will be lost"]()}
         </ModalDescription>
         <div className="mt-9 flex flex-wrap justify-end gap-8">
           <button
@@ -82,14 +82,14 @@ function WikiNavigationBlockModal({
             className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={onProceed}
           >
-            Yes
+            {LL["Yes"]()}
           </button>
           <button
             type="button"
             className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
             onClick={onCancel}
           >
-            No
+            {LL["No"]()}
           </button>
         </div>
       </ModalContent>
