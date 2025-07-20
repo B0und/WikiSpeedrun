@@ -176,6 +176,9 @@ const it: Translation = {
     "Ragazza anime carina con un vestito blu seduta in una biblioteca, mentre un globo di Wikipedia con un timer per speedrun al suo interno fluttua nelle vicinanze",
   "Prize trophy": "Trofeo premio",
   "Enable search during gameplay": "Abilita la ricerca durante il gioco",
+
+  Yes: "Sì",
+  No: "No",
 };
 
 export default it;

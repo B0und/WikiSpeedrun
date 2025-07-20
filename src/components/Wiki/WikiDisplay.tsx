@@ -2,7 +2,7 @@ import { findVisibleWinningLinks, usePauseWhileLoading, useWikiQuery } from "./W
 import useWikiLogic from "./WikiLogic";
 
 import "./styles/unreset.css";
-import "./styles/vec2022-base.css";
+import "./styles/vec2022base.css";
 import "./styles/vector2022.css";
 import "./styles/overrides.css";
 import clsx from "clsx";
@@ -10,13 +10,14 @@ import purify from "dompurify";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useThemeContext } from "../ThemeContext";
+import { Loader } from "../Loader";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
   const isDarkTheme = colorMode === "dark";
 
   const { LL } = useI18nContext();
-  const { handleWikiArticleClick } = useWikiLogic();
+  const { handleClickInsideWikiArticle } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();
   const isGameRunning = useIsGameRunning();
   const endingArticle = useEndingArticle();
@@ -43,7 +44,7 @@ const WikiDisplay = () => {
   };
 
   if (isFetching) {
-    return <p>{LL.Loading()}</p>;
+    return <Loader />;
   }
 
   return (
@@ -68,9 +69,9 @@ const WikiDisplay = () => {
                   ref={(ref) => {
                     wikiRefCallback(ref);
                   }}
-                  onClick={handleWikiArticleClick}
+                  onClick={handleClickInsideWikiArticle}
                   onKeyDown={(e) =>
-                    e.key === "Enter" && handleWikiArticleClick(e as unknown as React.MouseEvent<HTMLDivElement>)
+                    e.key === "Enter" && handleClickInsideWikiArticle(e as unknown as React.MouseEvent<HTMLDivElement>)
                   }
                   // biome-ignore lint/security/noDangerouslySetInnerHtml: <>
                   dangerouslySetInnerHTML={{ __html: purify.sanitize(data.html) }}

@@ -1,20 +1,20 @@
 # TODO
 
-[x] - migrate to @tanstack/react-router from 48KB REACT*ROUTER * WTF????????? 48 GZIPPED?
+[] - run tests on push
+[] - add sidebar toggle
+[] - local runs history
+[] - IPFS wiki mirror support
+[] - handle article download errors
 [] - migrate to lingui5 maybe????
 [] - get rid of react-select...
 
-[] - IPFS wiki mirror support
-
+[] - AI generated runs... need backend with profiles first
 [] - bug: reset game state when going back from playing state and ignore warning modal
-
-[x] - fix logo shrink
 [] - add hack setting
-[x] - fix share with different langs
 [] - twitter share button
-[] - handle article download errors
 
-local runs history
+[] - fix state management, cant really test properly without inserting runtime checks for tests
+
 win highlight upgrade (https://frontendmasters.com/blog/highlight-text-when-a-user-scrolls-down-to-that-piece-of-text/)
 fix jp font
 migrate to another i18n library (rip)
@@ -32,6 +32,10 @@ no duplicate articles setting
 
 ## Done
 
+[x] - fix article show-hide bug
+[x] - migrate to @tanstack/react-router from 48KB REACT*ROUTER * WTF????????? 48 GZIPPED?
+[x] - fix logo shrink
+[x] - fix share with different langs
 [x] - optimize the fucking react confetti??
 [x] - achievements
 [x] - add donation link

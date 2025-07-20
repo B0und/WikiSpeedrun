@@ -22,7 +22,7 @@ a[href*="#cite_note"] {
   color: #303030;
 }
 
-.wiki-dark-theme img {
+.wiki-dark-theme img,.wiki-dark-theme video  {
   filter: invert(1) hue-rotate(180deg);
 }
 

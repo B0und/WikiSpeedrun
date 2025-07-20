@@ -16,7 +16,7 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as WikiSplatRouteImport } from './routes/wiki.$'
+import { Route as WikiSplatRouteImport } from './routes/wiki/$'
 
 const StatsRoute = StatsRouteImport.update({
   id: '/stats',
@@ -196,7 +196,7 @@ declare module './routes/stats' {
     FileRoutesByPath['/stats']['fullPath']
   >
 }
-declare module './routes/wiki.$' {
+declare module './routes/wiki/$' {
   const createFileRoute: CreateFileRoute<
     '/wiki/$',
     FileRoutesByPath['/wiki/$']['parentRoute'],

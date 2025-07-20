@@ -1,14 +1,18 @@
 import * as Portal from "@radix-ui/react-portal";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type React from "react";
 import { Toaster } from "react-hot-toast";
+
+import { routeTree } from "../routeTree.gen";
+// import { queryClient, router } from "../app";
 import LocaleProvider from "./LocaleProvider";
 import { StopwatchContextProvider } from "./StopwatchContext";
 import { ThemeContextProvider } from "./ThemeContext";
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { TooltipProvider } from "./Tooltip";
-import { router } from "../App";
+
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -18,14 +22,26 @@ export const queryClient = new QueryClient({
   },
 });
 
-const Providers = ({ children }: { children: React.ReactNode }) => {
+export const router = createRouter({
+  routeTree,
+  defaultPendingMinMs: import.meta.env.MODE === "development" ? 0 : 500,
+  context: { queryClient },
+});
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+export const AppProviders = () => {
   return (
     <ThemeContextProvider>
       <LocaleProvider>
         <StopwatchContextProvider>
-          <TooltipProvider delayDuration={500}>
+          <TooltipProvider delayDuration={250}>
             <QueryClientProvider client={queryClient}>
-              {children}
+              <RouterProvider router={router} />
               <Portal.Root>
                 <Toaster
                   toastOptions={{
@@ -44,4 +60,4 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Providers;
+export default AppProviders;

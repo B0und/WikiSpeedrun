@@ -1,0 +1,5 @@
+ignoredBuiltDependencies:
+  - msw
+
+onlyBuiltDependencies:
+  - esbuild

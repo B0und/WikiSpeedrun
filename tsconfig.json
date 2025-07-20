@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "es2020",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -15,7 +19,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "composite": true,
-    "types": ["node", "vite/client"],
+    "types": [
+      "node",
+      "vite/client",
+      "@vitest/browser/matchers",
+      "@vitest/browser/providers/playwright"
+    ],
   },
   "include": [
     "src",
