@@ -2,6 +2,7 @@
   "name": "wikispeedrun",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "pnpm@10.13.1",
   "type": "module",
   "scripts": {
     "dev": "cross-env LAUNCH_EDITOR=cursor npm-run-all --parallel start typesafe-i18n",
