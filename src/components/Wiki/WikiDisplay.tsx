@@ -2,7 +2,7 @@ import { findVisibleWinningLinks, usePauseWhileLoading, useWikiQuery } from "./W
 import useWikiLogic from "./WikiLogic";
 
 import "./styles/unreset.css";
-import "./styles/vec2022-base.css";
+import "./styles/vec2022base.css";
 import "./styles/vector2022.css";
 import "./styles/overrides.css";
 import clsx from "clsx";
