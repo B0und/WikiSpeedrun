@@ -16,7 +16,7 @@ const WikiDisplay = () => {
   const isDarkTheme = colorMode === "dark";
 
   const { LL } = useI18nContext();
-  const { handleWikiArticleClick } = useWikiLogic();
+  const { handleClickInsideWikiArticle } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();
   const isGameRunning = useIsGameRunning();
   const endingArticle = useEndingArticle();
@@ -68,9 +68,9 @@ const WikiDisplay = () => {
                   ref={(ref) => {
                     wikiRefCallback(ref);
                   }}
-                  onClick={handleWikiArticleClick}
+                  onClick={handleClickInsideWikiArticle}
                   onKeyDown={(e) =>
-                    e.key === "Enter" && handleWikiArticleClick(e as unknown as React.MouseEvent<HTMLDivElement>)
+                    e.key === "Enter" && handleClickInsideWikiArticle(e as unknown as React.MouseEvent<HTMLDivElement>)
                   }
                   // biome-ignore lint/security/noDangerouslySetInnerHtml: <>
                   dangerouslySetInnerHTML={{ __html: purify.sanitize(data.html) }}

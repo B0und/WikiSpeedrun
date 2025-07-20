@@ -9,6 +9,17 @@ const errorToast = (text: string) => toast.error(text, { position: "bottom-cente
 
 const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 
+const handleShowHideButton = (e: MouseEvent<HTMLDivElement>) => {
+  const node = e.target as HTMLElement | null;
+  const th = node?.closest("th.navbox-title");
+  if (!th) return;
+
+  const table = th.closest("table");
+  if (!table) return;
+
+  table.classList.toggle("mw-collapsed");
+  table.classList.toggle("mw-expanded");
+};
 const useWikiLogic = () => {
   const navigate = useNavigate();
   const { LL } = useI18nContext();
@@ -28,8 +39,9 @@ const useWikiLogic = () => {
     });
   };
 
-  const handleWikiArticleClick = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClickInsideWikiArticle = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
+    handleShowHideButton(e);
 
     // Traverse up from the event target to find the nearest anchor element
     let node = e.target as HTMLElement | null;
@@ -73,7 +85,7 @@ const useWikiLogic = () => {
     errorToast(invalidLinkText);
   };
 
-  return { handleWikiArticleClick };
+  return { handleClickInsideWikiArticle };
 };
 
 export default useWikiLogic;
