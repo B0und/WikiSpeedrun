@@ -10,6 +10,7 @@ import purify from "dompurify";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useThemeContext } from "../ThemeContext";
+import { Loader } from "../Loader";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
@@ -43,7 +44,7 @@ const WikiDisplay = () => {
   };
 
   if (isFetching) {
-    return <p>{LL.Loading()}</p>;
+    return <Loader/>;
   }
 
   return (

@@ -60,7 +60,7 @@ const Settings = () => {
       },
       winningLinks: 0,
     });
-    void navigate({ to: "/wiki" });
+    void navigate({ to: `/wiki/${startArticle.title}` });
 
     startStopwatch();
     setIsGameRunning(true);

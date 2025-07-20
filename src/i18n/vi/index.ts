@@ -176,7 +176,7 @@ const vi: Translation = {
   "Prize trophy": "Cúp giải thưởng",
   "Enable search during gameplay": "Bật tìm kiếm trong quá trình chơi",
 
-    Yes: "Có",
+  Yes: "Có",
   No: "Không",
 };
 

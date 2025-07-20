@@ -179,7 +179,7 @@ const pl: Translation = {
   "Enable search during gameplay": "Włącz wyszukiwanie podczas gry",
 
   Yes: "Tak",
-  No: "Nie"
+  No: "Nie",
 };
 
 export default pl;

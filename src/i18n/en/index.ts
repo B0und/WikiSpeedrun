@@ -177,6 +177,6 @@ const en: BaseTranslation = {
   "Prize trophy": "Prize Trophy",
   "Enable search during gameplay": "Enable search during gameplay",
   Yes: "Yes",
-  No: "No"
+  No: "No",
 };
 export default en;

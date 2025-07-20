@@ -178,7 +178,7 @@ const ja: Translation = {
   "Enable search during gameplay": "ゲーム中に検索を有効にする",
 
   Yes: "はい",
-  No: "いいえ"
+  No: "いいえ",
 };
 
 export default ja;

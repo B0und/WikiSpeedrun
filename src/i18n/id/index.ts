@@ -178,9 +178,7 @@ const id: Translation = {
   "Enable search during gameplay": "Aktifkan pencarian selama permainan",
 
   Yes: "Ya",
-  No: "Tidak"
-
-  
+  No: "Tidak",
 };
 
 export default id;

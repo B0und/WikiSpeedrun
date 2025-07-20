@@ -179,8 +179,8 @@ const ru: Translation = {
   "Prize trophy": "Призовой трофей",
   "Enable search during gameplay": "Разрешить поиск во время игры",
 
-    Yes: "Да",
-  No: "Нет"
+  Yes: "Да",
+  No: "Нет",
 };
 
 export default ru;

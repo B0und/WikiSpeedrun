@@ -178,7 +178,7 @@ const it: Translation = {
   "Enable search during gameplay": "Abilita la ricerca durante il gioco",
 
   Yes: "Sì",
-  No: "No"
+  No: "No",
 };
 
 export default it;

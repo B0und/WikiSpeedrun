@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "typesafe-i18n": "typesafe-i18n",
     "format": "biome format --write ./src",
-    "lint": "biome lint --fix && eslint --fix \"./src/**/*.{ts,tsx}\""
+    "lint": "biome lint --fix && eslint --fix \"./src/**/*.{ts,tsx}\"",
+    "test:browser": "vitest"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.0.5",
@@ -45,31 +46,33 @@
     "zustand": "4.5.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0-beta.5",
+    "@biomejs/biome": "2.1.2",
     "@optimize-lodash/rollup-plugin": "^5.0.0",
     "@tailwindcss/container-queries": "0.1.1",
-    "@tanstack/eslint-plugin-query": "5.35.6",
-    "@tanstack/react-query-devtools": "5.38.0",
-    "@tanstack/router-cli": "^1.121.2",
-    "@tanstack/router-plugin": "^1.121.2",
-    "@total-typescript/ts-reset": "0.5.1",
+    "@tanstack/eslint-plugin-query": "^5.35.6",
+    "@tanstack/react-query-devtools": "^5.38.0",
+    "@tanstack/router-cli": "^1.128.8",
+    "@tanstack/router-plugin": "^1.128.8",
+    "@total-typescript/ts-reset": "0.6.1",
     "@tweakpane/core": "^2.0.5",
     "@types/canvas-confetti": "^1.9.0",
     "@types/dompurify": "3.0.5",
-    "@types/node": "20.12.12",
+    "@types/node": "^20.19.0",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "@vitejs/plugin-react": "^4.5.2",
+    "@vitest/browser": "^3.2.4",
     "autoprefixer": "10.4.19",
     "cross-env": "7.0.3",
     "eslint": "8.57.0",
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
     "eslint-plugin-react-hooks": "4.6.2",
-    "msw": "2.3.0",
+    "msw": "2.10.4",
     "npm-run-all": "4.1.5",
+    "playwright": "^1.54.1",
     "postcss": "8.4.38",
     "postcss-import": "16.1.0",
     "postcss-nesting": "12.1.5",
@@ -79,23 +82,13 @@
     "tailwindcss": "3.4.3",
     "tweakpane": "^4.0.5",
     "type-fest": "4.18.3",
-    "typescript": "5.8.3",
-    "vite": "6.0.3",
+    "typescript": "5.9.0-beta",
+    "vite": "7.0.5",
     "vite-plugin-ejs": "1.7.0",
-    "vite-plugin-react-click-to-component": "^3.0.1",
-    "vite-plugin-svgr": "4.3.0"
-  },
-  "prettier": {
-    "plugins": [
-      "prettier-plugin-tailwindcss"
-    ],
-    "tailwindConfig": "./tailwind.config.cjs",
-    "singleQuote": false,
-    "arrowParens": "always",
-    "tabWidth": 2,
-    "useTabs": false,
-    "printWidth": 100,
-    "trailingComma": "es5"
+    "vite-plugin-react-click-to-component": "4.0.0",
+    "vite-plugin-svgr": "4.3.0",
+    "vitest": "^3.2.4",
+    "vitest-browser-react": "^1.0.0"
   },
   "msw": {
     "workerDirectory": [

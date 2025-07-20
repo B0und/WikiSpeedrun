@@ -1,23 +1,17 @@
+import { QueryClient } from "@tanstack/react-query";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { ErrorBoundary } from "react-error-boundary";
+import AppProviders from "./components/AppProviders";
 import { ErrorFallback } from "./components/FallbackRender";
-import Providers, { queryClient } from "./components/Providers";
 import { useWikiConsoleLogo } from "./hooks/useWikiConsoleLogo";
 import { routeTree } from "./routeTree.gen";
-
-export const router = createRouter({
-  routeTree,
-  context: { queryClient },
-});
 
 const App = () => {
   useWikiConsoleLogo();
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Providers>
-        <RouterProvider router={router} />
-      </Providers>
+      <AppProviders />
     </ErrorBoundary>
   );
 };

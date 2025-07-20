@@ -176,7 +176,7 @@ const nl: Translation = {
   "Prize trophy": "Prijs trofee",
   "Enable search during gameplay": "Zoeken tijdens het spelen inschakelen",
   Yes: "Ja",
-  No: "Nee"
+  No: "Nee",
 };
 
 export default nl;
