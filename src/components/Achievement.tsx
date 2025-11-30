@@ -60,7 +60,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
             )}
           >
             <span className="text-right text-sm">
-              {currentValue}/{achievement.targetValue}
+              {currentValue}/{achievement.targetValue ?? 1}
             </span>
 
             <progress

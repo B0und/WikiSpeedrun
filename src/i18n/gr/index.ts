@@ -1,8 +1,8 @@
-import type { BaseTranslation } from "../i18n-types";
+import type { Translation } from "../i18n-types";
 
 // Greek
-const gr: BaseTranslation = {
-  "Wiki Speedrun Game": "Παιχνίδι γρήγορης Βικιπαίδειας",
+const gr: Translation = {
+  "Wiki Speedrun Game": "Παιχνίδι Wiki Speedrun",
   "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time":
     "Ο σκοπός αυτού του παιχνιδιού είναι να μεταβείτε από ένα αρχικό άρθρο Βικιπαίδειας σε ένα άλλο, με τα λιγότερα κλικ και χρόνο.",
   Features: "Χαρακτηριστικά",
@@ -38,22 +38,23 @@ const gr: BaseTranslation = {
   "This page doesn't exist": "Αυτή η σελίδα δεν υπάρχει",
   "Clicks: {0}": "Κλικ: {0}",
   "No articles found": "Δεν βρέθηκαν άρθρα",
-  "Get random article": "Επιλέξτε τυχαίο άρθρο",
+
+  "Get random article": "Λήψη τυχαίου άρθρου",
   "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds":
-    "Λογότυπο γρήγορης Βικιπαίδειας, δείχνει την σφαίρα της Βικιπαίδειας με έναν χρονομετρητή στη μέση του (μία μαύρη μπάρα με ένα πράσινο χρονόμετρο επάνω) Ο χρόνος στον μετρητή είναι 9 δευτερόλεπτα και 5 χιλιοστά του δευτερολέπτου",
+    "Λογότυπο Wiki speedrun, με μια σφαίρα Wikipedia με χρονόμετρο. (μοιάζει με μια μεγάλη μαύρη λωρίδα με πράσινο κείμενο χρόνου από πάνω). Ο χρόνος είναι 9 δευτερόλεπτα και 5 χιλιοστά του δευτερολέπτου.",
   "Select article language": "Επιλέξτε γλώσσα άρθρου",
   Language: "Γλώσσα",
   Navigation: "Πλοήγηση",
-  "No Cheating!": "Μην κλέφετε!",
-  "Random failed, try again": "Η τυχαία επιλογή απέτυχε, προσπαθήστε ξανά",
-  "Choose another link": "Επιλέξτε άλλο σύνδεσμο",
-  "Share settings": "Μοιραστείτε τις ρυθμίσεις",
+  "No Cheating!": "Όχι ζαβολιές!",
+  "Random failed, try again": "Η τυχαία επιλογή απέτυχε, δοκιμάστε ξανά",
+  "Choose another link": "Επιλέξτε άλλον σύνδεσμο",
+  "Share settings": "Κοινοποίηση ρυθμίσεων",
   "Copied to clipboard": "Αντιγράφηκε στο πρόχειρο",
-  "Share Result": "Μοιραστείτε το αποτέλεσμα",
-  Loading: "Φορτωση...",
+  "Share Result": "Κοινοποίηση αποτελέσματος",
+  Loading: "Φόρτωση...",
   "Couldn't load article preview":
-    "Δεν ήταν δυνατή η φόρτωση προεπισκόπησης άρθρου",
-  "Winning links": "Νικήφοροι συνδέσμοι",
+    "Δεν ήταν δυνατή η φόρτωση της προεπισκόπησης του άρθρου",
+  "Winning links": "Νικητήριοι σύνδεσμοι",
   "Missed wins": "Χαμένες νίκες",
   "Choose your article": "Επιλέξτε το άρθρο σας",
   Statistics: "Στατιστικά",
@@ -61,129 +62,130 @@ const gr: BaseTranslation = {
   "Total games:": "Συνολικά παιχνίδια:",
   "Known languages:": "Γνωστές γλώσσες:",
   "Random choices:": "Τυχαίες επιλογές:",
-  "Articles clicked:": "Αρθρα που κλικάρατε:",
-  "Previewed Articles:": "Αρθρα που προεπισκόπησατε:",
-  Achievements: "Επιτεύματα",
+  "Articles clicked:": "Άρθρα που κλικάρατε:",
+  "Previewed Articles:": "Άρθρα που προβλήθηκαν:",
+  Achievements: "Επιτεύγματα",
   "All of the information is stored locally in your browser (because servers cost money)":
-    "Όλα τα δεδομένα αποθηκεύονται τοπικά στον browser σας (γιατί οι servers κοστίζουν χρήματα)",
+    "Όλες οι πληροφορίες αποθηκεύονται τοπικά στον περιηγητή σας (επειδή οι διακομιστές κοστίζουν)",
   "If you clear your browser data or switch to another browser all of your data will be gone":
-    "Αν καθαρίσετε τα δεδομένα σας στον browser ή αλλάξετε τον browser σας όλα τα δεδομένα σας θα χαθούν.",
+    "Αν διαγράψετε τα δεδομένα του περιηγητή σας ή αλλάξετε περιηγητή, όλα τα δεδομένα σας θα χαθούν.",
   // ACHIEVEMENTS
   FirstWin: {
     title: "Πρώτη Νίκη",
-    description: "Ολοκλήρωσε το πρώτο σας speedrun",
+    description: "Ολοκληρώστε το πρώτο σας speedrun",
   },
   NoviceRunner: {
-    title: "Πρωτάρης",
-    description: "Νίκηστε 10 παιχνίδια",
+    title: "Αρχάριος Δρομέας",
+    description: "Κερδίστε 10 παιχνίδια",
   },
   Speedster: {
-    title: "Γρήγορος",
-    description: "Νικήστε 25 παιχνίδια",
+    title: "Σίφουνας",
+    description: "Κερδίστε 25 παιχνίδια",
   },
   WikiExplorer: {
     title: "Εξερευνητής Wiki",
-    description: "Νικήστε 50 παιχνίδια",
+    description: "Κερδίστε 50 παιχνίδια",
   },
   SpeedDemon: {
-    title: "Δαίμονας ταχύτητας",
-    description: "Νικήστε 100 παιχνίδια",
+    title: "Δαίμονας Ταχύτητας",
+    description: "Κερδίστε 100 παιχνίδια",
   },
   MasterRunner: {
-    title: "Δάσκαλος",
-    description: "Νικήστε 250 παιχνίδια",
+    title: "Κύριος Δρομέας",
+    description: "Κερδίστε 250 παιχνίδια",
   },
   WikipediaChampion: {
-    title: "Προταθλητής Βικιπαίδειας",
-    description: "Νίκηστε 500 παιχνίδια",
+    title: "Πρωταθλητής Wikipedia",
+    description: "Κερδίστε 500 παιχνίδια",
   },
   SpeedrunAddict: {
-    title: "Εθισμένος στα Speedrun",
-    description: "Νικήστε 1000 παιχνίδια",
+    title: "Εθισμένος στο Speedrun",
+    description: "Κερδίστε 1000 παιχνίδια",
   },
   WikipediaLegend: {
-    title: "Wikipedia Legend",
-    description: "Win 2500 games",
+    title: "Θρύλος της Wikipedia",
+    description: "Κερδίστε 2500 παιχνίδια",
   },
   SpeedrunGod: {
-    title: "Speedrun God",
-    description: "Win 5000 games",
+    title: "Θεός του Speedrun",
+    description: "Κερδίστε 5000 παιχνίδια",
   },
   AttentiveExplorer: {
-    title: "Attentive Explorer",
+    title: "Προσεκτικός Εξερευνητής",
     description:
-      "Navigate through at least 10 articles without missing the winning link",
+      "Πλοηγηθείτε σε τουλάχιστον 10 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
   },
   KeenPathfinder: {
-    title: "Keen Pathfinder",
+    title: "Οξυδερκής Ανιχνευτής",
     description:
-      "Navigate through at least 25 articles without missing the winning link",
+      "Πλοηγηθείτε σε τουλάχιστον 25 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
   },
   SharpNavigator: {
-    title: "Sharp Navigator",
+    title: "Έξυπνος Πλοηγός",
     description:
-      "Navigate through at least 50 articles without missing the winning link",
+      "Πλοηγηθείτε σε τουλάχιστον 50 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
   },
   ExplorerOfChance: {
-    title: "Explorer of Chance",
-    description: "Select 10 random articles",
+    title: "Εξερευνητής της Τύχης",
+    description: "Επιλέξτε 10 τυχαία άρθρα",
   },
   FortuneSeeker: {
-    title: "Fortune Seeker",
-    description: "Select 100 random articles",
+    title: "Αναζητητής Τύχης",
+    description: "Επιλέξτε 100 τυχαία άρθρα",
   },
   GachaAddict: {
-    title: "Gacha Addict",
-    description: "Select 1000 random articles",
+    title: "Εθισμένος στα Gacha",
+    description: "Επιλέξτε 1000 τυχαία άρθρα",
   },
   GachaOverlord: {
-    title: "Gacha Overlord",
-    description: "Select 10000 random articles",
+    title: "Άρχοντας των Gacha",
+    description: "Επιλέξτε 10000 τυχαία άρθρα",
   },
   Curiosity: {
-    title: "Curiosity didn't kill the cat",
-    description: "Preview an article",
+    title: "Η περιέργεια δεν σκότωσε τη γάτα",
+    description: "Δείτε προεπισκόπηση ενός άρθρου",
   },
   CuriousExplorer: {
-    title: "Curious Explorer",
-    description: "Preview 100 articles",
+    title: "Περίεργος Εξερευνητής",
+    description: "Δείτε προεπισκόπηση 100 άρθρων",
   },
   PreviewEnthusiast: {
-    title: "Preview Enthusiast",
-    description: "Preview 1000 articles",
+    title: "Λάτρης της Προεπισκόπησης",
+    description: "Δείτε προεπισκόπηση 1000 άρθρων",
   },
   InsatiablesReader: {
-    title: "Insatiable Reader",
-    description: "Preview 10000 articles",
+    title: "Ακόρεστος Αναγνώστης",
+    description: "Δείτε προεπισκόπηση 10000 άρθρων",
   },
   Bilingual: {
-    title: "Bilingual",
-    description: "Explore articles in 2 different languages",
+    title: "Δίγλωσσος",
+    description: "Εξερευνήστε άρθρα σε 2 διαφορετικές γλώσσες",
   },
   Trilingual: {
-    title: "Trilingual",
-    description: "Explore articles in 3 different languages",
+    title: "Τρίγλωσσος",
+    description: "Εξερευνήστε άρθρα σε 3 διαφορετικές γλώσσες",
   },
   Polyglot: {
-    title: "Polyglot",
-    description: "Explore articles in 5 different languages",
+    title: "Πολύγλωσσος",
+    description: "Εξερευνήστε άρθρα σε 5 διαφορετικές γλώσσες",
   },
   EgoStroke: {
-    title: "Ego Stroke",
-    description: "Thank you for inspiring this whole project",
+    title: "Κολακεία",
+    description: "Ευχαριστούμε που εμπνεύσατε όλο αυτό το έργο",
   },
   SpeedrunWaifu: {
     title: "Wiki Speedrun Waifu",
-    description: "Made by Ina_den. Follow him on twitter",
+    description: "Δημιουργήθηκε από τον Ina_den. Ακολουθήστε τον στο twitter",
   },
-  "Made by Ina_den": "Made by Ina_den.",
-  "Follow him on": "Follow him on",
+  "Made by Ina_den": "Δημιουργήθηκε από τον Ina_den.",
+  "Follow him on": "Ακολουθήστε τον στο",
   "twitter (X)": " twitter (X)",
-  "Achievement unlocked": "Achievement unlocked",
+  "Achievement unlocked": "Το επίτευγμα ξεκλειδώθηκε",
   WaifuAlt:
-    "Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby",
-  "Prize trophy": "Prize Trophy",
-  "Enable search during gameplay": "Enable search during gameplay",
+    "Χαριτωμένο anime κορίτσι με μπλε φόρεμα που κάθεται σε μια βιβλιοθήκη, ενώ μια σφαίρα της wikipedia με χρονόμετρο speedrun επιπλέει κοντά",
+  "Prize trophy": "Τρόπαιο βραβείου",
+  "Enable search during gameplay":
+    "Ενεργοποίηση αναζήτησης κατά τη διάρκεια του παιχνιδιού",
   Yes: "Ναι",
   No: "Όχι",
 };
