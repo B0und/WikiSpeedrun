@@ -77,6 +77,7 @@ interface WikiLanguage {
 }
 
 export const LANGUAGES: readonly WikiLanguage[] = [
+  {value: "el", label: "Ελληνικά", isoCode: "gr"},
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },
@@ -126,7 +127,6 @@ export const LANGUAGES: readonly WikiLanguage[] = [
   { label: "Simple English", value: "simple", isoCode: "" },
   { label: "Minangkabau", value: "min", isoCode: "" },
   { label: "oʻzbekcha", value: "uz", isoCode: "" },
-  { label: "Ελληνικά", value: "el", isoCode: "" },
   { label: "hrvatski", value: "hr", isoCode: "" },
   { label: "lietuvių", value: "lt", isoCode: "" },
   { label: "galego", value: "gl", isoCode: "" },
