@@ -10,7 +10,7 @@ const gr: Translation = {
   "No registration required": "Δεν απαιτείται εγγραφή",
   "High precision fair™ timer": "Δίκαιος χρονομετρητής υψηλής ακρίβειας",
   "actually stops while you are loading the next article":
-    "όντως σταματάει ενώ φορτώνει το επόμενο αρθρο",
+    "Όντως σταματάει ενώ φορτώνει το επόμενο αρθρο",
   "Keeps track of your session progress":
     "Καταγράφει την πρόοδο της συνεδρίας σας",
   "Dark theme support": "Υποστήριξη σκοτεινού θέματος",
@@ -63,7 +63,7 @@ const gr: Translation = {
   "Known languages:": "Γνωστές γλώσσες:",
   "Random choices:": "Τυχαίες επιλογές:",
   "Articles clicked:": "Άρθρα που κλικάρατε:",
-  "Previewed Articles:": "Άρθρα που προβλήθηκαν:",
+  "Previewed Articles:": "Άρθρα που προεπισκοπήθηκαν:",
   Achievements: "Επιτεύγματα",
   "All of the information is stored locally in your browser (because servers cost money)":
     "Όλες οι πληροφορίες αποθηκεύονται τοπικά στον περιηγητή σας (επειδή οι διακομιστές κοστίζουν)",
