@@ -1,4 +1,11 @@
 # TODO
+[] - reroll 5 should have a reroll butoon at the bottom
+[] - dont show cheating attempts at end screen if its 0
+[] - centered view for article, plus font size changes
+[] - hawk setting for article iframe
+[] - sidebar - left/right/turned off
+[] - timer - floating into any position 
+[] - something better for design of notifications
 
 [] - run tests on push
 [] - add sidebar toggle
