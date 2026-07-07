@@ -35,7 +35,7 @@ export const achievementToast = (achievement: Achievement, LL: TranslationFuncti
       );
     },
     {
-      duration: Infinity,
+      duration: 10000,
       position: "bottom-right",
       style: {
         border: "none",
