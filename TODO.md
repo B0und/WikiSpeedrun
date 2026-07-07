@@ -1,4 +1,9 @@
 # TODO
+[] - bug - winning links doesnt consider article ID it seems like its only based on name
+https://www.youtube.com/watch?v=yxeg6aOo7yw 1:28:39
+
+[] - give up button doesnt bring you back to start. it allows you to see if there was a winning link or not
+
 [] - reroll 5 should have a reroll butoon at the bottom
 [] - dont show cheating attempts at end screen if its 0
 [] - centered view for article, plus font size changes
@@ -36,6 +41,8 @@ glitch mode - the link get "corrupted" visually
 dark mode bg color as setting
 
 no duplicate articles setting
+
+ADD actual tutorial for features in this game, like: you can click articles in the history to check 
 
 ## Done
 
