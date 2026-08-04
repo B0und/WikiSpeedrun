@@ -1,13 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "react-feather";
-import { useI18nContext } from "../i18n/i18n-react";
 import { useIsGameRunning } from "../stores/GameStore";
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "./Drawer";
 import { GithubLink, type WikiLink } from "./Header";
 
 export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
-  const { LL } = useI18nContext();
-
   const isGameRunning = useIsGameRunning();
 
   return (
@@ -25,8 +22,7 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
           )}
         </DrawerTrigger>
         <DrawerContent side="left" className="flex flex-col items-start">
-          <h3 className="w-full border-secondary-border border-b-[1px] text-xl ">{LL.Navigation()}</h3>
-          <nav className=" -ml-4 mt-4 flex w-full flex-col gap-2">
+          <nav className="-ml-4 flex w-full flex-1 flex-col justify-center gap-2">
             {!isGameRunning &&
               links.map((link) => (
                 <DrawerClose key={link.path} asChild>
