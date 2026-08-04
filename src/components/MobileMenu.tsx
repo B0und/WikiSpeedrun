@@ -22,11 +22,11 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
           )}
         </DrawerTrigger>
         <DrawerContent side="left" className="flex flex-col items-start">
-          <nav className=" -ml-4 mt-2 flex w-full flex-col items-center gap-2">
+          <nav className="-ml-4 flex w-full flex-1 flex-col justify-center gap-2">
             {!isGameRunning &&
               links.map((link) => (
                 <DrawerClose key={link.path} asChild>
-                  <Link to={link.path} className="w-full p-4 text-center hover:text-primary-blue focus-visible:text-primary-blue">
+                  <Link to={link.path} className="w-full p-4 hover:text-primary-blue focus-visible:text-primary-blue">
                     {link.name}
                   </Link>
                 </DrawerClose>
