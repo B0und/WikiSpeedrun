@@ -1,10 +1,9 @@
 import { useCallback, useEffect } from "react";
-import { toast } from "react-hot-toast";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useIsCtrlFEnabled } from "../../stores/SettingsStore";
+import { errorToast } from "../../utils/toast";
 
-const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 const isNotDev = process.env.NODE_ENV !== "development";
 
 export const useNoCheating = () => {

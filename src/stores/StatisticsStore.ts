@@ -2,7 +2,7 @@ import { produce } from "immer";
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import { ACHIEVEMENTS_LIST, type Achievement, achivementConditionCheckByIdMap } from "../achievements";
+import { ACHIEVEMENTS_LIST, type Achievement, achievementConditionCheckByIdMap } from "../achievements";
 
 /*
 Data gets persisted in local storage
@@ -160,7 +160,7 @@ export const useStatsStore = create<StatsStore>()(
           const typedPersistedState = persistedState as PersistedStore;
 
           const unlockedAchievements = produce(currentState.achievements, (draftState) => {
-            typedPersistedState.achievements.forEach((storageAchievement) => {
+            (typedPersistedState?.achievements ?? []).forEach((storageAchievement) => {
               const completedAchievement = draftState.find(
                 (draftAchievement) => draftAchievement.id === storageAchievement.id,
               );
@@ -186,7 +186,7 @@ export const useStatsStore = create<StatsStore>()(
 
 export const checkAchievements = (achievements: readonly Achievement[]) => {
   return achievements.filter((achievement) => {
-    const conditionFn = achivementConditionCheckByIdMap[achievement.id];
+    const conditionFn = achievementConditionCheckByIdMap[achievement.id];
     return !achievement.unlocked && conditionFn();
   });
 };

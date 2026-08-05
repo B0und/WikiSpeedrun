@@ -1,11 +1,9 @@
 import { useNavigate } from "@tanstack/react-router";
 import type { MouseEvent } from "react";
-import { toast } from "react-hot-toast";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useGameStoreActions } from "../../stores/GameStore";
+import { errorToast } from "../../utils/toast";
 import { useStopwatchActions } from "../StopwatchContext";
-
-const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
 const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 

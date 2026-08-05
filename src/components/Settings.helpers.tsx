@@ -1,18 +1,18 @@
 import { useEffect } from "react";
-import { toast } from "react-hot-toast";
 import type { Article } from "../stores/GameStore";
 import { useSettingsStoreActions } from "../stores/SettingsStore";
+import { errorToast } from "../utils/toast";
 import type { WikiRandom } from "./RandomButton/RandomButton.types";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) return;
-  const highestLinksPage = Object.values(data.query.pages)
-    .filter((page) => Object.hasOwn(page, "linkshere"))
-    .reduce((prev, current) => {
-      const previousLinksphere = prev.linkshere ?? [];
-      const currentLinksphere = current.linkshere ?? [];
-      return previousLinksphere.length > currentLinksphere.length ? prev : current;
-    });
+  const pagesWithLinks = Object.values(data.query.pages).filter((page) => Object.hasOwn(page, "linkshere"));
+  if (pagesWithLinks.length === 0) return;
+  const highestLinksPage = pagesWithLinks.reduce((prev, current) => {
+    const previousLinksphere = prev.linkshere ?? [];
+    const currentLinksphere = current.linkshere ?? [];
+    return previousLinksphere.length > currentLinksphere.length ? prev : current;
+  });
 
   const title = highestLinksPage.title;
   const pageid = highestLinksPage.pageid;
@@ -46,8 +46,6 @@ interface RandomSuccessProps {
   data: WikiRandom;
   failText: string;
 }
-
-const errorToast = (text: string) => toast.error(text, { position: "bottom-center" });
 
 export const handleOnRandomSuccess = ({ setArticle, data, failText }: RandomSuccessProps) => {
   const articleWithLinks = getHighestLinksPage(data);

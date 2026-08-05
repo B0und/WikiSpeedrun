@@ -9,7 +9,7 @@ export const ThemeContext = React.createContext<ThemeContext | null>(null);
 
 export const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [colorMode, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light");
+  const [colorMode, setTheme] = useLocalStorage("color-theme", defaultDark ? "dark" : "light");
 
   const switchTheme = () => {
     const newTheme = colorMode === "light" ? "dark" : "light";

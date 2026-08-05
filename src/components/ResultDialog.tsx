@@ -1,7 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Portal from "@radix-ui/react-portal";
 import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
 import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import {
@@ -12,6 +11,7 @@ import {
   useIsWin,
   useStartingArticle,
 } from "../stores/GameStore";
+import { copyNotification } from "../utils/toast";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
 import { StartArrowEnd } from "./StartArrowEnd";
 import { StopwatchDisplay } from "./StopwatchDisplay";
@@ -30,8 +30,6 @@ export const ResultDialog = () => {
   const isWin = useIsWin();
   const cheatingAttempts = useCheatingAttempts();
   const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
-
-  const copyNotification = () => toast.success(LL["Copied to clipboard"](), { position: "top-center" });
 
   useEffect(() => {
     setOpen(isWin);
@@ -83,7 +81,7 @@ export const ResultDialog = () => {
               className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
               onClick={async () => {
                 await navigator.clipboard.writeText(window.location.href);
-                copyNotification();
+                copyNotification(LL["Copied to clipboard"]());
               }}
             >
               {LL["Share Result"]()}
