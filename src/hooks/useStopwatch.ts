@@ -93,7 +93,7 @@ const useStopwatch = () => {
     return {
       min: pad(String(minutes), 2),
       sec: pad(String(seconds), 2),
-      ms: pad(newMs.toFixed(0), 3),
+      ms: pad(String(Math.min(999, Math.round(newMs))), 3),
     };
   }, []);
 

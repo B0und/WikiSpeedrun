@@ -58,9 +58,14 @@
     />
     <script>
       // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
+      // use-local-storage serializes the theme as JSON, so parse before comparing
+      let storedTheme = null;
+      try {
+        storedTheme = JSON.parse(localStorage.getItem("theme"));
+      } catch {}
       if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
+        storedTheme === "dark" ||
+        (storedTheme == null &&
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         document.documentElement.classList.add("dark");

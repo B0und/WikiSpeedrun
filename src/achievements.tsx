@@ -263,7 +263,7 @@ const init = {} as Record<
   (typeof ACHIEVEMENTS_LIST)[number]["id"] | (string & {}),
   () => boolean
 >;
-export const achivementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce((acc, achievement) => {
+export const achievementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce((acc, achievement) => {
   acc[achievement.id] = achievement.conditionCheck.bind(achievement);
   return acc;
 }, init);

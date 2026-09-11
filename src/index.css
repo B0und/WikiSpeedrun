@@ -13,6 +13,13 @@
     @apply h-full font-sans;
   }
 
+  /* Match Layout's background so the first paint is already themed (html.dark is
+     set by the inline script in index.html before first paint) */
+  html,
+  body {
+    @apply bg-neutral-50 dark:bg-dark-surface;
+  }
+
   #root {
     @apply isolate;
   }

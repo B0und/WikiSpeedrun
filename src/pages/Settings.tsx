@@ -1,7 +1,6 @@
 import { useIsFetching } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { type FormEvent, useState } from "react";
-import { toast } from "react-hot-toast";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
 import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import RandomButton from "../components/RandomButton/RandomButton";
@@ -21,6 +20,7 @@ import type { Article } from "../stores/GameStore";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
 import { useIsCtrlFEnabled, useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
+import { copyNotification } from "../utils/toast";
 
 const Settings = () => {
   const { LL } = useI18nContext();
@@ -45,8 +45,6 @@ const Settings = () => {
   useCheckAchievements({
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],
   });
-
-  const copyNotification = () => toast.success(LL["Copied to clipboard"](), { position: "top-center" });
 
   const startGameHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -117,7 +115,7 @@ const Settings = () => {
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={async () => {
               await navigator.clipboard.writeText(`${window.location.href}&lang=${wikiLang}`);
-              copyNotification();
+              copyNotification(LL["Copied to clipboard"]());
             }}
           >
             {LL["Share settings"]()}
