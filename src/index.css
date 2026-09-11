@@ -17,7 +17,12 @@
      set by the inline script in index.html before first paint) */
   html,
   body {
-    @apply bg-neutral-50 dark:bg-dark-surface;
+    @apply bg-neutral-50;
+  }
+
+  html.dark,
+  html.dark body {
+    @apply bg-dark-surface;
   }
 
   #root {
