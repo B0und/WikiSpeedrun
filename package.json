@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "packageManager": "pnpm@10.13.1",
   "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
     "dev": "cross-env LAUNCH_EDITOR=cursor npm-run-all --parallel start typesafe-i18n",
     "dev:withMocks": "cross-env-shell VITE_WITH_MOCKS=true pnpm run dev",
@@ -12,6 +15,8 @@
     "build": "npm-run-all --parallel typecheck lint viteBuild",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
+    "extract": "lingui extract",
+    "compile": "lingui compile",
     "typesafe-i18n": "typesafe-i18n",
     "format": "biome format --write ./src",
     "lint": "biome lint --fix && eslint --fix \"./src/**/*.{ts,tsx}\"",
@@ -19,6 +24,8 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@lingui/core": "6.7.0",
+    "@lingui/react": "6.7.0",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-hover-card": "1.0.7",
     "@radix-ui/react-popover": "1.0.7",
@@ -48,7 +55,11 @@
     "zustand": "4.5.2"
   },
   "devDependencies": {
+    "@babel/core": "7.29.7",
     "@biomejs/biome": "2.1.2",
+    "@lingui/babel-plugin-lingui-macro": "6.7.0",
+    "@lingui/cli": "6.7.0",
+    "@lingui/vite-plugin": "6.7.0",
     "@optimize-lodash/rollup-plugin": "^5.0.0",
     "@tailwindcss/container-queries": "0.1.1",
     "@tanstack/eslint-plugin-query": "^5.35.6",

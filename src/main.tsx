@@ -1,6 +1,8 @@
+import { I18nProvider } from "@lingui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
+import { i18n } from "./lingui";
 import "./index.css";
 
 async function enableMocking() {
@@ -22,7 +24,9 @@ void enableMocking().then(() => {
   }
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <App />
+      <I18nProvider i18n={i18n}>
+        <App />
+      </I18nProvider>
     </React.StrictMode>,
   );
 });

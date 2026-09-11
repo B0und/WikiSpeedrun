@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
 
+import { lingui } from "@lingui/vite-plugin";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -17,7 +18,12 @@ export default defineConfig({
       autoCodeSplitting: true,
       verboseFileRoutes: false,
     }),
-    react(),
+    react({
+      babel: {
+        plugins: ["@lingui/babel-plugin-lingui-macro"],
+      },
+    }),
+    lingui(),
     reactClickToComponent(),
     svgr(),
     ViteEjsPlugin((config) => ({
