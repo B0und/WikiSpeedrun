@@ -15,7 +15,8 @@
     "typesafe-i18n": "typesafe-i18n",
     "format": "biome format --write ./src",
     "lint": "biome lint --fix && eslint --fix \"./src/**/*.{ts,tsx}\"",
-    "test:browser": "vitest"
+    "test:browser": "vitest",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.0.5",
