@@ -205,7 +205,7 @@ const localeLoaders: Record<Locale, () => Promise<CatalogModule>> = {
 
 i18n.loadAndActivate({ locale: "en", messages: englishMessages });
 
-const isLocale = (locale: string): locale is Locale => SUPPORTED_LOCALES.includes(locale as Locale);
+export const isLocale = (locale: string): locale is Locale => SUPPORTED_LOCALES.includes(locale as Locale);
 
 const localeFromLanguageTag = (languageTag: string): Locale | undefined => {
   const locale = languageTag.trim().toLowerCase().replaceAll("_", "-").split("-")[0];
@@ -233,10 +233,12 @@ export const activateLocale = async (locale: Locale): Promise<void> => {
   i18n.loadAndActivate({ locale, messages });
 };
 
-export const useTranslation = (): Translate => {
-  const { _ } = useLingui();
+const translate: Translate = (id, values) => i18n._(id, values, { message: messageDescriptors[id].message });
 
-  return (id, values) => _(id, values, { message: messageDescriptors[id].message });
+export const useTranslation = (): Translate => {
+  useLingui();
+
+  return translate;
 };
 
 export { i18n };

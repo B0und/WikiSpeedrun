@@ -1,10 +1,11 @@
 import { defineConfig } from "@lingui/cli";
+import { SUPPORTED_LOCALES } from "./src/locales/config";
 
 export default defineConfig({
   sourceLocale: "en",
   fallbackLocales: { default: "en" },
   compileNamespace: "es",
-  locales: ["de","en","es","fr","el","hi","id","it","ja","nl","pl","ru","sv","vi","zh"],
+  locales: [...SUPPORTED_LOCALES],
   catalogs: [
     {
       path: "<rootDir>/src/locales/{locale}/messages",

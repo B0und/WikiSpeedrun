@@ -15,11 +15,14 @@ type PageContract = {
   heading?: string;
   bodyText?: string;
   achievementCards?: number;
+  navigate?: () => void | Promise<void>;
 };
 
 const CONTRACT_BY_ROUTE: Record<string, PageContract> = {
   "/stats": { heading: "Statistics", bodyText: "Wins:" },
   "/achievements": { heading: "Achievements", achievementCards: 26 },
+  // The splat route needs a concrete article to render; any valid one works.
+  "/wiki/$": { navigate: () => router.navigate({ to: "/wiki/$", params: { _splat: "Chahkanduk, Birjand" } }) },
 };
 
 const assertNoRenderError = async () => {
@@ -54,19 +57,11 @@ testWithMSW("every route renders without React errors", { timeout: 30_000 }, asy
     expect(allRoutes.length, "route enumeration found no routes").toBeGreaterThan(0);
 
     for (const route of allRoutes) {
-      const isSplat = route.endsWith("/$");
-
-      if (isSplat) {
-        await router.navigate({
-          to: "/wiki/$",
-          params: { _splat: "Chahkanduk, Birjand" },
-        });
-      } else {
-        await router.navigate({ to: route });
-      }
+      const contract = CONTRACT_BY_ROUTE[route] ?? {};
+      const navigate = contract.navigate ?? (() => router.navigate({ to: route }));
+      await navigate();
 
       await assertNoRenderError();
-      const contract = CONTRACT_BY_ROUTE[route] ?? {};
 
       if (contract.heading) {
         await expect.element(screen.getByRole("heading", { name: contract.heading })).toBeVisible();

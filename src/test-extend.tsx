@@ -8,7 +8,7 @@ import "./index.css";
 
 export const testWithMSW = testBase.extend({
   worker: [
-    async ({}, use) => {
+    async ({ task: _task }, use) => {
       // Start the worker before the test.
       await testWorker.start();
 

@@ -1,9 +1,9 @@
 import { useGameStore } from "./stores/GameStore";
 import { useStatsStore } from "./stores/StatisticsStore";
 
-type AchievementMetadata<Id extends string> = {
+type AchievementMetadata = {
   unlocked: boolean;
-  id: Id;
+  id: AchievementId;
   imgUrl?: string;
   imgAlt?: string;
 };
@@ -48,8 +48,7 @@ export type AchievementId =
   | "EgoStroke"
   | "SpeedrunWaifu";
 
-export type Achievement = AchievementMetadata<AchievementId> & AchievementProgress;
-type AchievementDefinition = Achievement;
+export type Achievement = AchievementMetadata & AchievementProgress;
 
 const missedWinsCondition = (minArticles: number) => {
   const gameState = useGameStore.getState();
@@ -286,7 +285,7 @@ export const ACHIEVEMENTS_LIST = [
     unlocked: false,
     imgUrl: "/wiki-waifu.png",
   },
-] as const satisfies readonly AchievementDefinition[];
+] as const satisfies readonly Achievement[];
 
 const init = {} as Record<AchievementId, () => boolean>;
 export const achievementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce((acc, achievement) => {

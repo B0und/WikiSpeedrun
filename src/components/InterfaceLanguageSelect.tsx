@@ -2,12 +2,11 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
-import { SUPPORTED_LOCALES, type Locale, activateLocale, useTranslation } from "../lingui";
+import { activateLocale, isLocale, useTranslation } from "../lingui";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { LANGUAGES } from "./WikiLanguageSelect";
 
-const isLocale = (value: string): value is Locale => SUPPORTED_LOCALES.some((locale) => locale === value);
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => isLocale(language.isoCode));
 
 export const InterfaceLanguageSelect = () => {

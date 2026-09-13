@@ -4,8 +4,8 @@ export const Loader = () => {
   const t = useTranslation();
 
   return (
-    <p aria-live="assertive" role="status" data-testid="loading">
+    <output aria-live="assertive" data-testid="loading" className="block">
       {t("Loading")}
-    </p>
+    </output>
   );
 };
