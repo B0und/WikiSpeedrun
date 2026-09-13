@@ -1,6 +1,8 @@
+import { I18nProvider } from "@lingui/react";
 import { test as testBase } from "vitest";
 import { render } from "vitest-browser-react";
 import AppProviders from "./components/AppProviders";
+import { i18n } from "./lingui";
 import { testWorker } from "./test_mocks/browser";
 import "./index.css";
 
@@ -24,5 +26,11 @@ export const testWithMSW = testBase.extend({
 });
 
 export const customRender = (ui?: React.ReactNode) => {
-  return render(ui, { wrapper: AppProviders });
+  return render(ui, {
+    wrapper: () => (
+      <I18nProvider i18n={i18n}>
+        <AppProviders />
+      </I18nProvider>
+    ),
+  });
 };

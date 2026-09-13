@@ -171,6 +171,9 @@ export const useStatsStore = create<StatsStore>()(
           });
 
           return {
+            // start from the initial state so freshly-added fields survive
+            // (persisted stores from older app versions miss them)
+            ...currentState,
             ...typedPersistedState,
             actions: currentState.actions,
             achievements: unlockedAchievements,

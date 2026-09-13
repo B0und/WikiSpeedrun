@@ -43,11 +43,12 @@ export default defineConfig({
     sourcemap: false,
   },
   test: {
-    setupFiles: ['./src/setupFile.ts'],
+    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    setupFiles: ["./src/setupFile.ts"],
     browser: {
       enabled: true,
       provider: "playwright",
-      
+
       viewport: {
         width: 1920,
         height: 1080,
