@@ -26,4 +26,5 @@ dist-ssr
 tsconfig.tsbuildinfo
 analyse.html
 __screenshots__
-.tanstacktest-results/
+.tanstack
+test-results/
