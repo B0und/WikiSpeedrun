@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { detectLocale, type Locale } from "../lingui";
 import type { LANGUAGES } from "../components/WikiLanguageSelect";
-import type { Locale } from "../lingui";
 
 /*
  Data gets persisted in local storage
@@ -17,14 +17,14 @@ interface Actions {
   };
 }
 interface Values {
-  interfaceLanguage: Locale | "";
+  interfaceLanguage: Locale;
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
   is_CTRL_F_enabled: boolean;
 }
 
 const initialState: Values = {
-  interfaceLanguage: "",
+  interfaceLanguage: detectLocale(),
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
