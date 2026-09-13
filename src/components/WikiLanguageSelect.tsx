@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Select, { type StylesConfig } from "react-select";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useTranslation } from "../lingui";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
 import { useThemeContext } from "./ThemeContext";
@@ -10,14 +10,14 @@ const selectId = "wikiLanguageSelect";
 export const WikiLanguageSelect = () => {
   const { colorMode } = useThemeContext();
   const isDarkMode = colorMode === "dark";
-  const { LL } = useI18nContext();
+  const t = useTranslation();
   const { setWikiLanguage } = useSettingsStoreActions();
   const wikiLanguage = useWikiLanguage();
   const { setEndingArticle, setStartingArticle } = useGameStoreActions();
 
   return (
     <div>
-      <label htmlFor={selectId}>{LL["Select article language"]()}</label>
+      <label htmlFor={selectId}>{t("Select article language")}</label>
       <Select
         key={wikiLanguage}
         inputId={selectId}
@@ -77,7 +77,7 @@ interface WikiLanguage {
 }
 
 export const LANGUAGES: readonly WikiLanguage[] = [
-  {value: "el", label: "Ελληνικά", isoCode: "gr"},
+  { value: "el", label: "Ελληνικά", isoCode: "gr" },
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },

@@ -13,6 +13,24 @@
     @apply h-full font-sans;
   }
 
+  html:lang(ja),
+  html:lang(ja) body,
+  html:lang(ja) #root,
+  html:lang(ja) .font-serif {
+    @apply font-sans-ja;
+  }
+
+  html:lang(zh),
+  html:lang(zh) body,
+  html:lang(zh) #root,
+  html:lang(zh) .font-serif {
+    @apply font-sans-zh;
+  }
+
+  html:lang(hi) .font-serif {
+    @apply font-devanagari;
+  }
+
   /* Match Layout's background so the first paint is already themed (html.dark is
      set by the inline script in index.html before first paint) */
   html,

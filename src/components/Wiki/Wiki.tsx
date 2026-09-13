@@ -1,6 +1,6 @@
 import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { useI18nContext } from "../../i18n/i18n-react";
+import { useTranslation } from "../../lingui";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
@@ -71,7 +71,7 @@ function WikiNavigationBlockModal({
   onProceed: () => void;
   onCancel: (() => void) | undefined;
 }) {
-  const { LL } = useI18nContext();
+  const t = useTranslation();
   return (
     <ModalRoot open={open} onOpenChange={onCancel}>
       <ModalContent>
@@ -79,7 +79,7 @@ function WikiNavigationBlockModal({
           Confirm action
         </ModalTitle>
         <ModalDescription className="mt-5 mb-5">
-          {LL["If you leave, your current progress will be lost"]()}
+          {t("If you leave, your current progress will be lost")}
         </ModalDescription>
         <div className="mt-9 flex flex-wrap justify-end gap-8">
           <button
@@ -87,14 +87,14 @@ function WikiNavigationBlockModal({
             className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={onProceed}
           >
-            {LL["Yes"]()}
+            {t("Yes")}
           </button>
           <button
             type="button"
             className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
             onClick={onCancel}
           >
-            {LL["No"]()}
+            {t("No")}
           </button>
         </div>
       </ModalContent>

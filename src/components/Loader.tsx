@@ -1,11 +1,11 @@
-import { useI18nContext } from "../i18n/i18n-react";
+import { useTranslation } from "../lingui";
 
 export const Loader = () => {
-  const { LL } = useI18nContext();
+  const t = useTranslation();
 
   return (
     <p aria-live="assertive" role="status" data-testid="loading">
-      {LL.Loading()}
+      {t("Loading")}
     </p>
   );
 };

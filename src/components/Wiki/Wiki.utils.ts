@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useI18nContext } from "../../i18n/i18n-react";
+import { useTranslation } from "../../lingui";
 import { useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useIsCtrlFEnabled } from "../../stores/SettingsStore";
 import { errorToast } from "../../utils/toast";
@@ -7,7 +7,7 @@ import { errorToast } from "../../utils/toast";
 const isNotDev = process.env.NODE_ENV !== "development";
 
 export const useNoCheating = () => {
-  const { LL } = useI18nContext();
+  const t = useTranslation();
   const { increaseCheatingAttemptsCounter } = useGameStoreActions();
   const isGameRunning = useIsGameRunning();
   const isSearchEnabled = useIsCtrlFEnabled();
@@ -20,10 +20,10 @@ export const useNoCheating = () => {
           e.preventDefault();
         }
         increaseCheatingAttemptsCounter();
-        errorToast(LL["No Cheating!"]());
+        errorToast(t("No Cheating!"));
       }
     },
-    [LL, increaseCheatingAttemptsCounter, isGameRunning],
+    [t, increaseCheatingAttemptsCounter, isGameRunning],
   );
 
   useEffect(() => {

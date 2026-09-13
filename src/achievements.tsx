@@ -1,12 +1,14 @@
 import { useGameStore } from "./stores/GameStore";
 import { useStatsStore } from "./stores/StatisticsStore";
 
-export type Achievement = {
+type AchievementMetadata<Id extends string> = {
   unlocked: boolean;
-  id: string;
+  id: Id;
   imgUrl?: string;
   imgAlt?: string;
-} & (
+};
+
+type AchievementProgress =
   | {
       conditionCheck: () => boolean;
       targetValue: number;
@@ -16,8 +18,38 @@ export type Achievement = {
       conditionCheck: () => boolean;
       targetValue?: never;
       currentValue?: never;
-    }
-);
+    };
+
+export type AchievementId =
+  | "FirstWin"
+  | "NoviceRunner"
+  | "Speedster"
+  | "WikiExplorer"
+  | "SpeedDemon"
+  | "MasterRunner"
+  | "WikipediaChampion"
+  | "SpeedrunAddict"
+  | "WikipediaLegend"
+  | "SpeedrunGod"
+  | "AttentiveExplorer"
+  | "KeenPathfinder"
+  | "SharpNavigator"
+  | "ExplorerOfChance"
+  | "FortuneSeeker"
+  | "GachaAddict"
+  | "GachaOverlord"
+  | "Curiosity"
+  | "CuriousExplorer"
+  | "PreviewEnthusiast"
+  | "InsatiablesReader"
+  | "Bilingual"
+  | "Trilingual"
+  | "Polyglot"
+  | "EgoStroke"
+  | "SpeedrunWaifu";
+
+export type Achievement = AchievementMetadata<AchievementId> & AchievementProgress;
+type AchievementDefinition = Achievement;
 
 const missedWinsCondition = (minArticles: number) => {
   const gameState = useGameStore.getState();
@@ -254,15 +286,9 @@ export const ACHIEVEMENTS_LIST = [
     unlocked: false,
     imgUrl: "/wiki-waifu.png",
   },
-] as const satisfies readonly Achievement[];
+] as const satisfies readonly AchievementDefinition[];
 
-// for getting a function for condition (based on its id)
-// eslint-disable-next-line @typescript-eslint/ban-types
-const init = {} as Record<
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  (typeof ACHIEVEMENTS_LIST)[number]["id"] | (string & {}),
-  () => boolean
->;
+const init = {} as Record<AchievementId, () => boolean>;
 export const achievementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce((acc, achievement) => {
   acc[achievement.id] = achievement.conditionCheck.bind(achievement);
   return acc;

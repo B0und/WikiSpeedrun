@@ -1,0 +1,599 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: se\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+"POT-Creation-Date: \n"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:121
+msgid "twitter (X)"
+msgstr "Twitter (X)"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:22
+msgid "About"
+msgstr "Om"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:122
+msgid "Achievement unlocked"
+msgstr "Prestation upplåst"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:64
+msgid "Achievements"
+msgstr "Prestationer"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:17
+msgid "actually stops while you are loading the next article"
+msgstr "stannar faktiskt medan du laddar nästa artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:65
+msgid "All of the information is stored locally in your browser (because servers cost money)"
+msgstr "All information sparas lokalt i din webbläsare (eftersom servrar kostar pengar)"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:36
+msgid "Article"
+msgstr "Artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:28
+msgid "Article clicks"
+msgstr "Artikelklick"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:62
+msgid "Articles clicked:"
+msgstr "Artiklar klickade:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:87
+msgid "AttentiveExplorer.title"
+msgstr "Uppmärksam Upptäckare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:109
+msgid "Bilingual.title"
+msgstr "Tvåspråkig"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:29
+msgid "Cheating attempts"
+msgstr "Försök till fusk"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:48
+msgid "Choose another link"
+msgstr "Välj en annan länk"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:56
+msgid "Choose your article"
+msgstr "Välj din artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:39
+msgid "Clicks: {0}"
+msgstr "Klick: {0}"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:68
+msgid "FirstWin.description"
+msgstr "Slutför din första speedrun"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:33
+msgid "Confirm action"
+msgstr "Bekräfta åtgärd"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:50
+msgid "Copied to clipboard"
+msgstr "Kopierad till urklipp"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:53
+msgid "Couldn't load article preview"
+msgstr "Kunde inte ladda förhandsgranskning av artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:101
+msgid "Curiosity.title"
+msgstr "Nyfikenhet"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:103
+msgid "CuriousExplorer.title"
+msgstr "Nyfiken Upptäckare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:123
+msgid "WaifuAlt"
+msgstr "Söt anime-tjej med en blå klänning som sitter i ett bibliotek, medan en wikipedia-glob med en speedrun-timer bifogad svävar i närheten"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:19
+msgid "Dark theme support"
+msgstr "Mörkt tema stöd"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:115
+msgid "EgoStroke.title"
+msgstr "Ego Stroke"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:125
+msgid "Enable search during gameplay"
+msgstr "Aktivera sökning under spelet"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:110
+msgid "Bilingual.description"
+msgstr "Utforska artiklar på 2 olika språk"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:112
+msgid "Trilingual.description"
+msgstr "Utforska artiklar på 3 olika språk"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:114
+msgid "Polyglot.description"
+msgstr "Utforska artiklar på 5 olika språk"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:93
+msgid "ExplorerOfChance.title"
+msgstr "Möjlighetens Upptäckare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:13
+msgid "Features"
+msgstr "Funktioner"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:67
+msgid "FirstWin.title"
+msgstr "Första vinsten"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:120
+msgid "Follow him on"
+msgstr "Följ honom på"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:95
+msgid "FortuneSeeker.title"
+msgstr "Lycksökare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:97
+msgid "GachaAddict.title"
+msgstr "Gacha-narkoman"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:99
+msgid "GachaOverlord.title"
+msgstr "Gacha Overlord"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:41
+msgid "Get random article"
+msgstr "Få slumpmässig artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:32
+msgid "Give up"
+msgstr "Ge upp"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:16
+msgid "High precision fair™ timer"
+msgstr "Hög precision rättvis™ timer"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:35
+msgid "History"
+msgstr "Historik"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:66
+msgid "If you clear your browser data or switch to another browser all of your data will be gone"
+msgstr "Om du rensar dina webbläsardata eller byter till en annan webbläsare kommer all din data att försvinna."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:34
+msgid "If you leave, your current progress will be lost"
+msgstr "Om du lämnar kommer din nuvarande framsteg att gå förlorad"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:107
+msgid "InsatiablesReader.title"
+msgstr "Omättlig Läsare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:89
+msgid "KeenPathfinder.title"
+msgstr "Skarp Vägvisare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:18
+msgid "Keeps track of your session progress"
+msgstr "Håller koll på din sessions framsteg"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:60
+msgid "Known languages:"
+msgstr "Kända språk:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:44
+msgid "Language"
+msgstr "Språk"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:52
+msgid "Loading"
+msgstr "Laddar..."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:119
+msgid "Made by Ina_den"
+msgstr "Skapad av Ina_den."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:118
+msgid "SpeedrunWaifu.description"
+msgstr "Skapad av Ina_den. Följ honom på Twitter"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:77
+msgid "MasterRunner.title"
+msgstr "Mästare Löpare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:55
+msgid "Missed wins"
+msgstr "Missade vinster"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:88
+msgid "AttentiveExplorer.description"
+msgstr "Navigera genom minst 10 artiklar utan att missa den vinnande länken"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:90
+msgid "KeenPathfinder.description"
+msgstr "Navigera genom minst 25 artiklar utan att missa den vinnande länken"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:92
+msgid "SharpNavigator.description"
+msgstr "Navigera genom minst 50 artiklar utan att missa den vinnande länken"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:45
+msgid "Navigation"
+msgstr "Navigering"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:127
+msgid "No"
+msgstr "Nej"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:40
+msgid "No articles found"
+msgstr "Inga artiklar hittades"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:46
+msgid "No Cheating!"
+msgstr "Inget fusk!"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:15
+msgid "No registration required"
+msgstr "Ingen registrering krävs"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:69
+msgid "NoviceRunner.title"
+msgstr "Nybörjare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:14
+msgid "Now supports multiple languages"
+msgstr "Stödjer nu flera språk"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:20
+msgid "Open source"
+msgstr "Öppen källkod"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:21
+msgid "Play"
+msgstr "Spela"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:31
+msgid "Play again"
+msgstr "Spela igen"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:113
+msgid "Polyglot.title"
+msgstr "Polyglot"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:104
+msgid "CuriousExplorer.description"
+msgstr "Förhandsgranska 100 artiklar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:106
+msgid "PreviewEnthusiast.description"
+msgstr "Förhandsgranska 1000 artiklar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:108
+msgid "InsatiablesReader.description"
+msgstr "Förhandsgranska 10000 artiklar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:102
+msgid "Curiosity.description"
+msgstr "Förhandsgranska en artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:105
+msgid "PreviewEnthusiast.title"
+msgstr "Förhandsgranska Entusiast"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:63
+msgid "Previewed Articles:"
+msgstr "Förhandsgranskade artiklar:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:124
+msgid "Prize trophy"
+msgstr "Pristrofé"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:61
+msgid "Random choices:"
+msgstr "Slumpmässiga val:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:47
+msgid "Random failed, try again"
+msgstr "Slumpmässig misslyckades, försök igen"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:30
+msgid "Results"
+msgstr "Resultat"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:94
+msgid "ExplorerOfChance.description"
+msgstr "Välj 10 slumpmässiga artiklar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:96
+msgid "FortuneSeeker.description"
+msgstr "Välj 100 slumpmässiga artiklar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:98
+msgid "GachaAddict.description"
+msgstr "Välj 1000 slumpmässiga artiklar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:100
+msgid "GachaOverlord.description"
+msgstr "Välj 10000 slumpmässiga artiklar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:43
+msgid "Select article language"
+msgstr "Välj språk för artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:26
+msgid "Select ending article"
+msgstr "Välj slutartikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:25
+msgid "Select starting article"
+msgstr "Välj startartikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:23
+msgid "Settings"
+msgstr "Inställningar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:51
+msgid "Share Result"
+msgstr "Dela resultat"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:49
+msgid "Share settings"
+msgstr "Dela inställningar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:91
+msgid "SharpNavigator.title"
+msgstr "Vass Navigator"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:75
+msgid "SpeedDemon.title"
+msgstr "Hastighetsdemon"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:81
+msgid "SpeedrunAddict.title"
+msgstr "Speedrun Narkoman"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:85
+msgid "SpeedrunGod.title"
+msgstr "Speedrun Gud"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:71
+msgid "Speedster.title"
+msgstr "Snabbköpare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:24
+msgid "Start typing and then select values from the dropdown list or press the random button"
+msgstr "Börja skriva och välj sedan värden från rullgardinsmenyn eller tryck på slumpknappen."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:27
+msgid "Start typing to see options"
+msgstr "Börja skriva för att se alternativ"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:57
+msgid "Statistics"
+msgstr "Statistik"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:116
+msgid "EgoStroke.description"
+msgstr "Tack för att du inspirerade hela projektet"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:12
+msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
+msgstr "Målet med spelet är att navigera från en startartikel på Wikipedia till en annan, med så få klick och tid som möjligt."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:38
+msgid "This page doesn't exist"
+msgstr "Den här sidan finns inte"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:37
+msgid "Time"
+msgstr "Tid"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:59
+msgid "Total games:"
+msgstr "Totalt antal spel:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:111
+msgid "Trilingual.title"
+msgstr "Trespråkig"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:73
+msgid "WikiExplorer.title"
+msgstr "Wiki Upptäckare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:11
+msgid "Wiki Speedrun Game"
+msgstr "Wiki Speedrun Spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:42
+msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
+msgstr "Wiki speedrun-logotyp, med en Wikipediasfär med en timer över i (ser ut som en stor svart rand med grön tids text på toppen). Tiden är 9 sekunder och 5 millisekunder."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:117
+msgid "SpeedrunWaifu.title"
+msgstr "Wiki Speedrun Waifu"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:79
+msgid "WikipediaChampion.title"
+msgstr "Wikipedia Mästare"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:83
+msgid "WikipediaLegend.title"
+msgstr "Wikipedia Legend"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:70
+msgid "NoviceRunner.description"
+msgstr "Vinn 10 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:76
+msgid "SpeedDemon.description"
+msgstr "Vinn 100 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:82
+msgid "SpeedrunAddict.description"
+msgstr "Vinn 1000 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:72
+msgid "Speedster.description"
+msgstr "Vinn 25 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:78
+msgid "MasterRunner.description"
+msgstr "Vinn 250 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:84
+msgid "WikipediaLegend.description"
+msgstr "Vinn 2500 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:74
+msgid "WikiExplorer.description"
+msgstr "Vinn 50 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:80
+msgid "WikipediaChampion.description"
+msgstr "Vinn 500 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:86
+msgid "SpeedrunGod.description"
+msgstr "Vinn 5000 spel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:54
+msgid "Winning links"
+msgstr "Vinnande länkar"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:58
+msgid "Wins:"
+msgstr "Vinster:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:126
+msgid "Yes"
+msgstr "Ja"

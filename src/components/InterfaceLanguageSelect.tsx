@@ -2,18 +2,16 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
-import { useI18nContext } from "../i18n/i18n-react";
-import type { Locales } from "../i18n/i18n-types";
-import { locales } from "../i18n/i18n-util";
-import { loadLocaleAsync } from "../i18n/i18n-util.async";
+import { SUPPORTED_LOCALES, type Locale, activateLocale, useTranslation } from "../lingui";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { LANGUAGES } from "./WikiLanguageSelect";
 
-const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => locales.includes(language.isoCode as Locales));
+const isLocale = (value: string): value is Locale => SUPPORTED_LOCALES.some((locale) => locale === value);
+const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => isLocale(language.isoCode));
 
 export const InterfaceLanguageSelect = () => {
-  const { LL, setLocale } = useI18nContext();
+  const t = useTranslation();
   const language = useInterfaceLanguage();
   const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions();
   const { setEndingArticle, setStartingArticle } = useGameStoreActions();
@@ -21,18 +19,22 @@ export const InterfaceLanguageSelect = () => {
   return (
     <Select.Root
       value={language}
-      onValueChange={async (locale: Locales) => {
-        await loadLocaleAsync(locale);
+      onValueChange={async (locale) => {
+        if (!isLocale(locale)) return;
+
+        const matchingLanguage = LANGUAGES.find((language) => language.isoCode === locale);
+        if (!matchingLanguage) return;
+
+        await activateLocale(locale);
         setInterfaceLanguage(locale);
         setStartingArticle({ pageid: "", title: "" });
         setEndingArticle({ pageid: "", title: "" });
-        setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
-        setLocale(locale);
+        setWikiLanguage(matchingLanguage.value);
       }}
     >
       <Select.Trigger
         className="inline-flex h-full min-w-fit items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
-        aria-label={LL.Language()}
+        aria-label={t("Language")}
       >
         <Select.Value aria-label={language}>
           <img

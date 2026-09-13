@@ -26,6 +26,9 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Noto Sans", ...defaultTheme.fontFamily.sans],
+        "sans-ja": ["Noto Sans JP", "Noto Sans", ...defaultTheme.fontFamily.sans],
+        "sans-zh": ["Noto Sans SC", "Noto Sans", ...defaultTheme.fontFamily.sans],
+        devanagari: ["Noto Sans Devanagari", "Noto Sans", ...defaultTheme.fontFamily.sans],
       },
       animation: {
         "spin-dice": "spin 1s linear infinite",

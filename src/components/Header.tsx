@@ -1,8 +1,7 @@
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Link } from "@tanstack/react-router";
 import { GitHub, Moon, Sun } from "react-feather";
-import type { LocalizedString } from "typesafe-i18n";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useTranslation } from "../lingui";
 import { useIsGameRunning } from "../stores/GameStore";
 import { GiveUpModal } from "./ConfirmNavigation";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
@@ -11,17 +10,17 @@ import { ResultDialog } from "./ResultDialog";
 import { useThemeContext } from "./ThemeContext";
 
 export interface WikiLink {
-  name: LocalizedString;
+  name: string;
   path: string;
 }
 const Header = () => {
-  const { LL } = useI18nContext();
+  const t = useTranslation();
 
   const links: WikiLink[] = [
-    { name: LL.Play(), path: "/settings" },
-    { name: LL.Statistics(), path: "/stats" },
-    { name: LL.Achievements(), path: "/achievements" },
-    { name: LL.About(), path: "/about" },
+    { name: t("Play"), path: "/settings" },
+    { name: t("Statistics"), path: "/stats" },
+    { name: t("Achievements"), path: "/achievements" },
+    { name: t("About"), path: "/about" },
   ];
 
   const isGameRunning = useIsGameRunning();
@@ -60,7 +59,7 @@ const Header = () => {
 };
 
 const WikiLogo = () => {
-  const { LL } = useI18nContext();
+  const t = useTranslation();
   const { colorMode } = useThemeContext();
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 
@@ -74,9 +73,9 @@ const WikiLogo = () => {
         height={68}
         className="block h-full"
         src={`${window.location.origin}/${imageSrc}.png`}
-        alt={LL[
-          "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
-        ]()}
+        alt={t(
+          "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds",
+        )}
       />
     </picture>
   );

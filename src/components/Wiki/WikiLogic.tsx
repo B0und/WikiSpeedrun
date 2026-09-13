@@ -1,6 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import type { MouseEvent } from "react";
-import { useI18nContext } from "../../i18n/i18n-react";
+import { useTranslation } from "../../lingui";
 import { useGameStoreActions } from "../../stores/GameStore";
 import { errorToast } from "../../utils/toast";
 import { useStopwatchActions } from "../StopwatchContext";
@@ -20,8 +20,8 @@ const handleShowHideButton = (e: MouseEvent<HTMLDivElement>) => {
 };
 const useWikiLogic = () => {
   const navigate = useNavigate();
-  const { LL } = useI18nContext();
-  const invalidLinkText = LL["Choose another link"]();
+  const t = useTranslation();
+  const invalidLinkText = t("Choose another link");
   const { getFormattedTime } = useStopwatchActions();
   const { addHistoryArticle } = useGameStoreActions();
 
