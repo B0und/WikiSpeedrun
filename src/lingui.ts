@@ -3,26 +3,9 @@ import { i18n } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { messages as englishMessages } from "./locales/en/messages.po";
+import { SUPPORTED_LOCALES, type Locale } from "./locales/config";
 
-export const SUPPORTED_LOCALES = [
-  "de",
-  "en",
-  "es",
-  "fr",
-  "gr",
-  "hi",
-  "id",
-  "it",
-  "jp",
-  "nl",
-  "pl",
-  "ru",
-  "se",
-  "vi",
-  "zh",
-] as const;
-
-export type Locale = (typeof SUPPORTED_LOCALES)[number];
+export { SUPPORTED_LOCALES, type Locale } from "./locales/config";
 
 const messageDescriptors = {
   "Wiki Speedrun Game": msg({ id: "Wiki Speedrun Game", message: "Wiki Speedrun Game" }),

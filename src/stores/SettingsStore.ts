@@ -16,21 +16,21 @@ interface Actions {
     set_is_CTRL_F_enabled: (flag: boolean) => void;
   };
 }
-interface Values {
+export interface SettingsValues {
   interfaceLanguage: Locale;
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
   is_CTRL_F_enabled: boolean;
 }
 
-const initialState: Values = {
+const initialState: SettingsValues = {
   interfaceLanguage: detectLocale(),
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
 };
 
-type SettingsStore = Values & Actions;
+type SettingsStore = SettingsValues & Actions;
 const useSettingsStore = create<SettingsStore>()(
   devtools(
     persist(

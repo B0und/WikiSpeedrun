@@ -2,12 +2,7 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { activateLocale, type Locale } from "../lingui";
 import { useInterfaceLanguage } from "../stores/SettingsStore";
-
-const DOCUMENT_LANGUAGE_OVERRIDES: Partial<Record<Locale, string>> = {
-  gr: "el",
-  jp: "ja",
-  se: "sv",
-};
+import { DOCUMENT_LANGUAGE_BY_LOCALE } from "../locales/config";
 
 const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
   const [localeLoaded, setLocaleLoaded] = useState(false);
@@ -19,7 +14,7 @@ const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
     void activateLocale(interfaceLanguage).then(() => {
       if (cancelled) return;
 
-      document.documentElement.lang = DOCUMENT_LANGUAGE_OVERRIDES[interfaceLanguage] ?? interfaceLanguage;
+      document.documentElement.lang = DOCUMENT_LANGUAGE_BY_LOCALE[interfaceLanguage] ?? interfaceLanguage;
       setLocaleLoaded(true);
     });
 

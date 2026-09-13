@@ -8,7 +8,19 @@ const allRoutes = (router.flatRoutes ?? [])
   .filter((route) => route !== router.options.routeTree)
   .map((route) => route.fullPath ?? route.path);
 
-const UNLOCKED_ACHIEVEMENT_COUNT = 26;
+// Optional per-route content contracts. Routes without an entry still get the
+// generic assertions (main heading renders, no error boundary, no console or
+// uncaught errors), so adding a page never requires touching this test.
+type PageContract = {
+  heading?: string;
+  bodyText?: string;
+  achievementCards?: number;
+};
+
+const CONTRACT_BY_ROUTE: Record<string, PageContract> = {
+  "/stats": { heading: "Statistics", bodyText: "Wins:" },
+  "/achievements": { heading: "Achievements", achievementCards: 26 },
+};
 
 const assertNoRenderError = async () => {
   const bodyText = document.body.textContent ?? "";
@@ -54,16 +66,19 @@ testWithMSW("every route renders without React errors", { timeout: 30_000 }, asy
       }
 
       await assertNoRenderError();
+      const contract = CONTRACT_BY_ROUTE[route] ?? {};
 
-      if (route === "/stats") {
-        await expect.element(screen.getByRole("heading", { name: "Statistics" })).toBeVisible();
-        await expect.element(screen.getByText("Wins:")).toBeVisible();
+      if (contract.heading) {
+        await expect.element(screen.getByRole("heading", { name: contract.heading })).toBeVisible();
       }
 
-      if (route === "/achievements") {
-        await expect.element(screen.getByRole("heading", { name: "Achievements" })).toBeVisible();
+      if (contract.bodyText) {
+        await expect.element(screen.getByText(contract.bodyText)).toBeVisible();
+      }
+
+      if (contract.achievementCards !== undefined) {
         expect(screen.container.querySelectorAll("h3").length, `${route} must render every achievement card`).toBe(
-          UNLOCKED_ACHIEVEMENT_COUNT,
+          contract.achievementCards,
         );
       }
     }

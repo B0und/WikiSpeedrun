@@ -14,502 +14,502 @@ msgstr ""
 "POT-Creation-Date: \n"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:121
+#: src/lingui.ts:167
 msgid "twitter (X)"
 msgstr " Twitter (X)"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:22
+#: src/lingui.ts:36
 msgid "About"
 msgstr "Über"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:122
+#: src/lingui.ts:168
 msgid "Achievement unlocked"
 msgstr "Erfolg freigeschaltet"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:64
+#: src/lingui.ts:92
 msgid "Achievements"
 msgstr "Errungenschaften"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:17
+#: src/lingui.ts:25
 msgid "actually stops while you are loading the next article"
 msgstr "stoppt tatsächlich, während Sie den nächsten Artikel laden"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:65
+#: src/lingui.ts:93
 msgid "All of the information is stored locally in your browser (because servers cost money)"
 msgstr "Alle Informationen werden lokal in Ihrem Browser gespeichert (weil Server Geld kosten)"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:36
+#: src/lingui.ts:56
 msgid "Article"
 msgstr "Artikel"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:28
+#: src/lingui.ts:45
 msgid "Article clicks"
 msgstr "Artikelklicks"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:62
+#: src/lingui.ts:90
 msgid "Articles clicked:"
 msgstr "Artikel angeklickt:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:87
+#: src/lingui.ts:121
 msgid "AttentiveExplorer.title"
 msgstr "Aufmerksamer Entdecker"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:109
+#: src/lingui.ts:152
 msgid "Bilingual.title"
 msgstr "Zweisprachig"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:29
+#: src/lingui.ts:46
 msgid "Cheating attempts"
 msgstr "Betrugsversuche"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:48
+#: src/lingui.ts:73
 msgid "Choose another link"
 msgstr "Wählen Sie einen anderen Link aus"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:56
+#: src/lingui.ts:84
 msgid "Choose your article"
 msgstr "Wählen Sie Ihren Artikel"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:39
+#: src/lingui.ts:59
 msgid "Clicks: {0}"
 msgstr "Klicks: {0}"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:68
+#: src/lingui.ts:102
 msgid "FirstWin.description"
 msgstr "Absolvieren Sie Ihren ersten Speedrun"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:33
+#: src/lingui.ts:50
 msgid "Confirm action"
 msgstr "Aktion bestätigen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:50
+#: src/lingui.ts:75
 msgid "Copied to clipboard"
 msgstr "In Zwischenablage kopiert"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:53
+#: src/lingui.ts:78
 msgid "Couldn't load article preview"
 msgstr "Artikelvorschau konnte nicht geladen werden"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:101
+#: src/lingui.ts:144
 msgid "Curiosity.title"
 msgstr "Neugier hat die Katze nicht getötet"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:103
+#: src/lingui.ts:146
 msgid "CuriousExplorer.title"
 msgstr "Neugieriger Entdecker"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:123
+#: src/lingui.ts:169
 msgid "WaifuAlt"
 msgstr "Niedliches Anime-Mädchen mit einem blauen Kleid sitzt in einer Bibliothek, während in der Nähe eine Wikipedia-Kugel mit einem angebrachten Speedrun-Timer schwebt"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:19
+#: src/lingui.ts:33
 msgid "Dark theme support"
 msgstr "Unterstützung für dunkles Thema"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:115
+#: src/lingui.ts:158
 msgid "EgoStroke.title"
 msgstr "Ego-Boost"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:125
+#: src/lingui.ts:175
 msgid "Enable search during gameplay"
 msgstr "Suche während des Spiels aktivieren"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:110
+#: src/lingui.ts:153
 msgid "Bilingual.description"
 msgstr "Erkunden Sie Artikel in 2 verschiedenen Sprachen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:112
+#: src/lingui.ts:155
 msgid "Trilingual.description"
 msgstr "Erkunden Sie Artikel in 3 verschiedenen Sprachen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:114
+#: src/lingui.ts:157
 msgid "Polyglot.description"
 msgstr "Erkunden Sie Artikel in 5 verschiedenen Sprachen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:93
+#: src/lingui.ts:136
 msgid "ExplorerOfChance.title"
 msgstr "Chancenentdecker"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:13
+#: src/lingui.ts:18
 msgid "Features"
 msgstr "Funktionen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:67
+#: src/lingui.ts:101
 msgid "FirstWin.title"
 msgstr "Erster Sieg"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:120
+#: src/lingui.ts:166
 msgid "Follow him on"
 msgstr "Folgen Sie ihm auf"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:95
+#: src/lingui.ts:138
 msgid "FortuneSeeker.title"
 msgstr "Glückssucher"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:97
+#: src/lingui.ts:140
 msgid "GachaAddict.title"
 msgstr "Gacha-Süchtiger"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:99
+#: src/lingui.ts:142
 msgid "GachaOverlord.title"
 msgstr "Gacha-Overlord"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:41
+#: src/lingui.ts:61
 msgid "Get random article"
 msgstr "Zufälligen Artikel erhalten"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:32
+#: src/lingui.ts:49
 msgid "Give up"
 msgstr "Aufgeben"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:16
+#: src/lingui.ts:24
 msgid "High precision fair™ timer"
 msgstr "Hochpräziser fairer™ Timer"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:35
+#: src/lingui.ts:55
 msgid "History"
 msgstr "Verlauf"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:66
+#: src/lingui.ts:97
 msgid "If you clear your browser data or switch to another browser all of your data will be gone"
 msgstr "Wenn Sie Ihre Browserdaten löschen oder zu einem anderen Browser wechseln, gehen alle Ihre Daten verloren."
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:34
+#: src/lingui.ts:51
 msgid "If you leave, your current progress will be lost"
 msgstr "Wenn Sie gehen, geht Ihr aktueller Fortschritt verloren"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:107
+#: src/lingui.ts:150
 msgid "InsatiablesReader.title"
 msgstr "Unersättlicher Leser"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:89
+#: src/lingui.ts:126
 msgid "KeenPathfinder.title"
 msgstr "Aufmerksamer Pfadfinder"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:18
+#: src/lingui.ts:29
 msgid "Keeps track of your session progress"
 msgstr "Behält Ihren Sitzungsfortschritt im Auge"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:60
+#: src/lingui.ts:88
 msgid "Known languages:"
 msgstr "Bekannte Sprachen:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:44
+#: src/lingui.ts:69
 msgid "Language"
 msgstr "Sprache"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:52
+#: src/lingui.ts:77
 msgid "Loading"
 msgstr "Wird geladen..."
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:119
+#: src/lingui.ts:165
 msgid "Made by Ina_den"
 msgstr "Hergestellt von Ina_den."
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:118
+#: src/lingui.ts:161
 msgid "SpeedrunWaifu.description"
 msgstr "Hergestellt von Ina_den. Folgen Sie ihm auf Twitter"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:77
+#: src/lingui.ts:111
 msgid "MasterRunner.title"
 msgstr "Meisterläufer"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:55
+#: src/lingui.ts:83
 msgid "Missed wins"
 msgstr "Verpasste Siege"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:88
+#: src/lingui.ts:122
 msgid "AttentiveExplorer.description"
 msgstr "Navigieren Sie durch mindestens 10 Artikel, ohne den Gewinnlink zu verpassen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:90
+#: src/lingui.ts:127
 msgid "KeenPathfinder.description"
 msgstr "Navigieren Sie durch mindestens 25 Artikel, ohne den Gewinnlink zu verpassen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:92
+#: src/lingui.ts:132
 msgid "SharpNavigator.description"
 msgstr "Navigieren Sie durch mindestens 50 Artikel, ohne den Gewinnlink zu verpassen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:45
+#: src/lingui.ts:70
 msgid "Navigation"
 msgstr "Navigation"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:127
+#: src/lingui.ts:180
 msgid "No"
 msgstr "Nein"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:40
+#: src/lingui.ts:60
 msgid "No articles found"
 msgstr "Keine Artikel gefunden"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:46
+#: src/lingui.ts:71
 msgid "No Cheating!"
 msgstr "Kein Schummeln!"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:15
+#: src/lingui.ts:23
 msgid "No registration required"
 msgstr "Keine Registrierung erforderlich"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:69
+#: src/lingui.ts:103
 msgid "NoviceRunner.title"
 msgstr "Anfängerläufer"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:14
+#: src/lingui.ts:19
 msgid "Now supports multiple languages"
 msgstr "Unterstützt jetzt mehrere Sprachen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:20
+#: src/lingui.ts:34
 msgid "Open source"
 msgstr "Open Source"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:21
+#: src/lingui.ts:35
 msgid "Play"
 msgstr "Spielen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:31
+#: src/lingui.ts:48
 msgid "Play again"
 msgstr "Erneut spielen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:113
+#: src/lingui.ts:156
 msgid "Polyglot.title"
 msgstr "Polyglott"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:104
+#: src/lingui.ts:147
 msgid "CuriousExplorer.description"
 msgstr "Vorschau von 100 Artikeln"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:106
+#: src/lingui.ts:149
 msgid "PreviewEnthusiast.description"
 msgstr "Vorschau von 1000 Artikeln"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:108
+#: src/lingui.ts:151
 msgid "InsatiablesReader.description"
 msgstr "Vorschau von 10000 Artikeln"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:102
+#: src/lingui.ts:145
 msgid "Curiosity.description"
 msgstr "Vorschau eines Artikels"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:105
+#: src/lingui.ts:148
 msgid "PreviewEnthusiast.title"
 msgstr "Vorschau-Enthusiast"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:63
+#: src/lingui.ts:91
 msgid "Previewed Articles:"
 msgstr "Vorschauartikel:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:124
+#: src/lingui.ts:174
 msgid "Prize trophy"
 msgstr "Preis-Trophäe"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:61
+#: src/lingui.ts:89
 msgid "Random choices:"
 msgstr "Zufällige Auswahl:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:47
+#: src/lingui.ts:72
 msgid "Random failed, try again"
 msgstr "Zufall fehlgeschlagen, versuche es erneut"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:30
+#: src/lingui.ts:47
 msgid "Results"
 msgstr "Ergebnisse"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:94
+#: src/lingui.ts:137
 msgid "ExplorerOfChance.description"
 msgstr "Wählen Sie 10 zufällige Artikel aus"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:96
+#: src/lingui.ts:139
 msgid "FortuneSeeker.description"
 msgstr "Wählen Sie 100 zufällige Artikel aus"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:98
+#: src/lingui.ts:141
 msgid "GachaAddict.description"
 msgstr "Wählen Sie 1000 zufällige Artikel aus"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:100
+#: src/lingui.ts:143
 msgid "GachaOverlord.description"
 msgstr "Wählen Sie 10000 zufällige Artikel aus"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:43
+#: src/lingui.ts:68
 msgid "Select article language"
 msgstr "Artikelsprache auswählen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:26
+#: src/lingui.ts:43
 msgid "Select ending article"
 msgstr "Endartikel auswählen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:25
+#: src/lingui.ts:42
 msgid "Select starting article"
 msgstr "Startartikel auswählen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:23
+#: src/lingui.ts:37
 msgid "Settings"
 msgstr "Einstellungen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:51
+#: src/lingui.ts:76
 msgid "Share Result"
 msgstr "Ergebnis teilen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:49
+#: src/lingui.ts:74
 msgid "Share settings"
 msgstr "Einstellungen teilen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:91
+#: src/lingui.ts:131
 msgid "SharpNavigator.title"
 msgstr "Scharfer Navigator"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:75
+#: src/lingui.ts:109
 msgid "SpeedDemon.title"
 msgstr "Geschwindigkeitsdämon"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:81
+#: src/lingui.ts:115
 msgid "SpeedrunAddict.title"
 msgstr "Speedrun-Süchtiger"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:85
+#: src/lingui.ts:119
 msgid "SpeedrunGod.title"
 msgstr "Speedrun-Gott"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:71
+#: src/lingui.ts:105
 msgid "Speedster.title"
 msgstr "Schnellläufer"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:24
+#: src/lingui.ts:38
 msgid "Start typing and then select values from the dropdown list or press the random button"
 msgstr "Beginnen Sie mit der Eingabe und wählen Sie dann Werte aus der Dropdown-Liste aus oder drücken Sie die Zufallstaste."
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:27
+#: src/lingui.ts:44
 msgid "Start typing to see options"
 msgstr "Beginnen Sie mit der Eingabe, um Optionen anzuzeigen"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:57
+#: src/lingui.ts:85
 msgid "Statistics"
 msgstr "Statistiken"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:116
+#: src/lingui.ts:159
 msgid "EgoStroke.description"
 msgstr "Danke, dass Sie dieses ganze Projekt inspiriert haben"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:12
+#: src/lingui.ts:13
 msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
 msgstr "Das Ziel des Spiels ist es, von einem Ausgangsartikel auf Wikipedia zu einem anderen zu navigieren, mit möglichst wenigen Klicks und in kürzester Zeit."
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:38
+#: src/lingui.ts:58
 msgid "This page doesn't exist"
 msgstr "Diese Seite existiert nicht"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:37
+#: src/lingui.ts:57
 msgid "Time"
 msgstr "Zeit"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:59
+#: src/lingui.ts:87
 msgid "Total games:"
 msgstr "Gesamtspiele:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:111
+#: src/lingui.ts:154
 msgid "Trilingual.title"
 msgstr "Dreisprachig"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:73
+#: src/lingui.ts:107
 msgid "WikiExplorer.title"
 msgstr "Wiki-Entdecker"
 
@@ -519,81 +519,81 @@ msgid "Wiki Speedrun Game"
 msgstr "Wiki Speedrun Spiel"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:42
+#: src/lingui.ts:63
 msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
 msgstr "Wiki-Speedrun-Logo, das eine Wikipedia-Kugel mit einem Timer zeigt. (sieht aus wie ein großer schwarzer Streifen mit grünem Zeittext oben). Die Zeit beträgt 9 Sekunden und 5 Millisekunden."
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:117
+#: src/lingui.ts:160
 msgid "SpeedrunWaifu.title"
 msgstr "Wiki Speedrun Waifu"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:79
+#: src/lingui.ts:113
 msgid "WikipediaChampion.title"
 msgstr "Wikipedia-Champion"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:83
+#: src/lingui.ts:117
 msgid "WikipediaLegend.title"
 msgstr "Wikipedia-Legende"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:70
+#: src/lingui.ts:104
 msgid "NoviceRunner.description"
 msgstr "Gewinnen Sie 10 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:76
+#: src/lingui.ts:110
 msgid "SpeedDemon.description"
 msgstr "Gewinnen Sie 100 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:82
+#: src/lingui.ts:116
 msgid "SpeedrunAddict.description"
 msgstr "Gewinnen Sie 1000 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:72
+#: src/lingui.ts:106
 msgid "Speedster.description"
 msgstr "Gewinnen Sie 25 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:78
+#: src/lingui.ts:112
 msgid "MasterRunner.description"
 msgstr "Gewinnen Sie 250 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:84
+#: src/lingui.ts:118
 msgid "WikipediaLegend.description"
 msgstr "Gewinnen Sie 2500 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:74
+#: src/lingui.ts:108
 msgid "WikiExplorer.description"
 msgstr "Gewinnen Sie 50 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:80
+#: src/lingui.ts:114
 msgid "WikipediaChampion.description"
 msgstr "Gewinnen Sie 500 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:86
+#: src/lingui.ts:120
 msgid "SpeedrunGod.description"
 msgstr "Gewinnen Sie 5000 Spiele"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:54
+#: src/lingui.ts:82
 msgid "Winning links"
 msgstr "Gewinnende Links"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:58
+#: src/lingui.ts:86
 msgid "Wins:"
 msgstr "Gewinne:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:126
+#: src/lingui.ts:179
 msgid "Yes"
 msgstr "Ja"

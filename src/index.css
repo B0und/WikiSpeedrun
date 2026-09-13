@@ -7,28 +7,27 @@
 }
 
 @layer base {
+  /* "App Serif" resolves to the platform serif font only outside the
+     Devanagari/CJK codepoint ranges. Outside its unicode-range the family
+     never matches, so the walk continues to the bundled Noto script webfonts.
+     This keeps Latin headings on the platform serif while Japanese, Chinese
+     and Hindi text deterministically uses the bundled fonts. */
+  @font-face {
+    font-family: "App Serif";
+    src:
+      local("Georgia"),
+      local("Cambria"),
+      local("Times New Roman"),
+      local("Times"),
+      local("DejaVu Serif"),
+      local("Liberation Serif");
+    unicode-range: U+0000-08FF, U+0980-2FFF, U+3100-4DFF, U+A000-F8FF, U+FB00-FEFF, U+10000-10FFFF;
+  }
+
   html,
   body,
   #root {
     @apply h-full font-sans;
-  }
-
-  html:lang(ja),
-  html:lang(ja) body,
-  html:lang(ja) #root,
-  html:lang(ja) .font-serif {
-    @apply font-sans-ja;
-  }
-
-  html:lang(zh),
-  html:lang(zh) body,
-  html:lang(zh) #root,
-  html:lang(zh) .font-serif {
-    @apply font-sans-zh;
-  }
-
-  html:lang(hi) .font-serif {
-    @apply font-devanagari;
   }
 
   /* Match Layout's background so the first paint is already themed (html.dark is

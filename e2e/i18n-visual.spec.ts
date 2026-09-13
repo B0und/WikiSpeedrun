@@ -1,56 +1,33 @@
 import { expect, test, type Page } from "playwright/test";
+import {
+  DOCUMENT_LANGUAGE_BY_LOCALE,
+  SCRIPT_FONT_BY_LOCALE,
+  SUPPORTED_LOCALES,
+  type Locale,
+} from "../src/locales/config";
+import type { SettingsValues } from "../src/stores/SettingsStore";
 
-const SUPPORTED_INTERFACE_LOCALES = [
-  "de",
-  "en",
-  "es",
-  "fr",
-  "gr",
-  "hi",
-  "id",
-  "it",
-  "jp",
-  "nl",
-  "pl",
-  "ru",
-  "se",
-  "vi",
-  "zh",
-] as const;
+type InterfaceLocale = Locale;
 
-type InterfaceLocale = (typeof SUPPORTED_INTERFACE_LOCALES)[number];
-
-const SCRIPT_FONT_BY_LOCALE: Partial<
-  Record<InterfaceLocale, { family: string; sample: string; selector: string }>
-> = {
-  hi: { family: "Noto Sans Devanagari", sample: "विकिपीडिया", selector: "#root .font-serif" },
-  jp: { family: "Noto Sans JP", sample: "ウィキペディア", selector: "#root .font-serif" },
-  zh: { family: "Noto Sans SC", sample: "维基百科", selector: "#root .font-serif" },
-};
-
-const DOCUMENT_LANGUAGE_BY_LOCALE: Partial<Record<InterfaceLocale, string>> = {
-  gr: "el",
-  jp: "ja",
-  se: "sv",
-};
+// The zustand persist envelope for the "settings" store; typed against the
+// app so store changes surface here at type-check time instead of drifting.
+type PersistedSettings = { state: SettingsValues; version: number };
 
 const persistInterfaceLocale = async (page: Page, locale: InterfaceLocale) => {
   await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
-  await page.addInitScript((interfaceLanguage) => {
+  const settings: PersistedSettings = {
+    state: {
+      interfaceLanguage: locale,
+      wikiLanguage: "en",
+      sidebarWidth: 400,
+      is_CTRL_F_enabled: false,
+    },
+    version: 1,
+  };
+  await page.addInitScript((persistedSettings) => {
     localStorage.setItem("theme", JSON.stringify("light"));
-    localStorage.setItem(
-      "settings",
-      JSON.stringify({
-        state: {
-          interfaceLanguage,
-          wikiLanguage: "en",
-          sidebarWidth: 400,
-          is_CTRL_F_enabled: false,
-        },
-        version: 1,
-      }),
-    );
-  }, locale);
+    localStorage.setItem("settings", JSON.stringify(persistedSettings));
+  }, settings);
 };
 
 const waitForStableInterface = async (page: Page) => {
@@ -121,7 +98,7 @@ const expectVisuallySoundInterface = async (page: Page, locale: InterfaceLocale)
   expect(layoutDefects).toEqual([]);
 };
 
-for (const locale of SUPPORTED_INTERFACE_LOCALES) {
+for (const locale of SUPPORTED_LOCALES) {
   test(`${locale} interface matches the pre-Lingui appearance`, async ({ page }) => {
     await persistInterfaceLocale(page, locale);
     await page.goto("/");

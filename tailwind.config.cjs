@@ -25,10 +25,20 @@ module.exports = {
         "dark-primary": "#e9e6e6",
       },
       fontFamily: {
-        sans: ["Noto Sans", ...defaultTheme.fontFamily.sans],
-        "sans-ja": ["Noto Sans JP", "Noto Sans", ...defaultTheme.fontFamily.sans],
-        "sans-zh": ["Noto Sans SC", "Noto Sans", ...defaultTheme.fontFamily.sans],
-        devanagari: ["Noto Sans Devanagari", "Noto Sans", ...defaultTheme.fontFamily.sans],
+        // The script fonts act as per-glyph fallbacks: Noto Sans covers Latin,
+        // Cyrillic and Greek; missing Devanagari/CJK glyphs fall through to the
+        // bundled Noto script families, so no per-locale CSS overrides needed.
+        // They must stay BEFORE the generic keywords: Chromium stops resolving
+        // the family list at a generic (serif/sans-serif), so anything after it
+        // is never used.
+        sans: [
+          "Noto Sans",
+          "Noto Sans Devanagari",
+          "Noto Sans JP",
+          "Noto Sans SC",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        serif: ["App Serif", "Noto Sans Devanagari", "Noto Sans JP", "Noto Sans SC", "serif"],
       },
       animation: {
         "spin-dice": "spin 1s linear infinite",
