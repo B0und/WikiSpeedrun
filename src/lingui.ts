@@ -190,32 +190,25 @@ const localeLoaders: Record<Locale, () => Promise<CatalogModule>> = {
   en: async () => ({ messages: englishMessages }),
   es: () => import("./locales/es/messages.po"),
   fr: () => import("./locales/fr/messages.po"),
-  gr: () => import("./locales/gr/messages.po"),
+  el: () => import("./locales/el/messages.po"),
   hi: () => import("./locales/hi/messages.po"),
   id: () => import("./locales/id/messages.po"),
   it: () => import("./locales/it/messages.po"),
-  jp: () => import("./locales/jp/messages.po"),
+  ja: () => import("./locales/ja/messages.po"),
   nl: () => import("./locales/nl/messages.po"),
   pl: () => import("./locales/pl/messages.po"),
   ru: () => import("./locales/ru/messages.po"),
-  se: () => import("./locales/se/messages.po"),
+  sv: () => import("./locales/sv/messages.po"),
   vi: () => import("./locales/vi/messages.po"),
   zh: () => import("./locales/zh/messages.po"),
 };
 
 i18n.loadAndActivate({ locale: "en", messages: englishMessages });
 
-const browserLanguageAliases: Readonly<Record<string, Locale>> = {
-  el: "gr",
-  ja: "jp",
-  sv: "se",
-};
-
 const isLocale = (locale: string): locale is Locale => SUPPORTED_LOCALES.includes(locale as Locale);
 
 const localeFromLanguageTag = (languageTag: string): Locale | undefined => {
-  const language = languageTag.trim().toLowerCase().replaceAll("_", "-").split("-")[0];
-  const locale = browserLanguageAliases[language] ?? language;
+  const locale = languageTag.trim().toLowerCase().replaceAll("_", "-").split("-")[0];
 
   return isLocale(locale) ? locale : undefined;
 };

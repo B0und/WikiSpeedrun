@@ -1,10 +1,5 @@
 import { expect, test, type Page } from "playwright/test";
-import {
-  DOCUMENT_LANGUAGE_BY_LOCALE,
-  SCRIPT_FONT_BY_LOCALE,
-  SUPPORTED_LOCALES,
-  type Locale,
-} from "../src/locales/config";
+import { SCRIPT_FONT_BY_LOCALE, SUPPORTED_LOCALES, type Locale } from "../src/locales/config";
 import type { SettingsValues } from "../src/stores/SettingsStore";
 
 type InterfaceLocale = Locale;
@@ -41,7 +36,7 @@ const waitForStableInterface = async (page: Page) => {
 };
 
 const expectVisuallySoundInterface = async (page: Page, locale: InterfaceLocale) => {
-  await expect(page.locator("html")).toHaveAttribute("lang", DOCUMENT_LANGUAGE_BY_LOCALE[locale] ?? locale);
+  await expect(page.locator("html")).toHaveAttribute("lang", locale);
 
   const scriptFont = SCRIPT_FONT_BY_LOCALE[locale];
   if (scriptFont) {

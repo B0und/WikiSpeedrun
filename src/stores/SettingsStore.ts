@@ -54,9 +54,24 @@ const useSettingsStore = create<SettingsStore>()(
       {
         name: "settings",
         storage: createJSONStorage(() => localStorage),
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        partialize: ({ actions, ...rest }: SettingsStore) => rest,
-        version: 1,
+        partialize: ({ actions: _actions, ...rest }: SettingsStore) => rest,
+        version: 2,
+        // v1 stored non-BCP-47 locale codes (gr/jp/se); remap them so users keep
+        // their language instead of being reset to the detected locale.
+        migrate: (persistedState, version) => {
+          if (version < 2) {
+            const state = (persistedState ?? {}) as Record<string, unknown>;
+            const interfaceLanguage = state.interfaceLanguage;
+            if (interfaceLanguage === "gr") {
+              state.interfaceLanguage = "el";
+            } else if (interfaceLanguage === "jp") {
+              state.interfaceLanguage = "ja";
+            } else if (interfaceLanguage === "se") {
+              state.interfaceLanguage = "sv";
+            }
+          }
+          return persistedState;
+        },
       },
     ),
     {

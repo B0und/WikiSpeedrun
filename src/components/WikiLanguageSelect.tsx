@@ -77,11 +77,11 @@ interface WikiLanguage {
 }
 
 export const LANGUAGES: readonly WikiLanguage[] = [
-  { value: "el", label: "Ελληνικά", isoCode: "gr" },
+  { value: "el", label: "Ελληνικά", isoCode: "el" },
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },
-  { value: "sv", label: "Svenska", isoCode: "se" },
+  { value: "sv", label: "Svenska", isoCode: "sv" },
   { value: "fr", label: "Français", isoCode: "fr" },
   { value: "nl", label: "Nederlands", isoCode: "nl" },
   { value: "ru", label: "Русский", isoCode: "ru" },
@@ -89,7 +89,7 @@ export const LANGUAGES: readonly WikiLanguage[] = [
   { value: "it", label: "Italiano", isoCode: "it" },
   { value: "arz", label: "مصرى", isoCode: "" },
   { value: "pl", label: "Polski", isoCode: "pl" },
-  { value: "ja", label: "日本語", isoCode: "jp" },
+  { value: "ja", label: "日本語", isoCode: "ja" },
   { value: "zh", label: "中文", isoCode: "zh" },
   { value: "vi", label: "Tiếng Việt", isoCode: "vi" },
   { value: "war", label: "Winaray", isoCode: "" },

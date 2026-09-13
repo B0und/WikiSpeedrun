@@ -6,7 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "includes": ["./src/**/*.{ts,tsx}", "vite.config.ts"],
+    "includes": ["./src/**/*.{ts,tsx}", "vite.config.ts", "!./src/routeTree.gen.ts"],
     "ignoreUnknown": false
   },
   "formatter": {
