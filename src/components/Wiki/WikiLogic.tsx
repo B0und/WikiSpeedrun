@@ -56,7 +56,7 @@ const useWikiLogic = () => {
       return;
     }
 
-    if (handleNavigation(anchor)) {
+    if (handleNavigation(e.currentTarget.getRootNode(), anchor)) {
       return;
     }
 
@@ -98,11 +98,11 @@ function isScrollingAnchor(node: HTMLElement): boolean {
   return false;
 }
 
-function scrollToElement(elementId: string | null | undefined) {
-  if (!elementId) {
+function scrollToElement(root: Node, elementId: string | null | undefined) {
+  if (!elementId || !(root instanceof Document || root instanceof ShadowRoot)) {
     return;
   }
-  const element = document.getElementById(elementId);
+  const element = root.getElementById(elementId);
   if (element) {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -162,10 +162,10 @@ const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
 
 // test cases
 // Википедия:Ссылки на источники
-const handleNavigation = (node: HTMLAnchorElement) => {
+const handleNavigation = (root: Node, node: HTMLAnchorElement) => {
   if (isScrollingAnchor(node)) {
     const hrefWithoutHash = node.getAttribute("href")?.substring(1);
-    scrollToElement(hrefWithoutHash);
+    scrollToElement(root, hrefWithoutHash);
     return true;
   }
 

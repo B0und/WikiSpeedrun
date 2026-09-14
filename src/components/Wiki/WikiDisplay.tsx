@@ -29,7 +29,7 @@ const WikiDisplay = () => {
   const wikiRefCallback = (node: HTMLDivElement | null) => {
     if (!node || isFetching || isError) return;
 
-    const visibleWinningLinks = findVisibleWinningLinks(endingArticle);
+    const visibleWinningLinks = findVisibleWinningLinks(node, endingArticle);
     if (isGameRunning) {
       setLastArticleWinningLinks(visibleWinningLinks.length);
     }

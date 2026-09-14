@@ -27,10 +27,8 @@ export const usePauseWhileLoading = (isLoading: boolean) => {
   }, [isGameRunning, isLoading, pauseStopwatch]);
 };
 
-export const findVisibleWinningLinks = (articleTitle: Article) => {
-  const winningLinks = document.querySelectorAll<HTMLElement>(
-    `[href="/wiki/${articleTitle.title.replaceAll(" ", "_")}"]`,
-  );
+export const findVisibleWinningLinks = (root: ParentNode, articleTitle: Article) => {
+  const winningLinks = root.querySelectorAll<HTMLElement>(`[href="/wiki/${articleTitle.title.replaceAll(" ", "_")}"]`);
   return Array.from(winningLinks).filter((link) => link.offsetWidth > 0);
 };
 
