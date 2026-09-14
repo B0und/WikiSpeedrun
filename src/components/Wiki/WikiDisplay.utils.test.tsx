@@ -2,7 +2,7 @@ import { HttpResponse, http } from "msw";
 import { expect } from "vitest";
 import { testWithMSW } from "../../test-extend";
 import { testWorker } from "../../test_mocks/browser";
-import { buildWikipediaStyleUrls, getArticleData } from "./WikiDisplay.utils";
+import { buildWikipediaStyleUrls, findVisibleWinningLinks, getArticleData } from "./WikiDisplay.utils";
 
 testWithMSW("requests the Vector 2022 parse contract", async () => {
   let requestUrl: URL | undefined;
@@ -69,6 +69,15 @@ testWithMSW("builds stable isolated ResourceLoader style URLs", () => {
       debug: "false",
     });
   }
+});
+
+testWithMSW("matches absolute Wikipedia links when counting winning links", () => {
+  const root = document.createElement("div");
+  root.innerHTML = '<a href="https://en.wikipedia.org/wiki/Winning_Article">Winning article</a>';
+  const link = root.querySelector("a");
+  Object.defineProperty(link, "offsetWidth", { value: 1 });
+
+  expect(findVisibleWinningLinks(root, { pageid: "1", title: "Winning Article" })).toEqual([link]);
 });
 testWithMSW("rejects unsupported editions and incomplete parse responses", async () => {
   expect(() => buildWikipediaStyleUrls("not-a-wiki", [])).toThrow("Unsupported Wikipedia language");

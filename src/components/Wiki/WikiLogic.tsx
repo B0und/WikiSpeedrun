@@ -2,6 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useGameStoreActions } from "../../stores/GameStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
 import { errorToast } from "../../utils/toast";
 import { useStopwatchActions } from "../StopwatchContext";
 
@@ -23,6 +24,7 @@ const handleShowHideButton = (e: ArticleInteractionEvent) => {
 const useWikiLogic = () => {
   const navigate = useNavigate();
   const { LL } = useI18nContext();
+  const wikiLanguage = useWikiLanguage();
   const invalidLinkText = LL["Choose another link"]();
   const { getFormattedTime } = useStopwatchActions();
   const { addHistoryArticle } = useGameStoreActions();
@@ -62,7 +64,7 @@ const useWikiLogic = () => {
       return;
     }
 
-    const hrefText = getFilteredLink(anchor);
+    const hrefText = getFilteredLink(anchor, wikiLanguage);
 
     // handle correct link
     if (hrefText) {
@@ -120,18 +122,21 @@ function scrollToElement(root: Node, elementId: string | null | undefined) {
   }
 }
 
-const getFilteredLink = (element: HTMLAnchorElement) => {
-  const hrefText = element.getAttribute("href");
+const getFilteredLink = (element: HTMLAnchorElement, wikiLanguage: string) => {
+  const rawHref = element.getAttribute("href");
+  if (!rawHref) return null;
 
-  if (!hrefText) return null;
-  if (!hrefText.startsWith("/wiki/")) {
+  const isRootRelativeArticle = rawHref.startsWith("/wiki/");
+  const isCurrentEditionArticle =
+    element.protocol === "https:" &&
+    element.hostname === `${wikiLanguage}.wikipedia.org` &&
+    element.pathname.startsWith("/wiki/");
+  if (!isRootRelativeArticle && !isCurrentEditionArticle) {
     return null;
   }
 
+  const hrefText = element.pathname;
   if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
-    return null;
-  }
-  if (["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(element.hostname)) {
     return null;
   }
 

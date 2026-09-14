@@ -17,8 +17,16 @@ import { LANGUAGES } from "../WikiLanguageSelect";
 import type { WikiApiArticle, WikiArticleData, WikiLanguage } from "./Wiki.types";
 
 export const findVisibleWinningLinks = (root: ParentNode, articleTitle: Article) => {
-  const winningLinks = root.querySelectorAll<HTMLElement>(`[href="/wiki/${articleTitle.title.replaceAll(" ", "_")}"]`);
-  return Array.from(winningLinks).filter((link) => link.offsetWidth > 0);
+  const expectedTitle = articleTitle.title.replaceAll("_", " ");
+  return Array.from(root.querySelectorAll<HTMLAnchorElement>('a[href*="/wiki/"]')).filter((link) => {
+    if (link.offsetWidth === 0 || !link.pathname.startsWith("/wiki/")) return false;
+
+    try {
+      return decodeURIComponent(link.pathname.slice("/wiki/".length)).replaceAll("_", " ") === expectedTitle;
+    } catch {
+      return false;
+    }
+  });
 };
 
 export const getWikiArticleKey = (article: WikiArticleData) =>

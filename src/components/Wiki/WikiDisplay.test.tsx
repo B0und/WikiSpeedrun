@@ -35,7 +35,7 @@ testWithMSW("same-page links scroll to targets in the article root", async () =>
           pageid: 1,
           revid: 2,
           text: {
-            "*": '<div class="mw-parser-output"><a href="#wiki-test-target">Jump</a><p id="wiki-test-target">Target</p></div>',
+            "*": '<div class="mw-parser-output"><a href="#wiki-test-target">Jump</a><p id="wiki-test-target">Target</p><a href="https://en.wikipedia.org/wiki/Target_Article">Next article</a></div>',
           },
         },
       }),
@@ -61,4 +61,7 @@ testWithMSW("same-page links scroll to targets in the article root", async () =>
 
   await screen.getByRole("link", { name: "Jump" }).click();
   expect(scrolledElementIds).toContain("wiki-test-target");
+
+  await screen.getByRole("link", { name: "Next article" }).click();
+  await expect.poll(() => router.state.location.pathname).toBe("/wiki/Target_Article");
 });
