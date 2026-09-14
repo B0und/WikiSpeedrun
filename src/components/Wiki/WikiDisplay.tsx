@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useCallback, useState } from "react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
+import { useWikiArticleFontSize, useWikiArticleWidth } from "../../stores/SettingsStore";
 import { Loader } from "../Loader";
 import { useThemeContext } from "../ThemeContext";
 import { WikiArticleSurface } from "./WikiArticleSurface";
@@ -20,6 +21,8 @@ const WikiDisplay = () => {
   const endingArticle = useEndingArticle();
   const { setLastArticleWinningLinks } = useGameStoreActions();
   const [readyArticleKey, setReadyArticleKey] = useState<string | null>(null);
+  const articleWidth = useWikiArticleWidth();
+  const articleFontSize = useWikiArticleFontSize();
 
   const articleKey = data ? getWikiArticleKey(data) : null;
   const presentationReady = articleKey !== null && readyArticleKey === articleKey;
@@ -51,11 +54,18 @@ const WikiDisplay = () => {
   return (
     <>
       {!presentationReady && <Loader />}
-      <div className={clsx("w-full", !presentationReady && "invisible")}>
+      <div
+        className={clsx(
+          "mx-auto w-full",
+          articleWidth === "standard" && "max-w-[59.25rem]",
+          !presentationReady && "invisible",
+        )}
+        data-wiki-article-width={articleWidth}
+      >
         <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl sm:mt-8">{data.title}</h2>
         <WikiArticleSurface
           article={data}
-          fontSize="standard"
+          fontSize={articleFontSize}
           isDark={colorMode === "dark"}
           onReady={handleArticleReady}
           onClick={handleClickInsideWikiArticle}

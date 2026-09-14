@@ -71,3 +71,38 @@ testWithMSW("shows readable degraded content when ResourceLoader styles fail", a
   expect(host?.getAttribute("aria-busy")).toBe("false");
   expect(host?.shadowRoot?.querySelector(".wiki-style-degraded")).not.toBeNull();
 });
+
+testWithMSW("applies all article font sizes through Vector custom properties", async () => {
+  const onReady = vi.fn();
+  const fontSizes = ["small", "standard", "large"] as const;
+  render(
+    <div>
+      {fontSizes.map((fontSize, index) => (
+        <WikiArticleSurface
+          key={fontSize}
+          article={{ ...article, pageid: index + 1 }}
+          fontSize={fontSize}
+          isDark={false}
+          onReady={onReady}
+          onClick={() => undefined}
+          onKeyDown={() => undefined}
+        />
+      ))}
+    </div>,
+  );
+
+  await expect.poll(() => onReady.mock.calls.length).toBe(3);
+  const computedTypography = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-testid="wiki-article-host"]'),
+    (host) => {
+      const body = host.shadowRoot?.querySelector<HTMLElement>(".vector-body");
+      return body ? [getComputedStyle(body).fontSize, getComputedStyle(body).lineHeight] : [];
+    },
+  );
+
+  expect(computedTypography).toEqual([
+    ["14px", "22px"],
+    ["16px", "26px"],
+    ["20px", "31px"],
+  ]);
+});

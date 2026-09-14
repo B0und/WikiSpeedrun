@@ -2,9 +2,10 @@ import clsx from "clsx";
 import purify from "dompurify";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import type { WikiArticleFontSize } from "../../stores/SettingsStore";
 import articleAdaptationsUrl from "./styles/article-adaptations.css?url";
 import { getWikiArticleKey } from "./WikiDisplay.utils";
-import type { WikiArticleFontSize, WikiArticleHostStyle, WikiArticleData, WikiArticleStyleState } from "./Wiki.types";
+import type { WikiArticleHostStyle, WikiArticleData, WikiArticleStyleState } from "./Wiki.types";
 
 export interface WikiArticleSurfaceProps {
   article: WikiArticleData;

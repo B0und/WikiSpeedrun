@@ -7,30 +7,68 @@ import type { Locales } from "../i18n/i18n-types";
  Data gets persisted in local storage
 */
 
-type WikiLanguage = (typeof LANGUAGES)[number]["value"];
+export type WikiLanguage = (typeof LANGUAGES)[number]["value"];
+export type WikiArticleWidth = "standard" | "wide";
+export type WikiArticleFontSize = "small" | "standard" | "large";
+
 interface Actions {
   actions: {
     setInterfaceLanguage: (language: Locales) => void;
     setWikiLanguage: (language: WikiLanguage) => void;
     setSidebarWidth: (width: number) => void;
     set_is_CTRL_F_enabled: (flag: boolean) => void;
+    setWikiArticleWidth: (width: WikiArticleWidth) => void;
+    setWikiArticleFontSize: (fontSize: WikiArticleFontSize) => void;
   };
 }
-interface Values {
+export interface SettingsValues {
   interfaceLanguage: Locales;
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
   is_CTRL_F_enabled: boolean;
+  wikiArticleWidth: WikiArticleWidth;
+  wikiArticleFontSize: WikiArticleFontSize;
 }
 
-const initialState: Values = {
+const initialState: SettingsValues = {
   interfaceLanguage: "" as Locales,
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
+  wikiArticleWidth: "standard",
+  wikiArticleFontSize: "standard",
 };
 
-type SettingsStore = Values & Actions;
+export const migrateSettingsState = (persistedState: unknown): SettingsValues => {
+  const persisted =
+    typeof persistedState === "object" && persistedState !== null ? (persistedState as Partial<SettingsValues>) : {};
+  const wikiArticleWidth =
+    persisted.wikiArticleWidth === "wide" || persisted.wikiArticleWidth === "standard"
+      ? persisted.wikiArticleWidth
+      : initialState.wikiArticleWidth;
+  const wikiArticleFontSize =
+    persisted.wikiArticleFontSize === "small" ||
+    persisted.wikiArticleFontSize === "standard" ||
+    persisted.wikiArticleFontSize === "large"
+      ? persisted.wikiArticleFontSize
+      : initialState.wikiArticleFontSize;
+
+  return {
+    interfaceLanguage:
+      typeof persisted.interfaceLanguage === "string"
+        ? (persisted.interfaceLanguage as Locales)
+        : initialState.interfaceLanguage,
+    wikiLanguage:
+      typeof persisted.wikiLanguage === "string" ? (persisted.wikiLanguage as WikiLanguage) : initialState.wikiLanguage,
+    sidebarWidth: typeof persisted.sidebarWidth === "number" ? persisted.sidebarWidth : initialState.sidebarWidth,
+    is_CTRL_F_enabled:
+      typeof persisted.is_CTRL_F_enabled === "boolean" ? persisted.is_CTRL_F_enabled : initialState.is_CTRL_F_enabled,
+    wikiArticleWidth,
+    wikiArticleFontSize,
+  };
+};
+
+type SettingsStore = SettingsValues & Actions;
 const useSettingsStore = create<SettingsStore>()(
   devtools(
     persist(
@@ -49,6 +87,12 @@ const useSettingsStore = create<SettingsStore>()(
           set_is_CTRL_F_enabled: (flag: boolean) => {
             set(() => ({ is_CTRL_F_enabled: flag }), false, "setSearchEnabled");
           },
+          setWikiArticleWidth: (width: WikiArticleWidth) => {
+            set(() => ({ wikiArticleWidth: width }), false, "setWikiArticleWidth");
+          },
+          setWikiArticleFontSize: (fontSize: WikiArticleFontSize) => {
+            set(() => ({ wikiArticleFontSize: fontSize }), false, "setWikiArticleFontSize");
+          },
         },
       }),
       {
@@ -56,7 +100,8 @@ const useSettingsStore = create<SettingsStore>()(
         storage: createJSONStorage(() => localStorage),
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         partialize: ({ actions, ...rest }: SettingsStore) => rest,
-        version: 1,
+        version: 2,
+        migrate: (persistedState) => migrateSettingsState(persistedState) as SettingsStore,
       },
     ),
     {
@@ -70,3 +115,5 @@ export const useInterfaceLanguage = () => useSettingsStore((state) => state.inte
 export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
 export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);
 export const useIsCtrlFEnabled = () => useSettingsStore((state) => state.is_CTRL_F_enabled);
+export const useWikiArticleWidth = () => useSettingsStore((state) => state.wikiArticleWidth);
+export const useWikiArticleFontSize = () => useSettingsStore((state) => state.wikiArticleFontSize);
