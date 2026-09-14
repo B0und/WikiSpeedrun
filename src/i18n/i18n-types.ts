@@ -252,6 +252,38 @@ type RootTranslation = {
 	 * I​f​ ​y​o​u​ ​c​l​e​a​r​ ​y​o​u​r​ ​b​r​o​w​s​e​r​ ​d​a​t​a​ ​o​r​ ​s​w​i​t​c​h​ ​t​o​ ​a​n​o​t​h​e​r​ ​b​r​o​w​s​e​r​ ​a​l​l​ ​o​f​ ​y​o​u​r​ ​d​a​t​a​ ​w​i​l​l​ ​b​e​ ​g​o​n​e​.
 	 */
 	'If you clear your browser data or switch to another browser all of your data will be gone': string
+	/**
+	 * A​r​t​i​c​l​e​ ​a​p​p​e​a​r​a​n​c​e
+	 */
+	'Article appearance': string
+	/**
+	 * T​e​x​t​ ​s​i​z​e
+	 */
+	'Text size': string
+	/**
+	 * S​m​a​l​l
+	 */
+	Small: string
+	/**
+	 * S​t​a​n​d​a​r​d
+	 */
+	Standard: string
+	/**
+	 * L​a​r​g​e
+	 */
+	Large: string
+	/**
+	 * C​o​n​t​e​n​t​ ​w​i​d​t​h
+	 */
+	'Content width': string
+	/**
+	 * C​o​m​p​a​c​t
+	 */
+	Compact: string
+	/**
+	 * W​i​d​e
+	 */
+	Wide: string
 	FirstWin: {
 		/**
 		 * F​i​r​s​t​ ​V​i​c​t​o​r​y
@@ -775,6 +807,38 @@ export type TranslationFunctions = {
 	 * If you clear your browser data or switch to another browser all of your data will be gone.
 	 */
 	'If you clear your browser data or switch to another browser all of your data will be gone': () => LocalizedString
+	/**
+	 * Article appearance
+	 */
+	'Article appearance': () => LocalizedString
+	/**
+	 * Text size
+	 */
+	'Text size': () => LocalizedString
+	/**
+	 * Small
+	 */
+	Small: () => LocalizedString
+	/**
+	 * Standard
+	 */
+	Standard: () => LocalizedString
+	/**
+	 * Large
+	 */
+	Large: () => LocalizedString
+	/**
+	 * Content width
+	 */
+	'Content width': () => LocalizedString
+	/**
+	 * Compact
+	 */
+	Compact: () => LocalizedString
+	/**
+	 * Wide
+	 */
+	Wide: () => LocalizedString
 	FirstWin: {
 		/**
 		 * First Victory

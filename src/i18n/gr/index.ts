@@ -9,10 +9,8 @@ const gr: Translation = {
   "Now supports multiple languages": "Τώρα υποστηρίζει πολλαπλές γλώσσες",
   "No registration required": "Δεν απαιτείται εγγραφή",
   "High precision fair™ timer": "Δίκαιος χρονομετρητής υψηλής ακρίβειας",
-  "actually stops while you are loading the next article":
-    "Όντως σταματάει ενώ φορτώνει το επόμενο αρθρο",
-  "Keeps track of your session progress":
-    "Καταγράφει την πρόοδο της συνεδρίας σας",
+  "actually stops while you are loading the next article": "Όντως σταματάει ενώ φορτώνει το επόμενο αρθρο",
+  "Keeps track of your session progress": "Καταγράφει την πρόοδο της συνεδρίας σας",
   "Dark theme support": "Υποστήριξη σκοτεινού θέματος",
   "Open source": "Ανοικτού κώδικα",
   Play: "Παίξε",
@@ -22,16 +20,14 @@ const gr: Translation = {
     "Ξεκινήστε να πληκτρολογείτε και στη συνέχεια επιλέξτε τις τιμές από τη λίστα ή πατήστε το τυχαίο κουμπί.",
   "Select starting article": "Επιλέξτε το αρχικό άρθρο",
   "Select ending article": "Επίλεξτε το τελικό άρθρο",
-  "Start typing to see options":
-    "Ξεκινήστε να πληκτρολογείτε για να δείτε τις επιλογές",
+  "Start typing to see options": "Ξεκινήστε να πληκτρολογείτε για να δείτε τις επιλογές",
   "Article clicks": "Κλικ σε άρθρα",
   "Cheating attempts": "Προσπάθεις κλεψίματος",
   Results: "Αποτελέσματα",
   "Play again": "Παίξτε ξανά",
   "Give up": "Παρατήστε τα",
   "Confirm action": "Επιβεβαιώστε την ενέργεια",
-  "If you leave, your current progress will be lost":
-    "Εάν φύγετε, η τρέχουσα πρόοδό σας θα χαθεί",
+  "If you leave, your current progress will be lost": "Εάν φύγετε, η τρέχουσα πρόοδό σας θα χαθεί",
   History: "Ιστορικό",
   Article: "Άρθρο",
   Time: "Χρόνος",
@@ -52,8 +48,7 @@ const gr: Translation = {
   "Copied to clipboard": "Αντιγράφηκε στο πρόχειρο",
   "Share Result": "Κοινοποίηση αποτελέσματος",
   Loading: "Φόρτωση...",
-  "Couldn't load article preview":
-    "Δεν ήταν δυνατή η φόρτωση της προεπισκόπησης του άρθρου",
+  "Couldn't load article preview": "Δεν ήταν δυνατή η φόρτωση της προεπισκόπησης του άρθρου",
   "Winning links": "Νικητήριοι σύνδεσμοι",
   "Missed wins": "Χαμένες νίκες",
   "Choose your article": "Επιλέξτε το άρθρο σας",
@@ -112,18 +107,15 @@ const gr: Translation = {
   },
   AttentiveExplorer: {
     title: "Προσεκτικός Εξερευνητής",
-    description:
-      "Πλοηγηθείτε σε τουλάχιστον 10 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
+    description: "Πλοηγηθείτε σε τουλάχιστον 10 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
   },
   KeenPathfinder: {
     title: "Οξυδερκής Ανιχνευτής",
-    description:
-      "Πλοηγηθείτε σε τουλάχιστον 25 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
+    description: "Πλοηγηθείτε σε τουλάχιστον 25 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
   },
   SharpNavigator: {
     title: "Έξυπνος Πλοηγός",
-    description:
-      "Πλοηγηθείτε σε τουλάχιστον 50 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
+    description: "Πλοηγηθείτε σε τουλάχιστον 50 άρθρα χωρίς να χάσετε τον νικητήριο σύνδεσμο",
   },
   ExplorerOfChance: {
     title: "Εξερευνητής της Τύχης",
@@ -184,8 +176,15 @@ const gr: Translation = {
   WaifuAlt:
     "Χαριτωμένο anime κορίτσι με μπλε φόρεμα που κάθεται σε μια βιβλιοθήκη, ενώ μια σφαίρα της wikipedia με χρονόμετρο speedrun επιπλέει κοντά",
   "Prize trophy": "Τρόπαιο βραβείου",
-  "Enable search during gameplay":
-    "Ενεργοποίηση αναζήτησης κατά τη διάρκεια του παιχνιδιού",
+  "Enable search during gameplay": "Ενεργοποίηση αναζήτησης κατά τη διάρκεια του παιχνιδιού",
+  "Article appearance": "Εμφάνιση άρθρου",
+  "Text size": "Μέγεθος κειμένου",
+  Small: "Μικρό",
+  Standard: "Κανονικό",
+  Large: "Μεγάλο",
+  "Content width": "Πλάτος περιεχομένου",
+  Compact: "Συμπαγές",
+  Wide: "Ευρύ",
   Yes: "Ναι",
   No: "Όχι",
 };

@@ -63,6 +63,14 @@ const en: BaseTranslation = {
     "All of the information is stored locally in your browser (because servers cost money)",
   "If you clear your browser data or switch to another browser all of your data will be gone":
     "If you clear your browser data or switch to another browser all of your data will be gone.",
+  "Article appearance": "Article appearance",
+  "Text size": "Text size",
+  Small: "Small",
+  Standard: "Standard",
+  Large: "Large",
+  "Content width": "Content width",
+  Compact: "Compact",
+  Wide: "Wide",
   // ACHIEVEMENTS
   FirstWin: {
     title: "First Victory",
