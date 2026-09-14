@@ -1,4 +1,12 @@
 import type { LANGUAGES } from "../WikiLanguageSelect";
+import type { CSSProperties } from "react";
+
+export type WikiArticleFontSize = "small" | "standard" | "large";
+export type WikiArticleStyleState = "ready" | "degraded";
+export type WikiArticleHostStyle = CSSProperties & {
+  "--font-size-medium": string;
+  "--line-height-content": number;
+};
 
 export type WikiLanguage = (typeof LANGUAGES)[number]["value"];
 

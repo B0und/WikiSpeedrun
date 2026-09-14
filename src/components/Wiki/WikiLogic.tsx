@@ -1,5 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
-import type { MouseEvent } from "react";
+import type { KeyboardEvent, MouseEvent } from "react";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useGameStoreActions } from "../../stores/GameStore";
 import { errorToast } from "../../utils/toast";
@@ -7,7 +7,9 @@ import { useStopwatchActions } from "../StopwatchContext";
 
 const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 
-const handleShowHideButton = (e: MouseEvent<HTMLDivElement>) => {
+type ArticleInteractionEvent = MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>;
+
+const handleShowHideButton = (e: ArticleInteractionEvent) => {
   const node = e.target as HTMLElement | null;
   const th = node?.closest("th.navbox-title");
   if (!th) return;
@@ -37,7 +39,7 @@ const useWikiLogic = () => {
     });
   };
 
-  const handleClickInsideWikiArticle = (e: MouseEvent<HTMLDivElement>) => {
+  const handleArticleInteraction = (e: ArticleInteractionEvent) => {
     e.preventDefault();
     handleShowHideButton(e);
 
@@ -83,7 +85,17 @@ const useWikiLogic = () => {
     errorToast(invalidLinkText);
   };
 
-  return { handleClickInsideWikiArticle };
+  const handleClickInsideWikiArticle = (event: MouseEvent<HTMLDivElement>) => {
+    handleArticleInteraction(event);
+  };
+
+  const handleKeyDownInsideWikiArticle = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      handleArticleInteraction(event);
+    }
+  };
+
+  return { handleClickInsideWikiArticle, handleKeyDownInsideWikiArticle };
 };
 
 export default useWikiLogic;

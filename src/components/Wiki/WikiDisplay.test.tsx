@@ -22,9 +22,7 @@ testWithMSW("Show/Hide button works correctly", async () => {
     },
   });
 
-  await screen
-    .getByRole("columnheader", { name: "[show] v · t · e Iran Birjand County" })
-    .click({ position: { x: 0, y: 0 } });
+  await screen.getByRole("columnheader", { name: /Iran Birjand County/ }).click({ position: { x: 0, y: 0 } });
   await expect(screen.getByText("Alqurat")).toBeVisible();
 });
 

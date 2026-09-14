@@ -1,0 +1,92 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.wiki-insert {
+  min-width: 0;
+  background: #fff;
+  color: #202122;
+  font-family: sans-serif;
+}
+
+.mw-body {
+  display: block;
+  min-width: 0;
+}
+
+.vector-body {
+  font-size: var(--font-size-medium, 1rem);
+  line-height: var(--line-height-content, 1.625);
+}
+
+.mw-body-content {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.mw-parser-output img,
+.mw-parser-output video,
+.mw-parser-output audio,
+.mw-parser-output canvas,
+.mw-parser-output svg,
+.mw-parser-output iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.mw-parser-output figure,
+.mw-parser-output table {
+  max-width: 100%;
+}
+
+.mw-parser-output a[title="About this image"] {
+  visibility: hidden;
+}
+
+.mw-parser-output sup[class="noprint Inline-Template Template-Fact"],
+.mw-parser-output #coordinates,
+.mw-parser-output a[href*="#cite_note"] {
+  display: none;
+}
+
+.wiki-insert a:visited,
+.wiki-dark-theme a:visited {
+  color: #36c;
+}
+
+.wiki-dark-theme {
+  color: #303030;
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+.wiki-dark-theme img,
+.wiki-dark-theme video,
+.wiki-dark-theme canvas,
+.wiki-dark-theme svg {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.wiki-dark-theme .mwe-math-element img {
+  filter: invert(0) hue-rotate(0deg);
+}
+
+.wiki-dark-theme .mw-parser-output .ambox {
+  background-color: inherit;
+}
+
+.wiki-style-degraded .mw-body {
+  background: inherit;
+  color: inherit;
+}
+
+@media (max-width: 767px) {
+  .mw-parser-output table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .mw-parser-output figure {
+    margin-inline: 0;
+  }
+}

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 import {
   type Article,
@@ -16,21 +16,13 @@ import { wikiRoute } from "./Wiki";
 import { LANGUAGES } from "../WikiLanguageSelect";
 import type { WikiApiArticle, WikiArticleData, WikiLanguage } from "./Wiki.types";
 
-export const usePauseWhileLoading = (isLoading: boolean) => {
-  const isGameRunning = useIsGameRunning();
-  const { pauseStopwatch } = useStopwatchActions();
-
-  useEffect(() => {
-    if (isLoading && isGameRunning) {
-      pauseStopwatch();
-    }
-  }, [isGameRunning, isLoading, pauseStopwatch]);
-};
-
 export const findVisibleWinningLinks = (root: ParentNode, articleTitle: Article) => {
   const winningLinks = root.querySelectorAll<HTMLElement>(`[href="/wiki/${articleTitle.title.replaceAll(" ", "_")}"]`);
   return Array.from(winningLinks).filter((link) => link.offsetWidth > 0);
 };
+
+export const getWikiArticleKey = (article: WikiArticleData) =>
+  `${article.language}:${article.pageid}:${article.revid}:${article.styleUrls.join("|")}`;
 
 const BASELINE_STYLE_MODULES = [
   "skins.vector.styles",
@@ -138,28 +130,34 @@ export const useWikiQuery = () => {
   const startingArticle = useStartingArticle();
   const language = useWikiLanguage();
   const { _splat: wikiTitle } = wikiRoute.useParams();
-
-  const isGameRunning = useIsGameRunning();
-
   const wikiArticle = wikiTitle ? decodeURIComponent(wikiTitle).replace("/wiki/", "") : startingArticle.title;
 
-  const { setIsGameRunning, setIsWin } = useGameStoreActions();
+  return useQuery({
+    queryKey: ["article", wikiArticle, language],
+    queryFn: () => getArticleData(language, wikiArticle),
+    refetchOnWindowFocus: false,
+    enabled: Boolean(wikiArticle),
+  });
+};
 
+export const useWikiArticleLifecycle = (article: WikiArticleData | undefined, presentationReady: boolean) => {
+  const isGameRunning = useIsGameRunning();
   const targetArticle = useEndingArticle();
+  const { setIsGameRunning, setIsWin } = useGameStoreActions();
   const { startStopwatch, pauseStopwatch } = useStopwatchActions();
   const { increaseWins, addKnownLanguage, increaseArticlesClicked } = useStatsStoreActions();
   const clicks = useClicks();
-
   const checkAchievements = useUnlockAchievements();
+  const processedArticleKeys = useRef(new Set<string>());
 
   const handleWin = useCallback(
-    (article: NonNullable<(typeof query)["data"]>) => {
-      if (article.title === targetArticle.title || String(article.pageid) === targetArticle.pageid) {
+    (readyArticle: WikiArticleData) => {
+      if (readyArticle.title === targetArticle.title || String(readyArticle.pageid) === targetArticle.pageid) {
         pauseStopwatch();
         setIsGameRunning(false);
         setIsWin(true);
         increaseWins();
-        addKnownLanguage(language);
+        addKnownLanguage(readyArticle.language);
         increaseArticlesClicked(clicks);
         checkAchievements();
         return true;
@@ -173,7 +171,6 @@ export const useWikiQuery = () => {
       clicks,
       increaseArticlesClicked,
       increaseWins,
-      language,
       pauseStopwatch,
       setIsGameRunning,
       setIsWin,
@@ -182,23 +179,21 @@ export const useWikiQuery = () => {
     ],
   );
 
-  const query = useQuery({
-    queryKey: ["article", wikiArticle, language],
-    queryFn: () => getArticleData(language, wikiArticle),
-    refetchOnWindowFocus: false,
-    enabled: Boolean(wikiArticle),
-  });
+  useEffect(() => {
+    if (isGameRunning && (!article || !presentationReady)) {
+      pauseStopwatch();
+    }
+  }, [article, isGameRunning, pauseStopwatch, presentationReady]);
 
   useEffect(() => {
-    if (!query.data) return;
-    if (!isGameRunning) return;
+    if (!article || !isGameRunning || !presentationReady) return;
 
-    if (handleWin(query.data)) {
-      return;
+    const articleKey = getWikiArticleKey(article);
+    if (processedArticleKeys.current.has(articleKey)) return;
+    processedArticleKeys.current.add(articleKey);
+
+    if (!handleWin(article)) {
+      startStopwatch();
     }
-
-    startStopwatch();
-  }, [handleWin, isGameRunning, query.data, startStopwatch]);
-
-  return query;
+  }, [article, handleWin, isGameRunning, presentationReady, startStopwatch]);
 };
