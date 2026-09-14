@@ -175,7 +175,14 @@ const vi: Translation = {
     "Cô gái anime dễ thương với chiếc váy màu xanh ngồi trong một thư viện, trong khi một quả cầu Wikipedia với một bộ hẹn giờ speedrun đính kèm đang lơ lửng gần đó",
   "Prize trophy": "Cúp giải thưởng",
   "Enable search during gameplay": "Bật tìm kiếm trong quá trình chơi",
-
+  "Article appearance": "Hiển thị bài viết",
+  "Text size": "Cỡ chữ",
+  Small: "Nhỏ",
+  Standard: "Chuẩn",
+  Large: "Lớn",
+  "Content width": "Độ rộng nội dung",
+  Compact: "Gọn",
+  Wide: "Rộng",
   Yes: "Có",
   No: "Không",
 };

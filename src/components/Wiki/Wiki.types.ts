@@ -1,11 +1,39 @@
+import type { LANGUAGES } from "../WikiLanguageSelect";
+import type { CSSProperties } from "react";
+
+export type WikiArticleStyleState = "ready" | "degraded";
+export type WikiArticleHostStyle = CSSProperties & {
+  "--font-size-medium": string;
+  "--line-height-content": number;
+};
+
+export type WikiLanguage = (typeof LANGUAGES)[number]["value"];
+
+export interface WikiArticleData {
+  html: string;
+  title: string;
+  pageid: number;
+  revid: number;
+  language: WikiLanguage;
+  styleUrls: readonly string[];
+}
+
 export interface WikiApiArticle {
   parse?: Parse;
+  error?: {
+    code?: string;
+    info?: string;
+  };
 }
 
 export interface Parse {
   title?: Title;
   pageid?: number;
   revid?: number;
+  modules?: string[];
+  modulescripts?: string[];
+  modulestyles?: string[];
+  jsconfigvars?: Record<string, unknown>;
   // biome-ignore lint/suspicious/noExplicitAny: a
   redirects?: any[];
   text?: Text;

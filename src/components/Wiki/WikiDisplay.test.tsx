@@ -1,6 +1,7 @@
-import { expect, test } from "vitest";
-import { render } from "vitest-browser-react";
+import { HttpResponse, http } from "msw";
+import { expect, vi } from "vitest";
 import { customRender, testWithMSW } from "../../test-extend";
+import { testWorker } from "../../test_mocks/browser";
 import { router } from "../AppProviders";
 import WikiDisplay from "./WikiDisplay";
 
@@ -21,8 +22,58 @@ testWithMSW("Show/Hide button works correctly", async () => {
     },
   });
 
-  await screen
-    .getByRole("columnheader", { name: "[show] v · t · e Iran Birjand County" })
-    .click({ position: { x: 0, y: 0 } });
+  const screenSurface = document.querySelector('[data-testid="wiki-article-host"]')?.shadowRoot;
+  const collapsedNavbox = screenSurface?.querySelector("table.mw-collapsed");
+  expect(collapsedNavbox).not.toBeNull();
+  await expect.poll(() => {
+    const rows = collapsedNavbox?.querySelectorAll("tr:not(:first-child)");
+    return rows ? Array.from(rows, (row) => getComputedStyle(row).display) : [];
+  }).toEqual(Array.from(collapsedNavbox?.querySelectorAll("tr:not(:first-child)") ?? [], () => "none"));
+
+  await screen.getByRole("columnheader", { name: /Iran Birjand County/ }).click({ position: { x: 0, y: 0 } });
+  await expect.poll(() => {
+    const rows = collapsedNavbox?.querySelectorAll("tr:not(:first-child)");
+    return rows ? Array.from(rows, (row) => getComputedStyle(row).display) : [];
+  }).toEqual(Array.from(collapsedNavbox?.querySelectorAll("tr:not(:first-child)") ?? [], () => "table-row"));
   await expect(screen.getByText("Alqurat")).toBeVisible();
+});
+
+testWithMSW("same-page links scroll to targets in the article root", async () => {
+  testWorker.use(
+    http.get("https://en.wikipedia.org/w/api.php", () =>
+      HttpResponse.json({
+        parse: {
+          title: "Hash Test",
+          pageid: 1,
+          revid: 2,
+          text: {
+            "*": '<div class="mw-parser-output"><a href="#wiki-test-target">Jump</a><p id="wiki-test-target">Target</p><a href="https://en.wikipedia.org/wiki/Target_Article">Next article</a></div>',
+          },
+        },
+      }),
+    ),
+  );
+  const scrolledElementIds: string[] = [];
+  vi.spyOn(Element.prototype, "scrollIntoView").mockImplementation(function (this: Element) {
+    scrolledElementIds.push(this.id);
+  });
+
+  const screen = customRender();
+  await router.navigate({
+    to: "/wiki/$",
+    params: { _splat: "Hash Test" },
+    search: {
+      state: {
+        history: [{ title: "Hash Test", time: { min: "00", sec: "00", ms: "000" }, winningLinks: 0 }],
+        startingArticle: { pageid: "1", title: "Hash Test" },
+        endingArticle: { pageid: "3", title: "Other" },
+      },
+    },
+  });
+
+  await screen.getByRole("link", { name: "Jump" }).click();
+  expect(scrolledElementIds).toContain("wiki-test-target");
+
+  await screen.getByRole("link", { name: "Next article" }).click();
+  await expect.poll(() => router.state.location.pathname).toBe("/wiki/Target_Article");
 });

@@ -8,6 +8,7 @@ import { GiveUpModal } from "./ConfirmNavigation";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
 import { MobileMenu } from "./MobileMenu";
 import { ResultDialog } from "./ResultDialog";
+import { WikiPresentationMenu } from "./Wiki/WikiPresentationMenu";
 import { useThemeContext } from "./ThemeContext";
 
 export interface WikiLink {
@@ -40,6 +41,9 @@ const Header = () => {
         <ResultDialog />
         <ul className="ml-auto flex h-full gap-4 ">
           <li>{!isGameRunning && <InterfaceLanguageSelect />}</li>
+          <li className="h-full">
+            <WikiPresentationMenu />
+          </li>
           <li className="h-full">
             <button
               type="button"
