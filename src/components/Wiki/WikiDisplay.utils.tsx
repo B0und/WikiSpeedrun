@@ -197,11 +197,13 @@ export const useWikiArticleLifecycle = (article: WikiArticleData | undefined, pr
     if (!article || !isGameRunning || !presentationReady) return;
 
     const articleKey = getWikiArticleKey(article);
-    if (processedArticleKeys.current.has(articleKey)) return;
-    processedArticleKeys.current.add(articleKey);
-
-    if (!handleWin(article)) {
-      startStopwatch();
+    if (!processedArticleKeys.current.has(articleKey)) {
+      processedArticleKeys.current.add(articleKey);
+      if (handleWin(article)) return;
     }
+
+    // Resume timing whenever a ready article (re)renders in an active game,
+    // including revisits of already-processed articles.
+    startStopwatch();
   }, [article, handleWin, isGameRunning, presentationReady, startStopwatch]);
 };

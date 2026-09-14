@@ -75,6 +75,27 @@
   background-color: inherit;
 }
 
+/* Collapsible tables: initially collapsed (rows hidden, [show] label) and expanded via .mw-expanded */
+.wiki-insert table.mw-collapsible:not(.mw-made-collapsible) th:before,
+.wiki-insert .mw-collapsible:not(.mw-made-collapsible):before,
+.wiki-insert .mw-collapsible-toggle {
+  float: right;
+}
+.wiki-insert table.mw-collapsible:not(.mw-made-collapsible) th:before {
+  content: "[show]";
+}
+.wiki-insert table.mw-expanded:not(.mw-made-collapsible) th:before {
+  content: "[hide]";
+}
+.wiki-insert table.mw-collapsed:not(.mw-made-collapsible) tr:not(:first-child),
+.wiki-insert table.mw-collapsed:not(.mw-made-collapsible) > caption:first-child,
+.wiki-insert .mw-collapsed:not(.mw-made-collapsible) > p,
+.wiki-insert .mw-collapsed:not(.mw-made-collapsible) > table,
+.wiki-insert .mw-collapsed:not(.mw-made-collapsible) > thead + tbody,
+.wiki-insert .mw-collapsed:not(.mw-made-collapsible) .mw-collapsible-content {
+  display: none;
+}
+
 .wiki-style-degraded .mw-body {
   background: inherit;
   color: inherit;

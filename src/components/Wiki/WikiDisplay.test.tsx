@@ -22,7 +22,19 @@ testWithMSW("Show/Hide button works correctly", async () => {
     },
   });
 
+  const screenSurface = document.querySelector('[data-testid="wiki-article-host"]')?.shadowRoot;
+  const collapsedNavbox = screenSurface?.querySelector("table.mw-collapsed");
+  expect(collapsedNavbox).not.toBeNull();
+  await expect.poll(() => {
+    const rows = collapsedNavbox?.querySelectorAll("tr:not(:first-child)");
+    return rows ? Array.from(rows, (row) => getComputedStyle(row).display) : [];
+  }).toEqual(Array.from(collapsedNavbox?.querySelectorAll("tr:not(:first-child)") ?? [], () => "none"));
+
   await screen.getByRole("columnheader", { name: /Iran Birjand County/ }).click({ position: { x: 0, y: 0 } });
+  await expect.poll(() => {
+    const rows = collapsedNavbox?.querySelectorAll("tr:not(:first-child)");
+    return rows ? Array.from(rows, (row) => getComputedStyle(row).display) : [];
+  }).toEqual(Array.from(collapsedNavbox?.querySelectorAll("tr:not(:first-child)") ?? [], () => "table-row"));
   await expect(screen.getByText("Alqurat")).toBeVisible();
 });
 
