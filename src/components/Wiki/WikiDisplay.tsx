@@ -8,11 +8,6 @@ import { WikiArticleSurface } from "./WikiArticleSurface";
 import { findVisibleWinningLinks, getWikiArticleKey, useWikiArticleLifecycle, useWikiQuery } from "./WikiDisplay.utils";
 import useWikiLogic from "./WikiLogic";
 
-import "./styles/unreset.css";
-import "./styles/vec2022base.css";
-import "./styles/vector2022.css";
-import "./styles/overrides.css";
-
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
   const { handleClickInsideWikiArticle, handleKeyDownInsideWikiArticle } = useWikiLogic();
