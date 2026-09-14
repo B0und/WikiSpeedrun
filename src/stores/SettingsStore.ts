@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { detectLocale, isLocale, type Locale } from "../lingui";
+import { detectLocale, type Locale } from "../lingui";
 import type { LANGUAGES } from "../components/WikiLanguageSelect";
 
 /*
@@ -31,13 +31,6 @@ const initialState: SettingsValues = {
 };
 
 type SettingsStore = SettingsValues & Actions;
-// v1 stored non-BCP-47 locale codes (gr/jp/se) and used "" as the
-// initial-language sentinel. The migrate hook below remaps the legacy codes
-// and drops anything unsupported so the persist merge falls back to the
-// detected initial value instead of crashing catalog loading with an unknown
-// locale.
-const LEGACY_LOCALE_BY_CODE: Record<string, Locale> = { gr: "el", jp: "ja", se: "sv" };
-
 const useSettingsStore = create<SettingsStore>()(
   devtools(
     persist(
@@ -63,22 +56,6 @@ const useSettingsStore = create<SettingsStore>()(
         storage: createJSONStorage(() => localStorage),
         partialize: ({ actions: _actions, ...rest }: SettingsStore) => rest,
         version: 2,
-        migrate: (persistedState, version) => {
-          if (version >= 2) {
-            return persistedState;
-          }
-
-          const state = { ...(persistedState as Record<string, unknown> | undefined) };
-          const code = state.interfaceLanguage;
-          const remapped = typeof code === "string" ? (LEGACY_LOCALE_BY_CODE[code] ?? code) : undefined;
-          if (remapped !== undefined && isLocale(remapped)) {
-            state.interfaceLanguage = remapped;
-          } else {
-            delete state.interfaceLanguage;
-          }
-
-          return state as typeof persistedState;
-        },
       },
     ),
     {
