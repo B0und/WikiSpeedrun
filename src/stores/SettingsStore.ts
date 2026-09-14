@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import type { LANGUAGES } from "../components/WikiLanguageSelect";
+import type { WikiLanguage } from "../components/Wiki/Wiki.types";
 import type { Locales } from "../i18n/i18n-types";
 
 /*
  Data gets persisted in local storage
 */
 
-export type WikiLanguage = (typeof LANGUAGES)[number]["value"];
+export type { WikiLanguage };
 export type WikiArticleWidth = "standard" | "wide";
 export type WikiArticleFontSize = "small" | "standard" | "large";
 
