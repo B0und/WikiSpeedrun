@@ -42,6 +42,7 @@ export const WikiLanguageSelect = () => {
           singleValue: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           option: (state) =>
             clsx(
+              "language-option",
               state.isFocused && "dark:bg-[#464242] dark:text-primary-blue",
               isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
             ),

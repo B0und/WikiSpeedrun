@@ -61,6 +61,10 @@
 }
 
 @layer components {
+  .language-option {
+    font-family: system-ui, sans-serif;
+  }
+
   .stopwatch {
     background-image: linear-gradient(180deg, #4acd79, #1cad4a);
     background-size: 100%;

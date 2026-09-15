@@ -2,7 +2,7 @@
 
 ## Decision
 
-Keep CJK font CSS lazy, but stop treating font loading as part of Lingui catalog activation. Select CJK families by the rendered content's `lang`, not by a permanent global fallback order, and move from two static weights to Fontsource variable packages.
+Keep CJK font CSS lazy, but stop treating font loading as part of Lingui catalog activation. Select CJK families by the rendered content's `lang`, not by a permanent global fallback order, move from two static weights to Fontsource variable packages, and render inactive language-picker options with system fonts so previewing them does not fetch their webfont subsets.
 
 For this project, the best target architecture is:
 
@@ -12,6 +12,7 @@ For this project, the best target architecture is:
 4. Give embedded Wikipedia content its own `lang` attribute and load a font for both `interfaceLanguage` and `wikiLanguage`.
 5. Remove the dedicated Noto Sans Devanagari package: the base Noto Sans package already contains a Devanagari `unicode-range` face.
 6. Keep `font-display: swap`; do not block locale activation on `document.fonts`.
+7. Render language-picker option labels with `system-ui, sans-serif`; selected page and article content still use the webfont stack.
 
 TanStack Router does not provide a font optimizer. Its head API can add links, but route lifetime is the wrong lifecycle for this app's independent interface and article languages.
 
@@ -26,6 +27,12 @@ TanStack Router does not provide a font optimizer. Its head API can add links, b
 Fontsource's default CSS is already split with `unicode-range`. A declared face does not download its font file merely because the stylesheet is loaded; the browser requests a face when rendered text needs code points in its range. Fontsource recommends relying on this default range splitting rather than manually importing one broad subset ([Fontsource subset guidance](https://fontsource.org/docs/getting-started/subsets); [MDN `unicode-range`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range); [CSS Fonts 4](https://www.w3.org/TR/css-fonts-4/#unicode-range-desc)).
 
 ## Problems found
+### Language-selector options activate inactive ranges
+
+The original recommendation missed a distinct render surface: opening `InterfaceLanguageSelect` mounts native-script labels such as `Ελληνικά`, `हिंदी`, `Русский`, and `Tiếng Việt` in a Radix portal. Those labels inherit the global `Noto Sans Variable` family. Because the static `wght.css` has already registered Greek, Devanagari, Cyrillic, and Vietnamese faces, the browser downloads all four WOFF2 files as soon as the menu lays out.
+
+This is correct `unicode-range` behavior, not eager downloading by Lingui, React, Radix, or Vite. A face is registered when its CSS loads, but its binary is requested when rendered text intersects the declared range. Native-script names are previews of inactive languages, so they should use `system-ui, sans-serif`. The selected interface or article remains in the language-aware webfont stack and triggers its subset normally.
+
 
 ### 1. CJK family selection is wrong after an in-app locale switch
 
@@ -82,7 +89,15 @@ Fontsource's variable `wght.css` files use one WOFF2 variable face per Unicode r
 | Browser Font Loading API | Useful for tests and explicit readiness checks. Blocking UI on `document.fonts.load()` or `document.fonts.ready` would trade FOUT for delayed text and complicate code-point/subset discovery. Not needed in production. |
 | TanStack route `head().links` | TanStack can add and unload head links ([Document Head Management](https://tanstack.com/router/latest/docs/guide/document-head-management)), but fonts vary by content language rather than route. It also does not provide `next/font`-style processing. TanStack's own migration guide says to use self-hosted files or Fontsource, preserve weights/subsets and `font-display`, and verify layout/network behavior ([TanStack Start migration guide](https://tanstack.com/start/latest/docs/framework/react/migrate-from-next-js#replace-image-and-font-services-deliberately)). |
 | Preload all script fonts | Explicitly discouraged. Preload bypasses `unicode-range` selection and competes with critical resources; only a known critical face should be preloaded ([web.dev](https://web.dev/articles/font-best-practices#be_cautious_when_using_preload_to_load_fonts); [Fontsource preload guidance](https://fontsource.org/docs/getting-started/preload)). |
+| System-font picker options | Keeps native-script preview labels out of the registered webfont family, so opening either selector causes no language-specific WOFF2 request. The transient menu follows OS typography; selected content remains unchanged. |
 | External Google Fonts | Can dynamically subset and serve variable fonts, but adds a third-party connection and privacy/deployment dependency. The repo already self-hosts; no reason to reverse that. |
+
+## Real-world patterns
+
+- [Wikimedia Universal Language Selector](https://github.com/wikimedia/mediawiki-extensions-UniversalLanguageSelector) separates native-script picker labels from on-demand webfont application. Its webfonts are applied after choosing a language rather than being required to browse the picker ([ULS WebFonts](https://www.mediawiki.org/wiki/Universal_Language_Selector/WebFonts)).
+- [`tmoroney/auto-subs`](https://github.com/tmoroney/auto-subs/blob/main/AutoSubs-App/src/lib/font-loader.ts) keeps font registration in a dedicated, idempotent loader and dynamically imports Noto packages for active transcript languages.
+- [`block/buzz`](https://github.com/block/buzz/blob/main/desktop/src/main.tsx) statically imports Fontsource variable CSS and relies on `unicode-range` for ordinary content-driven downloads. A multi-script picker is the edge case where option typography must be isolated.
+- [`vrcx-team/VRCX`](https://github.com/vrcx-team/VRCX/blob/master/src/styles/fonts.css) statically imports several regional CJK packages and changes family priority by document language. It supports language-aware family ordering, but its desktop-app tradeoff is not a lazy-loading model for this web app.
 
 ## Recommended implementation shape
 
@@ -127,17 +142,23 @@ Load the relevant family when either active language changes. Imports are module
 
 Add `lang={wikiLanguage}` around Wikipedia article content and titles. This lets an English interface with Japanese content select JP, and lets nested content override the page language correctly. The current `wikiLanguage` list contains many scripts for which the app bundles no font; those should continue through robust system generic fallbacks rather than adding hundreds of webfonts.
 
+### Picker previews
+
+Apply `font-family: system-ui, sans-serif` only to option rows in both language selectors. Do not apply it to the selected page content. This preserves native-script readability through platform fallback while preventing inactive labels from matching registered Noto webfont faces.
+
 ### Rendering policy
 
 Keep `font-display: swap`. `optional` can reduce layout shifts but may leave first-time users on system fonts for the whole navigation; that works against the reason for bundling regional CJK fonts. Preloading is not appropriate because the needed CJK Unicode chunks are not known before text exists. Use the Font Loading API only in visual checks such as the existing `document.fonts.ready` wait.
 
 ## Verification criteria for an implementation
 
-1. Fresh `en` UI: no JP/SC CSS or font requests.
-2. Fresh `ja` UI: JP variable CSS loads; SC does not; actual Japanese glyphs report JP via Chrome `CSS.getPlatformFontsForNode`.
-3. Fresh `zh` UI: SC variable CSS loads; actual Chinese glyphs report SC.
-4. In one SPA document, switch `ja → zh → ja`: no heading mixes JP and SC glyphs.
-5. Keep interface `en`, set Wikipedia language to `ja` or `zh`: article title/body has the matching `lang`, loads the matching family, and reports the matching actual font.
-6. Locale catalog activation still succeeds if a font CSS request fails.
-7. Build output contains variable WOFF2 assets and no duplicate WOFF fallback set.
-8. Existing all-locale visual scenarios pass after baselines are reviewed for intentional metric changes.
+1. Fresh `en` UI: only the base Latin face is requested; no JP/SC CSS or font requests.
+2. Opening either language selector: no WOFF2 request.
+3. Selecting `el`, `hi`, `ru`, or `vi`: the matching base Noto Sans subset is requested when translated content renders.
+4. Fresh `ja` UI: JP variable CSS loads; SC does not; actual Japanese glyphs report JP via Chrome `CSS.getPlatformFontsForNode`.
+5. Fresh `zh` UI: SC variable CSS loads; actual Chinese glyphs report SC.
+6. In one SPA document, switch `ja → zh → ja`: no heading mixes JP and SC glyphs.
+7. Keep interface `en`, set Wikipedia language to `ja` or `zh`: article title/body has the matching `lang`, loads the matching family, and reports the matching actual font.
+8. Locale catalog activation still succeeds if a font CSS request fails.
+9. Build output contains variable WOFF2 assets and no duplicate WOFF fallback set.
+10. Existing all-locale visual scenarios pass after baselines are reviewed for intentional metric changes.

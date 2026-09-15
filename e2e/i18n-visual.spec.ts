@@ -77,6 +77,39 @@ const expectVisuallySoundInterface = async (page: Page, locale: Locale) => {
   expect(layoutDefects).toEqual([]);
 };
 
+test("opening language selectors does not load inactive script fonts", async ({ page }) => {
+  await persistInterfaceLocale(page, "en");
+  await page.goto("/");
+  await page.locator("#root > *").first().waitFor();
+  await page.evaluate(() => document.fonts.ready);
+
+  const fontRequests: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().endsWith(".woff2")) {
+      fontRequests.push(request.url());
+    }
+  });
+
+  await page.getByRole("combobox", { name: "Language" }).click();
+  await expect(page.getByRole("option", { name: "Ελληνικά" })).toBeVisible();
+  await page.waitForLoadState("networkidle");
+
+  expect(fontRequests).toEqual([]);
+
+  await page.keyboard.press("Escape");
+  await page.goto("/settings");
+  await page.locator("#root > *").first().waitFor();
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForLoadState("networkidle");
+  fontRequests.length = 0;
+
+  await page.getByRole("combobox", { name: "Select article language" }).click();
+  await expect(page.getByRole("option", { name: "Ελληνικά" })).toBeVisible();
+  await page.waitForLoadState("networkidle");
+
+  expect(fontRequests).toEqual([]);
+});
+
 for (const locale of SUPPORTED_LOCALES) {
   test(`${locale} interface renders with stable localized layout`, async ({ page }) => {
     await persistInterfaceLocale(page, locale);
