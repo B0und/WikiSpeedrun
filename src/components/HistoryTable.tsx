@@ -1,10 +1,10 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import { useHistory, useIsGameRunning } from "../stores/GameStore";
 
 const HistoryTable = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const articleHistory = useHistory();
   const isGameRunning = useIsGameRunning();
   const navigate = useNavigate();

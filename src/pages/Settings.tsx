@@ -15,7 +15,7 @@ import { LabelSwitch } from "../components/Switch";
 import { WikiLanguageSelect } from "../components/WikiLanguageSelect";
 import { useCheckAchievements } from "../hooks/useCheckAchievements";
 import { useResetGame } from "../hooks/useResetGame";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import type { Article } from "../stores/GameStore";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
 import { useIsCtrlFEnabled, useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
@@ -23,7 +23,7 @@ import { useStatsStoreActions } from "../stores/StatisticsStore";
 import { copyNotification } from "../utils/toast";
 
 const Settings = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
   const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } = useGameStoreActions();
@@ -163,7 +163,7 @@ const SelectArticleSettings: React.FC<Props> = ({
   setModalFunction,
   setModalOpen,
 }) => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const { increaseSingleRandomPressed } = useStatsStoreActions();
   const randomFailText = t("Random failed, try again");
 

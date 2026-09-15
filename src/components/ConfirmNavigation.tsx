@@ -1,9 +1,9 @@
 import { useResetGame } from "../hooks/useResetGame";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
 
 export const GiveUpModal = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const resetGame = useResetGame();
   return (
     <ModalRoot>

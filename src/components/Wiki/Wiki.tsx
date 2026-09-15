@@ -1,6 +1,6 @@
 import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { useTranslation } from "../../lingui";
+import { useLingui } from "@lingui/react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
@@ -71,7 +71,7 @@ function WikiNavigationBlockModal({
   onProceed: () => void;
   onCancel: (() => void) | undefined;
 }) {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   return (
     <ModalRoot open={open} onOpenChange={onCancel}>
       <ModalContent>

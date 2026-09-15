@@ -1,8 +1,8 @@
+import type { I18n } from "@lingui/core";
 import { toast } from "react-hot-toast";
 import type { Achievement } from "../achievements";
-import type { Translate } from "../lingui";
 
-export const achievementToast = (achievement: Achievement, translate: Translate) => {
+export const achievementToast = (achievement: Achievement, translate: I18n["_"]) => {
   toast(
     (toastInstance) => {
       const achievementTitle = translate(`${achievement.id}.title`);

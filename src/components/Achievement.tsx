@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import type { Achievement as IAchievement } from "../achievements";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
 
   let currentValue: number;
   if (achievement.targetValue) {

@@ -2,7 +2,7 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { useMutation } from "@tanstack/react-query";
 import clsx from "clsx";
 import DiceIcon from "../../assets/dice.svg?react";
-import { useTranslation } from "../../lingui";
+import { useLingui } from "@lingui/react";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import type { WikiRandom } from "./RandomButton.types";
 
@@ -32,7 +32,7 @@ interface RandomButtonProps {
   randomCount?: number;
 }
 const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const language = useWikiLanguage();
 
   const { mutate, isPending } = useMutation({

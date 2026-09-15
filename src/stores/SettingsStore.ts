@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { detectLocale, type Locale } from "../lingui";
+import { detectLocale, type Locale } from "../locales/config";
 import type { LANGUAGES } from "../components/WikiLanguageSelect";
 
 /*

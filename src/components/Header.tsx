@@ -1,7 +1,7 @@
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Link } from "@tanstack/react-router";
 import { GitHub, Moon, Sun } from "react-feather";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import { useIsGameRunning } from "../stores/GameStore";
 import { GiveUpModal } from "./ConfirmNavigation";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
@@ -14,7 +14,7 @@ export interface WikiLink {
   path: string;
 }
 const Header = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
 
   const links: WikiLink[] = [
     { name: t("Play"), path: "/settings" },
@@ -59,7 +59,7 @@ const Header = () => {
 };
 
 const WikiLogo = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const { colorMode } = useThemeContext();
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 

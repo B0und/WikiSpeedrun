@@ -1,5 +1,5 @@
 import { InfoTooltip } from "../components/InfoTooltip";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import {
   useArticleClicks,
   useArticlePreviewPressed,
@@ -11,7 +11,7 @@ import {
 } from "../stores/StatisticsStore";
 
 export const Stats = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const articleClicks = useArticleClicks();
   const articlePreviewPressed = useArticlePreviewPressed();
   // const averageAnswerTime = useAverageAnswerTime(); // TODO

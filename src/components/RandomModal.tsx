@@ -1,5 +1,5 @@
 import type React from "react";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import type { Article } from "../stores/GameStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
 import ArticlePreview from "./ArticlePreview/ArticlePreview";
@@ -12,7 +12,7 @@ interface RandomModalProps {
   setArticle: (article: Article) => void;
 }
 export const RandomModal = (props: RandomModalProps) => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const { increaseMultipleRandomPressed } = useStatsStoreActions();
 
   return (

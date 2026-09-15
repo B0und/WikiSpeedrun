@@ -2,7 +2,8 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
-import { isLocale, useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
+import { isLocale } from "../locales/config";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { LANGUAGES } from "./WikiLanguageSelect";
@@ -10,7 +11,7 @@ import { LANGUAGES } from "./WikiLanguageSelect";
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => isLocale(language.isoCode));
 
 export const InterfaceLanguageSelect = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const language = useInterfaceLanguage();
   const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions();
   const { setEndingArticle, setStartingArticle } = useGameStoreActions();

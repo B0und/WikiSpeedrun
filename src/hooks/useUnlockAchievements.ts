@@ -1,9 +1,9 @@
 import { achievementToast } from "../components/AchievementNotification";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import { checkAchievements, useAchievements, useStatsStoreActions } from "../stores/StatisticsStore";
 
 export const useUnlockAchievements = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const achievements = useAchievements();
   const { unlockAchievements } = useStatsStoreActions();
 

@@ -1,7 +1,7 @@
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 
 export const Loader = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
 
   return (
     <output aria-live="assertive" data-testid="loading" className="block">

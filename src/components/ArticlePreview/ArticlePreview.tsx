@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useState } from "react";
 import { X } from "react-feather";
-import { useTranslation } from "../../lingui";
+import { useLingui } from "@lingui/react";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
 import type { ArticlePreview } from "./ArticlePreview.types";
@@ -33,7 +33,7 @@ interface ArticlePreviewProps {
 }
 const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
   const { pageid } = props;
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const [open, setOpen] = useState(false);
 
   const wikiLang = useWikiLanguage();

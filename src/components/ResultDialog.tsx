@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as Portal from "@radix-ui/react-portal";
 import { useEffect, useState } from "react";
 import { useResetGame } from "../hooks/useResetGame";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import {
   useCheatingAttempts,
   useClicks,
@@ -18,7 +18,7 @@ import { StopwatchDisplay } from "./StopwatchDisplay";
 import { VictoryConfetti } from "./VictoryConfetti";
 
 export const ResultDialog = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const [open, setOpen] = useState(false);
   const resetGame = useResetGame();
 

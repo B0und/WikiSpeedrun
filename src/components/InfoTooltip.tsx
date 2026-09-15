@@ -1,12 +1,12 @@
 import { AlertCircle } from "react-feather";
 import { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 
 interface InfoTooltipProps {
   children: React.ReactNode;
 }
 export const InfoTooltip = ({ children }: InfoTooltipProps) => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   return (
     <Tooltip>
       <TooltipTrigger className="flex items-center gap-3">

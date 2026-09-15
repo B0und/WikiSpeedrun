@@ -1,10 +1,11 @@
 import "@fontsource/noto-sans/400.css";
 import "@fontsource/noto-sans/700.css";
+import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
-import { i18n } from "./lingui";
+import LocaleProvider from "./components/LocaleProvider";
 import "./index.css";
 
 async function enableMocking() {
@@ -26,9 +27,11 @@ void enableMocking().then(() => {
   }
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <I18nProvider i18n={i18n}>
-        <App />
-      </I18nProvider>
+      <LocaleProvider>
+        <I18nProvider i18n={i18n}>
+          <App />
+        </I18nProvider>
+      </LocaleProvider>
     </React.StrictMode>,
   );
 });

@@ -1,6 +1,6 @@
 import type React from "react";
 import { useEffect } from "react";
-import { activateLocale } from "../lingui";
+import { activateLocale } from "../locales/runtime";
 import { useInterfaceLanguage } from "../stores/SettingsStore";
 
 // React bridge: the runtime owns loading, latest-request-wins activation, and

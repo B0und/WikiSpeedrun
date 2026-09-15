@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 
 const About = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   return (
     <>
       <h1 className="border-secondary-border border-b-[1px] font-serif text-3xl">{t("Wiki Speedrun Game")}</h1>

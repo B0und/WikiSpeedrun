@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Select, { type StylesConfig } from "react-select";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
 import { useThemeContext } from "./ThemeContext";
@@ -10,7 +10,7 @@ const selectId = "wikiLanguageSelect";
 export const WikiLanguageSelect = () => {
   const { colorMode } = useThemeContext();
   const isDarkMode = colorMode === "dark";
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const { setWikiLanguage } = useSettingsStoreActions();
   const wikiLanguage = useWikiLanguage();
   const { setEndingArticle, setStartingArticle } = useGameStoreActions();

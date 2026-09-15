@@ -1,12 +1,12 @@
 import { Resizable } from "re-resizable";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import { useClicks } from "../stores/GameStore";
 import { useSettingsStoreActions, useSidebarWidth } from "../stores/SettingsStore";
 import HistoryTable from "./HistoryTable";
 import { Stopwatch } from "./Stopwatch";
 
 const Sidebar = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const sidebarWidth = useSidebarWidth();
   const { setSidebarWidth } = useSettingsStoreActions();
 

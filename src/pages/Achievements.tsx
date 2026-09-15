@@ -1,10 +1,10 @@
 import { Achievement } from "../components/Achievement";
 import { InfoTooltip } from "../components/InfoTooltip";
-import { useTranslation } from "../lingui";
+import { useLingui } from "@lingui/react";
 import { useAchievements } from "../stores/StatisticsStore";
 
 export const Achievements = () => {
-  const t = useTranslation();
+  const { _: t } = useLingui();
   const achievements = useAchievements();
   const unlockedAchievements = achievements.filter((a) => a.unlocked).length;
 
