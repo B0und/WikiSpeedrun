@@ -2,6 +2,7 @@ import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useLingui } from "@lingui/react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
 import { Stopwatch } from "../Stopwatch";
@@ -17,6 +18,7 @@ const Wiki = () => {
   const navigate = useNavigate();
   const isGameRunning = useIsGameRunning();
   const { resetStoreState } = useGameStoreActions();
+  const wikiLanguage = useWikiLanguage();
   const { status, proceed, reset, next } = useBlocker({
     shouldBlockFn: ({ next }) => {
       return isGameRunning && !next.pathname.startsWith("/wiki");
@@ -46,7 +48,7 @@ const Wiki = () => {
 
   return (
     <>
-      <div className="-mt-8">
+      <div lang={wikiLanguage} className="-mt-8">
         <div className="-top-8 sm:-top-4 sticky z-10 mb-2 bg-neutral-50 py-2 font-bold text-lg dark:bg-dark-surface">
           <StartArrowEnd startText={startArticle.title} endText={endArticle.title} />
         </div>

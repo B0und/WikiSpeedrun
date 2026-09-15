@@ -35,7 +35,7 @@ const expectVisuallySoundInterface = async (page: Page, locale: Locale) => {
     );
   });
 
-  await expect(page.locator("html")).toHaveAttribute("lang", locale);
+  await expect(page.locator("html")).toHaveAttribute("lang", locale === "zh" ? "zh-Hans" : locale);
 
   // Catches our UI truncating localized text (baseline-independent): hidden
   // overflow leaves scrollWidth > clientWidth on elements holding text.

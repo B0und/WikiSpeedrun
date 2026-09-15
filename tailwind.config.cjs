@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
@@ -25,20 +24,8 @@ module.exports = {
         "dark-primary": "#e9e6e6",
       },
       fontFamily: {
-        // The script fonts act as per-glyph fallbacks: Noto Sans covers Latin,
-        // Cyrillic and Greek; missing Devanagari/CJK glyphs fall through to the
-        // bundled Noto script families, so no per-locale CSS overrides needed.
-        // They must stay BEFORE the generic keywords: Chromium stops resolving
-        // the family list at a generic (serif/sans-serif), so anything after it
-        // is never used.
-        sans: [
-          "Noto Sans",
-          "Noto Sans Devanagari",
-          "Noto Sans JP",
-          "Noto Sans SC",
-          ...defaultTheme.fontFamily.sans,
-        ],
-        serif: ["App Serif", "Noto Sans Devanagari", "Noto Sans JP", "Noto Sans SC", "serif"],
+        sans: ["var(--font-sans)"],
+        serif: ["var(--font-serif)"],
       },
       animation: {
         "spin-dice": "spin 1s linear infinite",

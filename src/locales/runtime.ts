@@ -1,6 +1,6 @@
 import type { Messages } from "@lingui/core";
 import { i18n } from "@lingui/core";
-import { SCRIPT_FONT_BY_LOCALE, type Locale } from "./config";
+import type { Locale } from "./config";
 
 type CatalogModule = { messages: Messages };
 
@@ -19,11 +19,11 @@ export const activateLocale = async (locale: Locale): Promise<void> => {
   const sequence = ++activationSequence;
 
   try {
-    const [messages] = await Promise.all([loadMessages(locale), SCRIPT_FONT_BY_LOCALE[locale]?.load()]);
+    const messages = await loadMessages(locale);
     if (sequence !== activationSequence) return;
 
     i18n.loadAndActivate({ locale, messages });
-    document.documentElement.lang = locale;
+    document.documentElement.lang = locale === "zh" ? "zh-Hans" : locale;
   } catch (error) {
     if (sequence === activationSequence) throw error;
   }

@@ -1,5 +1,4 @@
-import "@fontsource/noto-sans/400.css";
-import "@fontsource/noto-sans/700.css";
+import "@fontsource-variable/noto-sans/wght.css";
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import React from "react";

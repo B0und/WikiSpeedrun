@@ -8,16 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@fontsource/noto-sans':
+      '@fontsource-variable/noto-sans':
         specifier: 5.3.0
         version: 5.3.0
-      '@fontsource/noto-sans-devanagari':
+      '@fontsource-variable/noto-sans-jp':
         specifier: 5.3.0
         version: 5.3.0
-      '@fontsource/noto-sans-jp':
-        specifier: 5.3.0
-        version: 5.3.0
-      '@fontsource/noto-sans-sc':
+      '@fontsource-variable/noto-sans-sc':
         specifier: 5.3.0
         version: 5.3.0
       '@lingui/core':
@@ -807,17 +804,14 @@ packages:
   '@floating-ui/utils@0.2.2':
     resolution: {integrity: sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==}
 
-  '@fontsource/noto-sans-devanagari@5.3.0':
-    resolution: {integrity: sha512-7khYmipS/5KAUUmrO1DKir8yL8XI00d0+ZE9BqbS8XF1jzObv6CpPOk3UeYxF+Pvi8bx9bBvprBCOcbx/eQWTQ==}
+  '@fontsource-variable/noto-sans-jp@5.3.0':
+    resolution: {integrity: sha512-XVL9GfGBRjj523v9w3Bctu4mNq7E5rUa+AMZm8DK1EM3LAGlKC3DZMvuqkLn4DB4TwwoAjcsJUCiRpUTDzzOkw==}
 
-  '@fontsource/noto-sans-jp@5.3.0':
-    resolution: {integrity: sha512-OZbBzZ8LrFRs2RFT2Cc0HUV2C2ZeSfyEXhDJWR0EZuZaraJfRubpvrFmUnCljuBDEkw8Vn6CE/+nf9dj9b+0lg==}
+  '@fontsource-variable/noto-sans-sc@5.3.0':
+    resolution: {integrity: sha512-lNar1dF7Ik/lHNPo/7JWG0TolXY29LtsqYgMvEysooZ5bsO9uH4shJmRrwyJ3PjyTPljhpMJEK0jDuLSU4vJ1w==}
 
-  '@fontsource/noto-sans-sc@5.3.0':
-    resolution: {integrity: sha512-HeqIlGm0+ohOKxZLuHj1qW6r6avHH0OWdKERAcSDI0RQ+MXrteuLKA+M+5eOA8rYy0MFvOR5AT0fQo2rUkye0Q==}
-
-  '@fontsource/noto-sans@5.3.0':
-    resolution: {integrity: sha512-fBCog2PY7DiVVTEEqtI/Qdinx/knobHYfoGpjFXdfBX5RoJaBp1Prw2G75p0OIsdlMZg3cLo0c+YbIUYOxnQJw==}
+  '@fontsource-variable/noto-sans@5.3.0':
+    resolution: {integrity: sha512-e3ZuxzY9AL2psXPZlhwhnYrHUHv6PMoyK9MQ7croF0CUgURLqu9EMjW7q2FgVLwij1tjLsIHQrnwQ8aUcg4BiA==}
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4836,13 +4830,11 @@ snapshots:
 
   '@floating-ui/utils@0.2.2': {}
 
-  '@fontsource/noto-sans-devanagari@5.3.0': {}
+  '@fontsource-variable/noto-sans-jp@5.3.0': {}
 
-  '@fontsource/noto-sans-jp@5.3.0': {}
+  '@fontsource-variable/noto-sans-sc@5.3.0': {}
 
-  '@fontsource/noto-sans-sc@5.3.0': {}
-
-  '@fontsource/noto-sans@5.3.0': {}
+  '@fontsource-variable/noto-sans@5.3.0': {}
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
