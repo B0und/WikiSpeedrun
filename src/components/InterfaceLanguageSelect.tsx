@@ -2,7 +2,7 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
-import { activateLocale, isLocale, useTranslation } from "../lingui";
+import { isLocale, useTranslation } from "../lingui";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { LANGUAGES } from "./WikiLanguageSelect";
@@ -18,13 +18,12 @@ export const InterfaceLanguageSelect = () => {
   return (
     <Select.Root
       value={language}
-      onValueChange={async (locale) => {
+      onValueChange={(locale) => {
         if (!isLocale(locale)) return;
 
         const matchingLanguage = LANGUAGES.find((language) => language.isoCode === locale);
         if (!matchingLanguage) return;
 
-        await activateLocale(locale);
         setInterfaceLanguage(locale);
         setStartingArticle({ pageid: "", title: "" });
         setEndingArticle({ pageid: "", title: "" });

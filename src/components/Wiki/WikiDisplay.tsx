@@ -7,7 +7,6 @@ import "./styles/vector2022.css";
 import "./styles/overrides.css";
 import clsx from "clsx";
 import purify from "dompurify";
-import { useTranslation } from "../../lingui";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useThemeContext } from "../ThemeContext";
 import { Loader } from "../Loader";
@@ -16,7 +15,6 @@ const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
   const isDarkTheme = colorMode === "dark";
 
-  const t = useTranslation();
   const { handleClickInsideWikiArticle } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();
   const isGameRunning = useIsGameRunning();

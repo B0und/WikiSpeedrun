@@ -1,11 +1,5 @@
-// Shared i18n configuration: the single source of truth for the supported
-// locales and their script-font contracts. App code consumes it through the
-// src/lingui.ts facade; the E2E suites and lingui.config.ts import it directly
-// because the facade statically loads the .po catalogs, which the E2E runner
-// cannot resolve.
-//
-// Locale codes are the same as the BCP-47 language tags used for <html lang>,
-// so no mapping between the interface locale and the document language exists.
+// Shared i18n configuration used by the app runtime, Lingui CLI, and visual
+// tests. Locale codes are also the BCP-47 tags assigned to <html lang>.
 
 export const SUPPORTED_LOCALES = [
   "de",
@@ -28,8 +22,8 @@ export const SUPPORTED_LOCALES = [
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 // Locales whose script needs a dedicated @fontsource family beyond the base
-// "Noto Sans". `load` pulls the CSS on demand (see LocaleProvider) so English
-// users never download script fonts.
+// "Noto Sans". `activateLocale` loads the CSS on demand so English users never
+// download script fonts.
 export const SCRIPT_FONT_BY_LOCALE: Partial<Record<Locale, { load: () => Promise<unknown> }>> = {
   hi: {
     load: () =>
