@@ -26,6 +26,9 @@ const persistInterfaceLocale = async (page: Page, locale: Locale) => {
 const expectVisuallySoundInterface = async (page: Page, locale: Locale) => {
   await page.locator("#root > *").first().waitFor();
   await page.evaluate(async () => {
+    for (const image of document.images) {
+      image.loading = "eager";
+    }
     await document.fonts.ready;
     await Promise.all(
       Array.from(document.images, (image) => (image.complete ? Promise.resolve() : image.decode())),
@@ -89,6 +92,22 @@ for (const locale of SUPPORTED_LOCALES) {
     await expectVisuallySoundInterface(page, locale);
 
     await expect(page).toHaveScreenshot(`settings-${locale}.png`, {
+      animations: "disabled",
+      fullPage: true,
+    });
+
+    await page.goto("/stats");
+    await expectVisuallySoundInterface(page, locale);
+
+    await expect(page).toHaveScreenshot(`statistics-${locale}.png`, {
+      animations: "disabled",
+      fullPage: true,
+    });
+
+    await page.goto("/achievements");
+    await expectVisuallySoundInterface(page, locale);
+
+    await expect(page).toHaveScreenshot(`achievements-${locale}.png`, {
       animations: "disabled",
       fullPage: true,
     });
