@@ -27,3 +27,7 @@ tsconfig.tsbuildinfo
 analyse.html
 __screenshots__
 .tanstack
+test-results/
+
+# lingui compile output
+src/locales/*/messages.mjs

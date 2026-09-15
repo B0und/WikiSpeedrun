@@ -1,10 +1,10 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react";
 import { useHistory, useIsGameRunning } from "../stores/GameStore";
 
 const HistoryTable = () => {
-  const { LL } = useI18nContext();
+  const { _: t } = useLingui();
   const articleHistory = useHistory();
   const isGameRunning = useIsGameRunning();
   const navigate = useNavigate();
@@ -19,13 +19,13 @@ const HistoryTable = () => {
   return (
     <div id="history-scroll" className="scrollbar self-stretch overflow-y-auto pr-3">
       <table className="mb-auto w-full table-auto">
-        <caption className=" text-start text-xl">{LL.History()}</caption>
+        <caption className=" text-start text-xl">{t("History")}</caption>
 
         <thead className="sticky top-0 mt-2 h-9 bg-neutral-50 align-top dark:bg-dark-surface">
           <tr>
-            <th className="text-start">{LL.Article()}</th>
-            <th className="text-start">{LL.Time()}</th>
-            {!isGameRunning && <th className="text-start">{LL["Winning links"]()}</th>}
+            <th className="text-start">{t("Article")}</th>
+            <th className="text-start">{t("Time")}</th>
+            {!isGameRunning && <th className="text-start">{t("Winning links")}</th>}
           </tr>
         </thead>
         <tbody ref={tableRef}>

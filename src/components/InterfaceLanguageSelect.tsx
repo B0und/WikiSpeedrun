@@ -2,18 +2,16 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
-import { useI18nContext } from "../i18n/i18n-react";
-import type { Locales } from "../i18n/i18n-types";
-import { locales } from "../i18n/i18n-util";
-import { loadLocaleAsync } from "../i18n/i18n-util.async";
+import { useLingui } from "@lingui/react";
+import { isLocale } from "../locales/config";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { LANGUAGES } from "./WikiLanguageSelect";
 
-const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => locales.includes(language.isoCode as Locales));
+const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => isLocale(language.isoCode));
 
 export const InterfaceLanguageSelect = () => {
-  const { LL, setLocale } = useI18nContext();
+  const { _: t } = useLingui();
   const language = useInterfaceLanguage();
   const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions();
   const { setEndingArticle, setStartingArticle } = useGameStoreActions();
@@ -21,18 +19,21 @@ export const InterfaceLanguageSelect = () => {
   return (
     <Select.Root
       value={language}
-      onValueChange={async (locale: Locales) => {
-        await loadLocaleAsync(locale);
+      onValueChange={(locale) => {
+        if (!isLocale(locale)) return;
+
+        const matchingLanguage = LANGUAGES.find((language) => language.isoCode === locale);
+        if (!matchingLanguage) return;
+
         setInterfaceLanguage(locale);
         setStartingArticle({ pageid: "", title: "" });
         setEndingArticle({ pageid: "", title: "" });
-        setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
-        setLocale(locale);
+        setWikiLanguage(matchingLanguage.value);
       }}
     >
       <Select.Trigger
         className="inline-flex h-full min-w-fit items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
-        aria-label={LL.Language()}
+        aria-label={t("Language")}
       >
         <Select.Value aria-label={language}>
           <img
@@ -82,7 +83,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     return (
       <Select.Item
         className={clsx(
-          " relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
+          "language-option relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
           className,
         )}
         value={value}

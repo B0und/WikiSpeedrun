@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import type { Achievement as IAchievement } from "../achievements";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
-  const { LL } = useI18nContext();
+  const { _: t } = useLingui();
 
   let currentValue: number;
   if (achievement.targetValue) {
@@ -12,26 +12,21 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     currentValue = achievement.currentValue?.() ?? 0;
   }
 
-  // @ts-expect-error dynamic key generation
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  const achievementTitle = LL[achievement.id]?.title();
+  const achievementTitle = t(`${achievement.id}.title`);
+  let achievementDescription: React.ReactNode = t(`${achievement.id}.description`);
 
-  // @ts-expect-error dynamic key generation
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  let achievementDescription = LL[achievement.id]?.description();
-
-  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]();
+  let achievementAltText = achievement.imgAlt ?? t("Prize trophy");
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
       <span>
-        {LL["Made by Ina_den"]()} {LL["Follow him on"]()}{" "}
+        {t("Made by Ina_den")} {t("Follow him on")}{" "}
         <a href="https://twitter.com/Ina_den_" target="_blank" rel="noreferrer" className="text-primary-blue underline">
-          {LL["twitter (X)"]()}
+          {t("twitter (X)")}
         </a>
       </span>
     );
-    achievementAltText = LL.WaifuAlt();
+    achievementAltText = t("WaifuAlt");
   }
   return (
     <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">

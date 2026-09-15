@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Select, { type StylesConfig } from "react-select";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
 import { useThemeContext } from "./ThemeContext";
@@ -10,14 +10,14 @@ const selectId = "wikiLanguageSelect";
 export const WikiLanguageSelect = () => {
   const { colorMode } = useThemeContext();
   const isDarkMode = colorMode === "dark";
-  const { LL } = useI18nContext();
+  const { _: t } = useLingui();
   const { setWikiLanguage } = useSettingsStoreActions();
   const wikiLanguage = useWikiLanguage();
   const { setEndingArticle, setStartingArticle } = useGameStoreActions();
 
   return (
     <div>
-      <label htmlFor={selectId}>{LL["Select article language"]()}</label>
+      <label htmlFor={selectId}>{t("Select article language")}</label>
       <Select
         key={wikiLanguage}
         inputId={selectId}
@@ -42,6 +42,7 @@ export const WikiLanguageSelect = () => {
           singleValue: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           option: (state) =>
             clsx(
+              "language-option",
               state.isFocused && "dark:bg-[#464242] dark:text-primary-blue",
               isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
             ),
@@ -77,11 +78,11 @@ interface WikiLanguage {
 }
 
 export const LANGUAGES: readonly WikiLanguage[] = [
-  {value: "el", label: "Ελληνικά", isoCode: "gr"},
+  { value: "el", label: "Ελληνικά", isoCode: "el" },
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },
-  { value: "sv", label: "Svenska", isoCode: "se" },
+  { value: "sv", label: "Svenska", isoCode: "sv" },
   { value: "fr", label: "Français", isoCode: "fr" },
   { value: "nl", label: "Nederlands", isoCode: "nl" },
   { value: "ru", label: "Русский", isoCode: "ru" },
@@ -89,7 +90,7 @@ export const LANGUAGES: readonly WikiLanguage[] = [
   { value: "it", label: "Italiano", isoCode: "it" },
   { value: "arz", label: "مصرى", isoCode: "" },
   { value: "pl", label: "Polski", isoCode: "pl" },
-  { value: "ja", label: "日本語", isoCode: "jp" },
+  { value: "ja", label: "日本語", isoCode: "ja" },
   { value: "zh", label: "中文", isoCode: "zh" },
   { value: "vi", label: "Tiếng Việt", isoCode: "vi" },
   { value: "war", label: "Winaray", isoCode: "" },

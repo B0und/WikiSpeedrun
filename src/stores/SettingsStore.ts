@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { detectLocale, type Locale } from "../locales/config";
 import type { LANGUAGES } from "../components/WikiLanguageSelect";
-import type { Locales } from "../i18n/i18n-types";
 
 /*
  Data gets persisted in local storage
@@ -10,34 +10,34 @@ import type { Locales } from "../i18n/i18n-types";
 type WikiLanguage = (typeof LANGUAGES)[number]["value"];
 interface Actions {
   actions: {
-    setInterfaceLanguage: (language: Locales) => void;
+    setInterfaceLanguage: (language: Locale) => void;
     setWikiLanguage: (language: WikiLanguage) => void;
     setSidebarWidth: (width: number) => void;
     set_is_CTRL_F_enabled: (flag: boolean) => void;
   };
 }
-interface Values {
-  interfaceLanguage: Locales;
+export interface SettingsValues {
+  interfaceLanguage: Locale;
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
   is_CTRL_F_enabled: boolean;
 }
 
-const initialState: Values = {
-  interfaceLanguage: "" as Locales,
+const initialState: SettingsValues = {
+  interfaceLanguage: detectLocale(),
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
 };
 
-type SettingsStore = Values & Actions;
+type SettingsStore = SettingsValues & Actions;
 const useSettingsStore = create<SettingsStore>()(
   devtools(
     persist(
       (set) => ({
         ...initialState,
         actions: {
-          setInterfaceLanguage: (language: Locales) => {
+          setInterfaceLanguage: (language: Locale) => {
             set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage");
           },
           setWikiLanguage: (language: WikiLanguage) => {
@@ -54,9 +54,8 @@ const useSettingsStore = create<SettingsStore>()(
       {
         name: "settings",
         storage: createJSONStorage(() => localStorage),
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        partialize: ({ actions, ...rest }: SettingsStore) => rest,
-        version: 1,
+        partialize: ({ actions: _actions, ...rest }: SettingsStore) => rest,
+        version: 2,
       },
     ),
     {

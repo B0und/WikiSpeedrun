@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as Portal from "@radix-ui/react-portal";
 import { useEffect, useState } from "react";
 import { useResetGame } from "../hooks/useResetGame";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react";
 import {
   useCheatingAttempts,
   useClicks,
@@ -18,7 +18,7 @@ import { StopwatchDisplay } from "./StopwatchDisplay";
 import { VictoryConfetti } from "./VictoryConfetti";
 
 export const ResultDialog = () => {
-  const { LL } = useI18nContext();
+  const { _: t } = useLingui();
   const [open, setOpen] = useState(false);
   const resetGame = useResetGame();
 
@@ -36,9 +36,9 @@ export const ResultDialog = () => {
   }, [isWin]);
 
   const resultStats = [
-    { name: LL["Article clicks"](), value: clicks },
-    { name: LL["Cheating attempts"](), value: cheatingAttempts },
-    { name: LL["Missed wins"](), value: missedWins },
+    { name: t("Article clicks"), value: clicks },
+    { name: t("Cheating attempts"), value: cheatingAttempts },
+    { name: t("Missed wins"), value: missedWins },
   ];
 
   return (
@@ -47,13 +47,13 @@ export const ResultDialog = () => {
         <ModalTrigger asChild>
           {isWin && (
             <button type="button" className="p-4 hover:text-primary-blue sm:p-2">
-              {LL.Results()}
+              {t("Results")}
             </button>
           )}
         </ModalTrigger>
         <ModalContent>
           <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
-            {LL.Results()}
+            {t("Results")}
           </ModalTitle>
           <ModalDescription asChild>
             <StartArrowEnd className="mt-[10px] mb-5" startText={startingArticle.title} endText={endingArticle.title} />
@@ -81,10 +81,10 @@ export const ResultDialog = () => {
               className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
               onClick={async () => {
                 await navigator.clipboard.writeText(window.location.href);
-                copyNotification(LL["Copied to clipboard"]());
+                copyNotification(t("Copied to clipboard"));
               }}
             >
-              {LL["Share Result"]()}
+              {t("Share Result")}
             </button>
             <Dialog.Close asChild>
               <button
@@ -92,7 +92,7 @@ export const ResultDialog = () => {
                 onClick={resetGame}
                 className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
               >
-                {LL["Play again"]()}
+                {t("Play again")}
               </button>
             </Dialog.Close>
           </div>

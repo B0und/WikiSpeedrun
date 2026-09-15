@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useState } from "react";
 import { X } from "react-feather";
-import { useI18nContext } from "../../i18n/i18n-react";
+import { useLingui } from "@lingui/react";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
 import type { ArticlePreview } from "./ArticlePreview.types";
@@ -33,7 +33,7 @@ interface ArticlePreviewProps {
 }
 const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
   const { pageid } = props;
-  const { LL } = useI18nContext();
+  const { _: t } = useLingui();
   const [open, setOpen] = useState(false);
 
   const wikiLang = useWikiLanguage();
@@ -77,8 +77,8 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
         </h3>
         {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
         <p className="mt-2 text-base">
-          {isarticlePreviewLoading ? LL.Loading() : articlePreview?.query?.pages?.[pageid].extract}
-          {isError && LL["Couldn't load article preview"]()}
+          {isarticlePreviewLoading ? t("Loading") : articlePreview?.query?.pages?.[pageid].extract}
+          {isError && t("Couldn't load article preview")}
         </p>
 
         <Popover.Close
