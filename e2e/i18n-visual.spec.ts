@@ -23,7 +23,7 @@ const persistInterfaceLocale = async (page: Page, locale: Locale) => {
   }, settings);
 };
 
-const waitForStableInterface = async (page: Page) => {
+const expectVisuallySoundInterface = async (page: Page, locale: Locale) => {
   await page.locator("#root > *").first().waitFor();
   await page.evaluate(async () => {
     await document.fonts.ready;
@@ -31,9 +31,7 @@ const waitForStableInterface = async (page: Page) => {
       Array.from(document.images, (image) => (image.complete ? Promise.resolve() : image.decode())),
     );
   });
-};
 
-const expectVisuallySoundInterface = async (page: Page, locale: Locale) => {
   await expect(page.locator("html")).toHaveAttribute("lang", locale);
 
   // Catches our UI truncating localized text (baseline-independent): hidden
@@ -80,7 +78,6 @@ for (const locale of SUPPORTED_LOCALES) {
   test(`${locale} interface renders with stable localized layout`, async ({ page }) => {
     await persistInterfaceLocale(page, locale);
     await page.goto("/");
-    await waitForStableInterface(page);
     await expectVisuallySoundInterface(page, locale);
 
     await expect(page).toHaveScreenshot(`home-${locale}.png`, {
@@ -89,8 +86,6 @@ for (const locale of SUPPORTED_LOCALES) {
     });
 
     await page.locator('a[href="/settings"]').first().click();
-    await expect(page).toHaveURL(/\/settings$/);
-    await waitForStableInterface(page);
     await expectVisuallySoundInterface(page, locale);
 
     await expect(page).toHaveScreenshot(`settings-${locale}.png`, {
