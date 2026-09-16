@@ -1,6 +1,6 @@
 import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
@@ -73,7 +73,7 @@ function WikiNavigationBlockModal({
   onProceed: () => void;
   onCancel: (() => void) | undefined;
 }) {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   return (
     <ModalRoot open={open} onOpenChange={onCancel}>
       <ModalContent>
@@ -81,7 +81,7 @@ function WikiNavigationBlockModal({
           Confirm action
         </ModalTitle>
         <ModalDescription className="mt-5 mb-5">
-          {t("If you leave, your current progress will be lost")}
+          {t({ id: "If you leave, your current progress will be lost" })}
         </ModalDescription>
         <div className="mt-9 flex flex-wrap justify-end gap-8">
           <button
@@ -89,14 +89,14 @@ function WikiNavigationBlockModal({
             className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={onProceed}
           >
-            {t("Yes")}
+            {t({ id: "Yes" })}
           </button>
           <button
             type="button"
             className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
             onClick={onCancel}
           >
-            {t("No")}
+            {t({ id: "No" })}
           </button>
         </div>
       </ModalContent>

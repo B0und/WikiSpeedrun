@@ -1,7 +1,7 @@
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Link } from "@tanstack/react-router";
 import { GitHub, Moon, Sun } from "react-feather";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { useIsGameRunning } from "../stores/GameStore";
 import { GiveUpModal } from "./ConfirmNavigation";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
@@ -14,13 +14,13 @@ export interface WikiLink {
   path: string;
 }
 const Header = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
 
   const links: WikiLink[] = [
-    { name: t("Play"), path: "/settings" },
-    { name: t("Statistics"), path: "/stats" },
-    { name: t("Achievements"), path: "/achievements" },
-    { name: t("About"), path: "/about" },
+    { name: t({ id: "Play" }), path: "/settings" },
+    { name: t({ id: "Statistics" }), path: "/stats" },
+    { name: t({ id: "Achievements" }), path: "/achievements" },
+    { name: t({ id: "About" }), path: "/about" },
   ];
 
   const isGameRunning = useIsGameRunning();
@@ -59,7 +59,7 @@ const Header = () => {
 };
 
 const WikiLogo = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   const { colorMode } = useThemeContext();
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 
@@ -73,9 +73,9 @@ const WikiLogo = () => {
         height={68}
         className="block h-full"
         src={`${window.location.origin}/${imageSrc}.png`}
-        alt={t(
-          "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds",
-        )}
+        alt={t({
+          id: "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds",
+        })}
       />
     </picture>
   );

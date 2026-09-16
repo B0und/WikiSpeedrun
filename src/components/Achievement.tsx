@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import type { Achievement as IAchievement } from "../achievements";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
 
   let currentValue: number;
   if (achievement.targetValue) {
@@ -12,21 +12,21 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     currentValue = achievement.currentValue?.() ?? 0;
   }
 
-  const achievementTitle = t(`${achievement.id}.title`);
-  let achievementDescription: React.ReactNode = t(`${achievement.id}.description`);
+  const achievementTitle = t({ id: `${achievement.id}.title` });
+  let achievementDescription: React.ReactNode = t({ id: `${achievement.id}.description` });
 
-  let achievementAltText = achievement.imgAlt ?? t("Prize trophy");
+  let achievementAltText = achievement.imgAlt ?? t({ id: "Prize trophy" });
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
       <span>
-        {t("Made by Ina_den")} {t("Follow him on")}{" "}
+        {t({ id: "Made by Ina_den" })} {t({ id: "Follow him on" })}{" "}
         <a href="https://twitter.com/Ina_den_" target="_blank" rel="noreferrer" className="text-primary-blue underline">
-          {t("twitter (X)")}
+          {t({ id: "twitter (X)" })}
         </a>
       </span>
     );
-    achievementAltText = t("WaifuAlt");
+    achievementAltText = t({ id: "WaifuAlt" });
   }
   return (
     <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">

@@ -1,12 +1,12 @@
 import { Resizable } from "re-resizable";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { useClicks } from "../stores/GameStore";
 import { useSettingsStoreActions, useSidebarWidth } from "../stores/SettingsStore";
 import HistoryTable from "./HistoryTable";
 import { Stopwatch } from "./Stopwatch";
 
 const Sidebar = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   const sidebarWidth = useSidebarWidth();
   const { setSidebarWidth } = useSettingsStoreActions();
 
@@ -39,7 +39,7 @@ const Sidebar = () => {
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
           <div className="mt-auto flex w-full shrink-0 flex-wrap items-baseline justify-between overflow-auto pr-6 pb-6 ">
-            <span>{t("Clicks: {0}", { 0: clicks })}</span>
+            <span>{t({ id: "Clicks: {0}", message: `Clicks: ${clicks + 0}` })}</span>
             <Stopwatch />
           </div>
         </div>

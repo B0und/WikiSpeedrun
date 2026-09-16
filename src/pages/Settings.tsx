@@ -15,7 +15,7 @@ import { LabelSwitch } from "../components/Switch";
 import { WikiLanguageSelect } from "../components/WikiLanguageSelect";
 import { useCheckAchievements } from "../hooks/useCheckAchievements";
 import { useResetGame } from "../hooks/useResetGame";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import type { Article } from "../stores/GameStore";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
 import { useIsCtrlFEnabled, useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
@@ -23,7 +23,7 @@ import { useStatsStoreActions } from "../stores/StatisticsStore";
 import { copyNotification } from "../utils/toast";
 
 const Settings = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
   const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } = useGameStoreActions();
@@ -67,10 +67,10 @@ const Settings = () => {
 
   return (
     <div>
-      <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl">{t("Settings")}</h2>
+      <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl">{t({ id: "Settings" })}</h2>
 
       <p className="pt-4 pb-8 dark:text-dark-primary">
-        {t("Start typing and then select values from the dropdown list or press the random button")}
+        {t({ id: "Start typing and then select values from the dropdown list or press the random button" })}
       </p>
 
       <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
@@ -78,8 +78,8 @@ const Settings = () => {
         <RandomModal data={modalData} open={modalOpen} setOpen={setModalOpen} setArticle={modalFunction.fn} />
 
         <SelectArticleSettings
-          label={t("Select starting article")}
-          placeholder={t("Start typing to see options")}
+          label={t({ id: "Select starting article" })}
+          placeholder={t({ id: "Start typing to see options" })}
           required={true}
           setArticle={setStartingArticle}
           defaultValue={startArticle.title}
@@ -91,8 +91,8 @@ const Settings = () => {
         />
 
         <SelectArticleSettings
-          label={t("Select ending article")}
-          placeholder={t("Start typing to see options")}
+          label={t({ id: "Select ending article" })}
+          placeholder={t({ id: "Start typing to see options" })}
           required={true}
           setArticle={setEndingArticle}
           defaultValue={endArticle.title}
@@ -104,7 +104,7 @@ const Settings = () => {
         />
 
         <LabelSwitch
-          switchText={t("Enable search during gameplay")}
+          switchText={t({ id: "Enable search during gameplay" })}
           checked={isCTRLFEnabled}
           onCheckedChange={set_is_CTRL_F_enabled}
         />
@@ -115,17 +115,17 @@ const Settings = () => {
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
             onClick={async () => {
               await navigator.clipboard.writeText(`${window.location.href}&lang=${wikiLang}`);
-              copyNotification(t("Copied to clipboard"));
+              copyNotification(t({ id: "Copied to clipboard" }));
             }}
           >
-            {t("Share settings")}
+            {t({ id: "Share settings" })}
           </button>
           <button
             type="submit"
             disabled={isFetching}
             className="mt-4 w-fit bg-secondary-blue px-10 py-3 hover:bg-primary-blue disabled:grayscale"
           >
-            {t("Play")}
+            {t({ id: "Play" })}
           </button>
         </div>
       </form>
@@ -163,9 +163,9 @@ const SelectArticleSettings: React.FC<Props> = ({
   setModalFunction,
   setModalOpen,
 }) => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   const { increaseSingleRandomPressed } = useStatsStoreActions();
-  const randomFailText = t("Random failed, try again");
+  const randomFailText = t({ id: "Random failed, try again" });
 
   return (
     <div className="flex flex-wrap items-end gap-2 sm:gap-0">

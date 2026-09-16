@@ -1,11 +1,11 @@
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 
 export const Loader = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
 
   return (
     <output aria-live="assertive" data-testid="loading" className="block">
-      {t("Loading")}
+      {t({ id: "Loading" })}
     </output>
   );
 };

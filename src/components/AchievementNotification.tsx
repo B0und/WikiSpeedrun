@@ -1,12 +1,14 @@
-import type { I18n } from "@lingui/core";
 import { toast } from "react-hot-toast";
 import type { Achievement } from "../achievements";
+type AchievementToastText = {
+  title: string;
+  imageAlt: string;
+  unlocked: string;
+};
 
-export const achievementToast = (achievement: Achievement, translate: I18n["_"]) => {
+export const achievementToast = (achievement: Achievement, text: AchievementToastText) => {
   toast(
     (toastInstance) => {
-      const achievementTitle = translate(`${achievement.id}.title`);
-
       return (
         <button
           type="button"
@@ -23,11 +25,11 @@ export const achievementToast = (achievement: Achievement, translate: I18n["_"])
           <img
             className="h-[82px] w-[82px] rounded-md object-cover sm:h-[32px] sm:w-[32px]"
             src={achievement.imgUrl ?? "/trophy.svg"}
-            alt={achievement.imgAlt ?? translate("Prize trophy")}
+            alt={achievement.imgAlt ?? text.imageAlt}
           />
           <div className="flex flex-col gap-1">
-            <p className="text-lg dark:text-[#f8f8f8]">{translate("Achievement unlocked")}</p>
-            <p className="font-semibold dark:text-[#f8f8f8]">{achievementTitle}</p>
+            <p className="text-lg dark:text-[#f8f8f8]">{text.unlocked}</p>
+            <p className="font-semibold dark:text-[#f8f8f8]">{text.title}</p>
           </div>
         </button>
       );

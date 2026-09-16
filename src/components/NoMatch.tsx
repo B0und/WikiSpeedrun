@@ -1,11 +1,11 @@
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 
 const NoMatch = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   return (
     <>
       <h3 className="border-secondary-border border-b-[1px] text-2xl">404</h3>
-      <p className="pt-4 pb-8">{t("This page doesn't exist")}</p>
+      <p className="pt-4 pb-8">{t({ id: "This page doesn't exist" })}</p>
     </>
   );
 };

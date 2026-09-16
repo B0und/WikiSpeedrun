@@ -1,10 +1,10 @@
 import { Achievement } from "../components/Achievement";
 import { InfoTooltip } from "../components/InfoTooltip";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { useAchievements } from "../stores/StatisticsStore";
 
 export const Achievements = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   const achievements = useAchievements();
   const unlockedAchievements = achievements.filter((a) => a.unlocked).length;
 
@@ -12,7 +12,7 @@ export const Achievements = () => {
     <div>
       <div className="mb-4 flex w-full items-baseline justify-between border-secondary-border border-b-[1px] ">
         <InfoTooltip>
-          <h2 className="align-baseline font-serif text-3xl">{t("Achievements")}</h2>
+          <h2 className="align-baseline font-serif text-3xl">{t({ id: "Achievements" })}</h2>
         </InfoTooltip>
         <p className="text-xl">
           {unlockedAchievements}/{achievements.length}

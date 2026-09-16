@@ -2,7 +2,7 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { isLocale } from "../locales/config";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
@@ -11,7 +11,7 @@ import { LANGUAGES } from "./WikiLanguageSelect";
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => isLocale(language.isoCode));
 
 export const InterfaceLanguageSelect = () => {
-  const { _: t } = useLingui();
+  const { t } = useLingui();
   const language = useInterfaceLanguage();
   const { setInterfaceLanguage, setWikiLanguage } = useSettingsStoreActions();
   const { setEndingArticle, setStartingArticle } = useGameStoreActions();
@@ -33,7 +33,7 @@ export const InterfaceLanguageSelect = () => {
     >
       <Select.Trigger
         className="inline-flex h-full min-w-fit items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
-        aria-label={t("Language")}
+        aria-label={t({ id: "Language" })}
       >
         <Select.Value aria-label={language}>
           <img
