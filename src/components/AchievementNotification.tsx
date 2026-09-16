@@ -25,7 +25,7 @@ export const achievementToast = (achievement: Achievement, text: AchievementToas
           <img
             className="h-[82px] w-[82px] rounded-md object-cover sm:h-[32px] sm:w-[32px]"
             src={achievement.imgUrl ?? "/trophy.svg"}
-            alt={achievement.imgAlt ?? text.imageAlt}
+            alt={text.imageAlt}
           />
           <div className="flex flex-col gap-1">
             <p className="text-lg dark:text-[#f8f8f8]">{text.unlocked}</p>

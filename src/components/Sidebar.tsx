@@ -39,7 +39,7 @@ const Sidebar = () => {
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
           <div className="mt-auto flex w-full shrink-0 flex-wrap items-baseline justify-between overflow-auto pr-6 pb-6 ">
-            <span>{t({ id: "Clicks: {0}", message: `Clicks: ${clicks + 0}` })}</span>
+            <span>{t`Clicks: ${clicks}`}</span>
             <Stopwatch />
           </div>
         </div>

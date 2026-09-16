@@ -1,3 +1,5 @@
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import { useGameStore } from "./stores/GameStore";
 import { useStatsStore } from "./stores/StatisticsStore";
 
@@ -5,7 +7,7 @@ type AchievementMetadata = {
   unlocked: boolean;
   id: AchievementId;
   imgUrl?: string;
-  imgAlt?: string;
+  imgAlt?: MessageDescriptor;
 };
 
 type AchievementProgress =
@@ -274,7 +276,11 @@ export const ACHIEVEMENTS_LIST = [
     },
     unlocked: false,
     imgUrl: "/ludwig-ahgren.webp",
-    imgAlt: "Ludwig Ahgren",
+    imgAlt: msg({
+      id: "Ludwig Ahgren",
+      message: "Ludwig Ahgren",
+      comment: "Alt text for the Ego Stroke achievement image (a photo of streamer Ludwig Ahgren)",
+    }),
   },
   {
     id: "SpeedrunWaifu",

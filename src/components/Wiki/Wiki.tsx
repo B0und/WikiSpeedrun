@@ -78,7 +78,7 @@ function WikiNavigationBlockModal({
     <ModalRoot open={open} onOpenChange={onCancel}>
       <ModalContent>
         <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
-          Confirm action
+          {t({ id: "Confirm action", message: "Confirm action" })}
         </ModalTitle>
         <ModalDescription className="mt-5 mb-5">
           {t({ id: "If you leave, your current progress will be lost" })}

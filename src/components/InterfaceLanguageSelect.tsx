@@ -4,6 +4,7 @@ import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
 import { useLingui } from "@lingui/react/macro";
 import { isLocale } from "../locales/config";
+import { dynamicActivate } from "../locales/runtime";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { LANGUAGES } from "./WikiLanguageSelect";
@@ -26,6 +27,9 @@ export const InterfaceLanguageSelect = () => {
         if (!matchingLanguage) return;
 
         setInterfaceLanguage(locale);
+        void dynamicActivate(locale).catch((error: unknown) => {
+          console.error(`Locale activation failed for "${locale}"`, error);
+        });
         setStartingArticle({ pageid: "", title: "" });
         setEndingArticle({ pageid: "", title: "" });
         setWikiLanguage(matchingLanguage.value);

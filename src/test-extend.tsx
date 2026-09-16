@@ -3,9 +3,11 @@ import { I18nProvider } from "@lingui/react";
 import { test as testBase } from "vitest";
 import { render } from "vitest-browser-react";
 import AppProviders from "./components/AppProviders";
-import LocaleProvider from "./components/LocaleProvider";
+import { messages as enMessages } from "./locales/en/messages.po";
 import { testWorker } from "./test_mocks/browser";
 import "./index.css";
+i18n.load("en", enMessages);
+i18n.activate("en");
 
 export const testWithMSW = testBase.extend({
   worker: [
@@ -35,11 +37,9 @@ export const testWithMSW = testBase.extend({
 export const customRender = (ui?: React.ReactNode) => {
   return render(ui, {
     wrapper: () => (
-      <LocaleProvider>
-        <I18nProvider i18n={i18n}>
-          <AppProviders />
-        </I18nProvider>
-      </LocaleProvider>
+      <I18nProvider i18n={i18n}>
+        <AppProviders />
+      </I18nProvider>
     ),
   });
 };

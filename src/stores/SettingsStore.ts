@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { detectLocale, type Locale } from "../locales/config";
+import { detectLocale, isLocale, type Locale } from "../locales/config";
 import type { LANGUAGES } from "../components/WikiLanguageSelect";
 
 /*
@@ -56,6 +56,17 @@ const useSettingsStore = create<SettingsStore>()(
         storage: createJSONStorage(() => localStorage),
         partialize: ({ actions: _actions, ...rest }: SettingsStore) => rest,
         version: 2,
+        // v1 stored an empty-string interfaceLanguage sentinel; keep every
+        // other field intact and fall back to browser detection instead of
+        // discarding the whole store.
+        migrate: (persisted) => {
+          const state = persisted as Partial<SettingsValues>;
+          return {
+            ...state,
+            interfaceLanguage:
+              state.interfaceLanguage && isLocale(state.interfaceLanguage) ? state.interfaceLanguage : detectLocale(),
+          } as SettingsValues;
+        },
       },
     ),
     {
@@ -65,6 +76,7 @@ const useSettingsStore = create<SettingsStore>()(
 );
 
 export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);
+export const getInterfaceLanguage = () => useSettingsStore.getState().interfaceLanguage;
 export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage);
 export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
 export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);

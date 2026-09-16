@@ -1,30 +1,21 @@
-import type { Messages } from "@lingui/core";
 import { i18n } from "@lingui/core";
-import type { Locale } from "./config";
-
-type CatalogModule = { messages: Messages };
-
-const catalogLoaders = import.meta.glob<CatalogModule>("./*/messages.po");
-
-const loadMessages = async (locale: Locale): Promise<Messages> => {
-  const loadCatalog = catalogLoaders[`./${locale}/messages.po`];
-  if (!loadCatalog) throw new Error(`Missing message catalog for locale "${locale}"`);
-
-  return (await loadCatalog()).messages;
-};
+import { getLanguageTag, type Locale } from "./config";
 
 let activationSequence = 0;
 
-export const activateLocale = async (locale: Locale): Promise<void> => {
+export async function dynamicActivate(locale: Locale): Promise<void> {
   const sequence = ++activationSequence;
+  // Dynamic import is required: the module specifier is genuinely
+  // runtime-selected (one compiled .po catalog per locale, emitted as separate
+  // lazy chunks by @lingui/vite-plugin).
+  const { messages } = await import(`./${locale}/messages.po`);
 
-  try {
-    const messages = await loadMessages(locale);
-    if (sequence !== activationSequence) return;
+  // Catalog requests can resolve out of order when the user switches quickly.
+  if (sequence !== activationSequence) return;
 
-    i18n.loadAndActivate({ locale, messages });
-    document.documentElement.lang = locale === "zh" ? "zh-Hans" : locale;
-  } catch (error) {
-    if (sequence === activationSequence) throw error;
-  }
-};
+  i18n.load(locale, messages);
+  i18n.activate(locale);
+  document.documentElement.lang = getLanguageTag(locale);
+}
+
+export { i18n };

@@ -41,6 +41,9 @@ export default defineConfig({
   build: {
     minify: "esbuild",
     sourcemap: false,
+    // es2022 enables top-level await, which main.tsx uses to load the catalog
+    // before the first render.
+    target: "es2022",
   },
   test: {
     include: ["src/**/*.{test,spec}.{ts,tsx}"],

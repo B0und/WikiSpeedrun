@@ -1,6 +1,7 @@
+import { useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
 import type { Achievement as IAchievement } from "../achievements";
-import { useLingui } from "@lingui/react/macro";
+import { messageDescriptors } from "../lingui";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
   const { t } = useLingui();
@@ -12,21 +13,25 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     currentValue = achievement.currentValue?.() ?? 0;
   }
 
-  const achievementTitle = t({ id: `${achievement.id}.title` });
-  let achievementDescription: React.ReactNode = t({ id: `${achievement.id}.description` });
+  const titleId = `${achievement.id}.title` as const;
+  const descriptionId = `${achievement.id}.description` as const;
+  const achievementTitle = t(messageDescriptors[titleId]);
+  let achievementDescription: React.ReactNode = t(messageDescriptors[descriptionId]);
 
-  let achievementAltText = achievement.imgAlt ?? t({ id: "Prize trophy" });
+  let achievementAltText: string = achievement.imgAlt
+    ? t(achievement.imgAlt)
+    : t(messageDescriptors["Prize trophy"]);
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
       <span>
-        {t({ id: "Made by Ina_den" })} {t({ id: "Follow him on" })}{" "}
+        {t(messageDescriptors["Made by Ina_den"])} {t(messageDescriptors["Follow him on"])}{" "}
         <a href="https://twitter.com/Ina_den_" target="_blank" rel="noreferrer" className="text-primary-blue underline">
-          {t({ id: "twitter (X)" })}
+          {t(messageDescriptors["twitter (X)"])}
         </a>
       </span>
     );
-    achievementAltText = t({ id: "WaifuAlt" });
+    achievementAltText = t(messageDescriptors.WaifuAlt);
   }
   return (
     <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">

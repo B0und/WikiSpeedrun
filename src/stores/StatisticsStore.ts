@@ -59,6 +59,11 @@ type PersistedStore = Partial<Omit<StatsValues, "achievements">> & {
 const persistedNumber = (value: unknown, fallback: number) =>
   typeof value === "number" && Number.isFinite(value) ? value : fallback;
 
+// known_wiki_languages serialized as null (or as a non-array) would crash the
+// achievements that call .length on it.
+const persistedLanguageList = (value: unknown, fallback: string[]) =>
+  Array.isArray(value) ? value.filter((language) => typeof language === "string") : fallback;
+
 type StatsStore = StatsValues & Actions;
 
 export const useStatsStore = create<StatsStore>()(
@@ -180,6 +185,10 @@ export const useStatsStore = create<StatsStore>()(
             ...stored,
             actions: currentState.actions,
             achievements: unlockedAchievements,
+            known_wiki_languages: persistedLanguageList(
+              stored?.known_wiki_languages,
+              currentState.known_wiki_languages,
+            ),
             articles_clicked: persistedNumber(stored?.articles_clicked, currentState.articles_clicked),
             article_preview_pressed: persistedNumber(
               stored?.article_preview_pressed,

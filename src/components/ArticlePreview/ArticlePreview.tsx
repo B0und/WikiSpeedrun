@@ -61,7 +61,11 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
             pageid && "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue",
           )}
           onClick={increaseArticlePreviewPressed}
-          aria-label="Article Preview"
+          aria-label={t({
+            id: "Article Preview",
+            message: "Article Preview",
+            comment: "Button that opens a preview popover for the currently selected Wikipedia article",
+          })}
         >
           <HelpCircle />
         </button>
@@ -73,7 +77,12 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
       >
         <h3 className="border-b-[1px] border-b-secondary-border font-bold">
           {articlePreview?.query?.pages?.[pageid].title}
-          {isarticlePreviewLoading && "Please wait"}
+          {isarticlePreviewLoading &&
+            t({
+              id: "Please wait",
+              message: "Please wait",
+              comment: "Shown while an article preview popover is loading",
+            })}
         </h3>
         {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
         <p className="mt-2 text-base">
@@ -83,7 +92,11 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
 
         <Popover.Close
           className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
-          aria-label="Close"
+          aria-label={t({
+            id: "Close",
+            message: "Close",
+            comment: "Button that dismisses the article preview popover",
+          })}
         >
           <X />
         </Popover.Close>

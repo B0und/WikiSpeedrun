@@ -14,586 +14,710 @@ msgstr ""
 "POT-Creation-Date: \n"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:167
-#~ msgid "twitter (X)"
-#~ msgstr "твиттер (X)"
+#: src/lingui.ts:197
+msgid "twitter (X)"
+msgstr "твиттер (X)"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:36
-#~ msgid "About"
-#~ msgstr "Об игре"
+#: src/components/Header.tsx:23
+#: src/lingui.ts:34
+msgid "About"
+msgstr "Об игре"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:168
-#~ msgid "Achievement unlocked"
-#~ msgstr "Достижение разблокировано"
+#: src/lingui.ts:198
+msgid "Achievement unlocked"
+msgstr "Достижение разблокировано"
 
 #. js-lingui-explicit-id
+#: src/components/Header.tsx:22
 #: src/lingui.ts:92
-#~ msgid "Achievements"
-#~ msgstr "Достижения"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:25
-#~ msgid "actually stops while you are loading the next article"
-#~ msgstr "действительно останавливается, пока вы загружаете следующую статью"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:93
-#~ msgid "All of the information is stored locally in your browser (because servers cost money)"
-#~ msgstr "Вся информация хранится локально в вашем браузере (потому что серверы стоят денег)"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:56
-#~ msgid "Article"
-#~ msgstr "Статья"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:45
-#~ msgid "Article clicks"
-#~ msgstr "Клики по статье"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:90
-#~ msgid "Articles clicked:"
-#~ msgstr "Количество кликов по статьям:"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:121
-#~ msgid "AttentiveExplorer.title"
-#~ msgstr "Внимательный исследователь"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:152
-#~ msgid "Bilingual.title"
-#~ msgstr "Двуязычный"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:46
-#~ msgid "Cheating attempts"
-#~ msgstr "Попытки мошенничества"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:73
-#~ msgid "Choose another link"
-#~ msgstr "Выберите другую ссылку"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:84
-#~ msgid "Choose your article"
-#~ msgstr "Выберите свою статью"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:59
-#~ msgid "Clicks: {0}"
-#~ msgstr "Клики: {0}"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:102
-#~ msgid "FirstWin.description"
-#~ msgstr "Завершите свою первую игру"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:50
-#~ msgid "Confirm action"
-#~ msgstr "Подтвердите действие"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:75
-#~ msgid "Copied to clipboard"
-#~ msgstr "Скопировано в буфер обмена"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:78
-#~ msgid "Couldn't load article preview"
-#~ msgstr "Не удалось загрузить предварительный просмотр статьи"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:144
-#~ msgid "Curiosity.title"
-#~ msgstr "Любопытство не убило кошку"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:146
-#~ msgid "CuriousExplorer.title"
-#~ msgstr "Любознательный исследователь"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:169
-#~ msgid "WaifuAlt"
-#~ msgstr "Милая аниме-девушка в синем платье сидит в библиотеке, пока рядом не плавает карта Википедии с прикрепленным к ней таймером спидрана"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:33
-#~ msgid "Dark theme support"
-#~ msgstr "Поддержка темной темы"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:158
-#~ msgid "EgoStroke.title"
-#~ msgstr "Ласка эго"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:175
-#~ msgid "Enable search during gameplay"
-#~ msgstr "Разрешить поиск во время игры"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:153
-#~ msgid "Bilingual.description"
-#~ msgstr "Исследуйте статьи на 2 разных языках"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:155
-#~ msgid "Trilingual.description"
-#~ msgstr "Исследуйте статьи на 3 разных языках"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:157
-#~ msgid "Polyglot.description"
-#~ msgstr "Исследуйте статьи на 5 разных языках"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:136
-#~ msgid "ExplorerOfChance.title"
-#~ msgstr "Исследователь случая"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:18
-#~ msgid "Features"
-#~ msgstr "Особенности"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:101
-#~ msgid "FirstWin.title"
-#~ msgstr "Первая победа"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:166
-#~ msgid "Follow him on"
-#~ msgstr "Подпишитесь на"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:138
-#~ msgid "FortuneSeeker.title"
-#~ msgstr "Искатель удачи"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:140
-#~ msgid "GachaAddict.title"
-#~ msgstr "Зависимый от Gacha"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:142
-#~ msgid "GachaOverlord.title"
-#~ msgstr "Владыка Gacha"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:61
-#~ msgid "Get random article"
-#~ msgstr "Получить случайную статью"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:49
-#~ msgid "Give up"
-#~ msgstr "Сдаться"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:24
-#~ msgid "High precision fair™ timer"
-#~ msgstr "Высокоточный честный™ таймер"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:55
-#~ msgid "History"
-#~ msgstr "История"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:97
-#~ msgid "If you clear your browser data or switch to another browser all of your data will be gone"
-#~ msgstr "Если вы очистите данные своего браузера или переключитесь на другой браузер, все ваши данные будут утеряны."
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:51
-#~ msgid "If you leave, your current progress will be lost"
-#~ msgstr "Если вы уйдете, текущий прогресс будет потерян"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:150
-#~ msgid "InsatiablesReader.title"
-#~ msgstr "Ненасытный читатель"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:126
-#~ msgid "KeenPathfinder.title"
-#~ msgstr "Острый путеводитель"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:29
-#~ msgid "Keeps track of your session progress"
-#~ msgstr "Отслеживает прогресс вашей сессии"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:88
-#~ msgid "Known languages:"
-#~ msgstr "Известные языки:"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:69
-#~ msgid "Language"
-#~ msgstr "Язык"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:77
-#~ msgid "Loading"
-#~ msgstr "Загрузка..."
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:165
-#~ msgid "Made by Ina_den"
-#~ msgstr "Сделано Ina_den."
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:161
-#~ msgid "SpeedrunWaifu.description"
-#~ msgstr "Сделано Ina_den. Подпишитесь на него в твиттере"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:111
-#~ msgid "MasterRunner.title"
-#~ msgstr "Мастер Википедии"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:83
-#~ msgid "Missed wins"
-#~ msgstr "Пропущенные победы"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:122
-#~ msgid "AttentiveExplorer.description"
-#~ msgstr "Пройдите как минимум 10 статей, не пропустив победную ссылку"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:127
-#~ msgid "KeenPathfinder.description"
-#~ msgstr "Пройдите как минимум 25 статей, не пропустив победную ссылку"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:132
-#~ msgid "SharpNavigator.description"
-#~ msgstr "Пройдите как минимум 50 статей, не пропустив победную ссылку"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:70
-#~ msgid "Navigation"
-#~ msgstr "Навигация"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:180
-#~ msgid "No"
-#~ msgstr "Нет"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:60
-#~ msgid "No articles found"
-#~ msgstr "Статьи не найдены"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:71
-#~ msgid "No Cheating!"
-#~ msgstr "Читерство запрещено!"
+#: src/pages/Achievements.tsx:15
+msgid "Achievements"
+msgstr "Достижения"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:23
-#~ msgid "No registration required"
-#~ msgstr "Регистрация не требуется"
+#: src/pages/About.tsx:21
+msgid "actually stops while you are loading the next article"
+msgstr "действительно останавливается, пока вы загружаете следующую статью"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:103
-#~ msgid "NoviceRunner.title"
-#~ msgstr "Бегун новичок"
+#: src/components/InfoTooltip.tsx:17
+#: src/lingui.ts:93
+msgid "All of the information is stored locally in your browser (because servers cost money)"
+msgstr "Вся информация хранится локально в вашем браузере (потому что серверы стоят денег)"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:19
-#~ msgid "Now supports multiple languages"
-#~ msgstr "Теперь поддерживает несколько языков"
+#: src/components/HistoryTable.tsx:26
+#: src/lingui.ts:57
+msgid "Article"
+msgstr "Статья"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:34
-#~ msgid "Open source"
-#~ msgstr "Открытый исходный код"
+#: src/components/ResultDialog.tsx:39
+#: src/lingui.ts:46
+msgid "Article clicks"
+msgstr "Клики по статье"
+
+#. Button that opens a preview popover for the currently selected Wikipedia article
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:64
+msgid "Article Preview"
+msgstr "Предпросмотр статьи"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:35
-#~ msgid "Play"
-#~ msgstr "Играть"
+#: src/lingui.ts:90
+#: src/pages/Stats.tsx:42
+msgid "Articles clicked:"
+msgstr "Количество кликов по статьям:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:48
-#~ msgid "Play again"
-#~ msgstr "Играть снова"
+#: src/lingui.ts:121
+msgid "AttentiveExplorer.title"
+msgstr "Внимательный исследователь"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:156
-#~ msgid "Polyglot.title"
-#~ msgstr "Полиглот"
+#: src/lingui.ts:170
+msgid "Bilingual.title"
+msgstr "Двуязычный"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:147
-#~ msgid "CuriousExplorer.description"
-#~ msgstr "Просмотрите 100 статей"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:149
-#~ msgid "PreviewEnthusiast.description"
-#~ msgstr "Просмотрите 1000 статей"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:151
-#~ msgid "InsatiablesReader.description"
-#~ msgstr "Просмотрите 10000 статей"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:145
-#~ msgid "Curiosity.description"
-#~ msgstr "Просмотрите статью"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:148
-#~ msgid "PreviewEnthusiast.title"
-#~ msgstr "Энтузиаст предварительного просмотра"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:91
-#~ msgid "Previewed Articles:"
-#~ msgstr "Просмотренные статьи:"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:174
-#~ msgid "Prize trophy"
-#~ msgstr "Призовой трофей"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:89
-#~ msgid "Random choices:"
-#~ msgstr "Случайные выборы:"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:72
-#~ msgid "Random failed, try again"
-#~ msgstr "Случайный выбор не удался, попробуйте еще раз"
-
-#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:40
 #: src/lingui.ts:47
-#~ msgid "Results"
-#~ msgstr "Результаты"
+msgid "Cheating attempts"
+msgstr "Попытки мошенничества"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:137
-#~ msgid "ExplorerOfChance.description"
-#~ msgstr "Выберите 10 случайных статей"
+#: src/components/Wiki/WikiLogic.tsx:24
+#: src/lingui.ts:73
+msgid "Choose another link"
+msgstr "Выберите другую ссылку"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:139
-#~ msgid "FortuneSeeker.description"
-#~ msgstr "Выберите 100 случайных статей"
+#: src/components/RandomModal.tsx:22
+#: src/lingui.ts:84
+msgid "Choose your article"
+msgstr "Выберите свою статью"
+
+#: src/components/Sidebar.tsx:42
+msgid "Clicks: {clicks}"
+msgstr "Клики: {clicks}"
+
+#. Button that closes the drawer
+#. Button that closes the modal dialog
+#. Button that dismisses the article preview popover
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Drawer.tsx:37
+#: src/components/Modal.tsx:26
+msgid "Close"
+msgstr "Закрыть"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:141
-#~ msgid "GachaAddict.description"
-#~ msgstr "Выберите 1000 случайных статей"
+#: src/lingui.ts:102
+msgid "FirstWin.description"
+msgstr "Завершите свою первую игру"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:143
-#~ msgid "GachaOverlord.description"
-#~ msgstr "Выберите 10000 случайных статей"
+#: src/components/ConfirmNavigation.tsx:17
+#: src/components/Wiki/Wiki.tsx:81
+#: src/lingui.ts:51
+msgid "Confirm action"
+msgstr "Подтвердите действие"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:68
-#~ msgid "Select article language"
-#~ msgstr "Выберите язык статьи"
+#: src/components/ResultDialog.tsx:84
+#: src/lingui.ts:75
+#: src/pages/Settings.tsx:118
+msgid "Copied to clipboard"
+msgstr "Скопировано в буфер обмена"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:43
-#~ msgid "Select ending article"
-#~ msgstr "Выберите конечную статью"
+#: src/components/ArticlePreview/ArticlePreview.tsx:90
+#: src/lingui.ts:78
+msgid "Couldn't load article preview"
+msgstr "Не удалось загрузить предварительный просмотр статьи"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:42
-#~ msgid "Select starting article"
-#~ msgstr "Выберите начальную статью"
+#: src/lingui.ts:153
+msgid "Curiosity.title"
+msgstr "Любопытство не убило кошку"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:37
-#~ msgid "Settings"
-#~ msgstr "Настройки"
+#: src/lingui.ts:155
+msgid "CuriousExplorer.title"
+msgstr "Любознательный исследователь"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:76
-#~ msgid "Share Result"
-#~ msgstr "Поделиться результатом"
+#: src/lingui.ts:199
+msgid "WaifuAlt"
+msgstr "Милая аниме-девушка в синем платье сидит в библиотеке, пока рядом не плавает карта Википедии с прикрепленным к ней таймером спидрана"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:74
-#~ msgid "Share settings"
-#~ msgstr "Поделиться настройками"
+#: src/lingui.ts:31
+#: src/pages/About.tsx:25
+msgid "Dark theme support"
+msgstr "Поддержка темной темы"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:131
-#~ msgid "SharpNavigator.title"
-#~ msgstr "Острый навигатор"
+#: src/lingui.ts:185
+msgid "EgoStroke.title"
+msgstr "Ласка эго"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:109
-#~ msgid "SpeedDemon.title"
-#~ msgstr "Демон скорости"
+#: src/lingui.ts:205
+#: src/pages/Settings.tsx:107
+msgid "Enable search during gameplay"
+msgstr "Разрешить поиск во время игры"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:115
-#~ msgid "SpeedrunAddict.title"
-#~ msgstr "Зависимый от Википедии"
+#: src/lingui.ts:171
+msgid "Bilingual.description"
+msgstr "Исследуйте статьи на 2 разных языках"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:119
-#~ msgid "SpeedrunGod.title"
-#~ msgstr "Бог Википедии"
+#: src/lingui.ts:176
+msgid "Trilingual.description"
+msgstr "Исследуйте статьи на 3 разных языках"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:105
-#~ msgid "Speedster.title"
-#~ msgstr "Скоростной"
+#: src/lingui.ts:181
+msgid "Polyglot.description"
+msgstr "Исследуйте статьи на 5 разных языках"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:38
-#~ msgid "Start typing and then select values from the dropdown list or press the random button"
-#~ msgstr "Начните вводить, а затем выберите значения из выпадающего списка или нажмите кнопку случайного выбора."
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:44
-#~ msgid "Start typing to see options"
-#~ msgstr "Начните вводить, чтобы увидеть варианты"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:85
-#~ msgid "Statistics"
-#~ msgstr "Статистика"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:159
-#~ msgid "EgoStroke.description"
-#~ msgstr "Спасибо за вдохновение на весь этот проект"
+#: src/lingui.ts:136
+msgid "ExplorerOfChance.title"
+msgstr "Исследователь случая"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:13
-#~ msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
-#~ msgstr "Цель игры - найти путь от начальной статьи Википедии к другой, сделав как можно меньше кликов и затратив как можно меньше времени."
+#: src/pages/About.tsx:14
+msgid "Features"
+msgstr "Особенности"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:58
-#~ msgid "This page doesn't exist"
-#~ msgstr "Эта страница не существует"
+#: src/lingui.ts:101
+msgid "FirstWin.title"
+msgstr "Первая победа"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:57
-#~ msgid "Time"
-#~ msgstr "Время"
+#: src/lingui.ts:196
+msgid "Follow him on"
+msgstr "Подпишитесь на"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:87
-#~ msgid "Total games:"
-#~ msgstr "Всего игр:"
+#: src/lingui.ts:141
+msgid "FortuneSeeker.title"
+msgstr "Искатель удачи"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:146
+msgid "GachaAddict.title"
+msgstr "Зависимый от Gacha"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:148
+msgid "GachaOverlord.title"
+msgstr "Владыка Gacha"
+
+#. js-lingui-explicit-id
+#: src/components/RandomButton/RandomButton.tsx:52
+#: src/lingui.ts:61
+msgid "Get random article"
+msgstr "Получить случайную статью"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:12
+#: src/components/ConfirmNavigation.tsx:28
+#: src/lingui.ts:50
+msgid "Give up"
+msgstr "Сдаться"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:19
+#: src/pages/About.tsx:19
+msgid "High precision fair™ timer"
+msgstr "Высокоточный честный™ таймер"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:22
+#: src/lingui.ts:56
+msgid "History"
+msgstr "История"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:18
+#: src/lingui.ts:97
+msgid "If you clear your browser data or switch to another browser all of your data will be gone"
+msgstr "Если вы очистите данные своего браузера или переключитесь на другой браузер, все ваши данные будут утеряны."
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:20
+#: src/components/Wiki/Wiki.tsx:84
+#: src/lingui.ts:52
+msgid "If you leave, your current progress will be lost"
+msgstr "Если вы уйдете, текущий прогресс будет потерян"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:165
+msgid "InsatiablesReader.title"
+msgstr "Ненасытный читатель"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:126
+msgid "KeenPathfinder.title"
+msgstr "Острый путеводитель"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:27
+#: src/pages/About.tsx:24
+msgid "Keeps track of your session progress"
+msgstr "Отслеживает прогресс вашей сессии"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:88
+#: src/pages/Stats.tsx:40
+msgid "Known languages:"
+msgstr "Известные языки:"
+
+#. js-lingui-explicit-id
+#: src/components/InterfaceLanguageSelect.tsx:40
+#: src/lingui.ts:69
+msgid "Language"
+msgstr "Язык"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:89
+#: src/components/Loader.tsx:8
+#: src/lingui.ts:77
+msgid "Loading"
+msgstr "Загрузка..."
+
+#. Alt text for the Ego Stroke achievement image (a photo of streamer Ludwig Ahgren)
+#. js-lingui-explicit-id
+#: src/achievements.tsx:279
+msgid "Ludwig Ahgren"
+msgstr "Ludwig Ahgren"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:195
+msgid "Made by Ina_den"
+msgstr "Сделано Ina_den."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:191
+msgid "SpeedrunWaifu.description"
+msgstr "Сделано Ina_den. Подпишитесь на него в твиттере"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:111
+msgid "MasterRunner.title"
+msgstr "Мастер Википедии"
+
+#. Button that opens the mobile navigation drawer
+#. js-lingui-explicit-id
+#: src/components/MobileMenu.tsx:19
+msgid "Menu"
+msgstr "Меню"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:41
+#: src/lingui.ts:83
+msgid "Missed wins"
+msgstr "Пропущенные победы"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:122
+msgid "AttentiveExplorer.description"
+msgstr "Пройдите как минимум 10 статей, не пропустив победную ссылку"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:127
+msgid "KeenPathfinder.description"
+msgstr "Пройдите как минимум 25 статей, не пропустив победную ссылку"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:132
+msgid "SharpNavigator.description"
+msgstr "Пройдите как минимум 50 статей, не пропустив победную ссылку"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:70
+msgid "Navigation"
+msgstr "Навигация"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:99
+#: src/lingui.ts:210
+msgid "No"
+msgstr "Нет"
+
+#. js-lingui-explicit-id
+#: src/components/ArticleAutocomplete/ArticleAutocomplete.tsx:83
+#: src/lingui.ts:60
+msgid "No articles found"
+msgstr "Статьи не найдены"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.utils.ts:23
+#: src/lingui.ts:71
+msgid "No Cheating!"
+msgstr "Читерство запрещено!"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:18
+#: src/pages/About.tsx:17
+msgid "No registration required"
+msgstr "Регистрация не требуется"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:103
+msgid "NoviceRunner.title"
+msgstr "Бегун новичок"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:14
+#: src/pages/About.tsx:16
+msgid "Now supports multiple languages"
+msgstr "Теперь поддерживает несколько языков"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:32
+#: src/pages/About.tsx:26
+msgid "Open source"
+msgstr "Открытый исходный код"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:20
+#: src/lingui.ts:33
+#: src/pages/About.tsx:29
+#: src/pages/Settings.tsx:128
+msgid "Play"
+msgstr "Играть"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:95
+#: src/lingui.ts:49
+msgid "Play again"
+msgstr "Играть снова"
+
+#. Shown while an article preview popover is loading
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:81
+msgid "Please wait"
+msgstr "Пожалуйста, подождите"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:180
+msgid "Polyglot.title"
+msgstr "Полиглот"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:156
+msgid "CuriousExplorer.description"
+msgstr "Просмотрите 100 статей"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:161
+msgid "PreviewEnthusiast.description"
+msgstr "Просмотрите 1000 статей"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:166
+msgid "InsatiablesReader.description"
+msgstr "Просмотрите 10000 статей"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:154
-#~ msgid "Trilingual.title"
-#~ msgstr "Трехязычный"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:107
-#~ msgid "WikiExplorer.title"
-#~ msgstr "Исследователь Википедии"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:11
-#~ msgid "Wiki Speedrun Game"
-#~ msgstr "Википедия на скорость"
-
-#. js-lingui-explicit-id
-#: src/lingui.ts:63
-#~ msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
-#~ msgstr "Логотип Wiki speedrun, изображающий сферу Википедии с таймером через букву i (выглядит как большая черная полоса с зеленым текстом времени сверху). Время - 9 секунд и 5 миллисекунд."
+msgid "Curiosity.description"
+msgstr "Просмотрите статью"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:160
-#~ msgid "SpeedrunWaifu.title"
-#~ msgstr "Википедия Вайфу"
+msgid "PreviewEnthusiast.title"
+msgstr "Энтузиаст предварительного просмотра"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:91
+#: src/pages/Stats.tsx:43
+msgid "Previewed Articles:"
+msgstr "Просмотренные статьи:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:204
+msgid "Prize trophy"
+msgstr "Призовой трофей"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:89
+#: src/pages/Stats.tsx:41
+msgid "Random choices:"
+msgstr "Случайные выборы:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:72
+#: src/pages/Settings.tsx:168
+msgid "Random failed, try again"
+msgstr "Случайный выбор не удался, попробуйте еще раз"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:56
+#: src/lingui.ts:48
+msgid "Results"
+msgstr "Результаты"
+
+#. Accessible title of the arrow icon between the starting and ending article names
+#. js-lingui-explicit-id
+#: src/components/StartArrowEnd.tsx:27
+msgid "Right Arrow"
+msgstr "Стрелка вправо"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:137
+msgid "ExplorerOfChance.description"
+msgstr "Выберите 10 случайных статей"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:142
+msgid "FortuneSeeker.description"
+msgstr "Выберите 100 случайных статей"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:147
+msgid "GachaAddict.description"
+msgstr "Выберите 1000 случайных статей"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:149
+msgid "GachaOverlord.description"
+msgstr "Выберите 10000 случайных статей"
+
+#. js-lingui-explicit-id
+#: src/components/WikiLanguageSelect.tsx:20
+#: src/lingui.ts:68
+msgid "Select article language"
+msgstr "Выберите язык статьи"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:41
+#: src/pages/Settings.tsx:94
+msgid "Select ending article"
+msgstr "Выберите конечную статью"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:40
+#: src/pages/Settings.tsx:81
+msgid "Select starting article"
+msgstr "Выберите начальную статью"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:35
+#: src/pages/Settings.tsx:70
+msgid "Settings"
+msgstr "Настройки"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:87
+#: src/lingui.ts:76
+msgid "Share Result"
+msgstr "Поделиться результатом"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:74
+#: src/pages/Settings.tsx:121
+msgid "Share settings"
+msgstr "Поделиться настройками"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:131
+msgid "SharpNavigator.title"
+msgstr "Острый навигатор"
+
+#. Heading of the error screen shown when the app crashes
+#: src/components/FallbackRender.tsx:8
+msgid "Something went wrong:"
+msgstr "Что-то пошло не так:"
+
+#. Link to the project's GitHub repository
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:118
+msgid "Source code on github"
+msgstr "Исходный код на GitHub"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:109
+msgid "SpeedDemon.title"
+msgstr "Демон скорости"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:115
+msgid "SpeedrunAddict.title"
+msgstr "Зависимый от Википедии"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:119
+msgid "SpeedrunGod.title"
+msgstr "Бог Википедии"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:105
+msgid "Speedster.title"
+msgstr "Скоростной"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:36
+#: src/pages/Settings.tsx:73
+msgid "Start typing and then select values from the dropdown list or press the random button"
+msgstr "Начните вводить, а затем выберите значения из выпадающего списка или нажмите кнопку случайного выбора."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:42
+#: src/pages/Settings.tsx:82
+#: src/pages/Settings.tsx:95
+msgid "Start typing to see options"
+msgstr "Начните вводить, чтобы увидеть варианты"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:21
+#: src/lingui.ts:85
+#: src/pages/Stats.tsx:30
+msgid "Statistics"
+msgstr "Статистика"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:186
+msgid "EgoStroke.description"
+msgstr "Спасибо за вдохновение на весь этот проект"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:8
+#: src/pages/About.tsx:10
+msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
+msgstr "Цель игры - найти путь от начальной статьи Википедии к другой, сделав как можно меньше кликов и затратив как можно меньше времени."
+
+#. js-lingui-explicit-id
+#: src/components/NoMatch.tsx:8
+#: src/lingui.ts:59
+msgid "This page doesn't exist"
+msgstr "Эта страница не существует"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:27
+#: src/lingui.ts:58
+msgid "Time"
+msgstr "Время"
+
+#. Button that switches between light and dark mode
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:50
+msgid "Toggle theme"
+msgstr "Переключить тему"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:87
+#: src/pages/Stats.tsx:36
+msgid "Total games:"
+msgstr "Всего игр:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:175
+msgid "Trilingual.title"
+msgstr "Трехязычный"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:107
+msgid "WikiExplorer.title"
+msgstr "Исследователь Википедии"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:6
+#: src/pages/About.tsx:8
+msgid "Wiki Speedrun Game"
+msgstr "Википедия на скорость"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:82
+#: src/lingui.ts:63
+msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
+msgstr "Логотип Wiki speedrun, изображающий сферу Википедии с таймером через букву i (выглядит как большая черная полоса с зеленым текстом времени сверху). Время - 9 секунд и 5 миллисекунд."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:190
+msgid "SpeedrunWaifu.title"
+msgstr "Википедия Вайфу"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:113
-#~ msgid "WikipediaChampion.title"
-#~ msgstr "Чемпион Википедии"
+msgid "WikipediaChampion.title"
+msgstr "Чемпион Википедии"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:117
-#~ msgid "WikipediaLegend.title"
-#~ msgstr "Легенда Википедии"
+msgid "WikipediaLegend.title"
+msgstr "Легенда Википедии"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:104
-#~ msgid "NoviceRunner.description"
-#~ msgstr "Выиграйте 10 игр"
+msgid "NoviceRunner.description"
+msgstr "Выиграйте 10 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:110
-#~ msgid "SpeedDemon.description"
-#~ msgstr "Выиграйте 100 игр"
+msgid "SpeedDemon.description"
+msgstr "Выиграйте 100 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:116
-#~ msgid "SpeedrunAddict.description"
-#~ msgstr "Выиграйте 1000 игр"
+msgid "SpeedrunAddict.description"
+msgstr "Выиграйте 1000 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:106
-#~ msgid "Speedster.description"
-#~ msgstr "Выиграйте 25 игр"
+msgid "Speedster.description"
+msgstr "Выиграйте 25 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:112
-#~ msgid "MasterRunner.description"
-#~ msgstr "Выиграйте 250 игр"
+msgid "MasterRunner.description"
+msgstr "Выиграйте 250 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:118
-#~ msgid "WikipediaLegend.description"
-#~ msgstr "Выиграйте 2500 игр"
+msgid "WikipediaLegend.description"
+msgstr "Выиграйте 2500 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:108
-#~ msgid "WikiExplorer.description"
-#~ msgstr "Выиграйте 50 игр"
+msgid "WikiExplorer.description"
+msgstr "Выиграйте 50 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:114
-#~ msgid "WikipediaChampion.description"
-#~ msgstr "Выиграйте 500 игр"
+msgid "WikipediaChampion.description"
+msgstr "Выиграйте 500 игр"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:120
-#~ msgid "SpeedrunGod.description"
-#~ msgstr "Выиграйте 5000 игр"
+msgid "SpeedrunGod.description"
+msgstr "Выиграйте 5000 игр"
 
 #. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:28
 #: src/lingui.ts:82
-#~ msgid "Winning links"
-#~ msgstr "Победные ссылки"
+msgid "Winning links"
+msgstr "Победные ссылки"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:86
-#~ msgid "Wins:"
-#~ msgstr "Победы:"
+#: src/pages/Stats.tsx:35
+msgid "Wins:"
+msgstr "Победы:"
 
 #. js-lingui-explicit-id
-#: src/lingui.ts:179
-#~ msgid "Yes"
-#~ msgstr "Да"
+#: src/components/Wiki/Wiki.tsx:92
+#: src/lingui.ts:209
+msgid "Yes"
+msgstr "Да"

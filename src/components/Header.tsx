@@ -46,7 +46,13 @@ const Header = () => {
               onClick={switchTheme}
             >
               {colorMode === "light" ? <Sun /> : <Moon />}
-              <VisuallyHidden>Toggle theme</VisuallyHidden>
+              <VisuallyHidden>
+                {t({
+                  id: "Toggle theme",
+                  message: "Toggle theme",
+                  comment: "Button that switches between light and dark mode",
+                })}
+              </VisuallyHidden>
             </button>
           </li>
           <li className="h-full sm:hidden">
@@ -99,6 +105,7 @@ const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Wiki
 };
 
 export const GithubLink = () => {
+  const { t } = useLingui();
   return (
     <a
       target="_blank"
@@ -107,7 +114,13 @@ export const GithubLink = () => {
       rel="noreferrer"
     >
       <GitHub />
-      <VisuallyHidden>Source code on github</VisuallyHidden>
+      <VisuallyHidden>
+        {t({
+          id: "Source code on github",
+          message: "Source code on github",
+          comment: "Link to the project's GitHub repository",
+        })}
+      </VisuallyHidden>
     </a>
   );
 };

@@ -1,6 +1,7 @@
+import { detect, fromNavigator } from "@lingui/detect-locale";
+
 // Shared i18n configuration used by the app runtime, Lingui CLI, and visual
 // tests.
-
 export const SUPPORTED_LOCALES = [
   "de",
   "en",
@@ -21,21 +22,20 @@ export const SUPPORTED_LOCALES = [
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
+export const SOURCE_LOCALE: Locale = "en";
+
 export const isLocale = (locale: string): locale is Locale => SUPPORTED_LOCALES.includes(locale as Locale);
 
-const localeFromLanguageTag = (languageTag: string): Locale | undefined => {
-  const locale = languageTag.trim().toLowerCase().replaceAll("_", "-").split("-")[0];
+export const resolveLocale = (languageTag: string | null | undefined): Locale => {
+  if (!languageTag) return SOURCE_LOCALE;
 
-  return isLocale(locale) ? locale : undefined;
+  const locale = languageTag.trim().toLowerCase().replaceAll("_", "-").split("-")[0];
+  return isLocale(locale) ? locale : SOURCE_LOCALE;
 };
 
 export const detectLocale = (): Locale => {
-  if (typeof navigator === "undefined") return "en";
-
-  for (const language of navigator.languages) {
-    const locale = localeFromLanguageTag(language);
-    if (locale) return locale;
-  }
-
-  return localeFromLanguageTag(navigator.language) ?? "en";
+  if (typeof navigator === "undefined") return SOURCE_LOCALE;
+  return resolveLocale(detect(fromNavigator(), SOURCE_LOCALE));
 };
+
+export const getLanguageTag = (locale: Locale): string => (locale === "zh" ? "zh-Hans" : locale);
