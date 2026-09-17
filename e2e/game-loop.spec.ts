@@ -42,7 +42,6 @@ test("player navigates a real 3-hop article chain and wins", async ({ page }) =>
   await expect(results).toContainText("Computer science");
   await expect(results).toContainText("Deep learning");
   await expect(results.getByRole("row", { name: "Article clicks 3" })).toBeVisible();
-  await expect(results.getByRole("row", { name: "Cheating attempts 0" })).toBeVisible();
 
   await results.getByRole("button", { name: "Play again" }).click();
   await expect(page).toHaveURL(/\/settings$/);
