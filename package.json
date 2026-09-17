@@ -50,11 +50,9 @@
     "zustand": "5.0.15"
   },
   "devDependencies": {
-    "@optimize-lodash/rollup-plugin": "^6.0.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/eslint-plugin-query": "^5.103.1",
     "@tanstack/react-query-devtools": "^5.103.1",
-    "@tanstack/router-cli": "^1.167.38",
     "@tanstack/router-plugin": "^1.168.40",
     "@total-typescript/ts-reset": "0.6.1",
     "@types/canvas-confetti": "^1.9.0",
@@ -79,10 +77,8 @@
     "oxlint": "^1.83.0",
     "oxlint-tsgolint": "^7.0.2001",
     "playwright": "^1.63.0",
-    "postcss": "8.5.28",
     "react-doctor": "^0.9.14",
     "tailwindcss": "4.3.3",
-    "type-fest": "5.10.0",
     "typescript": "7.0.2",
     "vite": "8.3.0",
     "vite-plugin-ejs": "2.0.0",
