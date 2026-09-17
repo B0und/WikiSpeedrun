@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import type { WikiLanguage } from "../components/Wiki/Wiki.types";
-import type { Locales } from "../i18n/i18n-types";
+import { detectLocale, isLocale, type Locale, SOURCE_LOCALE } from "../locales/config";
 
 /*
  Data gets persisted in local storage
@@ -13,7 +13,7 @@ export type WikiArticleFontSize = "small" | "standard" | "large";
 
 interface Actions {
   actions: {
-    setInterfaceLanguage: (language: Locales) => void;
+    setInterfaceLanguage: (language: Locale) => void;
     setWikiLanguage: (language: WikiLanguage) => void;
     setSidebarWidth: (width: number) => void;
     set_is_CTRL_F_enabled: (flag: boolean) => void;
@@ -22,7 +22,7 @@ interface Actions {
   };
 }
 export interface SettingsValues {
-  interfaceLanguage: Locales;
+  interfaceLanguage: Locale;
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
   is_CTRL_F_enabled: boolean;
@@ -31,41 +31,12 @@ export interface SettingsValues {
 }
 
 const initialState: SettingsValues = {
-  interfaceLanguage: "" as Locales,
+  interfaceLanguage: detectLocale(),
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
   wikiArticleWidth: "standard",
   wikiArticleFontSize: "standard",
-};
-
-export const migrateSettingsState = (persistedState: unknown): SettingsValues => {
-  const persisted =
-    typeof persistedState === "object" && persistedState !== null ? (persistedState as Partial<SettingsValues>) : {};
-  const wikiArticleWidth =
-    persisted.wikiArticleWidth === "wide" || persisted.wikiArticleWidth === "standard"
-      ? persisted.wikiArticleWidth
-      : initialState.wikiArticleWidth;
-  const wikiArticleFontSize =
-    persisted.wikiArticleFontSize === "small" ||
-    persisted.wikiArticleFontSize === "standard" ||
-    persisted.wikiArticleFontSize === "large"
-      ? persisted.wikiArticleFontSize
-      : initialState.wikiArticleFontSize;
-
-  return {
-    interfaceLanguage:
-      typeof persisted.interfaceLanguage === "string"
-        ? (persisted.interfaceLanguage as Locales)
-        : initialState.interfaceLanguage,
-    wikiLanguage:
-      typeof persisted.wikiLanguage === "string" ? (persisted.wikiLanguage as WikiLanguage) : initialState.wikiLanguage,
-    sidebarWidth: typeof persisted.sidebarWidth === "number" ? persisted.sidebarWidth : initialState.sidebarWidth,
-    is_CTRL_F_enabled:
-      typeof persisted.is_CTRL_F_enabled === "boolean" ? persisted.is_CTRL_F_enabled : initialState.is_CTRL_F_enabled,
-    wikiArticleWidth,
-    wikiArticleFontSize,
-  };
 };
 
 type SettingsStore = SettingsValues & Actions;
@@ -75,7 +46,7 @@ const useSettingsStore = create<SettingsStore>()(
       (set) => ({
         ...initialState,
         actions: {
-          setInterfaceLanguage: (language: Locales) => {
+          setInterfaceLanguage: (language: Locale) => {
             set(() => ({ interfaceLanguage: language }), false, "setInterfaceLanguage");
           },
           setWikiLanguage: (language: WikiLanguage) => {
@@ -98,10 +69,8 @@ const useSettingsStore = create<SettingsStore>()(
       {
         name: "settings",
         storage: createJSONStorage(() => localStorage),
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        partialize: ({ actions, ...rest }: SettingsStore) => rest,
-        version: 2,
-        migrate: (persistedState) => migrateSettingsState(persistedState) as SettingsStore,
+        partialize: ({ actions: _actions, ...rest }: SettingsStore) => rest,
+        version: 1,
       },
     ),
     {
@@ -110,8 +79,17 @@ const useSettingsStore = create<SettingsStore>()(
   ),
 );
 
+const resolveInterfaceLanguage = (language: unknown): Locale => {
+  // Persisted settings can outlive catalog renames and contain a locale that
+  // no longer maps to a catalog. Fall back at the store interface so startup
+  // can always activate a valid catalog without resetting unrelated settings.
+  return typeof language === "string" && isLocale(language) ? language : SOURCE_LOCALE;
+};
+
 export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);
-export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage);
+export const getInterfaceLanguage = () => resolveInterfaceLanguage(useSettingsStore.getState().interfaceLanguage);
+export const useInterfaceLanguage = () =>
+  useSettingsStore((state) => resolveInterfaceLanguage(state.interfaceLanguage));
 export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
 export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);
 export const useIsCtrlFEnabled = () => useSettingsStore((state) => state.is_CTRL_F_enabled);

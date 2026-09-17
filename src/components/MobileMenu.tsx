@@ -1,10 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "react-feather";
+import { useLingui } from "@lingui/react/macro";
 import { useIsGameRunning } from "../stores/GameStore";
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "./Drawer";
 import { GithubLink, type WikiLink } from "./Header";
 
 export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
+  const { t } = useLingui();
   const isGameRunning = useIsGameRunning();
 
   return (
@@ -14,7 +16,7 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
           {!isGameRunning && (
             <button
               type="button"
-              aria-label="Menu"
+              aria-label={t({ id: "Menu", message: "Menu", comment: "Button that opens the mobile navigation drawer" })}
               className="-ml-3 bg-inherit p-3 hover:text-primary-blue focus-visible:text-primary-blue "
             >
               <Menu />

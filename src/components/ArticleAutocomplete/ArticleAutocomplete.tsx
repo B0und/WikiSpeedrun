@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import Select, { type InputActionMeta, type StylesConfig } from "react-select";
 import useDebounce from "../../hooks/useDebounce";
-import { useI18nContext } from "../../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 import type { Article } from "../../stores/GameStore";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useThemeContext } from "../ThemeContext";
@@ -42,7 +42,7 @@ interface AutocompleteOption {
 const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   const { label, placeholder, required, onSelect, defaultValue, selectId } = props;
   const language = useWikiLanguage();
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
   const [inputText, setInputText] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const { colorMode } = useThemeContext();
@@ -80,7 +80,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     if (obj.inputValue.trim().length === 0) {
       return null;
     }
-    return LL["No articles found"]();
+    return t({ id: "No articles found" });
   };
 
   return (

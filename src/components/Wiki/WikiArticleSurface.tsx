@@ -4,8 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { WikiArticleFontSize } from "../../stores/SettingsStore";
 import articleAdaptationsUrl from "./styles/article-adaptations.css?url";
+import type { WikiArticleData, WikiArticleHostStyle, WikiArticleStyleState } from "./Wiki.types";
 import { getWikiArticleKey } from "./WikiDisplay.utils";
-import type { WikiArticleHostStyle, WikiArticleData, WikiArticleStyleState } from "./Wiki.types";
 
 export interface WikiArticleSurfaceProps {
   article: WikiArticleData;
@@ -130,6 +130,7 @@ export const WikiArticleSurface = ({
             >
               <main className="mw-body">
                 <div id="bodyContent" className="vector-body">
+                  {/* biome-ignore lint/a11y/noStaticElementInteractions: the article root only delegates click and bubbled key events to anchors inside sanitized Wikipedia HTML; it is not an interactive widget itself. */}
                   <div
                     id="mw-content-text"
                     className="mw-body-content"

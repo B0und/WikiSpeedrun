@@ -1,11 +1,10 @@
 import { userEvent } from "@vitest/browser/context";
 import { expect } from "vitest";
-import { render } from "vitest-browser-react";
-import { testWithMSW } from "../../test-extend";
-import AppProviders, { router } from "../AppProviders";
+import { customRender, testWithMSW } from "../../test-extend";
+import { router } from "../AppProviders";
 
 testWithMSW("updates and retains the live article presentation", async () => {
-  const screen = render(<AppProviders />);
+  const screen = customRender();
   await expect.poll(() => document.querySelector('a[href="/settings"]')?.textContent).toBe("Play");
   await router.navigate({
     to: "/wiki/$",

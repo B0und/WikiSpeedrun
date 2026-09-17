@@ -33,6 +33,7 @@ const WikiDisplay = () => {
       } else {
         for (const link of visibleWinningLinks) {
           link.style.color = "#aa6600";
+          // eslint-disable-next-line lingui/no-unlocalized-strings -- CSS color value, not user-facing copy
           link.style.border = "1px solid #aa6600";
           link.style.fontWeight = "bold";
         }

@@ -1,11 +1,11 @@
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 
 const NoMatch = () => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
   return (
     <>
       <h3 className="border-secondary-border border-b-[1px] text-2xl">404</h3>
-      <p className="pt-4 pb-8">{LL["This page doesn't exist"]()}</p>
+      <p className="pt-4 pb-8">{t({ id: "This page doesn't exist" })}</p>
     </>
   );
 };

@@ -27,3 +27,4 @@ tsconfig.tsbuildinfo
 analyse.html
 __screenshots__
 .tanstack
+test-results/

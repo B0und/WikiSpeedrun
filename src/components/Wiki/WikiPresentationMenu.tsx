@@ -1,23 +1,24 @@
+import { useLingui } from "@lingui/react/macro";
 import * as Popover from "@radix-ui/react-popover";
 import clsx from "clsx";
 import { useId } from "react";
 import { Type, X } from "react-feather";
-import { useI18nContext } from "../../i18n/i18n-react";
 import {
-  type WikiArticleFontSize,
-  type WikiArticleWidth,
   useSettingsStoreActions,
   useWikiArticleFontSize,
   useWikiArticleWidth,
+  type WikiArticleFontSize,
+  type WikiArticleWidth,
 } from "../../stores/SettingsStore";
 import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from "../Drawer";
 
 const triggerClassName =
+  // eslint-disable-next-line lingui/no-unlocalized-strings -- CSS utility classes, not user-facing copy
   "flex h-full w-12 items-center justify-center hover:text-primary-blue focus-visible:text-primary-blue";
 
 export const WikiPresentationMenu = () => {
-  const { LL } = useI18nContext();
-  const triggerLabel = LL["Article appearance"]();
+  const { t } = useLingui();
+  const triggerLabel = t({ id: "Article appearance" });
 
   return (
     <>
@@ -38,7 +39,7 @@ export const WikiPresentationMenu = () => {
               <WikiPresentationControls />
               <Popover.Close
                 className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
-                aria-label="Close"
+                aria-label={t({ id: "Close" })}
               >
                 <X />
               </Popover.Close>
@@ -67,26 +68,26 @@ export const WikiPresentationMenu = () => {
 };
 
 const WikiPresentationControls = () => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
   const fontSize = useWikiArticleFontSize();
   const width = useWikiArticleWidth();
   const { setWikiArticleFontSize, setWikiArticleWidth } = useSettingsStoreActions();
   const controlId = useId();
 
   const fontOptions: ReadonlyArray<{ value: WikiArticleFontSize; label: string }> = [
-    { value: "small", label: LL.Small() },
-    { value: "standard", label: LL.Standard() },
-    { value: "large", label: LL.Large() },
+    { value: "small", label: t({ id: "Small" }) },
+    { value: "standard", label: t({ id: "Standard" }) },
+    { value: "large", label: t({ id: "Large" }) },
   ];
   const widthOptions: ReadonlyArray<{ value: WikiArticleWidth; label: string }> = [
-    { value: "standard", label: LL.Compact() },
-    { value: "wide", label: LL.Wide() },
+    { value: "standard", label: t({ id: "Compact" }) },
+    { value: "wide", label: t({ id: "Wide" }) },
   ];
 
   return (
     <div className="flex flex-col gap-6">
       <fieldset>
-        <legend className="mb-2 font-semibold">{LL["Text size"]()}</legend>
+        <legend className="mb-2 font-semibold">{t({ id: "Text size" })}</legend>
         <div className="flex flex-col gap-2">
           {fontOptions.map((option) => (
             <label
@@ -111,7 +112,7 @@ const WikiPresentationControls = () => {
       </fieldset>
 
       <fieldset>
-        <legend className="mb-2 font-semibold">{LL["Content width"]()}</legend>
+        <legend className="mb-2 font-semibold">{t({ id: "Content width" })}</legend>
         <div className="flex flex-col gap-2">
           {widthOptions.map((option) => (
             <label

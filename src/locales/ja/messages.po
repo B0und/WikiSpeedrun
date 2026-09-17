@@ -1,0 +1,765 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: \n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+"POT-Creation-Date: \n"
+"Language: \n"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:21
+msgid "Article appearance"
+msgstr "記事の表示"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:78
+msgid "Small"
+msgstr "小"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:79
+msgid "Standard"
+msgstr "標準"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:80
+msgid "Large"
+msgstr "大"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:83
+msgid "Compact"
+msgstr "コンパクト"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:84
+msgid "Wide"
+msgstr "ワイド"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:90
+msgid "Text size"
+msgstr "文字サイズ"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:115
+msgid "Content width"
+msgstr "コンテンツの幅"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:197
+msgid "twitter (X)"
+msgstr "Twitter（X）"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:24
+#: src/lingui.ts:34
+msgid "About"
+msgstr "約"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:198
+msgid "Achievement unlocked"
+msgstr "実績解除"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:23
+#: src/lingui.ts:92
+#: src/pages/Achievements.tsx:15
+msgid "Achievements"
+msgstr "実績"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:23
+#: src/pages/About.tsx:21
+msgid "actually stops while you are loading the next article"
+msgstr "次の記事を読み込んでいる間は実際に停止します"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:17
+#: src/lingui.ts:93
+msgid "All of the information is stored locally in your browser (because servers cost money)"
+msgstr "すべての情報はローカルでブラウザに保存されます（サーバーには費用がかかります）"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:26
+#: src/lingui.ts:57
+msgid "Article"
+msgstr "記事"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:39
+#: src/lingui.ts:46
+msgid "Article clicks"
+msgstr "記事クリック数"
+
+#. Button that opens a preview popover for the currently selected Wikipedia article
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:64
+msgid "Article Preview"
+msgstr "記事プレビュー"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:90
+#: src/pages/Stats.tsx:42
+msgid "Articles clicked:"
+msgstr "クリックされた記事："
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:121
+msgid "AttentiveExplorer.title"
+msgstr "注意深い探検家"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:170
+msgid "Bilingual.title"
+msgstr "バイリンガル"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:40
+#: src/lingui.ts:47
+msgid "Cheating attempts"
+msgstr "チートの試み"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiLogic.tsx:28
+#: src/lingui.ts:73
+msgid "Choose another link"
+msgstr "別のリンクを選択"
+
+#. js-lingui-explicit-id
+#: src/components/RandomModal.tsx:22
+#: src/lingui.ts:84
+msgid "Choose your article"
+msgstr "記事を選択してください"
+
+#: src/components/Sidebar.tsx:42
+msgid "Clicks: {clicks}"
+msgstr "クリック数：{clicks}"
+
+#. Button that closes the drawer
+#. Button that closes the modal dialog
+#. Button that dismisses the article preview popover
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Drawer.tsx:37
+#: src/components/Modal.tsx:26
+#: src/components/Wiki/WikiPresentationMenu.tsx:42
+msgid "Close"
+msgstr "閉じる"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:102
+msgid "FirstWin.description"
+msgstr "最初のスピードランを完了する"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:17
+#: src/components/Wiki/Wiki.tsx:81
+#: src/lingui.ts:51
+msgid "Confirm action"
+msgstr "アクションを確認"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:84
+#: src/lingui.ts:75
+#: src/pages/Settings.tsx:118
+msgid "Copied to clipboard"
+msgstr "クリップボードにコピーされました"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:90
+#: src/lingui.ts:78
+msgid "Couldn't load article preview"
+msgstr "記事のプレビューを読み込めませんでした"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:153
+msgid "Curiosity.title"
+msgstr "好奇心"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:155
+msgid "CuriousExplorer.title"
+msgstr "好奇心旺盛な探検家"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:199
+msgid "WaifuAlt"
+msgstr "ブルーのドレスを着たかわいいアニメの女の子が図書館に座っている間、近くにはスピードランタイマー付きのウィキペディアの地球儀が浮かんでいます"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:31
+#: src/pages/About.tsx:25
+msgid "Dark theme support"
+msgstr "ダークテーマのサポート"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:185
+msgid "EgoStroke.title"
+msgstr "自尊心を満たす"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:205
+#: src/pages/Settings.tsx:107
+msgid "Enable search during gameplay"
+msgstr "ゲーム中に検索を有効にする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:171
+msgid "Bilingual.description"
+msgstr "2つの異なる言語で記事を探索する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:176
+msgid "Trilingual.description"
+msgstr "3つの異なる言語で記事を探索する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:181
+msgid "Polyglot.description"
+msgstr "5つの異なる言語で記事を探索する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:136
+msgid "ExplorerOfChance.title"
+msgstr "チャンスの探検家"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:13
+#: src/pages/About.tsx:14
+msgid "Features"
+msgstr "特徴"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:101
+msgid "FirstWin.title"
+msgstr "最初の勝利"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:196
+msgid "Follow him on"
+msgstr "彼をフォローする："
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:141
+msgid "FortuneSeeker.title"
+msgstr "幸運を求める者"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:146
+msgid "GachaAddict.title"
+msgstr "ガチャ中毒者"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:148
+msgid "GachaOverlord.title"
+msgstr "ガチャの支配者"
+
+#. js-lingui-explicit-id
+#: src/components/RandomButton/RandomButton.tsx:52
+#: src/lingui.ts:61
+msgid "Get random article"
+msgstr "ランダムな記事を取得"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:12
+#: src/components/ConfirmNavigation.tsx:28
+#: src/lingui.ts:50
+msgid "Give up"
+msgstr "あきらめる"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:19
+#: src/pages/About.tsx:19
+msgid "High precision fair™ timer"
+msgstr "高精度のフェアタイマー"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:22
+#: src/lingui.ts:56
+msgid "History"
+msgstr "履歴"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:18
+#: src/lingui.ts:97
+msgid "If you clear your browser data or switch to another browser all of your data will be gone"
+msgstr "ブラウザのデータを消去するか、別のブラウザに切り替えると、すべてのデータが失われます。"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:20
+#: src/components/Wiki/Wiki.tsx:84
+#: src/lingui.ts:52
+msgid "If you leave, your current progress will be lost"
+msgstr "終了すると、現在の進行状況が失われます"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:165
+msgid "InsatiablesReader.title"
+msgstr "欲張りな読者"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:126
+msgid "KeenPathfinder.title"
+msgstr "熱心なパスファインダー"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:27
+#: src/pages/About.tsx:24
+msgid "Keeps track of your session progress"
+msgstr "セッションの進行状況を追跡します"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:88
+#: src/pages/Stats.tsx:40
+msgid "Known languages:"
+msgstr "既知の言語："
+
+#. js-lingui-explicit-id
+#: src/components/InterfaceLanguageSelect.tsx:40
+#: src/lingui.ts:69
+msgid "Language"
+msgstr "言語"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:89
+#: src/components/Loader.tsx:8
+#: src/lingui.ts:77
+msgid "Loading"
+msgstr "読み込み中..."
+
+#. Alt text for the Ego Stroke achievement image (a photo of streamer Ludwig Ahgren)
+#. js-lingui-explicit-id
+#: src/achievements.tsx:279
+msgid "Ludwig Ahgren"
+msgstr "Ludwig Ahgren"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:195
+msgid "Made by Ina_den"
+msgstr "Ina_denによって作成されました。"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:191
+msgid "SpeedrunWaifu.description"
+msgstr "Ina_denによって作成。Twitterでフォローしてください"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:111
+msgid "MasterRunner.title"
+msgstr "マスターランナー"
+
+#. Button that opens the mobile navigation drawer
+#. js-lingui-explicit-id
+#: src/components/MobileMenu.tsx:19
+msgid "Menu"
+msgstr "メニュー"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:41
+#: src/lingui.ts:83
+msgid "Missed wins"
+msgstr "見逃した勝利"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:122
+msgid "AttentiveExplorer.description"
+msgstr "勝利のリンクを見逃さずに少なくとも10の記事をナビゲートする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:127
+msgid "KeenPathfinder.description"
+msgstr "勝利のリンクを見逃さずに少なくとも25の記事をナビゲートする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:132
+msgid "SharpNavigator.description"
+msgstr "勝利のリンクを見逃さずに少なくとも50の記事をナビゲートする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:70
+msgid "Navigation"
+msgstr "ナビゲーション"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:99
+#: src/lingui.ts:210
+msgid "No"
+msgstr "いいえ"
+
+#. js-lingui-explicit-id
+#: src/components/ArticleAutocomplete/ArticleAutocomplete.tsx:83
+#: src/lingui.ts:60
+msgid "No articles found"
+msgstr "記事が見つかりません"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.utils.ts:23
+#: src/lingui.ts:71
+msgid "No Cheating!"
+msgstr "チート禁止！"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:18
+#: src/pages/About.tsx:17
+msgid "No registration required"
+msgstr "登録不要"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:103
+msgid "NoviceRunner.title"
+msgstr "初心者ランナー"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:14
+#: src/pages/About.tsx:16
+msgid "Now supports multiple languages"
+msgstr "複数の言語に対応しています"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:32
+#: src/pages/About.tsx:26
+msgid "Open source"
+msgstr "オープンソース"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:21
+#: src/lingui.ts:33
+#: src/pages/About.tsx:29
+#: src/pages/Settings.tsx:128
+msgid "Play"
+msgstr "プレイ"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:95
+#: src/lingui.ts:49
+msgid "Play again"
+msgstr "もう一度プレイ"
+
+#. Shown while an article preview popover is loading
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:81
+msgid "Please wait"
+msgstr "お待ちください"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:180
+msgid "Polyglot.title"
+msgstr "ポリグロット"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:156
+msgid "CuriousExplorer.description"
+msgstr "100の記事をプレビューする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:161
+msgid "PreviewEnthusiast.description"
+msgstr "1000の記事をプレビューする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:166
+msgid "InsatiablesReader.description"
+msgstr "10000の記事をプレビューする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:154
+msgid "Curiosity.description"
+msgstr "記事をプレビューする"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:160
+msgid "PreviewEnthusiast.title"
+msgstr "プレビュー愛好家"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:91
+#: src/pages/Stats.tsx:43
+msgid "Previewed Articles:"
+msgstr "プレビューされた記事："
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:204
+msgid "Prize trophy"
+msgstr "賞のトロフィー"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:89
+#: src/pages/Stats.tsx:41
+msgid "Random choices:"
+msgstr "ランダムな選択："
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:72
+#: src/pages/Settings.tsx:168
+msgid "Random failed, try again"
+msgstr "ランダムが失敗しました、もう一度やり直してください"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:56
+#: src/lingui.ts:48
+msgid "Results"
+msgstr "結果"
+
+#. Accessible title of the arrow icon between the starting and ending article names
+#. js-lingui-explicit-id
+#: src/components/StartArrowEnd.tsx:27
+msgid "Right Arrow"
+msgstr "右矢印"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:137
+msgid "ExplorerOfChance.description"
+msgstr "ランダムな記事を10個選択する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:142
+msgid "FortuneSeeker.description"
+msgstr "ランダムな記事を100個選択する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:147
+msgid "GachaAddict.description"
+msgstr "ランダムな記事を1000個選択する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:149
+msgid "GachaOverlord.description"
+msgstr "ランダムな記事を10000個選択する"
+
+#. js-lingui-explicit-id
+#: src/components/WikiLanguageSelect.tsx:20
+#: src/lingui.ts:68
+msgid "Select article language"
+msgstr "記事の言語を選択"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:41
+#: src/pages/Settings.tsx:94
+msgid "Select ending article"
+msgstr "終了記事を選択"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:40
+#: src/pages/Settings.tsx:81
+msgid "Select starting article"
+msgstr "開始記事を選択"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:35
+#: src/pages/Settings.tsx:70
+msgid "Settings"
+msgstr "設定"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:87
+#: src/lingui.ts:76
+msgid "Share Result"
+msgstr "結果を共有"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:74
+#: src/pages/Settings.tsx:121
+msgid "Share settings"
+msgstr "設定を共有"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:131
+msgid "SharpNavigator.title"
+msgstr "鋭いナビゲーター"
+
+#. Heading of the error screen shown when the app crashes
+#: src/components/FallbackRender.tsx:8
+msgid "Something went wrong:"
+msgstr "問題が発生しました："
+
+#. Link to the project's GitHub repository
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:122
+msgid "Source code on github"
+msgstr "GitHub上のソースコード"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:109
+msgid "SpeedDemon.title"
+msgstr "スピードデーモン"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:115
+msgid "SpeedrunAddict.title"
+msgstr "スピードラン中毒者"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:119
+msgid "SpeedrunGod.title"
+msgstr "スピードランの神"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:105
+msgid "Speedster.title"
+msgstr "スピードスター"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:36
+#: src/pages/Settings.tsx:73
+msgid "Start typing and then select values from the dropdown list or press the random button"
+msgstr "入力を開始してから、ドロップダウンリストから値を選択するか、ランダムボタンを押してください。"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:42
+#: src/pages/Settings.tsx:82
+#: src/pages/Settings.tsx:95
+msgid "Start typing to see options"
+msgstr "オプションを表示するには入力を開始してください"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:22
+#: src/lingui.ts:85
+#: src/pages/Stats.tsx:30
+msgid "Statistics"
+msgstr "統計"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:186
+msgid "EgoStroke.description"
+msgstr "このプロジェクト全体のインスピレーションをありがとう"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:8
+#: src/pages/About.tsx:10
+msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
+msgstr "ゲームの目標は、できるだけ少ないクリック数と時間で開始時のウィキペディアの記事から別の記事に移動することです。"
+
+#. js-lingui-explicit-id
+#: src/components/NoMatch.tsx:8
+#: src/lingui.ts:59
+msgid "This page doesn't exist"
+msgstr "このページは存在しません"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:27
+#: src/lingui.ts:58
+msgid "Time"
+msgstr "時間"
+
+#. Button that switches between light and dark mode
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:54
+msgid "Toggle theme"
+msgstr "テーマを切り替える"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:87
+#: src/pages/Stats.tsx:36
+msgid "Total games:"
+msgstr "総ゲーム数："
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:175
+msgid "Trilingual.title"
+msgstr "三ヶ国語"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:107
+msgid "WikiExplorer.title"
+msgstr "ウィキエクスプローラ"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:6
+#: src/pages/About.tsx:8
+msgid "Wiki Speedrun Game"
+msgstr "ウィキスピードランゲーム"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:86
+#: src/lingui.ts:63
+msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
+msgstr "ウィキスピードランロゴは、タイマーが掛かったウィキペディアの球体をフィーチャーしています（大きな黒いストライプに緑の時間テキストが上に見えます）。 時間は9秒5ミリ秒です。"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:190
+msgid "SpeedrunWaifu.title"
+msgstr "Wiki Speedrun Waifu"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:113
+msgid "WikipediaChampion.title"
+msgstr "ウィキペディアチャンピオン"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:117
+msgid "WikipediaLegend.title"
+msgstr "ウィキペディアの伝説"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:104
+msgid "NoviceRunner.description"
+msgstr "10ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:110
+msgid "SpeedDemon.description"
+msgstr "100ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:116
+msgid "SpeedrunAddict.description"
+msgstr "1000ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:106
+msgid "Speedster.description"
+msgstr "25ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:112
+msgid "MasterRunner.description"
+msgstr "250ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:118
+msgid "WikipediaLegend.description"
+msgstr "2500ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:108
+msgid "WikiExplorer.description"
+msgstr "50ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:114
+msgid "WikipediaChampion.description"
+msgstr "500ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:120
+msgid "SpeedrunGod.description"
+msgstr "5000ゲームを勝利する"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:28
+#: src/lingui.ts:82
+msgid "Winning links"
+msgstr "勝利のリンク"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:86
+#: src/pages/Stats.tsx:35
+msgid "Wins:"
+msgstr "勝利："
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:92
+#: src/lingui.ts:209
+msgid "Yes"
+msgstr "はい"

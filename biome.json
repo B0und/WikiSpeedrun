@@ -6,7 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "includes": ["./src/**/*.{ts,tsx}", "vite.config.ts"],
+    "includes": ["./src/**/*.{ts,tsx}", "vite.config.ts", "!./src/routeTree.gen.ts"],
     "ignoreUnknown": false
   },
   "formatter": {
@@ -24,6 +24,7 @@
   },
   "linter": {
     "enabled": true,
+    "includes": ["./src/**/*.{ts,tsx}", "vite.config.ts", "!./src/routeTree.gen.ts"],
     "rules": {
       "recommended": true,
       "nursery": {
@@ -36,7 +37,6 @@
           }
         }
       }
-    },
-    "includes": [ "!./src/i18n/**"]
+    }
   }
 }
