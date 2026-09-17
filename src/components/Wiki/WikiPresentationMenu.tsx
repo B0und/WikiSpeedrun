@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react/macro";
 import * as Popover from "@radix-ui/react-popover";
 import clsx from "clsx";
 import { useId } from "react";
-import { Type, X } from "react-feather";
+import { Settings, X } from "react-feather";
 import {
   useSettingsStoreActions,
   useWikiArticleFontSize,
@@ -22,11 +22,11 @@ export const WikiPresentationMenu = () => {
 
   return (
     <>
-      <div className="md:hidden">
+      <div className="h-full md:hidden">
         <Popover.Root>
           <Popover.Trigger asChild>
             <button type="button" className={triggerClassName} aria-label={triggerLabel}>
-              <Type />
+              <Settings />
             </button>
           </Popover.Trigger>
           <Popover.Portal>
@@ -52,7 +52,7 @@ export const WikiPresentationMenu = () => {
         <Drawer>
           <DrawerTrigger asChild>
             <button type="button" className={triggerClassName} aria-label={triggerLabel}>
-              <Type />
+              <Settings />
             </button>
           </DrawerTrigger>
           <DrawerContent side="right">
