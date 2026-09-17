@@ -1,0 +1,723 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+"POT-Creation-Date: \n"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:197
+msgid "twitter (X)"
+msgstr " twitter (X)"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:23
+#: src/lingui.ts:34
+msgid "About"
+msgstr "About"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:198
+msgid "Achievement unlocked"
+msgstr "Achievement unlocked"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:22
+#: src/lingui.ts:92
+#: src/pages/Achievements.tsx:15
+msgid "Achievements"
+msgstr "Achievements"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:23
+#: src/pages/About.tsx:21
+msgid "actually stops while you are loading the next article"
+msgstr "actually stops while you are loading the next article"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:17
+#: src/lingui.ts:93
+msgid "All of the information is stored locally in your browser (because servers cost money)"
+msgstr "All of the information is stored locally in your browser (because servers cost money)"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:26
+#: src/lingui.ts:57
+msgid "Article"
+msgstr "Article"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:39
+#: src/lingui.ts:46
+msgid "Article clicks"
+msgstr "Article clicks"
+
+#. Button that opens a preview popover for the currently selected Wikipedia article
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:64
+msgid "Article Preview"
+msgstr "Article Preview"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:90
+#: src/pages/Stats.tsx:42
+msgid "Articles clicked:"
+msgstr "Articles clicked:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:121
+msgid "AttentiveExplorer.title"
+msgstr "Attentive Explorer"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:170
+msgid "Bilingual.title"
+msgstr "Bilingual"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:40
+#: src/lingui.ts:47
+msgid "Cheating attempts"
+msgstr "Cheating attempts"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiLogic.tsx:24
+#: src/lingui.ts:73
+msgid "Choose another link"
+msgstr "Choose another link"
+
+#. js-lingui-explicit-id
+#: src/components/RandomModal.tsx:22
+#: src/lingui.ts:84
+msgid "Choose your article"
+msgstr "Choose your article"
+
+#: src/components/Sidebar.tsx:42
+msgid "Clicks: {clicks}"
+msgstr "Clicks: {clicks}"
+
+#. Button that closes the drawer
+#. Button that closes the modal dialog
+#. Button that dismisses the article preview popover
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Drawer.tsx:37
+#: src/components/Modal.tsx:26
+msgid "Close"
+msgstr "Close"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:102
+msgid "FirstWin.description"
+msgstr "Complete your first speedrun"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:17
+#: src/components/Wiki/Wiki.tsx:81
+#: src/lingui.ts:51
+msgid "Confirm action"
+msgstr "Confirm action"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:84
+#: src/lingui.ts:75
+#: src/pages/Settings.tsx:118
+msgid "Copied to clipboard"
+msgstr "Copied to clipboard"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:90
+#: src/lingui.ts:78
+msgid "Couldn't load article preview"
+msgstr "Couldn't load article preview"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:153
+msgid "Curiosity.title"
+msgstr "Curiosity didn't kill the cat"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:155
+msgid "CuriousExplorer.title"
+msgstr "Curious Explorer"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:199
+msgid "WaifuAlt"
+msgstr "Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:31
+#: src/pages/About.tsx:25
+msgid "Dark theme support"
+msgstr "Dark theme support"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:185
+msgid "EgoStroke.title"
+msgstr "Ego Stroke"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:205
+#: src/pages/Settings.tsx:107
+msgid "Enable search during gameplay"
+msgstr "Enable search during gameplay"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:171
+msgid "Bilingual.description"
+msgstr "Explore articles in 2 different languages"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:176
+msgid "Trilingual.description"
+msgstr "Explore articles in 3 different languages"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:181
+msgid "Polyglot.description"
+msgstr "Explore articles in 5 different languages"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:136
+msgid "ExplorerOfChance.title"
+msgstr "Explorer of Chance"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:13
+#: src/pages/About.tsx:14
+msgid "Features"
+msgstr "Features"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:101
+msgid "FirstWin.title"
+msgstr "First Victory"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:196
+msgid "Follow him on"
+msgstr "Follow him on"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:141
+msgid "FortuneSeeker.title"
+msgstr "Fortune Seeker"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:146
+msgid "GachaAddict.title"
+msgstr "Gacha Addict"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:148
+msgid "GachaOverlord.title"
+msgstr "Gacha Overlord"
+
+#. js-lingui-explicit-id
+#: src/components/RandomButton/RandomButton.tsx:52
+#: src/lingui.ts:61
+msgid "Get random article"
+msgstr "Get random article"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:12
+#: src/components/ConfirmNavigation.tsx:28
+#: src/lingui.ts:50
+msgid "Give up"
+msgstr "Give up"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:19
+#: src/pages/About.tsx:19
+msgid "High precision fair™ timer"
+msgstr "High precision fair™ timer"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:22
+#: src/lingui.ts:56
+msgid "History"
+msgstr "History"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:18
+#: src/lingui.ts:97
+msgid "If you clear your browser data or switch to another browser all of your data will be gone"
+msgstr "If you clear your browser data or switch to another browser all of your data will be gone."
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:20
+#: src/components/Wiki/Wiki.tsx:84
+#: src/lingui.ts:52
+msgid "If you leave, your current progress will be lost"
+msgstr "If you leave, your current progress will be lost"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:165
+msgid "InsatiablesReader.title"
+msgstr "Insatiable Reader"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:126
+msgid "KeenPathfinder.title"
+msgstr "Keen Pathfinder"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:27
+#: src/pages/About.tsx:24
+msgid "Keeps track of your session progress"
+msgstr "Keeps track of your session progress"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:88
+#: src/pages/Stats.tsx:40
+msgid "Known languages:"
+msgstr "Known languages:"
+
+#. js-lingui-explicit-id
+#: src/components/InterfaceLanguageSelect.tsx:40
+#: src/lingui.ts:69
+msgid "Language"
+msgstr "Language"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:89
+#: src/components/Loader.tsx:8
+#: src/lingui.ts:77
+msgid "Loading"
+msgstr "Loading..."
+
+#. Alt text for the Ego Stroke achievement image (a photo of streamer Ludwig Ahgren)
+#. js-lingui-explicit-id
+#: src/achievements.tsx:279
+msgid "Ludwig Ahgren"
+msgstr "Ludwig Ahgren"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:195
+msgid "Made by Ina_den"
+msgstr "Made by Ina_den."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:191
+msgid "SpeedrunWaifu.description"
+msgstr "Made by Ina_den. Follow him on twitter"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:111
+msgid "MasterRunner.title"
+msgstr "Master Runner"
+
+#. Button that opens the mobile navigation drawer
+#. js-lingui-explicit-id
+#: src/components/MobileMenu.tsx:19
+msgid "Menu"
+msgstr "Menu"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:41
+#: src/lingui.ts:83
+msgid "Missed wins"
+msgstr "Missed wins"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:122
+msgid "AttentiveExplorer.description"
+msgstr "Navigate through at least 10 articles without missing the winning link"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:127
+msgid "KeenPathfinder.description"
+msgstr "Navigate through at least 25 articles without missing the winning link"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:132
+msgid "SharpNavigator.description"
+msgstr "Navigate through at least 50 articles without missing the winning link"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:70
+msgid "Navigation"
+msgstr "Navigation"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:99
+#: src/lingui.ts:210
+msgid "No"
+msgstr "No"
+
+#. js-lingui-explicit-id
+#: src/components/ArticleAutocomplete/ArticleAutocomplete.tsx:83
+#: src/lingui.ts:60
+msgid "No articles found"
+msgstr "No articles found"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.utils.ts:23
+#: src/lingui.ts:71
+msgid "No Cheating!"
+msgstr "No Cheating!"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:18
+#: src/pages/About.tsx:17
+msgid "No registration required"
+msgstr "No registration required"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:103
+msgid "NoviceRunner.title"
+msgstr "Novice Runner"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:14
+#: src/pages/About.tsx:16
+msgid "Now supports multiple languages"
+msgstr "Now supports multiple languages"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:32
+#: src/pages/About.tsx:26
+msgid "Open source"
+msgstr "Open source"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:20
+#: src/lingui.ts:33
+#: src/pages/About.tsx:29
+#: src/pages/Settings.tsx:128
+msgid "Play"
+msgstr "Play"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:95
+#: src/lingui.ts:49
+msgid "Play again"
+msgstr "Play again"
+
+#. Shown while an article preview popover is loading
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:81
+msgid "Please wait"
+msgstr "Please wait"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:180
+msgid "Polyglot.title"
+msgstr "Polyglot"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:156
+msgid "CuriousExplorer.description"
+msgstr "Preview 100 articles"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:161
+msgid "PreviewEnthusiast.description"
+msgstr "Preview 1000 articles"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:166
+msgid "InsatiablesReader.description"
+msgstr "Preview 10000 articles"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:154
+msgid "Curiosity.description"
+msgstr "Preview an article"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:160
+msgid "PreviewEnthusiast.title"
+msgstr "Preview Enthusiast"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:91
+#: src/pages/Stats.tsx:43
+msgid "Previewed Articles:"
+msgstr "Previewed Articles:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:204
+msgid "Prize trophy"
+msgstr "Prize Trophy"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:89
+#: src/pages/Stats.tsx:41
+msgid "Random choices:"
+msgstr "Random choices:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:72
+#: src/pages/Settings.tsx:168
+msgid "Random failed, try again"
+msgstr "Random failed, try again"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:56
+#: src/lingui.ts:48
+msgid "Results"
+msgstr "Results"
+
+#. Accessible title of the arrow icon between the starting and ending article names
+#. js-lingui-explicit-id
+#: src/components/StartArrowEnd.tsx:27
+msgid "Right Arrow"
+msgstr "Right Arrow"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:137
+msgid "ExplorerOfChance.description"
+msgstr "Select 10 random articles"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:142
+msgid "FortuneSeeker.description"
+msgstr "Select 100 random articles"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:147
+msgid "GachaAddict.description"
+msgstr "Select 1000 random articles"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:149
+msgid "GachaOverlord.description"
+msgstr "Select 10000 random articles"
+
+#. js-lingui-explicit-id
+#: src/components/WikiLanguageSelect.tsx:20
+#: src/lingui.ts:68
+msgid "Select article language"
+msgstr "Select article language"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:41
+#: src/pages/Settings.tsx:94
+msgid "Select ending article"
+msgstr "Select ending article"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:40
+#: src/pages/Settings.tsx:81
+msgid "Select starting article"
+msgstr "Select starting article"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:35
+#: src/pages/Settings.tsx:70
+msgid "Settings"
+msgstr "Settings"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:87
+#: src/lingui.ts:76
+msgid "Share Result"
+msgstr "Share Result"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:74
+#: src/pages/Settings.tsx:121
+msgid "Share settings"
+msgstr "Share settings"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:131
+msgid "SharpNavigator.title"
+msgstr "Sharp Navigator"
+
+#. Heading of the error screen shown when the app crashes
+#: src/components/FallbackRender.tsx:8
+msgid "Something went wrong:"
+msgstr "Something went wrong:"
+
+#. Link to the project's GitHub repository
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:118
+msgid "Source code on github"
+msgstr "Source code on github"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:109
+msgid "SpeedDemon.title"
+msgstr "Speed Demon"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:115
+msgid "SpeedrunAddict.title"
+msgstr "Speedrun Addict"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:119
+msgid "SpeedrunGod.title"
+msgstr "Speedrun God"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:105
+msgid "Speedster.title"
+msgstr "Speedster"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:36
+#: src/pages/Settings.tsx:73
+msgid "Start typing and then select values from the dropdown list or press the random button"
+msgstr "Start typing and then select values from the dropdown list or press the random button."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:42
+#: src/pages/Settings.tsx:82
+#: src/pages/Settings.tsx:95
+msgid "Start typing to see options"
+msgstr "Start typing to see options"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:21
+#: src/lingui.ts:85
+#: src/pages/Stats.tsx:30
+msgid "Statistics"
+msgstr "Statistics"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:186
+msgid "EgoStroke.description"
+msgstr "Thank you for inspiring this whole project"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:8
+#: src/pages/About.tsx:10
+msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
+msgstr "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time."
+
+#. js-lingui-explicit-id
+#: src/components/NoMatch.tsx:8
+#: src/lingui.ts:59
+msgid "This page doesn't exist"
+msgstr "This page doesn't exist"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:27
+#: src/lingui.ts:58
+msgid "Time"
+msgstr "Time"
+
+#. Button that switches between light and dark mode
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:50
+msgid "Toggle theme"
+msgstr "Toggle theme"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:87
+#: src/pages/Stats.tsx:36
+msgid "Total games:"
+msgstr "Total games:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:175
+msgid "Trilingual.title"
+msgstr "Trilingual"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:107
+msgid "WikiExplorer.title"
+msgstr "Wiki Explorer"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:6
+#: src/pages/About.tsx:8
+msgid "Wiki Speedrun Game"
+msgstr "Wiki Speedrun Game"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:82
+#: src/lingui.ts:63
+msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
+msgstr "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across it. (looks like a big black stripe with a green time text on top). The time is 9 seconds and 5 milliseconds."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:190
+msgid "SpeedrunWaifu.title"
+msgstr "Wiki Speedrun Waifu"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:113
+msgid "WikipediaChampion.title"
+msgstr "Wikipedia Champion"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:117
+msgid "WikipediaLegend.title"
+msgstr "Wikipedia Legend"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:104
+msgid "NoviceRunner.description"
+msgstr "Win 10 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:110
+msgid "SpeedDemon.description"
+msgstr "Win 100 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:116
+msgid "SpeedrunAddict.description"
+msgstr "Win 1000 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:106
+msgid "Speedster.description"
+msgstr "Win 25 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:112
+msgid "MasterRunner.description"
+msgstr "Win 250 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:118
+msgid "WikipediaLegend.description"
+msgstr "Win 2500 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:108
+msgid "WikiExplorer.description"
+msgstr "Win 50 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:114
+msgid "WikipediaChampion.description"
+msgstr "Win 500 games"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:120
+msgid "SpeedrunGod.description"
+msgstr "Win 5000 games"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:28
+#: src/lingui.ts:82
+msgid "Winning links"
+msgstr "Winning links"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:86
+#: src/pages/Stats.tsx:35
+msgid "Wins:"
+msgstr "Wins:"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:92
+#: src/lingui.ts:209
+msgid "Yes"
+msgstr "Yes"

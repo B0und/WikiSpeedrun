@@ -4,9 +4,39 @@
 
 :root {
   --achievement-size: 420px;
+  --font-sans: "Noto Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "App Serif", "Noto Sans Variable", serif;
+}
+
+[lang="ja"] {
+  --font-sans: "Noto Sans Variable", "Noto Sans JP Variable", sans-serif;
+  --font-serif: "App Serif", "Noto Sans JP Variable", sans-serif;
+  font-family: var(--font-sans);
+}
+
+[lang="zh"],
+[lang="zh-Hans"],
+[lang^="zh-Hans-"] {
+  --font-sans: "Noto Sans Variable", "Noto Sans SC Variable", sans-serif;
+  --font-serif: "App Serif", "Noto Sans SC Variable", sans-serif;
+  font-family: var(--font-sans);
 }
 
 @layer base {
+  /* Keep supported Latin, Greek, and Cyrillic headings on the platform
+     serif. Devanagari and CJK fall through to the language-aware webfont. */
+  @font-face {
+    font-family: "App Serif";
+    src:
+      local("Georgia"),
+      local("Cambria"),
+      local("Times New Roman"),
+      local("Times"),
+      local("DejaVu Serif"),
+      local("Liberation Serif");
+    unicode-range: U+0000-052F, U+1E00-2FFF;
+  }
+
   html,
   body,
   #root {
@@ -31,6 +61,10 @@
 }
 
 @layer components {
+  .language-option {
+    font-family: system-ui, sans-serif;
+  }
+
   .stopwatch {
     background-image: linear-gradient(180deg, #4acd79, #1cad4a);
     background-size: 100%;

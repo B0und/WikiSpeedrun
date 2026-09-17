@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
@@ -25,7 +24,8 @@ module.exports = {
         "dark-primary": "#e9e6e6",
       },
       fontFamily: {
-        sans: ["Noto Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-sans)"],
+        serif: ["var(--font-serif)"],
       },
       animation: {
         "spin-dice": "spin 1s linear infinite",

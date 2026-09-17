@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
 
+import { lingui } from "@lingui/vite-plugin";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -17,7 +18,12 @@ export default defineConfig({
       autoCodeSplitting: true,
       verboseFileRoutes: false,
     }),
-    react(),
+    react({
+      babel: {
+        plugins: ["@lingui/babel-plugin-lingui-macro"],
+      },
+    }),
+    lingui(),
     reactClickToComponent(),
     svgr(),
     ViteEjsPlugin((config) => ({
@@ -35,13 +41,17 @@ export default defineConfig({
   build: {
     minify: "esbuild",
     sourcemap: false,
+    // es2022 enables top-level await, which main.tsx uses to load the catalog
+    // before the first render.
+    target: "es2022",
   },
   test: {
-    setupFiles: ['./src/setupFile.ts'],
+    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    setupFiles: ["./src/setupFile.ts"],
     browser: {
       enabled: true,
       provider: "playwright",
-      
+
       viewport: {
         width: 1920,
         height: 1080,

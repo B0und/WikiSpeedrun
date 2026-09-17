@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useState } from "react";
 import { X } from "react-feather";
-import { useI18nContext } from "../../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
 import type { ArticlePreview } from "./ArticlePreview.types";
@@ -33,7 +33,7 @@ interface ArticlePreviewProps {
 }
 const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
   const { pageid } = props;
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
   const [open, setOpen] = useState(false);
 
   const wikiLang = useWikiLanguage();
@@ -61,7 +61,11 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
             pageid && "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue",
           )}
           onClick={increaseArticlePreviewPressed}
-          aria-label="Article Preview"
+          aria-label={t({
+            id: "Article Preview",
+            message: "Article Preview",
+            comment: "Button that opens a preview popover for the currently selected Wikipedia article",
+          })}
         >
           <HelpCircle />
         </button>
@@ -73,17 +77,26 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
       >
         <h3 className="border-b-[1px] border-b-secondary-border font-bold">
           {articlePreview?.query?.pages?.[pageid].title}
-          {isarticlePreviewLoading && "Please wait"}
+          {isarticlePreviewLoading &&
+            t({
+              id: "Please wait",
+              message: "Please wait",
+              comment: "Shown while an article preview popover is loading",
+            })}
         </h3>
         {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
         <p className="mt-2 text-base">
-          {isarticlePreviewLoading ? LL.Loading() : articlePreview?.query?.pages?.[pageid].extract}
-          {isError && LL["Couldn't load article preview"]()}
+          {isarticlePreviewLoading ? t({ id: "Loading" }) : articlePreview?.query?.pages?.[pageid].extract}
+          {isError && t({ id: "Couldn't load article preview" })}
         </p>
 
         <Popover.Close
           className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
-          aria-label="Close"
+          aria-label={t({
+            id: "Close",
+            message: "Close",
+            comment: "Button that dismisses the article preview popover",
+          })}
         >
           <X />
         </Popover.Close>

@@ -1,0 +1,723 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: id\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+"POT-Creation-Date: \n"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:197
+msgid "twitter (X)"
+msgstr " Twitter (X)"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:23
+#: src/lingui.ts:34
+msgid "About"
+msgstr "Tentang"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:198
+msgid "Achievement unlocked"
+msgstr "Pencapaian terungkap"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:22
+#: src/lingui.ts:92
+#: src/pages/Achievements.tsx:15
+msgid "Achievements"
+msgstr "Pencapaian"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:23
+#: src/pages/About.tsx:21
+msgid "actually stops while you are loading the next article"
+msgstr "benar-benar berhenti saat Anda memuat artikel berikutnya"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:17
+#: src/lingui.ts:93
+msgid "All of the information is stored locally in your browser (because servers cost money)"
+msgstr "Semua informasi disimpan secara lokal di peramban Anda (karena server membutuhkan biaya)"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:26
+#: src/lingui.ts:57
+msgid "Article"
+msgstr "Artikel"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:39
+#: src/lingui.ts:46
+msgid "Article clicks"
+msgstr "Klik artikel"
+
+#. Button that opens a preview popover for the currently selected Wikipedia article
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:64
+msgid "Article Preview"
+msgstr "Pratinjau artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:90
+#: src/pages/Stats.tsx:42
+msgid "Articles clicked:"
+msgstr "Artikel yang diklik:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:121
+msgid "AttentiveExplorer.title"
+msgstr "Penjelajah Perhatian"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:170
+msgid "Bilingual.title"
+msgstr "Dwi Bahasa"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:40
+#: src/lingui.ts:47
+msgid "Cheating attempts"
+msgstr "Percobaan curang"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiLogic.tsx:24
+#: src/lingui.ts:73
+msgid "Choose another link"
+msgstr "Pilih tautan lain"
+
+#. js-lingui-explicit-id
+#: src/components/RandomModal.tsx:22
+#: src/lingui.ts:84
+msgid "Choose your article"
+msgstr "Pilih artikel Anda"
+
+#: src/components/Sidebar.tsx:42
+msgid "Clicks: {clicks}"
+msgstr "Klik: {clicks}"
+
+#. Button that closes the drawer
+#. Button that closes the modal dialog
+#. Button that dismisses the article preview popover
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Drawer.tsx:37
+#: src/components/Modal.tsx:26
+msgid "Close"
+msgstr "Tutup"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:102
+msgid "FirstWin.description"
+msgstr "Selesaikan speedrun pertama Anda"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:17
+#: src/components/Wiki/Wiki.tsx:81
+#: src/lingui.ts:51
+msgid "Confirm action"
+msgstr "Konfirmasi tindakan"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:84
+#: src/lingui.ts:75
+#: src/pages/Settings.tsx:118
+msgid "Copied to clipboard"
+msgstr "Disalin ke clipboard"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:90
+#: src/lingui.ts:78
+msgid "Couldn't load article preview"
+msgstr "Tidak dapat memuat pratinjau artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:153
+msgid "Curiosity.title"
+msgstr "Ketidakpedulian"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:155
+msgid "CuriousExplorer.title"
+msgstr "Penjelajah Penasaran"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:199
+msgid "WaifuAlt"
+msgstr "Gadis anime lucu dengan gaun biru duduk di perpustakaan, sementara sebuah bola dunia Wikipedia dengan penghitung waktu speedrun terlampir mengambang di dekatnya"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:31
+#: src/pages/About.tsx:25
+msgid "Dark theme support"
+msgstr "Dukungan tema gelap"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:185
+msgid "EgoStroke.title"
+msgstr "Ego Stroke"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:205
+#: src/pages/Settings.tsx:107
+msgid "Enable search during gameplay"
+msgstr "Aktifkan pencarian selama permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:171
+msgid "Bilingual.description"
+msgstr "Jelajahi artikel dalam 2 bahasa yang berbeda"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:176
+msgid "Trilingual.description"
+msgstr "Jelajahi artikel dalam 3 bahasa yang berbeda"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:181
+msgid "Polyglot.description"
+msgstr "Jelajahi artikel dalam 5 bahasa yang berbeda"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:136
+msgid "ExplorerOfChance.title"
+msgstr "Penjelajah Kesempatan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:13
+#: src/pages/About.tsx:14
+msgid "Features"
+msgstr "Fitur"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:101
+msgid "FirstWin.title"
+msgstr "Kemenangan Pertama"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:196
+msgid "Follow him on"
+msgstr "Ikuti dia di"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:141
+msgid "FortuneSeeker.title"
+msgstr "Pencari Keberuntungan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:146
+msgid "GachaAddict.title"
+msgstr "Pecandu Gacha"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:148
+msgid "GachaOverlord.title"
+msgstr "Gacha Overlord"
+
+#. js-lingui-explicit-id
+#: src/components/RandomButton/RandomButton.tsx:52
+#: src/lingui.ts:61
+msgid "Get random article"
+msgstr "Dapatkan artikel acak"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:12
+#: src/components/ConfirmNavigation.tsx:28
+#: src/lingui.ts:50
+msgid "Give up"
+msgstr "Menyerah"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:19
+#: src/pages/About.tsx:19
+msgid "High precision fair™ timer"
+msgstr "Pengatur Waktu Tepat Tinggi™"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:22
+#: src/lingui.ts:56
+msgid "History"
+msgstr "Sejarah"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:18
+#: src/lingui.ts:97
+msgid "If you clear your browser data or switch to another browser all of your data will be gone"
+msgstr "Jika Anda menghapus data peramban Anda atau beralih ke peramban lain, semua data Anda akan hilang."
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:20
+#: src/components/Wiki/Wiki.tsx:84
+#: src/lingui.ts:52
+msgid "If you leave, your current progress will be lost"
+msgstr "Jika Anda meninggalkan, kemajuan saat ini akan hilang"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:165
+msgid "InsatiablesReader.title"
+msgstr "Pembaca Tidak Puas"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:126
+msgid "KeenPathfinder.title"
+msgstr "Penjelajah Peka"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:27
+#: src/pages/About.tsx:24
+msgid "Keeps track of your session progress"
+msgstr "Melacak kemajuan sesi Anda"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:88
+#: src/pages/Stats.tsx:40
+msgid "Known languages:"
+msgstr "Bahasa yang dikenal:"
+
+#. js-lingui-explicit-id
+#: src/components/InterfaceLanguageSelect.tsx:40
+#: src/lingui.ts:69
+msgid "Language"
+msgstr "Bahasa"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:89
+#: src/components/Loader.tsx:8
+#: src/lingui.ts:77
+msgid "Loading"
+msgstr "Memuat..."
+
+#. Alt text for the Ego Stroke achievement image (a photo of streamer Ludwig Ahgren)
+#. js-lingui-explicit-id
+#: src/achievements.tsx:279
+msgid "Ludwig Ahgren"
+msgstr "Ludwig Ahgren"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:195
+msgid "Made by Ina_den"
+msgstr "Dibuat oleh Ina_den."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:191
+msgid "SpeedrunWaifu.description"
+msgstr "Dibuat oleh Ina_den. Ikuti dia di Twitter"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:111
+msgid "MasterRunner.title"
+msgstr "Pelari Master"
+
+#. Button that opens the mobile navigation drawer
+#. js-lingui-explicit-id
+#: src/components/MobileMenu.tsx:19
+msgid "Menu"
+msgstr "Menu"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:41
+#: src/lingui.ts:83
+msgid "Missed wins"
+msgstr "Kemenangan yang terlewat"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:122
+msgid "AttentiveExplorer.description"
+msgstr "Berlayar melalui setidaknya 10 artikel tanpa melewatkan tautan pemenang"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:127
+msgid "KeenPathfinder.description"
+msgstr "Berlayar melalui setidaknya 25 artikel tanpa melewatkan tautan pemenang"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:132
+msgid "SharpNavigator.description"
+msgstr "Berlayar melalui setidaknya 50 artikel tanpa melewatkan tautan pemenang"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:70
+msgid "Navigation"
+msgstr "Navigasi"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:99
+#: src/lingui.ts:210
+msgid "No"
+msgstr "Tidak"
+
+#. js-lingui-explicit-id
+#: src/components/ArticleAutocomplete/ArticleAutocomplete.tsx:83
+#: src/lingui.ts:60
+msgid "No articles found"
+msgstr "Tidak ada artikel ditemukan"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.utils.ts:23
+#: src/lingui.ts:71
+msgid "No Cheating!"
+msgstr "Tidak Curang!"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:18
+#: src/pages/About.tsx:17
+msgid "No registration required"
+msgstr "Tidak perlu registrasi"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:103
+msgid "NoviceRunner.title"
+msgstr "Pelari Pemula"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:14
+#: src/pages/About.tsx:16
+msgid "Now supports multiple languages"
+msgstr "Sekarang mendukung beberapa bahasa"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:32
+#: src/pages/About.tsx:26
+msgid "Open source"
+msgstr "Sumber terbuka"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:20
+#: src/lingui.ts:33
+#: src/pages/About.tsx:29
+#: src/pages/Settings.tsx:128
+msgid "Play"
+msgstr "Main"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:95
+#: src/lingui.ts:49
+msgid "Play again"
+msgstr "Main lagi"
+
+#. Shown while an article preview popover is loading
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:81
+msgid "Please wait"
+msgstr "Mohon tunggu"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:180
+msgid "Polyglot.title"
+msgstr "Poliglot"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:156
+msgid "CuriousExplorer.description"
+msgstr "Pratinjau 100 artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:161
+msgid "PreviewEnthusiast.description"
+msgstr "Pratinjau 1000 artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:166
+msgid "InsatiablesReader.description"
+msgstr "Pratinjau 10000 artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:154
+msgid "Curiosity.description"
+msgstr "Pratinjau sebuah artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:160
+msgid "PreviewEnthusiast.title"
+msgstr "Penggemar Pratinjau"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:91
+#: src/pages/Stats.tsx:43
+msgid "Previewed Articles:"
+msgstr "Artikel yang dilihat:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:204
+msgid "Prize trophy"
+msgstr "Piala Hadiah"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:89
+#: src/pages/Stats.tsx:41
+msgid "Random choices:"
+msgstr "Pilihan acak:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:72
+#: src/pages/Settings.tsx:168
+msgid "Random failed, try again"
+msgstr "Pilihan acak gagal, coba lagi"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:56
+#: src/lingui.ts:48
+msgid "Results"
+msgstr "Hasil"
+
+#. Accessible title of the arrow icon between the starting and ending article names
+#. js-lingui-explicit-id
+#: src/components/StartArrowEnd.tsx:27
+msgid "Right Arrow"
+msgstr "Panah kanan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:137
+msgid "ExplorerOfChance.description"
+msgstr "Pilih 10 artikel secara acak"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:142
+msgid "FortuneSeeker.description"
+msgstr "Pilih 100 artikel secara acak"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:147
+msgid "GachaAddict.description"
+msgstr "Pilih 1000 artikel secara acak"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:149
+msgid "GachaOverlord.description"
+msgstr "Pilih 10000 artikel secara acak"
+
+#. js-lingui-explicit-id
+#: src/components/WikiLanguageSelect.tsx:20
+#: src/lingui.ts:68
+msgid "Select article language"
+msgstr "Pilih bahasa artikel"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:41
+#: src/pages/Settings.tsx:94
+msgid "Select ending article"
+msgstr "Pilih artikel akhir"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:40
+#: src/pages/Settings.tsx:81
+msgid "Select starting article"
+msgstr "Pilih artikel awal"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:35
+#: src/pages/Settings.tsx:70
+msgid "Settings"
+msgstr "Pengaturan"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:87
+#: src/lingui.ts:76
+msgid "Share Result"
+msgstr "Bagikan Hasil"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:74
+#: src/pages/Settings.tsx:121
+msgid "Share settings"
+msgstr "Bagikan pengaturan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:131
+msgid "SharpNavigator.title"
+msgstr "Navigator Tajam"
+
+#. Heading of the error screen shown when the app crashes
+#: src/components/FallbackRender.tsx:8
+msgid "Something went wrong:"
+msgstr "Terjadi kesalahan:"
+
+#. Link to the project's GitHub repository
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:118
+msgid "Source code on github"
+msgstr "Kode sumber di GitHub"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:109
+msgid "SpeedDemon.title"
+msgstr "Setan Kecepatan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:115
+msgid "SpeedrunAddict.title"
+msgstr "Pecandu Speedrun"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:119
+msgid "SpeedrunGod.title"
+msgstr "Dewa Speedrun"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:105
+msgid "Speedster.title"
+msgstr "Pembalap Cepat"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:36
+#: src/pages/Settings.tsx:73
+msgid "Start typing and then select values from the dropdown list or press the random button"
+msgstr "Mulai mengetik, lalu pilih nilai dari daftar dropdown atau tekan tombol acak."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:42
+#: src/pages/Settings.tsx:82
+#: src/pages/Settings.tsx:95
+msgid "Start typing to see options"
+msgstr "Mulai mengetik untuk melihat opsi"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:21
+#: src/lingui.ts:85
+#: src/pages/Stats.tsx:30
+msgid "Statistics"
+msgstr "Statistik"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:186
+msgid "EgoStroke.description"
+msgstr "Terima kasih telah menginspirasi seluruh proyek ini"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:8
+#: src/pages/About.tsx:10
+msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
+msgstr "Tujuan dari permainan ini adalah untuk menavigasi dari sebuah artikel Wikipedia awal ke artikel lainnya, dengan jumlah klik dan waktu yang paling sedikit."
+
+#. js-lingui-explicit-id
+#: src/components/NoMatch.tsx:8
+#: src/lingui.ts:59
+msgid "This page doesn't exist"
+msgstr "Halaman ini tidak ada"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:27
+#: src/lingui.ts:58
+msgid "Time"
+msgstr "Waktu"
+
+#. Button that switches between light and dark mode
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:50
+msgid "Toggle theme"
+msgstr "Ganti tema"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:87
+#: src/pages/Stats.tsx:36
+msgid "Total games:"
+msgstr "Total permainan:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:175
+msgid "Trilingual.title"
+msgstr "Trilingual"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:107
+msgid "WikiExplorer.title"
+msgstr "Penjelajah Wiki"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:6
+#: src/pages/About.tsx:8
+msgid "Wiki Speedrun Game"
+msgstr "Permainan Wiki Speedrun"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:82
+#: src/lingui.ts:63
+msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
+msgstr "Logo wiki speedrun, menampilkan bola Wikipedia dengan timer di sepanjangnya (mirip dengan garis hitam besar dengan teks waktu hijau di bagian atas). Waktu adalah 9 detik dan 5 milidetik."
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:190
+msgid "SpeedrunWaifu.title"
+msgstr "Wiki Speedrun Waifu"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:113
+msgid "WikipediaChampion.title"
+msgstr "Juara Wikipedia"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:117
+msgid "WikipediaLegend.title"
+msgstr "Legenda Wikipedia"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:104
+msgid "NoviceRunner.description"
+msgstr "Menangkan 10 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:110
+msgid "SpeedDemon.description"
+msgstr "Menangkan 100 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:116
+msgid "SpeedrunAddict.description"
+msgstr "Menangkan 1000 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:106
+msgid "Speedster.description"
+msgstr "Menangkan 25 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:112
+msgid "MasterRunner.description"
+msgstr "Menangkan 250 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:118
+msgid "WikipediaLegend.description"
+msgstr "Menangkan 2500 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:108
+msgid "WikiExplorer.description"
+msgstr "Menangkan 50 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:114
+msgid "WikipediaChampion.description"
+msgstr "Menangkan 500 permainan"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:120
+msgid "SpeedrunGod.description"
+msgstr "Menangkan 5000 permainan"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:28
+#: src/lingui.ts:82
+msgid "Winning links"
+msgstr "Tautan pemenang"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:86
+#: src/pages/Stats.tsx:35
+msgid "Wins:"
+msgstr "Kemenangan:"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:92
+#: src/lingui.ts:209
+msgid "Yes"
+msgstr "Ya"
