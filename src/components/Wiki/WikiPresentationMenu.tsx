@@ -88,7 +88,7 @@ const WikiPresentationControls = () => {
               key={option.value}
               className={clsx(
                 "flex cursor-pointer items-center gap-3 rounded-md border border-transparent px-3 py-2 focus-within:border-primary-blue",
-                fontSize === option.value && "border-secondary-border bg-secondary-blue",
+                fontSize === option.value && "border-secondary-border",
               )}
             >
               <input
@@ -120,7 +120,7 @@ const WikiPresentationControls = () => {
               key={option.value}
               className={clsx(
                 "flex cursor-pointer items-center gap-3 rounded-md border border-transparent px-3 py-2 focus-within:border-primary-blue",
-                width === option.value && "border-secondary-border bg-secondary-blue",
+                width === option.value && "border-secondary-border",
               )}
             >
               <input

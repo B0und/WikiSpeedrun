@@ -36,7 +36,7 @@ export const InterfaceLanguageSelect = () => {
       }}
     >
       <Select.Trigger
-        className="inline-flex h-full min-w-fit items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
+        className="inline-flex h-full w-12 shrink-0 items-center justify-center rounded bg-inherit outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
         aria-label={t({ id: "Language" })}
       >
         <Select.Value aria-label={language}>

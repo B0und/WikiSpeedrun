@@ -32,14 +32,14 @@ const Header = () => {
     <div className="flex items-center gap-12 border-secondary-blue border-b-[2px] pb-3 sm:gap-0">
       <WikiLogo />
       <nav className="flex h-full flex-1 items-center gap-4">
-        <div className="flex gap-4 md:hidden">
+        <div className="flex gap-4 lg:hidden">
           <LeftNav isGameRunning={isGameRunning} links={links} />
         </div>
         {isGameRunning && <GiveUpModal />}
         <MobileMenu links={links} />
         <ResultDialog />
-        <ul className="ml-auto flex h-full gap-4 ">
-          <li>{!isGameRunning && <InterfaceLanguageSelect />}</li>
+        <ul className="ml-auto flex h-full shrink-0 gap-4 ">
+          <li className="h-full">{!isGameRunning && <InterfaceLanguageSelect />}</li>
           <li className="h-full">
             <WikiPresentationMenu />
           </li>
