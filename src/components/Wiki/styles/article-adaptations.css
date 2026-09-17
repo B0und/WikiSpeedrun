@@ -5,7 +5,7 @@
 
 .wiki-insert {
   min-width: 0;
-  background: #fff;
+  background: transparent;
   color: #202122;
   font-family: sans-serif;
 }
