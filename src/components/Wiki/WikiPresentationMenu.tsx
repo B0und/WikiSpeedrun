@@ -37,12 +37,6 @@ export const WikiPresentationMenu = () => {
             >
               <h2 className="mb-4 border-b-[1px] border-b-secondary-border pb-2 font-bold">{triggerLabel}</h2>
               <WikiPresentationControls />
-              <Popover.Close
-                className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
-                aria-label={t({ id: "Close" })}
-              >
-                <X />
-              </Popover.Close>
             </Popover.Content>
           </Popover.Portal>
         </Popover.Root>
