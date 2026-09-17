@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { detectLocale, isLocale, type Locale } from "../locales/config";
 import type { LANGUAGES } from "../components/WikiLanguageSelect";
+import { detectLocale, isLocale, type Locale, SOURCE_LOCALE } from "../locales/config";
 
 /*
  Data gets persisted in local storage
@@ -55,18 +55,7 @@ const useSettingsStore = create<SettingsStore>()(
         name: "settings",
         storage: createJSONStorage(() => localStorage),
         partialize: ({ actions: _actions, ...rest }: SettingsStore) => rest,
-        version: 2,
-        // v1 stored an empty-string interfaceLanguage sentinel; keep every
-        // other field intact and fall back to browser detection instead of
-        // discarding the whole store.
-        migrate: (persisted) => {
-          const state = persisted as Partial<SettingsValues>;
-          return {
-            ...state,
-            interfaceLanguage:
-              state.interfaceLanguage && isLocale(state.interfaceLanguage) ? state.interfaceLanguage : detectLocale(),
-          } as SettingsValues;
-        },
+        version: 1,
       },
     ),
     {
@@ -75,9 +64,17 @@ const useSettingsStore = create<SettingsStore>()(
   ),
 );
 
+const resolveInterfaceLanguage = (language: unknown): Locale => {
+  // Persisted settings can outlive catalog renames and contain a locale that
+  // no longer maps to a catalog. Fall back at the store interface so startup
+  // can always activate a valid catalog without resetting unrelated settings.
+  return typeof language === "string" && isLocale(language) ? language : SOURCE_LOCALE;
+};
+
 export const useSettingsStoreActions = () => useSettingsStore((state) => state.actions);
-export const getInterfaceLanguage = () => useSettingsStore.getState().interfaceLanguage;
-export const useInterfaceLanguage = () => useSettingsStore((state) => state.interfaceLanguage);
+export const getInterfaceLanguage = () => resolveInterfaceLanguage(useSettingsStore.getState().interfaceLanguage);
+export const useInterfaceLanguage = () =>
+  useSettingsStore((state) => resolveInterfaceLanguage(state.interfaceLanguage));
 export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
 export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);
 export const useIsCtrlFEnabled = () => useSettingsStore((state) => state.is_CTRL_F_enabled);

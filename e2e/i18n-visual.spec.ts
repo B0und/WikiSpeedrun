@@ -4,7 +4,7 @@ import type { SettingsValues } from "../src/stores/SettingsStore";
 
 // The zustand persist envelope for the "settings" store; typed against the
 // app so store changes surface here at type-check time instead of drifting.
-type PersistedSettings = { state: SettingsValues; version: 2 };
+type PersistedSettings = { state: SettingsValues; version: 1 };
 
 const persistInterfaceLocale = async (page: Page, locale: Locale) => {
   await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
@@ -15,7 +15,7 @@ const persistInterfaceLocale = async (page: Page, locale: Locale) => {
       sidebarWidth: 400,
       is_CTRL_F_enabled: false,
     },
-    version: 2,
+    version: 1,
   };
   await page.addInitScript((persistedSettings) => {
     localStorage.setItem("theme", JSON.stringify("light"));
