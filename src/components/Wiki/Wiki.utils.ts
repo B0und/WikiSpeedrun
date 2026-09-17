@@ -15,7 +15,7 @@ export const useNoCheating = () => {
   const disableSearch = useCallback(
     (e: globalThis.KeyboardEvent) => {
       if (!isGameRunning) return;
-      if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+      if (e.key === "F3" || (e.ctrlKey && e.key === "f")) {
         if (isNotDev) {
           e.preventDefault();
         }

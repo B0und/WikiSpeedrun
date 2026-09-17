@@ -16,7 +16,9 @@ export default defineConfig({
       autoCodeSplitting: true,
       verboseFileRoutes: false,
     }),
-    react(),
+    react({
+      compiler: true,
+    }),
     reactClickToComponent(),
     svgr(),
     ViteEjsPlugin((config) => ({

@@ -70,7 +70,7 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
       </Popover.Trigger>
 
       <Popover.Content
-        className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md bg-neutral-50 p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
+        className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md bg-neutral-50 p-5 shadow-2xl dark:bg-dark-surface-secondary dark:text-dark-primary"
         sideOffset={5}
       >
         <h3 className="border-b-[1px] border-b-secondary-border font-bold">

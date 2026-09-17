@@ -85,12 +85,15 @@ export const VictoryConfetti = () => {
     const confettiInstance = create(canvasRef.current, {});
     confetti.current = confettiInstance;
 
+    const timeouts: number[] = [];
     const fire = (opts: Options, delay = 0) => {
-      setTimeout(() => {
-        void confettiInstance({
-          ...opts,
-        });
-      }, delay);
+      timeouts.push(
+        window.setTimeout(() => {
+          void confettiInstance({
+            ...opts,
+          });
+        }, delay),
+      );
     };
 
     //  middle explosion
@@ -104,6 +107,9 @@ export const VictoryConfetti = () => {
     fire(corner4, 0);
 
     return () => {
+      for (const id of timeouts) {
+        window.clearTimeout(id);
+      }
       confetti.current?.reset();
     };
   }, []);

@@ -36,12 +36,12 @@ export const getNHighestLinksPages = (data: WikiRandom, limit = 5) => {
     .slice(0, limit)
     .map((p) => ({ title: p.title, pageid: String(p.pageid) }))
     .filter((v, i, a) => a.findIndex((v2) => v2.pageid === v.pageid) === i); // remove duplicate objects
-  const selectedArticleTitles = linkPages.map((p) => p.title);
+  const selectedArticleTitles = new Set(linkPages.map((p) => p.title));
 
   // since some pages can have linksphere missing, we can end up with less articles than intended
   if (linkPages.length < limit) {
     const otherArticles = Object.values(data.query.pages)
-      .filter((p) => !selectedArticleTitles.includes(p.title))
+      .filter((p) => !selectedArticleTitles.has(p.title))
       .slice(0, limit - linkPages.length)
       .map((p) => ({ title: p.title, pageid: String(p.pageid) }));
     linkPages = linkPages.concat(otherArticles);
