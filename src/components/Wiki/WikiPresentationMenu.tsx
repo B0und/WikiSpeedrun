@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react/macro";
 import * as Popover from "@radix-ui/react-popover";
 import clsx from "clsx";
 import { useId } from "react";
-import { Settings, X } from "react-feather";
+import { Settings } from "react-feather";
 import {
   useSettingsStoreActions,
   useWikiArticleFontSize,
@@ -97,7 +97,14 @@ const WikiPresentationControls = () => {
                 value={option.value}
                 checked={fontSize === option.value}
                 onChange={() => setWikiArticleFontSize(option.value)}
-                className="accent-primary-blue"
+                className="peer sr-only"
+              />
+              <span
+                className={clsx(
+                  "size-4 shrink-0 rounded-full border-2 border-secondary-border bg-transparent transition-colors",
+                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:border-secondary-border",
+                  "peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background",
+                )}
               />
               {option.label}
             </label>
@@ -122,7 +129,14 @@ const WikiPresentationControls = () => {
                 value={option.value}
                 checked={width === option.value}
                 onChange={() => setWikiArticleWidth(option.value)}
-                className="accent-primary-blue"
+                className="peer sr-only"
+              />
+              <span
+                className={clsx(
+                  "size-4 shrink-0 rounded-full border-2 border-secondary-border bg-transparent transition-colors",
+                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:border-secondary-border",
+                  "peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background",
+                )}
               />
               {option.label}
             </label>

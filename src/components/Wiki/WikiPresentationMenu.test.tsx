@@ -24,11 +24,9 @@ testWithMSW("updates and retains the live article presentation", async () => {
   const appearanceTrigger = screen.getByRole("button", { name: "Article appearance" });
   await appearanceTrigger.click();
 
-  const standardFont = screen.getByRole("radio", { name: "Standard" });
-  const largeFont = screen.getByRole("radio", { name: "Large" });
-  const compactWidth = screen.getByRole("radio", { name: "Compact" });
-  const wideWidth = screen.getByRole("radio", { name: "Wide" });
-  await standardFont.click();
+  const largeFont = screen.getByText("Large");
+  const compactWidth = screen.getByText("Compact");
+  const wideWidth = screen.getByText("Wide");
   await compactWidth.click();
 
   const articleColumn = document.querySelector<HTMLElement>("[data-wiki-article-width]");
@@ -52,5 +50,5 @@ testWithMSW("updates and retains the live article presentation", async () => {
   await expect(screen.getByRole("radio", { name: "Standard" })).toBeChecked();
   await expect(screen.getByRole("radio", { name: "Wide" })).toBeChecked();
 
-  await screen.getByRole("radio", { name: "Compact" }).click();
+  await screen.getByText("Compact").click();
 });
