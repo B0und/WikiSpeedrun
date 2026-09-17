@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import type { Achievement as IAchievement } from "../achievements";
 import { useI18nContext } from "../i18n/i18n-react";
 
@@ -13,11 +13,9 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
   }
 
   // @ts-expect-error dynamic key generation
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   const achievementTitle = LL[achievement.id]?.title();
 
   // @ts-expect-error dynamic key generation
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   let achievementDescription = LL[achievement.id]?.description();
 
   let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]();

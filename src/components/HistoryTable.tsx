@@ -11,10 +11,11 @@ const HistoryTable = () => {
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <>
   useEffect(() => {
     tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [articleHistory.length]);
+    // The length change is the intended trigger for scrolling to the newest
+    // history row; the effect body only touches the table DOM node.
+  }, [articleHistory.length]); // oxlint-disable-line react/exhaustive-effect-dependencies -- scroll on new history entry
 
   return (
     <div id="history-scroll" className="scrollbar self-stretch overflow-y-auto pr-3">

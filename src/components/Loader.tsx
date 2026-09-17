@@ -4,7 +4,7 @@ export const Loader = () => {
   const { LL } = useI18nContext();
 
   return (
-    <p aria-live="assertive" role="status" data-testid="loading">
+    <p aria-live="assertive" data-testid="loading">
       {LL.Loading()}
     </p>
   );

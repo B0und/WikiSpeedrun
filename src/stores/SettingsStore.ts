@@ -17,14 +17,16 @@ interface Actions {
   };
 }
 interface Values {
-  interfaceLanguage: Locales;
+  // Empty string means "not selected yet"; falls back to browser detection in
+  // LocaleProvider.
+  interfaceLanguage: Locales | "";
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
   is_CTRL_F_enabled: boolean;
 }
 
 const initialState: Values = {
-  interfaceLanguage: "" as Locales,
+  interfaceLanguage: "",
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
@@ -54,8 +56,7 @@ const useSettingsStore = create<SettingsStore>()(
       {
         name: "settings",
         storage: createJSONStorage(() => localStorage),
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        partialize: ({ actions, ...rest }: SettingsStore) => rest,
+        partialize: ({ actions: _actions, ...rest }: SettingsStore) => rest,
         version: 1,
       },
     ),

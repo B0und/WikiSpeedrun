@@ -11,6 +11,7 @@ import {
 } from "../../stores/GameStore";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
+import { jsonAs } from "../../utils/json";
 import { useStopwatchActions } from "../StopwatchContext";
 import { wikiRoute } from "./Wiki";
 import type { WikiApiArticle } from "./Wiki.types";
@@ -34,7 +35,9 @@ export const findVisibleWinningLinks = (articleTitle: Article) => {
 };
 
 const getArticleData = async (language: string, title: string) => {
-  if (!title) return;
+  if (!title) {
+    return undefined;
+  }
 
   const resp = await fetch(
     `https://${language}.wikipedia.org/w/api.php?` +
@@ -47,7 +50,7 @@ const getArticleData = async (language: string, title: string) => {
         redirects: "true", // automatically redirects from plural form
       }).toString(),
   );
-  return resp.json() as Promise<WikiApiArticle>;
+  return jsonAs<WikiApiArticle>(resp);
 };
 
 export const useWikiQuery = () => {

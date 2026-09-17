@@ -5,9 +5,8 @@ import "./styles/unreset.css";
 import "./styles/vec2022base.css";
 import "./styles/vector2022.css";
 import "./styles/overrides.css";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import purify from "dompurify";
-import { useI18nContext } from "../../i18n/i18n-react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
 import { useThemeContext } from "../ThemeContext";
 import { Loader } from "../Loader";
@@ -16,7 +15,6 @@ const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
   const isDarkTheme = colorMode === "dark";
 
-  const { LL } = useI18nContext();
   const { handleClickInsideWikiArticle } = useWikiLogic();
   const { isFetching, data, isError } = useWikiQuery();
   const isGameRunning = useIsGameRunning();
@@ -66,14 +64,16 @@ const WikiDisplay = () => {
                 <div
                   role="button"
                   tabIndex={0}
+                  aria-label="Wiki article"
                   ref={(ref) => {
                     wikiRefCallback(ref);
                   }}
                   onClick={handleClickInsideWikiArticle}
-                  onKeyDown={(e) =>
-                    e.key === "Enter" && handleClickInsideWikiArticle(e as unknown as React.MouseEvent<HTMLDivElement>)
-                  }
-                  // biome-ignore lint/security/noDangerouslySetInnerHtml: <>
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleClickInsideWikiArticle(e);
+                    }
+                  }}
                   dangerouslySetInnerHTML={{ __html: purify.sanitize(data.html) }}
                 />
               </div>

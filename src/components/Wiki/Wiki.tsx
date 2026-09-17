@@ -18,8 +18,8 @@ const Wiki = () => {
   const isGameRunning = useIsGameRunning();
   const { resetStoreState } = useGameStoreActions();
   const { status, proceed, reset, next } = useBlocker({
-    shouldBlockFn: ({ next }) => {
-      return isGameRunning && !next.pathname.startsWith("/wiki");
+    shouldBlockFn: ({ next: nextLocation }) => {
+      return isGameRunning && !nextLocation.pathname.startsWith("/wiki");
     },
     withResolver: true,
   });

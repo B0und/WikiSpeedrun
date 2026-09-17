@@ -1,11 +1,12 @@
 import * as Popover from "@radix-ui/react-popover";
 import { useQuery } from "@tanstack/react-query";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { useState } from "react";
 import { X } from "react-feather";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
+import { jsonAs } from "../../utils/json";
 import type { ArticlePreview } from "./ArticlePreview.types";
 import HelpCircle from "./helpcircle.svg?react";
 
@@ -25,7 +26,7 @@ const getArticleSummary = async (language: string, pageid: string) => {
       }).toString(),
   );
 
-  return res.json() as ArticlePreview;
+  return jsonAs<ArticlePreview>(res);
 };
 
 interface ArticlePreviewProps {

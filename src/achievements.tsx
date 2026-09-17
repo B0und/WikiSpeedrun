@@ -257,12 +257,7 @@ export const ACHIEVEMENTS_LIST = [
 ] as const satisfies readonly Achievement[];
 
 // for getting a function for condition (based on its id)
-// eslint-disable-next-line @typescript-eslint/ban-types
-const init = {} as Record<
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  (typeof ACHIEVEMENTS_LIST)[number]["id"] | (string & {}),
-  () => boolean
->;
+const init: Record<string, () => boolean> = {};
 export const achievementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce((acc, achievement) => {
   acc[achievement.id] = achievement.conditionCheck.bind(achievement);
   return acc;

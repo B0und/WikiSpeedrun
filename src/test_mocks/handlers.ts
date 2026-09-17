@@ -7,8 +7,6 @@ import ChahkandukBirjand from "./wiki_pages/ChahkandukBirjand.json";
 const getArticlePage = (article: string) =>
   `?page=${encodeURI(article)}&origin=*&action=parse&format=json&disableeditsection=true&redirects=true`;
 
-const getSelectArticleUrl = (article: string) => `?action=query&list=search&origin=*&format=json&srsearch=${article}`;
-
 export const handlers = [
   http.get("https://en.wikipedia.org/w/api.php", ({ request }) => {
     const url = new URL(request.url);
@@ -16,5 +14,7 @@ export const handlers = [
     if (url.search === getArticlePage("Chahkanduk, Birjand")) {
       return new HttpResponse(ChahkandukBirjand);
     }
+    // Returning undefined lets MSW treat the request as unhandled.
+    return undefined;
   }),
 ];

@@ -24,6 +24,7 @@ export function useLocalStorage<T>(key: string, defaultValue: T, options?: Optio
     serializer: (object) => JSON.stringify(object),
     // JSON.parse is typed `unknown` in TS7; the caller's generic declares the
     // boundary type, mirroring upstream use-local-storage's typing.
+    // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- JSON parsing boundary, caller declares T
     parser: (raw) => JSON.parse(raw) as T,
     logger: console.log,
     syncData: true,
@@ -35,8 +36,8 @@ export function useLocalStorage<T>(key: string, defaultValue: T, options?: Optio
   const [value, setValue] = useState<T | undefined>(() => {
     if (typeof window === "undefined") return defaultValue;
     try {
-      rawValueRef.current = window.localStorage.getItem(key);
-      return rawValueRef.current ? parser(rawValueRef.current) : defaultValue;
+      const raw = window.localStorage.getItem(key);
+      return raw ? parser(raw) : defaultValue;
     } catch (error) {
       logger(error);
       return defaultValue;
@@ -51,7 +52,7 @@ export function useLocalStorage<T>(key: string, defaultValue: T, options?: Optio
     const updateLocalStorage = () => {
       if (value !== undefined) {
         const newValue = serializer(value);
-        const oldValue = rawValueRef.current;
+        const oldValue = rawValueRef.current ?? window.localStorage.getItem(key);
         rawValueRef.current = newValue;
         window.localStorage.setItem(key, newValue);
         window.dispatchEvent(
@@ -83,7 +84,9 @@ export function useLocalStorage<T>(key: string, defaultValue: T, options?: Optio
   }, [value, serializer, key, logger]);
 
   useEffect(() => {
-    if (!syncData || typeof window === "undefined") return;
+    if (!syncData || typeof window === "undefined") {
+      return undefined;
+    }
 
     const handleStorageChange = (event: StorageEvent) => {
       if (event.key !== key || event.storageArea !== window.localStorage) return;

@@ -5,9 +5,13 @@ import { errorToast } from "../utils/toast";
 import type { WikiRandom } from "./RandomButton/RandomButton.types";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
-  if (!data.query?.pages) return;
+  if (!data.query?.pages) {
+    return undefined;
+  }
   const pagesWithLinks = Object.values(data.query.pages).filter((page) => Object.hasOwn(page, "linkshere"));
-  if (pagesWithLinks.length === 0) return;
+  if (pagesWithLinks.length === 0) {
+    return undefined;
+  }
   const highestLinksPage = pagesWithLinks.reduce((prev, current) => {
     const previousLinksphere = prev.linkshere ?? [];
     const currentLinksphere = current.linkshere ?? [];
@@ -20,11 +24,13 @@ export const getHighestLinksPage = (data: WikiRandom) => {
 };
 
 export const getNHighestLinksPages = (data: WikiRandom, limit = 5) => {
-  if (!data.query?.pages) return;
+  if (!data.query?.pages) {
+    return undefined;
+  }
 
   let linkPages = Object.values(data.query.pages)
     .filter((page) => Object.hasOwn(page, "linkshere"))
-    .sort((a, b) => (b.linkshere?.length ?? 0) - (a.linkshere?.length ?? 0))
+    .toSorted((a, b) => (b.linkshere?.length ?? 0) - (a.linkshere?.length ?? 0))
     .slice(0, limit)
     .map((p) => ({ title: p.title, pageid: String(p.pageid) }))
     .filter((v, i, a) => a.findIndex((v2) => v2.pageid === v.pageid) === i); // remove duplicate objects

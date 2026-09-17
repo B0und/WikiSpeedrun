@@ -1,5 +1,5 @@
 import * as Select from "@radix-ui/react-select";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
 import { useI18nContext } from "../i18n/i18n-react";
@@ -10,7 +10,14 @@ import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
 import { LANGUAGES } from "./WikiLanguageSelect";
 
-const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => locales.includes(language.isoCode as Locales));
+// LANGUAGES entries are a hand-maintained list; `locales.includes` performs
+// the real check at runtime, the cast only bridges the string parameter to
+// `includes`'s Locales-typed parameter.
+const isSupportedLocale = (code: string): code is Locales =>
+  // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- runtime-checked lookup, see comment above
+  locales.includes(code as Locales);
+
+const INTERFACE_LANGUAGES = LANGUAGES.filter((candidate) => isSupportedLocale(candidate.isoCode));
 
 export const InterfaceLanguageSelect = () => {
   const { LL, setLocale } = useI18nContext();
@@ -21,13 +28,15 @@ export const InterfaceLanguageSelect = () => {
   return (
     <Select.Root
       value={language}
-      onValueChange={async (locale: Locales) => {
-        await loadLocaleAsync(locale);
-        setInterfaceLanguage(locale);
-        setStartingArticle({ pageid: "", title: "" });
-        setEndingArticle({ pageid: "", title: "" });
-        setWikiLanguage(LANGUAGES.filter((language) => language.isoCode === locale)[0].value);
-        setLocale(locale);
+      onValueChange={(locale: Locales) => {
+        void (async () => {
+          await loadLocaleAsync(locale);
+          setInterfaceLanguage(locale);
+          setStartingArticle({ pageid: "", title: "" });
+          setEndingArticle({ pageid: "", title: "" });
+          setWikiLanguage(LANGUAGES.filter((entry) => entry.isoCode === locale)[0]?.value ?? "en");
+          setLocale(locale);
+        })();
       }}
     >
       <Select.Trigger
@@ -57,9 +66,9 @@ export const InterfaceLanguageSelect = () => {
           </Select.ScrollUpButton>
 
           <Select.Viewport className="p-[5px]">
-            {INTERFACE_LANGUAGES.map((language) => (
-              <SelectItem value={language.isoCode} key={language.isoCode}>
-                {language.label}
+            {INTERFACE_LANGUAGES.map((entry) => (
+              <SelectItem value={entry.isoCode} key={entry.isoCode}>
+                {entry.label}
               </SelectItem>
             ))}
           </Select.Viewport>

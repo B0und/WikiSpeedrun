@@ -32,6 +32,9 @@ export const ResultDialog = () => {
   const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
 
   useEffect(() => {
+    // The dialog auto-opens when the run is won, but stays closable by the
+    // user afterwards, so `open` can't be derived from `isWin` alone.
+    // oxlint-disable-next-line react/set-state-in-effect -- deliberate sync of dialog with win state
     setOpen(isWin);
   }, [isWin]);
 
@@ -79,9 +82,11 @@ export const ResultDialog = () => {
             <button
               type="button"
               className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-              onClick={async () => {
-                await navigator.clipboard.writeText(window.location.href);
-                copyNotification(LL["Copied to clipboard"]());
+              onClick={() => {
+                void (async () => {
+                  await navigator.clipboard.writeText(window.location.href);
+                  copyNotification(LL["Copied to clipboard"]());
+                })();
               }}
             >
               {LL["Share Result"]()}

@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import Select, { type StylesConfig } from "react-select";
 import { useI18nContext } from "../i18n/i18n-react";
 import { useGameStoreActions } from "../stores/GameStore";
@@ -397,4 +397,4 @@ export const LANGUAGES: readonly WikiLanguage[] = [
   { label: "ཇོང་ཁ", value: "dz", isoCode: "" },
   { label: "farefare", value: "gur", isoCode: "" },
   { label: "Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ", value: "cr", isoCode: "" },
-].sort((a, b) => a.value.localeCompare(b.value));
+].toSorted((a, b) => a.value.localeCompare(b.value));

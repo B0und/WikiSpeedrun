@@ -113,9 +113,11 @@ const Settings = () => {
           <button
             type="button"
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-            onClick={async () => {
-              await navigator.clipboard.writeText(`${window.location.href}&lang=${wikiLang}`);
-              copyNotification(LL["Copied to clipboard"]());
+            onClick={() => {
+              void (async () => {
+                await navigator.clipboard.writeText(`${window.location.href}&lang=${wikiLang}`);
+                copyNotification(LL["Copied to clipboard"]());
+              })();
             }}
           >
             {LL["Share settings"]()}

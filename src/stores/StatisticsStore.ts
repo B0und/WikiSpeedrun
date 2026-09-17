@@ -56,6 +56,19 @@ interface PersistedStore extends Omit<StatsValues, "achievements"> {
   achievements: { id: string }[];
 }
 
+// Persisted data comes from localStorage, so its shape is validated at this
+// boundary before the merge logic trusts it.
+const isAchievementId = (entry: unknown): entry is { id: string } =>
+  typeof entry === "object" && entry !== null && "id" in entry && typeof entry.id === "string";
+
+const isPersistedStore = (value: unknown): value is PersistedStore => {
+  if (typeof value !== "object" || value === null || !("achievements" in value)) {
+    return false;
+  }
+  const { achievements } = value;
+  return Array.isArray(achievements) && achievements.every(isAchievementId);
+};
+
 type StatsStore = StatsValues & Actions;
 
 export const useStatsStore = create<StatsStore>()(
@@ -148,7 +161,7 @@ export const useStatsStore = create<StatsStore>()(
         name: "statistics",
         storage: createJSONStorage(() => localStorage),
 
-        partialize: ({ actions: _, ...rest }: StatsStore) => {
+        partialize: ({ actions: _actions, ...rest }: StatsStore) => {
           return {
             ...rest,
             achievements: rest.achievements.filter((a) => a.unlocked).map((a) => ({ id: a.id })),
@@ -157,7 +170,7 @@ export const useStatsStore = create<StatsStore>()(
 
         // called when page loads, merging local storage with current state
         merge: (persistedState, currentState) => {
-          const typedPersistedState = persistedState as PersistedStore;
+          const typedPersistedState = isPersistedStore(persistedState) ? persistedState : null;
 
           const unlockedAchievements = produce(currentState.achievements, (draftState) => {
             (typedPersistedState?.achievements ?? []).forEach((storageAchievement) => {

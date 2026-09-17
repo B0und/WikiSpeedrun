@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { useEffect, useState } from "react";
 import Select, { type InputActionMeta, type StylesConfig } from "react-select";
 import useDebounce from "../../hooks/useDebounce";
 import { useI18nContext } from "../../i18n/i18n-react";
 import type { Article } from "../../stores/GameStore";
 import { useWikiLanguage } from "../../stores/SettingsStore";
+import { jsonAs } from "../../utils/json";
 import { useThemeContext } from "../ThemeContext";
 import type { WikiSearch } from "./WikiSearch.types";
 
 const getArticles = async (language: string, debouncedTerm: string) => {
-  if (!debouncedTerm) return;
+  if (!debouncedTerm) {
+    return undefined;
+  }
 
   const resp = await fetch(
     `https://${language}.wikipedia.org/w/api.php?` +
@@ -22,7 +25,7 @@ const getArticles = async (language: string, debouncedTerm: string) => {
         srsearch: debouncedTerm,
       }).toString(),
   );
-  return resp.json() as Promise<WikiSearch>;
+  return jsonAs<WikiSearch>(resp);
 };
 
 interface ArticleAutocompleteProps {
@@ -55,8 +58,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     queryFn: () => getArticles(language, debouncedInputText),
     refetchOnWindowFocus: false,
     enabled: Boolean(debouncedInputText),
-    select: (data) =>
-      data?.query.search.map((article) => {
+    select: (result) =>
+      result?.query.search.map((article) => {
         const option: AutocompleteOption = {
           label: article.title,
           value: String(article.pageid),
@@ -66,6 +69,9 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   });
 
   useEffect(() => {
+    // Syncing a controlled input with the incoming `defaultValue` prop; there
+    // is no event to hook when the prop changes externally.
+    // oxlint-disable-next-line react/set-state-in-effect -- deliberate two-way sync with prop
     setInputText(defaultValue);
     setSelectedOption(defaultValue);
   }, [defaultValue]);

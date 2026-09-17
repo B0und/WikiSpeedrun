@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // https://twitter.com/dan_abramov/status/1102690107264520193
 // https://codesandbox.io/s/1qwlpk4o8l?file=/src/index.js:259-998
@@ -10,7 +10,7 @@ const useFrameNow = (isActive: boolean) => {
 
   useEffect(() => {
     if (!isActive) {
-      return;
+      return undefined;
     }
     // Update now with current time.
     function updateNow() {
@@ -37,7 +37,6 @@ const useFrameNow = (isActive: boolean) => {
 };
 
 const useStopwatch = () => {
-  const totalLapseRef = useRef(0);
   // Previous accumulated lapse
   const [pastLapse, setPastLapse] = useState(0);
 
@@ -49,7 +48,6 @@ const useStopwatch = () => {
   const frameNow = useFrameNow(isRunning) ?? 0;
   const currentLapse = isRunning ? Math.max(0, frameNow - startTime) : 0;
   const totalLapse = pastLapse + currentLapse;
-  totalLapseRef.current = totalLapse;
 
   const pauseStopwatch = useCallback(() => {
     if (isRunning) {
@@ -81,21 +79,19 @@ const useStopwatch = () => {
       return time;
     };
 
-    let newMs = totalLapseRef.current;
-    // biome-ignore lint/suspicious/noImplicitAnyLet: todo
-    let seconds;
-    seconds = Math.floor(totalLapseRef.current / 1000);
-    newMs = newMs - seconds * 1000;
+    let newMs = totalLapse;
+    const totalSeconds = Math.floor(totalLapse / 1000);
+    newMs = newMs - totalSeconds * 1000;
 
-    const minutes = Math.floor(seconds / 60);
-    seconds = seconds - minutes * 60;
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds - minutes * 60;
 
     return {
       min: pad(String(minutes), 2),
       sec: pad(String(seconds), 2),
       ms: pad(String(Math.min(999, Math.round(newMs))), 3),
     };
-  }, []);
+  }, [totalLapse]);
 
   const time = getFormattedTime();
   const timeInMs = getTimeInMs();

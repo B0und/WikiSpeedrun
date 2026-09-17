@@ -1,9 +1,10 @@
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { useMutation } from "@tanstack/react-query";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import DiceIcon from "../../assets/dice.svg?react";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useWikiLanguage } from "../../stores/SettingsStore";
+import { jsonAs } from "../../utils/json";
 import type { WikiRandom } from "./RandomButton.types";
 
 const getRandomArticles = async (language: string) => {
@@ -24,7 +25,7 @@ const getRandomArticles = async (language: string) => {
       }).toString(),
   );
 
-  return res.json() as WikiRandom;
+  return jsonAs<WikiRandom>(res);
 };
 
 interface RandomButtonProps {

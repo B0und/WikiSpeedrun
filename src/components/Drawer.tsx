@@ -1,5 +1,5 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import React from "react";
 import { X } from "react-feather";
 

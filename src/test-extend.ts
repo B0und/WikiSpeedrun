@@ -1,12 +1,12 @@
 import { test as testBase } from "vitest";
 import { render } from "vitest-browser-react";
-import AppProviders from "./components/AppProviders";
+import { AppProviders } from "./components/AppProviders";
 import { testWorker } from "./test_mocks/browser";
 import "./index.css";
 
 export const testWithMSW = testBase.extend({
   worker: [
-    async ({}, use) => {
+    async (_context, use) => {
       // Start the worker before the test.
       await testWorker.start();
 

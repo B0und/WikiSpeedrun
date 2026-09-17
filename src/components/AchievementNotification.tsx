@@ -6,7 +6,6 @@ export const achievementToast = (achievement: Achievement, LL: TranslationFuncti
   toast(
     (t) => {
       // @ts-expect-error dynamic key generation
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       const achievementTitle = LL[achievement.id]?.title();
 
       return (

@@ -8,14 +8,18 @@ async function enableMocking() {
     return;
   }
 
+  // Dynamic import keeps MSW out of the production bundle entirely; the mock
+  // browser module is only loaded when VITE_WITH_MOCKS=true.
   const { worker } = await import("./mocks/browser");
 
-  // `worker.start()` returns a Promise that resolves
-  // once the Service Worker is up and ready to intercept requests.
-  return worker.start({ onUnhandledRequest: "bypass" });
+  // `worker.start()` resolves once the Service Worker is up and ready to
+  // intercept requests.
+  await worker.start({ onUnhandledRequest: "bypass" });
 }
 
-void enableMocking().then(() => {
+const bootstrap = async () => {
+  await enableMocking();
+
   const rootElement = document.getElementById("root");
   if (!rootElement) {
     throw new Error("Root element not found");
@@ -25,4 +29,6 @@ void enableMocking().then(() => {
       <App />
     </React.StrictMode>,
   );
-});
+};
+
+void bootstrap();

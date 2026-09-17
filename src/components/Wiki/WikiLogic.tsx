@@ -1,5 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
-import type { MouseEvent } from "react";
+import type { SyntheticEvent } from "react";
 import { useI18nContext } from "../../i18n/i18n-react";
 import { useGameStoreActions } from "../../stores/GameStore";
 import { errorToast } from "../../utils/toast";
@@ -7,8 +7,8 @@ import { useStopwatchActions } from "../StopwatchContext";
 
 const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 
-const handleShowHideButton = (e: MouseEvent<HTMLDivElement>) => {
-  const node = e.target as HTMLElement | null;
+const handleShowHideButton = (e: SyntheticEvent<HTMLDivElement>) => {
+  const node = e.target instanceof HTMLElement ? e.target : null;
   const th = node?.closest("th.navbox-title");
   if (!th) return;
 
@@ -37,16 +37,16 @@ const useWikiLogic = () => {
     });
   };
 
-  const handleClickInsideWikiArticle = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClickInsideWikiArticle = (e: SyntheticEvent<HTMLDivElement>) => {
     e.preventDefault();
     handleShowHideButton(e);
 
     // Traverse up from the event target to find the nearest anchor element
-    let node = e.target as HTMLElement | null;
+    let node = e.target instanceof HTMLElement ? e.target : null;
     let anchor: HTMLAnchorElement | null = null;
     while (node && node !== e.currentTarget) {
-      if (node.nodeName === "A") {
-        anchor = node as HTMLAnchorElement;
+      if (node instanceof HTMLAnchorElement) {
+        anchor = node;
         break;
       }
       node = node.parentElement;
@@ -144,15 +144,13 @@ const getFilteredLink = (element: HTMLAnchorElement) => {
 };
 
 const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
-  const classNameParent = target.parentNode as HTMLElement;
+  const classNameParent = target.parentElement;
   // show notification about non-wiki link
   if (
     target.className === "external text" ||
     target.className === "new" ||
     target.className === "geo-dec" ||
-    classNameParent.className === "reference-text" ||
-    classNameParent.className === "external text" ||
-    classNameParent.className === "new"
+    (classNameParent && (classNameParent.className === "reference-text" || classNameParent.className === "external text" || classNameParent.className === "new"))
   ) {
     errorToast(errorText);
     return true;

@@ -28,7 +28,7 @@ export const useNoCheating = () => {
 
   useEffect(() => {
     if (isSearchEnabled) {
-      return;
+      return undefined;
     }
 
     window.addEventListener("keydown", disableSearch);

@@ -8,5 +8,7 @@ export const handlers = [
     if (url.search === getSelectArticleUrl("abc")) {
       return HttpResponse.error();
     }
+    // Returning undefined lets MSW treat the request as unhandled.
+    return undefined;
   }),
 ];
