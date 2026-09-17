@@ -22,7 +22,9 @@ interface Options<T> {
 export function useLocalStorage<T>(key: string, defaultValue: T, options?: Options<T>): [T, Setter<T>] {
   const opts: Required<Options<T>> = {
     serializer: (object) => JSON.stringify(object),
-    parser: (raw) => JSON.parse(raw),
+    // JSON.parse is typed `unknown` in TS7; the caller's generic declares the
+    // boundary type, mirroring upstream use-local-storage's typing.
+    parser: (raw) => JSON.parse(raw) as T,
     logger: console.log,
     syncData: true,
     ...options,
