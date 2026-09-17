@@ -10,7 +10,7 @@ export default defineConfig({
     ...devices["Desktop Chrome"],
   },
   webServer: {
-    command: `vite build && vite preview --host 127.0.0.1 --port ${port}`,
+    command: `cross-env VITE_WITH_MOCKS=true vite build && vite preview --host 127.0.0.1 --port ${port}`,
     url: baseURL,
     reuseExistingServer: false,
   },
