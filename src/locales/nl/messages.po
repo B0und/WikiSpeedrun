@@ -14,12 +14,52 @@ msgstr ""
 "POT-Creation-Date: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:21
+msgid "Article appearance"
+msgstr "Artikelweergave"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:78
+msgid "Small"
+msgstr "Klein"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:79
+msgid "Standard"
+msgstr "Standaard"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:80
+msgid "Large"
+msgstr "Groot"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:83
+msgid "Compact"
+msgstr "Compact"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:84
+msgid "Wide"
+msgstr "Breed"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:90
+msgid "Text size"
+msgstr "Tekstgrootte"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:115
+msgid "Content width"
+msgstr "Inhoudsbreedte"
+
+#. js-lingui-explicit-id
 #: src/lingui.ts:197
 msgid "twitter (X)"
 msgstr "Twitter (X)"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:23
+#: src/components/Header.tsx:24
 #: src/lingui.ts:34
 msgid "About"
 msgstr "Over"
@@ -30,7 +70,7 @@ msgid "Achievement unlocked"
 msgstr "Prestatie ontgrendeld"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:22
+#: src/components/Header.tsx:23
 #: src/lingui.ts:92
 #: src/pages/Achievements.tsx:15
 msgid "Achievements"
@@ -89,7 +129,7 @@ msgid "Cheating attempts"
 msgstr "Pogingen tot valsspelen"
 
 #. js-lingui-explicit-id
-#: src/components/Wiki/WikiLogic.tsx:24
+#: src/components/Wiki/WikiLogic.tsx:28
 #: src/lingui.ts:73
 msgid "Choose another link"
 msgstr "Kies een andere link"
@@ -111,6 +151,7 @@ msgstr "Klikken: {clicks}"
 #: src/components/ArticlePreview/ArticlePreview.tsx:95
 #: src/components/Drawer.tsx:37
 #: src/components/Modal.tsx:26
+#: src/components/Wiki/WikiPresentationMenu.tsx:42
 msgid "Close"
 msgstr "Sluiten"
 
@@ -390,7 +431,7 @@ msgid "Open source"
 msgstr "Open source"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:20
+#: src/components/Header.tsx:21
 #: src/lingui.ts:33
 #: src/pages/About.tsx:29
 #: src/pages/Settings.tsx:128
@@ -543,7 +584,7 @@ msgstr "Er ging iets mis:"
 
 #. Link to the project's GitHub repository
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:118
+#: src/components/Header.tsx:122
 msgid "Source code on github"
 msgstr "Broncode op GitHub"
 
@@ -581,7 +622,7 @@ msgid "Start typing to see options"
 msgstr "Begin met typen om opties te zien"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:21
+#: src/components/Header.tsx:22
 #: src/lingui.ts:85
 #: src/pages/Stats.tsx:30
 msgid "Statistics"
@@ -612,7 +653,7 @@ msgstr "Tijd"
 
 #. Button that switches between light and dark mode
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:50
+#: src/components/Header.tsx:54
 msgid "Toggle theme"
 msgstr "Thema wisselen"
 
@@ -639,7 +680,7 @@ msgid "Wiki Speedrun Game"
 msgstr "Wiki Speedrun Spel"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:82
+#: src/components/Header.tsx:86
 #: src/lingui.ts:63
 msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
 msgstr "Wiki speedrun-logo, met een Wikipedia-sfeer met een timer eroverheen (lijkt op een grote zwarte streep met groene tijdstekst erboven). De tijd is 9 seconden en 5 milliseconden."

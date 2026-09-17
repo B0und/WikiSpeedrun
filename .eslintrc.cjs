@@ -27,7 +27,7 @@ module.exports = {
         // names. Grown per eslint-plugin-lingui audit discipline.
         ignore: ["^(?![A-Z])\\S+$", "^[A-Z0-9_-]+$"],
         ignoreNames: ["className", "styleName", "src", "data-testid", "displayName", "label", "id"],
-        ignoreFunctions: ["console.*", "cn", "cva", "clsx", "addFolderWithExport", "*.addButton"],
+        ignoreFunctions: ["console.*", "cn", "cva", "clsx", "addFolderWithExport", "*.addButton", "Error"],
       },
     ],
   },

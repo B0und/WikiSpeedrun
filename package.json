@@ -80,6 +80,7 @@
     "@vitejs/plugin-react": "^4.5.2",
     "@vitest/browser": "^3.2.4",
     "autoprefixer": "10.4.19",
+    "chromium-bidi": "5.1.0",
     "cross-env": "7.0.3",
     "eslint": "8.57.0",
     "eslint-plugin-lingui": "0.15.0",

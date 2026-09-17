@@ -14,12 +14,52 @@ msgstr ""
 "POT-Creation-Date: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:21
+msgid "Article appearance"
+msgstr "लेख की दिखावट"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:78
+msgid "Small"
+msgstr "छोटा"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:79
+msgid "Standard"
+msgstr "मानक"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:80
+msgid "Large"
+msgstr "बड़ा"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:83
+msgid "Compact"
+msgstr "संक्षिप्त"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:84
+msgid "Wide"
+msgstr "चौड़ा"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:90
+msgid "Text size"
+msgstr "पाठ का आकार"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:115
+msgid "Content width"
+msgstr "सामग्री की चौड़ाई"
+
+#. js-lingui-explicit-id
 #: src/lingui.ts:197
 msgid "twitter (X)"
 msgstr " twitter (X)"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:23
+#: src/components/Header.tsx:24
 #: src/lingui.ts:34
 msgid "About"
 msgstr "के बारे में"
@@ -30,7 +70,7 @@ msgid "Achievement unlocked"
 msgstr "खुली उपलब्धि"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:22
+#: src/components/Header.tsx:23
 #: src/lingui.ts:92
 #: src/pages/Achievements.tsx:15
 msgid "Achievements"
@@ -89,7 +129,7 @@ msgid "Cheating attempts"
 msgstr "धोखाधड़ी के प्रयास"
 
 #. js-lingui-explicit-id
-#: src/components/Wiki/WikiLogic.tsx:24
+#: src/components/Wiki/WikiLogic.tsx:28
 #: src/lingui.ts:73
 msgid "Choose another link"
 msgstr "दूसरा लिंक चुनें"
@@ -111,6 +151,7 @@ msgstr "दबाए गए: {clicks}"
 #: src/components/ArticlePreview/ArticlePreview.tsx:95
 #: src/components/Drawer.tsx:37
 #: src/components/Modal.tsx:26
+#: src/components/Wiki/WikiPresentationMenu.tsx:42
 msgid "Close"
 msgstr "बंद करें"
 
@@ -390,7 +431,7 @@ msgid "Open source"
 msgstr "खुला स्त्रोत"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:20
+#: src/components/Header.tsx:21
 #: src/lingui.ts:33
 #: src/pages/About.tsx:29
 #: src/pages/Settings.tsx:128
@@ -543,7 +584,7 @@ msgstr "कुछ गलत हो गया:"
 
 #. Link to the project's GitHub repository
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:118
+#: src/components/Header.tsx:122
 msgid "Source code on github"
 msgstr "GitHub पर सोर्स कोड"
 
@@ -581,7 +622,7 @@ msgid "Start typing to see options"
 msgstr "विकल्प देखने के लिए टाइप करना प्रारंभ करें"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:21
+#: src/components/Header.tsx:22
 #: src/lingui.ts:85
 #: src/pages/Stats.tsx:30
 msgid "Statistics"
@@ -612,7 +653,7 @@ msgstr "समय"
 
 #. Button that switches between light and dark mode
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:50
+#: src/components/Header.tsx:54
 msgid "Toggle theme"
 msgstr "थीम बदलें"
 
@@ -639,7 +680,7 @@ msgid "Wiki Speedrun Game"
 msgstr "विकी स्पीडरन गेम"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:82
+#: src/components/Header.tsx:86
 #: src/lingui.ts:63
 msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
 msgstr "विकी स्पीडरन लोगो, जिसमें एक विकिपीडिया क्षेत्र है जिसके चारों ओर एक टाइमर लगा हुआ है। (शीर्ष पर हरे समय के पाठ के साथ एक बड़ी काली पट्टी जैसा दिखता है)। समय 9 सेकंड और 5 मिलीसेकंड है।"

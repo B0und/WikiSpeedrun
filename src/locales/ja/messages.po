@@ -15,12 +15,52 @@ msgstr ""
 "Language: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:21
+msgid "Article appearance"
+msgstr "記事の表示"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:78
+msgid "Small"
+msgstr "小"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:79
+msgid "Standard"
+msgstr "標準"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:80
+msgid "Large"
+msgstr "大"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:83
+msgid "Compact"
+msgstr "コンパクト"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:84
+msgid "Wide"
+msgstr "ワイド"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:90
+msgid "Text size"
+msgstr "文字サイズ"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:115
+msgid "Content width"
+msgstr "コンテンツの幅"
+
+#. js-lingui-explicit-id
 #: src/lingui.ts:197
 msgid "twitter (X)"
 msgstr "Twitter（X）"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:23
+#: src/components/Header.tsx:24
 #: src/lingui.ts:34
 msgid "About"
 msgstr "約"
@@ -31,7 +71,7 @@ msgid "Achievement unlocked"
 msgstr "実績解除"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:22
+#: src/components/Header.tsx:23
 #: src/lingui.ts:92
 #: src/pages/Achievements.tsx:15
 msgid "Achievements"
@@ -90,7 +130,7 @@ msgid "Cheating attempts"
 msgstr "チートの試み"
 
 #. js-lingui-explicit-id
-#: src/components/Wiki/WikiLogic.tsx:24
+#: src/components/Wiki/WikiLogic.tsx:28
 #: src/lingui.ts:73
 msgid "Choose another link"
 msgstr "別のリンクを選択"
@@ -112,6 +152,7 @@ msgstr "クリック数：{clicks}"
 #: src/components/ArticlePreview/ArticlePreview.tsx:95
 #: src/components/Drawer.tsx:37
 #: src/components/Modal.tsx:26
+#: src/components/Wiki/WikiPresentationMenu.tsx:42
 msgid "Close"
 msgstr "閉じる"
 
@@ -391,7 +432,7 @@ msgid "Open source"
 msgstr "オープンソース"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:20
+#: src/components/Header.tsx:21
 #: src/lingui.ts:33
 #: src/pages/About.tsx:29
 #: src/pages/Settings.tsx:128
@@ -544,7 +585,7 @@ msgstr "問題が発生しました："
 
 #. Link to the project's GitHub repository
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:118
+#: src/components/Header.tsx:122
 msgid "Source code on github"
 msgstr "GitHub上のソースコード"
 
@@ -582,7 +623,7 @@ msgid "Start typing to see options"
 msgstr "オプションを表示するには入力を開始してください"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:21
+#: src/components/Header.tsx:22
 #: src/lingui.ts:85
 #: src/pages/Stats.tsx:30
 msgid "Statistics"
@@ -613,7 +654,7 @@ msgstr "時間"
 
 #. Button that switches between light and dark mode
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:50
+#: src/components/Header.tsx:54
 msgid "Toggle theme"
 msgstr "テーマを切り替える"
 
@@ -640,7 +681,7 @@ msgid "Wiki Speedrun Game"
 msgstr "ウィキスピードランゲーム"
 
 #. js-lingui-explicit-id
-#: src/components/Header.tsx:82
+#: src/components/Header.tsx:86
 #: src/lingui.ts:63
 msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
 msgstr "ウィキスピードランロゴは、タイマーが掛かったウィキペディアの球体をフィーチャーしています（大きな黒いストライプに緑の時間テキストが上に見えます）。 時間は9秒5ミリ秒です。"

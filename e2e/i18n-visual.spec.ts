@@ -14,6 +14,8 @@ const persistInterfaceLocale = async (page: Page, locale: Locale) => {
       wikiLanguage: "en",
       sidebarWidth: 400,
       is_CTRL_F_enabled: false,
+      wikiArticleWidth: "standard",
+      wikiArticleFontSize: "standard",
     },
     version: 1,
   };

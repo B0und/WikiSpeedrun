@@ -1,19 +1,24 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import type { LANGUAGES } from "../components/WikiLanguageSelect";
+import type { WikiLanguage } from "../components/Wiki/Wiki.types";
 import { detectLocale, isLocale, type Locale, SOURCE_LOCALE } from "../locales/config";
 
 /*
  Data gets persisted in local storage
 */
 
-type WikiLanguage = (typeof LANGUAGES)[number]["value"];
+export type { WikiLanguage };
+export type WikiArticleWidth = "standard" | "wide";
+export type WikiArticleFontSize = "small" | "standard" | "large";
+
 interface Actions {
   actions: {
     setInterfaceLanguage: (language: Locale) => void;
     setWikiLanguage: (language: WikiLanguage) => void;
     setSidebarWidth: (width: number) => void;
     set_is_CTRL_F_enabled: (flag: boolean) => void;
+    setWikiArticleWidth: (width: WikiArticleWidth) => void;
+    setWikiArticleFontSize: (fontSize: WikiArticleFontSize) => void;
   };
 }
 export interface SettingsValues {
@@ -21,6 +26,8 @@ export interface SettingsValues {
   wikiLanguage: WikiLanguage;
   sidebarWidth: number;
   is_CTRL_F_enabled: boolean;
+  wikiArticleWidth: WikiArticleWidth;
+  wikiArticleFontSize: WikiArticleFontSize;
 }
 
 const initialState: SettingsValues = {
@@ -28,6 +35,8 @@ const initialState: SettingsValues = {
   wikiLanguage: "en",
   sidebarWidth: 400,
   is_CTRL_F_enabled: false,
+  wikiArticleWidth: "standard",
+  wikiArticleFontSize: "standard",
 };
 
 type SettingsStore = SettingsValues & Actions;
@@ -48,6 +57,12 @@ const useSettingsStore = create<SettingsStore>()(
           },
           set_is_CTRL_F_enabled: (flag: boolean) => {
             set(() => ({ is_CTRL_F_enabled: flag }), false, "setSearchEnabled");
+          },
+          setWikiArticleWidth: (width: WikiArticleWidth) => {
+            set(() => ({ wikiArticleWidth: width }), false, "setWikiArticleWidth");
+          },
+          setWikiArticleFontSize: (fontSize: WikiArticleFontSize) => {
+            set(() => ({ wikiArticleFontSize: fontSize }), false, "setWikiArticleFontSize");
           },
         },
       }),
@@ -78,3 +93,5 @@ export const useInterfaceLanguage = () =>
 export const useWikiLanguage = () => useSettingsStore((state) => state.wikiLanguage);
 export const useSidebarWidth = () => useSettingsStore((state) => state.sidebarWidth);
 export const useIsCtrlFEnabled = () => useSettingsStore((state) => state.is_CTRL_F_enabled);
+export const useWikiArticleWidth = () => useSettingsStore((state) => state.wikiArticleWidth);
+export const useWikiArticleFontSize = () => useSettingsStore((state) => state.wikiArticleFontSize);

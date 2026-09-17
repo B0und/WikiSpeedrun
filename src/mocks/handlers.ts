@@ -54,6 +54,7 @@ export const handlers = [
         return HttpResponse.json({
           parse: {
             pageid: article.pageid,
+            revid: article.pageid + 1,
             title: article.title,
             text: { "*": article.html },
           },
@@ -81,4 +82,9 @@ export const handlers = [
 
     return passthrough();
   }),
+  http.get("https://en.wikipedia.org/w/load.php", () =>
+    HttpResponse.text(".mw-parser-output a { color: rgb(51, 102, 204); }", {
+      headers: { "Content-Type": "text/css; charset=utf-8" },
+    }),
+  ),
 ];
