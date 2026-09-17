@@ -1,10 +1,13 @@
 /// <reference types="vitest/config" />
 
+import { playwright } from "@vitest/browser-playwright";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
+import { configDefaults } from "vitest/config";
 import { ViteEjsPlugin } from "vite-plugin-ejs";
 import { reactClickToComponent } from "vite-plugin-react-click-to-component";
 import svgr from "vite-plugin-svgr";
@@ -12,6 +15,7 @@ import svgr from "vite-plugin-svgr";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     tanstackRouter({
       target: "react",
       autoCodeSplitting: true,
@@ -38,10 +42,11 @@ export default defineConfig({
   },
   test: {
     setupFiles: ['./src/setupFile.ts'],
+    exclude: [...configDefaults.exclude, 'e2e/**'],
     browser: {
       enabled: true,
-      provider: "playwright",
-      
+      provider: playwright(),
+
       viewport: {
         width: 1920,
         height: 1080,

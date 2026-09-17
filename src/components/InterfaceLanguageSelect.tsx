@@ -31,14 +31,14 @@ export const InterfaceLanguageSelect = () => {
       }}
     >
       <Select.Trigger
-        className="inline-flex h-full min-w-fit items-center justify-center rounded bg-inherit px-2 outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
+        className="inline-flex h-full min-w-fit items-center justify-center rounded-sm bg-inherit px-2 outline-hidden hover:outline-primary-blue focus-visible:outline-primary-blue"
         aria-label={LL.Language()}
       >
         <Select.Value aria-label={language}>
           <img
             src={`/flags/${language}.svg`}
             alt=""
-            className="h-6 w-8 rounded-sm border-[1px] border-secondary-border object-contain"
+            className="h-6 w-8 rounded-xs border-[1px] border-secondary-border object-contain"
             width={32}
             height={24}
             loading="lazy"
@@ -50,7 +50,7 @@ export const InterfaceLanguageSelect = () => {
           position="popper"
           sideOffset={5}
           align="center"
-          className="max-h-[300px] overflow-hidden rounded-md border-[1px] border-secondary-border bg-neutral-50 shadow-sm dark:bg-dark-surface-secondary dark:text-dark-primary"
+          className="max-h-[300px] overflow-hidden rounded-md border-[1px] border-secondary-border bg-neutral-50 shadow-xs dark:bg-dark-surface-secondary dark:text-dark-primary"
         >
           <Select.ScrollUpButton className=" flex h-[30px] cursor-default items-center justify-center ">
             <ChevronUp />
@@ -82,7 +82,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     return (
       <Select.Item
         className={clsx(
-          " relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
+          " relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-hidden",
           className,
         )}
         value={value}

@@ -6,7 +6,7 @@ import WikiDisplay from "./WikiDisplay";
 
 //http://localhost:5173/wiki?state=%257B%2522history%2522%253A%255B%257B%2522title%2522%253A%2522Chahkanduk%252C%2520Birjand%2522%252C%2522time%2522%253A%257B%2522min%2522%253A%252200%2522%252C%2522sec%2522%253A%252200%2522%252C%2522ms%2522%253A%2522000%2522%257D%252C%2522winningLinks%2522%253A0%257D%255D%252C%2522startingArticle%2522%253A%257B%2522pageid%2522%253A%252235769150%2522%252C%2522title%2522%253A%2522Chahkanduk%252C%2520Birjand%2522%257D%252C%2522endingArticle%2522%253A%257B%2522pageid%2522%253A%252242510803%2522%252C%2522title%2522%253A%25222014%2520BRD%2520N%25C4%2583stase%2520%25C8%259Airiac%2520Trophy%2520%25E2%2580%2593%2520Doubles%2522%257D%257D
 testWithMSW("Show/Hide button works correctly", async () => {
-  const screen = customRender();
+  const screen = await customRender();
   await router.navigate({
     to: `/wiki/$`,
     params: {

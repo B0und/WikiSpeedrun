@@ -53,7 +53,7 @@ const Wiki = () => {
         <WikiDisplay />
 
         <div className="pointer-events-none absolute right-0 bottom-0 hidden overflow-hidden p-2 sm:flex">
-          <div className="absolute inset-0 bg-black bg-opacity-80" />
+          <div className="absolute inset-0 bg-black/80" />
           <Stopwatch />
         </div>
       </div>
@@ -91,7 +91,7 @@ function WikiNavigationBlockModal({
           </button>
           <button
             type="button"
-            className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
+            className="rounded-xs bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
             onClick={onCancel}
           >
             {LL["No"]()}

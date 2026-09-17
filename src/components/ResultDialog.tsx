@@ -90,7 +90,7 @@ export const ResultDialog = () => {
               <button
                 type="button"
                 onClick={resetGame}
-                className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
+                className="rounded-xs bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
               >
                 {LL["Play again"]()}
               </button>

@@ -13,7 +13,7 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
   ({ children, side = "right", className, ...props }, forwardedRef) => (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay
-        className={clsx("fixed inset-0 bg-black bg-opacity-60 data-[state=open]:animate-overlayShow")}
+        className={clsx("fixed inset-0 bg-black/60 data-[state=open]:animate-overlayShow")}
       />
       <DialogPrimitive.Content
         {...props}

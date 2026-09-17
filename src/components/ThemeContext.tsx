@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useLocalStorage from "use-local-storage";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface ThemeContext {
   colorMode: string;
