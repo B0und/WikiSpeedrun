@@ -60,7 +60,9 @@ export const useWikiQuery = () => {
 
   const isGameRunning = useIsGameRunning();
 
-  const wikiArticle = wikiTitle ? decodeURIComponent(wikiTitle).replace("/wiki/", "") : startingArticle.title;
+  const wikiArticle = wikiTitle
+    ? decodeURIComponent(wikiTitle).replace("/wiki/", "")
+    : startingArticle.title;
 
   const { setIsGameRunning, setIsWin } = useGameStoreActions();
 
@@ -73,7 +75,10 @@ export const useWikiQuery = () => {
 
   const handleWin = useCallback(
     (article: NonNullable<(typeof query)["data"]>) => {
-      if (article.title === targetArticle.title || String(article.pageid) === targetArticle.pageid) {
+      if (
+        article.title === targetArticle.title ||
+        String(article.pageid) === targetArticle.pageid
+      ) {
         pauseStopwatch();
         setIsGameRunning(false);
         setIsWin(true);

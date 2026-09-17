@@ -119,7 +119,11 @@ const getFilteredLink = (element: HTMLAnchorElement) => {
   if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
     return null;
   }
-  if (["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(element.hostname)) {
+  if (
+    ["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(
+      element.hostname,
+    )
+  ) {
     return null;
   }
 
@@ -150,7 +154,10 @@ const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
     target.className === "external text" ||
     target.className === "new" ||
     target.className === "geo-dec" ||
-    (classNameParent && (classNameParent.className === "reference-text" || classNameParent.className === "external text" || classNameParent.className === "new"))
+    (classNameParent &&
+      (classNameParent.className === "reference-text" ||
+        classNameParent.className === "external text" ||
+        classNameParent.className === "new"))
   ) {
     errorToast(errorText);
     return true;

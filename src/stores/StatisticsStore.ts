@@ -2,7 +2,11 @@ import { produce } from "immer";
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import { ACHIEVEMENTS_LIST, type Achievement, achievementConditionCheckByIdMap } from "../achievements";
+import {
+  ACHIEVEMENTS_LIST,
+  type Achievement,
+  achievementConditionCheckByIdMap,
+} from "../achievements";
 
 /*
 Data gets persisted in local storage
@@ -170,10 +174,12 @@ export const useStatsStore = create<StatsStore>()(
 
         // called when page loads, merging local storage with current state
         merge: (persistedState, currentState) => {
-          const typedPersistedState = isPersistedStore(persistedState) ? persistedState : null;
+          if (!isPersistedStore(persistedState)) {
+            return currentState;
+          }
 
           const unlockedAchievements = produce(currentState.achievements, (draftState) => {
-            (typedPersistedState?.achievements ?? []).forEach((storageAchievement) => {
+            persistedState.achievements.forEach((storageAchievement) => {
               const completedAchievement = draftState.find(
                 (draftAchievement) => draftAchievement.id === storageAchievement.id,
               );
@@ -184,7 +190,7 @@ export const useStatsStore = create<StatsStore>()(
           });
 
           return {
-            ...typedPersistedState,
+            ...persistedState,
             actions: currentState.actions,
             achievements: unlockedAchievements,
           };
@@ -206,7 +212,8 @@ export const checkAchievements = (achievements: readonly Achievement[]) => {
 
 export const useStatsStoreActions = () => useStatsStore((state) => state.actions);
 export const useArticleClicks = () => useStatsStore((state) => state.articles_clicked);
-export const useArticlePreviewPressed = () => useStatsStore((state) => state.article_preview_pressed);
+export const useArticlePreviewPressed = () =>
+  useStatsStore((state) => state.article_preview_pressed);
 export const useAverageAnswerTime = () => useStatsStore((state) => state.average_answer_time);
 export const useFastestAnswerTime = () => useStatsStore((state) => state.fastest_answer_time);
 export const useKnownWikiLanguages = () => useStatsStore((state) => state.known_wiki_languages);

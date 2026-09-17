@@ -19,7 +19,11 @@ interface Options<T> {
  * Behavior mirrors `use-local-storage` 3.0.0: localStorage-backed state,
  * writes on value change, and cross-tab sync via `storage` events.
  */
-export function useLocalStorage<T>(key: string, defaultValue: T, options?: Options<T>): [T, Setter<T>] {
+export function useLocalStorage<T>(
+  key: string,
+  defaultValue: T,
+  options?: Options<T>,
+): [T, Setter<T>] {
   const opts: Required<Options<T>> = {
     serializer: (object) => JSON.stringify(object),
     // JSON.parse is typed `unknown` in TS7; the caller's generic declares the

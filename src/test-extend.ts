@@ -6,7 +6,10 @@ import "./index.css";
 
 export const testWithMSW = testBase.extend({
   worker: [
-    async (_context, use) => {
+    // Vitest 5 fixtures require an object destructuring pattern as the first
+    // argument; the context object is intentionally unused here.
+    // oxlint-disable-next-line eslint/no-empty-pattern -- vitest fixture signature
+    async ({}, use) => {
       // Start the worker before the test.
       await testWorker.start();
 

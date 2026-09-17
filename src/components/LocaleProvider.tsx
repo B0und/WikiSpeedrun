@@ -1,5 +1,6 @@
 import type React from "react";
 import { useEffect, useState } from "react";
+import type { Locales } from "../i18n/i18n-types";
 import { navigatorDetector } from "typesafe-i18n/detectors";
 import TypesafeI18n from "../i18n/i18n-react";
 import { detectLocale } from "../i18n/i18n-util";
@@ -17,7 +18,7 @@ const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
   const { setInterfaceLanguage } = useSettingsStoreActions();
 
   // use language from localstore or detected
-  const userLocale = interfaceLanguage.length > 0 ? interfaceLanguage : locale;
+  const userLocale: Locales = interfaceLanguage === "" ? locale : interfaceLanguage;
 
   useEffect(() => {
     const loadLocale = async () => {

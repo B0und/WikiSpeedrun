@@ -61,7 +61,7 @@ export const InterfaceLanguageSelect = () => {
           align="center"
           className="max-h-[300px] overflow-hidden rounded-md border-[1px] border-secondary-border bg-neutral-50 shadow-xs dark:bg-dark-surface-secondary dark:text-dark-primary"
         >
-          <Select.ScrollUpButton className=" flex h-[30px] cursor-default items-center justify-center ">
+          <Select.ScrollUpButton className="flex h-[30px] cursor-default items-center justify-center">
             <ChevronUp />
           </Select.ScrollUpButton>
 
@@ -72,7 +72,7 @@ export const InterfaceLanguageSelect = () => {
               </SelectItem>
             ))}
           </Select.Viewport>
-          <Select.ScrollDownButton className=" flex h-[30px] cursor-default items-center justify-center ">
+          <Select.ScrollDownButton className="flex h-[30px] cursor-default items-center justify-center">
             <ChevronDown />
           </Select.ScrollDownButton>
         </Select.Content>
@@ -91,7 +91,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     return (
       <Select.Item
         className={clsx(
-          " relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-hidden",
+          "relative flex h-[40px] items-center rounded-[3px] px-3 text-base leading-none select-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-hidden",
           className,
         )}
         value={value}

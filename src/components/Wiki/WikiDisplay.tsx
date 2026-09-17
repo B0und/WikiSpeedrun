@@ -49,7 +49,9 @@ const WikiDisplay = () => {
     <>
       {data?.html && (
         <>
-          <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl sm:mt-8">{data.title}</h2>
+          <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl sm:mt-8">
+            {data.title}
+          </h2>
           <div className={clsx("unreset wiki-insert", isDarkTheme && "wiki-dark-theme")}>
             {/* todo delete unused classnames */}
             <div

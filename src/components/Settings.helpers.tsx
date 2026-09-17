@@ -8,7 +8,9 @@ export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) {
     return undefined;
   }
-  const pagesWithLinks = Object.values(data.query.pages).filter((page) => Object.hasOwn(page, "linkshere"));
+  const pagesWithLinks = Object.values(data.query.pages).filter((page) =>
+    Object.hasOwn(page, "linkshere"),
+  );
   if (pagesWithLinks.length === 0) {
     return undefined;
   }

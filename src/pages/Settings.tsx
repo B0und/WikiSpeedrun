@@ -18,7 +18,11 @@ import { useResetGame } from "../hooks/useResetGame";
 import { useI18nContext } from "../i18n/i18n-react";
 import type { Article } from "../stores/GameStore";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
-import { useIsCtrlFEnabled, useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
+import {
+  useIsCtrlFEnabled,
+  useSettingsStoreActions,
+  useWikiLanguage,
+} from "../stores/SettingsStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
 import { copyNotification } from "../utils/toast";
 
@@ -26,7 +30,8 @@ const Settings = () => {
   const { LL } = useI18nContext();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
-  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } = useGameStoreActions();
+  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } =
+    useGameStoreActions();
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
   const resetGame = useResetGame();
@@ -67,15 +72,24 @@ const Settings = () => {
 
   return (
     <div>
-      <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl">{LL.Settings()}</h2>
+      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
+        {LL.Settings()}
+      </h2>
 
       <p className="pt-4 pb-8 dark:text-dark-primary">
-        {LL["Start typing and then select values from the dropdown list or press the random button"]()}
+        {LL[
+          "Start typing and then select values from the dropdown list or press the random button"
+        ]()}
       </p>
 
       <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
-        <RandomModal data={modalData} open={modalOpen} setOpen={setModalOpen} setArticle={modalFunction.fn} />
+        <RandomModal
+          data={modalData}
+          open={modalOpen}
+          setOpen={setModalOpen}
+          setArticle={modalFunction.fn}
+        />
 
         <SelectArticleSettings
           label={LL["Select starting article"]()}

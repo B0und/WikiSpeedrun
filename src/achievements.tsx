@@ -136,7 +136,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "ExplorerOfChance",
     targetValue: 10,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -146,7 +147,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "FortuneSeeker",
     targetValue: 100,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -156,7 +158,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "GachaAddict",
     targetValue: 1000,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -166,7 +169,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "GachaOverlord",
     targetValue: 10000,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },

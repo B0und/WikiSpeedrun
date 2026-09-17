@@ -1,7 +1,12 @@
 import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useI18nContext } from "../../i18n/i18n-react";
-import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
+import {
+  useEndingArticle,
+  useGameStoreActions,
+  useIsGameRunning,
+  useStartingArticle,
+} from "../../stores/GameStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
 import { Stopwatch } from "../Stopwatch";
@@ -47,7 +52,7 @@ const Wiki = () => {
   return (
     <>
       <div className="-mt-8">
-        <div className="-top-8 sm:-top-4 sticky z-10 mb-2 bg-neutral-50 py-2 font-bold text-lg dark:bg-dark-surface">
+        <div className="sticky -top-8 z-10 mb-2 bg-neutral-50 py-2 text-lg font-bold sm:-top-4 dark:bg-dark-surface">
           <StartArrowEnd startText={startArticle.title} endText={endArticle.title} />
         </div>
         <WikiDisplay />
@@ -57,7 +62,11 @@ const Wiki = () => {
           <Stopwatch />
         </div>
       </div>
-      <WikiNavigationBlockModal open={status === "blocked"} onProceed={handleProceed} onCancel={reset} />
+      <WikiNavigationBlockModal
+        open={status === "blocked"}
+        onProceed={handleProceed}
+        onCancel={reset}
+      />
     </>
   );
 };
@@ -75,7 +84,7 @@ function WikiNavigationBlockModal({
   return (
     <ModalRoot open={open} onOpenChange={onCancel}>
       <ModalContent>
-        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
+        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
           Confirm action
         </ModalTitle>
         <ModalDescription className="mt-5 mb-5">

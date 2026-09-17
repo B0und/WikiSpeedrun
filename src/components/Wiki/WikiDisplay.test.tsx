@@ -12,7 +12,13 @@ testWithMSW("Show/Hide button works correctly", async () => {
     },
     search: {
       state: {
-        history: [{ title: "Chahkanduk, Birjand", time: { min: "00", sec: "00", ms: "000" }, winningLinks: 0 }],
+        history: [
+          {
+            title: "Chahkanduk, Birjand",
+            time: { min: "00", sec: "00", ms: "000" },
+            winningLinks: 0,
+          },
+        ],
         startingArticle: { pageid: "35769150", title: "Chahkanduk, Birjand" },
         endingArticle: { pageid: "42510803", title: "2014 BRD Năstase Țiriac Trophy – Doubles" },
       },

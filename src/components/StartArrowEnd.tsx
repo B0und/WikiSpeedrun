@@ -7,14 +7,19 @@ interface Props {
 }
 export const StartArrowEnd = ({ endText, startText, className }: Props) => {
   return (
-    <p className={cn("flex items-center gap-2 font-bold text-lg", className)}>
+    <p className={cn("flex items-center gap-2 text-lg font-bold", className)}>
       <span>{startText}</span> <RightArrow /> <span>{endText}</span>
     </p>
   );
 };
 
 const RightArrow = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5 translate-y-[2px]">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className="size-5 translate-y-[2px]"
+  >
     <title>Right Arrow</title>
     <path
       fillRule="evenodd"

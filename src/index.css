@@ -40,8 +40,8 @@
   --color-dark-primary: #e9e6e6;
 
   --font-sans:
-    "Noto Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+    "Noto Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 
   --animate-spin-dice: spin-dice 1s linear infinite;
   --animate-overlayShow: overlayShow 250ms cubic-bezier(0.16, 1, 0.3, 1);

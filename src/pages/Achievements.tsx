@@ -11,7 +11,7 @@ export const Achievements = () => {
 
   return (
     <div>
-      <div className="mb-4 flex w-full items-baseline justify-between border-secondary-border border-b-[1px] ">
+      <div className="mb-4 flex w-full items-baseline justify-between border-b-[1px] border-secondary-border">
         <InfoTooltip>
           <h2 className="align-baseline font-serif text-3xl">{LL.Achievements()}</h2>
         </InfoTooltip>

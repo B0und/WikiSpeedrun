@@ -24,7 +24,12 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     achievementDescription = (
       <span>
         {LL["Made by Ina_den"]()} {LL["Follow him on"]()}{" "}
-        <a href="https://twitter.com/Ina_den_" target="_blank" rel="noreferrer" className="text-primary-blue underline">
+        <a
+          href="https://twitter.com/Ina_den_"
+          target="_blank"
+          rel="noreferrer"
+          className="text-primary-blue underline"
+        >
           {LL["twitter (X)"]()}
         </a>
       </span>
@@ -32,13 +37,16 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     achievementAltText = LL.WaifuAlt();
   }
   return (
-    <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">
+    <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full">
       <img
         width={128}
         height={128}
         src={achievement.imgUrl ?? "/trophy.svg"}
         alt={achievementAltText}
-        className={clsx("h-full bg-center object-cover sm:h-16 sm:w-16", !achievement.unlocked && " grayscale")}
+        className={clsx(
+          "h-full bg-center object-cover sm:h-16 sm:w-16",
+          !achievement.unlocked && "grayscale",
+        )}
         loading="lazy"
       />
       <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">
@@ -62,7 +70,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
             </span>
 
             <progress
-              className="h-2 w-full progress-filled:bg-primary-blue progress-unfilled:bg-gray-200 dark:progress-unfilled:bg-gray-700"
+              className="h-2 w-full progress-unfilled:bg-gray-200 dark:progress-unfilled:bg-gray-700 progress-filled:bg-primary-blue"
               value={currentValue}
               max={achievement.targetValue}
             >

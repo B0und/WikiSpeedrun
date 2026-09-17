@@ -25,13 +25,13 @@ export const Stats = () => {
 
   return (
     <>
-      <div className="border-secondary-border border-b-[1px]">
+      <div className="border-b-[1px] border-secondary-border">
         <InfoTooltip>
           <h2 className="font-serif text-3xl">{LL.Statistics()}</h2>
         </InfoTooltip>
       </div>
       <div className="@container">
-        <ul className="flex @3xl:max-w-[calc(min(50%,700px))] flex-col gap-3 pt-4">
+        <ul className="flex flex-col gap-3 pt-4 @3xl:max-w-[calc(min(50%,700px))]">
           <Stat name={LL["Wins:"]()} value={wins} />
           <Stat name={LL["Total games:"]()} value={totalRuns} />
           {/* <Stat name="Average Answer Time:" value={averageAnswerTime} />

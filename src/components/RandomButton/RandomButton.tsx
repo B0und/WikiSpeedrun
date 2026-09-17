@@ -44,7 +44,10 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
   return (
     <div className="relative">
       <button
-        className={clsx("mb-[-2px] w-fit p-2 hover:text-primary-blue", isPending && "animate-spin-dice")}
+        className={clsx(
+          "mb-[-2px] w-fit p-2 hover:text-primary-blue",
+          isPending && "animate-spin-dice",
+        )}
         type="button"
         onClick={() => {
           mutate();

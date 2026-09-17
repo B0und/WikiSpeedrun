@@ -55,16 +55,23 @@ export const ResultDialog = () => {
           )}
         </ModalTrigger>
         <ModalContent>
-          <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
+          <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
             {LL.Results()}
           </ModalTitle>
           <ModalDescription asChild>
-            <StartArrowEnd className="mt-[10px] mb-5" startText={startingArticle.title} endText={endingArticle.title} />
+            <StartArrowEnd
+              className="mt-[10px] mb-5"
+              startText={startingArticle.title}
+              endText={endingArticle.title}
+            />
           </ModalDescription>
           <table className="mb-5 w-full table-auto">
             <tbody>
               {resultStats.map((stat) => (
-                <tr key={stat.name} className="even:bg-gray-200 dark:even:bg-dark-surface-secondary">
+                <tr
+                  key={stat.name}
+                  className="even:bg-gray-200 dark:even:bg-dark-surface-secondary"
+                >
                   <td className="py-2 pr-4">{stat.name}</td>
                   <td className="py-2 pr-4">{stat.value}</td>
                 </tr>

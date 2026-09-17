@@ -122,7 +122,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
           control: () => (isDarkMode ? "dark:bg-dark-surface dark:text-dark-primary" : ""),
           menu: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
           loadingIndicator: () => (isDarkMode ? "dark:bg-dark-surface" : ""),
-          noOptionsMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
+          noOptionsMessage: () =>
+            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
           input: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           option: (state) =>
             clsx(
@@ -130,7 +131,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
               isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
             ),
 
-          loadingMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
+          loadingMessage: () =>
+            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
         }}
       />
     </div>

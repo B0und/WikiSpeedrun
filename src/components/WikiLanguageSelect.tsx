@@ -36,16 +36,22 @@ export const WikiLanguageSelect = () => {
         classNames={{
           input: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           control: () => clsx(isDarkMode && "dark:bg-dark-surface dark:text-dark-primary"),
-          menu: () => clsx(isDarkMode && "dark:bg-dark-surface-secondary dark:text-dark-primary", "bg-neutral-50"),
+          menu: () =>
+            clsx(
+              isDarkMode && "dark:bg-dark-surface-secondary dark:text-dark-primary",
+              "bg-neutral-50",
+            ),
           loadingIndicator: () => (isDarkMode ? "dark:bg-dark-surface" : ""),
-          noOptionsMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
+          noOptionsMessage: () =>
+            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
           singleValue: () => (isDarkMode ? " dark:text-dark-primary" : ""),
           option: (state) =>
             clsx(
               state.isFocused && "dark:bg-[#464242] dark:text-primary-blue",
               isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
             ),
-          loadingMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
+          loadingMessage: () =>
+            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
         }}
       />
     </div>
@@ -77,7 +83,7 @@ interface WikiLanguage {
 }
 
 export const LANGUAGES: readonly WikiLanguage[] = [
-  {value: "el", label: "Ελληνικά", isoCode: "gr"},
+  { value: "el", label: "Ελληνικά", isoCode: "gr" },
   { value: "en", label: "English", isoCode: "en" },
   { value: "ceb", label: "Cebuano", isoCode: "ceb" },
   { value: "de", label: "Deutsch", isoCode: "de" },

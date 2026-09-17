@@ -157,7 +157,8 @@ export const useIsGameRunning = () => useGameStore((state) => state.isGameRunnin
 export const useStartingArticle = () => useGameStore((state) => state.startingArticle);
 export const useEndingArticle = () => useGameStore((state) => state.endingArticle);
 export const useHistory = () => useGameStore((state) => state.history);
-export const useClicks = () => useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
+export const useClicks = () =>
+  useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
 export const useIsWin = () => useGameStore((state) => state.isWin);
 
 export const useCheatingAttempts = () => useGameStore((state) => state.cheatingAttempts);
