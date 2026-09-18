@@ -6,8 +6,8 @@ import type { SettingsValues } from "../src/stores/SettingsStore";
 // app so store changes surface here at type-check time instead of drifting.
 type PersistedSettings = { state: SettingsValues; version: 1 };
 
-const persistInterfaceLocale = async (page: Page, locale: Locale) => {
-  await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+const persistInterfaceLocale = async (page: Page, locale: Locale, theme: "light" | "dark" = "light") => {
+  await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
   const settings: PersistedSettings = {
     state: {
       interfaceLanguage: locale,
@@ -19,10 +19,13 @@ const persistInterfaceLocale = async (page: Page, locale: Locale) => {
     },
     version: 1,
   };
-  await page.addInitScript((persistedSettings) => {
-    localStorage.setItem("theme", JSON.stringify("light"));
-    localStorage.setItem("settings", JSON.stringify(persistedSettings));
-  }, settings);
+  await page.addInitScript(
+    ({ persistedSettings, theme }) => {
+      localStorage.setItem("theme", JSON.stringify(theme));
+      localStorage.setItem("settings", JSON.stringify(persistedSettings));
+    },
+    { persistedSettings: settings, theme },
+  );
 };
 
 const expectVisuallySoundInterface = async (page: Page, locale: Locale) => {
@@ -152,3 +155,25 @@ for (const locale of SUPPORTED_LOCALES) {
     });
   });
 }
+
+// Dark mode is theme-class based and is not covered by the light baselines
+// above. Third-party unlayered styles (react-select's emotion) previously
+// regressed dark inputs invisibly; these baselines lock the dark rendering.
+test("dark interface renders with stable layout on key pages", async ({ page }) => {
+  await persistInterfaceLocale(page, "en", "dark");
+  await page.goto("/");
+  await expectVisuallySoundInterface(page, "en");
+
+  await expect(page).toHaveScreenshot("dark-home-en.png", {
+    animations: "disabled",
+    fullPage: true,
+  });
+
+  await page.locator('a[href="/settings"]').first().click();
+  await expectVisuallySoundInterface(page, "en");
+
+  await expect(page).toHaveScreenshot("dark-settings-en.png", {
+    animations: "disabled",
+    fullPage: true,
+  });
+});

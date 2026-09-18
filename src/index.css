@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 /* Dark mode is driven by the `dark` class set on <html> by the inline script in
-   index.html before first paint. */
-@custom-variant dark (&:where(.dark, .dark *));
+   index.html before first paint. `:is()` (not `:where()`) keeps v3 specificity
+   so `dark:*` utilities outrank component-library injected styles such as
+   react-select's emotion background colors. */
+@custom-variant dark (&:is(.dark, .dark *));
 
 /* Preserve Tailwind v3 hover behavior. V4 otherwise disables hover utilities
    when the primary input reports `hover: none`. */

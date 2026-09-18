@@ -1,9 +1,9 @@
-import { clsx } from "clsx";
-import Select, { type StylesConfig } from "react-select";
+import Select from "react-select";
 import { useLingui } from "@lingui/react/macro";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
 import { useThemeContext } from "./ThemeContext";
+import { reactSelectStyles } from "./reactSelectStyles";
 
 const selectId = "wikiLanguageSelect";
 
@@ -25,7 +25,11 @@ export const WikiLanguageSelect = () => {
         isClearable={false}
         isSearchable={true}
         name={selectId}
-        styles={customStyles}
+        styles={reactSelectStyles<WikiLanguage>({
+          isDarkMode,
+          controlMaxWidth: "300px",
+          menuWidth: "300px",
+        })}
         options={LANGUAGES}
         onChange={(e) => {
           setWikiLanguage(e?.value ?? "");
@@ -34,47 +38,11 @@ export const WikiLanguageSelect = () => {
         }}
         isMulti={false}
         classNames={{
-          input: () => (isDarkMode ? " dark:text-dark-primary" : ""),
-          control: () => clsx(isDarkMode && "dark:bg-dark-surface dark:text-dark-primary"),
-          menu: () =>
-            clsx(
-              isDarkMode && "dark:bg-dark-surface-secondary dark:text-dark-primary",
-              "bg-neutral-50",
-            ),
-          loadingIndicator: () => (isDarkMode ? "dark:bg-dark-surface" : ""),
-          noOptionsMessage: () =>
-            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
-          singleValue: () => (isDarkMode ? " dark:text-dark-primary" : ""),
-          option: (state) =>
-            clsx(
-              "language-option",
-              state.isFocused && "dark:bg-[#464242] dark:text-primary-blue",
-              isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
-            ),
-          loadingMessage: () =>
-            isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : "",
+          option: () => "language-option",
         }}
       />
     </div>
   );
-};
-
-const customStyles: StylesConfig<WikiLanguage> = {
-  control: (base) => ({
-    ...base,
-    maxWidth: "300px",
-    backgroundColor: "#fafafa",
-    "&:hover": {
-      borderColor: "hsla(203, 66%, 56%)",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 1px hsla(203, 66%, 56%)",
-    },
-  }),
-  menu: (base) => ({
-    ...base,
-    width: "300px",
-  }),
 };
 
 interface WikiLanguage {
