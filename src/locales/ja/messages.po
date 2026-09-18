@@ -15,6 +15,11 @@ msgstr ""
 "Language: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Sidebar.tsx:45
+msgid "Clicks: {clicks}"
+msgstr "クリック数：{clicks}"
+
+#. js-lingui-explicit-id
 #: src/components/Wiki/WikiPresentationMenu.tsx:21
 msgid "Article appearance"
 msgstr "記事の表示"
@@ -140,10 +145,6 @@ msgstr "別のリンクを選択"
 #: src/lingui.ts:119
 msgid "Choose your article"
 msgstr "記事を選択してください"
-
-#: src/components/Sidebar.tsx:42
-msgid "Clicks: {clicks}"
-msgstr "クリック数：{clicks}"
 
 #. Button that closes the drawer
 #. Button that closes the modal dialog

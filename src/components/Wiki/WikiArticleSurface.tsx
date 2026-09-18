@@ -100,7 +100,7 @@ export const WikiArticleSurface = ({
       if (settlement.key !== articleKey || settlement.settledLinks.has(linkKey)) return;
 
       settlement.settledLinks.add(linkKey);
-      settlement.degraded ||= degraded;
+      settlement.degraded = settlement.degraded || degraded;
       if (settlement.settledLinks.size !== styleUrls.length) return;
 
       frameRef.current = requestAnimationFrame(() => {

@@ -21,7 +21,7 @@
     "format:check": "oxfmt --check src e2e",
     "lint": "oxlint --type-aware",
     "lint:fix": "oxlint --type-aware --fix",
-    "doctor": "react-doctor",
+    "doctor": "react-doctor -y --no-score --blocking error",
     "test:browser": "vitest",
     "test:e2e": "playwright test"
   },

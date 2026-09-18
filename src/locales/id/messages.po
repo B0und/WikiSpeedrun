@@ -14,6 +14,11 @@ msgstr ""
 "POT-Creation-Date: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Sidebar.tsx:45
+msgid "Clicks: {clicks}"
+msgstr "Klik: {clicks}"
+
+#. js-lingui-explicit-id
 #: src/components/Wiki/WikiPresentationMenu.tsx:21
 msgid "Article appearance"
 msgstr "Tampilan artikel"
@@ -139,10 +144,6 @@ msgstr "Pilih tautan lain"
 #: src/lingui.ts:119
 msgid "Choose your article"
 msgstr "Pilih artikel Anda"
-
-#: src/components/Sidebar.tsx:42
-msgid "Clicks: {clicks}"
-msgstr "Klik: {clicks}"
 
 #. Button that closes the drawer
 #. Button that closes the modal dialog
