@@ -1,4 +1,4 @@
-import type { LANGUAGES } from "../WikiLanguageSelect";
+import type { LANGUAGES } from "./wikiLanguages";
 import type { CSSProperties } from "react";
 
 export type WikiArticleStyleState = "ready" | "degraded";

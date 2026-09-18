@@ -13,6 +13,12 @@ msgstr ""
 "Plural-Forms: \n"
 "POT-Creation-Date: \n"
 
+#. Heading of the error screen shown when the app crashes
+#. js-lingui-explicit-id
+#: src/components/FallbackRender.tsx:13
+msgid "Something went wrong:"
+msgstr ""
+
 #. js-lingui-explicit-id
 #: src/components/Sidebar.tsx:45
 msgid "Clicks: {clicks}"
@@ -100,7 +106,7 @@ msgid "Article"
 msgstr "Artikel"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:46
+#: src/components/ResultDialog.tsx:49
 #: src/lingui.ts:63
 msgid "Article clicks"
 msgstr "Artikelklicks"
@@ -128,7 +134,7 @@ msgid "Bilingual.title"
 msgstr "Zweisprachig"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:47
+#: src/components/ResultDialog.tsx:50
 #: src/lingui.ts:64
 msgid "Cheating attempts"
 msgstr "Betrugsversuche"
@@ -168,7 +174,7 @@ msgid "Confirm action"
 msgstr "Aktion bestätigen"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:41
+#: src/components/ResultDialog.tsx:44
 #: src/lingui.ts:107
 #: src/pages/Settings.tsx:76
 msgid "Copied to clipboard"
@@ -364,7 +370,7 @@ msgid "Menu"
 msgstr "Menü"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:48
+#: src/components/ResultDialog.tsx:51
 #: src/lingui.ts:118
 msgid "Missed wins"
 msgstr "Verpasste Siege"
@@ -439,7 +445,7 @@ msgid "Play"
 msgstr "Spielen"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:111
+#: src/components/ResultDialog.tsx:116
 #: src/lingui.ts:66
 msgid "Play again"
 msgstr "Erneut spielen"
@@ -504,8 +510,8 @@ msgid "Random failed, try again"
 msgstr "Zufall fehlgeschlagen, versuche es erneut"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:62
-#: src/components/ResultDialog.tsx:68
+#: src/components/ResultDialog.tsx:67
+#: src/components/ResultDialog.tsx:73
 #: src/lingui.ts:65
 msgid "Results"
 msgstr "Ergebnisse"
@@ -537,7 +543,7 @@ msgid "GachaOverlord.description"
 msgstr "Wählen Sie 10000 zufällige Artikel aus"
 
 #. js-lingui-explicit-id
-#: src/components/WikiLanguageSelect.tsx:20
+#: src/components/WikiLanguageSelect.tsx:22
 #: src/lingui.ts:91
 msgid "Select article language"
 msgstr "Artikelsprache auswählen"
@@ -561,7 +567,7 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:103
+#: src/components/ResultDialog.tsx:108
 #: src/lingui.ts:111
 msgid "Share Result"
 msgstr "Ergebnis teilen"
@@ -576,11 +582,6 @@ msgstr "Einstellungen teilen"
 #: src/lingui.ts:221
 msgid "SharpNavigator.title"
 msgstr "Scharfer Navigator"
-
-#. Heading of the error screen shown when the app crashes
-#: src/components/FallbackRender.tsx:8
-msgid "Something went wrong:"
-msgstr "Etwas ist schiefgelaufen:"
 
 #. Link to the project's GitHub repository
 #. js-lingui-explicit-id

@@ -10,6 +10,7 @@ import {
   useHistory,
   useIsWin,
   useStartingArticle,
+  useWinCount,
 } from "../stores/GameStore";
 import { copyNotification } from "../utils/toast";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
@@ -32,7 +33,9 @@ export const ResultDialog = () => {
 
   // Dialog open state derives from the win plus an explicit dismissal, so no
   // effect is needed to sync state with the store.
-  const winId = history.length;
+  // winCount is the unique identity of the current win: history.length is not
+  // (two different games can end with the same number of history entries).
+  const winId = useWinCount();
   const [dismissedWinId, setDismissedWinId] = useState<number | null>(null);
   const open = isWin && dismissedWinId !== winId;
   const shareResult = () => {
@@ -53,7 +56,9 @@ export const ResultDialog = () => {
       <ModalRoot
         open={open}
         onOpenChange={(nextOpen) => {
-          if (!nextOpen) setDismissedWinId(winId);
+          // Reopening via the trigger must clear the dismissal of the current
+          // win, or a dismissed dialog could never be brought back.
+          setDismissedWinId(nextOpen ? null : winId);
         }}
       >
         <ModalTrigger asChild>

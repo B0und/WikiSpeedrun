@@ -15,6 +15,10 @@ interface GameValues {
   isGameRunning: boolean;
   cheatingAttempts: number;
   isWin: boolean;
+  // Monotonic win identity: incremented on every win so UI can track
+  // per-win interactions (e.g. dismissing the results dialog) across games,
+  // which a derived value like history.length cannot identify uniquely.
+  winCount: number;
 }
 
 interface Actions {
@@ -46,6 +50,7 @@ const initialState: Omit<GameValues, "startingArticle" | "endingArticle"> = {
   isGameRunning: false,
   cheatingAttempts: 0,
   isWin: false,
+  winCount: 0,
 };
 
 type GameStore = GameValues & Actions;
@@ -99,7 +104,14 @@ export const useGameStore = create<GameStore>()(
             );
           },
           resetStoreState: () => {
-            set(() => ({ ...initialState, history: [] }), false, "resetGame");
+            set(
+              // winCount is preserved: it is a monotonic win identity, not
+              // game state (resetting it would let a dismissed win in one
+              // game suppress the results dialog of a later win).
+              (state) => ({ ...initialState, history: [], winCount: state.winCount }),
+              false,
+              "resetGame",
+            );
           },
           increaseCheatingAttemptsCounter: () => {
             set(
@@ -123,6 +135,11 @@ export const useGameStore = create<GameStore>()(
             set(
               (state) => {
                 state.isWin = isWin;
+                // New win identity for the results dialog; resetStoreState
+                // clears it along with the rest of the game state.
+                if (isWin) {
+                  state.winCount += 1;
+                }
               },
               false,
               "setIsWin",
@@ -160,5 +177,6 @@ export const useHistory = () => useGameStore((state) => state.history);
 export const useClicks = () =>
   useGameStore((state) => (state.history.length > 1 ? state.history.length - 1 : 0));
 export const useIsWin = () => useGameStore((state) => state.isWin);
+export const useWinCount = () => useGameStore((state) => state.winCount);
 
 export const useCheatingAttempts = () => useGameStore((state) => state.cheatingAttempts);

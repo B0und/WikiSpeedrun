@@ -34,12 +34,23 @@ export const testWithMSW = testBase.extend({
   ],
 });
 
+// App-level render: always renders the full provider + router stack.
 export const customRender = (ui?: React.ReactNode) => {
   return render(ui, {
     wrapper: () => (
       <I18nProvider i18n={i18n}>
         <AppProviders />
       </I18nProvider>
+    ),
+  });
+};
+
+// Component-level render: renders the given element inside the i18n provider
+// only (the global stores are plain module singletons, no provider needed).
+export const renderWithI18n = (ui: React.ReactNode) => {
+  return render(ui, {
+    wrapper: ({ children }: { children?: React.ReactNode }) => (
+      <I18nProvider i18n={i18n}>{children}</I18nProvider>
     ),
   });
 };

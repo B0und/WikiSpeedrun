@@ -7,7 +7,7 @@ import { isLocale } from "../locales/config";
 import { dynamicActivate } from "../locales/runtime";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
-import { LANGUAGES } from "./WikiLanguageSelect";
+import { LANGUAGES } from "./Wiki/wikiLanguages";
 
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => isLocale(language.isoCode));
 

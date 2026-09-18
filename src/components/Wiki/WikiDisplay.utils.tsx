@@ -13,7 +13,7 @@ import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
 import { useStopwatchActions } from "../StopwatchContext";
 import { wikiRoute } from "./Wiki";
-import { LANGUAGES } from "../WikiLanguageSelect";
+import { LANGUAGES } from "./wikiLanguages";
 import { jsonAs } from "../../utils/json";
 import type { WikiApiArticle, WikiArticleData, WikiLanguage } from "./Wiki.types";
 
