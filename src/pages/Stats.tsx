@@ -1,5 +1,5 @@
 import { InfoTooltip } from "../components/InfoTooltip";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 import {
   useArticleClicks,
   useArticlePreviewPressed,
@@ -11,7 +11,7 @@ import {
 } from "../stores/StatisticsStore";
 
 export const Stats = () => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
   const articleClicks = useArticleClicks();
   const articlePreviewPressed = useArticlePreviewPressed();
   // const averageAnswerTime = useAverageAnswerTime(); // TODO
@@ -27,20 +27,20 @@ export const Stats = () => {
     <>
       <div className="border-b-[1px] border-secondary-border">
         <InfoTooltip>
-          <h2 className="font-serif text-3xl">{LL.Statistics()}</h2>
+          <h2 className="font-serif text-3xl">{t({ id: "Statistics" })}</h2>
         </InfoTooltip>
       </div>
       <div className="@container">
         <ul className="flex flex-col gap-3 pt-4 @3xl:max-w-[calc(min(50%,700px))]">
-          <Stat name={LL["Wins:"]()} value={wins} />
-          <Stat name={LL["Total games:"]()} value={totalRuns} />
+          <Stat name={t({ id: "Wins:" })} value={wins} />
+          <Stat name={t({ id: "Total games:" })} value={totalRuns} />
           {/* <Stat name="Average Answer Time:" value={averageAnswerTime} />
           <Stat name="Fastest Answer Time:" value={fastestAnswerTime} />
           <Stat name="slowestAnswerTime:" value={slowestAnswerTime} /> */}
-          <Stat name={LL["Known languages:"]()} value={knownWikiLanguages.length} />
-          <Stat name={LL["Random choices:"]()} value={random1Pressed + random5Pressed} />
-          <Stat name={LL["Articles clicked:"]()} value={articleClicks} />
-          <Stat name={LL["Previewed Articles:"]()} value={articlePreviewPressed} />
+          <Stat name={t({ id: "Known languages:" })} value={knownWikiLanguages.length} />
+          <Stat name={t({ id: "Random choices:" })} value={random1Pressed + random5Pressed} />
+          <Stat name={t({ id: "Articles clicked:" })} value={articleClicks} />
+          <Stat name={t({ id: "Previewed Articles:" })} value={articlePreviewPressed} />
         </ul>
       </div>
     </>

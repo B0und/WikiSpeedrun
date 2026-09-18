@@ -1,6 +1,11 @@
+import "@fontsource-variable/noto-sans/wght.css";
+import { I18nProvider } from "@lingui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
+import LocaleProvider from "./components/LocaleProvider";
+import { dynamicActivate, i18n } from "./locales/runtime";
+import { getInterfaceLanguage } from "./stores/SettingsStore";
 import "./index.css";
 
 async function enableMocking() {
@@ -8,8 +13,8 @@ async function enableMocking() {
     return;
   }
 
-  // Dynamic import keeps MSW out of the production bundle entirely; the mock
-  // browser module is only loaded when VITE_WITH_MOCKS=true.
+  // Static import would eagerly bundle MSW and register the service worker in
+  // every build; the module is only needed when mocks are enabled.
   const { worker } = await import("./mocks/browser");
 
   // `worker.start()` resolves once the Service Worker is up and ready to
@@ -17,18 +22,20 @@ async function enableMocking() {
   await worker.start({ onUnhandledRequest: "bypass" });
 }
 
-const bootstrap = async () => {
-  await enableMocking();
+await enableMocking();
+await dynamicActivate(getInterfaceLanguage());
 
-  const rootElement = document.getElementById("root");
-  if (!rootElement) {
-    throw new Error("Root element not found");
-  }
-  ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-  );
-};
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  throw new Error("Root element not found");
+}
 
-void bootstrap();
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <I18nProvider i18n={i18n}>
+      <LocaleProvider>
+        <App />
+      </LocaleProvider>
+    </I18nProvider>
+  </React.StrictMode>,
+);

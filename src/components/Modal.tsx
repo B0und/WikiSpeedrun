@@ -1,11 +1,14 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import React from "react";
 import { X } from "react-feather";
+import { useLingui } from "@lingui/react/macro";
 
 type DrawerContentProps = React.ComponentProps<typeof Dialog.Content>;
 
 const ModalContent = React.forwardRef<React.ElementRef<typeof Dialog.Content>, DrawerContentProps>(
   ({ children, ...props }, forwardedRef) => {
+    const { t } = useLingui();
+
     return (
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/60 data-[state=open]:animate-overlayShow" />
@@ -20,7 +23,11 @@ const ModalContent = React.forwardRef<React.ElementRef<typeof Dialog.Content>, D
             <button
               type="button"
               className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
-              aria-label="Close"
+              aria-label={t({
+                id: "Close",
+                message: "Close",
+                comment: "Button that closes the modal dialog",
+              })}
             >
               <X />
             </button>

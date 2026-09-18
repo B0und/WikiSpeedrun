@@ -1,11 +1,11 @@
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 
 export const Loader = () => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
 
   return (
-    <p aria-live="assertive" data-testid="loading">
-      {LL.Loading()}
-    </p>
+    <output aria-live="assertive" data-testid="loading" className="block">
+      {t({ id: "Loading" })}
+    </output>
   );
 };

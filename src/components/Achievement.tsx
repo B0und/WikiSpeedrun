@@ -1,9 +1,10 @@
+import { useLingui } from "@lingui/react/macro";
 import { clsx } from "clsx";
 import type { Achievement as IAchievement } from "../achievements";
-import { useI18nContext } from "../i18n/i18n-react";
+import { messageDescriptors } from "../lingui";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
 
   let currentValue: number;
   if (achievement.targetValue) {
@@ -12,29 +13,30 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     currentValue = achievement.currentValue?.() ?? 0;
   }
 
-  // @ts-expect-error dynamic key generation
-  const achievementTitle = LL[achievement.id]?.title();
+  const titleId = `${achievement.id}.title` as const;
+  const descriptionId = `${achievement.id}.description` as const;
+  const achievementTitle = t(messageDescriptors[titleId]);
+  let achievementDescription: React.ReactNode = t(messageDescriptors[descriptionId]);
 
-  // @ts-expect-error dynamic key generation
-  let achievementDescription = LL[achievement.id]?.description();
-
-  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]();
+  let achievementAltText: string = achievement.imgAlt
+    ? t(achievement.imgAlt)
+    : t(messageDescriptors["Prize trophy"]);
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
       <span>
-        {LL["Made by Ina_den"]()} {LL["Follow him on"]()}{" "}
+        {t(messageDescriptors["Made by Ina_den"])} {t(messageDescriptors["Follow him on"])}{" "}
         <a
           href="https://twitter.com/Ina_den_"
           target="_blank"
           rel="noreferrer"
           className="text-primary-blue underline"
         >
-          {LL["twitter (X)"]()}
+          {t(messageDescriptors["twitter (X)"])}
         </a>
       </span>
     );
-    achievementAltText = LL.WaifuAlt();
+    achievementAltText = t(messageDescriptors.WaifuAlt);
   }
   return (
     <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full">

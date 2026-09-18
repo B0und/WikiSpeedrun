@@ -1,8 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Portal from "@radix-ui/react-portal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useResetGame } from "../hooks/useResetGame";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 import {
   useCheatingAttempts,
   useClicks,
@@ -18,8 +18,7 @@ import { StopwatchDisplay } from "./StopwatchDisplay";
 import { VictoryConfetti } from "./VictoryConfetti";
 
 export const ResultDialog = () => {
-  const { LL } = useI18nContext();
-  const [open, setOpen] = useState(false);
+  const { t } = useLingui();
   const resetGame = useResetGame();
 
   const startingArticle = useStartingArticle();
@@ -31,32 +30,42 @@ export const ResultDialog = () => {
   const cheatingAttempts = useCheatingAttempts();
   const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
 
-  useEffect(() => {
-    // The dialog auto-opens when the run is won, but stays closable by the
-    // user afterwards, so `open` can't be derived from `isWin` alone.
-    // oxlint-disable-next-line react/set-state-in-effect -- deliberate sync of dialog with win state
-    setOpen(isWin);
-  }, [isWin]);
+  // Dialog open state derives from the win plus an explicit dismissal, so no
+  // effect is needed to sync state with the store.
+  const winId = history.length;
+  const [dismissedWinId, setDismissedWinId] = useState<number | null>(null);
+  const open = isWin && dismissedWinId !== winId;
+  const shareResult = () => {
+    void (async () => {
+      await navigator.clipboard.writeText(window.location.href);
+      copyNotification(t({ id: "Copied to clipboard" }));
+    })();
+  };
 
   const resultStats = [
-    { name: LL["Article clicks"](), value: clicks },
-    { name: LL["Cheating attempts"](), value: cheatingAttempts },
-    { name: LL["Missed wins"](), value: missedWins },
+    { name: t({ id: "Article clicks" }), value: clicks },
+    { name: t({ id: "Cheating attempts" }), value: cheatingAttempts },
+    { name: t({ id: "Missed wins" }), value: missedWins },
   ];
 
   return (
     <>
-      <ModalRoot open={open} onOpenChange={setOpen}>
+      <ModalRoot
+        open={open}
+        onOpenChange={(nextOpen) => {
+          if (!nextOpen) setDismissedWinId(winId);
+        }}
+      >
         <ModalTrigger asChild>
           {isWin && (
             <button type="button" className="p-4 hover:text-primary-blue sm:p-2">
-              {LL.Results()}
+              {t({ id: "Results" })}
             </button>
           )}
         </ModalTrigger>
         <ModalContent>
           <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
-            {LL.Results()}
+            {t({ id: "Results" })}
           </ModalTitle>
           <ModalDescription asChild>
             <StartArrowEnd
@@ -89,14 +98,9 @@ export const ResultDialog = () => {
             <button
               type="button"
               className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-              onClick={() => {
-                void (async () => {
-                  await navigator.clipboard.writeText(window.location.href);
-                  copyNotification(LL["Copied to clipboard"]());
-                })();
-              }}
+              onClick={shareResult}
             >
-              {LL["Share Result"]()}
+              {t({ id: "Share Result" })}
             </button>
             <Dialog.Close asChild>
               <button
@@ -104,7 +108,7 @@ export const ResultDialog = () => {
                 onClick={resetGame}
                 className="rounded-xs bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
               >
-                {LL["Play again"]()}
+                {t({ id: "Play again" })}
               </button>
             </Dialog.Close>
           </div>

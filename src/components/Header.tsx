@@ -1,27 +1,27 @@
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Link } from "@tanstack/react-router";
 import { GitHub, Moon, Sun } from "react-feather";
-import type { LocalizedString } from "typesafe-i18n";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 import { useIsGameRunning } from "../stores/GameStore";
 import { GiveUpModal } from "./ConfirmNavigation";
 import { InterfaceLanguageSelect } from "./InterfaceLanguageSelect";
 import { MobileMenu } from "./MobileMenu";
 import { ResultDialog } from "./ResultDialog";
+import { WikiPresentationMenu } from "./Wiki/WikiPresentationMenu";
 import { useThemeContext } from "./ThemeContext";
 
 export interface WikiLink {
-  name: LocalizedString;
+  name: string;
   path: string;
 }
 const Header = () => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
 
   const links: WikiLink[] = [
-    { name: LL.Play(), path: "/settings" },
-    { name: LL.Statistics(), path: "/stats" },
-    { name: LL.Achievements(), path: "/achievements" },
-    { name: LL.About(), path: "/about" },
+    { name: t({ id: "Play" }), path: "/settings" },
+    { name: t({ id: "Statistics" }), path: "/stats" },
+    { name: t({ id: "Achievements" }), path: "/achievements" },
+    { name: t({ id: "About" }), path: "/about" },
   ];
 
   const isGameRunning = useIsGameRunning();
@@ -32,14 +32,17 @@ const Header = () => {
     <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3 sm:gap-0">
       <WikiLogo />
       <nav className="flex h-full flex-1 items-center gap-4">
-        <div className="flex gap-4 md:hidden">
+        <div className="flex gap-4 lg:hidden">
           <LeftNav isGameRunning={isGameRunning} links={links} />
         </div>
         {isGameRunning && <GiveUpModal />}
         <MobileMenu links={links} />
         <ResultDialog />
-        <ul className="ml-auto flex h-full gap-4">
-          <li>{!isGameRunning && <InterfaceLanguageSelect />}</li>
+        <ul className="ml-auto flex h-full shrink-0 gap-4">
+          <li className="h-full">{!isGameRunning && <InterfaceLanguageSelect />}</li>
+          <li className="h-full">
+            <WikiPresentationMenu />
+          </li>
           <li className="h-full">
             <button
               type="button"
@@ -47,7 +50,13 @@ const Header = () => {
               onClick={switchTheme}
             >
               {colorMode === "light" ? <Sun /> : <Moon />}
-              <VisuallyHidden>Toggle theme</VisuallyHidden>
+              <VisuallyHidden>
+                {t({
+                  id: "Toggle theme",
+                  message: "Toggle theme",
+                  comment: "Button that switches between light and dark mode",
+                })}
+              </VisuallyHidden>
             </button>
           </li>
           <li className="h-full sm:hidden">
@@ -60,7 +69,7 @@ const Header = () => {
 };
 
 const WikiLogo = () => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
   const { colorMode } = useThemeContext();
   const imageSrc = colorMode === "light" ? "/new-wiki-logo-light" : "/new-wiki-logo-dark";
 
@@ -74,9 +83,9 @@ const WikiLogo = () => {
         height={68}
         className="block h-full"
         src={`${window.location.origin}/${imageSrc}.png`}
-        alt={LL[
-          "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
-        ]()}
+        alt={t({
+          id: "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds",
+        })}
       />
     </picture>
   );
@@ -100,6 +109,7 @@ const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Wiki
 };
 
 export const GithubLink = () => {
+  const { t } = useLingui();
   return (
     <a
       target="_blank"
@@ -108,7 +118,13 @@ export const GithubLink = () => {
       rel="noreferrer"
     >
       <GitHub />
-      <VisuallyHidden>Source code on github</VisuallyHidden>
+      <VisuallyHidden>
+        {t({
+          id: "Source code on github",
+          message: "Source code on github",
+          comment: "Link to the project's GitHub repository",
+        })}
+      </VisuallyHidden>
     </a>
   );
 };

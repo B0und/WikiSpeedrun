@@ -56,7 +56,7 @@ To build the app for production to the `build` folder.
 
 ## Contributing
 
-If you want to fix some translations, you can find and edit them in `src/i18n`.
+If you want to fix some translations, you can find and edit them in `src/locales/<locale>/messages.po`.
 If you want to make some major code changes, please contact me first/open an issue.
 
 ## Donations

@@ -1,0 +1,333 @@
+// Lingui message registry. Lives outside src/locales/ because the extractor
+// excludes the catalog directory itself.
+import { msg } from "@lingui/core/macro";
+
+export const messageDescriptors = {
+  "Wiki Speedrun Game": /** i18n */ msg({
+    id: "Wiki Speedrun Game",
+    message: "Wiki Speedrun Game",
+  }),
+  "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time":
+    /** i18n */ msg({
+      id: "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time",
+      message:
+        "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time.",
+    }),
+  Features: /** i18n */ msg({ id: "Features", message: "Features" }),
+  "Now supports multiple languages": /** i18n */ msg({
+    id: "Now supports multiple languages",
+    message: "Now supports multiple languages",
+  }),
+  "No registration required": /** i18n */ msg({
+    id: "No registration required",
+    message: "No registration required",
+  }),
+  "High precision fair™ timer": /** i18n */ msg({
+    id: "High precision fair™ timer",
+    message: "High precision fair™ timer",
+  }),
+  "actually stops while you are loading the next article": /** i18n */ msg({
+    id: "actually stops while you are loading the next article",
+    message: "actually stops while you are loading the next article",
+  }),
+  "Keeps track of your session progress": /** i18n */ msg({
+    id: "Keeps track of your session progress",
+    message: "Keeps track of your session progress",
+  }),
+  "Dark theme support": /** i18n */ msg({
+    id: "Dark theme support",
+    message: "Dark theme support",
+  }),
+  "Open source": /** i18n */ msg({ id: "Open source", message: "Open source" }),
+  Play: /** i18n */ msg({ id: "Play", message: "Play" }),
+  About: /** i18n */ msg({ id: "About", message: "About" }),
+  Settings: /** i18n */ msg({ id: "Settings", message: "Settings" }),
+  "Start typing and then select values from the dropdown list or press the random button":
+    /** i18n */ msg({
+      id: "Start typing and then select values from the dropdown list or press the random button",
+      message:
+        "Start typing and then select values from the dropdown list or press the random button.",
+    }),
+  "Select starting article": /** i18n */ msg({
+    id: "Select starting article",
+    message: "Select starting article",
+  }),
+  "Select ending article": /** i18n */ msg({
+    id: "Select ending article",
+    message: "Select ending article",
+  }),
+  "Start typing to see options": /** i18n */ msg({
+    id: "Start typing to see options",
+    message: "Start typing to see options",
+  }),
+  "Article clicks": /** i18n */ msg({ id: "Article clicks", message: "Article clicks" }),
+  "Cheating attempts": /** i18n */ msg({ id: "Cheating attempts", message: "Cheating attempts" }),
+  Results: /** i18n */ msg({ id: "Results", message: "Results" }),
+  "Play again": /** i18n */ msg({ id: "Play again", message: "Play again" }),
+  "Give up": /** i18n */ msg({ id: "Give up", message: "Give up" }),
+  "Confirm action": /** i18n */ msg({ id: "Confirm action", message: "Confirm action" }),
+  "If you leave, your current progress will be lost": /** i18n */ msg({
+    id: "If you leave, your current progress will be lost",
+    message: "If you leave, your current progress will be lost",
+  }),
+  History: /** i18n */ msg({ id: "History", message: "History" }),
+  Article: /** i18n */ msg({ id: "Article", message: "Article" }),
+  Time: /** i18n */ msg({ id: "Time", message: "Time" }),
+  "This page doesn't exist": /** i18n */ msg({
+    id: "This page doesn't exist",
+    message: "This page doesn't exist",
+  }),
+  "No articles found": /** i18n */ msg({ id: "No articles found", message: "No articles found" }),
+  "Get random article": /** i18n */ msg({
+    id: "Get random article",
+    message: "Get random article",
+  }),
+  "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds":
+    /** i18n */ msg({
+      id: "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds",
+      message:
+        "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across it. (looks like a big black stripe with a green time text on top). The time is 9 seconds and 5 milliseconds.",
+    }),
+  "Select article language": /** i18n */ msg({
+    id: "Select article language",
+    message: "Select article language",
+  }),
+  Language: /** i18n */ msg({ id: "Language", message: "Language" }),
+  Navigation: /** i18n */ msg({ id: "Navigation", message: "Navigation" }),
+  "No Cheating!": /** i18n */ msg({ id: "No Cheating!", message: "No Cheating!" }),
+  "Random failed, try again": /** i18n */ msg({
+    id: "Random failed, try again",
+    message: "Random failed, try again",
+  }),
+  "Choose another link": /** i18n */ msg({
+    id: "Choose another link",
+    message: "Choose another link",
+  }),
+  "Share settings": /** i18n */ msg({ id: "Share settings", message: "Share settings" }),
+  "Copied to clipboard": /** i18n */ msg({
+    id: "Copied to clipboard",
+    message: "Copied to clipboard",
+  }),
+  "Share Result": /** i18n */ msg({ id: "Share Result", message: "Share Result" }),
+  Loading: /** i18n */ msg({ id: "Loading", message: "Loading..." }),
+  "Couldn't load article preview": /** i18n */ msg({
+    id: "Couldn't load article preview",
+    message: "Couldn't load article preview",
+  }),
+  "Winning links": /** i18n */ msg({ id: "Winning links", message: "Winning links" }),
+  "Missed wins": /** i18n */ msg({ id: "Missed wins", message: "Missed wins" }),
+  "Choose your article": /** i18n */ msg({
+    id: "Choose your article",
+    message: "Choose your article",
+  }),
+  Statistics: /** i18n */ msg({ id: "Statistics", message: "Statistics" }),
+  "Wins:": /** i18n */ msg({ id: "Wins:", message: "Wins:" }),
+  "Total games:": /** i18n */ msg({ id: "Total games:", message: "Total games:" }),
+  "Known languages:": /** i18n */ msg({ id: "Known languages:", message: "Known languages:" }),
+  "Random choices:": /** i18n */ msg({ id: "Random choices:", message: "Random choices:" }),
+  "Articles clicked:": /** i18n */ msg({ id: "Articles clicked:", message: "Articles clicked:" }),
+  "Previewed Articles:": /** i18n */ msg({
+    id: "Previewed Articles:",
+    message: "Previewed Articles:",
+  }),
+  Achievements: /** i18n */ msg({ id: "Achievements", message: "Achievements" }),
+  "All of the information is stored locally in your browser (because servers cost money)":
+    /** i18n */ msg({
+      id: "All of the information is stored locally in your browser (because servers cost money)",
+      message:
+        "All of the information is stored locally in your browser (because servers cost money)",
+    }),
+  "If you clear your browser data or switch to another browser all of your data will be gone":
+    /** i18n */ msg({
+      id: "If you clear your browser data or switch to another browser all of your data will be gone",
+      message:
+        "If you clear your browser data or switch to another browser all of your data will be gone.",
+    }),
+  "FirstWin.title": /** i18n */ msg({ id: "FirstWin.title", message: "First Victory" }),
+  "FirstWin.description": /** i18n */ msg({
+    id: "FirstWin.description",
+    message: "Complete your first speedrun",
+  }),
+  "NoviceRunner.title": /** i18n */ msg({ id: "NoviceRunner.title", message: "Novice Runner" }),
+  "NoviceRunner.description": /** i18n */ msg({
+    id: "NoviceRunner.description",
+    message: "Win 10 games",
+  }),
+  "Speedster.title": /** i18n */ msg({ id: "Speedster.title", message: "Speedster" }),
+  "Speedster.description": /** i18n */ msg({
+    id: "Speedster.description",
+    message: "Win 25 games",
+  }),
+  "WikiExplorer.title": /** i18n */ msg({ id: "WikiExplorer.title", message: "Wiki Explorer" }),
+  "WikiExplorer.description": /** i18n */ msg({
+    id: "WikiExplorer.description",
+    message: "Win 50 games",
+  }),
+  "SpeedDemon.title": /** i18n */ msg({ id: "SpeedDemon.title", message: "Speed Demon" }),
+  "SpeedDemon.description": /** i18n */ msg({
+    id: "SpeedDemon.description",
+    message: "Win 100 games",
+  }),
+  "MasterRunner.title": /** i18n */ msg({ id: "MasterRunner.title", message: "Master Runner" }),
+  "MasterRunner.description": /** i18n */ msg({
+    id: "MasterRunner.description",
+    message: "Win 250 games",
+  }),
+  "WikipediaChampion.title": /** i18n */ msg({
+    id: "WikipediaChampion.title",
+    message: "Wikipedia Champion",
+  }),
+  "WikipediaChampion.description": /** i18n */ msg({
+    id: "WikipediaChampion.description",
+    message: "Win 500 games",
+  }),
+  "SpeedrunAddict.title": /** i18n */ msg({
+    id: "SpeedrunAddict.title",
+    message: "Speedrun Addict",
+  }),
+  "SpeedrunAddict.description": /** i18n */ msg({
+    id: "SpeedrunAddict.description",
+    message: "Win 1000 games",
+  }),
+  "WikipediaLegend.title": /** i18n */ msg({
+    id: "WikipediaLegend.title",
+    message: "Wikipedia Legend",
+  }),
+  "WikipediaLegend.description": /** i18n */ msg({
+    id: "WikipediaLegend.description",
+    message: "Win 2500 games",
+  }),
+  "SpeedrunGod.title": /** i18n */ msg({ id: "SpeedrunGod.title", message: "Speedrun God" }),
+  "SpeedrunGod.description": /** i18n */ msg({
+    id: "SpeedrunGod.description",
+    message: "Win 5000 games",
+  }),
+  "AttentiveExplorer.title": /** i18n */ msg({
+    id: "AttentiveExplorer.title",
+    message: "Attentive Explorer",
+  }),
+  "AttentiveExplorer.description": /** i18n */ msg({
+    id: "AttentiveExplorer.description",
+    message: "Navigate through at least 10 articles without missing the winning link",
+  }),
+  "KeenPathfinder.title": /** i18n */ msg({
+    id: "KeenPathfinder.title",
+    message: "Keen Pathfinder",
+  }),
+  "KeenPathfinder.description": /** i18n */ msg({
+    id: "KeenPathfinder.description",
+    message: "Navigate through at least 25 articles without missing the winning link",
+  }),
+  "SharpNavigator.title": /** i18n */ msg({
+    id: "SharpNavigator.title",
+    message: "Sharp Navigator",
+  }),
+  "SharpNavigator.description": /** i18n */ msg({
+    id: "SharpNavigator.description",
+    message: "Navigate through at least 50 articles without missing the winning link",
+  }),
+  "ExplorerOfChance.title": /** i18n */ msg({
+    id: "ExplorerOfChance.title",
+    message: "Explorer of Chance",
+  }),
+  "ExplorerOfChance.description": /** i18n */ msg({
+    id: "ExplorerOfChance.description",
+    message: "Select 10 random articles",
+  }),
+  "FortuneSeeker.title": /** i18n */ msg({ id: "FortuneSeeker.title", message: "Fortune Seeker" }),
+  "FortuneSeeker.description": /** i18n */ msg({
+    id: "FortuneSeeker.description",
+    message: "Select 100 random articles",
+  }),
+  "GachaAddict.title": /** i18n */ msg({ id: "GachaAddict.title", message: "Gacha Addict" }),
+  "GachaAddict.description": /** i18n */ msg({
+    id: "GachaAddict.description",
+    message: "Select 1000 random articles",
+  }),
+  "GachaOverlord.title": /** i18n */ msg({ id: "GachaOverlord.title", message: "Gacha Overlord" }),
+  "GachaOverlord.description": /** i18n */ msg({
+    id: "GachaOverlord.description",
+    message: "Select 10000 random articles",
+  }),
+  "Curiosity.title": /** i18n */ msg({
+    id: "Curiosity.title",
+    message: "Curiosity didn't kill the cat",
+  }),
+  "Curiosity.description": /** i18n */ msg({
+    id: "Curiosity.description",
+    message: "Preview an article",
+  }),
+  "CuriousExplorer.title": /** i18n */ msg({
+    id: "CuriousExplorer.title",
+    message: "Curious Explorer",
+  }),
+  "CuriousExplorer.description": /** i18n */ msg({
+    id: "CuriousExplorer.description",
+    message: "Preview 100 articles",
+  }),
+  "PreviewEnthusiast.title": /** i18n */ msg({
+    id: "PreviewEnthusiast.title",
+    message: "Preview Enthusiast",
+  }),
+  "PreviewEnthusiast.description": /** i18n */ msg({
+    id: "PreviewEnthusiast.description",
+    message: "Preview 1000 articles",
+  }),
+  "InsatiablesReader.title": /** i18n */ msg({
+    id: "InsatiablesReader.title",
+    message: "Insatiable Reader",
+  }),
+  "InsatiablesReader.description": /** i18n */ msg({
+    id: "InsatiablesReader.description",
+    message: "Preview 10000 articles",
+  }),
+  "Bilingual.title": /** i18n */ msg({ id: "Bilingual.title", message: "Bilingual" }),
+  "Bilingual.description": /** i18n */ msg({
+    id: "Bilingual.description",
+    message: "Explore articles in 2 different languages",
+  }),
+  "Trilingual.title": /** i18n */ msg({ id: "Trilingual.title", message: "Trilingual" }),
+  "Trilingual.description": /** i18n */ msg({
+    id: "Trilingual.description",
+    message: "Explore articles in 3 different languages",
+  }),
+  "Polyglot.title": /** i18n */ msg({ id: "Polyglot.title", message: "Polyglot" }),
+  "Polyglot.description": /** i18n */ msg({
+    id: "Polyglot.description",
+    message: "Explore articles in 5 different languages",
+  }),
+  "EgoStroke.title": /** i18n */ msg({ id: "EgoStroke.title", message: "Ego Stroke" }),
+  "EgoStroke.description": /** i18n */ msg({
+    id: "EgoStroke.description",
+    message: "Thank you for inspiring this whole project",
+  }),
+  "SpeedrunWaifu.title": /** i18n */ msg({
+    id: "SpeedrunWaifu.title",
+    message: "Wiki Speedrun Waifu",
+  }),
+  "SpeedrunWaifu.description": /** i18n */ msg({
+    id: "SpeedrunWaifu.description",
+    message: "Made by Ina_den. Follow him on twitter",
+  }),
+  "Made by Ina_den": /** i18n */ msg({ id: "Made by Ina_den", message: "Made by Ina_den." }),
+  "Follow him on": /** i18n */ msg({ id: "Follow him on", message: "Follow him on" }),
+  "twitter (X)": /** i18n */ msg({ id: "twitter (X)", message: " twitter (X)" }),
+  "Achievement unlocked": /** i18n */ msg({
+    id: "Achievement unlocked",
+    message: "Achievement unlocked",
+  }),
+  WaifuAlt: /** i18n */ msg({
+    id: "WaifuAlt",
+    message:
+      "Cute anime girl with a blue dress sitting in a library, while a wikipedia globe with a speedrun timer attached is floating nearby",
+  }),
+  "Prize trophy": /** i18n */ msg({ id: "Prize trophy", message: "Prize Trophy" }),
+  "Enable search during gameplay": /** i18n */ msg({
+    id: "Enable search during gameplay",
+    message: "Enable search during gameplay",
+  }),
+  Yes: /** i18n */ msg({ id: "Yes", message: "Yes" }),
+  No: /** i18n */ msg({ id: "No", message: "No" }),
+} as const;
+
+export type MessageId = keyof typeof messageDescriptors;
