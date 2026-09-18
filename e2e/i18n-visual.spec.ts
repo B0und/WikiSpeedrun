@@ -172,6 +172,12 @@ test("dark interface renders with stable layout on key pages", async ({ page }) 
   await page.locator('a[href="/settings"]').first().click();
   await expectVisuallySoundInterface(page, "en");
 
+  // The appearance popover (portal overlay) with its custom radio indicators
+  // was regressed by cascade-layer changes; lock its dark rendering too.
+  await page.getByRole("button", { name: "Article appearance" }).click();
+  await page.getByRole("radio", { name: "Standard" }).waitFor();
+  await page.mouse.move(0, 0);
+
   await expect(page).toHaveScreenshot("dark-settings-en.png", {
     animations: "disabled",
     fullPage: true,

@@ -104,7 +104,7 @@ const WikiPresentationControls = () => {
               <span
                 className={clsx(
                   "size-4 shrink-0 rounded-full border-2 border-secondary-border bg-transparent transition-colors",
-                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:border-secondary-border",
+                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:not-peer-checked:border-secondary-border",
                   "peer-focus-visible:ring-ring peer-focus-visible:ring-offset-background peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2",
                 )}
               />
@@ -136,7 +136,7 @@ const WikiPresentationControls = () => {
               <span
                 className={clsx(
                   "size-4 shrink-0 rounded-full border-2 border-secondary-border bg-transparent transition-colors",
-                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:border-secondary-border",
+                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:not-peer-checked:border-secondary-border",
                   "peer-focus-visible:ring-ring peer-focus-visible:ring-offset-background peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2",
                 )}
               />
