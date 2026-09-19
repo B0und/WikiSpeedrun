@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef } from "react";
 import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 import {
@@ -158,6 +158,7 @@ export const useWikiQuery = () => {
   return useQuery({
     queryKey: ["article", wikiArticle, language],
     queryFn: () => getArticleData(language, wikiArticle),
+    placeholderData: keepPreviousData,
     refetchOnWindowFocus: false,
     enabled: Boolean(wikiArticle),
   });
