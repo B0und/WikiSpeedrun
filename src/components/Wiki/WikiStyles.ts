@@ -25,8 +25,8 @@ const SUPPORTED_WIKI_LANGUAGES: Record<string, true> = Object.fromEntries(
   LANGUAGES.map(({ value }) => [value, true]),
 );
 
-export const isSupportedWikiLanguage = (language: string): language is WikiLanguage =>
-  Boolean(SUPPORTED_WIKI_LANGUAGES[language]);
+export const isSupportedWikiLanguage = (language: string): boolean =>
+  Object.hasOwn(SUPPORTED_WIKI_LANGUAGES, language);
 
 const buildResourceLoaderUrl = (language: WikiLanguage, modules: readonly string[]) => {
   const url = new URL(`https://${language}.wikipedia.org/w/load.php`);
