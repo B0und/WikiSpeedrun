@@ -277,31 +277,16 @@
 
   .wiki-loader-card {
     display: flex;
-    min-width: 13rem;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
-    border: 1px solid var(--color-secondary-border);
-    border-radius: 0.75rem;
-    background: rgb(255 255 255 / 0.92);
-    padding: 1.25rem 1.5rem;
-    box-shadow:
-      0 16px 36px rgb(15 23 42 / 0.12),
-      0 2px 8px rgb(15 23 42 / 0.08);
-  }
-
-  .dark .wiki-loader-card {
-    background: rgb(48 48 48 / 0.94);
-    box-shadow:
-      0 16px 36px rgb(0 0 0 / 0.3),
-      0 2px 8px rgb(0 0 0 / 0.2);
+    gap: 0.35rem;
   }
 
   .wiki-loader-stage {
     position: relative;
     display: block;
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .wiki-loader-orbit {
@@ -312,21 +297,15 @@
   }
 
   .wiki-loader-orbit-primary {
-    inset: 0.35rem;
+    inset: 0.2rem;
     animation: wiki-loader-orbit 3.2s linear infinite;
-  }
-
-  .wiki-loader-orbit-secondary {
-    inset: 1rem 0.1rem;
-    border-color: #34a853;
-    animation: wiki-loader-orbit-reverse 2.6s linear infinite;
   }
 
   .wiki-loader-scanline {
     position: absolute;
     top: 50%;
-    right: 0.7rem;
-    left: 0.7rem;
+    right: 0.4rem;
+    left: 0.4rem;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.95), transparent);
     animation: wiki-loader-scanline 1.8s ease-in-out infinite;
@@ -337,14 +316,13 @@
     top: 50%;
     left: 50%;
     display: flex;
-    width: 3rem;
-    height: 3rem;
+    width: 1.7rem;
+    height: 1.7rem;
     align-items: center;
     justify-content: center;
     border-radius: 9999px;
     background: var(--color-primary-blue);
     color: white;
-    box-shadow: 0 5px 14px rgb(37 99 235 / 0.3);
     transform: translate(-50%, -50%);
     animation: wiki-loader-bob 2.1s ease-in-out infinite;
   }
@@ -352,46 +330,37 @@
   .wiki-loader-page {
     position: absolute;
     display: flex;
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 0.9rem;
+    height: 0.9rem;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(37 99 235 / 0.28);
-    border-radius: 0.4rem;
-    background: rgb(255 255 255 / 0.94);
     color: var(--color-primary-blue);
-    box-shadow: 0 3px 8px rgb(15 23 42 / 0.15);
-  }
-
-  .dark .wiki-loader-page {
-    background: var(--color-dark-surface);
-    color: #8dccff;
   }
 
   .wiki-loader-page-front {
-    top: 0.2rem;
-    right: 0.45rem;
+    top: 0.05rem;
+    right: 0.2rem;
     animation: wiki-loader-page-front 2.4s ease-in-out infinite;
   }
 
   .wiki-loader-page-back {
-    bottom: 0.1rem;
-    left: 0.25rem;
+    bottom: 0.05rem;
+    left: 0.05rem;
     animation: wiki-loader-page-back 2.4s ease-in-out 0.8s infinite;
   }
 
   .wiki-loader-dots {
     display: inline-flex;
-    width: 1.25rem;
+    width: 0.8rem;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.12rem;
     overflow: hidden;
   }
 
   .wiki-loader-dots > span {
     display: block;
-    width: 0.24rem;
-    height: 0.24rem;
+    width: 0.14rem;
+    height: 0.14rem;
     flex: 0 0 auto;
     border-radius: 9999px;
     background: currentcolor;
@@ -424,22 +393,16 @@
     }
   }
 
-  @keyframes wiki-loader-orbit-reverse {
-    to {
-      transform: rotate(-360deg);
-    }
-  }
-
   @keyframes wiki-loader-scanline {
     0%,
     100% {
       opacity: 0.15;
-      transform: translateY(-1.1rem);
+      transform: translateY(-0.6rem);
     }
 
     50% {
       opacity: 0.9;
-      transform: translateY(1.1rem);
+      transform: translateY(0.6rem);
     }
   }
 
@@ -461,7 +424,7 @@
     }
 
     50% {
-      transform: translateY(-0.3rem) rotate(-8deg);
+      transform: translateY(-0.16rem) rotate(-8deg);
     }
   }
 
@@ -472,7 +435,7 @@
     }
 
     50% {
-      transform: translateY(0.28rem) rotate(8deg);
+      transform: translateY(0.16rem) rotate(8deg);
     }
   }
 
@@ -486,7 +449,7 @@
 
     30% {
       opacity: 1;
-      transform: translateY(-0.15rem);
+      transform: translateY(-0.08rem);
     }
   }
 
