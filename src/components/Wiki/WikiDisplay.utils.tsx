@@ -41,12 +41,14 @@ export const getWikiArticleKey = (article: WikiArticleData) =>
 const BASELINE_STYLE_MODULES = [
   "skins.vector.styles",
   "mediawiki.skinning.content.parsoid",
+  "mediawiki.skins.legacy",
   "ext.cite.parsoid.styles",
 ] as const;
 
 const EXCLUDED_CONDITIONAL_STYLE_MODULES: Record<string, true> = {
   "skins.vector.styles": true,
   "mediawiki.skinning.content.parsoid": true,
+  "mediawiki.skins.legacy": true,
   "ext.cite.parsoid.styles": true,
   "site.styles": true,
   "user.styles": true,

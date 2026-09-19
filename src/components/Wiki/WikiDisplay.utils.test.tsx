@@ -47,7 +47,7 @@ testWithMSW("requests the Vector 2022 parse contract", async () => {
   });
 });
 
-testWithMSW("builds stable isolated ResourceLoader style URLs", () => {
+testWithMSW("builds stable isolated ResourceLoader style URLs with legacy layout styles", () => {
   const urls = buildWikipediaStyleUrls("ar", [
     "site.styles",
     "ext.math.styles",
@@ -65,7 +65,7 @@ testWithMSW("builds stable isolated ResourceLoader style URLs", () => {
     "ar.wikipedia.org",
   ]);
   expect(urls.map((url) => url.searchParams.get("modules"))).toEqual([
-    "ext.cite.parsoid.styles|mediawiki.skinning.content.parsoid|skins.vector.styles",
+    "ext.cite.parsoid.styles|mediawiki.skinning.content.parsoid|mediawiki.skins.legacy|skins.vector.styles",
     "ext.cite.styles|ext.math.styles",
     "site.styles",
   ]);
