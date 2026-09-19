@@ -19,7 +19,7 @@ export const Loader = ({ overlay = false }: LoaderProps) => {
       className={clsx(
         "z-20 flex items-center justify-center p-4",
         overlay
-          ? "wiki-loader-overlay absolute inset-x-0 top-0 h-[min(70vh,32rem)] min-h-[18rem] bg-neutral-50/70 backdrop-blur-sm dark:bg-dark-surface/70"
+          ? "wiki-loader-overlay absolute inset-x-0 top-0 h-[min(70vh,32rem)] min-h-[18rem]"
           : "min-h-72",
       )}
     >
