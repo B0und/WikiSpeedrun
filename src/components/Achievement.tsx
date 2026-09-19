@@ -39,31 +39,29 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     achievementAltText = t(messageDescriptors.WaifuAlt);
   }
   return (
-    <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full">
+    <div className="flex w-full max-w-[var(--achievement-size)] min-w-0 items-center justify-start gap-5 sm:items-start lg:max-w-full">
       <img
         width={128}
         height={128}
         src={achievement.imgUrl ?? "/trophy.svg"}
         alt={achievementAltText}
         className={clsx(
-          "h-full bg-center object-cover sm:h-16 sm:w-16",
+          "h-32 w-32 shrink-0 bg-center object-cover sm:h-16 sm:w-16",
           !achievement.unlocked && "grayscale",
         )}
         loading="lazy"
       />
-      <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">
-        <div className="flex flex-col gap-1">
-          <h3 className="text-lg">{achievementTitle}</h3>
-          <p className="line-clamp-2 text-xs" title="asd">
-            {achievementDescription}
-          </p>
+      <div className="mt-8 flex min-w-0 flex-1 flex-col justify-between self-stretch sm:mt-0">
+        <div className="flex min-w-0 flex-col gap-1">
+          <h3 className="text-lg break-words">{achievementTitle}</h3>
+          <p className="line-clamp-2 text-xs break-words">{achievementDescription}</p>
         </div>
 
         {
           <label
             htmlFor=""
             className={clsx(
-              "flex flex-col gap-1",
+              "flex min-w-0 flex-col gap-1",
               currentValue === undefined && achievement.targetValue === undefined && "invisible",
             )}
           >
