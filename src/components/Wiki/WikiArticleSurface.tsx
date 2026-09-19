@@ -1,11 +1,10 @@
 import { clsx } from "clsx";
 import purify from "dompurify";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { WikiArticleFontSize } from "../../stores/SettingsStore";
 import articleAdaptationsUrl from "./styles/article-adaptations.css?url";
 import type { WikiArticleData, WikiArticleHostStyle, WikiArticleStyleState } from "./Wiki.types";
-import { getWikiArticleKey } from "./WikiDisplay.utils";
 
 export interface WikiArticleSurfaceProps {
   article: WikiArticleData;
@@ -31,12 +30,8 @@ const FONT_STYLE_BY_SIZE: Record<WikiArticleFontSize, WikiArticleHostStyle> = {
   },
 };
 
-interface SettlementState {
-  key: string;
-  settledLinks: Set<string>;
-  degraded: boolean;
-}
-
+// The parent keys one surface instance per article, so a mounted surface only
+// ever settles the stylesheets for the article it was created with.
 export const WikiArticleSurface = ({
   article,
   fontSize,
@@ -46,38 +41,16 @@ export const WikiArticleSurface = ({
   onKeyDown,
 }: WikiArticleSurfaceProps) => {
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
-  const [readyState, setReadyState] = useState<{
-    key: string;
-    state: WikiArticleStyleState;
-  } | null>(null);
+  const [styleState, setStyleState] = useState<WikiArticleStyleState | null>(null);
   const contentRootRef = useRef<HTMLDivElement | null>(null);
-  const frameRef = useRef<number | undefined>(undefined);
-  const onReadyRef = useRef(onReady);
+  const settledLinksRef = useRef<Set<string>>(new Set());
+  const degradedRef = useRef(false);
 
-  const articleKey = getWikiArticleKey(article);
   const styleUrls = useMemo(
     () => [...article.styleUrls, articleAdaptationsUrl],
     [article.styleUrls],
   );
   const sanitizedHtml = useMemo(() => purify.sanitize(article.html), [article.html]);
-
-  const settlementRef = useRef<SettlementState>({
-    key: articleKey,
-    settledLinks: new Set<string>(),
-    degraded: false,
-  });
-
-  // Refs may not be read or written during render, so the per-article reset
-  // happens in an effect keyed on the article instead.
-  useEffect(() => {
-    onReadyRef.current = onReady;
-  }, [onReady]);
-
-  useEffect(() => {
-    settlementRef.current = { key: articleKey, settledLinks: new Set<string>(), degraded: false };
-  }, [articleKey]);
-
-  const styleState = readyState?.key === articleKey ? readyState.state : null;
   const isBusy = styleState === null;
 
   const attachShadowRoot = useCallback((host: HTMLDivElement | null) => {
@@ -85,35 +58,25 @@ export const WikiArticleSurface = ({
     setShadowRoot(host.shadowRoot ?? host.attachShadow({ mode: "open" }));
   }, []);
 
-  useEffect(
-    () => () => {
-      if (frameRef.current !== undefined) {
-        cancelAnimationFrame(frameRef.current);
-      }
-    },
-    [],
-  );
-
   const settleStyle = useCallback(
-    (linkKey: string, degraded: boolean) => {
-      const settlement = settlementRef.current;
-      if (settlement.key !== articleKey || settlement.settledLinks.has(linkKey)) return;
+    (href: string, degraded: boolean) => {
+      const settledLinks = settledLinksRef.current;
+      if (settledLinks.has(href)) return;
 
-      settlement.settledLinks.add(linkKey);
-      settlement.degraded = settlement.degraded || degraded;
-      if (settlement.settledLinks.size !== styleUrls.length) return;
+      settledLinks.add(href);
+      degradedRef.current = degradedRef.current || degraded;
+      if (settledLinks.size !== styleUrls.length) return;
 
-      frameRef.current = requestAnimationFrame(() => {
-        if (settlementRef.current.key !== articleKey) return;
-        const contentRoot = contentRootRef.current;
-        if (!contentRoot) return;
+      // A missing content root means this surface unmounted before its
+      // stylesheets settled, so its article is no longer the one on screen.
+      const contentRoot = contentRootRef.current;
+      if (!contentRoot) return;
 
-        const nextState = settlement.degraded ? "degraded" : "ready";
-        setReadyState({ key: articleKey, state: nextState });
-        onReadyRef.current(contentRoot, nextState);
-      });
+      const nextState = degradedRef.current ? "degraded" : "ready";
+      setStyleState(nextState);
+      onReady(contentRoot, nextState);
     },
-    [articleKey, styleUrls.length],
+    [onReady, styleUrls.length],
   );
 
   return (
@@ -129,7 +92,7 @@ export const WikiArticleSurface = ({
           <>
             {styleUrls.map((href) => (
               <link
-                key={`${articleKey}:${href}`}
+                key={href}
                 rel="stylesheet"
                 href={href}
                 onLoad={() => settleStyle(href, false)}

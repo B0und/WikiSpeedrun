@@ -20,11 +20,19 @@ const WikiDisplay = () => {
   const isGameRunning = useIsGameRunning();
   const endingArticle = useEndingArticle();
   const { setLastArticleWinningLinks } = useGameStoreActions();
-  const [readyArticleKey, setReadyArticleKey] = useState<string | null>(null);
   const articleWidth = useWikiArticleWidth();
   const articleFontSize = useWikiArticleFontSize();
 
   const articleKey = data ? getWikiArticleKey(data) : null;
+  const [readyArticleKey, setReadyArticleKey] = useState<string | null>(null);
+  const [trackedArticleKey, setTrackedArticleKey] = useState<string | null>(articleKey);
+  // Readiness belongs to the surface instance for the current article. When the
+  // article changes, that surface remounts (see the key below), so drop the
+  // previous article's readiness until the new surface reports in.
+  if (articleKey !== trackedArticleKey) {
+    setTrackedArticleKey(articleKey);
+    setReadyArticleKey(null);
+  }
   const presentationReady = articleKey !== null && readyArticleKey === articleKey;
   useWikiArticleLifecycle(data, presentationReady);
 
@@ -67,6 +75,7 @@ const WikiDisplay = () => {
           {data.title}
         </h2>
         <WikiArticleSurface
+          key={articleKey}
           article={data}
           fontSize={articleFontSize}
           isDark={colorMode === "dark"}

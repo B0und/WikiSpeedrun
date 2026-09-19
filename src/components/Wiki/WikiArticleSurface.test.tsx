@@ -4,7 +4,8 @@ import { render } from "vitest-browser-react";
 import { testWithMSW } from "../../test-extend";
 import { testWorker } from "../../test_mocks/browser";
 import { WikiArticleSurface } from "./WikiArticleSurface";
-import type { WikiArticleData } from "./Wiki.types";
+import { findVisibleWinningLinks, getWikiArticleKey } from "./WikiDisplay.utils";
+import type { WikiArticleData, WikiArticleStyleState } from "./Wiki.types";
 
 const styleUrl =
   "https://en.wikipedia.org/w/load.php?modules=skins.vector.styles&only=styles&skin=vector-2022&lang=en&debug=false";
@@ -106,3 +107,109 @@ testWithMSW("applies all article font sizes through Vector custom properties", a
     ["20px", "31px"],
   ]);
 });
+
+testWithMSW("reports readiness only after the final cascade hides winning links", async () => {
+  testWorker.use(
+    http.get("https://en.wikipedia.org/w/load.php", () =>
+      HttpResponse.text(".mw-parser-output a.hidden-link { display: none; }", {
+        headers: { "Content-Type": "text/css; charset=utf-8" },
+      }),
+    ),
+  );
+  const onReady = vi.fn<(contentRoot: HTMLElement, state: WikiArticleStyleState) => void>();
+
+  await render(
+    <WikiArticleSurface
+      article={{
+        html: '<div class="mw-parser-output"><a class="hidden-link" href="/wiki/Winning_Article">Winning article</a><a href="/wiki/Visible_Article">Visible article</a></div>',
+        title: "Cascade Test",
+        pageid: 30,
+        revid: 40,
+        language: "en",
+        styleUrls: [styleUrl],
+      }}
+      fontSize="standard"
+      isDark={false}
+      onReady={onReady}
+      onClick={() => undefined}
+      onKeyDown={() => undefined}
+    />,
+  );
+
+  await expect.poll(() => onReady.mock.calls.length).toBe(1);
+  const [contentRoot] = onReady.mock.calls[0] ?? [];
+  const hiddenLink = contentRoot?.querySelector("a.hidden-link");
+
+  expect(hiddenLink && getComputedStyle(hiddenLink).display).toBe("none");
+  expect(
+    contentRoot && findVisibleWinningLinks(contentRoot, { pageid: "9", title: "Winning Article" }),
+  ).toEqual([]);
+});
+
+testWithMSW(
+  "settles the replacement article while the previous article's styles are pending",
+  async () => {
+    const slowStyles = Promise.withResolvers<void>();
+    testWorker.use(
+      http.get("https://en.wikipedia.org/w/load.php", async ({ request }) => {
+        if (new URL(request.url).searchParams.get("lang") === "slow") {
+          await slowStyles.promise;
+        }
+        return HttpResponse.text(".mw-parser-output { color: rgb(0, 0, 0); }", {
+          headers: { "Content-Type": "text/css; charset=utf-8" },
+        });
+      }),
+    );
+    const onReady = vi.fn<(contentRoot: HTMLElement, state: WikiArticleStyleState) => void>();
+    const slowArticle: WikiArticleData = {
+      html: '<div class="mw-parser-output"><p>Slow article</p></div>',
+      title: "Slow article",
+      pageid: 50,
+      revid: 60,
+      language: "en",
+      styleUrls: [`${styleUrl}&lang=slow`],
+    };
+    const fastArticle: WikiArticleData = {
+      html: '<div class="mw-parser-output"><p>Fast article</p></div>',
+      title: "Fast article",
+      pageid: 51,
+      revid: 61,
+      language: "en",
+      styleUrls: [styleUrl],
+    };
+
+    const screen = await render(
+      <WikiArticleSurface
+        key={getWikiArticleKey(slowArticle)}
+        article={slowArticle}
+        fontSize="standard"
+        isDark={false}
+        onReady={onReady}
+        onClick={() => undefined}
+        onKeyDown={() => undefined}
+      />,
+    );
+    await screen.rerender(
+      <WikiArticleSurface
+        key={getWikiArticleKey(fastArticle)}
+        article={fastArticle}
+        fontSize="standard"
+        isDark={false}
+        onReady={onReady}
+        onClick={() => undefined}
+        onKeyDown={() => undefined}
+      />,
+    );
+
+    await expect.poll(() => onReady.mock.calls.length).toBe(1);
+    const [contentRoot, styleState] = onReady.mock.calls[0] ?? [];
+    expect(styleState).toBe("ready");
+    expect(contentRoot?.textContent).toContain("Fast article");
+
+    slowStyles.resolve();
+    const settleDelay = Promise.withResolvers<void>();
+    setTimeout(settleDelay.resolve, 100);
+    await settleDelay.promise;
+    expect(onReady).toHaveBeenCalledTimes(1);
+  },
+);

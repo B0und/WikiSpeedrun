@@ -268,9 +268,9 @@ one or more stylesheet links errored and all links settled -> degraded
 
 Rules:
 
-- Key the state by `{language}:{pageid}:{revid}` plus the joined style URLs.
+- The parent keys one surface instance per article; one mounted surface settles exactly one article's stylesheets.
 - Treat `load` and `error` as settled so a failed stylesheet cannot deadlock the game.
-- Schedule `onReady` with `requestAnimationFrame` after the last link settles so layout-dependent `offsetWidth` checks see the final cascade.
+- Report `onReady` directly from the last settling link event; Chromium applies `load`ed style sheets before the event dispatches, so layout-dependent `offsetWidth` checks see the final cascade without an extra animation frame. The cascade-at-readiness contract is locked by `WikiArticleSurface.test.tsx` ("reports readiness only after the final cascade hides winning links").
 - Expose `aria-busy=true` while loading.
 - Keep the existing loader visible until the article presentation settles.
 - In degraded mode, show the article using the adaptation stylesheet; do not keep it hidden forever.
