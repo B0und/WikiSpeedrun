@@ -17,15 +17,23 @@ export const handlers = [
       redirects: "true",
     };
 
-    if (Object.entries(expectedParams).some(([name, value]) => url.searchParams.get(name) !== value)) {
-      return HttpResponse.json({ error: { code: "badrequest", info: "Unexpected parse request" } }, { status: 400 });
+    if (
+      Object.entries(expectedParams).some(([name, value]) => url.searchParams.get(name) !== value)
+    ) {
+      return HttpResponse.json(
+        { error: { code: "badrequest", info: "Unexpected parse request" } },
+        { status: 400 },
+      );
     }
 
     return HttpResponse.json(ChahkandukBirjand);
   }),
   http.get("https://en.wikipedia.org/w/load.php", () =>
-    HttpResponse.text(".mw-parser-output a { color: rgb(51, 102, 204); } body { color: rgb(255, 0, 0); }", {
-      headers: { "Content-Type": "text/css; charset=utf-8" },
-    }),
+    HttpResponse.text(
+      ".mw-parser-output a { color: rgb(51, 102, 204); } body { color: rgb(255, 0, 0); }",
+      {
+        headers: { "Content-Type": "text/css; charset=utf-8" },
+      },
+    ),
   ),
 ];

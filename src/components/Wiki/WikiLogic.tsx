@@ -11,7 +11,7 @@ const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 type ArticleInteractionEvent = MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>;
 
 const handleShowHideButton = (e: ArticleInteractionEvent) => {
-  const node = e.target as HTMLElement | null;
+  const node = e.target instanceof HTMLElement ? e.target : null;
   const th = node?.closest("th.navbox-title");
   if (!th) return;
 
@@ -46,11 +46,11 @@ const useWikiLogic = () => {
     handleShowHideButton(e);
 
     // Traverse up from the event target to find the nearest anchor element
-    let node = e.target as HTMLElement | null;
+    let node = e.target instanceof HTMLElement ? e.target : null;
     let anchor: HTMLAnchorElement | null = null;
     while (node && node !== e.currentTarget) {
-      if (node.nodeName === "A") {
-        anchor = node as HTMLAnchorElement;
+      if (node instanceof HTMLAnchorElement) {
+        anchor = node;
         break;
       }
       node = node.parentElement;
@@ -161,15 +161,15 @@ const getFilteredLink = (element: HTMLAnchorElement, wikiLanguage: string) => {
 };
 
 const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
-  const classNameParent = target.parentNode as HTMLElement;
+  const classNameParent = target.parentElement;
   // show notification about non-wiki link
   if (
     target.className === "external text" ||
     target.className === "new" ||
     target.className === "geo-dec" ||
-    classNameParent.className === "reference-text" ||
-    classNameParent.className === "external text" ||
-    classNameParent.className === "new"
+    classNameParent?.className === "reference-text" ||
+    classNameParent?.className === "external text" ||
+    classNameParent?.className === "new"
   ) {
     errorToast(errorText);
     return true;

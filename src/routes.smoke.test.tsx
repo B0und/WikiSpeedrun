@@ -4,9 +4,9 @@ import { customRender, testWithMSW } from "./test-extend";
 
 // The single source of truth for "all routes" is the router instance itself, so a
 // newly added route file is picked up automatically without touching this test.
-const allRoutes = (router.flatRoutes ?? [])
+const allRoutes = Object.values(router.routesById)
   .filter((route) => route !== router.options.routeTree)
-  .map((route) => route.fullPath ?? route.path);
+  .map((route) => route.fullPath);
 
 // Optional per-route content contracts. Routes without an entry still get the
 // generic assertions (main heading renders, no error boundary, no console or
@@ -22,7 +22,9 @@ const CONTRACT_BY_ROUTE: Record<string, PageContract> = {
   "/stats": { heading: "Statistics", bodyText: "Wins:" },
   "/achievements": { heading: "Achievements", achievementCards: 26 },
   // The splat route needs a concrete article to render; any valid one works.
-  "/wiki/$": { navigate: () => router.navigate({ to: "/wiki/$", params: { _splat: "Chahkanduk, Birjand" } }) },
+  "/wiki/$": {
+    navigate: () => router.navigate({ to: "/wiki/$", params: { _splat: "Chahkanduk, Birjand" } }),
+  },
 };
 
 const assertNoRenderError = async () => {
@@ -52,7 +54,7 @@ testWithMSW("every route renders without React errors", { timeout: 30_000 }, asy
   });
 
   try {
-    const screen = customRender();
+    const screen = await customRender();
 
     expect(allRoutes.length, "route enumeration found no routes").toBeGreaterThan(0);
 
@@ -72,9 +74,10 @@ testWithMSW("every route renders without React errors", { timeout: 30_000 }, asy
       }
 
       if (contract.achievementCards !== undefined) {
-        expect(screen.container.querySelectorAll("h3").length, `${route} must render every achievement card`).toBe(
-          contract.achievementCards,
-        );
+        expect(
+          screen.container.querySelectorAll("h3").length,
+          `${route} must render every achievement card`,
+        ).toBe(contract.achievementCards);
       }
     }
 

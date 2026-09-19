@@ -2,7 +2,12 @@ import { HttpResponse, http } from "msw";
 import { expect } from "vitest";
 import { testWithMSW } from "../../test-extend";
 import { testWorker } from "../../test_mocks/browser";
-import { buildWikipediaStyleUrls, findVisibleWinningLinks, getArticleData } from "./WikiDisplay.utils";
+import {
+  buildWikipediaStyleUrls,
+  findVisibleWinningLinks,
+  getArticleData,
+} from "./WikiDisplay.utils";
+import { preloadWikipediaStyles } from "./WikiStyles";
 
 testWithMSW("requests the Vector 2022 parse contract", async () => {
   let requestUrl: URL | undefined;
@@ -43,7 +48,7 @@ testWithMSW("requests the Vector 2022 parse contract", async () => {
   });
 });
 
-testWithMSW("builds stable isolated ResourceLoader style URLs", () => {
+testWithMSW("builds stable isolated ResourceLoader style URLs with legacy layout styles", () => {
   const urls = buildWikipediaStyleUrls("ar", [
     "site.styles",
     "ext.math.styles",
@@ -55,9 +60,13 @@ testWithMSW("builds stable isolated ResourceLoader style URLs", () => {
   ]).map((value) => new URL(value));
 
   expect(urls).toHaveLength(3);
-  expect(urls.map(({ hostname }) => hostname)).toEqual(["ar.wikipedia.org", "ar.wikipedia.org", "ar.wikipedia.org"]);
+  expect(urls.map(({ hostname }) => hostname)).toEqual([
+    "ar.wikipedia.org",
+    "ar.wikipedia.org",
+    "ar.wikipedia.org",
+  ]);
   expect(urls.map((url) => url.searchParams.get("modules"))).toEqual([
-    "ext.cite.parsoid.styles|mediawiki.skinning.content.parsoid|skins.vector.styles",
+    "ext.cite.parsoid.styles|mediawiki.skinning.content.parsoid|mediawiki.skins.legacy|skins.vector.styles",
     "ext.cite.styles|ext.math.styles",
     "site.styles",
   ]);
@@ -68,6 +77,27 @@ testWithMSW("builds stable isolated ResourceLoader style URLs", () => {
       lang: "ar",
       debug: "false",
     });
+  }
+});
+testWithMSW("preloads article styles once for the selected wiki language", () => {
+  preloadWikipediaStyles("de");
+  preloadWikipediaStyles("de");
+
+  const links = Array.from(
+    document.head.querySelectorAll<HTMLLinkElement>("link[data-wiki-style-preload]"),
+  );
+  const wikipediaLinks = links.filter((link) => link.href.includes(".wikipedia.org/w/load.php"));
+
+  expect(links).toHaveLength(3);
+  expect(links.every((link) => link.rel === "preload" && link.as === "style")).toBe(true);
+  expect(wikipediaLinks).toHaveLength(2);
+  expect(wikipediaLinks.every((link) => new URL(link.href).searchParams.get("lang") === "de")).toBe(
+    true,
+  );
+  expect(links.some((link) => link.href.includes("article-adaptations.css"))).toBe(true);
+
+  for (const link of links) {
+    link.remove();
   }
 });
 

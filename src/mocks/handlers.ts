@@ -27,7 +27,8 @@ const normalizeTitle = (title: string) => title.toLowerCase().replaceAll("_", " 
 const findGameArticle = (title: string) =>
   gameArticles.find((article) => normalizeTitle(article.title) === normalizeTitle(title));
 
-const getSelectArticleUrl = (article: string) => `?action=query&list=search&origin=*&format=json&srsearch=${article}`;
+const getSelectArticleUrl = (article: string) =>
+  `?action=query&list=search&origin=*&format=json&srsearch=${article}`;
 
 export const handlers = [
   http.get("https://en.wikipedia.org/w/api.php", ({ request }) => {

@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
 import * as Popover from "@radix-ui/react-popover";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { useId } from "react";
 import { Settings } from "react-feather";
 import {
@@ -31,11 +31,13 @@ export const WikiPresentationMenu = () => {
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content
-              className="z-20 w-64 rounded-md bg-neutral-50 p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
+              className="z-20 w-64 rounded-md bg-neutral-50 p-5 shadow-2xl dark:bg-dark-surface-secondary dark:text-dark-primary"
               sideOffset={5}
               align="end"
             >
-              <h2 className="mb-4 border-b-[1px] border-b-secondary-border pb-2 font-bold">{triggerLabel}</h2>
+              <h2 className="mb-4 border-b-[1px] border-b-secondary-border pb-2 font-bold">
+                {triggerLabel}
+              </h2>
               <WikiPresentationControls />
             </Popover.Content>
           </Popover.Portal>
@@ -102,8 +104,8 @@ const WikiPresentationControls = () => {
               <span
                 className={clsx(
                   "size-4 shrink-0 rounded-full border-2 border-secondary-border bg-transparent transition-colors",
-                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:border-secondary-border",
-                  "peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background",
+                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:not-peer-checked:border-secondary-border",
+                  "peer-focus-visible:ring-ring peer-focus-visible:ring-offset-background peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2",
                 )}
               />
               {option.label}
@@ -134,8 +136,8 @@ const WikiPresentationControls = () => {
               <span
                 className={clsx(
                   "size-4 shrink-0 rounded-full border-2 border-secondary-border bg-transparent transition-colors",
-                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:border-secondary-border",
-                  "peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background",
+                  "peer-checked:border-[6px] peer-checked:border-primary-blue dark:not-peer-checked:border-secondary-border",
+                  "peer-focus-visible:ring-ring peer-focus-visible:ring-offset-background peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2",
                 )}
               />
               {option.label}

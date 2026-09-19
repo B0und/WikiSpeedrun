@@ -73,79 +73,27 @@ const corner4: Options = {
   origin: { x: 1, y: 1 },
 };
 
-const SHOW_CONFETTI_DEBUG_PANEL = false;
-
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-if (import.meta.env.MODE === "development" && SHOW_CONFETTI_DEBUG_PANEL) {
-  void import("tweakpane").then((TweakpaneModule) => {
-    const pane = new TweakpaneModule.Pane();
-
-    const addFolderWithExport = (title: string, options: Options) => {
-      const folder = pane.addFolder({
-        title: title,
-        expanded: false,
-      });
-
-      // Dynamically add bindings for each property in the options
-      for (const [key, value] of Object.entries(options)) {
-        if (["colors", "shapes"].includes(key)) {
-          continue;
-        }
-        if (key === "origin") {
-          folder.addBinding(options, key as keyof Options, {
-            x: { min: -0.5, max: 1 },
-            y: { min: -0.5, max: 1, inverted: true },
-          });
-          continue;
-        }
-
-        if (typeof value === "number") {
-          folder.addBinding(options, key as keyof Options, {
-            min: value > 1 ? 1 : 0,
-            max: value > 1 ? 500 : 1,
-            step: value > 1 ? 0.1 : 0.01,
-          });
-        } else {
-          folder.addBinding(options, key as keyof Options);
-        }
-      }
-
-      // Add Export Button
-      const exportBtn = folder.addButton({ title: "Copy to clipboard" });
-      exportBtn.on("click", () => {
-        void navigator.clipboard.writeText(JSON.stringify(options, null, 2));
-      });
-    };
-
-    // Add folders with specific settings
-    addFolderWithExport("Realistic2", middle1);
-    addFolderWithExport("Realistic3", middle2);
-    addFolderWithExport("Common corner settings", commonCornerExplosionOpts);
-    addFolderWithExport("corner1", corner1);
-    addFolderWithExport("corner2", corner2);
-    addFolderWithExport("corner3", corner3);
-    addFolderWithExport("corner4", corner4);
-  }); // <-- Properly close the `.then()` block here
-}
-
 export const VictoryConfetti = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const confetti = useRef<CreateTypes | null>(null);
 
   useEffect(() => {
     if (!canvasRef.current) {
-      return;
+      return undefined;
     }
 
     const confettiInstance = create(canvasRef.current, {});
     confetti.current = confettiInstance;
 
+    const timeouts: number[] = [];
     const fire = (opts: Options, delay = 0) => {
-      setTimeout(() => {
-        void confettiInstance({
-          ...opts,
-        });
-      }, delay);
+      timeouts.push(
+        window.setTimeout(() => {
+          void confettiInstance({
+            ...opts,
+          });
+        }, delay),
+      );
     };
 
     //  middle explosion
@@ -159,6 +107,9 @@ export const VictoryConfetti = () => {
     fire(corner4, 0);
 
     return () => {
+      for (const id of timeouts) {
+        window.clearTimeout(id);
+      }
       confetti.current?.reset();
     };
   }, []);

@@ -1,7 +1,12 @@
 import { getRouteApi, useBlocker, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useLingui } from "@lingui/react/macro";
-import { useEndingArticle, useGameStoreActions, useIsGameRunning, useStartingArticle } from "../../stores/GameStore";
+import {
+  useEndingArticle,
+  useGameStoreActions,
+  useIsGameRunning,
+  useStartingArticle,
+} from "../../stores/GameStore";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle } from "../Modal";
 import { StartArrowEnd } from "../StartArrowEnd";
@@ -20,8 +25,8 @@ const Wiki = () => {
   const { resetStoreState } = useGameStoreActions();
   const wikiLanguage = useWikiLanguage();
   const { status, proceed, reset, next } = useBlocker({
-    shouldBlockFn: ({ next }) => {
-      return isGameRunning && !next.pathname.startsWith("/wiki");
+    shouldBlockFn: ({ next: target }) => {
+      return isGameRunning && !target.pathname.startsWith("/wiki");
     },
     withResolver: true,
   });
@@ -49,17 +54,21 @@ const Wiki = () => {
   return (
     <>
       <div lang={wikiLanguage} className="-mt-8">
-        <div className="-top-8 sm:-top-4 sticky z-10 mb-2 bg-neutral-50 py-2 font-bold text-lg dark:bg-dark-surface">
+        <div className="sticky -top-8 z-10 mb-2 bg-neutral-50 py-2 text-lg font-bold sm:-top-4 dark:bg-dark-surface">
           <StartArrowEnd startText={startArticle.title} endText={endArticle.title} />
         </div>
         <WikiDisplay />
 
         <div className="pointer-events-none absolute right-0 bottom-0 hidden overflow-hidden p-2 sm:flex">
-          <div className="absolute inset-0 bg-black bg-opacity-80" />
+          <div className="absolute inset-0 bg-black/80" />
           <Stopwatch />
         </div>
       </div>
-      <WikiNavigationBlockModal open={status === "blocked"} onProceed={handleProceed} onCancel={reset} />
+      <WikiNavigationBlockModal
+        open={status === "blocked"}
+        onProceed={handleProceed}
+        onCancel={reset}
+      />
     </>
   );
 };
@@ -77,7 +86,7 @@ function WikiNavigationBlockModal({
   return (
     <ModalRoot open={open} onOpenChange={onCancel}>
       <ModalContent>
-        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
+        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
           {t({ id: "Confirm action", message: "Confirm action" })}
         </ModalTitle>
         <ModalDescription className="mt-5 mb-5">
@@ -93,7 +102,7 @@ function WikiNavigationBlockModal({
           </button>
           <button
             type="button"
-            className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
+            className="rounded-xs bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
             onClick={onCancel}
           >
             {t({ id: "No" })}

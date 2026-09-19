@@ -24,7 +24,8 @@ export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 export const SOURCE_LOCALE: Locale = "en";
 
-export const isLocale = (locale: string): locale is Locale => SUPPORTED_LOCALES.includes(locale as Locale);
+export const isLocale = (locale: string): locale is Locale =>
+  SUPPORTED_LOCALES.some((supported) => supported === locale);
 
 export const detectLocale = (): Locale => {
   if (typeof navigator === "undefined") return SOURCE_LOCALE;

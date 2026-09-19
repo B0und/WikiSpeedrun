@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef } from "react";
 import { useUnlockAchievements } from "../../hooks/useUnlockAchievements";
 import {
@@ -13,85 +13,42 @@ import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
 import { useStopwatchActions } from "../StopwatchContext";
 import { wikiRoute } from "./Wiki";
-import { LANGUAGES } from "../WikiLanguageSelect";
+import { jsonAs } from "../../utils/json";
 import type { WikiApiArticle, WikiArticleData, WikiLanguage } from "./Wiki.types";
+import { buildWikipediaStyleUrls, isSupportedWikiLanguage } from "./WikiStyles";
+
+export { buildWikipediaStyleUrls };
 
 export const findVisibleWinningLinks = (root: ParentNode, articleTitle: Article) => {
   const expectedTitle = articleTitle.title.replaceAll("_", " ");
-  return Array.from(root.querySelectorAll<HTMLAnchorElement>('a[href*="/wiki/"]')).filter((link) => {
-    if (link.offsetWidth === 0 || !link.pathname.startsWith("/wiki/")) return false;
+  return Array.from(root.querySelectorAll<HTMLAnchorElement>('a[href*="/wiki/"]')).filter(
+    (link) => {
+      if (link.offsetWidth === 0 || !link.pathname.startsWith("/wiki/")) return false;
 
-    try {
-      return decodeURIComponent(link.pathname.slice("/wiki/".length)).replaceAll("_", " ") === expectedTitle;
-    } catch {
-      return false;
-    }
-  });
+      try {
+        return (
+          decodeURIComponent(link.pathname.slice("/wiki/".length)).replaceAll("_", " ") ===
+          expectedTitle
+        );
+      } catch {
+        return false;
+      }
+    },
+  );
 };
 
 export const getWikiArticleKey = (article: WikiArticleData) =>
   `${article.language}:${article.pageid}:${article.revid}:${article.styleUrls.join("|")}`;
 
-const BASELINE_STYLE_MODULES = [
-  "skins.vector.styles",
-  "mediawiki.skinning.content.parsoid",
-  "ext.cite.parsoid.styles",
-] as const;
-
-const EXCLUDED_CONDITIONAL_STYLE_MODULES: Record<string, true> = {
-  "skins.vector.styles": true,
-  "mediawiki.skinning.content.parsoid": true,
-  "ext.cite.parsoid.styles": true,
-  "site.styles": true,
-  "user.styles": true,
-  noscript: true,
-  "skins.vector.icons": true,
-  "skins.vector.search.codex.styles": true,
-};
-const RESOURCE_LOADER_MODULE_NAME = /^[A-Za-z0-9_.-]+$/;
-const SUPPORTED_WIKI_LANGUAGES = new Set(LANGUAGES.map(({ value }) => value));
-
-const buildResourceLoaderUrl = (language: WikiLanguage, modules: readonly string[]) => {
-  const url = new URL(`https://${language}.wikipedia.org/w/load.php`);
-  url.search = new URLSearchParams({
-    modules: modules.join("|"),
-    only: "styles",
-    skin: "vector-2022",
-    lang: language,
-    debug: "false",
-  }).toString();
-  return url.toString();
-};
-
-export const buildWikipediaStyleUrls = (
+export const getArticleData = async (
   language: WikiLanguage,
-  moduleStyles: readonly string[] = [],
-): readonly string[] => {
-  if (!SUPPORTED_WIKI_LANGUAGES.has(language)) {
-    throw new Error(`Unsupported Wikipedia language: ${language}`);
-  }
-
-  const conditionalModules = Array.from(
-    new Set(
-      moduleStyles.filter(
-        (moduleName) => RESOURCE_LOADER_MODULE_NAME.test(moduleName) && !EXCLUDED_CONDITIONAL_STYLE_MODULES[moduleName],
-      ),
-    ),
-  ).sort();
-
-  return [
-    buildResourceLoaderUrl(language, [...BASELINE_STYLE_MODULES].sort()),
-    ...(conditionalModules.length > 0 ? [buildResourceLoaderUrl(language, conditionalModules)] : []),
-    buildResourceLoaderUrl(language, ["site.styles"]),
-  ];
-};
-
-export const getArticleData = async (language: WikiLanguage, title: string): Promise<WikiArticleData> => {
+  title: string,
+): Promise<WikiArticleData> => {
   if (!title) {
     throw new Error("A Wikipedia article title is required");
   }
 
-  if (!SUPPORTED_WIKI_LANGUAGES.has(language)) {
+  if (!isSupportedWikiLanguage(language)) {
     throw new Error(`Unsupported Wikipedia language: ${language}`);
   }
 
@@ -113,7 +70,7 @@ export const getArticleData = async (language: WikiLanguage, title: string): Pro
     throw new Error(`Wikipedia request failed with status ${response.status}`);
   }
 
-  const data = (await response.json()) as WikiApiArticle;
+  const data = await jsonAs<WikiApiArticle>(response);
   if (data.error) {
     throw new Error(data.error.info ?? data.error.code ?? "Wikipedia returned an API error");
   }
@@ -138,17 +95,23 @@ export const useWikiQuery = () => {
   const startingArticle = useStartingArticle();
   const language = useWikiLanguage();
   const { _splat: wikiTitle } = wikiRoute.useParams();
-  const wikiArticle = wikiTitle ? decodeURIComponent(wikiTitle).replace("/wiki/", "") : startingArticle.title;
+  const wikiArticle = wikiTitle
+    ? decodeURIComponent(wikiTitle).replace("/wiki/", "")
+    : startingArticle.title;
 
   return useQuery({
     queryKey: ["article", wikiArticle, language],
     queryFn: () => getArticleData(language, wikiArticle),
+    placeholderData: keepPreviousData,
     refetchOnWindowFocus: false,
     enabled: Boolean(wikiArticle),
   });
 };
 
-export const useWikiArticleLifecycle = (article: WikiArticleData | undefined, presentationReady: boolean) => {
+export const useWikiArticleLifecycle = (
+  article: WikiArticleData | undefined,
+  presentationReady: boolean,
+) => {
   const isGameRunning = useIsGameRunning();
   const targetArticle = useEndingArticle();
   const { setIsGameRunning, setIsWin } = useGameStoreActions();
@@ -160,7 +123,10 @@ export const useWikiArticleLifecycle = (article: WikiArticleData | undefined, pr
 
   const handleWin = useCallback(
     (readyArticle: WikiArticleData) => {
-      if (readyArticle.title === targetArticle.title || String(readyArticle.pageid) === targetArticle.pageid) {
+      if (
+        readyArticle.title === targetArticle.title ||
+        String(readyArticle.pageid) === targetArticle.pageid
+      ) {
         pauseStopwatch();
         setIsGameRunning(false);
         setIsWin(true);

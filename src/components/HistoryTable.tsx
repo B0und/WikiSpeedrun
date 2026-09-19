@@ -11,15 +11,15 @@ const HistoryTable = () => {
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <>
   useEffect(() => {
+    if (articleHistory.length === 0) return;
     tableRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [articleHistory.length]);
+  }, [articleHistory]);
 
   return (
     <div id="history-scroll" className="scrollbar self-stretch overflow-y-auto pr-3">
       <table className="mb-auto w-full table-auto">
-        <caption className=" text-start text-xl">{t({ id: "History" })}</caption>
+        <caption className="text-start text-xl">{t({ id: "History" })}</caption>
 
         <thead className="sticky top-0 mt-2 h-9 bg-neutral-50 align-top dark:bg-dark-surface">
           <tr>
@@ -42,7 +42,9 @@ const HistoryTable = () => {
                     type="button"
                     className="text-left text-primary-blue underline"
                     onClick={() => {
-                      void navigate({ to: `/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}` });
+                      void navigate({
+                        to: `/wiki/${encodeURIComponent(article.title.replaceAll(" ", "_"))}`,
+                      });
                     }}
                   >
                     {article.title}

@@ -21,7 +21,8 @@ const StopwatchContextValue = createContext<StopwatchContext | undefined>(undefi
 const StopwatchContextActions = createContext<StopwatchContextActions | undefined>(undefined);
 
 export const StopwatchContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const { time, timeInMs, pauseStopwatch, startStopwatch, resetStopwatch, getFormattedTime } = useStopwatch();
+  const { time, timeInMs, pauseStopwatch, startStopwatch, resetStopwatch, getFormattedTime } =
+    useStopwatch();
 
   const actions = useMemo(
     () => ({ pauseStopwatch, startStopwatch, resetStopwatch, getFormattedTime }),

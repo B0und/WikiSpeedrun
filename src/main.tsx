@@ -13,11 +13,13 @@ async function enableMocking() {
     return;
   }
 
+  // Static import would eagerly bundle MSW and register the service worker in
+  // every build; the module is only needed when mocks are enabled.
   const { worker } = await import("./mocks/browser");
 
-  // `worker.start()` returns a Promise that resolves
-  // once the Service Worker is up and ready to intercept requests.
-  return worker.start({ onUnhandledRequest: "bypass" });
+  // `worker.start()` resolves once the Service Worker is up and ready to
+  // intercept requests.
+  await worker.start({ onUnhandledRequest: "bypass" });
 }
 
 await enableMocking();

@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import clsx from "clsx";
 import { useEffect, useState } from "react";
-import Select, { type InputActionMeta, type StylesConfig } from "react-select";
+import Select, { type InputActionMeta } from "react-select";
 import useDebounce from "../../hooks/useDebounce";
 import { useLingui } from "@lingui/react/macro";
 import type { Article } from "../../stores/GameStore";
 import { useWikiLanguage } from "../../stores/SettingsStore";
+import { jsonAs } from "../../utils/json";
 import { useThemeContext } from "../ThemeContext";
+import { reactSelectStyles } from "../reactSelectStyles";
 import type { WikiSearch } from "./WikiSearch.types";
 
-const getArticles = async (language: string, debouncedTerm: string) => {
-  if (!debouncedTerm) return;
+const getArticles = async (language: string, searchTerm: string) => {
+  if (!searchTerm) {
+    return undefined;
+  }
 
   const resp = await fetch(
     `https://${language}.wikipedia.org/w/api.php?` +
@@ -19,10 +22,10 @@ const getArticles = async (language: string, debouncedTerm: string) => {
         list: "search",
         origin: "*",
         format: "json",
-        srsearch: debouncedTerm,
+        srsearch: searchTerm,
       }).toString(),
   );
-  return resp.json() as Promise<WikiSearch>;
+  return jsonAs<WikiSearch>(resp);
 };
 
 interface ArticleAutocompleteProps {
@@ -55,8 +58,8 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
     queryFn: () => getArticles(language, debouncedInputText),
     refetchOnWindowFocus: false,
     enabled: Boolean(debouncedInputText),
-    select: (data) =>
-      data?.query.search.map((article) => {
+    select: (result) =>
+      result?.query.search.map((article) => {
         const option: AutocompleteOption = {
           label: article.title,
           value: String(article.pageid),
@@ -66,6 +69,9 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
   });
 
   useEffect(() => {
+    // Syncing a controlled input with the incoming `defaultValue` prop; there
+    // is no event to hook when the prop changes externally.
+    // oxlint-disable-next-line react/set-state-in-effect -- deliberate two-way sync with prop
     setInputText(defaultValue);
     setSelectedOption(defaultValue);
   }, [defaultValue]);
@@ -92,7 +98,7 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
         name={selectId}
         options={data}
         isClearable={true}
-        styles={customStyles}
+        styles={reactSelectStyles<AutocompleteOption>({ isDarkMode })}
         required={required}
         components={{
           IndicatorSeparator: () => null,
@@ -112,36 +118,9 @@ const ArticleAutocomplete = (props: ArticleAutocompleteProps) => {
         }}
         value={data?.filter((option) => option.label === selectedOption)}
         isMulti={false}
-        classNames={{
-          control: () => (isDarkMode ? "dark:bg-dark-surface dark:text-dark-primary" : ""),
-          menu: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
-          loadingIndicator: () => (isDarkMode ? "dark:bg-dark-surface" : ""),
-          noOptionsMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
-          input: () => (isDarkMode ? " dark:text-dark-primary" : ""),
-          option: (state) =>
-            clsx(
-              state.isFocused && "dark:bg-[#464242] dark:text-primary-blue",
-              isDarkMode && `dark:bg-dark-surface-secondary dark:text-dark-primary`,
-            ),
-
-          loadingMessage: () => (isDarkMode ? "dark:bg-dark-surface-secondary dark:text-dark-primary" : ""),
-        }}
       />
     </div>
   );
 };
 
 export default ArticleAutocomplete;
-
-const customStyles: StylesConfig<AutocompleteOption> = {
-  control: (base) => ({
-    ...base,
-    backgroundColor: "#fafafa",
-    "&:hover": {
-      borderColor: "hsla(203, 66%, 56%)",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 1px hsla(203, 66%, 56%)",
-    },
-  }),
-};

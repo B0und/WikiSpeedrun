@@ -1,11 +1,10 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import purify from "dompurify";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { WikiArticleFontSize } from "../../stores/SettingsStore";
 import articleAdaptationsUrl from "./styles/article-adaptations.css?url";
 import type { WikiArticleData, WikiArticleHostStyle, WikiArticleStyleState } from "./Wiki.types";
-import { getWikiArticleKey } from "./WikiDisplay.utils";
 
 export interface WikiArticleSurfaceProps {
   article: WikiArticleData;
@@ -31,12 +30,8 @@ const FONT_STYLE_BY_SIZE: Record<WikiArticleFontSize, WikiArticleHostStyle> = {
   },
 };
 
-interface SettlementState {
-  key: string;
-  settledLinks: Set<string>;
-  degraded: boolean;
-}
-
+// The parent keys one surface instance per article, so a mounted surface only
+// ever settles the stylesheets for the article it was created with.
 export const WikiArticleSurface = ({
   article,
   fontSize,
@@ -46,21 +41,16 @@ export const WikiArticleSurface = ({
   onKeyDown,
 }: WikiArticleSurfaceProps) => {
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
-  const [readyState, setReadyState] = useState<{ key: string; state: WikiArticleStyleState } | null>(null);
+  const [styleState, setStyleState] = useState<WikiArticleStyleState | null>(null);
   const contentRootRef = useRef<HTMLDivElement | null>(null);
-  const frameRef = useRef<number>();
-  const onReadyRef = useRef(onReady);
-  onReadyRef.current = onReady;
+  const settledLinksRef = useRef<Set<string>>(new Set());
+  const degradedRef = useRef(false);
 
-  const articleKey = getWikiArticleKey(article);
-  const styleUrls = useMemo(() => [...article.styleUrls, articleAdaptationsUrl], [article.styleUrls]);
+  const styleUrls = useMemo(
+    () => [...article.styleUrls, articleAdaptationsUrl],
+    [article.styleUrls],
+  );
   const sanitizedHtml = useMemo(() => purify.sanitize(article.html), [article.html]);
-  const settlementRef = useRef<SettlementState>({ key: articleKey, settledLinks: new Set(), degraded: false });
-  if (settlementRef.current.key !== articleKey) {
-    settlementRef.current = { key: articleKey, settledLinks: new Set(), degraded: false };
-  }
-
-  const styleState = readyState?.key === articleKey ? readyState.state : null;
   const isBusy = styleState === null;
 
   const attachShadowRoot = useCallback((host: HTMLDivElement | null) => {
@@ -68,34 +58,25 @@ export const WikiArticleSurface = ({
     setShadowRoot(host.shadowRoot ?? host.attachShadow({ mode: "open" }));
   }, []);
 
-  useEffect(
-    () => () => {
-      if (frameRef.current !== undefined) {
-        cancelAnimationFrame(frameRef.current);
-      }
-    },
-    [],
-  );
   const settleStyle = useCallback(
-    (linkKey: string, degraded: boolean) => {
-      const settlement = settlementRef.current;
-      if (settlement.key !== articleKey || settlement.settledLinks.has(linkKey)) return;
+    (href: string, degraded: boolean) => {
+      const settledLinks = settledLinksRef.current;
+      if (settledLinks.has(href)) return;
 
-      settlement.settledLinks.add(linkKey);
-      settlement.degraded ||= degraded;
-      if (settlement.settledLinks.size !== styleUrls.length) return;
+      settledLinks.add(href);
+      degradedRef.current = degradedRef.current || degraded;
+      if (settledLinks.size !== styleUrls.length) return;
 
-      frameRef.current = requestAnimationFrame(() => {
-        if (settlementRef.current.key !== articleKey) return;
-        const contentRoot = contentRootRef.current;
-        if (!contentRoot) return;
+      // A missing content root means this surface unmounted before its
+      // stylesheets settled, so its article is no longer the one on screen.
+      const contentRoot = contentRootRef.current;
+      if (!contentRoot) return;
 
-        const nextState = settlement.degraded ? "degraded" : "ready";
-        setReadyState({ key: articleKey, state: nextState });
-        onReadyRef.current(contentRoot, nextState);
-      });
+      const nextState = degradedRef.current ? "degraded" : "ready";
+      setStyleState(nextState);
+      onReady(contentRoot, nextState);
     },
-    [articleKey, styleUrls.length],
+    [onReady, styleUrls.length],
   );
 
   return (
@@ -109,18 +90,15 @@ export const WikiArticleSurface = ({
       {shadowRoot &&
         createPortal(
           <>
-            {styleUrls.map((href, index) => {
-              const linkKey = `${index}:${href}`;
-              return (
-                <link
-                  key={`${articleKey}:${linkKey}`}
-                  rel="stylesheet"
-                  href={href}
-                  onLoad={() => settleStyle(linkKey, false)}
-                  onError={() => settleStyle(linkKey, true)}
-                />
-              );
-            })}
+            {styleUrls.map((href) => (
+              <link
+                key={href}
+                rel="stylesheet"
+                href={href}
+                onLoad={() => settleStyle(href, false)}
+                onError={() => settleStyle(href, true)}
+              />
+            ))}
             <div
               className={clsx(
                 "wiki-insert skin-vector skin-vector-2022",
@@ -130,14 +108,16 @@ export const WikiArticleSurface = ({
             >
               <main className="mw-body">
                 <div id="bodyContent" className="vector-body">
-                  {/* biome-ignore lint/a11y/noStaticElementInteractions: the article root only delegates click and bubbled key events to anchors inside sanitized Wikipedia HTML; it is not an interactive widget itself. */}
+                  {/* oxlint-disable-next-line jsx-a11y/no-static-element-interactions --
+                    The article root only delegates click and bubbled key events to anchors
+                    inside sanitized Wikipedia HTML; it is not an interactive widget itself. */}
                   <div
                     id="mw-content-text"
                     className="mw-body-content"
                     ref={contentRootRef}
                     onClick={onClick}
                     onKeyDown={onKeyDown}
-                    // biome-ignore lint/security/noDangerouslySetInnerHtml: Wikipedia parse HTML is sanitized immediately before injection.
+                    // oxlint-disable-next-line react/no-danger -- Wikipedia parse HTML is sanitized immediately before injection.
                     dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
                   />
                 </div>

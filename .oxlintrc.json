@@ -1,0 +1,123 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  // Plugins list OVERWRITES the default set (eslint, typescript, unicorn, oxc),
+  // so everything wanted must be listed here.
+  "plugins": ["react", "unicorn", "typescript", "oxc", "import", "jsx-a11y", "node", "promise"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "warn",
+    "style": "warn",
+    "restriction": "warn",
+    // Pedantic is ~2700 warnings of pure style opinion (explicit return types,
+    // id length, magic numbers, no-ternary, sort-keys style checks) that
+    // drowns out signal in this codebase.
+    "pedantic": "off",
+    "nursery": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "19.3",
+      "jsxRuntime": "automatic"
+    }
+  },
+  "rules": {
+    // --- style opinions the codebase deliberately does not follow ---
+    "eslint/sort-keys": "off", // 811 hits; object key order is read-as-written
+    "eslint/one-var": "off", // 269 hits; let-per-declaration is fine
+    "typescript/explicit-function-return-type": "off", // inferred types are idiomatic for React components
+    "typescript/explicit-module-boundary-types": "off", // follows the above
+    "typescript/prefer-readonly-parameter-types": "off", // conflicts with React event-handler patterns
+    "import/no-relative-parent-imports": "off", // no path aliases configured; relative imports are the house style
+    "import/no-named-export": "off", // components are default-exported by design
+    "import/no-default-export": "off", // mixed export styles are intentional
+    "import/prefer-default-export": "off", // contradicts no-named-export above
+    "import/group-exports": "off", // contradicts no-named-export above
+    "eslint/sort-imports": "off", // import order is left to the formatter
+    "eslint/no-magic-numbers": "off", // UI code is full of layout constants
+    "eslint/new-cap": "off", // fires on typesafe-i18n LL accessors
+    "eslint/id-length": "off", // e, i, x are legitimate short identifiers
+    "eslint/no-ternary": "off", // ternaries are idiomatic in JSX
+    "eslint/capitalized-comments": "off", // comments are written naturally
+    "eslint/no-undefined": "off", // undefined checks are everywhere
+    "unicorn/no-null": "off", // null is used throughout
+    "oxc/no-optional-chaining": "off", // optional chaining is idiomatic
+    "react/jsx-max-depth": "off", // JSX nesting depth is fine
+    "react/function-component-definition": "off", // arrow components are the house style
+    "react/jsx-filename-extension": "off", // PascalCase .tsx files are the house style
+    "react/forbid-component-props": "off", // icons legitimately take className
+    "unicorn/filename-case": "off", // PascalCase component filenames are the house style
+    "oxc/no-rest-spread-properties": "off", // rest/spread in objects is idiomatic
+    "oxc/no-async-await": "off", // async/await is idiomatic
+    "eslint/no-use-before-define": "off", // hoisted helpers are used intentionally
+    "import/exports-last": "off", // export placement is free
+    "eslint/arrow-body-style": "off", // body style is free
+    "eslint/func-style": "off", // arrow components are the house style
+    "react/jsx-no-literals": "off", // some JSX literals are fine without translation
+    "import/no-namespace": "off", // Radix-style `import * as Dialog` is the house pattern
+    "import/consistent-type-specifier-style": "off", // mixed type import style is fine
+    "eslint/no-void": "off", // `void promise` is the deliberate floating-promise marker
+    "react/no-multi-comp": "off", // small helper components are colocated
+    "eslint/max-statements": "off", // component bodies are naturally long
+    "eslint/curly": "off", // brace style is free
+    "react/only-export-components": "off", // route/store files export alongside components
+    "react/jsx-props-no-spreading": "off", // prop spreading is idiomatic in wrappers
+    "react/jsx-boolean-value": "off", // shorthand is fine
+    "react/jsx-curly-brace-presence": "off", // brace style is free
+    "unicorn/max-nested-calls": "off", // chained traversal is deliberate
+    "unicorn/prefer-global-this": "off", // `window.X` is the house style
+    "unicorn/no-abusive-eslint-disable": "off", // legacy comments being cleaned incrementally
+    "unicorn/numeric-separators-style": "off", // numbers are short
+    "unicorn/no-array-reduce": "off", // reduce is used carefully
+    "unicorn/prefer-spread": "off", // spread style is free
+    "node/no-process-env": "off", // process.env is used where Vite parity requires it
+    "typescript/dot-notation": "off", // bracket access used for i18n keys
+
+    // oxlint's `suspicious` category turns this on even with the automatic
+    // JSX runtime, where it is meaningless.
+    "react/react-in-jsx-scope": "off",
+    // Fires on typesafe-i18n `LL.Play()` translation accessors; the keys are
+    // machine-generated and can't be renamed.
+    "react/capitalized-calls": "off",
+
+    // --- React Compiler diagnostics (compiler validation passes, experimental) ---
+    "react/immutability": "error",
+    "react/purity": "error",
+    "react/refs": "error",
+    "react/set-state-in-effect": "error",
+    "react/set-state-in-render": "error",
+    "react/static-components": "error",
+    "react/use-memo": "warn",
+    "react/preserve-manual-memoization": "warn",
+    "react/incompatible-library": "error",
+    "react/error-boundaries": "error",
+    "react/globals": "error",
+    "react/void-use-memo": "error",
+
+    // hooks
+    "react/exhaustive-deps": "error",
+
+    // CSS, the ts-reset shim, mock setup and vitest-browser-react registration
+    // are intentional side-effect imports.
+    "import/no-unassigned-import":
+      ["error", { "allow": ["**/*.css", "**/*.scss", "@total-typescript/ts-reset", "vitest-browser-react"] }],
+
+    // Interactive div wrappers (wiki article click-catcher) intentionally use
+    // `role="button"`; a real <button> can't wrap block-level article content.
+    "jsx-a11y/prefer-tag-over-role": "off",
+
+    // type-aware (tsgolint)
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/no-unsafe-argument": "off"
+  },
+  "jsPlugins": ["@tanstack/eslint-plugin-query"],
+  "overrides": [
+    {
+      // generated and machine-owned files
+      "files": ["src/**"],
+      "excludeFiles": ["src/routeTree.gen.ts", "src/i18n/**"]
+    }
+  ],
+  "ignorePatterns": ["public/**", "dist/**", "e2e/**"]
+}
