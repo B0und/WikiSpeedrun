@@ -1,6 +1,6 @@
 import { useIsFetching } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
 import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import RandomButton from "../components/RandomButton/RandomButton";
@@ -10,6 +10,7 @@ import {
   handleOnRandomSuccess,
   useSyncWikiLanguageFromUrl,
 } from "../components/Settings.helpers";
+import { preloadWikipediaStyles } from "../components/Wiki/WikiStyles";
 import { useStopwatchActions } from "../components/StopwatchContext";
 import { LabelSwitch } from "../components/Switch";
 import { WikiLanguageSelect } from "../components/WikiLanguageSelect";
@@ -46,6 +47,10 @@ const Settings = () => {
   const isCTRLFEnabled = useIsCtrlFEnabled();
 
   useSyncWikiLanguageFromUrl();
+
+  useEffect(() => {
+    preloadWikipediaStyles(wikiLang);
+  }, [wikiLang]);
 
   useCheckAchievements({
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],

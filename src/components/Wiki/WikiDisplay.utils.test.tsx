@@ -7,6 +7,7 @@ import {
   findVisibleWinningLinks,
   getArticleData,
 } from "./WikiDisplay.utils";
+import { preloadWikipediaStyles } from "./WikiStyles";
 
 testWithMSW("requests the Vector 2022 parse contract", async () => {
   let requestUrl: URL | undefined;
@@ -76,6 +77,27 @@ testWithMSW("builds stable isolated ResourceLoader style URLs with legacy layout
       lang: "ar",
       debug: "false",
     });
+  }
+});
+testWithMSW("preloads article styles once for the selected wiki language", () => {
+  preloadWikipediaStyles("de");
+  preloadWikipediaStyles("de");
+
+  const links = Array.from(
+    document.head.querySelectorAll<HTMLLinkElement>("link[data-wiki-style-preload]"),
+  );
+  const wikipediaLinks = links.filter((link) => link.href.includes(".wikipedia.org/w/load.php"));
+
+  expect(links).toHaveLength(3);
+  expect(links.every((link) => link.rel === "preload" && link.as === "style")).toBe(true);
+  expect(wikipediaLinks).toHaveLength(2);
+  expect(wikipediaLinks.every((link) => new URL(link.href).searchParams.get("lang") === "de")).toBe(
+    true,
+  );
+  expect(links.some((link) => link.href.includes("article-adaptations.css"))).toBe(true);
+
+  for (const link of links) {
+    link.remove();
   }
 });
 
