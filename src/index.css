@@ -275,13 +275,6 @@
     animation: wiki-loader-reveal 180ms ease-out 400ms both;
   }
 
-  .wiki-loader-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-  }
-
   .wiki-loader-stage {
     position: relative;
     display: block;
@@ -454,7 +447,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .wiki-loader-card * {
+    .wiki-loader-stage * {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
     }
