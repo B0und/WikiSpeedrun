@@ -1,11 +1,12 @@
 import * as Popover from "@radix-ui/react-popover";
 import { useQuery } from "@tanstack/react-query";
-import clsx from "clsx";
 import { useState } from "react";
 import { X } from "react-feather";
 import { useLingui } from "@lingui/react/macro";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
+import { cn } from "../../utils/cn";
+import { jsonAs } from "../../utils/json";
 import type { ArticlePreview } from "./ArticlePreview.types";
 import HelpCircle from "./helpcircle.svg?react";
 
@@ -25,7 +26,7 @@ const getArticleSummary = async (language: string, pageid: string) => {
       }).toString(),
   );
 
-  return res.json() as ArticlePreview;
+  return jsonAs<ArticlePreview>(res);
 };
 
 interface ArticlePreviewProps {
@@ -56,15 +57,18 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
       <Popover.Trigger asChild>
         <button
           type="button"
-          className={clsx(
-            "pointer-events-none w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary ",
-            pageid && "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue",
+          data-testid="article-preview"
+          className={cn(
+            "pointer-events-none w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary",
+            pageid &&
+              "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue",
           )}
           onClick={increaseArticlePreviewPressed}
           aria-label={t({
             id: "Article Preview",
             message: "Article Preview",
-            comment: "Button that opens a preview popover for the currently selected Wikipedia article",
+            comment:
+              "Button that opens a preview popover for the currently selected Wikipedia article",
           })}
         >
           <HelpCircle />
@@ -72,7 +76,8 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
       </Popover.Trigger>
 
       <Popover.Content
-        className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md bg-neutral-50 p-5 shadow-2xl will-change-[transform,opacity] dark:bg-dark-surface-secondary dark:text-dark-primary"
+        data-testid="article-preview-popover"
+        className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md bg-neutral-50 p-5 shadow-2xl dark:bg-dark-surface-secondary dark:text-dark-primary"
         sideOffset={5}
       >
         <h3 className="border-b-[1px] border-b-secondary-border font-bold">
@@ -86,11 +91,14 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
         </h3>
         {imageSrc && <img src={imageSrc} alt="" className="float-left m-4 mb-0 ml-0 w-32" />}
         <p className="mt-2 text-base">
-          {isarticlePreviewLoading ? t({ id: "Loading" }) : articlePreview?.query?.pages?.[pageid].extract}
+          {isarticlePreviewLoading
+            ? t({ id: "Loading" })
+            : articlePreview?.query?.pages?.[pageid].extract}
           {isError && t({ id: "Couldn't load article preview" })}
         </p>
 
         <Popover.Close
+          data-testid="article-preview-close"
           className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
           aria-label={t({
             id: "Close",

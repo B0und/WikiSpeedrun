@@ -8,29 +8,17 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/react-router'
-
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StatsRouteImport } from './routes/stats'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as AchievementsRouteImport } from './routes/achievements'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AchievementsRouteImport } from './routes/achievements'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StatsRouteImport } from './routes/stats'
 import { Route as WikiSplatRouteImport } from './routes/wiki/$'
 
-const StatsRoute = StatsRouteImport.update({
-  id: '/stats',
-  path: '/stats',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AchievementsRoute = AchievementsRouteImport.update({
-  id: '/achievements',
-  path: '/achievements',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -38,9 +26,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AchievementsRoute = AchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatsRoute = StatsRouteImport.update({
+  id: '/stats',
+  path: '/stats',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WikiSplatRoute = WikiSplatRouteImport.update({
@@ -77,12 +75,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/about'
-    | '/achievements'
-    | '/settings'
-    | '/stats'
-    | '/wiki/$'
+    '/' | '/about' | '/achievements' | '/settings' | '/stats' | '/wiki/$'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/about' | '/achievements' | '/settings' | '/stats' | '/wiki/$'
   id:
@@ -149,61 +142,6 @@ declare module '@tanstack/react-router' {
       parentRoute: typeof rootRouteImport
     }
   }
-}
-
-declare module './routes/index' {
-  const createFileRoute: CreateFileRoute<
-    '/',
-    FileRoutesByPath['/']['parentRoute'],
-    FileRoutesByPath['/']['id'],
-    FileRoutesByPath['/']['path'],
-    FileRoutesByPath['/']['fullPath']
-  >
-}
-declare module './routes/about' {
-  const createFileRoute: CreateFileRoute<
-    '/about',
-    FileRoutesByPath['/about']['parentRoute'],
-    FileRoutesByPath['/about']['id'],
-    FileRoutesByPath['/about']['path'],
-    FileRoutesByPath['/about']['fullPath']
-  >
-}
-declare module './routes/achievements' {
-  const createFileRoute: CreateFileRoute<
-    '/achievements',
-    FileRoutesByPath['/achievements']['parentRoute'],
-    FileRoutesByPath['/achievements']['id'],
-    FileRoutesByPath['/achievements']['path'],
-    FileRoutesByPath['/achievements']['fullPath']
-  >
-}
-declare module './routes/settings' {
-  const createFileRoute: CreateFileRoute<
-    '/settings',
-    FileRoutesByPath['/settings']['parentRoute'],
-    FileRoutesByPath['/settings']['id'],
-    FileRoutesByPath['/settings']['path'],
-    FileRoutesByPath['/settings']['fullPath']
-  >
-}
-declare module './routes/stats' {
-  const createFileRoute: CreateFileRoute<
-    '/stats',
-    FileRoutesByPath['/stats']['parentRoute'],
-    FileRoutesByPath['/stats']['id'],
-    FileRoutesByPath['/stats']['path'],
-    FileRoutesByPath['/stats']['fullPath']
-  >
-}
-declare module './routes/wiki/$' {
-  const createFileRoute: CreateFileRoute<
-    '/wiki/$',
-    FileRoutesByPath['/wiki/$']['parentRoute'],
-    FileRoutesByPath['/wiki/$']['id'],
-    FileRoutesByPath['/wiki/$']['path'],
-    FileRoutesByPath['/wiki/$']['fullPath']
-  >
 }
 
 const rootRouteChildren: RootRouteChildren = {

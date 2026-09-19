@@ -1,4 +1,4 @@
-import type { LANGUAGES } from "../WikiLanguageSelect";
+import type { LANGUAGES } from "./wikiLanguages";
 import type { CSSProperties } from "react";
 
 export type WikiArticleStyleState = "ready" | "degraded";
@@ -34,8 +34,7 @@ export interface Parse {
   modulescripts?: string[];
   modulestyles?: string[];
   jsconfigvars?: Record<string, unknown>;
-  // biome-ignore lint/suspicious/noExplicitAny: a
-  redirects?: any[];
+  redirects?: unknown[];
   text?: Text;
   langlinks?: Langlink[];
   categories?: Category[];

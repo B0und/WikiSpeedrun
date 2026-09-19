@@ -2,7 +2,11 @@ import { produce } from "immer";
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import { ACHIEVEMENTS_LIST, type Achievement, achievementConditionCheckByIdMap } from "../achievements";
+import {
+  ACHIEVEMENTS_LIST,
+  type Achievement,
+  achievementConditionCheckByIdMap,
+} from "../achievements";
 
 /*
 Data gets persisted in local storage
@@ -156,7 +160,7 @@ export const useStatsStore = create<StatsStore>()(
         name: "statistics",
         storage: createJSONStorage(() => localStorage),
 
-        partialize: ({ actions: _, ...rest }: StatsStore) => {
+        partialize: ({ actions: _actions, ...rest }: StatsStore) => {
           return {
             ...rest,
             achievements: rest.achievements.filter((a) => a.unlocked).map((a) => ({ id: a.id })),
@@ -165,6 +169,10 @@ export const useStatsStore = create<StatsStore>()(
 
         // called when page loads, merging local storage with current state
         merge: (persistedState, currentState) => {
+          // The persisted envelope's fields are validated below via
+          // persistedNumber/persistedLanguageList; this is the single
+          // unsealing point for the unknown storage payload.
+          // oxlint-disable-next-line typescript/no-unsafe-type-assertion
           const stored = persistedState as PersistedStore | undefined;
 
           const unlockedAchievements = produce(currentState.achievements, (draftState) => {
@@ -189,19 +197,34 @@ export const useStatsStore = create<StatsStore>()(
               stored?.known_wiki_languages,
               currentState.known_wiki_languages,
             ),
-            articles_clicked: persistedNumber(stored?.articles_clicked, currentState.articles_clicked),
+            articles_clicked: persistedNumber(
+              stored?.articles_clicked,
+              currentState.articles_clicked,
+            ),
             article_preview_pressed: persistedNumber(
               stored?.article_preview_pressed,
               currentState.article_preview_pressed,
             ),
-            average_answer_time: persistedNumber(stored?.average_answer_time, currentState.average_answer_time),
-            fastest_answer_time: persistedNumber(stored?.fastest_answer_time, currentState.fastest_answer_time),
-            single_random_pressed: persistedNumber(stored?.single_random_pressed, currentState.single_random_pressed),
+            average_answer_time: persistedNumber(
+              stored?.average_answer_time,
+              currentState.average_answer_time,
+            ),
+            fastest_answer_time: persistedNumber(
+              stored?.fastest_answer_time,
+              currentState.fastest_answer_time,
+            ),
+            single_random_pressed: persistedNumber(
+              stored?.single_random_pressed,
+              currentState.single_random_pressed,
+            ),
             multiple_random_pressed: persistedNumber(
               stored?.multiple_random_pressed,
               currentState.multiple_random_pressed,
             ),
-            slowest_answer_time: persistedNumber(stored?.slowest_answer_time, currentState.slowest_answer_time),
+            slowest_answer_time: persistedNumber(
+              stored?.slowest_answer_time,
+              currentState.slowest_answer_time,
+            ),
             total_runs: persistedNumber(stored?.total_runs, currentState.total_runs),
             wins: persistedNumber(stored?.wins, currentState.wins),
             missed_wins: persistedNumber(stored?.missed_wins, currentState.missed_wins),
@@ -217,14 +240,15 @@ export const useStatsStore = create<StatsStore>()(
 
 export const checkAchievements = (achievements: readonly Achievement[]) => {
   return achievements.filter((achievement) => {
-    const conditionFn = achievementConditionCheckByIdMap[achievement.id];
-    return !achievement.unlocked && conditionFn();
+    const conditionFn = achievementConditionCheckByIdMap.get(achievement.id);
+    return !achievement.unlocked && (conditionFn?.() ?? false);
   });
 };
 
 export const useStatsStoreActions = () => useStatsStore((state) => state.actions);
 export const useArticleClicks = () => useStatsStore((state) => state.articles_clicked);
-export const useArticlePreviewPressed = () => useStatsStore((state) => state.article_preview_pressed);
+export const useArticlePreviewPressed = () =>
+  useStatsStore((state) => state.article_preview_pressed);
 export const useAverageAnswerTime = () => useStatsStore((state) => state.average_answer_time);
 export const useFastestAnswerTime = () => useStatsStore((state) => state.fastest_answer_time);
 export const useKnownWikiLanguages = () => useStatsStore((state) => state.known_wiki_languages);

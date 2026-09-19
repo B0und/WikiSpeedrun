@@ -29,7 +29,7 @@ const Header = () => {
   const { colorMode, switchTheme } = useThemeContext();
 
   return (
-    <div className="flex items-center gap-12 border-secondary-blue border-b-[2px] pb-3 sm:gap-0">
+    <div className="flex items-center gap-12 border-b-[2px] border-secondary-blue pb-3 sm:gap-0">
       <WikiLogo />
       <nav className="flex h-full flex-1 items-center gap-4">
         <div className="flex gap-4 lg:hidden">
@@ -38,7 +38,7 @@ const Header = () => {
         {isGameRunning && <GiveUpModal />}
         <MobileMenu links={links} />
         <ResultDialog />
-        <ul className="ml-auto flex h-full shrink-0 gap-4 ">
+        <ul className="ml-auto flex h-full shrink-0 gap-4">
           <li className="h-full">{!isGameRunning && <InterfaceLanguageSelect />}</li>
           <li className="h-full">
             <WikiPresentationMenu />
@@ -99,7 +99,7 @@ const LeftNav = ({ isGameRunning, links }: { isGameRunning: boolean; links: Wiki
           <Link
             key={link.path}
             to={link.path}
-            className="w-full whitespace-nowrap p-4 hover:text-primary-blue focus-visible:text-primary-blue"
+            className="w-full p-4 whitespace-nowrap hover:text-primary-blue focus-visible:text-primary-blue"
           >
             {link.name}
           </Link>

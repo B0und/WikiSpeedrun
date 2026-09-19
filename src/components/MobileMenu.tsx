@@ -16,8 +16,12 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
           {!isGameRunning && (
             <button
               type="button"
-              aria-label={t({ id: "Menu", message: "Menu", comment: "Button that opens the mobile navigation drawer" })}
-              className="-ml-3 bg-inherit p-3 hover:text-primary-blue focus-visible:text-primary-blue "
+              aria-label={t({
+                id: "Menu",
+                message: "Menu",
+                comment: "Button that opens the mobile navigation drawer",
+              })}
+              className="-ml-3 bg-inherit p-3 hover:text-primary-blue focus-visible:text-primary-blue"
             >
               <Menu />
             </button>
@@ -28,7 +32,10 @@ export const MobileMenu = ({ links }: { links: WikiLink[] }) => {
             {!isGameRunning &&
               links.map((link) => (
                 <DrawerClose key={link.path} asChild>
-                  <Link to={link.path} className="w-full p-4 hover:text-primary-blue focus-visible:text-primary-blue">
+                  <Link
+                    to={link.path}
+                    className="w-full p-4 hover:text-primary-blue focus-visible:text-primary-blue"
+                  >
                     {link.name}
                   </Link>
                 </DrawerClose>

@@ -8,7 +8,7 @@ interface Props {
 }
 export const StartArrowEnd = ({ endText, startText, className }: Props) => {
   return (
-    <p className={cn("flex items-center gap-2 font-bold text-lg", className)}>
+    <p className={cn("flex items-center gap-2 text-lg font-bold", className)}>
       <span>{startText}</span> <RightArrow /> <span>{endText}</span>
     </p>
   );
@@ -27,7 +27,8 @@ const RightArrow = () => {
         {t({
           id: "Right Arrow",
           message: "Right Arrow",
-          comment: "Accessible title of the arrow icon between the starting and ending article names",
+          comment:
+            "Accessible title of the arrow icon between the starting and ending article names",
         })}
       </title>
       <path

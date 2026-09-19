@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useLocalStorage from "use-local-storage";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface ThemeContext {
   colorMode: string;
@@ -24,7 +24,9 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
     }
   }, [colorMode]);
 
-  return <ThemeContext.Provider value={{ colorMode, switchTheme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ colorMode, switchTheme }}>{children}</ThemeContext.Provider>
+  );
 };
 
 export function useThemeContext() {

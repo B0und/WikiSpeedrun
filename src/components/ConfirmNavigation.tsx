@@ -8,12 +8,15 @@ export const GiveUpModal = () => {
   return (
     <ModalRoot>
       <ModalTrigger asChild>
-        <button type="button" className="p-4 hover:text-primary-blue focus-visible:text-primary-blue sm:p-2">
+        <button
+          type="button"
+          className="p-4 hover:text-primary-blue focus-visible:text-primary-blue sm:p-2"
+        >
           {t({ id: "Give up" })}
         </button>
       </ModalTrigger>
       <ModalContent>
-        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
+        <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
           {t({ id: "Confirm action" })}
         </ModalTitle>
         <ModalDescription className="mt-[10px] mb-5 text-sm leading-normal">

@@ -6,6 +6,12 @@ import { errorToast } from "../../utils/toast";
 
 const isNotDev = process.env.NODE_ENV !== "development";
 
+// Ctrl+F is reported as "f" or "F" depending on Caps Lock; F3 needs no
+// normalization. Compares on the normalized key so Caps Lock cannot slip past
+// the counter and the browser's find bar.
+export const isCheatShortcut = (event: Pick<KeyboardEvent, "key" | "ctrlKey">) =>
+  event.key === "F3" || (event.ctrlKey && event.key.toLowerCase() === "f");
+
 export const useNoCheating = () => {
   const { t } = useLingui();
   const { increaseCheatingAttemptsCounter } = useGameStoreActions();
@@ -15,7 +21,7 @@ export const useNoCheating = () => {
   const disableSearch = useCallback(
     (e: globalThis.KeyboardEvent) => {
       if (!isGameRunning) return;
-      if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+      if (isCheatShortcut(e)) {
         if (isNotDev) {
           e.preventDefault();
         }
@@ -28,7 +34,7 @@ export const useNoCheating = () => {
 
   useEffect(() => {
     if (isSearchEnabled) {
-      return;
+      return undefined;
     }
 
     window.addEventListener("keydown", disableSearch);

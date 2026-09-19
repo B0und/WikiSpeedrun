@@ -2,7 +2,7 @@ import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import { test as testBase } from "vitest";
 import { render } from "vitest-browser-react";
-import AppProviders from "./components/AppProviders";
+import { AppProviders } from "./components/AppProviders";
 import { messages as enMessages } from "./locales/en/messages.po";
 import { testWorker } from "./test_mocks/browser";
 import "./index.css";
@@ -34,12 +34,23 @@ export const testWithMSW = testBase.extend({
   ],
 });
 
+// App-level render: always renders the full provider + router stack.
 export const customRender = (ui?: React.ReactNode) => {
   return render(ui, {
     wrapper: () => (
       <I18nProvider i18n={i18n}>
         <AppProviders />
       </I18nProvider>
+    ),
+  });
+};
+
+// Component-level render: renders the given element inside the i18n provider
+// only (the global stores are plain module singletons, no provider needed).
+export const renderWithI18n = (ui: React.ReactNode) => {
+  return render(ui, {
+    wrapper: ({ children }: { children?: React.ReactNode }) => (
+      <I18nProvider i18n={i18n}>{children}</I18nProvider>
     ),
   });
 };

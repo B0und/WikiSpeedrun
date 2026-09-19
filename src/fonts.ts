@@ -18,7 +18,8 @@ const loadFont = (language: FontLanguage): Promise<unknown> => {
   return load;
 };
 
-const isFontLanguage = (language: string): language is FontLanguage => language === "ja" || language === "zh";
+const isFontLanguage = (language: string): language is FontLanguage =>
+  language === "ja" || language === "zh";
 
 export const loadLanguageFonts = async (...languages: string[]): Promise<void> => {
   const fonts = new Set(languages.filter(isFontLanguage));

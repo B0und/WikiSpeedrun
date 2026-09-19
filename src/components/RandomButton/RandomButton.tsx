@@ -1,9 +1,10 @@
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { useMutation } from "@tanstack/react-query";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import DiceIcon from "../../assets/dice.svg?react";
 import { useLingui } from "@lingui/react/macro";
 import { useWikiLanguage } from "../../stores/SettingsStore";
+import { jsonAs } from "../../utils/json";
 import type { WikiRandom } from "./RandomButton.types";
 
 const getRandomArticles = async (language: string) => {
@@ -24,7 +25,7 @@ const getRandomArticles = async (language: string) => {
       }).toString(),
   );
 
-  return res.json() as WikiRandom;
+  return jsonAs<WikiRandom>(res);
 };
 
 interface RandomButtonProps {
@@ -43,7 +44,11 @@ const RandomButton = ({ onSuccess, randomCount = 1 }: RandomButtonProps) => {
   return (
     <div className="relative">
       <button
-        className={clsx("mb-[-2px] w-fit p-2 hover:text-primary-blue", isPending && "animate-spin-dice")}
+        data-testid={`random-article-${randomCount}`}
+        className={clsx(
+          "mb-[-2px] w-fit p-2 hover:text-primary-blue",
+          isPending && "animate-spin-dice",
+        )}
         type="button"
         onClick={() => {
           mutate();

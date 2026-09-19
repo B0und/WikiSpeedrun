@@ -54,5 +54,3 @@ export const AppProviders = () => {
     </ThemeContextProvider>
   );
 };
-
-export default AppProviders;

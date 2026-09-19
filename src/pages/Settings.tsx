@@ -1,6 +1,6 @@
 import { useIsFetching } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import ArticleAutocomplete from "../components/ArticleAutocomplete/ArticleAutocomplete";
 import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import RandomButton from "../components/RandomButton/RandomButton";
@@ -10,6 +10,7 @@ import {
   handleOnRandomSuccess,
   useSyncWikiLanguageFromUrl,
 } from "../components/Settings.helpers";
+import { preloadWikipediaStyles } from "../components/Wiki/WikiStyles";
 import { useStopwatchActions } from "../components/StopwatchContext";
 import { LabelSwitch } from "../components/Switch";
 import { WikiLanguageSelect } from "../components/WikiLanguageSelect";
@@ -18,7 +19,11 @@ import { useResetGame } from "../hooks/useResetGame";
 import { useLingui } from "@lingui/react/macro";
 import type { Article } from "../stores/GameStore";
 import { useEndingArticle, useGameStoreActions, useStartingArticle } from "../stores/GameStore";
-import { useIsCtrlFEnabled, useSettingsStoreActions, useWikiLanguage } from "../stores/SettingsStore";
+import {
+  useIsCtrlFEnabled,
+  useSettingsStoreActions,
+  useWikiLanguage,
+} from "../stores/SettingsStore";
 import { useStatsStoreActions } from "../stores/StatisticsStore";
 import { copyNotification } from "../utils/toast";
 
@@ -26,7 +31,8 @@ const Settings = () => {
   const { t } = useLingui();
   const navigate = useNavigate();
   const { startStopwatch } = useStopwatchActions();
-  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } = useGameStoreActions();
+  const { setIsGameRunning, setStartingArticle, setEndingArticle, addHistoryArticle } =
+    useGameStoreActions();
   const startArticle = useStartingArticle();
   const endArticle = useEndingArticle();
   const resetGame = useResetGame();
@@ -41,6 +47,10 @@ const Settings = () => {
   const isCTRLFEnabled = useIsCtrlFEnabled();
 
   useSyncWikiLanguageFromUrl();
+
+  useEffect(() => {
+    preloadWikipediaStyles(wikiLang);
+  }, [wikiLang]);
 
   useCheckAchievements({
     trackedStats: ["single_random_pressed", "multiple_random_pressed", "article_preview_pressed"],
@@ -65,17 +75,33 @@ const Settings = () => {
     increaseTotalRuns();
   };
 
+  const shareSettings = () => {
+    void (async () => {
+      await navigator.clipboard.writeText(`${window.location.href}&lang=${wikiLang}`);
+      copyNotification(t({ id: "Copied to clipboard" }));
+    })();
+  };
+
   return (
     <div>
-      <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl">{t({ id: "Settings" })}</h2>
+      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl">
+        {t({ id: "Settings" })}
+      </h2>
 
       <p className="pt-4 pb-8 dark:text-dark-primary">
-        {t({ id: "Start typing and then select values from the dropdown list or press the random button" })}
+        {t({
+          id: "Start typing and then select values from the dropdown list or press the random button",
+        })}
       </p>
 
       <form className="flex max-w-[650px] flex-col gap-4" onSubmit={startGameHandler}>
         <WikiLanguageSelect />
-        <RandomModal data={modalData} open={modalOpen} setOpen={setModalOpen} setArticle={modalFunction.fn} />
+        <RandomModal
+          data={modalData}
+          open={modalOpen}
+          setOpen={setModalOpen}
+          setArticle={modalFunction.fn}
+        />
 
         <SelectArticleSettings
           label={t({ id: "Select starting article" })}
@@ -113,10 +139,7 @@ const Settings = () => {
           <button
             type="button"
             className="mt-4 w-fit border-b-[1px] border-b-transparent py-3 hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-            onClick={async () => {
-              await navigator.clipboard.writeText(`${window.location.href}&lang=${wikiLang}`);
-              copyNotification(t({ id: "Copied to clipboard" }));
-            }}
+            onClick={shareSettings}
           >
             {t({ id: "Share settings" })}
           </button>
@@ -168,7 +191,7 @@ const SelectArticleSettings: React.FC<Props> = ({
   const randomFailText = t({ id: "Random failed, try again" });
 
   return (
-    <div className="flex flex-wrap items-end gap-2 sm:gap-0">
+    <div className="flex flex-wrap items-end gap-2 sm:gap-0" data-testid={selectId}>
       <ArticleAutocomplete
         label={label}
         placeholder={placeholder}

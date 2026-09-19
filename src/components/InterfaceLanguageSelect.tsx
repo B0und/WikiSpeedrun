@@ -1,5 +1,5 @@
 import * as Select from "@radix-ui/react-select";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import React from "react";
 import { ChevronDown, ChevronUp } from "react-feather";
 import { useLingui } from "@lingui/react/macro";
@@ -7,7 +7,7 @@ import { isLocale } from "../locales/config";
 import { dynamicActivate } from "../locales/runtime";
 import { useGameStoreActions } from "../stores/GameStore";
 import { useInterfaceLanguage, useSettingsStoreActions } from "../stores/SettingsStore";
-import { LANGUAGES } from "./WikiLanguageSelect";
+import { LANGUAGES } from "./Wiki/wikiLanguages";
 
 const INTERFACE_LANGUAGES = LANGUAGES.filter((language) => isLocale(language.isoCode));
 
@@ -23,7 +23,7 @@ export const InterfaceLanguageSelect = () => {
       onValueChange={(locale) => {
         if (!isLocale(locale)) return;
 
-        const matchingLanguage = LANGUAGES.find((language) => language.isoCode === locale);
+        const matchingLanguage = LANGUAGES.find((entry) => entry.isoCode === locale);
         if (!matchingLanguage) return;
 
         setInterfaceLanguage(locale);
@@ -36,14 +36,14 @@ export const InterfaceLanguageSelect = () => {
       }}
     >
       <Select.Trigger
-        className="inline-flex h-full w-12 shrink-0 items-center justify-center rounded bg-inherit outline-none hover:outline-primary-blue focus-visible:outline-primary-blue"
+        className="inline-flex h-full w-12 shrink-0 items-center justify-center rounded-sm bg-inherit outline-hidden hover:outline-primary-blue focus-visible:outline-primary-blue"
         aria-label={t({ id: "Language" })}
       >
         <Select.Value aria-label={language}>
           <img
             src={`/flags/${language}.svg`}
             alt=""
-            className="h-6 w-8 rounded-sm border-[1px] border-secondary-border object-contain"
+            className="h-6 w-8 rounded-xs border-[1px] border-secondary-border object-contain"
             width={32}
             height={24}
             loading="lazy"
@@ -55,20 +55,20 @@ export const InterfaceLanguageSelect = () => {
           position="popper"
           sideOffset={5}
           align="center"
-          className="max-h-[300px] overflow-hidden rounded-md border-[1px] border-secondary-border bg-neutral-50 shadow-sm dark:bg-dark-surface-secondary dark:text-dark-primary"
+          className="max-h-[300px] overflow-hidden rounded-md border-[1px] border-secondary-border bg-neutral-50 shadow-xs dark:bg-dark-surface-secondary dark:text-dark-primary"
         >
-          <Select.ScrollUpButton className=" flex h-[30px] cursor-default items-center justify-center ">
+          <Select.ScrollUpButton className="flex h-[30px] cursor-default items-center justify-center">
             <ChevronUp />
           </Select.ScrollUpButton>
 
           <Select.Viewport className="p-[5px]">
-            {INTERFACE_LANGUAGES.map((language) => (
-              <SelectItem value={language.isoCode} key={language.isoCode}>
-                {language.label}
+            {INTERFACE_LANGUAGES.map((entry) => (
+              <SelectItem value={entry.isoCode} key={entry.isoCode}>
+                {entry.label}
               </SelectItem>
             ))}
           </Select.Viewport>
-          <Select.ScrollDownButton className=" flex h-[30px] cursor-default items-center justify-center ">
+          <Select.ScrollDownButton className="flex h-[30px] cursor-default items-center justify-center">
             <ChevronDown />
           </Select.ScrollDownButton>
         </Select.Content>
@@ -87,7 +87,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     return (
       <Select.Item
         className={clsx(
-          "language-option relative flex h-[40px] select-none items-center rounded-[3px] px-3 text-base leading-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-none",
+          "language-option relative flex h-[40px] items-center rounded-[3px] px-3 text-base leading-none select-none data-[highlighted]:text-primary-blue data-[highlighted]:outline-hidden",
           className,
         )}
         value={value}

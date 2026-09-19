@@ -169,7 +169,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "ExplorerOfChance",
     targetValue: 10,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -179,7 +180,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "FortuneSeeker",
     targetValue: 100,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -189,7 +191,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "GachaAddict",
     targetValue: 1000,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -199,7 +202,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "GachaOverlord",
     targetValue: 10000,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -293,8 +297,9 @@ export const ACHIEVEMENTS_LIST = [
   },
 ] as const satisfies readonly Achievement[];
 
-const init = {} as Record<AchievementId, () => boolean>;
-export const achievementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce((acc, achievement) => {
-  acc[achievement.id] = achievement.conditionCheck.bind(achievement);
-  return acc;
-}, init);
+export const achievementConditionCheckByIdMap = new Map<AchievementId, () => boolean>(
+  ACHIEVEMENTS_LIST.map((achievement) => [
+    achievement.id,
+    achievement.conditionCheck.bind(achievement),
+  ]),
+);
