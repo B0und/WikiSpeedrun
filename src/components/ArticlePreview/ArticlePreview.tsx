@@ -1,11 +1,11 @@
 import * as Popover from "@radix-ui/react-popover";
 import { useQuery } from "@tanstack/react-query";
-import { clsx } from "clsx";
 import { useState } from "react";
 import { X } from "react-feather";
 import { useLingui } from "@lingui/react/macro";
 import { useWikiLanguage } from "../../stores/SettingsStore";
 import { useStatsStoreActions } from "../../stores/StatisticsStore";
+import { cn } from "../../utils/cn";
 import { jsonAs } from "../../utils/json";
 import type { ArticlePreview } from "./ArticlePreview.types";
 import HelpCircle from "./helpcircle.svg?react";
@@ -57,7 +57,8 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
       <Popover.Trigger asChild>
         <button
           type="button"
-          className={clsx(
+          data-testid="article-preview"
+          className={cn(
             "pointer-events-none w-fit cursor-default rounded-full bg-neutral-50 p-2 outline-transparent focus-visible:outline-current dark:bg-dark-surface dark:text-dark-primary",
             pageid &&
               "pointer-events-auto cursor-pointer hover:text-primary-blue dark:hover:text-primary-blue",
@@ -75,6 +76,7 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
       </Popover.Trigger>
 
       <Popover.Content
+        data-testid="article-preview-popover"
         className="scrollbar z-20 max-h-[350px] w-[500px] max-w-[95vw] overflow-auto rounded-md bg-neutral-50 p-5 shadow-2xl dark:bg-dark-surface-secondary dark:text-dark-primary"
         sideOffset={5}
       >
@@ -96,6 +98,7 @@ const ArticlePreviewComponent = (props: ArticlePreviewProps) => {
         </p>
 
         <Popover.Close
+          data-testid="article-preview-close"
           className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
           aria-label={t({
             id: "Close",

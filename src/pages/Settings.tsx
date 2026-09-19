@@ -186,7 +186,7 @@ const SelectArticleSettings: React.FC<Props> = ({
   const randomFailText = t({ id: "Random failed, try again" });
 
   return (
-    <div className="flex flex-wrap items-end gap-2 sm:gap-0">
+    <div className="flex flex-wrap items-end gap-2 sm:gap-0" data-testid={selectId}>
       <ArticleAutocomplete
         label={label}
         placeholder={placeholder}

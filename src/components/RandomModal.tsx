@@ -21,7 +21,7 @@ export const RandomModal = (props: RandomModalProps) => {
         <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
           {t({ id: "Choose your article" })}
         </ModalTitle>
-        <div className="gap flex flex-col gap-3 pt-5">
+        <div className="gap flex flex-col gap-3 pt-5" data-testid="random-article-modal">
           {props.data?.map((article) => (
             <div className="flex gap-3" key={article.pageid}>
               <ModalClose asChild>
