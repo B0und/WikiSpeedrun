@@ -2,7 +2,6 @@
   "name": "wikispeedrun",
   "private": true,
   "version": "0.0.0",
-  "packageManager": "nub@0.9.2",
   "type": "module",
   "engines": {
     "node": ">=24.0.0"
