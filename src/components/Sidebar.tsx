@@ -1,12 +1,12 @@
 import { Resizable } from "re-resizable";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react";
 import { useClicks } from "../stores/GameStore";
 import { useSettingsStoreActions, useSidebarWidth } from "../stores/SettingsStore";
 import HistoryTable from "./HistoryTable";
 import { Stopwatch } from "./Stopwatch";
 
 const Sidebar = () => {
-  const { LL } = useI18nContext();
+  const { i18n } = useLingui();
   const sidebarWidth = useSidebarWidth();
   const { setSidebarWidth } = useSettingsStoreActions();
 
@@ -24,7 +24,7 @@ const Sidebar = () => {
         minHeight="100%"
         minWidth={300}
         maxWidth={1000}
-        className="border-secondary-blue border-r-[2px] pt-3 pr-3 hover:border-primary-blue hover:border-r-[2px] md:hidden"
+        className="border-r-[2px] border-secondary-blue pt-3 pr-3 hover:border-r-[2px] hover:border-primary-blue md:hidden"
         enable={{
           top: false,
           right: true,
@@ -38,8 +38,13 @@ const Sidebar = () => {
       >
         <div className="flex h-full w-full flex-col items-center justify-start gap-8">
           <HistoryTable />
-          <div className="mt-auto flex w-full shrink-0 flex-wrap items-baseline justify-between overflow-auto pr-6 pb-6 ">
-            <span>{LL["Clicks: {0}"](clicks)}</span>
+          <div className="mt-auto flex w-full shrink-0 flex-wrap items-baseline justify-between overflow-auto pr-6 pb-6">
+            <span>
+              {i18n._(
+                /** i18n */
+                { id: "Clicks: {clicks}", values: { clicks } },
+              )}
+            </span>
             <Stopwatch />
           </div>
         </div>

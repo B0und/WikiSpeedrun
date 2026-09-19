@@ -1,9 +1,10 @@
-import clsx from "clsx";
+import { useLingui } from "@lingui/react/macro";
+import { clsx } from "clsx";
 import type { Achievement as IAchievement } from "../achievements";
-import { useI18nContext } from "../i18n/i18n-react";
+import { messageDescriptors } from "../lingui";
 
 export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
 
   let currentValue: number;
   if (achievement.targetValue) {
@@ -12,50 +13,55 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
     currentValue = achievement.currentValue?.() ?? 0;
   }
 
-  // @ts-expect-error dynamic key generation
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  const achievementTitle = LL[achievement.id]?.title();
+  const titleId = `${achievement.id}.title` as const;
+  const descriptionId = `${achievement.id}.description` as const;
+  const achievementTitle = t(messageDescriptors[titleId]);
+  let achievementDescription: React.ReactNode = t(messageDescriptors[descriptionId]);
 
-  // @ts-expect-error dynamic key generation
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  let achievementDescription = LL[achievement.id]?.description();
-
-  let achievementAltText = achievement.imgAlt ?? LL["Prize trophy"]();
+  let achievementAltText: string = achievement.imgAlt
+    ? t(achievement.imgAlt)
+    : t(messageDescriptors["Prize trophy"]);
 
   if (achievement.id === "SpeedrunWaifu") {
     achievementDescription = (
       <span>
-        {LL["Made by Ina_den"]()} {LL["Follow him on"]()}{" "}
-        <a href="https://twitter.com/Ina_den_" target="_blank" rel="noreferrer" className="text-primary-blue underline">
-          {LL["twitter (X)"]()}
+        {t(messageDescriptors["Made by Ina_den"])} {t(messageDescriptors["Follow him on"])}{" "}
+        <a
+          href="https://twitter.com/Ina_den_"
+          target="_blank"
+          rel="noreferrer"
+          className="text-primary-blue underline"
+        >
+          {t(messageDescriptors["twitter (X)"])}
         </a>
       </span>
     );
-    achievementAltText = LL.WaifuAlt();
+    achievementAltText = t(messageDescriptors.WaifuAlt);
   }
   return (
-    <div className="flex w-full max-w-[var(--achievement-size)] items-center justify-start gap-5 lg:max-w-full ">
+    <div className="flex w-full max-w-[var(--achievement-size)] min-w-0 items-center justify-start gap-5 sm:items-start lg:max-w-full">
       <img
         width={128}
         height={128}
         src={achievement.imgUrl ?? "/trophy.svg"}
         alt={achievementAltText}
-        className={clsx("h-full bg-center object-cover sm:h-16 sm:w-16", !achievement.unlocked && " grayscale")}
+        className={clsx(
+          "h-32 w-32 shrink-0 bg-center object-cover sm:h-16 sm:w-16",
+          !achievement.unlocked && "grayscale",
+        )}
         loading="lazy"
       />
-      <div className="mt-8 flex flex-1 flex-col justify-between self-stretch">
-        <div className="flex flex-col gap-1">
-          <h3 className="text-lg">{achievementTitle}</h3>
-          <p className="line-clamp-2 text-xs" title="asd">
-            {achievementDescription}
-          </p>
+      <div className="mt-8 flex min-w-0 flex-1 flex-col justify-between self-stretch sm:mt-0">
+        <div className="flex min-w-0 flex-col gap-1">
+          <h3 className="text-lg break-words">{achievementTitle}</h3>
+          <p className="line-clamp-2 text-xs break-words">{achievementDescription}</p>
         </div>
 
         {
           <label
             htmlFor=""
             className={clsx(
-              "flex flex-col gap-1",
+              "flex min-w-0 flex-col gap-1",
               currentValue === undefined && achievement.targetValue === undefined && "invisible",
             )}
           >
@@ -64,7 +70,7 @@ export const Achievement = ({ achievement }: { achievement: IAchievement }) => {
             </span>
 
             <progress
-              className="h-2 w-full progress-filled:bg-primary-blue progress-unfilled:bg-gray-200 dark:progress-unfilled:bg-gray-700"
+              className="h-2 w-full progress-unfilled:bg-gray-200 dark:progress-unfilled:bg-gray-700 progress-filled:bg-primary-blue"
               value={currentValue}
               max={achievement.targetValue}
             >

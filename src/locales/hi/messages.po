@@ -1,0 +1,765 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: hi\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+"POT-Creation-Date: \n"
+
+#. Heading of the error screen shown when the app crashes
+#. js-lingui-explicit-id
+#: src/components/FallbackRender.tsx:13
+msgid "Something went wrong:"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/Sidebar.tsx:45
+msgid "Clicks: {clicks}"
+msgstr "दबाए गए: {clicks}"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:21
+msgid "Article appearance"
+msgstr "लेख की दिखावट"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:74
+msgid "Small"
+msgstr "छोटा"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:75
+msgid "Standard"
+msgstr "मानक"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:76
+msgid "Large"
+msgstr "बड़ा"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:79
+msgid "Compact"
+msgstr "संक्षिप्त"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:80
+msgid "Wide"
+msgstr "चौड़ा"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:86
+msgid "Text size"
+msgstr "पाठ का आकार"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiPresentationMenu.tsx:118
+msgid "Content width"
+msgstr "सामग्री की चौड़ाई"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:314
+msgid "twitter (X)"
+msgstr " twitter (X)"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:24
+#: src/lingui.ts:43
+msgid "About"
+msgstr "के बारे में"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:315
+msgid "Achievement unlocked"
+msgstr "खुली उपलब्धि"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:23
+#: src/lingui.ts:133
+#: src/pages/Achievements.tsx:15
+msgid "Achievements"
+msgstr "उपलब्धियां"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:29
+#: src/pages/About.tsx:24
+msgid "actually stops while you are loading the next article"
+msgstr "वास्तव में जब आप अगला लेख लोड कर रहे होते हैं तो रुक जाता है"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:18
+#: src/lingui.ts:135
+msgid "All of the information is stored locally in your browser (because servers cost money)"
+msgstr "सभी जानकारी आपके ब्राउज़र में स्थानीय रूप से संग्रहीत की जाती है (क्योंकि सर्वर में पैसे खर्च होते हैं)"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:26
+#: src/lingui.ts:74
+msgid "Article"
+msgstr "लेख"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:49
+#: src/lingui.ts:63
+msgid "Article clicks"
+msgstr "लेख पर दबाए गए"
+
+#. Button that opens a preview popover for the currently selected Wikipedia article
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:66
+msgid "Article Preview"
+msgstr "लेख पूर्वावलोकन"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:128
+#: src/pages/Stats.tsx:42
+msgid "Articles clicked:"
+msgstr "दबाए गए लेख:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:205
+msgid "AttentiveExplorer.title"
+msgstr "चौकस खोजकर्ता"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:284
+msgid "Bilingual.title"
+msgstr "द्विभाषिक"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:50
+#: src/lingui.ts:64
+msgid "Cheating attempts"
+msgstr "धोखाधड़ी के प्रयास"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/WikiLogic.tsx:28
+#: src/lingui.ts:102
+msgid "Choose another link"
+msgstr "दूसरा लिंक चुनें"
+
+#. js-lingui-explicit-id
+#: src/components/RandomModal.tsx:22
+#: src/lingui.ts:119
+msgid "Choose your article"
+msgstr "अपना लेख चुनें"
+
+#. Button that closes the drawer
+#. Button that closes the modal dialog
+#. Button that dismisses the article preview popover
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:100
+#: src/components/Drawer.tsx:39
+#: src/components/Modal.tsx:26
+msgid "Close"
+msgstr "बंद करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:147
+msgid "FirstWin.description"
+msgstr "अपना पहला स्पीडरन पूरा करें"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:20
+#: src/components/Wiki/Wiki.tsx:90
+#: src/lingui.ts:68
+msgid "Confirm action"
+msgstr "कार्रवाई की पुष्टि करें"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:44
+#: src/lingui.ts:107
+#: src/pages/Settings.tsx:76
+msgid "Copied to clipboard"
+msgstr "क्लिपबोर्ड पर नकल"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/lingui.ts:113
+msgid "Couldn't load article preview"
+msgstr "आलेख पूर्वावलोकन लोड नहीं किया जा सका"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:252
+msgid "Curiosity.title"
+msgstr "जिज्ञासु होना कभी-कभी खतरे या दुर्भाग्य का कारण बन सकता है"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:260
+msgid "CuriousExplorer.title"
+msgstr "जिज्ञासु अन्वेषक"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:319
+msgid "WaifuAlt"
+msgstr "नीली पोशाक वाली प्यारी एनीमे लड़की लाइब्रेरी में बैठी है, जबकि स्पीडरन टाइमर के साथ एक विकिपीडिया ग्लोब पास में तैर रहा है"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:37
+#: src/pages/About.tsx:29
+msgid "Dark theme support"
+msgstr "डार्क थीम समर्थन"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:299
+msgid "EgoStroke.title"
+msgstr "अहंकार आघात"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:325
+#: src/pages/Settings.tsx:128
+msgid "Enable search during gameplay"
+msgstr "गेमप्ले के दौरान खोज सक्षम करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:285
+msgid "Bilingual.description"
+msgstr "2 अलग-अलग भाषाओं में लेख खोजें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:290
+msgid "Trilingual.description"
+msgstr "3 अलग-अलग भाषाओं में लेखों का अन्वेषण करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:295
+msgid "Polyglot.description"
+msgstr "5 विभिन्न भाषाओं में लेखों का अन्वेषण करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:229
+msgid "ExplorerOfChance.title"
+msgstr "संभावना का अन्वेषक"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:16
+#: src/pages/About.tsx:16
+msgid "Features"
+msgstr "विशेषताएँ"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:146
+msgid "FirstWin.title"
+msgstr "पहली जीत"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:313
+msgid "Follow him on"
+msgstr "उसका अनुसरण करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:237
+msgid "FortuneSeeker.title"
+msgstr "भाग्य साधक"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:242
+msgid "GachaAddict.title"
+msgstr "गच्चा दीवाना"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:247
+msgid "GachaOverlord.title"
+msgstr "गचा अधिपति"
+
+#. js-lingui-explicit-id
+#: src/components/RandomButton/RandomButton.tsx:56
+#: src/lingui.ts:81
+msgid "Get random article"
+msgstr "यादृच्छिक लेख प्राप्त करें"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:15
+#: src/components/ConfirmNavigation.tsx:31
+#: src/lingui.ts:67
+msgid "Give up"
+msgstr "छोड़ देना"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:25
+#: src/pages/About.tsx:21
+msgid "High precision fair™ timer"
+msgstr "उच्च परिशुद्धता निष्पक्ष™ टाइमर"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:22
+#: src/lingui.ts:73
+msgid "History"
+msgstr "इतिहास"
+
+#. js-lingui-explicit-id
+#: src/components/InfoTooltip.tsx:23
+#: src/lingui.ts:141
+msgid "If you clear your browser data or switch to another browser all of your data will be gone"
+msgstr "यदि आप अपना ब्राउज़र डेटा साफ़ करते हैं या किसी अन्य ब्राउज़र पर स्विच करते हैं, तो आपका सारा डेटा चला जाएगा।"
+
+#. js-lingui-explicit-id
+#: src/components/ConfirmNavigation.tsx:23
+#: src/components/Wiki/Wiki.tsx:93
+#: src/lingui.ts:69
+msgid "If you leave, your current progress will be lost"
+msgstr "यदि आप चले गए तो आपकी वर्तमान प्रगति नष्ट हो जाएगी"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:276
+msgid "InsatiablesReader.title"
+msgstr "अतृप्त पाठक"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:213
+msgid "KeenPathfinder.title"
+msgstr "उत्सुक पथप्रदर्शक"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:33
+#: src/pages/About.tsx:28
+msgid "Keeps track of your session progress"
+msgstr "आपके सत्र की प्रगति पर नज़र रखता है"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:126
+#: src/pages/Stats.tsx:40
+msgid "Known languages:"
+msgstr "ज्ञात भाषाएँ:"
+
+#. js-lingui-explicit-id
+#: src/components/InterfaceLanguageSelect.tsx:40
+#: src/lingui.ts:95
+msgid "Language"
+msgstr "भाषा"
+
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:93
+#: src/components/Loader.tsx:8
+#: src/lingui.ts:112
+msgid "Loading"
+msgstr "लोडिंग..."
+
+#. Alt text for the Ego Stroke achievement image (a photo of streamer Ludwig Ahgren)
+#. js-lingui-explicit-id
+#: src/achievements.tsx:283
+msgid "Ludwig Ahgren"
+msgstr "Ludwig Ahgren"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:312
+msgid "Made by Ina_den"
+msgstr "इना_डेन द्वारा निर्मित।"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:308
+msgid "SpeedrunWaifu.description"
+msgstr "इना_डेन द्वारा निर्मित। उसे ट्विटर पर फ़ॉलो करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:171
+msgid "MasterRunner.title"
+msgstr "मास्टर धावक"
+
+#. Button that opens the mobile navigation drawer
+#. js-lingui-explicit-id
+#: src/components/MobileMenu.tsx:19
+msgid "Menu"
+msgstr "मेनू"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:51
+#: src/lingui.ts:118
+msgid "Missed wins"
+msgstr "जीत चूक गई"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:209
+msgid "AttentiveExplorer.description"
+msgstr "विजेता लिंक को खोए बिना कम से कम 10 लेखों पर नेविगेट करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:217
+msgid "KeenPathfinder.description"
+msgstr "विजेता लिंक को खोए बिना कम से कम 25 लेखों पर नेविगेट करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:225
+msgid "SharpNavigator.description"
+msgstr "विजेता लिंक को खोए बिना कम से कम 50 लेखों पर नेविगेट करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:96
+msgid "Navigation"
+msgstr "मार्गदर्शन"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:108
+#: src/lingui.ts:330
+msgid "No"
+msgstr "नहीं"
+
+#. js-lingui-explicit-id
+#: src/components/ArticleAutocomplete/ArticleAutocomplete.tsx:89
+#: src/lingui.ts:80
+msgid "No articles found"
+msgstr "कोई लेख नहीं मिला"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.utils.ts:23
+#: src/lingui.ts:97
+msgid "No Cheating!"
+msgstr "कोई धोखा नहीं!"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:21
+#: src/pages/About.tsx:19
+msgid "No registration required"
+msgstr "पंजीकरण की आवश्यकता नहीं है"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:151
+msgid "NoviceRunner.title"
+msgstr "नौसिखिया धावक"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:17
+#: src/pages/About.tsx:18
+msgid "Now supports multiple languages"
+msgstr "अब अनेक भाषाओं का समर्थन करता है"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:41
+#: src/pages/About.tsx:30
+msgid "Open source"
+msgstr "खुला स्त्रोत"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:21
+#: src/lingui.ts:42
+#: src/pages/About.tsx:33
+#: src/pages/Settings.tsx:146
+msgid "Play"
+msgstr "चालू करें"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:116
+#: src/lingui.ts:66
+msgid "Play again"
+msgstr "फिर से चालू करें"
+
+#. Shown while an article preview popover is loading
+#. js-lingui-explicit-id
+#: src/components/ArticlePreview/ArticlePreview.tsx:84
+msgid "Please wait"
+msgstr "कृपया प्रतीक्षा करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:294
+msgid "Polyglot.title"
+msgstr "बहुभाषी"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:264
+msgid "CuriousExplorer.description"
+msgstr "100 लेखों का पूर्वावलोकन करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:272
+msgid "PreviewEnthusiast.description"
+msgstr "1000 लेखों का पूर्वावलोकन करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:280
+msgid "InsatiablesReader.description"
+msgstr "10000 लेखों का पूर्वावलोकन करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:256
+msgid "Curiosity.description"
+msgstr "किसी लेख का पूर्वावलोकन करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:268
+msgid "PreviewEnthusiast.title"
+msgstr "पूर्वावलोकन उत्साही"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:129
+#: src/pages/Stats.tsx:43
+msgid "Previewed Articles:"
+msgstr "समीक्षित लेख:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:324
+msgid "Prize trophy"
+msgstr "पुरस्कार ट्रॉफी"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:127
+#: src/pages/Stats.tsx:41
+msgid "Random choices:"
+msgstr "यादृच्छिक विकल्प:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:98
+#: src/pages/Settings.tsx:186
+msgid "Random failed, try again"
+msgstr "आकस्मिक रूप से विफल, पुनः प्रयास करें"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:67
+#: src/components/ResultDialog.tsx:73
+#: src/lingui.ts:65
+msgid "Results"
+msgstr "परिणाम"
+
+#. Accessible title of the arrow icon between the starting and ending article names
+#. js-lingui-explicit-id
+#: src/components/StartArrowEnd.tsx:27
+msgid "Right Arrow"
+msgstr "दायाँ तीर"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:233
+msgid "ExplorerOfChance.description"
+msgstr "10 यादृच्छिक लेख चुनें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:238
+msgid "FortuneSeeker.description"
+msgstr "100 यादृच्छिक लेख चुनें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:243
+msgid "GachaAddict.description"
+msgstr "1000 यादृच्छिक लेख चुनें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:248
+msgid "GachaOverlord.description"
+msgstr "10000 यादृच्छिक लेख चुनें"
+
+#. js-lingui-explicit-id
+#: src/components/WikiLanguageSelect.tsx:22
+#: src/lingui.ts:91
+msgid "Select article language"
+msgstr "लेख की भाषा चुनें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:55
+#: src/pages/Settings.tsx:115
+msgid "Select ending article"
+msgstr "अंतिम लेख का चयन करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:51
+#: src/pages/Settings.tsx:102
+msgid "Select starting article"
+msgstr "आरंभिक लेख चुनें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:44
+#: src/pages/Settings.tsx:83
+msgid "Settings"
+msgstr "समायोजन"
+
+#. js-lingui-explicit-id
+#: src/components/ResultDialog.tsx:108
+#: src/lingui.ts:111
+msgid "Share Result"
+msgstr "परिणाम साझा करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:106
+#: src/pages/Settings.tsx:139
+msgid "Share settings"
+msgstr "सेटिंग साझा करें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:221
+msgid "SharpNavigator.title"
+msgstr "तीव्र नेविगेटर"
+
+#. Link to the project's GitHub repository
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:122
+msgid "Source code on github"
+msgstr "GitHub पर सोर्स कोड"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:166
+msgid "SpeedDemon.title"
+msgstr "गति दानव"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:184
+msgid "SpeedrunAddict.title"
+msgstr "स्पीडरन एडिक्ट"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:200
+msgid "SpeedrunGod.title"
+msgstr "स्पीडरन भगवान"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:156
+msgid "Speedster.title"
+msgstr "स्पीडस्टर"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:46
+#: src/pages/Settings.tsx:87
+msgid "Start typing and then select values from the dropdown list or press the random button"
+msgstr "टाइप करना प्रारंभ करें और फिर ड्रॉपडाउन सूची से मान चुनें या यादृच्छिक बटन दबाएँ"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:59
+#: src/pages/Settings.tsx:103
+#: src/pages/Settings.tsx:116
+msgid "Start typing to see options"
+msgstr "विकल्प देखने के लिए टाइप करना प्रारंभ करें"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:22
+#: src/lingui.ts:123
+#: src/pages/Stats.tsx:30
+msgid "Statistics"
+msgstr "आंकड़े"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:300
+msgid "EgoStroke.description"
+msgstr "इस पूरे प्रोजेक्ट को प्रेरित करने के लिए धन्यवाद"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:11
+#: src/pages/About.tsx:12
+msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
+msgstr "गेम का लक्ष्य कम से कम क्लिक और समय में एक प्रारंभिक विकिपीडिया लेख से दूसरे लेख तक नेविगेट करना है"
+
+#. js-lingui-explicit-id
+#: src/components/NoMatch.tsx:8
+#: src/lingui.ts:76
+msgid "This page doesn't exist"
+msgstr "यह पृष्ठ अस्तित्व में नहीं है"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:27
+#: src/lingui.ts:75
+msgid "Time"
+msgstr "समय"
+
+#. Button that switches between light and dark mode
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:54
+msgid "Toggle theme"
+msgstr "थीम बदलें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:125
+#: src/pages/Stats.tsx:36
+msgid "Total games:"
+msgstr "कुल खेल:"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:289
+msgid "Trilingual.title"
+msgstr "त्रिभाषी"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:161
+msgid "WikiExplorer.title"
+msgstr "विकी एक्सप्लोरर"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:6
+#: src/pages/About.tsx:9
+msgid "Wiki Speedrun Game"
+msgstr "विकी स्पीडरन गेम"
+
+#. js-lingui-explicit-id
+#: src/components/Header.tsx:86
+#: src/lingui.ts:86
+msgid "Wiki speedrun logo, featuring a Wikipedia sphere with a timer across i (looks like a big black stripe with a green time text on top) The time is 9 seconds and 5 milliseconds"
+msgstr "विकी स्पीडरन लोगो, जिसमें एक विकिपीडिया क्षेत्र है जिसके चारों ओर एक टाइमर लगा हुआ है। (शीर्ष पर हरे समय के पाठ के साथ एक बड़ी काली पट्टी जैसा दिखता है)। समय 9 सेकंड और 5 मिलीसेकंड है।"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:304
+msgid "SpeedrunWaifu.title"
+msgstr "वीक स्पीडरन वेफू"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:176
+msgid "WikipediaChampion.title"
+msgstr "विकिपीडिया चैंपियन"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:192
+msgid "WikipediaLegend.title"
+msgstr "विकिपीडिया लीजेंड"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:152
+msgid "NoviceRunner.description"
+msgstr "10 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:167
+msgid "SpeedDemon.description"
+msgstr "100 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:188
+msgid "SpeedrunAddict.description"
+msgstr "1000 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:157
+msgid "Speedster.description"
+msgstr "25 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:172
+msgid "MasterRunner.description"
+msgstr "250 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:196
+msgid "WikipediaLegend.description"
+msgstr "2500 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:162
+msgid "WikiExplorer.description"
+msgstr "50 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:180
+msgid "WikipediaChampion.description"
+msgstr "500 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:201
+msgid "SpeedrunGod.description"
+msgstr "5000 खेल जीतें"
+
+#. js-lingui-explicit-id
+#: src/components/HistoryTable.tsx:28
+#: src/lingui.ts:117
+msgid "Winning links"
+msgstr "जीतने वाले लिंक"
+
+#. js-lingui-explicit-id
+#: src/lingui.ts:124
+#: src/pages/Stats.tsx:35
+msgid "Wins:"
+msgstr "जीत:"
+
+#. js-lingui-explicit-id
+#: src/components/Wiki/Wiki.tsx:101
+#: src/lingui.ts:329
+msgid "Yes"
+msgstr "हाँ"

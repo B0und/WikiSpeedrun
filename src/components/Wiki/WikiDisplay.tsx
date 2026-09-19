@@ -1,87 +1,188 @@
-import { findVisibleWinningLinks, usePauseWhileLoading, useWikiQuery } from "./WikiDisplay.utils";
-import useWikiLogic from "./WikiLogic";
-
-import "./styles/unreset.css";
-import "./styles/vec2022base.css";
-import "./styles/vector2022.css";
-import "./styles/overrides.css";
-import clsx from "clsx";
-import purify from "dompurify";
-import { useI18nContext } from "../../i18n/i18n-react";
+import { clsx } from "clsx";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useEndingArticle, useGameStoreActions, useIsGameRunning } from "../../stores/GameStore";
-import { useThemeContext } from "../ThemeContext";
+import { useWikiArticleFontSize, useWikiArticleWidth } from "../../stores/SettingsStore";
 import { Loader } from "../Loader";
+import { useThemeContext } from "../ThemeContext";
+import { WikiArticleSurface } from "./WikiArticleSurface";
+import {
+  findVisibleWinningLinks,
+  getWikiArticleKey,
+  useWikiArticleLifecycle,
+  useWikiQuery,
+} from "./WikiDisplay.utils";
+import type { WikiArticleData } from "./Wiki.types";
+import useWikiLogic from "./WikiLogic";
 
 const WikiDisplay = () => {
   const { colorMode } = useThemeContext();
-  const isDarkTheme = colorMode === "dark";
-
-  const { LL } = useI18nContext();
-  const { handleClickInsideWikiArticle } = useWikiLogic();
-  const { isFetching, data, isError } = useWikiQuery();
+  const { handleClickInsideWikiArticle, handleKeyDownInsideWikiArticle } = useWikiLogic();
+  const {
+    isFetching,
+    isPending,
+    isPlaceholderData,
+    data: queriedArticle,
+    isError,
+  } = useWikiQuery();
   const isGameRunning = useIsGameRunning();
   const endingArticle = useEndingArticle();
-
   const { setLastArticleWinningLinks } = useGameStoreActions();
+  const articleWidth = useWikiArticleWidth();
+  const articleFontSize = useWikiArticleFontSize();
 
-  usePauseWhileLoading(isFetching);
+  const [displayedArticle, setDisplayedArticle] = useState<WikiArticleData>();
+  if (queriedArticle && !displayedArticle) {
+    setDisplayedArticle(queriedArticle);
+  }
+  const visibleArticle = displayedArticle ?? queriedArticle;
+  const visibleArticleKey = visibleArticle ? getWikiArticleKey(visibleArticle) : null;
+  const queriedArticleKey = queriedArticle ? getWikiArticleKey(queriedArticle) : null;
+  const pendingArticle =
+    queriedArticle &&
+    visibleArticle &&
+    queriedArticleKey !== visibleArticleKey &&
+    !isPlaceholderData
+      ? queriedArticle
+      : undefined;
 
-  const wikiRefCallback = (node: HTMLDivElement | null) => {
-    if (!node || isFetching || isError) return;
-
-    const visibleWinningLinks = findVisibleWinningLinks(endingArticle);
-    if (isGameRunning) {
-      setLastArticleWinningLinks(visibleWinningLinks.length);
+  const [readyArticleKey, setReadyArticleKey] = useState<string | null>(null);
+  const [trackedVisibleArticleKey, setTrackedVisibleArticleKey] = useState<string | null>(
+    visibleArticleKey,
+  );
+  if (visibleArticleKey !== trackedVisibleArticleKey) {
+    setTrackedVisibleArticleKey(visibleArticleKey);
+    if (readyArticleKey !== visibleArticleKey) {
+      setReadyArticleKey(null);
     }
-
-    if (!isGameRunning) {
-      for (const link of visibleWinningLinks) {
-        link.style.color = "#aa6600";
-        link.style.border = "1px solid #aa6600";
-        link.style.fontWeight = "bold";
-      }
-    }
-  };
-
-  if (isFetching) {
-    return <Loader />;
   }
 
+  const queriedArticleKeyRef = useRef<string | null>(null);
+  const visibleArticleKeyRef = useRef<string | null>(null);
+  const isPlaceholderDataRef = useRef(false);
+  useEffect(() => {
+    queriedArticleKeyRef.current = queriedArticleKey;
+    visibleArticleKeyRef.current = visibleArticleKey;
+    isPlaceholderDataRef.current = isPlaceholderData;
+  }, [isPlaceholderData, queriedArticleKey, visibleArticleKey]);
+
+  const presentationReady =
+    visibleArticleKey !== null &&
+    readyArticleKey === visibleArticleKey &&
+    !isPending &&
+    !isPlaceholderData &&
+    !pendingArticle;
+
+  // A failed fetch must not keep presenting the previous article: its links
+  // would stay clickable and count against an article that never loaded.
+  // Errors render no article (and no loader) until a fetch succeeds.
+  const shownArticle = isError ? undefined : visibleArticle;
+  useWikiArticleLifecycle(shownArticle, presentationReady);
+
+  const isArticleLoading =
+    !isError &&
+    (isFetching ||
+      isPlaceholderData ||
+      pendingArticle !== undefined ||
+      (visibleArticle !== undefined && !presentationReady));
+
+  const handleArticleReady = useCallback(
+    (article: WikiArticleData, contentRoot: HTMLElement) => {
+      const articleKey = getWikiArticleKey(article);
+      const currentVisibleArticleKey = visibleArticleKeyRef.current;
+      const currentQueriedArticleKey = queriedArticleKeyRef.current;
+
+      // A late stylesheet event from an article that was superseded while
+      // loading must not replace the article that is currently requested.
+      if (articleKey !== currentVisibleArticleKey && articleKey !== currentQueriedArticleKey) {
+        return;
+      }
+
+      const visibleWinningLinks = findVisibleWinningLinks(contentRoot, endingArticle);
+      if (isGameRunning) {
+        setLastArticleWinningLinks(visibleWinningLinks.length);
+      } else {
+        for (const link of visibleWinningLinks) {
+          link.style.color = "#aa6600";
+          // eslint-disable-next-line lingui/no-unlocalized-strings -- CSS color value, not user-facing copy
+          link.style.border = "1px solid #aa6600";
+          link.style.fontWeight = "bold";
+        }
+      }
+
+      setReadyArticleKey(articleKey);
+
+      if (
+        articleKey === currentQueriedArticleKey &&
+        articleKey !== currentVisibleArticleKey &&
+        !isPlaceholderDataRef.current
+      ) {
+        setDisplayedArticle(article);
+      } else if (articleKey === currentVisibleArticleKey) {
+        setDisplayedArticle((currentArticle) => {
+          if (currentArticle && getWikiArticleKey(currentArticle) === articleKey) {
+            return currentArticle;
+          }
+          return article;
+        });
+      }
+    },
+    [endingArticle, isGameRunning, setLastArticleWinningLinks],
+  );
+
+  const articleContainerClassName = clsx(
+    "relative mx-auto w-full",
+    articleWidth === "standard" && "max-w-[59.25rem]",
+  );
+
+  if (!shownArticle) {
+    if (!isArticleLoading) return null;
+
+    return (
+      <div
+        className={clsx(articleContainerClassName, "min-h-[18rem]")}
+        data-wiki-article-width={articleWidth}
+      >
+        {isArticleLoading && <Loader overlay />}
+      </div>
+    );
+  }
+
+  const surfaceArticles = pendingArticle ? [shownArticle, pendingArticle] : [shownArticle];
+
   return (
-    <>
-      {data?.html && (
-        <>
-          <h2 className="border-secondary-border border-b-[1px] font-serif text-3xl sm:mt-8">{data.title}</h2>
-          <div className={clsx("unreset wiki-insert", isDarkTheme && "wiki-dark-theme")}>
-            {/* todo delete unused classnames */}
+    <div className={articleContainerClassName} data-wiki-article-width={articleWidth}>
+      <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl sm:mt-8">
+        {shownArticle.title}
+      </h2>
+      <div className="relative">
+        {surfaceArticles.map((article) => {
+          const articleKey = getWikiArticleKey(article);
+          const isVisible = articleKey === visibleArticleKey;
+
+          return (
             <div
-              id="wikiHtml"
-              className="client-js vector-feature-language-in-header-enabled vector-feature-language-in-main-page-header-disabled vector-feature-language-alert-in-sidebar-enabled vector-feature-sticky-header-disabled vector-feature-page-tools-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-enabled vector-feature-main-menu-pinned-disabled vector-feature-limited-width-enabled vector-feature-limited-width-content-enabled vector-animations-ready ve-available"
+              key={articleKey}
+              className={
+                isVisible
+                  ? "relative"
+                  : "pointer-events-none invisible absolute inset-x-0 top-0 w-full"
+              }
+              aria-hidden={!isVisible}
             >
-              {/* todo delete unused classnames */}
-              <div
-                id="wikiBody"
-                className="skin-vector vector-body skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject skin-vector-2022 action-view uls-dialog-sticky-hide vector-below-page-title"
-              >
-                <div
-                  role="button"
-                  tabIndex={0}
-                  ref={(ref) => {
-                    wikiRefCallback(ref);
-                  }}
-                  onClick={handleClickInsideWikiArticle}
-                  onKeyDown={(e) =>
-                    e.key === "Enter" && handleClickInsideWikiArticle(e as unknown as React.MouseEvent<HTMLDivElement>)
-                  }
-                  // biome-ignore lint/security/noDangerouslySetInnerHtml: <>
-                  dangerouslySetInnerHTML={{ __html: purify.sanitize(data.html) }}
-                />
-              </div>
+              <WikiArticleSurface
+                article={article}
+                fontSize={articleFontSize}
+                isDark={colorMode === "dark"}
+                onReady={(contentRoot) => handleArticleReady(article, contentRoot)}
+                onClick={handleClickInsideWikiArticle}
+                onKeyDown={handleKeyDownInsideWikiArticle}
+              />
             </div>
-          </div>
-        </>
-      )}
-    </>
+          );
+        })}
+        {isArticleLoading && <Loader overlay />}
+      </div>
+    </div>
   );
 };
 

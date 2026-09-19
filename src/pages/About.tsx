@@ -1,32 +1,36 @@
 import { Link } from "@tanstack/react-router";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 
 const About = () => {
-  const { LL } = useI18nContext();
+  const { t } = useLingui();
   return (
     <>
-      <h1 className="border-secondary-border border-b-[1px] font-serif text-3xl">{LL["Wiki Speedrun Game"]()}</h1>
+      <h1 className="border-b-[1px] border-secondary-border font-serif text-3xl">
+        {t({ id: "Wiki Speedrun Game" })}
+      </h1>
       <p className="pt-4 pb-8">
-        {LL[
-          "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
-        ]()}
+        {t({
+          id: "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time",
+        })}
       </p>
-      <h2 className="border-secondary-border border-b-[1px] text-2xl">{LL.Features()}</h2>
+      <h2 className="border-b-[1px] border-secondary-border text-2xl">{t({ id: "Features" })}</h2>
       <ul className="flex list-inside list-disc flex-col gap-2 pt-4 pb-8 pl-4">
-        <li>{LL["Now supports multiple languages"]()}</li>
-        <li>{LL["No registration required"]()}</li>
+        <li>{t({ id: "Now supports multiple languages" })}</li>
+        <li>{t({ id: "No registration required" })}</li>
         <li>
-          {LL["High precision fair™ timer"]()}
+          {t({ id: "High precision fair™ timer" })}
           <ul className="list-inside list-[circle]">
-            <li className="pl-6">{LL["actually stops while you are loading the next article"]()}</li>
+            <li className="pl-6">
+              {t({ id: "actually stops while you are loading the next article" })}
+            </li>
           </ul>
         </li>
-        <li> {LL["Keeps track of your session progress"]()}</li>
-        <li> {LL["Dark theme support"]()}</li>
-        <li> {LL["Open source"]()}</li>
+        <li> {t({ id: "Keeps track of your session progress" })}</li>
+        <li> {t({ id: "Dark theme support" })}</li>
+        <li> {t({ id: "Open source" })}</li>
       </ul>
       <Link to={"/settings"} className="bg-secondary-blue px-10 py-3 hover:bg-primary-blue">
-        {LL.Play()}
+        {t({ id: "Play" })}
       </Link>
     </>
   );

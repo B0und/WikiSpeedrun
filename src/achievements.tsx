@@ -1,12 +1,16 @@
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 import { useGameStore } from "./stores/GameStore";
 import { useStatsStore } from "./stores/StatisticsStore";
 
-export type Achievement = {
+type AchievementMetadata = {
   unlocked: boolean;
-  id: string;
+  id: AchievementId;
   imgUrl?: string;
-  imgAlt?: string;
-} & (
+  imgAlt?: MessageDescriptor;
+};
+
+type AchievementProgress =
   | {
       conditionCheck: () => boolean;
       targetValue: number;
@@ -16,8 +20,37 @@ export type Achievement = {
       conditionCheck: () => boolean;
       targetValue?: never;
       currentValue?: never;
-    }
-);
+    };
+
+export type AchievementId =
+  | "FirstWin"
+  | "NoviceRunner"
+  | "Speedster"
+  | "WikiExplorer"
+  | "SpeedDemon"
+  | "MasterRunner"
+  | "WikipediaChampion"
+  | "SpeedrunAddict"
+  | "WikipediaLegend"
+  | "SpeedrunGod"
+  | "AttentiveExplorer"
+  | "KeenPathfinder"
+  | "SharpNavigator"
+  | "ExplorerOfChance"
+  | "FortuneSeeker"
+  | "GachaAddict"
+  | "GachaOverlord"
+  | "Curiosity"
+  | "CuriousExplorer"
+  | "PreviewEnthusiast"
+  | "InsatiablesReader"
+  | "Bilingual"
+  | "Trilingual"
+  | "Polyglot"
+  | "EgoStroke"
+  | "SpeedrunWaifu";
+
+export type Achievement = AchievementMetadata & AchievementProgress;
 
 const missedWinsCondition = (minArticles: number) => {
   const gameState = useGameStore.getState();
@@ -136,7 +169,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "ExplorerOfChance",
     targetValue: 10,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -146,7 +180,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "FortuneSeeker",
     targetValue: 100,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -156,7 +191,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "GachaAddict",
     targetValue: 1000,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -166,7 +202,8 @@ export const ACHIEVEMENTS_LIST = [
     id: "GachaOverlord",
     targetValue: 10000,
     currentValue: () =>
-      useStatsStore.getState().single_random_pressed + useStatsStore.getState().multiple_random_pressed,
+      useStatsStore.getState().single_random_pressed +
+      useStatsStore.getState().multiple_random_pressed,
     conditionCheck() {
       return this.currentValue() >= this.targetValue;
     },
@@ -243,7 +280,11 @@ export const ACHIEVEMENTS_LIST = [
     },
     unlocked: false,
     imgUrl: "/ludwig-ahgren.webp",
-    imgAlt: "Ludwig Ahgren",
+    imgAlt: msg({
+      id: "Ludwig Ahgren",
+      message: "Ludwig Ahgren",
+      comment: "Alt text for the Ego Stroke achievement image (a photo of streamer Ludwig Ahgren)",
+    }),
   },
   {
     id: "SpeedrunWaifu",
@@ -256,14 +297,9 @@ export const ACHIEVEMENTS_LIST = [
   },
 ] as const satisfies readonly Achievement[];
 
-// for getting a function for condition (based on its id)
-// eslint-disable-next-line @typescript-eslint/ban-types
-const init = {} as Record<
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  (typeof ACHIEVEMENTS_LIST)[number]["id"] | (string & {}),
-  () => boolean
->;
-export const achievementConditionCheckByIdMap = ACHIEVEMENTS_LIST.reduce((acc, achievement) => {
-  acc[achievement.id] = achievement.conditionCheck.bind(achievement);
-  return acc;
-}, init);
+export const achievementConditionCheckByIdMap = new Map<AchievementId, () => boolean>(
+  ACHIEVEMENTS_LIST.map((achievement) => [
+    achievement.id,
+    achievement.conditionCheck.bind(achievement),
+  ]),
+);

@@ -1,11 +1,21 @@
+import { useLingui } from "@lingui/react/macro";
 import type { FallbackProps } from "react-error-boundary";
 
 export function ErrorFallback({ error }: FallbackProps) {
+  // The object form of the t macro is compiler-safe and works around the
+  // rolldown-babel plugin's broken <Trans> JSX transform, which drops the
+  // runtime Trans binding and crashes the top-level error boundary itself.
+  const { t } = useLingui();
+
   return (
     <div role="alert">
-      <p>Something went wrong:</p>
-      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
-      <pre style={{ color: "red" }}>{error?.message}</pre>
+      <p>
+        {t({
+          id: "Something went wrong:",
+          comment: "Heading of the error screen shown when the app crashes",
+        })}
+      </p>
+      <pre style={{ color: "red" }}>{error instanceof Error ? error.message : String(error)}</pre>
     </div>
   );
 }

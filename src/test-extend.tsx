@@ -1,0 +1,56 @@
+import { i18n } from "@lingui/core";
+import { I18nProvider } from "@lingui/react";
+import { test as testBase } from "vitest";
+import { render } from "vitest-browser-react";
+import { AppProviders } from "./components/AppProviders";
+import { messages as enMessages } from "./locales/en/messages.po";
+import { testWorker } from "./test_mocks/browser";
+import "./index.css";
+i18n.load("en", enMessages);
+i18n.activate("en");
+
+export const testWithMSW = testBase.extend({
+  worker: [
+    async ({ task: _task }, use) => {
+      // Start the worker before the test.
+      await testWorker.start({
+        onUnhandledRequest(request, print) {
+          const url = new URL(request.url);
+          if (url.origin !== "https://en.wikipedia.org" || url.pathname !== "/w/api.php") return;
+          print.warning();
+        },
+      });
+
+      // Expose the testWorker object on the test's context.
+      await use(testWorker);
+
+      // Remove any request handlers added in individual test cases.
+      // This prevents them from affecting unrelated tests.
+      testWorker.resetHandlers();
+    },
+    {
+      auto: true,
+    },
+  ],
+});
+
+// App-level render: always renders the full provider + router stack.
+export const customRender = (ui?: React.ReactNode) => {
+  return render(ui, {
+    wrapper: () => (
+      <I18nProvider i18n={i18n}>
+        <AppProviders />
+      </I18nProvider>
+    ),
+  });
+};
+
+// Component-level render: renders the given element inside the i18n provider
+// only (the global stores are plain module singletons, no provider needed).
+export const renderWithI18n = (ui: React.ReactNode) => {
+  return render(ui, {
+    wrapper: ({ children }: { children?: React.ReactNode }) => (
+      <I18nProvider i18n={i18n}>{children}</I18nProvider>
+    ),
+  });
+};

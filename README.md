@@ -44,19 +44,19 @@ Clone the project:
 git clone https://github.com/B0und/WikiSpeedrun.git
 ```
 
-In the project directory you can run `pnpm i` and then:
+In the project directory you can run `nub install` and then:
 
-### `pnpm run dev`
+### `nub run dev`
 
 To run the app in the development mode.
 
-### `pnpm run build`
+### `nub run build`
 
 To build the app for production to the `build` folder.
 
 ## Contributing
 
-If you want to fix some translations, you can find and edit them in `src/i18n`.
+If you want to fix some translations, you can find and edit them in `src/locales/<locale>/messages.po`.
 If you want to make some major code changes, please contact me first/open an issue.
 
 ## Donations

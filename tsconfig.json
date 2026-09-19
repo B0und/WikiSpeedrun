@@ -2,14 +2,9 @@
   "compilerOptions": {
     "target": "es2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -18,19 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "composite": true,
-    "types": [
-      "node",
-      "vite/client",
-      "@vitest/browser/matchers",
-      "@vitest/browser/providers/playwright"
-    ],
+    "types": ["node", "vite/client", "@vitest/browser/matchers"]
   },
-  "include": [
-    "src",
-    "vite.config.ts",
-    ".eslintrc.cjs",
-    "tailwind.config.cjs",
-    "postcss.config.js",
-  ],
+  "include": ["src", "e2e", "vite.config.ts", "playwright.config.ts", "lingui.config.ts"]
 }

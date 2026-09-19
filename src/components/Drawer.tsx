@@ -1,7 +1,8 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import React from "react";
 import { X } from "react-feather";
+import { useLingui } from "@lingui/react/macro";
 
 interface DrawerExtraProps {
   side?: "right" | "left";
@@ -9,11 +10,16 @@ interface DrawerExtraProps {
 }
 type DrawerContentProps = React.ComponentProps<typeof DialogPrimitive.Content> & DrawerExtraProps;
 
-const DrawerContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>, DrawerContentProps>(
-  ({ children, side = "right", className, ...props }, forwardedRef) => (
+const DrawerContent = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Content>,
+  DrawerContentProps
+>(({ children, side = "right", className, ...props }, forwardedRef) => {
+  const { t } = useLingui();
+
+  return (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay
-        className={clsx("fixed inset-0 bg-black bg-opacity-60 data-[state=open]:animate-overlayShow")}
+        className={clsx("fixed inset-0 bg-black/60 data-[state=open]:animate-overlayShow")}
       />
       <DialogPrimitive.Content
         {...props}
@@ -29,16 +35,20 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
         <DialogPrimitive.Close className="absolute top-2 right-2" asChild>
           <button
             type="button"
-            className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full "
-            aria-label="Close"
+            className="absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
+            aria-label={t({
+              id: "Close",
+              message: "Close",
+              comment: "Button that closes the drawer",
+            })}
           >
             <X />
           </button>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>
-  ),
-);
+  );
+});
 
 DrawerContent.displayName = "DrawerContent";
 

@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "lineWidth": 120,
+  "indentStyle": "space",
+  "indentWidth": 2,
+  "lineEnding": "lf",
+  "ignorePatterns": ["src/routeTree.gen.ts", "src/i18n/**", "public/**", "dist/**", "e2e/**"],
+  "sortTailwindcss": {
+    "stylesheet": "./src/index.css",
+    "functions": ["clsx", "cn"]
+  }
+}

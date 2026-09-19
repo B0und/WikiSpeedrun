@@ -1,23 +1,25 @@
-/// <reference types="vitest/config" />
-
+import babel from "@rolldown/plugin-babel";
+import tailwindcss from "@tailwindcss/vite";
+import { lingui, linguiTransformerBabelPreset } from "@lingui/vite-plugin";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { visualizer } from "rollup-plugin-visualizer";
-import { defineConfig } from "vite";
+import { playwright } from "@vitest/browser-playwright";
+import { configDefaults, defineConfig } from "vitest/config";
 import { ViteEjsPlugin } from "vite-plugin-ejs";
 import { reactClickToComponent } from "vite-plugin-react-click-to-component";
 import svgr from "vite-plugin-svgr";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     tanstackRouter({
       target: "react",
       autoCodeSplitting: true,
       verboseFileRoutes: false,
     }),
-    react(),
+    react({ compiler: true }),
+    lingui(),
+    babel({ presets: [linguiTransformerBabelPreset()] }),
     reactClickToComponent(),
     svgr(),
     ViteEjsPlugin((config) => ({
@@ -25,30 +27,25 @@ export default defineConfig({
       isDev: config.mode === "development",
       isProd: config.mode === "production",
     })),
-    // visualizer({
-    //   template: "treemap", // or sunburst
-    //   open: true,
-    //   // sourcemap: true,
-    //   filename: "analyse.html", // will be saved in project's root
-    // }),
   ],
   build: {
     minify: "esbuild",
     sourcemap: false,
+    // main.tsx awaits the initial Lingui catalog before rendering.
+    target: "es2022",
   },
   test: {
-    setupFiles: ['./src/setupFile.ts'],
+    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    setupFiles: ["./src/setupFile.ts"],
+    exclude: [...configDefaults.exclude, "e2e/**"],
     browser: {
       enabled: true,
-      provider: "playwright",
-      
+      provider: playwright(),
       viewport: {
         width: 1920,
         height: 1080,
       },
-
       headless: true,
-      // https://vitest.dev/guide/browser/playwright
       instances: [{ browser: "chromium" }],
     },
   },

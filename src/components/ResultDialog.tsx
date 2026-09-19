@@ -1,8 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Portal from "@radix-ui/react-portal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useResetGame } from "../hooks/useResetGame";
-import { useI18nContext } from "../i18n/i18n-react";
+import { useLingui } from "@lingui/react/macro";
 import {
   useCheatingAttempts,
   useClicks,
@@ -10,6 +10,7 @@ import {
   useHistory,
   useIsWin,
   useStartingArticle,
+  useWinCount,
 } from "../stores/GameStore";
 import { copyNotification } from "../utils/toast";
 import { ModalContent, ModalDescription, ModalRoot, ModalTitle, ModalTrigger } from "./Modal";
@@ -18,8 +19,7 @@ import { StopwatchDisplay } from "./StopwatchDisplay";
 import { VictoryConfetti } from "./VictoryConfetti";
 
 export const ResultDialog = () => {
-  const { LL } = useI18nContext();
-  const [open, setOpen] = useState(false);
+  const { t } = useLingui();
   const resetGame = useResetGame();
 
   const startingArticle = useStartingArticle();
@@ -31,37 +31,63 @@ export const ResultDialog = () => {
   const cheatingAttempts = useCheatingAttempts();
   const missedWins = history.slice(0, -2).reduce((acc, el) => acc + el.winningLinks, 0);
 
-  useEffect(() => {
-    setOpen(isWin);
-  }, [isWin]);
+  // Dialog open state derives from the win plus an explicit dismissal, so no
+  // effect is needed to sync state with the store.
+  // winCount is the unique identity of the current win: history.length is not
+  // (two different games can end with the same number of history entries).
+  const winId = useWinCount();
+  const [dismissedWinId, setDismissedWinId] = useState<number | null>(null);
+  const open = isWin && dismissedWinId !== winId;
+  const shareResult = () => {
+    void (async () => {
+      await navigator.clipboard.writeText(window.location.href);
+      copyNotification(t({ id: "Copied to clipboard" }));
+    })();
+  };
 
   const resultStats = [
-    { name: LL["Article clicks"](), value: clicks },
-    { name: LL["Cheating attempts"](), value: cheatingAttempts },
-    { name: LL["Missed wins"](), value: missedWins },
+    { name: t({ id: "Article clicks" }), value: clicks },
+    ...(cheatingAttempts > 0
+      ? [{ name: t({ id: "Cheating attempts" }), value: cheatingAttempts }]
+      : []),
+    { name: t({ id: "Missed wins" }), value: missedWins },
   ];
 
   return (
     <>
-      <ModalRoot open={open} onOpenChange={setOpen}>
+      <ModalRoot
+        open={open}
+        onOpenChange={(nextOpen) => {
+          // Reopening via the trigger must clear the dismissal of the current
+          // win, or a dismissed dialog could never be brought back.
+          setDismissedWinId(nextOpen ? null : winId);
+        }}
+      >
         <ModalTrigger asChild>
           {isWin && (
             <button type="button" className="p-4 hover:text-primary-blue sm:p-2">
-              {LL.Results()}
+              {t({ id: "Results" })}
             </button>
           )}
         </ModalTrigger>
         <ModalContent>
-          <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border font-medium text-lg">
-            {LL.Results()}
+          <ModalTitle className="m-0 border-b-[1px] border-b-secondary-border text-lg font-medium">
+            {t({ id: "Results" })}
           </ModalTitle>
           <ModalDescription asChild>
-            <StartArrowEnd className="mt-[10px] mb-5" startText={startingArticle.title} endText={endingArticle.title} />
+            <StartArrowEnd
+              className="mt-[10px] mb-5"
+              startText={startingArticle.title}
+              endText={endingArticle.title}
+            />
           </ModalDescription>
           <table className="mb-5 w-full table-auto">
             <tbody>
               {resultStats.map((stat) => (
-                <tr key={stat.name} className="even:bg-gray-200 dark:even:bg-dark-surface-secondary">
+                <tr
+                  key={stat.name}
+                  className="even:bg-gray-200 dark:even:bg-dark-surface-secondary"
+                >
                   <td className="py-2 pr-4">{stat.name}</td>
                   <td className="py-2 pr-4">{stat.value}</td>
                 </tr>
@@ -79,20 +105,17 @@ export const ResultDialog = () => {
             <button
               type="button"
               className="border-b-[1px] border-b-transparent hover:border-b-primary-blue focus-visible:border-b-primary-blue"
-              onClick={async () => {
-                await navigator.clipboard.writeText(window.location.href);
-                copyNotification(LL["Copied to clipboard"]());
-              }}
+              onClick={shareResult}
             >
-              {LL["Share Result"]()}
+              {t({ id: "Share Result" })}
             </button>
             <Dialog.Close asChild>
               <button
                 type="button"
                 onClick={resetGame}
-                className="rounded-sm bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
+                className="rounded-xs bg-secondary-blue px-5 py-3 hover:bg-primary-blue focus-visible:bg-primary-blue"
               >
-                {LL["Play again"]()}
+                {t({ id: "Play again" })}
               </button>
             </Dialog.Close>
           </div>

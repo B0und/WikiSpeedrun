@@ -1,14 +1,17 @@
 import { useNavigate } from "@tanstack/react-router";
-import type { MouseEvent } from "react";
-import { useI18nContext } from "../../i18n/i18n-react";
+import type { KeyboardEvent, MouseEvent } from "react";
+import { useLingui } from "@lingui/react/macro";
 import { useGameStoreActions } from "../../stores/GameStore";
+import { useWikiLanguage } from "../../stores/SettingsStore";
 import { errorToast } from "../../utils/toast";
 import { useStopwatchActions } from "../StopwatchContext";
 
 const IMAGE_EXT = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
 
-const handleShowHideButton = (e: MouseEvent<HTMLDivElement>) => {
-  const node = e.target as HTMLElement | null;
+type ArticleInteractionEvent = MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>;
+
+const handleShowHideButton = (e: ArticleInteractionEvent) => {
+  const node = e.target instanceof HTMLElement ? e.target : null;
   const th = node?.closest("th.navbox-title");
   if (!th) return;
 
@@ -20,8 +23,9 @@ const handleShowHideButton = (e: MouseEvent<HTMLDivElement>) => {
 };
 const useWikiLogic = () => {
   const navigate = useNavigate();
-  const { LL } = useI18nContext();
-  const invalidLinkText = LL["Choose another link"]();
+  const wikiLanguage = useWikiLanguage();
+  const { t } = useLingui();
+  const invalidLinkText = t({ id: "Choose another link" });
   const { getFormattedTime } = useStopwatchActions();
   const { addHistoryArticle } = useGameStoreActions();
 
@@ -37,16 +41,16 @@ const useWikiLogic = () => {
     });
   };
 
-  const handleClickInsideWikiArticle = (e: MouseEvent<HTMLDivElement>) => {
+  const handleArticleInteraction = (e: ArticleInteractionEvent) => {
     e.preventDefault();
     handleShowHideButton(e);
 
     // Traverse up from the event target to find the nearest anchor element
-    let node = e.target as HTMLElement | null;
+    let node = e.target instanceof HTMLElement ? e.target : null;
     let anchor: HTMLAnchorElement | null = null;
     while (node && node !== e.currentTarget) {
-      if (node.nodeName === "A") {
-        anchor = node as HTMLAnchorElement;
+      if (node instanceof HTMLAnchorElement) {
+        anchor = node;
         break;
       }
       node = node.parentElement;
@@ -56,11 +60,11 @@ const useWikiLogic = () => {
       return;
     }
 
-    if (handleNavigation(anchor)) {
+    if (handleNavigation(e.currentTarget.getRootNode(), anchor)) {
       return;
     }
 
-    const hrefText = getFilteredLink(anchor);
+    const hrefText = getFilteredLink(anchor, wikiLanguage);
 
     // handle correct link
     if (hrefText) {
@@ -83,7 +87,17 @@ const useWikiLogic = () => {
     errorToast(invalidLinkText);
   };
 
-  return { handleClickInsideWikiArticle };
+  const handleClickInsideWikiArticle = (event: MouseEvent<HTMLDivElement>) => {
+    handleArticleInteraction(event);
+  };
+
+  const handleKeyDownInsideWikiArticle = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      handleArticleInteraction(event);
+    }
+  };
+
+  return { handleClickInsideWikiArticle, handleKeyDownInsideWikiArticle };
 };
 
 export default useWikiLogic;
@@ -98,28 +112,31 @@ function isScrollingAnchor(node: HTMLElement): boolean {
   return false;
 }
 
-function scrollToElement(elementId: string | null | undefined) {
-  if (!elementId) {
+function scrollToElement(root: Node, elementId: string | null | undefined) {
+  if (!elementId || !(root instanceof Document || root instanceof ShadowRoot)) {
     return;
   }
-  const element = document.getElementById(elementId);
+  const element = root.getElementById(elementId);
   if (element) {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
-const getFilteredLink = (element: HTMLAnchorElement) => {
-  const hrefText = element.getAttribute("href");
+const getFilteredLink = (element: HTMLAnchorElement, wikiLanguage: string) => {
+  const rawHref = element.getAttribute("href");
+  if (!rawHref) return null;
 
-  if (!hrefText) return null;
-  if (!hrefText.startsWith("/wiki/")) {
+  const isRootRelativeArticle = rawHref.startsWith("/wiki/");
+  const isCurrentEditionArticle =
+    element.protocol === "https:" &&
+    element.hostname === `${wikiLanguage}.wikipedia.org` &&
+    element.pathname.startsWith("/wiki/");
+  if (!isRootRelativeArticle && !isCurrentEditionArticle) {
     return null;
   }
 
+  const hrefText = element.pathname;
   if (IMAGE_EXT.some((imgExt) => hrefText.toLowerCase().includes(imgExt))) {
-    return null;
-  }
-  if (["https://www.wikidata.org", "www.wikidata.org", "commons.wikimedia.org"].includes(element.hostname)) {
     return null;
   }
 
@@ -144,15 +161,15 @@ const getFilteredLink = (element: HTMLAnchorElement) => {
 };
 
 const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
-  const classNameParent = target.parentNode as HTMLElement;
+  const classNameParent = target.parentElement;
   // show notification about non-wiki link
   if (
     target.className === "external text" ||
     target.className === "new" ||
     target.className === "geo-dec" ||
-    classNameParent.className === "reference-text" ||
-    classNameParent.className === "external text" ||
-    classNameParent.className === "new"
+    classNameParent?.className === "reference-text" ||
+    classNameParent?.className === "external text" ||
+    classNameParent?.className === "new"
   ) {
     errorToast(errorText);
     return true;
@@ -162,10 +179,10 @@ const filterOtherStuff = (target: HTMLAnchorElement, errorText: string) => {
 
 // test cases
 // Википедия:Ссылки на источники
-const handleNavigation = (node: HTMLAnchorElement) => {
+const handleNavigation = (root: Node, node: HTMLAnchorElement) => {
   if (isScrollingAnchor(node)) {
     const hrefWithoutHash = node.getAttribute("href")?.substring(1);
-    scrollToElement(hrefWithoutHash);
+    scrollToElement(root, hrefWithoutHash);
     return true;
   }
 
