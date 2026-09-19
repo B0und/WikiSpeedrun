@@ -175,8 +175,8 @@ const WikiDisplay = () => {
             </div>
           );
         })}
+        {isArticleLoading && <Loader overlay />}
       </div>
-      {isArticleLoading && <Loader overlay />}
     </div>
   );
 };
