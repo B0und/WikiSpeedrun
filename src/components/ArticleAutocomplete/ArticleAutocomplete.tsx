@@ -10,8 +10,8 @@ import { useThemeContext } from "../ThemeContext";
 import { reactSelectStyles } from "../reactSelectStyles";
 import type { WikiSearch } from "./WikiSearch.types";
 
-const getArticles = async (language: string, debouncedTerm: string) => {
-  if (!debouncedTerm) {
+const getArticles = async (language: string, searchTerm: string) => {
+  if (!searchTerm) {
     return undefined;
   }
 
@@ -22,7 +22,7 @@ const getArticles = async (language: string, debouncedTerm: string) => {
         list: "search",
         origin: "*",
         format: "json",
-        srsearch: debouncedTerm,
+        srsearch: searchTerm,
       }).toString(),
   );
   return jsonAs<WikiSearch>(resp);
