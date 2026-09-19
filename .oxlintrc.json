@@ -97,6 +97,18 @@
     // hooks
     "react/exhaustive-deps": "error",
 
+    // TanStack Query: loaded through jsPlugins, where oxlint's category presets
+    // do not apply, so the plugin's recommended rules are enabled explicitly.
+    // Without these entries the migration silently dropped the query lint
+    // coverage that the previous ESLint setup had.
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/no-rest-destructuring": "warn",
+    "@tanstack/query/stable-query-client": "error",
+    "@tanstack/query/no-unstable-deps": "error",
+    "@tanstack/query/infinite-query-property-order": "error",
+    "@tanstack/query/no-void-query-fn": "error",
+    "@tanstack/query/mutation-property-order": "error",
+
     // CSS, the ts-reset shim, mock setup and vitest-browser-react registration
     // are intentional side-effect imports.
     "import/no-unassigned-import":

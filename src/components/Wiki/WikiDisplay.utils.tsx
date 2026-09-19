@@ -49,7 +49,9 @@ export const getArticleData = async (
   }
 
   if (!isSupportedWikiLanguage(language)) {
-    throw new Error(`Unsupported Wikipedia language: ${language}`);
+    // The guard narrows `language` to `never`; stringify explicitly so the
+    // defense-in-depth branch stays type-safe.
+    throw new Error(`Unsupported Wikipedia language: ${String(language)}`);
   }
 
   const url = new URL(`https://${language}.wikipedia.org/w/api.php`);

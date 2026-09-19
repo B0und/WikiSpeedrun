@@ -1,4 +1,4 @@
-import { HttpResponse, http } from "msw";
+import { HttpResponse, http, passthrough } from "msw";
 import { expect, vi } from "vitest";
 import { customRender, testWithMSW } from "../../test-extend";
 import { testWorker } from "../../test_mocks/browser";
@@ -97,3 +97,68 @@ testWithMSW("same-page links scroll to targets in the article root", async () =>
   await screen.getByRole("link", { name: "Next article" }).click();
   await expect.poll(() => router.state.location.pathname).toBe("/wiki/Target_Article");
 });
+
+testWithMSW(
+  "a failed article request removes the previous article from the screen",
+  // TanStack Query retries three times with exponential backoff before it
+  // reports the error the article surface reacts to.
+  { timeout: 30_000 },
+  async () => {
+    testWorker.use(
+      http.get("https://en.wikipedia.org/w/api.php", ({ request }) => {
+        const url = new URL(request.url);
+        if (url.searchParams.get("action") !== "parse") {
+          return passthrough();
+        }
+
+        const page = url.searchParams.get("page");
+        if (page === "Broken_article") {
+          return HttpResponse.json({
+            error: { code: "missingtitle", info: "The page you specified doesn't exist." },
+          });
+        }
+
+        return HttpResponse.json({
+          parse: {
+            pageid: 111,
+            revid: 112,
+            title: page,
+            text: {
+              "*": '<div class="mw-parser-output"><a href="/wiki/Broken_article" title="Broken article">Broken article</a></div>',
+            },
+          },
+        });
+      }),
+    );
+
+    const screen = await customRender();
+    await router.navigate({
+      to: "/wiki/$",
+      params: { _splat: "Working_article" },
+      search: {
+        state: {
+          history: [
+            {
+              title: "Working article",
+              time: { min: "00", sec: "00", ms: "000" },
+              winningLinks: 0,
+            },
+          ],
+          startingArticle: { pageid: "111", title: "Working article" },
+          endingArticle: { pageid: "999", title: "Never reached" },
+        },
+      },
+    });
+
+    await expect.element(screen.getByRole("link", { name: "Broken article" })).toBeVisible();
+    expect(document.querySelector('[data-testid="wiki-article-host"]')).not.toBeNull();
+
+    await screen.getByRole("link", { name: "Broken article" }).click();
+
+    // A failed fetch must not leave the previous article looking live: clicks
+    // on it would count against an article that never loaded.
+    await expect
+      .poll(() => document.querySelector('[data-testid="wiki-article-host"]'), { timeout: 20_000 })
+      .toBeNull();
+  },
+);

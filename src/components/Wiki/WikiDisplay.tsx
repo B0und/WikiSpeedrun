@@ -71,7 +71,12 @@ const WikiDisplay = () => {
     !isPending &&
     !isPlaceholderData &&
     !pendingArticle;
-  useWikiArticleLifecycle(visibleArticle, presentationReady);
+
+  // A failed fetch must not keep presenting the previous article: its links
+  // would stay clickable and count against an article that never loaded.
+  // Errors render no article (and no loader) until a fetch succeeds.
+  const shownArticle = isError ? undefined : visibleArticle;
+  useWikiArticleLifecycle(shownArticle, presentationReady);
 
   const isArticleLoading =
     !isError &&
@@ -129,7 +134,7 @@ const WikiDisplay = () => {
     articleWidth === "standard" && "max-w-[59.25rem]",
   );
 
-  if (!visibleArticle) {
+  if (!shownArticle) {
     if (!isArticleLoading) return null;
 
     return (
@@ -142,12 +147,12 @@ const WikiDisplay = () => {
     );
   }
 
-  const surfaceArticles = pendingArticle ? [visibleArticle, pendingArticle] : [visibleArticle];
+  const surfaceArticles = pendingArticle ? [shownArticle, pendingArticle] : [shownArticle];
 
   return (
     <div className={articleContainerClassName} data-wiki-article-width={articleWidth}>
       <h2 className="border-b-[1px] border-secondary-border font-serif text-3xl sm:mt-8">
-        {visibleArticle.title}
+        {shownArticle.title}
       </h2>
       <div className="relative">
         {surfaceArticles.map((article) => {

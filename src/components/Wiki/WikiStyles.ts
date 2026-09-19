@@ -25,7 +25,7 @@ const SUPPORTED_WIKI_LANGUAGES: Record<string, true> = Object.fromEntries(
   LANGUAGES.map(({ value }) => [value, true]),
 );
 
-export const isSupportedWikiLanguage = (language: string): boolean =>
+export const isSupportedWikiLanguage = (language: string): language is WikiLanguage =>
   Object.hasOwn(SUPPORTED_WIKI_LANGUAGES, language);
 
 const buildResourceLoaderUrl = (language: WikiLanguage, modules: readonly string[]) => {
@@ -45,7 +45,9 @@ export const buildWikipediaStyleUrls = (
   moduleStyles: readonly string[] = [],
 ): readonly string[] => {
   if (!isSupportedWikiLanguage(language)) {
-    throw new Error(`Unsupported Wikipedia language: ${language}`);
+    // The guard narrows `language` to `never`; stringify explicitly so the
+    // defense-in-depth branch stays type-safe.
+    throw new Error(`Unsupported Wikipedia language: ${String(language)}`);
   }
 
   const conditionalModules = Array.from(

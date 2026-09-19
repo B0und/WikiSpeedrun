@@ -59,3 +59,13 @@ test("missing persisted fields keep current defaults", () => {
   const resolved = resolvePersistedSettings(undefined, currentState);
   expect(resolved).toEqual(currentState);
 });
+
+test("an empty storage keeps the browser-detected language", () => {
+  // Zustand's persist middleware calls merge even when the storage key is
+  // absent; that undefined envelope must not overwrite defaults derived at
+  // startup (notably the browser-detected interface language).
+  const germanDefaults: SettingsValues = { ...currentState, interfaceLanguage: "de" };
+
+  expect(resolvePersistedSettings(undefined, germanDefaults).interfaceLanguage).toBe("de");
+  expect(resolvePersistedSettings({}, germanDefaults).interfaceLanguage).toBe("de");
+});

@@ -40,12 +40,14 @@ const initialState: SettingsValues = {
   wikiArticleFontSize: "standard",
 };
 
-const resolveInterfaceLanguage = (language: unknown): Locale => {
-  // Persisted settings can outlive catalog renames and contain a locale that
-  // no longer maps to a catalog. Fall back at the store interface so startup
-  // can always activate a valid catalog without resetting unrelated settings.
-  return typeof language === "string" && isLocale(language) ? language : SOURCE_LOCALE;
-};
+// Persisted settings can outlive catalog renames and contain a locale that no
+// longer maps to a catalog. Validate at the store boundary so startup can
+// always activate a valid catalog without resetting unrelated settings.
+const persistedInterfaceLanguage = (language: unknown, fallback: Locale): Locale =>
+  typeof language === "string" && isLocale(language) ? language : fallback;
+
+const resolveInterfaceLanguage = (language: unknown): Locale =>
+  persistedInterfaceLanguage(language, SOURCE_LOCALE);
 
 // Persisted settings are user-editable localStorage; invalid values must fall
 // back to defaults instead of reaching components (e.g. an unknown font size
@@ -68,14 +70,22 @@ export const resolvePersistedSettings = (
   persistedState: unknown,
   currentState: SettingsValues,
 ): SettingsValues => {
+  // Zustand's persist middleware runs merge even when the storage key is
+  // absent; an empty envelope must keep the startup defaults, notably the
+  // interface language detected from the browser.
+  if (persistedState == null) return currentState;
+
   // The persisted envelope's fields are validated below; this is the single
-  // unsealing point for the unknown storage payload.
+  // unsealing point for the unknown storage payload. The raw envelope is never
+  // spread into the result, so tampered storage cannot inject state keys.
   // oxlint-disable-next-line typescript/no-unsafe-type-assertion
-  const stored = persistedState as Partial<SettingsValues> | undefined;
+  const stored = persistedState as Partial<SettingsValues>;
   return {
     ...currentState,
-    ...stored,
-    interfaceLanguage: resolveInterfaceLanguage(stored?.interfaceLanguage),
+    interfaceLanguage: persistedInterfaceLanguage(
+      stored?.interfaceLanguage,
+      currentState.interfaceLanguage,
+    ),
     wikiLanguage: persistedEnum(
       stored?.wikiLanguage,
       LANGUAGES.map(({ value }) => value),

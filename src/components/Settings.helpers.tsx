@@ -3,6 +3,8 @@ import type { Article } from "../stores/GameStore";
 import { useSettingsStoreActions } from "../stores/SettingsStore";
 import { errorToast } from "../utils/toast";
 import type { WikiRandom } from "./RandomButton/RandomButton.types";
+import { isSupportedWikiLanguage } from "./Wiki/WikiStyles";
+import type { WikiLanguage } from "./Wiki/Wiki.types";
 
 export const getHighestLinksPage = (data: WikiRandom) => {
   if (!data.query?.pages) {
@@ -67,13 +69,20 @@ export const handleOnRandomSuccess = ({ setArticle, data, failText }: RandomSucc
   });
 };
 
+export const resolveWikiLanguageFromSearch = (search: string): WikiLanguage | undefined => {
+  // Shared settings links carry ?lang=; only languages with a catalog and
+  // style support may reach the store (buildWikipediaStyleUrls throws on any
+  // other value).
+  const language = new URLSearchParams(search).get("lang");
+  return language && isSupportedWikiLanguage(language) ? language : undefined;
+};
+
 export const useSyncWikiLanguageFromUrl = () => {
   const { setWikiLanguage } = useSettingsStoreActions();
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlLanguage = urlParams.get("lang");
-    if (urlLanguage) {
-      setWikiLanguage(urlLanguage);
+    const language = resolveWikiLanguageFromSearch(window.location.search);
+    if (language) {
+      setWikiLanguage(language);
     }
   }, [setWikiLanguage]);
 };
