@@ -55,3 +55,21 @@ testWithMSW("a dismissed win does not suppress the next win's dialog", async () 
 
   await expect.element(dialog(screen)).toBeVisible();
 });
+
+testWithMSW("results dialog shows cheating attempts only once one is counted", async () => {
+  seedWin();
+  useGameStore.setState({ cheatingAttempts: 0 });
+  const screen = await customRender(<ResultDialog />);
+
+  await expect.element(dialog(screen)).toBeVisible();
+  await expect.element(screen.getByText("Cheating attempts")).not.toBeInTheDocument();
+
+  useGameStore.getState().actions.increaseCheatingAttemptsCounter();
+  useGameStore.getState().actions.increaseCheatingAttemptsCounter();
+
+  await expect.element(screen.getByText("Cheating attempts")).toBeVisible();
+  const cheatingRow = Array.from(document.querySelectorAll('[role="dialog"] tbody tr')).find(
+    (row) => row.textContent?.includes("Cheating attempts"),
+  );
+  expect(cheatingRow?.textContent).toContain("2");
+});

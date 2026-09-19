@@ -47,7 +47,9 @@ export const ResultDialog = () => {
 
   const resultStats = [
     { name: t({ id: "Article clicks" }), value: clicks },
-    { name: t({ id: "Cheating attempts" }), value: cheatingAttempts },
+    ...(cheatingAttempts > 0
+      ? [{ name: t({ id: "Cheating attempts" }), value: cheatingAttempts }]
+      : []),
     { name: t({ id: "Missed wins" }), value: missedWins },
   ];
 
