@@ -26,7 +26,7 @@ export const LANGUAGES: readonly WikiLanguageEntry[] = [
   { value: "war", label: "Winaray", isoCode: "" },
   { value: "uk", label: "українська", isoCode: "" },
   { value: "ar", label: "عربي", isoCode: "ar" },
-  { value: "pt", label: "Português", isoCode: "pt" },
+  { value: "pt-br", label: "Português (Brasil)", isoCode: "pt-BR" },
   { value: "fa", label: "فارسی", isoCode: "fa" },
   { value: "ca", label: "català", isoCode: "ca" },
   { value: "sr", label: "српски / srpski", isoCode: "sr" },
