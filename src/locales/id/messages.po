@@ -113,7 +113,7 @@ msgstr "Klik artikel"
 
 #. Button that opens a preview popover for the currently selected Wikipedia article
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:66
+#: src/components/ArticlePreview/ArticlePreview.tsx:67
 msgid "Article Preview"
 msgstr "Pratinjau artikel"
 
@@ -134,7 +134,7 @@ msgid "Bilingual.title"
 msgstr "Dwi Bahasa"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:51
 #: src/lingui.ts:64
 msgid "Cheating attempts"
 msgstr "Percobaan curang"
@@ -155,7 +155,7 @@ msgstr "Pilih artikel Anda"
 #. Button that closes the modal dialog
 #. Button that dismisses the article preview popover
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:100
+#: src/components/ArticlePreview/ArticlePreview.tsx:103
 #: src/components/Drawer.tsx:39
 #: src/components/Modal.tsx:26
 msgid "Close"
@@ -176,12 +176,12 @@ msgstr "Konfirmasi tindakan"
 #. js-lingui-explicit-id
 #: src/components/ResultDialog.tsx:44
 #: src/lingui.ts:107
-#: src/pages/Settings.tsx:76
+#: src/pages/Settings.tsx:81
 msgid "Copied to clipboard"
 msgstr "Disalin ke clipboard"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/ArticlePreview/ArticlePreview.tsx:97
 #: src/lingui.ts:113
 msgid "Couldn't load article preview"
 msgstr "Tidak dapat memuat pratinjau artikel"
@@ -214,7 +214,7 @@ msgstr "Ego Stroke"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:325
-#: src/pages/Settings.tsx:128
+#: src/pages/Settings.tsx:133
 msgid "Enable search during gameplay"
 msgstr "Aktifkan pencarian selama permainan"
 
@@ -270,7 +270,7 @@ msgid "GachaOverlord.title"
 msgstr "Gacha Overlord"
 
 #. js-lingui-explicit-id
-#: src/components/RandomButton/RandomButton.tsx:56
+#: src/components/RandomButton/RandomButton.tsx:57
 #: src/lingui.ts:81
 msgid "Get random article"
 msgstr "Dapatkan artikel acak"
@@ -336,8 +336,8 @@ msgid "Language"
 msgstr "Bahasa"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:93
-#: src/components/Loader.tsx:8
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Loader.tsx:10
 #: src/lingui.ts:112
 msgid "Loading"
 msgstr "Memuat..."
@@ -370,7 +370,7 @@ msgid "Menu"
 msgstr "Menu"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:51
+#: src/components/ResultDialog.tsx:53
 #: src/lingui.ts:118
 msgid "Missed wins"
 msgstr "Kemenangan yang terlewat"
@@ -408,7 +408,7 @@ msgid "No articles found"
 msgstr "Tidak ada artikel ditemukan"
 
 #. js-lingui-explicit-id
-#: src/components/Wiki/Wiki.utils.ts:23
+#: src/components/Wiki/Wiki.utils.ts:29
 #: src/lingui.ts:97
 msgid "No Cheating!"
 msgstr "Tidak Curang!"
@@ -440,19 +440,19 @@ msgstr "Sumber terbuka"
 #: src/components/Header.tsx:21
 #: src/lingui.ts:42
 #: src/pages/About.tsx:33
-#: src/pages/Settings.tsx:146
+#: src/pages/Settings.tsx:151
 msgid "Play"
 msgstr "Main"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:116
+#: src/components/ResultDialog.tsx:118
 #: src/lingui.ts:66
 msgid "Play again"
 msgstr "Main lagi"
 
 #. Shown while an article preview popover is loading
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:84
+#: src/components/ArticlePreview/ArticlePreview.tsx:86
 msgid "Please wait"
 msgstr "Mohon tunggu"
 
@@ -505,13 +505,13 @@ msgstr "Pilihan acak:"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:98
-#: src/pages/Settings.tsx:186
+#: src/pages/Settings.tsx:191
 msgid "Random failed, try again"
 msgstr "Pilihan acak gagal, coba lagi"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:67
-#: src/components/ResultDialog.tsx:73
+#: src/components/ResultDialog.tsx:69
+#: src/components/ResultDialog.tsx:75
 #: src/lingui.ts:65
 msgid "Results"
 msgstr "Hasil"
@@ -550,31 +550,31 @@ msgstr "Pilih bahasa artikel"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:55
-#: src/pages/Settings.tsx:115
+#: src/pages/Settings.tsx:120
 msgid "Select ending article"
 msgstr "Pilih artikel akhir"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:51
-#: src/pages/Settings.tsx:102
+#: src/pages/Settings.tsx:107
 msgid "Select starting article"
 msgstr "Pilih artikel awal"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:44
-#: src/pages/Settings.tsx:83
+#: src/pages/Settings.tsx:88
 msgid "Settings"
 msgstr "Pengaturan"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:108
+#: src/components/ResultDialog.tsx:110
 #: src/lingui.ts:111
 msgid "Share Result"
 msgstr "Bagikan Hasil"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:106
-#: src/pages/Settings.tsx:139
+#: src/pages/Settings.tsx:144
 msgid "Share settings"
 msgstr "Bagikan pengaturan"
 
@@ -611,14 +611,14 @@ msgstr "Pembalap Cepat"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:46
-#: src/pages/Settings.tsx:87
+#: src/pages/Settings.tsx:92
 msgid "Start typing and then select values from the dropdown list or press the random button"
 msgstr "Mulai mengetik, lalu pilih nilai dari daftar dropdown atau tekan tombol acak."
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:59
-#: src/pages/Settings.tsx:103
-#: src/pages/Settings.tsx:116
+#: src/pages/Settings.tsx:108
+#: src/pages/Settings.tsx:121
 msgid "Start typing to see options"
 msgstr "Mulai mengetik untuk melihat opsi"
 

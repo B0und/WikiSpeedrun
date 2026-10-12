@@ -14,6 +14,7 @@ export const SUPPORTED_LOCALES = [
   "ja",
   "nl",
   "pl",
+  "pt-BR",
   "ru",
   "sv",
   "vi",
@@ -30,8 +31,16 @@ export const isLocale = (locale: string): locale is Locale =>
 export const detectLocale = (): Locale => {
   if (typeof navigator === "undefined") return SOURCE_LOCALE;
 
-  const language = fromNavigator()?.trim().toLowerCase().split(/[-_]/)[0];
-  return language && isLocale(language) ? language : SOURCE_LOCALE;
+  const language = fromNavigator()?.trim().replace("_", "-").toLowerCase();
+  const matchingLocale = SUPPORTED_LOCALES.find(
+    (supported) => supported.toLowerCase() === language,
+  );
+  if (matchingLocale) return matchingLocale;
+
+  const baseLanguage = language?.split("-")[0];
+  return (
+    SUPPORTED_LOCALES.find((supported) => supported.toLowerCase() === baseLanguage) ?? SOURCE_LOCALE
+  );
 };
 
 export const getLanguageTag = (locale: Locale): string => (locale === "zh" ? "zh-Hans" : locale);
