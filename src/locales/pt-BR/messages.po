@@ -373,7 +373,7 @@ msgstr "Menu"
 #: src/components/ResultDialog.tsx:53
 #: src/lingui.ts:118
 msgid "Missed wins"
-msgstr "Vitórias perdidas"
+msgstr "Oportunidades de vitória perdidas"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:209
@@ -417,7 +417,7 @@ msgstr "Sem Trapaças!"
 #: src/lingui.ts:21
 #: src/pages/About.tsx:19
 msgid "No registration required"
-msgstr "Nenhum registro necessário"
+msgstr "Não é necessário se cadastrar"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:151
@@ -507,7 +507,7 @@ msgstr "Escolhas aleatórias:"
 #: src/lingui.ts:98
 #: src/pages/Settings.tsx:191
 msgid "Random failed, try again"
-msgstr "Aleatório falhou, tente novamente"
+msgstr "Não foi possível obter um artigo aleatório. Tente novamente."
 
 #. js-lingui-explicit-id
 #: src/components/ResultDialog.tsx:69
@@ -587,7 +587,7 @@ msgstr "Navegador Afiado"
 #. js-lingui-explicit-id
 #: src/components/Header.tsx:122
 msgid "Source code on github"
-msgstr "Código fonte no github"
+msgstr "Código-fonte no GitHub"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:166
@@ -638,7 +638,7 @@ msgstr "Obrigado por inspirar todo este projeto"
 #: src/lingui.ts:11
 #: src/pages/About.tsx:12
 msgid "The goal of the game is to navigate from a starting wikipedia article to another one, in the least amount of clicks and time"
-msgstr "O objetivo do jogo é navegar de um artigo inicial da wikipédia para outro, na menor quantidade de cliques e tempo."
+msgstr "O objetivo do jogo é navegar de um artigo inicial da Wikipédia para outro, com o menor número de cliques e no menor tempo possível."
 
 #. js-lingui-explicit-id
 #: src/components/NoMatch.tsx:8
