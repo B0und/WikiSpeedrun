@@ -39,11 +39,8 @@ export const detectLocale = (): Locale => {
 
   const baseLanguage = language?.split("-")[0];
   return (
-    SUPPORTED_LOCALES.find(
-      (supported) => supported.toLowerCase() === baseLanguage,
-    ) ?? SOURCE_LOCALE
+    SUPPORTED_LOCALES.find((supported) => supported.toLowerCase() === baseLanguage) ?? SOURCE_LOCALE
   );
 };
 
-export const getLanguageTag = (locale: Locale): string =>
-  locale === "zh" ? "zh-Hans" : locale;
+export const getLanguageTag = (locale: Locale): string => (locale === "zh" ? "zh-Hans" : locale);

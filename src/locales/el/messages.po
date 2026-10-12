@@ -114,7 +114,7 @@ msgstr "Κλικ σε άρθρα"
 
 #. Button that opens a preview popover for the currently selected Wikipedia article
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:66
+#: src/components/ArticlePreview/ArticlePreview.tsx:67
 msgid "Article Preview"
 msgstr "Προεπισκόπηση άρθρου"
 
@@ -135,7 +135,7 @@ msgid "Bilingual.title"
 msgstr "Δίγλωσσος"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:51
 #: src/lingui.ts:64
 msgid "Cheating attempts"
 msgstr "Προσπάθεις κλεψίματος"
@@ -156,7 +156,7 @@ msgstr "Επιλέξτε το άρθρο σας"
 #. Button that closes the modal dialog
 #. Button that dismisses the article preview popover
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:100
+#: src/components/ArticlePreview/ArticlePreview.tsx:103
 #: src/components/Drawer.tsx:39
 #: src/components/Modal.tsx:26
 msgid "Close"
@@ -177,12 +177,12 @@ msgstr "Επιβεβαιώστε την ενέργεια"
 #. js-lingui-explicit-id
 #: src/components/ResultDialog.tsx:44
 #: src/lingui.ts:107
-#: src/pages/Settings.tsx:76
+#: src/pages/Settings.tsx:81
 msgid "Copied to clipboard"
 msgstr "Αντιγράφηκε στο πρόχειρο"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/ArticlePreview/ArticlePreview.tsx:97
 #: src/lingui.ts:113
 msgid "Couldn't load article preview"
 msgstr "Δεν ήταν δυνατή η φόρτωση της προεπισκόπησης του άρθρου"
@@ -215,7 +215,7 @@ msgstr "Κολακεία"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:325
-#: src/pages/Settings.tsx:128
+#: src/pages/Settings.tsx:133
 msgid "Enable search during gameplay"
 msgstr "Ενεργοποίηση αναζήτησης κατά τη διάρκεια του παιχνιδιού"
 
@@ -271,7 +271,7 @@ msgid "GachaOverlord.title"
 msgstr "Άρχοντας των Gacha"
 
 #. js-lingui-explicit-id
-#: src/components/RandomButton/RandomButton.tsx:56
+#: src/components/RandomButton/RandomButton.tsx:57
 #: src/lingui.ts:81
 msgid "Get random article"
 msgstr "Λήψη τυχαίου άρθρου"
@@ -337,8 +337,8 @@ msgid "Language"
 msgstr "Γλώσσα"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:93
-#: src/components/Loader.tsx:8
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Loader.tsx:10
 #: src/lingui.ts:112
 msgid "Loading"
 msgstr "Φόρτωση..."
@@ -371,7 +371,7 @@ msgid "Menu"
 msgstr "Μενού"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:51
+#: src/components/ResultDialog.tsx:53
 #: src/lingui.ts:118
 msgid "Missed wins"
 msgstr "Χαμένες νίκες"
@@ -409,7 +409,7 @@ msgid "No articles found"
 msgstr "Δεν βρέθηκαν άρθρα"
 
 #. js-lingui-explicit-id
-#: src/components/Wiki/Wiki.utils.ts:23
+#: src/components/Wiki/Wiki.utils.ts:29
 #: src/lingui.ts:97
 msgid "No Cheating!"
 msgstr "Όχι ζαβολιές!"
@@ -441,19 +441,19 @@ msgstr "Ανοικτού κώδικα"
 #: src/components/Header.tsx:21
 #: src/lingui.ts:42
 #: src/pages/About.tsx:33
-#: src/pages/Settings.tsx:146
+#: src/pages/Settings.tsx:151
 msgid "Play"
 msgstr "Παίξε"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:116
+#: src/components/ResultDialog.tsx:118
 #: src/lingui.ts:66
 msgid "Play again"
 msgstr "Παίξτε ξανά"
 
 #. Shown while an article preview popover is loading
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:84
+#: src/components/ArticlePreview/ArticlePreview.tsx:86
 msgid "Please wait"
 msgstr "Παρακαλώ περιμένετε"
 
@@ -506,13 +506,13 @@ msgstr "Τυχαίες επιλογές:"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:98
-#: src/pages/Settings.tsx:186
+#: src/pages/Settings.tsx:191
 msgid "Random failed, try again"
 msgstr "Η τυχαία επιλογή απέτυχε, δοκιμάστε ξανά"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:67
-#: src/components/ResultDialog.tsx:73
+#: src/components/ResultDialog.tsx:69
+#: src/components/ResultDialog.tsx:75
 #: src/lingui.ts:65
 msgid "Results"
 msgstr "Αποτελέσματα"
@@ -551,31 +551,31 @@ msgstr "Επιλέξτε γλώσσα άρθρου"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:55
-#: src/pages/Settings.tsx:115
+#: src/pages/Settings.tsx:120
 msgid "Select ending article"
 msgstr "Επίλεξτε το τελικό άρθρο"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:51
-#: src/pages/Settings.tsx:102
+#: src/pages/Settings.tsx:107
 msgid "Select starting article"
 msgstr "Επιλέξτε το αρχικό άρθρο"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:44
-#: src/pages/Settings.tsx:83
+#: src/pages/Settings.tsx:88
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:108
+#: src/components/ResultDialog.tsx:110
 #: src/lingui.ts:111
 msgid "Share Result"
 msgstr "Κοινοποίηση αποτελέσματος"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:106
-#: src/pages/Settings.tsx:139
+#: src/pages/Settings.tsx:144
 msgid "Share settings"
 msgstr "Κοινοποίηση ρυθμίσεων"
 
@@ -612,14 +612,14 @@ msgstr "Σίφουνας"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:46
-#: src/pages/Settings.tsx:87
+#: src/pages/Settings.tsx:92
 msgid "Start typing and then select values from the dropdown list or press the random button"
 msgstr "Ξεκινήστε να πληκτρολογείτε και στη συνέχεια επιλέξτε τις τιμές από τη λίστα ή πατήστε το τυχαίο κουμπί."
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:59
-#: src/pages/Settings.tsx:103
-#: src/pages/Settings.tsx:116
+#: src/pages/Settings.tsx:108
+#: src/pages/Settings.tsx:121
 msgid "Start typing to see options"
 msgstr "Ξεκινήστε να πληκτρολογείτε για να δείτε τις επιλογές"
 

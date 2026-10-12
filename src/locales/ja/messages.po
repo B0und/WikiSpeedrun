@@ -114,7 +114,7 @@ msgstr "記事クリック数"
 
 #. Button that opens a preview popover for the currently selected Wikipedia article
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:66
+#: src/components/ArticlePreview/ArticlePreview.tsx:67
 msgid "Article Preview"
 msgstr "記事プレビュー"
 
@@ -135,7 +135,7 @@ msgid "Bilingual.title"
 msgstr "バイリンガル"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:51
 #: src/lingui.ts:64
 msgid "Cheating attempts"
 msgstr "チートの試み"
@@ -156,7 +156,7 @@ msgstr "記事を選択してください"
 #. Button that closes the modal dialog
 #. Button that dismisses the article preview popover
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:100
+#: src/components/ArticlePreview/ArticlePreview.tsx:103
 #: src/components/Drawer.tsx:39
 #: src/components/Modal.tsx:26
 msgid "Close"
@@ -177,12 +177,12 @@ msgstr "アクションを確認"
 #. js-lingui-explicit-id
 #: src/components/ResultDialog.tsx:44
 #: src/lingui.ts:107
-#: src/pages/Settings.tsx:76
+#: src/pages/Settings.tsx:81
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーされました"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/ArticlePreview/ArticlePreview.tsx:97
 #: src/lingui.ts:113
 msgid "Couldn't load article preview"
 msgstr "記事のプレビューを読み込めませんでした"
@@ -215,7 +215,7 @@ msgstr "自尊心を満たす"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:325
-#: src/pages/Settings.tsx:128
+#: src/pages/Settings.tsx:133
 msgid "Enable search during gameplay"
 msgstr "ゲーム中に検索を有効にする"
 
@@ -271,7 +271,7 @@ msgid "GachaOverlord.title"
 msgstr "ガチャの支配者"
 
 #. js-lingui-explicit-id
-#: src/components/RandomButton/RandomButton.tsx:56
+#: src/components/RandomButton/RandomButton.tsx:57
 #: src/lingui.ts:81
 msgid "Get random article"
 msgstr "ランダムな記事を取得"
@@ -337,8 +337,8 @@ msgid "Language"
 msgstr "言語"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:93
-#: src/components/Loader.tsx:8
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Loader.tsx:10
 #: src/lingui.ts:112
 msgid "Loading"
 msgstr "読み込み中..."
@@ -371,7 +371,7 @@ msgid "Menu"
 msgstr "メニュー"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:51
+#: src/components/ResultDialog.tsx:53
 #: src/lingui.ts:118
 msgid "Missed wins"
 msgstr "見逃した勝利"
@@ -409,7 +409,7 @@ msgid "No articles found"
 msgstr "記事が見つかりません"
 
 #. js-lingui-explicit-id
-#: src/components/Wiki/Wiki.utils.ts:23
+#: src/components/Wiki/Wiki.utils.ts:29
 #: src/lingui.ts:97
 msgid "No Cheating!"
 msgstr "チート禁止！"
@@ -441,19 +441,19 @@ msgstr "オープンソース"
 #: src/components/Header.tsx:21
 #: src/lingui.ts:42
 #: src/pages/About.tsx:33
-#: src/pages/Settings.tsx:146
+#: src/pages/Settings.tsx:151
 msgid "Play"
 msgstr "プレイ"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:116
+#: src/components/ResultDialog.tsx:118
 #: src/lingui.ts:66
 msgid "Play again"
 msgstr "もう一度プレイ"
 
 #. Shown while an article preview popover is loading
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:84
+#: src/components/ArticlePreview/ArticlePreview.tsx:86
 msgid "Please wait"
 msgstr "お待ちください"
 
@@ -506,13 +506,13 @@ msgstr "ランダムな選択："
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:98
-#: src/pages/Settings.tsx:186
+#: src/pages/Settings.tsx:191
 msgid "Random failed, try again"
 msgstr "ランダムが失敗しました、もう一度やり直してください"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:67
-#: src/components/ResultDialog.tsx:73
+#: src/components/ResultDialog.tsx:69
+#: src/components/ResultDialog.tsx:75
 #: src/lingui.ts:65
 msgid "Results"
 msgstr "結果"
@@ -551,31 +551,31 @@ msgstr "記事の言語を選択"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:55
-#: src/pages/Settings.tsx:115
+#: src/pages/Settings.tsx:120
 msgid "Select ending article"
 msgstr "終了記事を選択"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:51
-#: src/pages/Settings.tsx:102
+#: src/pages/Settings.tsx:107
 msgid "Select starting article"
 msgstr "開始記事を選択"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:44
-#: src/pages/Settings.tsx:83
+#: src/pages/Settings.tsx:88
 msgid "Settings"
 msgstr "設定"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:108
+#: src/components/ResultDialog.tsx:110
 #: src/lingui.ts:111
 msgid "Share Result"
 msgstr "結果を共有"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:106
-#: src/pages/Settings.tsx:139
+#: src/pages/Settings.tsx:144
 msgid "Share settings"
 msgstr "設定を共有"
 
@@ -612,14 +612,14 @@ msgstr "スピードスター"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:46
-#: src/pages/Settings.tsx:87
+#: src/pages/Settings.tsx:92
 msgid "Start typing and then select values from the dropdown list or press the random button"
 msgstr "入力を開始してから、ドロップダウンリストから値を選択するか、ランダムボタンを押してください。"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:59
-#: src/pages/Settings.tsx:103
-#: src/pages/Settings.tsx:116
+#: src/pages/Settings.tsx:108
+#: src/pages/Settings.tsx:121
 msgid "Start typing to see options"
 msgstr "オプションを表示するには入力を開始してください"
 

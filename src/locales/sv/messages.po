@@ -114,7 +114,7 @@ msgstr "Artikelklick"
 
 #. Button that opens a preview popover for the currently selected Wikipedia article
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:66
+#: src/components/ArticlePreview/ArticlePreview.tsx:67
 msgid "Article Preview"
 msgstr "Artikelförhandsvisning"
 
@@ -135,7 +135,7 @@ msgid "Bilingual.title"
 msgstr "Tvåspråkig"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:50
+#: src/components/ResultDialog.tsx:51
 #: src/lingui.ts:64
 msgid "Cheating attempts"
 msgstr "Försök till fusk"
@@ -156,7 +156,7 @@ msgstr "Välj din artikel"
 #. Button that closes the modal dialog
 #. Button that dismisses the article preview popover
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:100
+#: src/components/ArticlePreview/ArticlePreview.tsx:103
 #: src/components/Drawer.tsx:39
 #: src/components/Modal.tsx:26
 msgid "Close"
@@ -177,12 +177,12 @@ msgstr "Bekräfta åtgärd"
 #. js-lingui-explicit-id
 #: src/components/ResultDialog.tsx:44
 #: src/lingui.ts:107
-#: src/pages/Settings.tsx:76
+#: src/pages/Settings.tsx:81
 msgid "Copied to clipboard"
 msgstr "Kopierad till urklipp"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/ArticlePreview/ArticlePreview.tsx:97
 #: src/lingui.ts:113
 msgid "Couldn't load article preview"
 msgstr "Kunde inte ladda förhandsgranskning av artikel"
@@ -215,7 +215,7 @@ msgstr "Ego Stroke"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:325
-#: src/pages/Settings.tsx:128
+#: src/pages/Settings.tsx:133
 msgid "Enable search during gameplay"
 msgstr "Aktivera sökning under spelet"
 
@@ -271,7 +271,7 @@ msgid "GachaOverlord.title"
 msgstr "Gacha Overlord"
 
 #. js-lingui-explicit-id
-#: src/components/RandomButton/RandomButton.tsx:56
+#: src/components/RandomButton/RandomButton.tsx:57
 #: src/lingui.ts:81
 msgid "Get random article"
 msgstr "Få slumpmässig artikel"
@@ -337,8 +337,8 @@ msgid "Language"
 msgstr "Språk"
 
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:93
-#: src/components/Loader.tsx:8
+#: src/components/ArticlePreview/ArticlePreview.tsx:95
+#: src/components/Loader.tsx:10
 #: src/lingui.ts:112
 msgid "Loading"
 msgstr "Laddar..."
@@ -371,7 +371,7 @@ msgid "Menu"
 msgstr "Meny"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:51
+#: src/components/ResultDialog.tsx:53
 #: src/lingui.ts:118
 msgid "Missed wins"
 msgstr "Missade vinster"
@@ -409,7 +409,7 @@ msgid "No articles found"
 msgstr "Inga artiklar hittades"
 
 #. js-lingui-explicit-id
-#: src/components/Wiki/Wiki.utils.ts:23
+#: src/components/Wiki/Wiki.utils.ts:29
 #: src/lingui.ts:97
 msgid "No Cheating!"
 msgstr "Inget fusk!"
@@ -441,19 +441,19 @@ msgstr "Öppen källkod"
 #: src/components/Header.tsx:21
 #: src/lingui.ts:42
 #: src/pages/About.tsx:33
-#: src/pages/Settings.tsx:146
+#: src/pages/Settings.tsx:151
 msgid "Play"
 msgstr "Spela"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:116
+#: src/components/ResultDialog.tsx:118
 #: src/lingui.ts:66
 msgid "Play again"
 msgstr "Spela igen"
 
 #. Shown while an article preview popover is loading
 #. js-lingui-explicit-id
-#: src/components/ArticlePreview/ArticlePreview.tsx:84
+#: src/components/ArticlePreview/ArticlePreview.tsx:86
 msgid "Please wait"
 msgstr "Vänta"
 
@@ -506,13 +506,13 @@ msgstr "Slumpmässiga val:"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:98
-#: src/pages/Settings.tsx:186
+#: src/pages/Settings.tsx:191
 msgid "Random failed, try again"
 msgstr "Slumpmässig misslyckades, försök igen"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:67
-#: src/components/ResultDialog.tsx:73
+#: src/components/ResultDialog.tsx:69
+#: src/components/ResultDialog.tsx:75
 #: src/lingui.ts:65
 msgid "Results"
 msgstr "Resultat"
@@ -551,31 +551,31 @@ msgstr "Välj språk för artikel"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:55
-#: src/pages/Settings.tsx:115
+#: src/pages/Settings.tsx:120
 msgid "Select ending article"
 msgstr "Välj slutartikel"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:51
-#: src/pages/Settings.tsx:102
+#: src/pages/Settings.tsx:107
 msgid "Select starting article"
 msgstr "Välj startartikel"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:44
-#: src/pages/Settings.tsx:83
+#: src/pages/Settings.tsx:88
 msgid "Settings"
 msgstr "Inställningar"
 
 #. js-lingui-explicit-id
-#: src/components/ResultDialog.tsx:108
+#: src/components/ResultDialog.tsx:110
 #: src/lingui.ts:111
 msgid "Share Result"
 msgstr "Dela resultat"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:106
-#: src/pages/Settings.tsx:139
+#: src/pages/Settings.tsx:144
 msgid "Share settings"
 msgstr "Dela inställningar"
 
@@ -612,14 +612,14 @@ msgstr "Snabbköpare"
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:46
-#: src/pages/Settings.tsx:87
+#: src/pages/Settings.tsx:92
 msgid "Start typing and then select values from the dropdown list or press the random button"
 msgstr "Börja skriva och välj sedan värden från rullgardinsmenyn eller tryck på slumpknappen."
 
 #. js-lingui-explicit-id
 #: src/lingui.ts:59
-#: src/pages/Settings.tsx:103
-#: src/pages/Settings.tsx:116
+#: src/pages/Settings.tsx:108
+#: src/pages/Settings.tsx:121
 msgid "Start typing to see options"
 msgstr "Börja skriva för att se alternativ"
 
